@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : Memory.c
+ Name        : LSF.c
  Author      : 
  Version     :
  Copyright   : Your copyright notice
@@ -8,47 +8,18 @@
  ============================================================================
  */
 
-#include "Memory.h"
+#include "LFS.h"
 
 int main() {
-
-			struct addrinfo hints;
-			struct addrinfo *serverInfo;
-
-			memset(&hints, 0, sizeof(hints));
-			hints.ai_family = AF_UNSPEC;		// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
-			hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
-
-			getaddrinfo(IP, PUERTO_DEST, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
-
-
-			/*
-			 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
-			 *	Tengo que encontrar una forma por la que conectarme al server... Ya se! Un socket!
-			 *
-			 * 	Obtiene un socket (un file descriptor -todo en linux es un archivo-), utilizando la estructura serverInfo que generamos antes.
-			 *
-			 */
-			int lfsSocket;
-			lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
-
-			/*
-			 * 	Perfecto, ya tengo el medio para conectarme (el archivo), y ya se lo pedi al sistema.
-			 * 	Ahora me conecto!
-			 *
-			 */
-			connect(lfsSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
-			freeaddrinfo(serverInfo);	// No lo necesitamos mas
-
-			printf("Conectado al LFS \n");
-	/*
-
+		/*
 		 *
 		 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
 		 *
 		 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
 		 *
 		 */
+		struct addrinfo hints;
+		struct addrinfo *serverInfo;
 
 		memset(&hints, 0, sizeof(hints));
 		hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
@@ -90,7 +61,7 @@ int main() {
 		 */
 		listen(listenningSocket, BACKLOG);		// IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-		printf("Esperando kernel... \n");
+		printf("Esperando memoria... \n");
 
 		/*
 		 * 	El sistema esperara hasta que reciba una conexion entrante...
@@ -122,9 +93,11 @@ int main() {
 		t_Package package;
 		int status = 1;		// Estructura que manjea el status de los recieve.
 
-		char *serializedPackage;
+		//t_PackageEnv packageEnvio;
+		//packageEnvio.message = malloc(MAX_MESSAGE_SIZE);
+		//char *serializedPackage;
 
-		printf("Cliente conectado. Esperando Envío de mensajes.\n");
+		printf("Memoria conectada. Esperando Envío de mensajes.\n");
 
 		while (status){
 			status = recieve_and_deserialize(&package, socketCliente);
@@ -132,15 +105,11 @@ int main() {
 			//fill_package(&packageEnvio, &username);
 
 			// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
-			if (status) {
+			if (status) printf("Memory says: %s", package.message);
 
-			printf("Kernel says: %s", package.message);
-
-			serializedPackage = serializarOperandos(&package);
-			send(lfsSocket, serializedPackage, package.total_size, 0);
-			dispose_package(&serializedPackage);
-			}
-
+			//serializedPackage = serializarOperandos(&packageEnvio);
+			//send(socketCliente, serializedPackage, packageEnvio.total_size, 0);
+			//dispose_package(&serializedPackage);
 		}
 
 
@@ -186,13 +155,14 @@ int recieve_and_deserialize(t_Package *package, int socketCliente){
 
 	free(buffer);
 
-	package->message_long = message_long;
-	package->total_size = buffer_size + message_long;
-
 	return status;
 }
 
+void dispose_package(char **package){
+	free(*package);
+}
 
+/*
 
 char* serializarOperandos(t_Package *package){
 
@@ -211,6 +181,4 @@ char* serializarOperandos(t_Package *package){
 	return serializedPackage;
 }
 
-void dispose_package(char **package){
-	free(*package);
-}
+*/
