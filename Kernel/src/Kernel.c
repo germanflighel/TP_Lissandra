@@ -44,10 +44,13 @@ int main() {
 		 * 	Ahora me conecto!
 		 *
 		 */
-		connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
-		freeaddrinfo(serverInfo);	// No lo necesitamos mas
+		if(connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)==0){
+			freeaddrinfo(serverInfo);	// No lo necesitamos mas
+			printf("Conectado al servidor.\n");
+		}else{
+			printf("No se pudo conectar al servidor...");
+		}
 
-		printf("Conectado al servidor.\n");
 		/*
 		 *	Estoy conectado! Ya solo me queda una cosa:
 		 *
@@ -72,7 +75,7 @@ int main() {
 
 		while(enviar){
 
-			fill_package(&package); // Completamos el package, que contendra los datos del usuario y los datos del mensaje que vamos a enviar.
+			fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
 
 			if(!strcmp(package.message, "exit\n")){
 				enviar = 0;

@@ -158,10 +158,6 @@ int recieve_and_deserialize(t_Package *package, int socketCliente){
 	return status;
 }
 
-void dispose_package(char **package){
-	free(*package);
-}
-
 /*
 
 char* serializarOperandos(t_Package *package){
