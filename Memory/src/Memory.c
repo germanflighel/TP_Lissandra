@@ -14,13 +14,27 @@ int main() {
 
 			struct addrinfo hints;
 			struct addrinfo *serverInfo;
+			char* ip;
+			char* puerto;
 
 			memset(&hints, 0, sizeof(hints));
 			hints.ai_family = AF_UNSPEC;		// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 			hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-			getaddrinfo(IP, PUERTO_DEST, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
+			abrir_log();
 
+			t_config *conection_conf;
+			abrir_con(&conection_conf);
+
+			ip = config_get_string_value(conection_conf, "IP");
+			puerto = config_get_string_value(conection_conf, "PUERTO_DEST");
+
+
+
+
+			getaddrinfo(ip, puerto, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
+
+			config_destroy(conection_conf);
 
 			/*
 			 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -134,10 +148,18 @@ int main() {
 			// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
 			if (status) {
 
+			char *mensaje = malloc(package.message_long+100);
+
+			memcpy(mensaje,package.message,package.message_long);
+
+			mensaje[package.message_long] = '\0';
+
 			printf("Kernel says: %s", package.message);
+			log_info(g_logger, mensaje);
 
 			serializedPackage = serializarOperandos(&package);
 			send(lfsSocket, serializedPackage, package.total_size, 0);
+
 			dispose_package(&serializedPackage);
 			}
 
@@ -155,9 +177,27 @@ int main() {
 		close(socketCliente);
 		close(listenningSocket);
 
+		log_destroy(g_logger);
+
 		/* See ya! */
 
 		return 0;
+}
+
+
+
+void abrir_con(t_config** g_config)
+{
+
+	(*g_config) = config_create(CONFIG_PATH);
+
+}
+
+void abrir_log(void)
+{
+
+	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_INFO);
+
 }
 
 /*
