@@ -9,6 +9,10 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <stdint.h>
+#include<commons/log.h>
+#include<commons/string.h>
+#include<commons/config.h>
+#include<readline/readline.h>
 
 #define IP "127.0.0.1"
 #define PUERTO "6667"
