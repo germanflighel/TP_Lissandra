@@ -3,6 +3,7 @@
 	<name>Memory</name>
 	<comment></comment>
 	<projects>
+		<project>sockets</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

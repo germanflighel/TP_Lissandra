@@ -9,6 +9,7 @@
  */
 
 #include "Memory.h"
+#include "sockets.h"
 
 int main() {
 
@@ -207,50 +208,3 @@ typedef struct t_Package {
 	uint32_t total_size;
 } t_Package;
  */
-
-int recieve_and_deserialize(t_Package *package, int socketCliente){
-
-	int status;
-	int buffer_size;
-	char *buffer = malloc(buffer_size = sizeof(uint32_t));
-
-	uint32_t message_long;
-	status = recv(socketCliente, buffer, sizeof(package->message_long), 0);
-	memcpy(&(message_long), buffer, buffer_size);
-	if (!status) return 0;
-
-	package->message = malloc(message_long+1);
-
-	status = recv(socketCliente, package->message, message_long, 0);
-	if (!status) return 0;
-
-	free(buffer);
-
-	package->message_long = message_long;
-	package->total_size = buffer_size + message_long;
-
-	return status;
-}
-
-
-
-char* serializarOperandos(t_Package *package){
-
-	char *serializedPackage = malloc(package->total_size);
-
-	int offset = 0;
-	int size_to_send;
-
-	size_to_send =  sizeof(package->message_long);
-	memcpy(serializedPackage + offset, &(package->message_long), size_to_send);
-	offset += size_to_send;
-
-	size_to_send =  package->message_long;
-	memcpy(serializedPackage + offset, package->message, size_to_send);
-
-	return serializedPackage;
-}
-
-void dispose_package(char **package){
-	free(*package);
-}

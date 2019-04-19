@@ -10,7 +10,6 @@
 #include <unistd.h>
 #include <stdint.h>
 
-#include "Package.h"
 #include<commons/log.h>
 #include<commons/string.h>
 #include<commons/config.h>
@@ -19,12 +18,5 @@
 
 #define IP "127.0.0.1"
 #define PUERTO "6667"
-#define MAX_MESSAGE_SIZE 300
-
-
-char* serializarOperandos(t_Package*);
-void fill_package(t_Package*);
-void dispose_package(char**);
-//int recieve_and_deserialize(t_Package *,int);
 
 #endif
