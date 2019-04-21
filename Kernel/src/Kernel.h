@@ -14,6 +14,8 @@
 #include<commons/string.h>
 #include<commons/config.h>
 #include<readline/readline.h>
+#include <commons/collections/list.h>
+#include <commons/string.h>
 
 
 #define IP "127.0.0.1"

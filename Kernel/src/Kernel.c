@@ -64,7 +64,7 @@ int main() {
 		 */
 
 		int enviar = 1;
-		t_Package package;
+		t_PackagePosta package;
 		package.message = malloc(MAX_MESSAGE_SIZE);
 		char *serializedPackage;
 
@@ -78,9 +78,10 @@ int main() {
 
 			fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
 
-			if(!strcmp(package.message, "exit\n")){
+			if(package.header == -1){
 				enviar = 0;
 			} 		// Chequeamos si el usuario quiere salir.
+
 
 			if(enviar) {
 				serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.

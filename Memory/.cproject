@@ -38,8 +38,9 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sockets"/>
 									<listOptionValue builtIn="false" value="commons"/>
 								</option>
-								<option id="gnu.c.link.option.paths.2001746046" superClass="gnu.c.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+								<option id="gnu.c.link.option.paths.2001746046" name="Library search path (-L)" superClass="gnu.c.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sockets/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/tp-2019-1c-Ckere/sockets/Debug}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.441693768" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -48,7 +49,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1846557349" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug"/>
 							<tool command="as" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GASErrorParser" id="cdt.managedbuild.tool.gnu.assembler.exe.debug.1494009580" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug">
-								<option id="gnu.both.asm.option.include.paths.1479749520" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<option id="gnu.both.asm.option.include.paths.1479749520" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sockets}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.809905589" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>

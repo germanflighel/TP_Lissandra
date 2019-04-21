@@ -94,7 +94,15 @@ int main() {
 		 * 				OJO! Todavia no estoy escuchando las conexiones entrantes!
 		 *
 		 */
-		bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen);
+
+		int waiting = 1;
+		while(waiting){
+			wait(1000);
+			if(bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen)!= -1) {
+			         waiting = 0;
+			}
+		}
+
 		freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
 		/*
@@ -134,12 +142,13 @@ int main() {
 		 *	Cuando el cliente cierra la conexion, recieve_and_deserialize() devolvera 0.
 		 */
 
-		t_Package package;
+		t_PackagePosta package;
 		int status = 1;		// Estructura que manjea el status de los recieve.
 
 		char *serializedPackage;
 
-		printf("Cliente conectado. Esperando Envío de mensajes.\n");
+
+		printf("Cliente conectado. Esperando Envío de mensajessss.\n");
 
 		while (status){
 			status = recieve_and_deserialize(&package, socketCliente);
@@ -149,13 +158,11 @@ int main() {
 			// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
 			if (status) {
 
-			char *mensaje = malloc(package.message_long+100);
+			char *mensaje = malloc(package.message_long);
 
 			memcpy(mensaje,package.message,package.message_long);
 
-			mensaje[package.message_long] = '\0';
-
-			printf("Kernel says: %s", package.message);
+			printf("%s\n",mensaje);
 			log_info(g_logger, mensaje);
 
 			serializedPackage = serializarOperandos(&package);
@@ -200,6 +207,7 @@ void abrir_log(void)
 	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_INFO);
 
 }
+
 
 /*
 typedef struct t_Package {

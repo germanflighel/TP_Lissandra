@@ -91,7 +91,7 @@ int main() {
 		 *	Cuando el cliente cierra la conexion, recieve_and_deserialize() devolvera 0.
 		 */
 
-		t_Package package;
+		t_PackagePosta package;
 		int status = 1;		// Estructura que manjea el status de los recieve.
 
 		//t_PackageEnv packageEnvio;
@@ -106,7 +106,7 @@ int main() {
 			//fill_package(&packageEnvio, &username);
 
 			// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
-			if (status) printf("Memory says: %s", package.message);
+			if (status) printf("Memory says: %s.\n", package.message);
 
 			//serializedPackage = serializarOperandos(&packageEnvio);
 			//send(socketCliente, serializedPackage, packageEnvio.total_size, 0);
