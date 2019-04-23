@@ -9,40 +9,39 @@
  */
 
 #include "Kernel.h"
-#include "sockets.h"
+
 
 int main() {
 
 	/*
-		 *
-		 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
-		 *
-		 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
-		 *
-	*/
-		struct addrinfo hints;
-		struct addrinfo *serverInfo;
-		char* ip;
-		char* puerto;
+	 *
+	 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
+	 *
+	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
+	 *
+	 */
+	struct addrinfo hints;
+	struct addrinfo *serverInfo;
+	char* ip;
+	char* puerto;
 
+	t_log* logger_Kernel = iniciar_logger();
 
-		t_log* logger_Kernel = iniciar_logger();
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_UNSPEC;// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
+	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-		memset(&hints, 0, sizeof(hints));
-		hints.ai_family = AF_UNSPEC;		// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
-		hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
+	t_config *conection_conf;
+	abrir_config(&conection_conf);
 
-		t_config *conection_conf;
-		abrir_config(&conection_conf);
+	ip = config_get_string_value(conection_conf, "IP");
+	puerto = config_get_string_value(conection_conf, "PUERTO");
 
-		ip = config_get_string_value(conection_conf, "IP");
-		puerto = config_get_string_value(conection_conf, "PUERTO");
+	log_info(logger_Kernel, puerto);
 
-		log_info(logger_Kernel,puerto);
+	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
-		getaddrinfo(ip, puerto, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
-
-		config_destroy(conection_conf);
+	config_destroy(conection_conf);
 
 		/*
 		 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -51,20 +50,24 @@ int main() {
 		 * 	Obtiene un socket (un file descriptor -todo en linux es un archivo-), utilizando la estructura serverInfo que generamos antes.
 		 *
 		 */
-		int serverSocket;
-		serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
+	int serverSocket;
+	serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
 
 		/*
 		 * 	Perfecto, ya tengo el medio para conectarme (el archivo), y ya se lo pedi al sistema.
 		 * 	Ahora me conecto!
 		 *
 		 */
-		if(connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)==0){
-			freeaddrinfo(serverInfo);	// No lo necesitamos mas
-			printf("Conectado al servidor.\n");
-		}else{
-			printf("No se pudo conectar al servidor...");
-		}
+	if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
+			== 0) {
+		freeaddrinfo(serverInfo);	// No lo necesitamos mas
+		printf("Conectado al servidor.\n");
+		log_info(logger_Kernel,"Conecte al servidor.");
+
+	} else {
+		printf("No se pudo conectar al servidor...");
+		log_info(logger_Kernel,"No me pude conectar con el servidor");
+	}
 
 		/*
 		 *	Estoy conectado! Ya solo me queda una cosa:
@@ -91,6 +94,8 @@ int main() {
 		while(enviar){
 
 			fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
+
+			interpretarComando(package.header,package.message);
 
 			if(package.header == -1){
 				enviar = 0;
@@ -144,3 +149,94 @@ t_log* iniciar_logger(void)
 	return log_create(LOG_FILE_PATH, "kernel", 0, LOG_LEVEL_INFO);
 
 }
+
+void interpretarComando(int header,char* parametros){
+
+	switch(header){
+	case 1: select_kernel(parametros);
+	break;
+	case 2: insert_kernel(parametros);
+	break;
+	case 3: describe(parametros);
+	break;
+	case 4: drop(parametros);
+	break;
+	case 5: create(parametros);
+	break;
+	case 6: journal(parametros);
+	break;
+	case 7: run(parametros);
+	break;
+	case 8: add(parametros);
+	break;
+	case 9: metrics(parametros);
+	break;
+	case -1: break;
+	}
+
+}
+
+void select_kernel(char* parametros){
+	printf("Recibi un select.\n");
+}
+
+void insert_kernel(char* parametros){
+	printf("Recibi un insert.\n");
+}
+
+void describe(char* parametros){
+	printf("Recibi un describe.\n");
+}
+
+void drop(char* parametros){
+	printf("Recibi un drop.\n");
+}
+
+void create(char* parametros){
+	printf("Recibi un create.\n");
+}
+
+void journal(char* parametros){
+	printf("Recibi un journal.\n");
+}
+
+
+void add(char* parametros){
+	printf("Recibi un add.\n");
+}
+
+void metrics(char* parametros){
+	printf("Recibi un metrics.\n");
+}
+
+void run(char* parametros){
+	printf("Recibi un run.\n");
+
+	char* rutaArchivo = malloc(strlen(parametros));
+	strcpy(rutaArchivo,parametros);
+	printf("%s\n",rutaArchivo);
+
+	FILE *lql;
+	lql = fopen(rutaArchivo,"r");
+
+	char buffer[256];
+
+	if((lql==NULL)){
+		//Loguear que no se abrio el archivo
+	}
+	else{//Se abrio el archivo y se va a leer los comandos
+
+		while(feof(lql)==0){
+			fgets(buffer,sizeof(buffer),lql);//Lee una linea del archivo de txt
+			printf("%s\n",buffer);
+		}
+	}
+
+	fclose(lql);
+	free(rutaArchivo);
+
+}
+
+
+
+

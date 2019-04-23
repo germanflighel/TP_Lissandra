@@ -9,6 +9,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <stdint.h>
+#include "sockets.h"
 
 #include<commons/log.h>
 #include<commons/string.h>
@@ -26,5 +27,17 @@
 
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);
+
+void interpretarComando(int,char*);
+void insert_kernel(char*);
+void describe(char*);
+void drop(char*);
+void create(char*);
+void journal(char*);
+void run(char*);
+void add(char*);
+void metrics(char*);
+void select_kernel(char*);
+
 
 #endif
