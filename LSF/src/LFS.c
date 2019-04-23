@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : LSF.c
+ Name        : LFS.c
  Author      : 
  Version     :
  Copyright   : Your copyright notice
@@ -12,122 +12,141 @@
 #include "sockets.h"
 
 int main() {
-		/*
-		 *
-		 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
-		 *
-		 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
-		 *
-		 */
-		struct addrinfo hints;
-		struct addrinfo *serverInfo;
+	/*
+	 *
+	 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
+	 *
+	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
+	 *
+	 */
+	struct addrinfo hints;
+	struct addrinfo *serverInfo;
 
-		memset(&hints, 0, sizeof(hints));
-		hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
-		hints.ai_flags = AI_PASSIVE;		// Asigna el address del localhost: 127.0.0.1
-		hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
+	t_log* logger = iniciar_logger();
+	t_config* config = leer_config();
 
-		getaddrinfo(NULL, PUERTO, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
+	char* puerto = config_get_string_value(config, "PUERTO");
+	log_info(logger, puerto);
 
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_UNSPEC;
+	hints.ai_flags = AI_PASSIVE;		// Asigna el address del localhost: 127.0.0.1
+	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-		/*
-		 * 	Descubiertos los misterios de la vida (por lo menos, para la conexion de red actual), necesito enterarme de alguna forma
-		 * 	cuales son las conexiones que quieren establecer conmigo.
-		 *
-		 * 	Para ello, y basandome en el postulado de que en Linux TODO es un archivo, voy a utilizar... Si, un archivo!
-		 *
-		 * 	Mediante socket(), obtengo el File Descriptor que me proporciona el sistema (un integer identificador).
-		 *
-		 */
-		/* Necesitamos un socket que escuche las conecciones entrantes */
-		int listenningSocket;
-		listenningSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
+	getaddrinfo(NULL, puerto, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
 
-		/*
-		 * 	Perfecto, ya tengo un archivo que puedo utilizar para analizar las conexiones entrantes. Pero... ������Por donde?
-		 *
-		 * 	Necesito decirle al sistema que voy a utilizar el archivo que me proporciono para escuchar las conexiones por un puerto especifico.
-		 *
-		 * 				OJO! Todavia no estoy escuchando las conexiones entrantes!
-		 *
-		 */
-		bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen);
-		freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
+	/*
+	 * 	Descubiertos los misterios de la vida (por lo menos, para la conexion de red actual), necesito enterarme de alguna forma
+	 * 	cuales son las conexiones que quieren establecer conmigo.
+	 *
+	 * 	Para ello, y basandome en el postulado de que en Linux TODO es un archivo, voy a utilizar... Si, un archivo!
+	 *
+	 * 	Mediante socket(), obtengo el File Descriptor que me proporciona el sistema (un integer identificador).
+	 *
+	 */
+	/* Necesitamos un socket que escuche las conecciones entrantes */
+	int listenningSocket;
+	listenningSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
+			serverInfo->ai_protocol);
 
-		/*
-		 * 	Ya tengo un medio de comunicacion (el socket) y le dije por que "telefono" tiene que esperar las llamadas.
-		 *
-		 * 	Solo me queda decirle que vaya y escuche!
-		 *
-		 */
-		listen(listenningSocket, BACKLOG);		// IMPORTANTE: listen() es una syscall BLOQUEANTE.
+	/*
+	 * 	Perfecto, ya tengo un archivo que puedo utilizar para analizar las conexiones entrantes. Pero... ������������������Por donde?
+	 *
+	 * 	Necesito decirle al sistema que voy a utilizar el archivo que me proporciono para escuchar las conexiones por un puerto especifico.
+	 *
+	 * 				OJO! Todavia no estoy escuchando las conexiones entrantes!
+	 *
+	 */
+	bind(listenningSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
+	freeaddrinfo(serverInfo); // Ya no lao vamos a necesitar
 
-		printf("Esperando memoria... \n");
+	/*
+	 * 	Ya tengo un medio de comunicacion (el socket) y le dije por que "telefono" tiene que esperar las llamadas.
+	 *
+	 * 	Solo me queda decirle que vaya y escuche!
+	 *
+	 */
+	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-		/*
-		 * 	El sistema esperara hasta que reciba una conexion entrante...
-		 * 	...
-		 * 	...
-		 * 	BING!!! Nos estan llamando! ������Y ahora?
-		 *
-		 *	Aceptamos la conexion entrante, y creamos un nuevo socket mediante el cual nos podamos comunicar (que no es mas que un archivo).
-		 *
-		 *	������Por que crear un nuevo socket? Porque el anterior lo necesitamos para escuchar las conexiones entrantes. De la misma forma que
-		 *	uno no puede estar hablando por telefono a la vez que esta esperando que lo llamen, un socket no se puede encargar de escuchar
-		 *	las conexiones entrantes y ademas comunicarse con un cliente.
-		 *
-		 *			Nota: Para que el listenningSocket vuelva a esperar conexiones, necesitariamos volver a decirle que escuche, con listen();
-		 *				En este ejemplo nos dedicamos unicamente a trabajar con el cliente y no escuchamos mas conexiones.
-		 *
-		 */
-		struct sockaddr_in addr;			// Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
-		socklen_t addrlen = sizeof(addr);
+	printf("Esperando memoria... \n");
 
-		int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+	/*
+	 * 	El sistema esperara hasta que reciba una conexion entrante...
+	 * 	...
+	 * 	...
+	 * 	BING!!! Nos estan llamando! ������������������Y ahora?
+	 *
+	 *	Aceptamos la conexion entrante, y creamos un nuevo socket mediante el cual nos podamos comunicar (que no es mas que un archivo).
+	 *
+	 *	������������������Por que crear un nuevo socket? Porque el anterior lo necesitamos para escuchar las conexiones entrantes. De la misma forma que
+	 *	uno no puede estar hablando por telefono a la vez que esta esperando que lo llamen, un socket no se puede encargar de escuchar
+	 *	las conexiones entrantes y ademas comunicarse con un cliente.
+	 *
+	 *			Nota: Para que el listenningSocket vuelva a esperar conexiones, necesitariamos volver a decirle que escuche, con listen();
+	 *				En este ejemplo nos dedicamos unicamente a trabajar con el cliente y no escuchamos mas conexiones.
+	 *
+	 */
+	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
+	socklen_t addrlen = sizeof(addr);
 
-		/*
-		 * 	Ya estamos listos para recibir paquetes de nuestro cliente...
-		 *		 *
-		 *	Cuando el cliente cierra la conexion, recieve_and_deserialize() devolvera 0.
-		 */
+	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
+			&addrlen);
 
-		t_PackagePosta package;
-		int status = 1;		// Estructura que manjea el status de los recieve.
+	/*
+	 * 	Ya estamos listos para recibir paquetes de nuestro cliente...
+	 *		 *
+	 *	Cuando el cliente cierra la conexion, recieve_and_deserialize() devolvera 0.
+	 */
 
-		//t_PackageEnv packageEnvio;
-		//packageEnvio.message = malloc(MAX_MESSAGE_SIZE);
-		//char *serializedPackage;
+	t_PackagePosta package;
+	int status = 1;		// Estructura que manjea el status de los recieve.
 
-		printf("Memoria conectada. Esperando Envío de mensajes.\n");
+	//t_PackageEnv packageEnvio;
+	//packageEnvio.message = malloc(MAX_MESSAGE_SIZE);
+	//char *serializedPackage;
 
-		while (status){
-			status = recieve_and_deserialize(&package, socketCliente);
+	printf("Memoria conectada. Esperando Env��o de mensajes.\n");
 
-			//fill_package(&packageEnvio, &username);
+	while (status) {
+		status = recieve_and_deserialize(&package, socketCliente);
 
-			// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
-			if (status) printf("Memory says: %s.\n", package.message);
+		//fill_package(&packageEnvio, &username);
 
-			//serializedPackage = serializarOperandos(&packageEnvio);
-			//send(socketCliente, serializedPackage, packageEnvio.total_size, 0);
-			//dispose_package(&serializedPackage);
-		}
+		// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
+		if (status)
+			printf("Memory says: %s.\n", package.message);
 
+		//serializedPackage = serializarOperandos(&packageEnvio);
+		//send(socketCliente, serializedPackage, packageEnvio.total_size, 0);
+		//dispose_package(&serializedPackage);
+	}
 
-		printf("Cliente Desconectado.\n");
-		/*
-		 * 	Terminado el intercambio de paquetes, cerramos todas las conexiones y nos vamos a mirar Game of Thrones, que seguro nos vamos a divertir mas...
-		 *
-		 *
-		 * 																					~ Divertido es Disney ~
-		 *
-		 */
-		close(socketCliente);
-		close(listenningSocket);
+	printf("Cliente Desconectado.\n");
+	/*
+	 * 	Terminado el intercambio de paquetes, cerramos todas las conexiones y nos vamos a mirar Game of Thrones, que seguro nos vamos a divertir mas...
+	 *
+	 *
+	 * 																					~ Divertido es Disney ~
+	 *
+	 */
+	close(socketCliente);
+	close(listenningSocket);
 
-		/* See ya! */
+	/* See ya! */
 
-		return 0;
+	log_destroy(logger);
+	config_destroy(config);
+
+	return 0;
 }
 
+t_config* leer_config() {
+	return config_create(CONFIG_PATH);
+}
+
+t_log* iniciar_logger(void) {
+
+	return log_create(LOG_FILE_PATH, "LFS", 0, LOG_LEVEL_INFO);
+
+}
 
