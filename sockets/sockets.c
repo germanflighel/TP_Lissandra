@@ -22,7 +22,7 @@ int strToHeader(char* header){
 	else if(strcmp(header,"exit")==0){
 		return -1;
 	}
-	return 0;
+	return ERROR;
 }
 
 void fill_package(t_PackagePosta *package){
@@ -39,9 +39,28 @@ void fill_package(t_PackagePosta *package){
 
 	char** entradaSeparada = string_split(entrada, " ");
 
+	if(entradaSeparada[1]==NULL) {
+		entradaSeparada[0][strlen(entradaSeparada[0])-1] = '\0';
+	}
+
 	package->header = strToHeader(entradaSeparada[0]);
 
-	char* sinHeader = string_substring_from(entrada, strlen(entradaSeparada[0])+1);
+	if(package->header == ERROR) {
+		free(entrada);
+		free(entradaSeparada);
+		return;
+	}
+
+	char* sinHeader;
+
+	if(entradaSeparada[1]==NULL) { // Manejamos si entra una sola parabra sin parametros
+		(package->message)[0] = '\0';
+		package->message_long = 1;	//Solo el fin de caracter
+		package->total_size = sizeof(package->message_long) + package->message_long + sizeof(package->header);
+		return;
+	}
+
+	sinHeader = string_substring_from(entrada, strlen(entradaSeparada[0])+1);
 
 	char* timestamp = string_itoa((unsigned)time(NULL));
 
