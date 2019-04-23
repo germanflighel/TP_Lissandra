@@ -21,4 +21,10 @@
 #define IP "127.0.0.1"
 #define PUERTO "6667"
 
+#define CONFIG_PATH "KernelSocket.config"
+#define LOG_FILE_PATH "kernel_global.log"
+
+t_log* iniciar_logger(void);
+void abrir_config(t_config **);
+
 #endif

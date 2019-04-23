@@ -22,13 +22,27 @@ int main() {
 	*/
 		struct addrinfo hints;
 		struct addrinfo *serverInfo;
+		char* ip;
+		char* puerto;
+
+
+		t_log* logger_Kernel = iniciar_logger();
 
 		memset(&hints, 0, sizeof(hints));
 		hints.ai_family = AF_UNSPEC;		// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 		hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-		getaddrinfo(IP, PUERTO, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
+		t_config *conection_conf;
+		abrir_config(&conection_conf);
 
+		ip = config_get_string_value(conection_conf, "IP");
+		puerto = config_get_string_value(conection_conf, "PUERTO");
+
+		log_info(logger_Kernel,puerto);
+
+		getaddrinfo(ip, puerto, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
+
+		config_destroy(conection_conf);
 
 		/*
 		 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -111,7 +125,22 @@ int main() {
 		 */
 
 		close(serverSocket);
+		log_destroy(logger_Kernel);
 
 		/* ADIO'! */
 		return 0;
+}
+
+void abrir_config(t_config** g_config)
+{
+
+	(*g_config) = config_create(CONFIG_PATH);
+
+}
+
+t_log* iniciar_logger(void)
+{
+
+	return log_create(LOG_FILE_PATH, "kernel", 0, LOG_LEVEL_INFO);
+
 }
