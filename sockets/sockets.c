@@ -43,12 +43,22 @@ void fill_package(t_PackagePosta *package){
 
 	char* sinHeader = string_substring_from(entrada, strlen(entradaSeparada[0])+1);
 
+	char* timestamp = string_itoa((unsigned)time(NULL));
+
 	free(entrada);
 	free(entradaSeparada);
 
-	memcpy(package->message,sinHeader,strlen(sinHeader)-1);
-	(package->message)[strlen(sinHeader)-1] = '\0';
+	if(package->header == INSERT){
+		memcpy(package->message,sinHeader,strlen(sinHeader)-1);
+		memcpy((package->message+strlen(sinHeader)),timestamp,strlen(timestamp));
+		(package->message)[strlen(sinHeader)-1] = ' ';
+		(package->message)[strlen(sinHeader)+strlen(timestamp)] = '\0';
+	}else{
+		memcpy(package->message,sinHeader,strlen(sinHeader)-1);
+		(package->message)[strlen(sinHeader)-1] = '\0';
+	}
 
+	free(timestamp);
 	free(sinHeader);
 	package->message_long = strlen(package->message) + 1;	// Me guardo lugar para el \0
 

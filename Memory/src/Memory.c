@@ -11,6 +11,8 @@
 #include "Memory.h"
 #include "sockets.h"
 
+void *inputFunc( void * );
+
 int main() {
 
 			struct addrinfo hints;
@@ -97,10 +99,10 @@ int main() {
 
 		int waiting = 1;
 		while(waiting){
-			wait(1000);
 			if(bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen)!= -1) {
 			         waiting = 0;
 			}
+			sleep(5);
 		}
 
 		freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
@@ -149,6 +151,20 @@ int main() {
 
 
 		printf("Cliente conectado. Esperando Envío de mensajessss.\n");
+
+		//thread
+		pthread_t threadL;
+		int  iret1;
+
+		iret1 = pthread_create( &threadL, NULL, inputFunc, (void*) lfsSocket);
+		     if(iret1)
+		     {
+		         fprintf(stderr,"Error - pthread_create() return code: %d\n",iret1);
+		         exit(EXIT_FAILURE);
+		     }
+
+		//thread
+
 
 		while (status){
 			status = recieve_and_deserialize(&package, socketCliente);
@@ -208,6 +224,52 @@ void abrir_log(void)
 	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_INFO);
 
 }
+
+void *inputFunc( void* serverSocket )
+
+{
+	int enviar = 1;
+			t_PackagePosta package;
+			package.message = malloc(MAX_MESSAGE_SIZE);
+			char *serializedPackage;
+
+			//t_PackageRec packageRec;
+			//int status = 1;		// Estructura que manjea el status de los recieve.
+
+
+			printf("Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
+
+			while(enviar){
+
+				fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
+
+				if(package.header == -1){
+					enviar = 0;
+				} 		// Chequeamos si el usuario quiere salir.
+
+
+				if(enviar) {
+					serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
+					send((int)serverSocket, serializedPackage, package.total_size, 0);
+					dispose_package(&serializedPackage);
+
+					//status = recieve_and_deserialize(&packageRec, serverSocket);
+					//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
+				}
+
+			}
+
+			printf("Desconectado.\n");
+
+			/*	NUNCA nos olvidamos de liberar la memoria que pedimos.
+			 *
+			 *  Acordate que por cada free() que no hacemos, valgrind mata a un gatito.
+			 */
+			free(package.message);
+
+
+}
+
 
 
 /*
