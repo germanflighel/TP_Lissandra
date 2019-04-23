@@ -24,4 +24,10 @@ t_config* leer_config();
 
 t_log* iniciar_logger();
 
+void interpretar_parametros(int header,char* parametros);
+void lfs_select(char* parametros);
+void lfs_insert(char* parametros);
+//char* obtener_nombre_tabla(char** parametros_separados);
+//void obtener_nombre_tabla(char*,char**);
+
 #endif
