@@ -98,6 +98,9 @@ int main() {
 		 */
 
 		int waiting = 1;
+		if(bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen)!= -1) {
+			 waiting = 0;
+		}
 		while(waiting){
 			if(bind(listenningSocket,serverInfo->ai_addr, serverInfo->ai_addrlen)!= -1) {
 			         waiting = 0;
