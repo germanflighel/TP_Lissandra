@@ -168,6 +168,7 @@ int main() {
 			serializedPackage = serializarOperandos(&package);
 			send(lfsSocket, serializedPackage, package.total_size, 0);
 
+			free(mensaje);
 			dispose_package(&serializedPackage);
 			}
 

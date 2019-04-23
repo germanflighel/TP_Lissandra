@@ -47,7 +47,7 @@ void fill_package(t_PackagePosta *package){
 	free(entradaSeparada);
 
 	memcpy(package->message,sinHeader,strlen(sinHeader)-1);
-	(package->message)[strlen(package->message)] = '\0';
+	(package->message)[strlen(sinHeader)-1] = '\0';
 
 	free(sinHeader);
 	package->message_long = strlen(package->message) + 1;	// Me guardo lugar para el \0

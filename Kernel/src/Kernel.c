@@ -91,6 +91,7 @@ int main() {
 				//status = recieve_and_deserialize(&packageRec, serverSocket);
 				//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
 			}
+
 		}
 
 		printf("Desconectado.\n");
