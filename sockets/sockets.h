@@ -9,6 +9,7 @@
 #define JOURNAL 6
 #define RUN 7
 #define ADD 8
+#define ERROR 9
 
 #define SC 10
 #define SHC 11
