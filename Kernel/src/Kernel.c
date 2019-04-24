@@ -93,16 +93,23 @@ int main() {
 
 		while(enviar){
 
+
+			int ingresoCorrecto = 1;
 			fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
 
-			interpretarComando(package.header,package.message);
+
+			if(package.header == ERROR){
+										ingresoCorrecto = 0;
+										printf("Comando no reconocido\n");
+									} 		// Chequeamos si el usuario quiere salir.
 
 			if(package.header == -1){
 				enviar = 0;
 			} 		// Chequeamos si el usuario quiere salir.
 
 
-			if(enviar) {
+			if(enviar || ingresoCorrecto) {
+        interpretarComando(package.header,package.message);
 				serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
 				send(serverSocket, serializedPackage, package.total_size, 0);
 				dispose_package(&serializedPackage);
