@@ -10,13 +10,24 @@
 #include <unistd.h>
 #include <stdint.h>
 
-#include<commons/log.h>
-#include<commons/string.h>
-#include<commons/config.h>
-#include<readline/readline.h>
+#include <commons/log.h>
+#include <commons/string.h>
+#include <commons/config.h>
+#include <readline/readline.h>
 
-#define PUERTO "6668"
-#define BACKLOG 1			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
+#define BACKLOG 1
 
+#define CONFIG_PATH "LFSSocket.config"
+#define LOG_FILE_PATH "lfs_global.log"
+
+t_config* leer_config();
+
+t_log* iniciar_logger();
+
+void interpretar_parametros(int header,char* parametros);
+void lfs_select(char* parametros);
+void lfs_insert(char* parametros);
+//char* obtener_nombre_tabla(char** parametros_separados);
+//void obtener_nombre_tabla(char*,char**);
 
 #endif
