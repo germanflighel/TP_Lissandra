@@ -12,6 +12,8 @@
 #include "sockets.h"
 #include <dirent.h>
 #include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
+
 
 int main() {
 
@@ -118,12 +120,15 @@ void lfs_select(char* parametros) {
 		log_info(logger_select, string_itoa(dictionary_get(metadata, "particiones")));
 		log_info(logger_select, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
 		//3) Calcular que particion contiene a KEY
-		int particionActual = calcular_particion(key, dictionary_get(metadata, "particiones"));
-		log_info(logger_select, string_itoa(particionActual));
-		//4) Escanear Todas las particiones
-		//valuesEncontrados = encontrar_keys(key, particionActual);
+		int particionObjetivo = calcular_particion(key, dictionary_get(metadata, "particiones"));
+		log_info(logger_select, string_itoa(particionObjetivo));
+		//4) Escanear particion objetivo, archivos temporales y memoria temporal
+		t_list* valuesEncontrados = list_create();
+		encontrar_keys(key, particionObjetivo, valuesEncontrados);
 		//5) Devolver o mostrar el valor mayor
 		//log_info(logger_select, maximoTimestamp(valuesEncontrados));
+		struct Reg *reg = list_get(valuesEncontrados,0);
+		log_info(logger_select,reg->value);
 	}
 
 	free(nombre_tabla);
@@ -193,6 +198,22 @@ void obtener_metadata(char* tabla, t_dictionary* metadata) {
 int calcular_particion(int key,int cantidad_particiones){
 
 	return (key % cantidad_particiones) + 1;
+}
+
+void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values){
+	char* ruta = string_new();
+	string_append(&ruta, "t1/1.bin");
+	FILE* lector = fopen(ruta, "rb");
+	struct Reg reg;
+	while (!feof(lector)) {
+		fread(&reg, sizeof(reg), 1, lector);
+		printf(reg.value);
+		if(reg.key == keyBuscada){
+			list_add(lista_values,&reg);
+		}
+	}
+
+
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo

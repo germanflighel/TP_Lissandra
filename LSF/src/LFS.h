@@ -20,6 +20,12 @@
 #define CONFIG_PATH "LFSSocket.config"
 #define LOG_FILE_PATH "lfs_global.log"
 
+struct Reg {
+	long int timeStamp;
+	int key;
+	char* value;
+};
+
 t_config* leer_config();
 
 t_log* iniciar_logger();
