@@ -118,7 +118,8 @@ void lfs_select(char* parametros) {
 		log_info(logger_select, string_itoa(dictionary_get(metadata, "particiones")));
 		log_info(logger_select, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
 		//3) Calcular que particion contiene a KEY
-		//int particionActual = calcular_particion(key, metadata->particiones);
+		int particionActual = calcular_particion(key, dictionary_get(metadata, "particiones"));
+		log_info(logger_select, string_itoa(particionActual));
 		//4) Escanear Todas las particiones
 		//valuesEncontrados = encontrar_keys(key, particionActual);
 		//5) Devolver o mostrar el valor mayor
@@ -166,8 +167,10 @@ int existe_tabla(char* nombre_tabla) {
 	DIR *dirp = opendir(ruta);
 	free(ruta);
 	if (dirp == NULL) {
+		free(dirp);
 		return 0;
 	}
+	free(dirp);
 	return 1;
 }
 
@@ -183,6 +186,13 @@ void obtener_metadata(char* tabla, t_dictionary* metadata) {
 	dictionary_put(metadata, "particiones", particiones);
 	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
 	dictionary_put(metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
+	config_destroy(config_metadata);
+	free(ruta);
+}
+
+int calcular_particion(int key,int cantidad_particiones){
+
+	return (key % cantidad_particiones) + 1;
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo
