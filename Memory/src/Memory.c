@@ -12,6 +12,7 @@
 #include "sockets.h"
 
 void *inputFunc( void * );
+pthread_mutex_t lock;
 
 int main() {
 
@@ -159,6 +160,12 @@ int main() {
 		pthread_t threadL;
 		int  iret1;
 
+		   if (pthread_mutex_init(&lock, NULL) != 0)
+		    {
+		        printf("\n mutex init failed\n");
+		        return 1;
+		    }
+
 		iret1 = pthread_create( &threadL, NULL, inputFunc, (void*) lfsSocket);
 		     if(iret1)
 		     {
@@ -170,7 +177,10 @@ int main() {
 
 
 		while (status){
+
+			pthread_mutex_lock(&lock);
 			status = recieve_and_deserialize(&package, socketCliente);
+			pthread_mutex_unlock(&lock);
 
 			//fill_package(&packageEnvio, &username);
 
@@ -187,6 +197,7 @@ int main() {
 			serializedPackage = serializarOperandos(&package);
 			send(lfsSocket, serializedPackage, package.total_size, 0);
 
+			free(package.message);
 			free(mensaje);
 			dispose_package(&serializedPackage);
 			}
@@ -202,6 +213,8 @@ int main() {
 		 * 																					~ Divertido es Disney ~
 		 *
 		 */
+		pthread_exit(&threadL);
+		pthread_mutex_destroy(&lock);
 		close(socketCliente);
 		close(listenningSocket);
 
