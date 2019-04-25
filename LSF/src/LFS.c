@@ -11,6 +11,7 @@
 #include "LFS.h"
 #include "sockets.h"
 #include <dirent.h>
+#include <commons/collections/dictionary.h>
 
 int main() {
 
@@ -108,12 +109,14 @@ void lfs_select(char* parametros) {
 
 	int key = atoi(parametros_separados[1]);
 
-	//1) Verficar que exista la tabla
-
 	if (existe_tabla(nombre_tabla)) {
 		log_info(logger_select, "Existe tabla, BRO!");
 		//2) Obtener Metadata
-		//obtener_metadata(nombre_tabla, &metadata);
+		t_dictionary* metadata = dictionary_create();
+		obtener_metadata(nombre_tabla, metadata);
+		log_info(logger_select, dictionary_get(metadata, "consistencia"));
+		log_info(logger_select, string_itoa(dictionary_get(metadata, "particiones")));
+		log_info(logger_select, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
 		//3) Calcular que particion contiene a KEY
 		//int particionActual = calcular_particion(key, metadata->particiones);
 		//4) Escanear Todas las particiones
@@ -161,10 +164,25 @@ int existe_tabla(char* nombre_tabla) {
 			"/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
 	string_append(&ruta, nombre_tabla);
 	DIR *dirp = opendir(ruta);
+	free(ruta);
 	if (dirp == NULL) {
 		return 0;
 	}
 	return 1;
+}
+
+void obtener_metadata(char* tabla, t_dictionary* metadata) {
+	char* ruta = string_new();
+	string_append(&ruta, "/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
+	string_append(&ruta, tabla);
+	string_append(&ruta, "/Metadata");
+	t_config* config_metadata = config_create(ruta);
+	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	dictionary_put(metadata, "consistencia", consistencia);
+	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
+	dictionary_put(metadata, "particiones", particiones);
+	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
+	dictionary_put(metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo
