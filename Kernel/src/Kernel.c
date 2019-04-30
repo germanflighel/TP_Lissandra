@@ -62,6 +62,7 @@ int main() {
 			== 0) {
 
 		enviar_handshake(KERNEL,serverSocket);
+
 		freeaddrinfo(serverInfo);	// No lo necesitamos mas
 		printf("Conectado al servidor.\n");
 		log_info(logger_Kernel,"Conecte al servidor.");
@@ -93,11 +94,15 @@ int main() {
 
 		printf("Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
 
+
+
 		while(enviar){
 
+			/*
 
 			int ingresoCorrecto = 1;
 			fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
+
 
 
 			if(package.header == ERROR){
@@ -109,13 +114,41 @@ int main() {
 				enviar = 0;
 			} 		// Chequeamos si el usuario quiere salir.
 
+			*/
 
-			if(enviar || ingresoCorrecto) {
-        interpretarComando(package.header,package.message);
+			char* entrada = leerConsola();
+
+			char* parametros;
+			int header;
+
+			separarEntrada(entrada, &header, &parametros);
+
+			free(entrada);
+
+			if(enviar) {
+
+				if(header==SELECT) {
+						t_PackageSelect package;
+						fill_package_select(&package,parametros);
+						printf("KEY: %d\n", package.key);
+						printf("TABLA: %s \n", package.tabla);
+						printf("SIZE: %d \n", package.tabla_long);
+						char* serializedPackage = serializarSelect(&package);
+
+						printf("Paquete: %s \n", serializedPackage);
+
+						send(serverSocket, serializedPackage, package.total_size, 0);
+						free(package.tabla);
+						dispose_package(&serializedPackage);
+				}
+
+
+				/*
+				interpretarComando(package.header,package.message);
 				serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
 				send(serverSocket, serializedPackage, package.total_size, 0);
 				dispose_package(&serializedPackage);
-
+				*/
 				//status = recieve_and_deserialize(&packageRec, serverSocket);
 				//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
 			}
