@@ -20,6 +20,12 @@
 #define CONFIG_PATH "LFSSocket.config"
 #define LOG_FILE_PATH "lfs_global.log"
 
+struct Reg {
+	long int timeStamp;
+	int key;
+	char* value;
+};
+
 t_config* leer_config();
 
 t_log* iniciar_logger();
@@ -27,6 +33,9 @@ t_log* iniciar_logger();
 void interpretar_parametros(int header,char* parametros);
 void lfs_select(char* parametros);
 void lfs_insert(char* parametros);
+//int existe_tabla(char* nombre_tabla);
+//void obtener_metadata(char* tabla, t_dictionary* metadata);
+//int calcular_particion(int key,int cantidad_particiones);
 //char* obtener_nombre_tabla(char** parametros_separados);
 //void obtener_nombre_tabla(char*,char**);
 
