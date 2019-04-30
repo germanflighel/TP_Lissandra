@@ -50,8 +50,15 @@ int main() {
 	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
 			&addrlen);
 
+	if(!recibir_handshake(MEMORY,socketCliente)) {
+		printf("Handshake invalido \n");
+		return 0;
+	}
+
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
+
+
 
 	printf("Memoria conectada. Esperando Env��o de mensajes.\n");
 

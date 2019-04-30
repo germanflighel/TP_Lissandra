@@ -59,6 +59,8 @@ int main() {
 			freeaddrinfo(serverInfo);	// No lo necesitamos mas
 
 			printf("Conectado al LFS \n");
+
+			enviar_handshake(MEMORY,lfsSocket);
 	/*
 
 		 *
@@ -203,7 +205,6 @@ int main() {
 			}
 
 		}
-
 
 		printf("Cliente Desconectado.\n");
 		/*
