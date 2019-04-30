@@ -60,6 +60,8 @@ int main() {
 		 */
 	if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
 			== 0) {
+
+		enviar_handshake(KERNEL,serverSocket);
 		freeaddrinfo(serverInfo);	// No lo necesitamos mas
 		printf("Conectado al servidor.\n");
 		log_info(logger_Kernel,"Conecte al servidor.");

@@ -142,7 +142,13 @@ int main() {
 		struct sockaddr_in addr;			// Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 		socklen_t addrlen = sizeof(addr);
 
+
 		int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+
+		if(!recibir_handshake(KERNEL,socketCliente)) {
+				printf("Handshake invalido \n");
+				return 0;
+		}
 
 		/*
 		 * 	Ya estamos listos para recibir paquetes de nuestro cliente...
