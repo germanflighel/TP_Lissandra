@@ -191,7 +191,7 @@ int main() {
 		if (headerRecibido==SELECT) {
 			t_PackageSelect package;
 			printf("Antes\n");
-			recieve_and_deserialize_select(&package,socketCliente);
+			status = recieve_and_deserialize_select(&package,socketCliente);
 			printf("KEY: %d \n", package.key);
 			printf("TABLA: %s \n", package.tabla);
 		}

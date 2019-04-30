@@ -50,7 +50,7 @@ void fill_package_select(t_PackageSelect *package ,char* parametros) {
 	package->tabla_long = strlen(parametrosSeparados[0]);
 	package->tabla = malloc(package->tabla_long+1);
 
-	memcpy(package->tabla, parametrosSeparados[0], package->tabla_long);
+	memcpy(package->tabla, parametrosSeparados[0], package->tabla_long+1);
 
 	package->key = atoi(parametrosSeparados[1]);
 
@@ -75,13 +75,31 @@ char* serializarSelect(t_PackageSelect *package) {
 	offset += size_to_send;
 
 	size_to_send = package->tabla_long;
-	memcpy(serializedPackage + offset, &(package->tabla), size_to_send);
+	memcpy(serializedPackage + offset, package->tabla, size_to_send);
 	offset += size_to_send;
 
 	size_to_send = sizeof(package->key);
 	memcpy(serializedPackage + offset, &(package->key), size_to_send);
 
 	return serializedPackage;
+}
+
+int recieve_header(int socketCliente) {
+
+	uint32_t header;
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+
+	status = recv(socketCliente, buffer, buffer_size, 0);
+
+	memcpy(&(header), buffer, buffer_size);
+
+	if (!status)
+		return 0;
+	free(buffer);
+	return header;
 }
 
 int recieve_and_deserialize_select(t_PackageSelect *package, int socketCliente) {
@@ -101,11 +119,12 @@ int recieve_and_deserialize_select(t_PackageSelect *package, int socketCliente) 
 
 	package->tabla = malloc(tabla_long+1);
 
-	status = recv(socketCliente, package->tabla, tabla_long - 1, 0);
+	status = recv(socketCliente, package->tabla, tabla_long, 0);
 	if (!status)
 		return 0;
 
-	(package->tabla)[tabla_long] = '\0';
+	package->tabla[tabla_long] = '\0';
+
 	printf("Tabla: %s \n", package->tabla);
 
 	uint16_t key;
@@ -268,23 +287,7 @@ char* serializarHandShake(t_Handshake *package) {
 
 
 
-int recieve_header(int socketCliente) {
 
-	uint32_t header;
-
-	int status;
-	int buffer_size;
-	char *buffer = malloc(buffer_size = sizeof(uint32_t));
-
-	status = recv(socketCliente, buffer, buffer_size, 0);
-
-	memcpy(&(header), buffer, buffer_size);
-
-	if (!status)
-		return 0;
-	free(buffer);
-	return header;
-}
 
 int recieve_and_deserialize_handshake(t_Handshake *package, int socketCliente) {
 

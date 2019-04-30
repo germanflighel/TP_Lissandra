@@ -133,11 +133,10 @@ int main() {
 						printf("KEY: %d\n", package.key);
 						printf("TABLA: %s \n", package.tabla);
 						printf("SIZE: %d \n", package.tabla_long);
-						char* serializedPackage = serializarSelect(&package);
-
-						printf("Paquete: %s \n", serializedPackage);
+						serializedPackage = serializarSelect(&package);
 
 						send(serverSocket, serializedPackage, package.total_size, 0);
+						printf("Paquete: %s \n", serializedPackage);
 						free(package.tabla);
 						dispose_package(&serializedPackage);
 				}
