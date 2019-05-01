@@ -19,7 +19,7 @@ int strToHeader(char* header) {
 	} else if (strcmp(header, "ADD") == 0) {
 		return ADD;
 	} else if (strcmp(header, "exit") == 0) {
-		return -1;
+		return EXIT_CONSOLE;
 	}
 	return ERROR;
 }
@@ -28,7 +28,7 @@ int strToHeader(char* header) {
 char* leerConsola() {
 	char* entrada = malloc(MAX_MESSAGE_SIZE);
 	fgets(entrada, MAX_MESSAGE_SIZE, stdin);
-
+	entrada[strlen(entrada)-1] = '\0';
 	return entrada;
 }
 
@@ -42,9 +42,14 @@ void separarEntrada(char* entrada, int* header, char** parametros) {
 	free(entradaSeparada);
 }
 
-void fill_package_select(t_PackageSelect *package ,char* parametros) {
+int fill_package_select(t_PackageSelect *package ,char* parametros) {
 
 	char** parametrosSeparados = string_split(parametros, " ");
+
+	if(cant_parametros(parametrosSeparados) != 2){
+		return 0;
+	}
+
 
 	package->header = SELECT;
 	package->tabla_long = strlen(parametrosSeparados[0]);
@@ -54,10 +59,12 @@ void fill_package_select(t_PackageSelect *package ,char* parametros) {
 
 	package->key = atoi(parametrosSeparados[1]);
 
-	package->total_size = sizeof(package->header) + sizeof(package->tabla_long) + package->tabla_long;
+	package->total_size = sizeof(package->header) + sizeof(package->tabla_long) + sizeof(package->key) + package->tabla_long;
 
 	free(parametrosSeparados);
+	return 1;
 }
+
 
 char* serializarSelect(t_PackageSelect *package) {
 
@@ -76,6 +83,82 @@ char* serializarSelect(t_PackageSelect *package) {
 
 	size_to_send = package->tabla_long;
 	memcpy(serializedPackage + offset, package->tabla, size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->key);
+	memcpy(serializedPackage + offset, &(package->key), size_to_send);
+
+	return serializedPackage;
+}
+
+int fill_package_insert(t_PackageInsert *package ,char* parametros, int filesys) {
+
+	char** parametrosSeparados = string_split(parametros, " ");
+
+	int cantParametros = cant_parametros(parametrosSeparados);
+
+	if(cantParametros != 3){
+		if(!filesys || cantParametros != 4){
+			return 0;
+		}
+	}
+
+
+	package->header = INSERT;
+	package->tabla_long = strlen(parametrosSeparados[0]);
+	package->tabla = malloc(package->tabla_long+1);
+
+	memcpy(package->tabla, parametrosSeparados[0], package->tabla_long+1);
+
+	package->value_long = strlen(parametrosSeparados[2]);
+	package->value = malloc(package->value_long+1);
+
+	memcpy(package->value, parametrosSeparados[2], package->value_long+1);
+
+	package->key = atoi(parametrosSeparados[1]);
+
+	if(filesys && cantParametros == 4){
+		package->timestamp = atoi(parametrosSeparados[3]);
+	}else{
+		package->timestamp = (unsigned)time(NULL);
+	}
+
+
+	package->total_size = sizeof(package->header)+ sizeof(package->value_long) + sizeof(package->tabla_long) + sizeof(package->key)+ sizeof(package->timestamp)+ package->value_long + package->tabla_long;
+
+	free(parametrosSeparados);
+	return 1;
+}
+
+char* serializarInsert(t_PackageInsert *package) {
+
+	char *serializedPackage = malloc(package->total_size);
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->header);
+	memcpy(serializedPackage + offset, &(package->header), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->tabla_long);
+	memcpy(serializedPackage + offset, &(package->tabla_long), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = package->tabla_long;
+	memcpy(serializedPackage + offset, package->tabla, size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->value_long);
+	memcpy(serializedPackage + offset, &(package->value_long), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = package->value_long;
+	memcpy(serializedPackage + offset, package->value, size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->timestamp);
+	memcpy(serializedPackage + offset, &(package->timestamp), size_to_send);
 	offset += size_to_send;
 
 	size_to_send = sizeof(package->key);
@@ -108,133 +191,104 @@ int recieve_and_deserialize_select(t_PackageSelect *package, int socketCliente) 
 	int buffer_size;
 	char *buffer = malloc(buffer_size = sizeof(uint32_t));
 
-	printf("Entre\n");
-	uint32_t tabla_long;
 	status = recv(socketCliente, buffer, sizeof(package->tabla_long), 0);
-	memcpy(&(tabla_long), buffer, buffer_size);
+	memcpy(&(package->tabla_long), buffer, buffer_size);
 	if (!status)
 		return 0;
 
-	printf("Tabla_long: %d \n", tabla_long);
+//	printf("Tabla_long: %d \n", tabla_long);
 
-	package->tabla = malloc(tabla_long+1);
+	package->tabla = malloc(package->tabla_long);
 
-	status = recv(socketCliente, package->tabla, tabla_long, 0);
+	status = recv(socketCliente, package->tabla, package->tabla_long, 0);
 	if (!status)
 		return 0;
 
-	package->tabla[tabla_long] = '\0';
+	package->tabla[package->tabla_long] = '\0';
 
-	printf("Tabla: %s \n", package->tabla);
+//	printf("Tabla: %s \n", package->tabla);
 
-	uint16_t key;
 		status = recv(socketCliente, buffer, sizeof(package->key), 0);
-		memcpy(&(key), buffer, buffer_size);
+		memcpy(&(package->key), buffer, buffer_size);
 		if (!status)
 			return 0;
 
-	printf("KEY: %d \n", key);
+//	printf("Key: %d \n", package->key);
 
 	if (!status)
 		return 0;
 
 	free(buffer);
 
-	package->key = key;
-	package->tabla_long = tabla_long;
-	package->total_size = sizeof(package->header) + sizeof(package->tabla_long) + package->tabla_long;
+	package->total_size = sizeof(package->header) + sizeof(package->key) +sizeof(package->tabla_long) + package->tabla_long;
+
+	return status;
+}
+
+int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) {
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+
+	status = recv(socketCliente, buffer, sizeof(package->tabla_long), 0);
+	memcpy(&(package->tabla_long), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+
+	package->tabla = malloc(package->tabla_long);
+
+	status = recv(socketCliente, package->tabla, package->tabla_long, 0);
+	if (!status)
+		return 0;
+
+	package->tabla[package->tabla_long] = '\0';
+
+	status = recv(socketCliente, buffer, sizeof(package->value_long), 0);
+		memcpy(&(package->value_long), buffer, buffer_size);
+		if (!status)
+			return 0;
+
+
+		package->value = malloc(package->value_long);
+
+		status = recv(socketCliente, package->value, package->value_long, 0);
+		if (!status)
+			return 0;
+
+		package->value[package->value_long] = '\0';
+
+		status = recv(socketCliente, buffer, sizeof(package->timestamp), 0);
+				memcpy(&(package->timestamp), buffer, buffer_size);
+				if (!status)
+					return 0;
+
+				status = recv(socketCliente, buffer, sizeof(package->key), 0);
+				memcpy(&(package->key), buffer, buffer_size);
+				if (!status)
+					return 0;
+
+
+	if (!status)
+		return 0;
+
+	free(buffer);
+
+	package->total_size = sizeof(package->header)+ sizeof(package->value_long) + sizeof(package->tabla_long) + sizeof(package->key)+ sizeof(package->timestamp)+ package->value_long + package->tabla_long;
 
 	return status;
 }
 
 
-/*
- void fill_package(t_PackagePosta *package) {
 
-	char* entrada = malloc(MAX_MESSAGE_SIZE);
-	fgets(entrada, MAX_MESSAGE_SIZE, stdin);
-
-	if (strcmp(entrada, "exit\n") == 0) {
-		package->header = -1;
-		free(entrada);
-		return;
+int cant_parametros(char** params){
+	int i = 0;
+	while(params[i]!= NULL){
+		i++;
 	}
-
-	char** entradaSeparada = string_split(entrada, " ");
-
-	if (entradaSeparada[1] == NULL) {
-		entradaSeparada[0][strlen(entradaSeparada[0]) - 1] = '\0';
-	}
-
-	package->header = strToHeader(entradaSeparada[0]);
-
-	if (package->header == ERROR) {
-		free(entrada);
-		free(entradaSeparada);
-		return;
-	}
-
-	char* sinHeader;
-
-	if (entradaSeparada[1] == NULL) { // Manejamos si entra una sola parabra sin parametros
-		(package->message)[0] = '\0';
-		package->message_long = 1;	//Solo el fin de caracter
-		package->total_size = sizeof(package->message_long)
-				+ package->message_long + sizeof(package->header);
-		return;
-	}
-
-	sinHeader = string_substring_from(entrada, strlen(entradaSeparada[0]) + 1);
-
-	char* timestamp = string_itoa((unsigned) time(NULL));
-
-	free(entrada);
-	free(entradaSeparada);
-
-	if (package->header == INSERT) {
-		memcpy(package->message, sinHeader, strlen(sinHeader) - 1);
-		memcpy((package->message + strlen(sinHeader)), timestamp,
-				strlen(timestamp));
-		(package->message)[strlen(sinHeader) - 1] = ' ';
-		(package->message)[strlen(sinHeader) + strlen(timestamp)] = '\0';
-	} else {
-		memcpy(package->message, sinHeader, strlen(sinHeader) - 1);
-		(package->message)[strlen(sinHeader) - 1] = '\0';
-	}
-
-	free(timestamp);
-	free(sinHeader);
-	package->message_long = strlen(package->message) + 1;// Me guardo lugar para el \0
-
-	package->total_size = sizeof(package->message_long) + package->message_long
-			+ sizeof(package->header);
+	return i;
 }
-
-
-
-char* serializarOperandos(t_PackagePosta *package) {
-
-	char *serializedPackage = malloc(package->total_size);
-
-	int offset = 0;
-	int size_to_send;
-
-	size_to_send = sizeof(package->header);
-	memcpy(serializedPackage + offset, &(package->header), size_to_send);
-	offset += size_to_send;
-
-	size_to_send = sizeof(package->message_long);
-	memcpy(serializedPackage + offset, &(package->message_long), size_to_send);
-	offset += size_to_send;
-
-	size_to_send = package->message_long;
-	memcpy(serializedPackage + offset, package->message, size_to_send);
-
-	return serializedPackage;
-}
-
-*/
-
 
 
 void enviar_handshake(int id, int socket) {
@@ -345,4 +399,92 @@ int recieve_and_deserialize(t_PackagePosta *package, int socketCliente) {
 
 	return status;
 }
+
+/*
+ void fill_package(t_PackagePosta *package) {
+
+	char* entrada = malloc(MAX_MESSAGE_SIZE);
+	fgets(entrada, MAX_MESSAGE_SIZE, stdin);
+
+	if (strcmp(entrada, "exit\n") == 0) {
+		package->header = -1;
+		free(entrada);
+		return;
+	}
+
+	char** entradaSeparada = string_split(entrada, " ");
+
+	if (entradaSeparada[1] == NULL) {
+		entradaSeparada[0][strlen(entradaSeparada[0]) - 1] = '\0';
+	}
+
+	package->header = strToHeader(entradaSeparada[0]);
+
+	if (package->header == ERROR) {
+		free(entrada);
+		free(entradaSeparada);
+		return;
+	}
+
+	char* sinHeader;
+
+	if (entradaSeparada[1] == NULL) { // Manejamos si entra una sola parabra sin parametros
+		(package->message)[0] = '\0';
+		package->message_long = 1;	//Solo el fin de caracter
+		package->total_size = sizeof(package->message_long)
+				+ package->message_long + sizeof(package->header);
+		return;
+	}
+
+	sinHeader = string_substring_from(entrada, strlen(entradaSeparada[0]) + 1);
+
+	char* timestamp = string_itoa((unsigned) time(NULL));
+
+	free(entrada);
+	free(entradaSeparada);
+
+	if (package->header == INSERT) {
+		memcpy(package->message, sinHeader, strlen(sinHeader) - 1);
+		memcpy((package->message + strlen(sinHeader)), timestamp,
+				strlen(timestamp));
+		(package->message)[strlen(sinHeader) - 1] = ' ';
+		(package->message)[strlen(sinHeader) + strlen(timestamp)] = '\0';
+	} else {
+		memcpy(package->message, sinHeader, strlen(sinHeader) - 1);
+		(package->message)[strlen(sinHeader) - 1] = '\0';
+	}
+
+	free(timestamp);
+	free(sinHeader);
+	package->message_long = strlen(package->message) + 1;// Me guardo lugar para el \0
+
+	package->total_size = sizeof(package->message_long) + package->message_long
+			+ sizeof(package->header);
+}
+
+
+
+char* serializarOperandos(t_PackagePosta *package) {
+
+	char *serializedPackage = malloc(package->total_size);
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->header);
+	memcpy(serializedPackage + offset, &(package->header), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->message_long);
+	memcpy(serializedPackage + offset, &(package->message_long), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = package->message_long;
+	memcpy(serializedPackage + offset, package->message, size_to_send);
+
+	return serializedPackage;
+}
+
+*/
+
 

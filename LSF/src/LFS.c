@@ -60,7 +60,7 @@ int main() {
 
 
 
-	printf("Memoria conectada. Esperando Env��o de mensajes.\n");
+	printf("Memoria conectada. Esperando Envio de mensajes.\n");
 
 	while (status) {
 		status = recieve_and_deserialize(&package, socketCliente);
