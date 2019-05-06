@@ -14,7 +14,6 @@
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 
-
 int main() {
 
 	struct addrinfo hints;
@@ -50,7 +49,7 @@ int main() {
 	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
 			&addrlen);
 
-	if(!recibir_handshake(MEMORY,socketCliente)) {
+	if (!recibir_handshake(MEMORY, socketCliente)) {
 		printf("Handshake invalido \n");
 		return 0;
 	}
@@ -58,17 +57,37 @@ int main() {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
+	printf("Memoria conectada. Esperando Envio de mensajes.\n");
 
-
-	printf("Memoria conectada. Esperando Env��o de mensajes.\n");
+	int headerRecibido;
 
 	while (status) {
-		status = recieve_and_deserialize(&package, socketCliente);
 
-		interpretar_parametros(package.header, package.message);
+		headerRecibido = recieve_header(socketCliente);
 
-		if (status)
-			printf("Memory says: %s.\n", package.message);
+		status = headerRecibido;
+
+		log_info(logger, string_itoa(headerRecibido));
+
+		if (headerRecibido == SELECT && status) {
+			log_info(logger, "Got a SELECT");
+
+			t_PackageSelect package;
+			status = recieve_and_deserialize_select(&package, socketCliente);
+
+			ejectuarComando(headerRecibido,&package);
+
+
+
+		} else if (headerRecibido == INSERT && status) {
+			log_info(logger, "Got an INSERT");
+
+			t_PackageInsert package;
+			status = recieve_and_deserialize_insert(&package, socketCliente);
+
+			ejectuarComando(headerRecibido,&package);
+
+		}
 
 	}
 
@@ -106,6 +125,28 @@ void interpretar_parametros(int header, char* parametros) {
 	}
 }
 
+void ejectuarComando(int header,void* package) {
+	switch(header){
+	case SELECT:
+		ejecutarSelect((t_PackageSelect*)package);
+		break;
+	case INSERT:
+		ejecutarInsert((t_PackageInsert*)package);
+			break;
+	}
+}
+
+void ejecutarSelect(t_PackageSelect* package){
+	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
+			package->key);
+}
+
+void ejecutarInsert(t_PackageInsert* package){
+	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
+						package->tabla, package->key, package->value,
+						package->timestamp);
+}
+
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 void lfs_select(char* parametros) {
 
@@ -124,18 +165,21 @@ void lfs_select(char* parametros) {
 		t_dictionary* metadata = dictionary_create();
 		obtener_metadata(nombre_tabla, metadata);
 		log_info(logger_select, dictionary_get(metadata, "consistencia"));
-		log_info(logger_select, string_itoa(dictionary_get(metadata, "particiones")));
-		log_info(logger_select, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
+		log_info(logger_select,
+				string_itoa(dictionary_get(metadata, "particiones")));
+		log_info(logger_select,
+				string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
 		//3) Calcular que particion contiene a KEY
-		int particionObjetivo = calcular_particion(key, dictionary_get(metadata, "particiones"));
+		int particionObjetivo = calcular_particion(key,
+				dictionary_get(metadata, "particiones"));
 		log_info(logger_select, string_itoa(particionObjetivo));
 		//4) Escanear particion objetivo, archivos temporales y memoria temporal
 		t_list* valuesEncontrados = list_create();
-		encontrar_keys(key, particionObjetivo, valuesEncontrados);
+		//encontrar_keys(key, particionObjetivo, valuesEncontrados);
 		//5) Devolver o mostrar el valor mayor
 		//log_info(logger_select, maximoTimestamp(valuesEncontrados));
-		struct Reg *reg = list_get(valuesEncontrados,0);
-		log_info(logger_select,reg->value);
+		//struct Reg *reg = list_get(valuesEncontrados, 0);
+		//log_info(logger_select, reg->value);
 	}
 
 	free(nombre_tabla);
@@ -188,26 +232,30 @@ int existe_tabla(char* nombre_tabla) {
 
 void obtener_metadata(char* tabla, t_dictionary* metadata) {
 	char* ruta = string_new();
-	string_append(&ruta, "/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
+	string_append(&ruta,
+			"/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
 	string_append(&ruta, tabla);
 	string_append(&ruta, "/Metadata");
 	t_config* config_metadata = config_create(ruta);
-	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	char* consistencia = config_get_string_value(config_metadata,
+			"CONSISTENCY");
 	dictionary_put(metadata, "consistencia", consistencia);
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
 	dictionary_put(metadata, "particiones", particiones);
-	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
+	long tiempoDeCompactacion = config_get_long_value(config_metadata,
+			"COMPACTION_TIME");
 	dictionary_put(metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
 	config_destroy(config_metadata);
 	free(ruta);
 }
 
-int calcular_particion(int key,int cantidad_particiones){
+int calcular_particion(int key, int cantidad_particiones) {
 
 	return (key % cantidad_particiones) + 1;
 }
 
-void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values){
+void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values) {
+
 	char* ruta = string_new();
 	string_append(&ruta, "t1/1.bin");
 	FILE* lector = fopen(ruta, "rb");
@@ -215,11 +263,10 @@ void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values
 	while (!feof(lector)) {
 		fread(&reg, sizeof(reg), 1, lector);
 		printf(reg.value);
-		if(reg.key == keyBuscada){
-			list_add(lista_values,&reg);
+		if (reg.key == keyBuscada) {
+			list_add(lista_values, &reg);
 		}
 	}
-
 
 }
 

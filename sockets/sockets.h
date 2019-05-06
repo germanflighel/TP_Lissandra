@@ -10,6 +10,7 @@
 #define RUN 7
 #define ADD 8
 #define ERROR 9
+#define EXIT_CONSOLE -1
 
 #define SC 10
 #define SHC 11
@@ -51,10 +52,10 @@ typedef struct t_PackageInsert {
 	uint32_t tabla_long;
 	char* tabla;
 	uint16_t key;
-	uint32_t total_size;
 	uint32_t value_long;
 	char* value;
 	long timestamp;
+	uint32_t total_size;
 } t_PackageInsert;
 
 #define LFS 100

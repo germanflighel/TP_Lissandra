@@ -20,9 +20,12 @@ int main() {
 	struct addrinfo *serverInfo;
 	char* ip;
 	char* puerto;
+	char *serializedPackage;
+	uint32_t send_package_size;
+
 
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_UNSPEC;// Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
+	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
 	abrir_log();
@@ -119,7 +122,7 @@ int main() {
 	 * 	Solo me queda decirle que vaya y escuche!
 	 *
 	 */
-	listen(listenningSocket, BACKLOG);// IMPORTANTE: listen() es una syscall BLOQUEANTE.
+	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
 	printf("Esperando kernel... \n");
 
@@ -139,7 +142,7 @@ int main() {
 	 *				En este ejemplo nos dedicamos unicamente a trabajar con el cliente y no escuchamos mas conexiones.
 	 *
 	 */
-	struct sockaddr_in addr;// Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
+	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
 
 	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
@@ -158,42 +161,53 @@ int main() {
 
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
-	char *serializedPackage;
 
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
 
 	/*
+	 //thread
+	 pthread_t threadL;
+	 int iret1;
+
+	 if (pthread_mutex_init(&lock, NULL) != 0) {
+	 printf("\n mutex init failed\n");
+	 return 1;
+	 }
+
+	 iret1 = pthread_create(&threadL, NULL, inputFunc, (void*) lfsSocket);
+	 if (iret1) {
+	 fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+	 exit(EXIT_FAILURE);
+	 }
+
+	 */
 	//thread
-	pthread_t threadL;
-	int iret1;
-
-	if (pthread_mutex_init(&lock, NULL) != 0) {
-		printf("\n mutex init failed\n");
-		return 1;
-	}
-
-	iret1 = pthread_create(&threadL, NULL, inputFunc, (void*) lfsSocket);
-	if (iret1) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
-		exit(EXIT_FAILURE);
-	}
-
-	*/
-	//thread
-
 	int headerRecibido;
 
 	while (status) {
 
 		headerRecibido = recieve_header(socketCliente);
-		printf("HEADER: %d \n", headerRecibido);
 
-		if (headerRecibido==SELECT) {
+		status = headerRecibido;
+
+		if (headerRecibido == SELECT && status) {
 			t_PackageSelect package;
-			printf("Antes\n");
-			status = recieve_and_deserialize_select(&package,socketCliente);
-			printf("KEY: %d \n", package.key);
-			printf("TABLA: %s \n", package.tabla);
+			status = recieve_and_deserialize_select(&package, socketCliente);
+
+			ejectuarComando(headerRecibido,&package);
+
+			package.header = SELECT;
+			serializedPackage = serializarSelect(&package);
+			send_package_size = package.total_size;
+		} else if (headerRecibido == INSERT && status) {
+			t_PackageInsert package;
+			status = recieve_and_deserialize_insert(&package, socketCliente);
+
+			ejectuarComando(headerRecibido,&package);
+
+			package.header = INSERT;
+			serializedPackage = serializarInsert(&package);
+			send_package_size = package.total_size;
 		}
 
 		//pthread_mutex_lock(&lock);
@@ -203,23 +217,10 @@ int main() {
 		//fill_package(&packageEnvio, &username);
 
 		// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
+
 		if (status) {
-
-			/*	char *mensaje = malloc(package.message_long);
-
-			 memcpy(mensaje,package.message,package.message_long);
-
-			 printf("%s\n",mensaje);
-			 log_info(g_logger, mensaje);
-
-			 serializedPackage = serializarOperandos(&package);
-			 send(lfsSocket, serializedPackage, package.total_size, 0);
-
-			 free(package.message);
-			 free(mensaje);
+			 send(lfsSocket, serializedPackage, send_package_size, 0);
 			 dispose_package(&serializedPackage);
-
-			 */
 		}
 
 	}
@@ -244,6 +245,28 @@ int main() {
 	return 0;
 }
 
+void ejectuarComando(int header,void* package) {
+	switch(header){
+	case SELECT:
+		ejecutarSelect((t_PackageSelect*)package);
+		break;
+	case INSERT:
+		ejecutarInsert((t_PackageInsert*)package);
+			break;
+	}
+}
+
+void ejecutarSelect(t_PackageSelect* package){
+	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
+			package->key);
+}
+
+void ejecutarInsert(t_PackageInsert* package){
+	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
+						package->tabla, package->key, package->value,
+						package->timestamp);
+}
+
 void abrir_con(t_config** g_config) {
 
 	(*g_config) = config_create(CONFIG_PATH);
@@ -257,54 +280,54 @@ void abrir_log(void) {
 }
 
 /*
-void *inputFunc(void* serverSocket)
+ void *inputFunc(void* serverSocket)
 
-{
-	int enviar = 1;
-	t_PackagePosta package;
-	package.message = malloc(MAX_MESSAGE_SIZE);
-	char *serializedPackage;
+ {
+ int enviar = 1;
+ t_PackagePosta package;
+ package.message = malloc(MAX_MESSAGE_SIZE);
+ char *serializedPackage;
 
-	//t_PackageRec packageRec;
-	//int status = 1;		// Estructura que manjea el status de los recieve.
+ //t_PackageRec packageRec;
+ //int status = 1;		// Estructura que manjea el status de los recieve.
 
-	printf(
-			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
+ printf(
+ "Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
 
-	int ingresoCorrecto;
-	while (enviar) {
+ int ingresoCorrecto;
+ while (enviar) {
 
-		ingresoCorrecto = 1;
-		fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
+ ingresoCorrecto = 1;
+ fill_package(&package); // Completamos el package, que contendra los datos del mensaje que vamos a enviar.
 
-		if (package.header == ERROR) {
-			ingresoCorrecto = 0;
-			printf("Comando no reconocido\n");
-		} 		// Chequeamos si el usuario quiere salir.
+ if (package.header == ERROR) {
+ ingresoCorrecto = 0;
+ printf("Comando no reconocido\n");
+ } 		// Chequeamos si el usuario quiere salir.
 
-		if (package.header == -1) {
-			enviar = 0;
-		} 		// Chequeamos si el usuario quiere salir.
+ if (package.header == -1) {
+ enviar = 0;
+ } 		// Chequeamos si el usuario quiere salir.
 
-		if (enviar && ingresoCorrecto) {
-			serializedPackage = serializarOperandos(&package);// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
-			send((int) serverSocket, serializedPackage, package.total_size, 0);
-			dispose_package(&serializedPackage);
+ if (enviar && ingresoCorrecto) {
+ serializedPackage = serializarOperandos(&package);// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
+ send((int) serverSocket, serializedPackage, package.total_size, 0);
+ dispose_package(&serializedPackage);
 
-			//status = recieve_and_deserialize(&packageRec, serverSocket);
-			//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
-		}
+ //status = recieve_and_deserialize(&packageRec, serverSocket);
+ //if (status) printf("%s says: %s", packageRec.username, packageRec.message);
+ }
 
-	}
+ }
 
-	printf("Desconectado.\n");
+ printf("Desconectado.\n");
 
 
-	free(package.message);
+ free(package.message);
 
-}
+ }
 
-*/
+ */
 
 /*
  typedef struct t_Package {
