@@ -70,22 +70,18 @@ int main() {
 		log_info(logger, string_itoa(headerRecibido));
 
 		if (headerRecibido == SELECT && status) {
-			log_info(logger, "Got a SELECT");
 
 			t_PackageSelect package;
 			status = recieve_and_deserialize_select(&package, socketCliente);
 
-			ejectuarComando(headerRecibido,&package);
-
-
+			ejecutar_comando(headerRecibido, &package);
 
 		} else if (headerRecibido == INSERT && status) {
-			log_info(logger, "Got an INSERT");
 
 			t_PackageInsert package;
 			status = recieve_and_deserialize_insert(&package, socketCliente);
 
-			ejectuarComando(headerRecibido,&package);
+			ejecutar_comando(headerRecibido, &package);
 
 		}
 
@@ -108,108 +104,65 @@ t_config* leer_config() {
 
 t_log* iniciar_logger(void) {
 
-	return log_create(LOG_FILE_PATH, "LFS", 1, LOG_LEVEL_INFO);
+	return log_create(LOG_FILE_PATH, "LFS", 1, LOG_LEVEL_DEBUG);
 
 }
 
-void interpretar_parametros(int header, char* parametros) {
-
+void ejecutar_comando(int header, void* package) {
 	switch (header) {
-
 	case SELECT:
-		lfs_select(parametros);
+		lfs_select((t_PackageSelect*) package);
 		break;
 	case INSERT:
-		lfs_insert(parametros);
+		lfs_insert((t_PackageInsert*) package);
 		break;
 	}
-}
-
-void ejectuarComando(int header,void* package) {
-	switch(header){
-	case SELECT:
-		ejecutarSelect((t_PackageSelect*)package);
-		break;
-	case INSERT:
-		ejecutarInsert((t_PackageInsert*)package);
-			break;
-	}
-}
-
-void ejecutarSelect(t_PackageSelect* package){
-	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
-			package->key);
-}
-
-void ejecutarInsert(t_PackageInsert* package){
-	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
-						package->tabla, package->key, package->value,
-						package->timestamp);
 }
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
-void lfs_select(char* parametros) {
+void lfs_select(t_PackageSelect* package) {
 
 	t_log* logger_select = iniciar_logger();
-	log_info(logger_select, "Estoy en la instruccion SELECT");
+	log_info(logger_select, "Got a SELECT");
 
-	char** parametros_separados = string_split(parametros, " ");
-	char* nombre_tabla = malloc(strlen(parametros_separados[0]));
-	strcpy(nombre_tabla, parametros_separados[0]);
-
-	int key = atoi(parametros_separados[1]);
-
-	if (existe_tabla(nombre_tabla)) {
-		log_info(logger_select, "Existe tabla, BRO!");
-		//2) Obtener Metadata
-		t_dictionary* metadata = dictionary_create();
-		obtener_metadata(nombre_tabla, metadata);
-		log_info(logger_select, dictionary_get(metadata, "consistencia"));
-		log_info(logger_select,
-				string_itoa(dictionary_get(metadata, "particiones")));
-		log_info(logger_select,
-				string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
-		//3) Calcular que particion contiene a KEY
-		int particionObjetivo = calcular_particion(key,
-				dictionary_get(metadata, "particiones"));
-		log_info(logger_select, string_itoa(particionObjetivo));
-		//4) Escanear particion objetivo, archivos temporales y memoria temporal
-		t_list* valuesEncontrados = list_create();
-		//encontrar_keys(key, particionObjetivo, valuesEncontrados);
-		//5) Devolver o mostrar el valor mayor
-		//log_info(logger_select, maximoTimestamp(valuesEncontrados));
-		//struct Reg *reg = list_get(valuesEncontrados, 0);
-		//log_info(logger_select, reg->value);
+	if (!existe_tabla(package->tabla)) {
+		log_info(logger_select, "No existe la tabla");
+		return;
 	}
+	log_info(logger_select, "Existe tabla, BRO!");
+	//2) Obtener Metadata
+	t_dictionary* metadata = dictionary_create();
+	obtener_metadata(package->tabla, metadata);
+	log_info(logger_select, dictionary_get(metadata, "consistencia"));
+	log_info(logger_select,
+			string_itoa(dictionary_get(metadata, "particiones")));
+	log_info(logger_select,
+			string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
+	//3) Calcular que particion contiene a KEY
+	int particionObjetivo = calcular_particion(package->key,
+			dictionary_get(metadata, "particiones"));
+	log_info(logger_select, string_itoa(particionObjetivo));
 
-	free(nombre_tabla);
+	//4) Escanear particion objetivo, archivos temporales y memoria temporal
+	//t_list* valuesEncontrados = list_create();
+	//encontrar_keys(key, particionObjetivo, valuesEncontrados);
+	//5) Devolver o mostrar el valor mayor
+	//log_info(logger_select, maximoTimestamp(valuesEncontrados));
+	//struct Reg *reg = list_get(valuesEncontrados, 0);
+	//log_info(logger_select, reg->value);
+
 	log_destroy(logger_select);
 
 }
 
-void lfs_insert(char* parametros) { //Falta agregar funcionalidad, solo reconoce los parametros necesarios
+void lfs_insert(t_PackageInsert* package) {
 	t_log* logger_insert = iniciar_logger();
-	log_info(logger_insert, "Estoy en la instruccion INSERT");
+	log_info(logger_insert, "Got an INSERT");
 
-	char** parametros_separados = string_split(parametros, " ");
-
-	char* nombre_tabla = malloc(strlen(parametros_separados[0]));
-	strcpy(nombre_tabla, parametros_separados[0]);
-
-	int key = atoi(parametros_separados[1]);
-
-	char* valueAndTimeStamp = malloc(strlen(parametros_separados[2]));
-	strcpy(valueAndTimeStamp, parametros_separados[2]);
-
-	unsigned long timestamp = atoi(parametros_separados[3]);
-
-	log_info(logger_insert, nombre_tabla);
-	log_info(logger_insert, string_itoa(key));
-	log_info(logger_insert, valueAndTimeStamp);
-	log_info(logger_insert, string_itoa(timestamp));
-
-	free(valueAndTimeStamp);
-	free(nombre_tabla);
+	log_info(logger_insert, package->tabla);
+	log_info(logger_insert, string_itoa(package->key));
+	log_info(logger_insert, package->value);
+	log_info(logger_insert, string_itoa(package->timestamp));
 
 	log_destroy(logger_insert);
 
@@ -254,19 +207,20 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values) {
+void encontrar_keys(int keyBuscada, int particion_objetivo,
+		t_list* lista_values) {
 
-	char* ruta = string_new();
-	string_append(&ruta, "t1/1.bin");
-	FILE* lector = fopen(ruta, "rb");
-	struct Reg reg;
-	while (!feof(lector)) {
-		fread(&reg, sizeof(reg), 1, lector);
-		printf(reg.value);
-		if (reg.key == keyBuscada) {
-			list_add(lista_values, &reg);
-		}
-	}
+	/*char* ruta = string_new();
+	 string_append(&ruta, "t1/1.bin");
+	 FILE* lector = fopen(ruta, "rb");
+	 struct Reg reg;
+	 while (!feof(lector)) {
+	 fread(&reg, sizeof(reg), 1, lector);
+	 printf(reg.value);
+	 if (reg.key == keyBuscada) {
+	 list_add(lista_values, &reg);
+	 }
+	 }*/
 
 }
 
