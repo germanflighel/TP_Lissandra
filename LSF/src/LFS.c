@@ -133,7 +133,7 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	log_debug(logger_select, mi_ruta);
 
 
-	if (!existe_tabla(package->tabla, mi_ruta)) {
+	if (!existe_tabla(package->tabla, &mi_ruta)) {
 		log_debug(logger_select, "No existe la tabla");
 		return;
 	}
@@ -141,9 +141,10 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	//2) Obtener Metadata
 	t_dictionary* metadata = dictionary_create();
 
-	obtener_metadata(metadata, mi_ruta);
-	log_debug(logger_select, mi_ruta);
-	log_debug(logger_select, dictionary_get(metadata, "consistencia"));
+	obtener_metadata(&metadata, mi_ruta);
+	char* c = string_new();
+	c = dictionary_get(metadata, "consistencia");
+	log_debug(logger_select, c);
 	log_debug(logger_select,
 			string_itoa(dictionary_get(metadata, "particiones")));
 	log_debug(logger_select,
@@ -178,13 +179,12 @@ void lfs_insert(t_PackageInsert* package) {
 
 }
 
-int existe_tabla(char* nombre_tabla, char* ruta) {
+int existe_tabla(char* nombre_tabla, char** ruta) {
 
 	char* tables = "/tables/";
-	string_append(&ruta, tables);
-	string_append(&ruta, nombre_tabla);
-	DIR *dirp = opendir(ruta);
-	free(ruta);
+	string_append(ruta, tables);
+	string_append(ruta, nombre_tabla);
+	DIR *dirp = opendir(*ruta);
 	if (dirp == NULL) {
 		free(dirp);
 		return 0;
@@ -193,20 +193,24 @@ int existe_tabla(char* nombre_tabla, char* ruta) {
 	return 1;
 }
 
-void obtener_metadata(t_dictionary* metadata, char* ruta) {
-	t_log* logger_tabla = iniciar_logger();
-	log_debug(logger_tabla, ruta);
+void obtener_metadata(t_dictionary** metadata, char* ruta) {
+
+	t_log* logger_select = iniciar_logger();
+
 	char* mi_metadata = "/Metadata";
 	string_append(&ruta, mi_metadata);
-	log_debug(logger_tabla, ruta);
 	t_config* config_metadata = config_create(ruta);
-	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
-	dictionary_put(metadata, "consistencia", consistencia);
+	char* consistencia = malloc(2*sizeof(char));
+	consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	dictionary_put(*metadata, "consistencia", consistencia);
+	log_debug(logger_select, "Consistencias");
+
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
-	dictionary_put(metadata, "particiones", particiones);
+	dictionary_put(*metadata, "particiones", particiones);
 	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
 	config_destroy(config_metadata);
-	dictionary_put(metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
+	log_destroy(logger_select);
+	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
 }
 
 int calcular_particion(int key, int cantidad_particiones) {
