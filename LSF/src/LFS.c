@@ -142,9 +142,8 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	t_dictionary* metadata = dictionary_create();
 
 	obtener_metadata(&metadata, mi_ruta);
-	char* c = string_new();
-	c = dictionary_get(metadata, "consistencia");
-	log_debug(logger_select, c);
+
+	log_debug(logger_select, (char*) dictionary_get(metadata, "consistencia"));
 	log_debug(logger_select,
 			string_itoa(dictionary_get(metadata, "particiones")));
 	log_debug(logger_select,
@@ -200,17 +199,25 @@ void obtener_metadata(t_dictionary** metadata, char* ruta) {
 	char* mi_metadata = "/Metadata";
 	string_append(&ruta, mi_metadata);
 	t_config* config_metadata = config_create(ruta);
-	char* consistencia = malloc(2*sizeof(char));
-	consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
-	dictionary_put(*metadata, "consistencia", consistencia);
-	log_debug(logger_select, "Consistencias");
 
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
 	dictionary_put(*metadata, "particiones", particiones);
 	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
-	config_destroy(config_metadata);
-	log_destroy(logger_select);
+
+
 	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
+
+	char* consistencia = malloc(3*sizeof(char));
+	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
+	memcpy(consistencia,temp,3*sizeof(char));
+	free(temp);
+	dictionary_put(*metadata, "consistencia", consistencia);
+	log_debug(logger_select, "Consistencias");
+
+
+	log_debug(logger_select, (char*)dictionary_get(*metadata, "consistencia"));
+	log_destroy(logger_select);
+	config_destroy(config_metadata);
 }
 
 int calcular_particion(int key, int cantidad_particiones) {
