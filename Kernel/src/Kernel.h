@@ -28,16 +28,18 @@
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);
 
-void interpretarComando(int,char*);
-void insert_kernel(char*);
-void describe(char*);
-void drop(char*);
-void create(char*);
-void journal(char*);
-void run(char*);
-void add(char*);
-void metrics(char*);
-void select_kernel(char*);
+int is_regular_file(const char*);
+
+void interpretarComando(int,char*,int);
+void insert_kernel(char*,int);
+void describe(char*,int);
+void drop(char*,int);
+void create(char*,int);
+void journal(char*,int);
+void run(char*,int);
+void add(char*,int);
+void metrics(char*,int);
+void select_kernel(char*,int);
 
 
 #endif

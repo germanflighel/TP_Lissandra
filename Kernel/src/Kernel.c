@@ -9,6 +9,9 @@
  */
 
 #include "Kernel.h"
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
 
 int main() {
 
@@ -133,184 +136,272 @@ int main() {
 
 		if (enviar && entradaValida) {
 
-			if (header == SELECT) {
-				t_PackageSelect package;
-				if (!fill_package_select(&package, parametros)) {
-					printf("Incorrecta cantidad de parametros\n");
-					entradaValida = 0;
-				}
+			interpretarComando(header, parametros, serverSocket);
+			free(parametros);
+			/*
+			 if (header == SELECT) {
+			 t_PackageSelect package;
+			 if (!fill_package_select(&package, parametros)) {
+			 printf("Incorrecta cantidad de parametros\n");
+			 entradaValida = 0;
+			 }
 
-				if (entradaValida) {
-					printf("SELECT enviado (Tabla: %s, Key: %d)\n",
-							package.tabla, package.key);
+			 if (entradaValida) {
+			 printf("SELECT enviado (Tabla: %s, Key: %d)\n",
+			 package.tabla, package.key);
 
-					serializedPackage = serializarSelect(&package);
+			 serializedPackage = serializarSelect(&package);
 
-					send(serverSocket, serializedPackage, package.total_size,
-							0);
+			 send(serverSocket, serializedPackage, package.total_size,
+			 0);
 
-					free(package.tabla);
-					dispose_package(&serializedPackage);
-				}
-			} else if (header == INSERT) {
-				t_PackageInsert package;
-				if (!fill_package_insert(&package, parametros,0)) {
-					printf("Incorrecta cantidad de parametros\n");
-					entradaValida = 0;
-				}
+			 free(package.tabla);
+			 dispose_package(&serializedPackage);
+			 }
+			 } else if (header == INSERT) {
+			 t_PackageInsert package;
+			 if (!fill_package_insert(&package, parametros,0)) {
+			 printf("Incorrecta cantidad de parametros\n");
+			 entradaValida = 0;
+			 }
 
-				if (entradaValida) {
-					printf("INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n", package.tabla,
-							package.key,package.value,package.timestamp);
+			 if (entradaValida) {
+			 printf("INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n", package.tabla,
+			 package.key,package.value,package.timestamp);
 
-					serializedPackage = serializarInsert(&package);
+			 serializedPackage = serializarInsert(&package);
 
-					send(serverSocket, serializedPackage, package.total_size,
-							0);
+			 send(serverSocket, serializedPackage, package.total_size,
+			 0);
 
-					free(package.tabla);
-					dispose_package(&serializedPackage);
-				}
-			}
+			 free(package.tabla);
+			 dispose_package(&serializedPackage);
+			 }
+			 }*/
 
-				/*
-				 interpretarComando(package.header,package.message);
-				 serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
-				 send(serverSocket, serializedPackage, package.total_size, 0);
-				 dispose_package(&serializedPackage);
-				 */
-				//status = recieve_and_deserialize(&packageRec, serverSocket);
-				//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
-			}
-
-		}
-
-		printf("Desconectado.\n");
-
-		/*	NUNCA nos olvidamos de liberar la memoria que pedimos.
-		 *
-		 *  Acordate que por cada free() que no hacemos, valgrind mata a un gatito.
-		 */
-		free(package.message);
-
-		/*
-		 *	Listo! Cree un medio de comunicacion con el servidor, me conecte con y le envie cosas...
-		 *
-		 *	...Pero me aburri. Era de esperarse, ������No?
-		 *
-		 *	Asique ahora solo me queda cerrar la conexion con un close();
-		 */
-
-		close(serverSocket);
-		log_destroy(logger_Kernel);
-
-		/* ADIO'! */
-		return 0;
-	}
-
-	void abrir_config(t_config** g_config) {
-
-		(*g_config) = config_create(CONFIG_PATH);
-
-	}
-
-	t_log* iniciar_logger(void) {
-
-		return log_create(LOG_FILE_PATH, "kernel", 0, LOG_LEVEL_INFO);
-
-	}
-
-	void interpretarComando(int header, char* parametros) {
-
-		switch (header) {
-		case 1:
-			select_kernel(parametros);
-			break;
-		case 2:
-			insert_kernel(parametros);
-			break;
-		case 3:
-			describe(parametros);
-			break;
-		case 4:
-			drop(parametros);
-			break;
-		case 5:
-			create(parametros);
-			break;
-		case 6:
-			journal(parametros);
-			break;
-		case 7:
-			run(parametros);
-			break;
-		case 8:
-			add(parametros);
-			break;
-		case 9:
-			metrics(parametros);
-			break;
-		case -1:
-			break;
+			/*
+			 interpretarComando(package.header,package.message);
+			 serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
+			 send(serverSocket, serializedPackage, package.total_size, 0);
+			 dispose_package(&serializedPackage);
+			 */
+			//status = recieve_and_deserialize(&packageRec, serverSocket);
+			//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
 		}
 
 	}
 
-	void select_kernel(char* parametros) {
-		printf("Recibi un select.\n");
-	}
+	printf("Desconectado.\n");
 
-	void insert_kernel(char* parametros) {
-		printf("Recibi un insert.\n");
-	}
+	/*	NUNCA nos olvidamos de liberar la memoria que pedimos.
+	 *
+	 *  Acordate que por cada free() que no hacemos, valgrind mata a un gatito.
+	 */
+	free(package.message);
 
-	void describe(char* parametros) {
-		printf("Recibi un describe.\n");
-	}
+	/*
+	 *	Listo! Cree un medio de comunicacion con el servidor, me conecte con y le envie cosas...
+	 *
+	 *	...Pero me aburri. Era de esperarse, ������No?
+	 *
+	 *	Asique ahora solo me queda cerrar la conexion con un close();
+	 */
 
-	void drop(char* parametros) {
-		printf("Recibi un drop.\n");
-	}
+	close(serverSocket);
+	log_destroy(logger_Kernel);
 
-	void create(char* parametros) {
-		printf("Recibi un create.\n");
-	}
+	/* ADIO'! */
+	return 0;
+}
 
-	void journal(char* parametros) {
-		printf("Recibi un journal.\n");
-	}
+void abrir_config(t_config** g_config) {
 
-	void add(char* parametros) {
-		printf("Recibi un add.\n");
-	}
+	(*g_config) = config_create(CONFIG_PATH);
 
-	void metrics(char* parametros) {
-		printf("Recibi un metrics.\n");
-	}
+}
 
-	void run(char* parametros) {
-		printf("Recibi un run.\n");
+t_log* iniciar_logger(void) {
 
-		char* rutaArchivo = malloc(strlen(parametros));
-		strcpy(rutaArchivo, parametros);
-		printf("%s\n", rutaArchivo);
+	return log_create(LOG_FILE_PATH, "kernel", 0, LOG_LEVEL_INFO);
 
-		FILE *lql;
-		lql = fopen(rutaArchivo, "r");
+}
 
-		char buffer[256];
+void interpretarComando(int header, char* parametros, int serverSocket) {
 
-		if ((lql == NULL)) {
-			//Loguear que no se abrio el archivo
-		} else {			//Se abrio el archivo y se va a leer los comandos
+	switch (header) {
+	case SELECT:
+		select_kernel(parametros, serverSocket);
+		break;
+	case INSERT:
+		insert_kernel(parametros, serverSocket);
+		break;
+	case DESCRIBE:
+		describe(parametros, serverSocket);
+		break;
+	case DROP:
+		drop(parametros, serverSocket);
+		break;
+	case CREATE:
+		create(parametros, serverSocket);
+		break;
+	case JOURNAL:
+		journal(parametros, serverSocket);
+		break;
+	case RUN:
 
-			while (feof(lql) == 0) {
-				fgets(buffer, sizeof(buffer), lql);	//Lee una linea del archivo de txt
-				printf("%s\n", buffer);
-			}
+		if (cant_parametros(string_split(parametros," ")) != 1){
+				printf("Cantidad de parametros invalidos\n");
 		}
+		else{
+		run(parametros, serverSocket);
+		}
+		break;
+	case ADD:
+		add(parametros, serverSocket);
+		break;
+	case 9:
+		metrics(parametros, serverSocket);
+		break;
+	case -1:
+		break;
+	}
 
-		fclose(lql);
+}
+
+void select_kernel(char* parametros, int serverSocket) {
+
+	char *serializedPackage;
+	int entradaValida = 1;
+	t_PackageSelect package;
+
+	if (!fill_package_select(&package, parametros)) {
+
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+	if (entradaValida) {
+		printf("SELECT enviado (Tabla: %s, Key: %d)\n", package.tabla,
+				package.key);
+
+		serializedPackage = serializarSelect(&package);
+
+		send(serverSocket, serializedPackage, package.total_size, 0);
+
+		free(package.tabla);
+		dispose_package(&serializedPackage);
+	}
+}
+
+void insert_kernel(char* parametros, int serverSocket) {
+
+	char* serializedPackage;
+	int entradaValida = 1;
+	t_PackageInsert package;
+
+	if (!fill_package_insert(&package, parametros, 0)) {
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+
+	if (entradaValida) {
+		printf(
+				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
+				package.tabla, package.key, package.value, package.timestamp);
+
+		serializedPackage = serializarInsert(&package);
+
+		send(serverSocket, serializedPackage, package.total_size, 0);
+
+		free(package.tabla);
+		dispose_package(&serializedPackage);
+	}
+}
+
+void describe(char* parametros, int serverSocket) {
+	printf("Recibi un describe.\n");
+}
+
+void drop(char* parametros, int serverSocket) {
+	printf("Recibi un drop.\n");
+}
+
+void create(char* parametros, int serverSocket) {
+	printf("Recibi un create.\n");
+}
+
+void journal(char* parametros, int serverSocket) {
+	printf("Recibi un journal.\n");
+}
+
+void add(char* parametros, int serverSocket) {
+	printf("Recibi un add.\n");
+}
+
+void metrics(char* parametros, int serverSocket) {
+	printf("Recibi un metrics.\n");
+}
+
+void run(char* rutaRecibida, int serverSocket) {
+
+	char* entrada[MAX_MESSAGE_SIZE];
+	char* parametros;
+	int header;
+	int enviar = 1;
+	int entradaValida = 1;
+
+
+	char* rutaArchivo = malloc(strlen(rutaRecibida));
+	strcpy(rutaArchivo, rutaRecibida);
+
+	printf("%s\n", rutaArchivo);
+
+	FILE *lql;
+	lql = fopen(rutaArchivo, "r");
+
+	if(!is_regular_file(rutaArchivo)){
+		printf("La ruta es un directorio\n");
 		free(rutaArchivo);
-
+		return;
 	}
+
+	if ((lql == NULL)) {
+		printf("No se puede abrir el arhivo \n");
+		free(rutaArchivo);
+		return;//Loguear que no se abrio el archivo
+	}
+	else {			//Se abrio el archivo y se va a leer los comandos
+
+		while (feof(lql) == 0) {
+			fgets(entrada, sizeof(entrada), lql);//Lee una linea del archivo de txt
+			//printf("%s \n", entrada);
+
+			separarEntrada(entrada, &header, &parametros);
+			//printf("%d \n",header);
+			if (header == EXIT_CONSOLE) {
+				enviar = 0;
+				return;
+			} else if (header == ERROR) {
+				printf("Comando no reconocido\n");
+				entradaValida = 0;
+
+			}
+
+			if (enviar && entradaValida) {
+				interpretarComando(header, parametros, serverSocket);
+			}
+
+		}
+	}
+
+	fclose(lql);
+	free(rutaArchivo);
+
+}
+
+int is_regular_file(const char *path){
+
+	struct stat path_stat;
+	stat(path,&path_stat);
+	return S_ISREG(path_stat.st_mode); //Devuelve verdadero si la ruta es un archivo
+}
+
