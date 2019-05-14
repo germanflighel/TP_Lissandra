@@ -203,7 +203,6 @@ int main() {
 						socketCliente);
 
 				ejectuarComando(headerRecibido, &package);
-
 				package.header = INSERT;
 				send_package(headerRecibido, &package, lfsSocket);
 			}
@@ -240,21 +239,23 @@ int main() {
 	return 0;
 }
 
-void ejectuarComando(int header, void* package) {
-	switch (header) {
+
+void ejectuarComando(int header,void* package) {
+	switch(header){
 	case SELECT:
-		ejecutarSelect((t_PackageSelect*) package);
+		ejecutarSelect((t_PackageSelect*)package);
 		break;
 	case INSERT:
-		ejecutarInsert((t_PackageInsert*) package);
-		break;
+		ejecutarInsert((t_PackageInsert*)package);
+			break;
 	}
 }
 
-void ejecutarSelect(t_PackageSelect* package) {
+void ejecutarSelect(t_PackageSelect* package){
 	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
 			package->key);
 }
+
 
 void ejecutarInsert(t_PackageInsert* package) {
 	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
