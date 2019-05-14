@@ -14,17 +14,19 @@
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 
+t_log* logger;
 
 int main() {
 
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
-	t_log* logger = iniciar_logger();
+	logger = iniciar_logger();
 	t_config* config = leer_config();
 
-	char* puerto = config_get_string_value(config, "PUERTO");
-	log_info(logger, puerto);
+	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
+	char* ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	log_debug(logger, puerto);
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -50,7 +52,7 @@ int main() {
 	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
 			&addrlen);
 
-	if(!recibir_handshake(MEMORY,socketCliente)) {
+	if (!recibir_handshake(MEMORY, socketCliente)) {
 		printf("Handshake invalido \n");
 		return 0;
 	}
@@ -58,17 +60,41 @@ int main() {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
-
-
 	printf("Memoria conectada. Esperando Envio de mensajes.\n");
 
+	int headerRecibido;
+
 	while (status) {
-		status = recieve_and_deserialize(&package, socketCliente);
 
-		interpretar_parametros(package.header, package.message);
+		log_debug(logger, "Header");
+		headerRecibido = recieve_header(socketCliente);
+		printf("End Header. \n");
+		log_debug(logger, "Status");
 
-		if (status)
-			printf("Memory says: %s.\n", package.message);
+		status = headerRecibido;
+
+		if (status) {
+			if (headerRecibido == SELECT) {
+
+				log_debug(logger, "Got a SELECT");
+
+				t_PackageSelect package;
+				status = recieve_and_deserialize_select(&package, socketCliente);
+
+				ejecutar_comando(headerRecibido, &package, ruta);
+
+			} else if (headerRecibido == INSERT) {
+
+				log_debug(logger, "Got an INSERT");
+
+				t_PackageInsert package;
+				status = recieve_and_deserialize_insert(&package, socketCliente);
+
+				ejecutar_comando(headerRecibido, &package, ruta);
+
+			}
+
+		}
 
 	}
 
@@ -89,125 +115,130 @@ t_config* leer_config() {
 
 t_log* iniciar_logger(void) {
 
-	return log_create(LOG_FILE_PATH, "LFS", 1, LOG_LEVEL_INFO);
+	return log_create(LOG_FILE_PATH, "LFS", 1, LOG_LEVEL_DEBUG);
 
 }
 
-void interpretar_parametros(int header, char* parametros) {
-
+void ejecutar_comando(int header, void* package, char* ruta) {
 	switch (header) {
-
 	case SELECT:
-		lfs_select(parametros);
+		lfs_select((t_PackageSelect*) package, ruta);
 		break;
 	case INSERT:
-		lfs_insert(parametros);
+		lfs_insert((t_PackageInsert*) package);
 		break;
 	}
 }
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
-void lfs_select(char* parametros) {
+void lfs_select(t_PackageSelect* package, char* ruta) {
 
-	t_log* logger_select = iniciar_logger();
-	log_info(logger_select, "Estoy en la instruccion SELECT");
 
-	char** parametros_separados = string_split(parametros, " ");
-	char* nombre_tabla = malloc(strlen(parametros_separados[0]));
-	strcpy(nombre_tabla, parametros_separados[0]);
+	printf("Antes de append \n");
 
-	int key = atoi(parametros_separados[1]);
+	char* mi_ruta = string_duplicate(ruta);
 
-	if (existe_tabla(nombre_tabla)) {
-		log_info(logger_select, "Existe tabla, BRO!");
-		//2) Obtener Metadata
-		t_dictionary* metadata = dictionary_create();
-		obtener_metadata(nombre_tabla, metadata);
-		log_info(logger_select, dictionary_get(metadata, "consistencia"));
-		log_info(logger_select, string_itoa(dictionary_get(metadata, "particiones")));
-		log_info(logger_select, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
-		//3) Calcular que particion contiene a KEY
-		int particionObjetivo = calcular_particion(key, dictionary_get(metadata, "particiones"));
-		log_info(logger_select, string_itoa(particionObjetivo));
-		//4) Escanear particion objetivo, archivos temporales y memoria temporal
-		t_list* valuesEncontrados = list_create();
-		encontrar_keys(key, particionObjetivo, valuesEncontrados);
-		//5) Devolver o mostrar el valor mayor
-		//log_info(logger_select, maximoTimestamp(valuesEncontrados));
-		struct Reg *reg = list_get(valuesEncontrados,0);
-		log_info(logger_select,reg->value);
+	log_debug(logger, mi_ruta);
+
+	printf("A ver si existe tabla \n");
+
+	if (!existe_tabla(package->tabla, &mi_ruta)) {
+		log_debug(logger, "No existe la tabla");
+		return;
 	}
+	printf("Antes existe \n");
+	log_debug(logger, "Existe tabla, BRO!");
+	//2) Obtener Metadata
+	t_dictionary* metadata = dictionary_create();
 
-	free(nombre_tabla);
-	log_destroy(logger_select);
+	obtener_metadata(&metadata, mi_ruta);
 
+	log_debug(logger, (char*) dictionary_get(metadata, "consistencia"));
+	log_debug(logger,
+			string_itoa(dictionary_get(metadata, "particiones")));
+	log_debug(logger,
+			string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
+	//3) Calcular que particion contiene a KEY
+	int particionObjetivo = calcular_particion(package->key,
+			dictionary_get(metadata, "particiones"));
+	log_debug(logger, string_itoa(particionObjetivo));
+
+	//4) Escanear particion objetivo, archivos temporales y memoria temporal
+	//t_list* valuesEncontrados = list_create();
+	//encontrar_keys(key, particionObjetivo, valuesEncontrados);
+	//5) Devolver o mostrar el valor mayor
+	//log_debug(logger, maximoTimestamp(valuesEncontrados));
+	//struct Reg *reg = list_get(valuesEncontrados, 0);
+	//log_debug(logger, reg->value);
+
+	free(mi_ruta);
+
+	log_debug(logger, "Going back");
+	printf("hola \n");
 }
 
-void lfs_insert(char* parametros) { //Falta agregar funcionalidad, solo reconoce los parametros necesarios
+void lfs_insert(t_PackageInsert* package) {
 	t_log* logger_insert = iniciar_logger();
-	log_info(logger_insert, "Estoy en la instruccion INSERT");
+	log_debug(logger_insert, "Got an INSERT");
 
-	char** parametros_separados = string_split(parametros, " ");
-
-	char* nombre_tabla = malloc(strlen(parametros_separados[0]));
-	strcpy(nombre_tabla, parametros_separados[0]);
-
-	int key = atoi(parametros_separados[1]);
-
-	char* valueAndTimeStamp = malloc(strlen(parametros_separados[2]));
-	strcpy(valueAndTimeStamp, parametros_separados[2]);
-
-	unsigned long timestamp = atoi(parametros_separados[3]);
-
-	log_info(logger_insert, nombre_tabla);
-	log_info(logger_insert, string_itoa(key));
-	log_info(logger_insert, valueAndTimeStamp);
-	log_info(logger_insert, string_itoa(timestamp));
-
-	free(valueAndTimeStamp);
-	free(nombre_tabla);
+	log_debug(logger_insert, package->tabla);
+	log_debug(logger_insert, string_itoa(package->key));
+	log_debug(logger_insert, package->value);
+	log_debug(logger_insert, string_itoa(package->timestamp));
 
 	log_destroy(logger_insert);
 
 }
 
-int existe_tabla(char* nombre_tabla) {
-	char* ruta = string_new();
-	string_append(&ruta,
-			"/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
-	string_append(&ruta, nombre_tabla);
-	DIR *dirp = opendir(ruta);
-	free(ruta);
-	if (dirp == NULL) {
-		free(dirp);
-		return 0;
+int existe_tabla(char* nombre_tabla, char** ruta) {
+
+	char* tables = "/tables/";
+	string_append(ruta, tables);
+	string_append(ruta, nombre_tabla);
+	int status=1;
+	log_debug(logger, *ruta);
+	DIR *dirp;
+
+	if ((dirp = opendir(*ruta)) == NULL) {
+		status= 0;
 	}
-	free(dirp);
-	return 1;
+	closedir(dirp);
+	return status;
 }
 
-void obtener_metadata(char* tabla, t_dictionary* metadata) {
-	char* ruta = string_new();
-	string_append(&ruta, "/home/utnso/workspace/tp-2019-1c-Ckere/LSF/Debug/tables/");
-	string_append(&ruta, tabla);
-	string_append(&ruta, "/Metadata");
-	t_config* config_metadata = config_create(ruta);
-	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
-	dictionary_put(metadata, "consistencia", consistencia);
+void obtener_metadata(t_dictionary** metadata, char* ruta) {
+	char* mi_ruta = string_duplicate(ruta);
+	char* mi_metadata = "/Metadata";
+	string_append(&mi_ruta, mi_metadata);
+
+	t_config* config_metadata = config_create(mi_ruta);
+
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
-	dictionary_put(metadata, "particiones", particiones);
-	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
-	dictionary_put(metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
+	dictionary_put(*metadata, "particiones", particiones);
+	long tiempoDeCompactacion = config_get_long_value(config_metadata,
+			"COMPACTION_TIME");
+	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
+
+	char* consistencia = malloc(3 * sizeof(char));
+	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
+	memcpy(consistencia, temp, 3 * sizeof(char));
+	free(temp);
+
+	dictionary_put(*metadata, "consistencia", consistencia);
+
+
 	config_destroy(config_metadata);
-	free(ruta);
+
 }
 
-int calcular_particion(int key,int cantidad_particiones){
+int calcular_particion(int key, int cantidad_particiones) {
 
 	return (key % cantidad_particiones) + 1;
 }
 
-void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values){
+void encontrar_keys(int keyBuscada, int particion_objetivo,
+		t_list* lista_values) {
+
 	char* ruta = string_new();
 	string_append(&ruta, "t1/1.bin");
 	FILE* lector = fopen(ruta, "rb");
@@ -215,11 +246,10 @@ void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values
 	while (!feof(lector)) {
 		fread(&reg, sizeof(reg), 1, lector);
 		printf(reg.value);
-		if(reg.key == keyBuscada){
-			list_add(lista_values,&reg);
+		if (reg.key == keyBuscada) {
+			list_add(lista_values, &reg);
 		}
 	}
-
 
 }
 

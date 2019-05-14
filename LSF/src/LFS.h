@@ -14,6 +14,7 @@
 #include <commons/string.h>
 #include <commons/config.h>
 #include <readline/readline.h>
+#include <sockets.h>
 
 #define BACKLOG 1
 
@@ -30,11 +31,10 @@ t_config* leer_config();
 
 t_log* iniciar_logger();
 
-void interpretar_parametros(int header,char* parametros);
-void lfs_select(char* parametros);
-void lfs_insert(char* parametros);
-//int existe_tabla(char* nombre_tabla);
-//void obtener_metadata(char* tabla, t_dictionary* metadata);
+void lfs_select(t_PackageSelect* package, char* ruta);
+void lfs_insert(t_PackageInsert* package);
+int existe_tabla(char* nombre_tabla, char** ruta);
+void obtener_metadata(t_dictionary** metadata, char* ruta);
 //int calcular_particion(int key,int cantidad_particiones);
 //char* obtener_nombre_tabla(char** parametros_separados);
 //void obtener_nombre_tabla(char*,char**);

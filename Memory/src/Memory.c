@@ -158,8 +158,6 @@ int main() {
 
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
-	char *serializedPackage;
-
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
 
 	/*
@@ -188,18 +186,26 @@ int main() {
 
 		status = headerRecibido;
 
-		if (headerRecibido == SELECT && status) {
-			t_PackageSelect package;
-			status = recieve_and_deserialize_select(&package, socketCliente);
+		if (status) {
+			if (headerRecibido == SELECT) {
+				t_PackageSelect package;
+				status = recieve_and_deserialize_select(&package,
+						socketCliente);
 
-			ejectuarComando(headerRecibido,&package);
+				ejectuarComando(headerRecibido, &package);
 
+				package.header = SELECT;
+				send_package(headerRecibido, &package, lfsSocket);
 
-		} else if (headerRecibido == INSERT && status) {
-			t_PackageInsert package;
-			status = recieve_and_deserialize_insert(&package, socketCliente);
+			} else if (headerRecibido == INSERT) {
+				t_PackageInsert package;
+				status = recieve_and_deserialize_insert(&package,
+						socketCliente);
 
-			ejectuarComando(headerRecibido,&package);
+				ejectuarComando(headerRecibido, &package);
+				package.header = INSERT;
+				send_package(headerRecibido, &package, lfsSocket);
+			}
 
 		}
 
@@ -210,19 +216,6 @@ int main() {
 		//fill_package(&packageEnvio, &username);
 
 		// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
-
-		if (status) {
-
-			/*
-			 serializedPackage = serializarOperandos(&package);
-			 send(lfsSocket, serializedPackage, package.total_size, 0);
-
-			 free(package.message);
-			 free(mensaje);
-			 dispose_package(&serializedPackage);
-
-			 */
-		}
 
 	}
 
@@ -246,6 +239,7 @@ int main() {
 	return 0;
 }
 
+
 void ejectuarComando(int header,void* package) {
 	switch(header){
 	case SELECT:
@@ -262,10 +256,10 @@ void ejecutarSelect(t_PackageSelect* package){
 			package->key);
 }
 
-void ejecutarInsert(t_PackageInsert* package){
+
+void ejecutarInsert(t_PackageInsert* package) {
 	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
-						package->tabla, package->key, package->value,
-						package->timestamp);
+			package->tabla, package->key, package->value, package->timestamp);
 }
 
 void abrir_con(t_config** g_config) {
@@ -277,6 +271,25 @@ void abrir_con(t_config** g_config) {
 void abrir_log(void) {
 
 	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_INFO);
+
+}
+
+void send_package(int header, void* package, int lfsSocket) {
+
+	char* serializedPackage;
+	switch (header) {
+	case SELECT:
+		serializedPackage = serializarSelect((t_PackageSelect*) package);
+		send(lfsSocket, serializedPackage, ((t_PackageSelect*) package)->total_size, 0);
+
+		break;
+	case INSERT:
+		serializedPackage = serializarInsert((t_PackageInsert*) package);
+		send(lfsSocket, serializedPackage, ((t_PackageInsert*) package)->total_size, 0);
+
+		break;
+	}
+	dispose_package(&serializedPackage);
 
 }
 
