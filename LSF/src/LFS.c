@@ -14,12 +14,14 @@
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 
+t_log* logger;
+
 int main() {
 
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
-	t_log* logger = iniciar_logger();
+	logger = iniciar_logger();
 	t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
@@ -64,25 +66,33 @@ int main() {
 
 	while (status) {
 
+		log_debug(logger, "Header");
 		headerRecibido = recieve_header(socketCliente);
+		printf("End Header. \n");
+		log_debug(logger, "Status");
 
 		status = headerRecibido;
 
-		log_debug(logger, string_itoa(headerRecibido));
+		if (status) {
+			if (headerRecibido == SELECT) {
 
-		if (headerRecibido == SELECT && status) {
+				log_debug(logger, "Got a SELECT");
 
-			t_PackageSelect package;
-			status = recieve_and_deserialize_select(&package, socketCliente);
+				t_PackageSelect package;
+				status = recieve_and_deserialize_select(&package, socketCliente);
 
-			ejecutar_comando(headerRecibido, &package, ruta);
+				ejecutar_comando(headerRecibido, &package, ruta);
 
-		} else if (headerRecibido == INSERT && status) {
+			} else if (headerRecibido == INSERT) {
 
-			t_PackageInsert package;
-			status = recieve_and_deserialize_insert(&package, socketCliente);
+				log_debug(logger, "Got an INSERT");
 
-			ejecutar_comando(headerRecibido, &package, ruta);
+				t_PackageInsert package;
+				status = recieve_and_deserialize_insert(&package, socketCliente);
+
+				ejecutar_comando(headerRecibido, &package, ruta);
+
+			}
 
 		}
 
@@ -123,46 +133,48 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 void lfs_select(t_PackageSelect* package, char* ruta) {
 
-	t_log* logger_select = iniciar_logger();
-	log_debug(logger_select, "Got a SELECT");
 
-	char* mi_ruta = string_new();
-	string_append(&mi_ruta, ruta);
-	free(ruta);
+	printf("Antes de append \n");
 
-	log_debug(logger_select, mi_ruta);
+	char* mi_ruta = string_duplicate(ruta);
 
+	log_debug(logger, mi_ruta);
+
+	printf("A ver si existe tabla \n");
 
 	if (!existe_tabla(package->tabla, &mi_ruta)) {
-		log_debug(logger_select, "No existe la tabla");
+		log_debug(logger, "No existe la tabla");
 		return;
 	}
-	log_debug(logger_select, "Existe tabla, BRO!");
+	printf("Antes existe \n");
+	log_debug(logger, "Existe tabla, BRO!");
 	//2) Obtener Metadata
 	t_dictionary* metadata = dictionary_create();
 
 	obtener_metadata(&metadata, mi_ruta);
 
-	log_debug(logger_select, (char*) dictionary_get(metadata, "consistencia"));
-	log_debug(logger_select,
+	log_debug(logger, (char*) dictionary_get(metadata, "consistencia"));
+	log_debug(logger,
 			string_itoa(dictionary_get(metadata, "particiones")));
-	log_debug(logger_select,
+	log_debug(logger,
 			string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
 	//3) Calcular que particion contiene a KEY
 	int particionObjetivo = calcular_particion(package->key,
 			dictionary_get(metadata, "particiones"));
-	log_debug(logger_select, string_itoa(particionObjetivo));
+	log_debug(logger, string_itoa(particionObjetivo));
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
 	//t_list* valuesEncontrados = list_create();
 	//encontrar_keys(key, particionObjetivo, valuesEncontrados);
 	//5) Devolver o mostrar el valor mayor
-	//log_debug(logger_select, maximoTimestamp(valuesEncontrados));
+	//log_debug(logger, maximoTimestamp(valuesEncontrados));
 	//struct Reg *reg = list_get(valuesEncontrados, 0);
-	//log_debug(logger_select, reg->value);
+	//log_debug(logger, reg->value);
 
-	log_destroy(logger_select);
+	free(mi_ruta);
 
+	log_debug(logger, "Going back");
+	printf("hola \n");
 }
 
 void lfs_insert(t_PackageInsert* package) {
@@ -183,41 +195,40 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 	char* tables = "/tables/";
 	string_append(ruta, tables);
 	string_append(ruta, nombre_tabla);
-	DIR *dirp = opendir(*ruta);
-	if (dirp == NULL) {
-		free(dirp);
-		return 0;
+	int status=1;
+	log_debug(logger, *ruta);
+	DIR *dirp;
+
+	if ((dirp = opendir(*ruta)) == NULL) {
+		status= 0;
 	}
-	free(dirp);
-	return 1;
+	closedir(dirp);
+	return status;
 }
 
 void obtener_metadata(t_dictionary** metadata, char* ruta) {
-
-	t_log* logger_select = iniciar_logger();
-
+	char* mi_ruta = string_duplicate(ruta);
 	char* mi_metadata = "/Metadata";
-	string_append(&ruta, mi_metadata);
-	t_config* config_metadata = config_create(ruta);
+	string_append(&mi_ruta, mi_metadata);
+
+	t_config* config_metadata = config_create(mi_ruta);
 
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
 	dictionary_put(*metadata, "particiones", particiones);
-	long tiempoDeCompactacion = config_get_long_value(config_metadata, "COMPACTION_TIME");
-
-
+	long tiempoDeCompactacion = config_get_long_value(config_metadata,
+			"COMPACTION_TIME");
 	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
 
-	char* consistencia = malloc(3*sizeof(char));
+	char* consistencia = malloc(3 * sizeof(char));
 	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
-	memcpy(consistencia,temp,3*sizeof(char));
+	memcpy(consistencia, temp, 3 * sizeof(char));
 	free(temp);
+
 	dictionary_put(*metadata, "consistencia", consistencia);
-	log_debug(logger_select, "Consistencias");
 
 
-	log_debug(logger_select, (char*)dictionary_get(*metadata, "consistencia"));
-	log_destroy(logger_select);
 	config_destroy(config_metadata);
+
 }
 
 int calcular_particion(int key, int cantidad_particiones) {
@@ -225,19 +236,20 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-void encontrar_keys(int keyBuscada, int particion_objetivo, t_list* lista_values) {
+void encontrar_keys(int keyBuscada, int particion_objetivo,
+		t_list* lista_values) {
 
-	 char* ruta = string_new();
-	 string_append(&ruta, "t1/1.bin");
-	 FILE* lector = fopen(ruta, "rb");
-	 struct Reg reg;
-	 while (!feof(lector)) {
-	 fread(&reg, sizeof(reg), 1, lector);
-	 printf(reg.value);
-	 if (reg.key == keyBuscada) {
-	 list_add(lista_values, &reg);
-	 }
-	 }
+	char* ruta = string_new();
+	string_append(&ruta, "t1/1.bin");
+	FILE* lector = fopen(ruta, "rb");
+	struct Reg reg;
+	while (!feof(lector)) {
+		fread(&reg, sizeof(reg), 1, lector);
+		printf(reg.value);
+		if (reg.key == keyBuscada) {
+			list_add(lista_values, &reg);
+		}
+	}
 
 }
 
