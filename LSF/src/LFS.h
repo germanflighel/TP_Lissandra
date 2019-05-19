@@ -33,7 +33,7 @@ t_log* iniciar_logger();
 
 void lfs_select(t_PackageSelect* package, char* ruta);
 void lfs_insert(t_PackageInsert* package);
-int existe_tabla(char* nombre_tabla, char** ruta);
+//int existe_tabla(char* nombre_tabla, char** ruta);
 void obtener_metadata(t_dictionary** metadata, char* ruta);
 //int calcular_particion(int key,int cantidad_particiones);
 //char* obtener_nombre_tabla(char** parametros_separados);

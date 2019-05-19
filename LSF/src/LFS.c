@@ -133,16 +133,22 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 void lfs_select(t_PackageSelect* package, char* ruta) {
 
-
 	printf("Antes de append \n");
 
-	char* mi_ruta = string_duplicate(ruta);
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta,ruta);
 
 	log_debug(logger, mi_ruta);
 
 	printf("A ver si existe tabla \n");
 
-	if (!existe_tabla(package->tabla, &mi_ruta)) {
+	char* tables = "/tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, package->tabla);
+
+	log_debug(logger, mi_ruta);
+
+	if (!existe_tabla(&mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
 		return;
 	}
@@ -190,16 +196,12 @@ void lfs_insert(t_PackageInsert* package) {
 
 }
 
-int existe_tabla(char* nombre_tabla, char** ruta) {
-
-	char* tables = "/tables/";
-	string_append(ruta, tables);
-	string_append(ruta, nombre_tabla);
+int existe_tabla(char** ruta) {
+	char* temp = *ruta;
 	int status=1;
-	log_debug(logger, *ruta);
+	log_debug(logger, temp);
 	DIR *dirp;
-
-	if ((dirp = opendir(*ruta)) == NULL) {
+	if ((dirp = opendir(temp)) == NULL) {
 		status= 0;
 	}
 	closedir(dirp);
@@ -207,7 +209,8 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 }
 
 void obtener_metadata(t_dictionary** metadata, char* ruta) {
-	char* mi_ruta = string_duplicate(ruta);
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta, ruta);
 	char* mi_metadata = "/Metadata";
 	string_append(&mi_ruta, mi_metadata);
 
@@ -224,10 +227,13 @@ void obtener_metadata(t_dictionary** metadata, char* ruta) {
 	memcpy(consistencia, temp, 3 * sizeof(char));
 	free(temp);
 
+
 	dictionary_put(*metadata, "consistencia", consistencia);
 
 
 	config_destroy(config_metadata);
+	//free(mi_ruta);
+	//free(mi_metadata);
 
 }
 

@@ -160,6 +160,26 @@ int main() {
 
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
 
+	t_describe describe;
+	t_metadata meta;
+	meta.consistencia = SC;
+	strcpy(meta.nombre_tabla,"TABLA_STRONG");
+	t_metadata meta2;
+	meta2.consistencia = EC;
+	strcpy(meta2.nombre_tabla,"TABLA_EVENTUAL");
+	describe.cant_tablas = 2;
+	describe.tablas = malloc(2*sizeof(t_metadata));
+	describe.tablas[0] = meta;
+	describe.tablas[1] = meta2;
+
+	printf("Tabla %s \n",describe.tablas[0].nombre_tabla);
+	printf("Tabla %s \n",describe.tablas[1].nombre_tabla);
+
+	char* serializedPackage;
+	serializedPackage = serializarDescribe(&describe);
+	send(socketCliente, serializedPackage, 2*sizeof(t_metadata) + sizeof(describe.cant_tablas), 0);
+	dispose_package(&serializedPackage);
+
 	/*
 	 //thread
 	 pthread_t threadL;
@@ -195,7 +215,7 @@ int main() {
 				ejectuarComando(headerRecibido, &package);
 
 				package.header = SELECT;
-				send_package(headerRecibido, &package, lfsSocket);
+				//send_package(headerRecibido, &package, lfsSocket);
 
 			} else if (headerRecibido == INSERT) {
 				t_PackageInsert package;
@@ -204,7 +224,7 @@ int main() {
 
 				ejectuarComando(headerRecibido, &package);
 				package.header = INSERT;
-				send_package(headerRecibido, &package, lfsSocket);
+				//send_package(headerRecibido, &package, lfsSocket);
 			}
 
 		}
