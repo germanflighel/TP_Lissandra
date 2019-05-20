@@ -203,7 +203,6 @@ void lfs_describe(char* punto_montaje){
 	if (tables_directory) {
 		while ((a_directory = readdir(tables_directory)) != NULL) {
 			if (strcmp(a_directory->d_name, ".") && strcmp(a_directory->d_name, "..")) {
-				Metadata metadata;
 				char* a_table_path = string_new();
 				char* table_name = malloc(strlen(a_directory->d_name));
 				memcpy(table_name, a_directory->d_name,strlen(a_directory->d_name) + 1);
@@ -211,13 +210,23 @@ void lfs_describe(char* punto_montaje){
 				string_append(&a_table_path, table_name);
 				log_error(logger, a_table_path);
 				log_debug(logger, "Voy a obtener metadata");
-				obtener_metadata(&metadata, a_table_path);
-				loguear_metadata(&metadata);
+				Metadata* metadata = obtener_metadata(a_table_path);
+				loguear_metadata(metadata);
+				free(table_name);
 				free(a_table_path);
+				free(metadata);
 			}
 
 		}
-		closedir(tables_directory);
+		log_error(logger, "No hay mas directorios");
+
+		log_debug(logger, tablas_path);
+		if (closedir(tables_directory) == -1) {
+			log_error(logger, "Error al loguear");
+			return;
+		}
+		log_error(logger, "Cerre el directorio");
+
 	}
 }
 
@@ -241,38 +250,38 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 }
 
 void loguear_metadata(Metadata* metadata) {
-
 	log_debug(logger, consistency_to_str(metadata->consistency));
 	log_debug(logger, string_itoa(metadata->partitions));
 	log_debug(logger, string_itoa(metadata->compaction_time));
 }
 
-void obtener_metadata(Metadata* metadata, char* ruta) {
+Metadata* obtener_metadata(char* ruta) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* mi_metadata = "/Metadata";
 	string_append(&mi_ruta, mi_metadata);
-	log_debug(logger,mi_ruta);
+	log_debug(logger, mi_ruta);
 
+	log_debug(logger, "Abriendo config");
 	t_config* config_metadata = config_create(mi_ruta);
-	log_debug(logger,"Voy a leer las particiones");
+	log_debug(logger, "Abri config");
+
+	Metadata* metadata = malloc(sizeof(Metadata));
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
 	metadata->partitions = particiones;
-	log_debug(logger,"Voy a leer el tiempo de compactacion");
 	long tiempoDeCompactacion = config_get_long_value(config_metadata,"COMPACTION_TIME");
 	metadata->compaction_time = tiempoDeCompactacion;
-	char* consistencia = malloc(4 * sizeof(char));
-	log_debug(logger,"Voy a leer la consistencia");
-	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
-	memcpy(consistencia, temp, 4 * sizeof(char));
-	metadata->consistency = consistency_to_int(consistencia);
-	log_debug(logger,"Lei todo papa");
-	free(temp);
-	free(consistencia);
 
-	loguear_metadata(metadata);
+	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	metadata->consistency = consistency_to_int(consistencia);
+
 	config_destroy(config_metadata);
+	log_debug(logger, "Cerre config");
+
+
 	free(mi_ruta);
+
+	return metadata;
 
 }
 
