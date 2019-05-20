@@ -57,7 +57,29 @@ int main() {
 		return 0;
 	}
 
-	lfs_describe(ruta);
+	t_list* metadatas = lfs_describe(ruta);
+	list_iterate(metadatas, (void*) loguear_metadata);
+
+	t_describe* describe = malloc(sizeof(t_describe));
+	int cantidad_de_tablas = metadatas->elements_count;
+	describe->cant_tablas = cantidad_de_tablas;
+	describe->tablas = malloc(cantidad_de_tablas * sizeof(t_metadata));
+
+	for (int i = 0;  i < cantidad_de_tablas; i++) {
+		Metadata* a_metadata = (Metadata*) list_get(metadatas, i);
+		t_metadata* meta = malloc(sizeof(t_metadata));
+		meta->consistencia = a_metadata->consistency;
+		strcpy(meta->nombre_tabla, a_metadata->nombre_tabla);
+
+		describe->tablas[i] = *meta;
+	}
+
+	/*
+	char serializedPackage;
+	serializedPackage = serializarDescribe(&describe);
+	//send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+	dispose_package(&serializedPackage);*/
+
 
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
@@ -191,8 +213,9 @@ void lfs_insert(t_PackageInsert* package) {
 
 }
 
-void lfs_describe(char* punto_montaje){
+t_list* lfs_describe(char* punto_montaje){
 
+	t_list* metadatas = list_create();
 	DIR *tables_directory;
 	struct dirent *a_directory;
 	char* tablas_path = string_new();
@@ -211,23 +234,19 @@ void lfs_describe(char* punto_montaje){
 				log_error(logger, a_table_path);
 				log_debug(logger, "Voy a obtener metadata");
 				Metadata* metadata = obtener_metadata(a_table_path);
-				loguear_metadata(metadata);
+				strcpy(metadata->nombre_tabla, table_name);
+				list_add(metadatas, metadata);
 				free(table_name);
 				free(a_table_path);
-				free(metadata);
 			}
 
 		}
 		log_error(logger, "No hay mas directorios");
-
-		log_debug(logger, tablas_path);
-		if (closedir(tables_directory) == -1) {
-			log_error(logger, "Error al loguear");
-			return;
-		}
+		closedir(tables_directory);
 		log_error(logger, "Cerre el directorio");
 
 	}
+	return metadatas;
 }
 
 int existe_tabla(char* nombre_tabla, char** ruta) {
@@ -250,6 +269,7 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 }
 
 void loguear_metadata(Metadata* metadata) {
+	log_debug(logger, metadata->nombre_tabla);
 	log_debug(logger, consistency_to_str(metadata->consistency));
 	log_debug(logger, string_itoa(metadata->partitions));
 	log_debug(logger, string_itoa(metadata->compaction_time));
@@ -274,6 +294,7 @@ Metadata* obtener_metadata(char* ruta) {
 
 	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
 	metadata->consistency = consistency_to_int(consistencia);
+
 
 	config_destroy(config_metadata);
 	log_debug(logger, "Cerre config");

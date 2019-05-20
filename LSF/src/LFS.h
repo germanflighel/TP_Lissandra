@@ -31,6 +31,7 @@ typedef struct Metadata {
 	int consistency;
 	int partitions;
 	long int compaction_time;
+    char nombre_tabla[MAX_TABLE_LENGTH];
 }Metadata;
 
 t_config* leer_config();
@@ -42,6 +43,8 @@ void lfs_insert(t_PackageInsert* package);
 int existe_tabla(char* nombre_tabla, char** ruta);
 Metadata* obtener_metadata(char* ruta);
 char* consistency_to_str(int consistency);
+t_list* lfs_describe(char* punto_montaje);
+void loguear_metadata(Metadata* metadata);
 //int calcular_particion(int key,int cantidad_particiones);
 //char* obtener_nombre_tabla(char** parametros_separados);
 //void obtener_nombre_tabla(char*,char**);
