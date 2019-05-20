@@ -231,8 +231,6 @@ t_list* lfs_describe(char* punto_montaje){
 				memcpy(table_name, a_directory->d_name,strlen(a_directory->d_name) + 1);
 				string_append(&a_table_path, tablas_path);
 				string_append(&a_table_path, table_name);
-				log_error(logger, a_table_path);
-				log_debug(logger, "Voy a obtener metadata");
 				Metadata* metadata = obtener_metadata(a_table_path);
 				strcpy(metadata->nombre_tabla, table_name);
 				list_add(metadatas, metadata);
@@ -241,10 +239,7 @@ t_list* lfs_describe(char* punto_montaje){
 			}
 
 		}
-		log_error(logger, "No hay mas directorios");
 		closedir(tables_directory);
-		log_error(logger, "Cerre el directorio");
-
 	}
 	return metadatas;
 }
@@ -282,9 +277,7 @@ Metadata* obtener_metadata(char* ruta) {
 	string_append(&mi_ruta, mi_metadata);
 	log_debug(logger, mi_ruta);
 
-	log_debug(logger, "Abriendo config");
 	t_config* config_metadata = config_create(mi_ruta);
-	log_debug(logger, "Abri config");
 
 	Metadata* metadata = malloc(sizeof(Metadata));
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
@@ -295,15 +288,10 @@ Metadata* obtener_metadata(char* ruta) {
 	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
 	metadata->consistency = consistency_to_int(consistencia);
 
-
 	config_destroy(config_metadata);
-	log_debug(logger, "Cerre config");
-
-
 	free(mi_ruta);
 
 	return metadata;
-
 }
 
 int calcular_particion(int key, int cantidad_particiones) {
