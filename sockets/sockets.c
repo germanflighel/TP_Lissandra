@@ -217,13 +217,12 @@ int recieve_header(int socketCliente) {
 	uint32_t header;
 
 	int status;
-	int buffer_size;
-	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+	int buffer_size = sizeof(uint32_t);
+	char *buffer = malloc(buffer_size);
 
 	status = recv(socketCliente, buffer, buffer_size, 0);
 
 	memcpy(&(header), buffer, buffer_size);
-
 	if (!status)
 		return 0;
 	free(buffer);

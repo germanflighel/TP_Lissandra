@@ -14,6 +14,11 @@
 void *inputFunc(void *);
 pthread_mutex_t lock;
 
+int cant_paginas;
+void* memoriaPrincipal;
+t_list* tabla_segmentos;
+Tabla_paginas tabla_paginas;
+
 int main() {
 
 	struct addrinfo hints;
@@ -21,10 +26,9 @@ int main() {
 	char* ip;
 	char* puerto;
 
-	int cant_paginas = floor(MEMORY_SIZE / sizeof(Pagina));
-	Pagina* paginas = malloc(MEMORY_SIZE);
-	t_list* tabla_segmentos = list_create();
-	Tabla_paginas tabla_paginas;
+	cant_paginas = floor(MEMORY_SIZE / sizeof(Pagina));
+	memoriaPrincipal = malloc(MEMORY_SIZE);
+	tabla_segmentos = list_create();
 	tabla_paginas.renglones = malloc(cant_paginas * sizeof(Renglon_pagina));
 
 	//hardcode tablas
@@ -41,24 +45,19 @@ int main() {
 	Renglon_pagina renglonFranco;
 	renglonFranco.numero = 0;
 	renglonFranco.modificado = 0;
-	renglonFranco.offset = 0;
+	renglonFranco.offset = renglonFranco.numero*sizeof(Pagina);
 
 	Renglon_pagina renglonSanti;
 	renglonSanti.numero = 1;
 	renglonSanti.modificado = 0;
-	renglonSanti.offset = 1;
+	renglonSanti.offset = renglonSanti.numero*sizeof(Pagina);
 
-	memcpy((paginas + renglonFranco.offset), &franco, sizeof(Pagina));
-	memcpy((paginas + renglonSanti.offset), &santi, sizeof(Pagina));
-
-	printf("El value es: %s \n", (paginas + renglonFranco.offset)->value);
-	printf("El value es: %s \n", (paginas + renglonSanti.offset)->value);
+	memcpy((memoriaPrincipal + renglonFranco.offset), &franco, sizeof(Pagina));
+	memcpy((memoriaPrincipal + renglonSanti.offset), &santi, sizeof(Pagina));
 
 	tabla_paginas.renglones[0] = renglonFranco;
 	tabla_paginas.renglones[1] = renglonSanti;
 
-	printf("El value es: %s \n", (paginas +tabla_paginas.renglones[0].offset)->value);
-	printf("El value es: %s \n", (paginas +tabla_paginas.renglones[1].offset)->value);
 	Segmento tabla1;
 	strcpy(tabla1.path, "TABLA1");
 	tabla1.numeros_pagina = list_create();
@@ -67,56 +66,7 @@ int main() {
 
 	list_add(tabla_segmentos, &tabla1);
 
-	t_PackageSelect select;
-	select.header = SELECT;
-	select.key = 21;
-	select.tabla = malloc(7 * sizeof(char));
-	strcpy(select.tabla, "TABLA1");
-
-	int cant_tablas = tabla_segmentos->elements_count;
-	printf("Cant: %d \n", cant_tablas);
-	int i = 0;
-	Segmento* segmento_encontrado = NULL;
-	while (i < cant_tablas) {
-		if (strcmp(((Segmento*) list_get(tabla_segmentos, i))->path,
-				select.tabla) == 0) {
-			segmento_encontrado = ((Segmento*) list_get(tabla_segmentos, i));
-		}
-		i++;
-	}
-
-	if (segmento_encontrado != NULL) {
-		int cant_paginas = segmento_encontrado->numeros_pagina->elements_count;
-		int j = 0;
-		int offsetPagina;
-		int key;
-		Pagina* pagina_encontrada = NULL;
-		Renglon_pagina* renglon;
-		while (j < cant_paginas) {
-
-			renglon = tabla_paginas.renglones+(int)list_get(segmento_encontrado->numeros_pagina, j);
-			offsetPagina = renglon->offset;
-			key = (paginas + offsetPagina)->key;
-
-			printf("Key ahora: %d \n", renglon->numero);
-
-			if (key == select.key) {
-				pagina_encontrada = (paginas + offsetPagina);
-			}
-			j++;
-		}
-		if (pagina_encontrada != NULL) {
-			printf("El value es: %s \n", pagina_encontrada->value);
-		} else {
-			printf("No tengo ese registro \n");
-		}
-	} else {
-		printf("No tengo esa tabla \n");
-	}
-
-	//
-
-	return 0;
+	//Harcode tablas
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
@@ -277,6 +227,7 @@ int main() {
 	send(socketCliente, serializedPackage,
 			2 * sizeof(t_metadata) + sizeof(describe.cant_tablas), 0);
 	dispose_package(&serializedPackage);
+	free(describe.tablas);
 
 	/*
 	 //thread
@@ -315,6 +266,7 @@ int main() {
 				package.header = SELECT;
 				//send_package(headerRecibido, &package, lfsSocket);
 
+				free(package.tabla);
 			} else if (headerRecibido == INSERT) {
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package,
@@ -349,12 +301,46 @@ int main() {
 	//pthread_mutex_destroy(&lock);
 	close(socketCliente);
 	close(listenningSocket);
-
+	list_destroy(tabla_segmentos);
+	free(memoriaPrincipal);
+	free(tabla_paginas.renglones);
 	log_destroy(g_logger);
 
 	/* See ya! */
 
 	return 0;
+}
+
+Segmento* buscarSegmento(char* tablaABuscar){
+
+	int esDeLaTabla(Segmento *segmento){
+		if(strcmp(segmento->path,tablaABuscar) == 0){
+			return 1;
+		}
+		return 0;
+	};
+
+	return (Segmento*)list_find(tabla_segmentos,(int)&esDeLaTabla);
+}
+
+Pagina* buscarPagina(int keyBuscado,Segmento* segmento){
+
+	Pagina* paginaEncontrada = NULL;
+
+	void esDeLaTabla(int key){
+		Renglon_pagina* renglon = tabla_paginas.renglones + key;
+		int offsetPagina = renglon->offset;
+		int keyPagina = ((Pagina*)(memoriaPrincipal + offsetPagina))->key;
+
+		if (keyBuscado == keyPagina) {
+			paginaEncontrada = ((Pagina*)(memoriaPrincipal + offsetPagina));
+		}
+
+		};
+
+	list_iterate(segmento->numeros_pagina,&esDeLaTabla);
+
+	return paginaEncontrada;
 }
 
 void ejectuarComando(int header, void* package) {
@@ -368,9 +354,21 @@ void ejectuarComando(int header, void* package) {
 	}
 }
 
-void ejecutarSelect(t_PackageSelect* package) {
-	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
-			package->key);
+void ejecutarSelect(t_PackageSelect* select) {
+	Segmento* segmento_encontrado = buscarSegmento(select->tabla);
+		if (segmento_encontrado != NULL) {
+
+			Pagina* pagina_encontrada =	buscarPagina(select->key,segmento_encontrado);
+
+			if (pagina_encontrada != NULL) {
+				printf("El value es: %s \n", pagina_encontrada->value);
+
+			} else {
+				printf("No tengo ese registro \n");
+			}
+		} else {
+			printf("No tengo esa tabla \n");
+		}
 }
 
 void ejecutarInsert(t_PackageInsert* package) {
