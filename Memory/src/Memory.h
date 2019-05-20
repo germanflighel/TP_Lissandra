@@ -52,6 +52,6 @@ t_log* g_logger;
 void abrir_con(t_config **);
 void send_package(int header, void* package, int lfsSocket);
 Segmento* buscarSegmento(char* tabla);
-Pagina* buscarPagina(int key,Segmento* segmento);
+Pagina* buscarPagina(int key,Segmento* segmento,int* num_pag);
 
 #endif

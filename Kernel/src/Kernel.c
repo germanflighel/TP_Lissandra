@@ -388,6 +388,9 @@ void run(char* rutaRecibida, int serverSocket) {
 			}
 
 			if (enviar && entradaValida) {
+				if(parametros[strlen(parametros)-1]=='\n'){
+					parametros[strlen(parametros)-1] = '\0';
+				}
 				interpretarComando(header, parametros, serverSocket);
 			}
 
