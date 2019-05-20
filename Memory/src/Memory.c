@@ -21,6 +21,103 @@ int main() {
 	char* ip;
 	char* puerto;
 
+	int cant_paginas = floor(MEMORY_SIZE / sizeof(Pagina));
+	Pagina* paginas = malloc(MEMORY_SIZE);
+	t_list* tabla_segmentos = list_create();
+	Tabla_paginas tabla_paginas;
+	tabla_paginas.renglones = malloc(cant_paginas * sizeof(Renglon_pagina));
+
+	//hardcode tablas
+	Pagina franco;
+	franco.timeStamp = 1557972674;
+	franco.key = 20;
+	strcpy(franco.value, "Franco");
+
+	Pagina santi;
+	santi.timeStamp = 1557972674;
+	santi.key = 21;
+	strcpy(santi.value, "Santi");
+
+	Renglon_pagina renglonFranco;
+	renglonFranco.numero = 0;
+	renglonFranco.modificado = 0;
+	renglonFranco.offset = 0;
+
+	Renglon_pagina renglonSanti;
+	renglonSanti.numero = 1;
+	renglonSanti.modificado = 0;
+	renglonSanti.offset = 1;
+
+	memcpy((paginas + renglonFranco.offset), &franco, sizeof(Pagina));
+	memcpy((paginas + renglonSanti.offset), &santi, sizeof(Pagina));
+
+	printf("El value es: %s \n", (paginas + renglonFranco.offset)->value);
+	printf("El value es: %s \n", (paginas + renglonSanti.offset)->value);
+
+	tabla_paginas.renglones[0] = renglonFranco;
+	tabla_paginas.renglones[1] = renglonSanti;
+
+	printf("El value es: %s \n", (paginas +tabla_paginas.renglones[0].offset)->value);
+	printf("El value es: %s \n", (paginas +tabla_paginas.renglones[1].offset)->value);
+	Segmento tabla1;
+	strcpy(tabla1.path, "TABLA1");
+	tabla1.numeros_pagina = list_create();
+	list_add(tabla1.numeros_pagina, 0);
+	list_add(tabla1.numeros_pagina, 1);
+
+	list_add(tabla_segmentos, &tabla1);
+
+	t_PackageSelect select;
+	select.header = SELECT;
+	select.key = 21;
+	select.tabla = malloc(7 * sizeof(char));
+	strcpy(select.tabla, "TABLA1");
+
+	int cant_tablas = tabla_segmentos->elements_count;
+	printf("Cant: %d \n", cant_tablas);
+	int i = 0;
+	Segmento* segmento_encontrado = NULL;
+	while (i < cant_tablas) {
+		if (strcmp(((Segmento*) list_get(tabla_segmentos, i))->path,
+				select.tabla) == 0) {
+			segmento_encontrado = ((Segmento*) list_get(tabla_segmentos, i));
+		}
+		i++;
+	}
+
+	if (segmento_encontrado != NULL) {
+		int cant_paginas = segmento_encontrado->numeros_pagina->elements_count;
+		int j = 0;
+		int offsetPagina;
+		int key;
+		Pagina* pagina_encontrada = NULL;
+		Renglon_pagina* renglon;
+		while (j < cant_paginas) {
+
+			renglon = tabla_paginas.renglones+(int)list_get(segmento_encontrado->numeros_pagina, j);
+			offsetPagina = renglon->offset;
+			key = (paginas + offsetPagina)->key;
+
+			printf("Key ahora: %d \n", renglon->numero);
+
+			if (key == select.key) {
+				pagina_encontrada = (paginas + offsetPagina);
+			}
+			j++;
+		}
+		if (pagina_encontrada != NULL) {
+			printf("El value es: %s \n", pagina_encontrada->value);
+		} else {
+			printf("No tengo ese registro \n");
+		}
+	} else {
+		printf("No tengo esa tabla \n");
+	}
+
+	//
+
+	return 0;
+
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
@@ -163,21 +260,22 @@ int main() {
 	t_describe describe;
 	t_metadata meta;
 	meta.consistencia = SC;
-	strcpy(meta.nombre_tabla,"TABLA_STRONG");
+	strcpy(meta.nombre_tabla, "TABLA_STRONG");
 	t_metadata meta2;
 	meta2.consistencia = EC;
-	strcpy(meta2.nombre_tabla,"TABLA_EVENTUAL");
+	strcpy(meta2.nombre_tabla, "TABLA_EVENTUAL");
 	describe.cant_tablas = 2;
-	describe.tablas = malloc(2*sizeof(t_metadata));
+	describe.tablas = malloc(2 * sizeof(t_metadata));
 	describe.tablas[0] = meta;
 	describe.tablas[1] = meta2;
 
-	printf("Tabla %s \n",describe.tablas[0].nombre_tabla);
-	printf("Tabla %s \n",describe.tablas[1].nombre_tabla);
+	printf("Tabla %s \n", describe.tablas[0].nombre_tabla);
+	printf("Tabla %s \n", describe.tablas[1].nombre_tabla);
 
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(&describe);
-	send(socketCliente, serializedPackage, 2*sizeof(t_metadata) + sizeof(describe.cant_tablas), 0);
+	send(socketCliente, serializedPackage,
+			2 * sizeof(t_metadata) + sizeof(describe.cant_tablas), 0);
 	dispose_package(&serializedPackage);
 
 	/*
@@ -259,23 +357,21 @@ int main() {
 	return 0;
 }
 
-
-void ejectuarComando(int header,void* package) {
-	switch(header){
+void ejectuarComando(int header, void* package) {
+	switch (header) {
 	case SELECT:
-		ejecutarSelect((t_PackageSelect*)package);
+		ejecutarSelect((t_PackageSelect*) package);
 		break;
 	case INSERT:
-		ejecutarInsert((t_PackageInsert*)package);
-			break;
+		ejecutarInsert((t_PackageInsert*) package);
+		break;
 	}
 }
 
-void ejecutarSelect(t_PackageSelect* package){
+void ejecutarSelect(t_PackageSelect* package) {
 	printf("SELECT recibido (Tabla: %s, Key: %d)\n", package->tabla,
 			package->key);
 }
-
 
 void ejecutarInsert(t_PackageInsert* package) {
 	printf("INSERT recibido (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
@@ -300,12 +396,14 @@ void send_package(int header, void* package, int lfsSocket) {
 	switch (header) {
 	case SELECT:
 		serializedPackage = serializarSelect((t_PackageSelect*) package);
-		send(lfsSocket, serializedPackage, ((t_PackageSelect*) package)->total_size, 0);
+		send(lfsSocket, serializedPackage,
+				((t_PackageSelect*) package)->total_size, 0);
 
 		break;
 	case INSERT:
 		serializedPackage = serializarInsert((t_PackageInsert*) package);
-		send(lfsSocket, serializedPackage, ((t_PackageInsert*) package)->total_size, 0);
+		send(lfsSocket, serializedPackage,
+				((t_PackageInsert*) package)->total_size, 0);
 
 		break;
 	}
