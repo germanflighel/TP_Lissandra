@@ -160,7 +160,7 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	//2) Obtener Metadata
 	t_dictionary* metadata = dictionary_create();
 
-	obtener_metadata(&metadata, mi_ruta);
+	//obtener_metadata(mi_ruta);
 
 	log_debug(logger, (char*) dictionary_get(metadata, "consistencia"));
 	log_debug(logger,
@@ -203,18 +203,17 @@ void lfs_describe(char* punto_montaje){
 	if (tables_directory) {
 		while ((a_directory = readdir(tables_directory)) != NULL) {
 			if (strcmp(a_directory->d_name, ".") && strcmp(a_directory->d_name, "..")) {
+				Metadata metadata;
 				char* a_table_path = string_new();
 				char* table_name = malloc(strlen(a_directory->d_name));
 				memcpy(table_name, a_directory->d_name,strlen(a_directory->d_name) + 1);
 				string_append(&a_table_path, tablas_path);
 				string_append(&a_table_path, table_name);
 				log_error(logger, a_table_path);
-				t_dictionary* metadata = dictionary_create();
 				log_debug(logger, "Voy a obtener metadata");
 				obtener_metadata(&metadata, a_table_path);
-				loguear_metadata(metadata);
+				loguear_metadata(&metadata);
 				free(a_table_path);
-				free(metadata);
 			}
 
 		}
@@ -241,14 +240,14 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 	return status;
 }
 
-void loguear_metadata(t_dictionary* metadata) {
+void loguear_metadata(Metadata* metadata) {
 
-	log_debug(logger, (char*) dictionary_get(metadata, "consistencia"));
-	log_debug(logger, string_itoa(dictionary_get(metadata, "particiones")));
-	log_debug(logger, string_itoa(dictionary_get(metadata, "tiempoDeCompactacion")));
+	log_debug(logger, consistency_to_str(metadata->consistency));
+	log_debug(logger, string_itoa(metadata->partitions));
+	log_debug(logger, string_itoa(metadata->compaction_time));
 }
 
-void obtener_metadata(t_dictionary** metadata, char* ruta) {
+void obtener_metadata(Metadata* metadata, char* ruta) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* mi_metadata = "/Metadata";
@@ -256,25 +255,24 @@ void obtener_metadata(t_dictionary** metadata, char* ruta) {
 	log_debug(logger,mi_ruta);
 
 	t_config* config_metadata = config_create(mi_ruta);
-	log_debug(logger,"Cree la config de metada");
+	log_debug(logger,"Voy a leer las particiones");
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
-	log_debug(logger,"Voy a hacer un put de las particiones");
-	dictionary_put(*metadata, "particiones", particiones);
+	metadata->partitions = particiones;
+	log_debug(logger,"Voy a leer el tiempo de compactacion");
 	long tiempoDeCompactacion = config_get_long_value(config_metadata,"COMPACTION_TIME");
-	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
-
-	char* consistencia = malloc(3 * sizeof(char));
+	metadata->compaction_time = tiempoDeCompactacion;
+	char* consistencia = malloc(4 * sizeof(char));
+	log_debug(logger,"Voy a leer la consistencia");
 	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
-	memcpy(consistencia, temp, 3 * sizeof(char));
+	memcpy(consistencia, temp, 4 * sizeof(char));
+	metadata->consistency = consistency_to_int(consistencia);
+	log_debug(logger,"Lei todo papa");
 	free(temp);
+	free(consistencia);
 
-	dictionary_put(*metadata, "consistencia", consistencia);
-	log_debug(logger, "Voy a loguear la metadata");
-	loguear_metadata(*metadata); //Si saco este loguear_metadata se rompe todo...
-
-
-	free(mi_ruta);
+	loguear_metadata(metadata);
 	config_destroy(config_metadata);
+	free(mi_ruta);
 
 }
 
@@ -298,6 +296,29 @@ void encontrar_keys(int keyBuscada, int particion_objetivo,
 		}
 	}
 
+}
+
+int consistency_to_int(char* consistency){
+	if(strcmp(consistency, "SC") == 0){
+		return SC;
+	}
+	else if(strcmp(consistency, "SHC") == 0){
+		return SHC;
+	}
+	else if(strcmp(consistency, "EC") == 0){
+		return EC;
+	}
+}
+
+char* consistency_to_str(int consistency){
+	switch(consistency){
+		case SC:
+			return "SC";
+		case SHC:
+			return "SHC";
+		case EC:
+			return "EC";
+	}
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo
