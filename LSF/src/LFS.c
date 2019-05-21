@@ -337,8 +337,10 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	    int status = fstat (fd, & s);
 	    size = s.st_size;
 
+	    //TODO: Leer solo hasta el \n o hasta el tercer ; y manejar el offset
 	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
 	    for (int i = 0; i < size; i++) {
+
 	        char c;
 	        printf("%c", f[i]);
 	    }
