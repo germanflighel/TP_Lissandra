@@ -164,16 +164,22 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 void lfs_select(t_PackageSelect* package, char* ruta) {
 
-
 	printf("Antes de append \n");
 
-	char* mi_ruta = string_duplicate(ruta);
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta,ruta);
 
 	log_debug(logger, mi_ruta);
 
 	printf("A ver si existe tabla \n");
 
-	if (!existe_tabla(package->tabla, &mi_ruta)) {
+	char* tables = "/tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, package->tabla);
+
+	log_debug(logger, mi_ruta);
+
+	if (!existe_tabla(&mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
 		return;
 	}
@@ -244,6 +250,7 @@ t_list* lfs_describe(char* punto_montaje){
 	return metadatas;
 }
 
+
 int existe_tabla(char* nombre_tabla, char** ruta) {
 
 	char* tables = "/tables/";
@@ -251,9 +258,11 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 	string_append(ruta, tables);
 	string_append(ruta, nombre_tabla);
 	printf("Nono, me rompi aca papi \n");
+
 	int status=1;
-	log_debug(logger, *ruta);
+	log_debug(logger, temp);
 	DIR *dirp;
+
 	dirp = opendir(*ruta);
 
 	if (dirp == NULL) {
@@ -262,6 +271,8 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 	closedir(dirp);
 	return status;
 }
+
+
 
 void loguear_metadata(Metadata* metadata) {
 	log_debug(logger, metadata->nombre_tabla);
@@ -281,9 +292,11 @@ Metadata* obtener_metadata(char* ruta) {
 
 	Metadata* metadata = malloc(sizeof(Metadata));
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
+
 	metadata->partitions = particiones;
 	long tiempoDeCompactacion = config_get_long_value(config_metadata,"COMPACTION_TIME");
 	metadata->compaction_time = tiempoDeCompactacion;
+
 
 	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
 	metadata->consistency = consistency_to_int(consistencia);

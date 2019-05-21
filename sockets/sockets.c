@@ -42,6 +42,51 @@ void separarEntrada(char* entrada, int* header, char** parametros) {
 	free(entradaSeparada);
 }
 
+char* serializarDescribe(t_describe *package) {
+
+	char *serializedPackage = malloc(sizeof(package->cant_tablas)+package->cant_tablas*sizeof(t_metadata));
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->cant_tablas);
+	memcpy(serializedPackage + offset, &(package->cant_tablas), size_to_send);
+	offset += size_to_send;
+
+	for(int x=0;x<package->cant_tablas;x++)
+	{
+		size_to_send = sizeof(t_metadata);
+		memcpy(serializedPackage + offset, &(package->tablas[x]), size_to_send);
+		offset += size_to_send;
+
+	}
+
+	return serializedPackage;
+}
+
+int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint16_t));
+
+	status = recv(socketCliente, buffer, sizeof(package->cant_tablas), 0);
+	memcpy(&(package->cant_tablas), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+	int tamanio_lista = package->cant_tablas*sizeof(t_metadata);
+	package->tablas = malloc(tamanio_lista);
+
+	status = recv(socketCliente, package->tablas, tamanio_lista, 0);
+	if (!status)
+		return 0;
+
+	free(buffer);
+
+	return status;
+}
+
 int fill_package_select(t_PackageSelect *package ,char* parametros) {
 
 	char** parametrosSeparados = string_split(parametros, " ");
@@ -172,13 +217,12 @@ int recieve_header(int socketCliente) {
 	uint32_t header;
 
 	int status;
-	int buffer_size;
-	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+	int buffer_size = sizeof(uint32_t);
+	char *buffer = malloc(buffer_size);
 
 	status = recv(socketCliente, buffer, buffer_size, 0);
 
 	memcpy(&(header), buffer, buffer_size);
-
 	if (!status)
 		return 0;
 	free(buffer);

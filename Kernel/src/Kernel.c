@@ -75,16 +75,17 @@ int main() {
 		log_info(logger_Kernel, "No me pude conectar con el servidor");
 	}
 
-	/*
-	 *	Estoy conectado! Ya solo me queda una cosa:
-	 *
-	 *	Enviar datos!
-	 *
-	 *	Debemos obtener el mensaje que el usuario quiere mandar al chat, y luego serializarlo.
-	 *
-	 *	Si el mensaje es "exit", saldremos del sistema.
-	 *
-	 */
+
+	printf("Esperando describe.\n");
+
+	t_describe describe;
+	recieve_and_deserialize_describe(&describe,serverSocket);
+
+	printf("Tabla %s \n",describe.tablas[0].nombre_tabla);
+	printf("Consistencia %d \n",describe.tablas[0].consistencia);
+
+	printf("Tabla %s \n",describe.tablas[1].nombre_tabla);
+	printf("Consistencia %d \n",describe.tablas[1].consistencia);
 
 	int enviar = 1;
 	int entradaValida;
@@ -387,6 +388,9 @@ void run(char* rutaRecibida, int serverSocket) {
 			}
 
 			if (enviar && entradaValida) {
+				if(parametros[strlen(parametros)-1]=='\n'){
+					parametros[strlen(parametros)-1] = '\0';
+				}
 				interpretarComando(header, parametros, serverSocket);
 			}
 

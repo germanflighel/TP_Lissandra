@@ -35,7 +35,7 @@ typedef struct t_PackagePosta {
 	uint32_t header;
 	uint32_t message_long;
 	char* message;
-	uint32_t total_size;			// NOTA: Es calculable. Aca lo tenemos por fines didacticos!
+	uint32_t total_size;
 } t_PackagePosta;
 
 
