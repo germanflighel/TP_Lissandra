@@ -162,16 +162,18 @@ char* serializarSelect(t_PackageSelect *package) {
 
 int fill_package_insert(t_PackageInsert *package ,char* parametros, int filesys) {
 
-	char** parametrosSeparados = string_split(parametros, " ");
+	char** parametrosSeparados = string_n_split(parametros,3 ," ");
 
 	int cantParametros = cant_parametros(parametrosSeparados);
 
+	if(!(strlen(parametrosSeparados[2])>=3)){
+		return 0;
+	}
 	if(cantParametros != 3){
 		if(!filesys || cantParametros != 4){
 			return 0;
 		}
 	}
-
 
 	package->header = INSERT;
 	package->tabla_long = strlen(parametrosSeparados[0]);
@@ -179,10 +181,11 @@ int fill_package_insert(t_PackageInsert *package ,char* parametros, int filesys)
 
 	memcpy(package->tabla, parametrosSeparados[0], package->tabla_long+1);
 
-	package->value_long = strlen(parametrosSeparados[2]);
-	package->value = malloc(package->value_long+1);
+	package->value_long = strlen(parametrosSeparados[2])-2;
 
-	memcpy(package->value, parametrosSeparados[2], package->value_long+1);
+	package->value = malloc(package->value_long+1);
+	memcpy(package->value, parametrosSeparados[2]+1, package->value_long);
+	package->value[package->value_long]='\0';
 
 	package->key = atoi(parametrosSeparados[1]);
 
