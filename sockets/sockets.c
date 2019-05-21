@@ -250,6 +250,7 @@ int recieve_header(int socketCliente) {
 	status = recv(socketCliente, buffer, buffer_size, 0);
 
 	memcpy(&(header), buffer, buffer_size);
+
 	if (!status)
 		return 0;
 	free(buffer);

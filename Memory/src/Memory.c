@@ -234,9 +234,11 @@ int main() {
 	 */
 	//pthread_exit(&threadL);
 	//pthread_mutex_destroy(&lock);
-	pthread_detach(&threadL);
+	pthread_exit(&threadL);
+
 	close(socketCliente);
 	close(listenningSocket);
+	destruirTablas();
 	list_destroy(tabla_segmentos);
 	free(memoriaPrincipal);
 	free(tabla_paginas.renglones);
@@ -245,6 +247,15 @@ int main() {
 	/* See ya! */
 
 	return 0;
+}
+
+void destruirTablas() {
+
+	void destruir(Segmento *segmento) {
+		list_destroy(segmento->numeros_pagina);
+	}
+
+	list_iterate(tabla_segmentos, &destruir);
 }
 
 void printearTablas() {
@@ -352,6 +363,7 @@ int primerpaginaLibre() {
 	}
 	return -1;
 }
+
 
 int ejecutarInsert(t_PackageInsert* insert) {
 
