@@ -57,6 +57,30 @@ int main() {
 		return 0;
 	}
 
+	t_list* metadatas = lfs_describe(ruta);
+	list_iterate(metadatas, (void*) loguear_metadata);
+
+	t_describe* describe = malloc(sizeof(t_describe));
+	int cantidad_de_tablas = metadatas->elements_count;
+	describe->cant_tablas = cantidad_de_tablas;
+	describe->tablas = malloc(cantidad_de_tablas * sizeof(t_metadata));
+
+	for (int i = 0;  i < cantidad_de_tablas; i++) {
+		Metadata* a_metadata = (Metadata*) list_get(metadatas, i);
+		t_metadata* meta = malloc(sizeof(t_metadata));
+		meta->consistencia = a_metadata->consistency;
+		strcpy(meta->nombre_tabla, a_metadata->nombre_tabla);
+
+		describe->tablas[i] = *meta;
+	}
+
+	/*
+	char serializedPackage;
+	serializedPackage = serializarDescribe(&describe);
+	//send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+	dispose_package(&serializedPackage);*/
+
+
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
@@ -92,7 +116,14 @@ int main() {
 
 				ejecutar_comando(headerRecibido, &package, ruta);
 
-			}
+			} /*else if (headerRecibido == DESCRIBE) {
+
+				log_debug(logger, "Got an DESCRIBE");
+
+				t_describe package;
+
+
+			}*/
 
 		}
 
@@ -157,7 +188,7 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	//2) Obtener Metadata
 	t_dictionary* metadata = dictionary_create();
 
-	obtener_metadata(&metadata, mi_ruta);
+	//obtener_metadata(mi_ruta);
 
 	log_debug(logger, (char*) dictionary_get(metadata, "consistencia"));
 	log_debug(logger,
@@ -184,57 +215,96 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 }
 
 void lfs_insert(t_PackageInsert* package) {
-	t_log* logger_insert = iniciar_logger();
-	log_debug(logger_insert, "Got an INSERT");
 
-	log_debug(logger_insert, package->tabla);
-	log_debug(logger_insert, string_itoa(package->key));
-	log_debug(logger_insert, package->value);
-	log_debug(logger_insert, string_itoa(package->timestamp));
-
-	log_destroy(logger_insert);
 
 }
 
-int existe_tabla(char** ruta) {
-	char* temp = *ruta;
+t_list* lfs_describe(char* punto_montaje){
+
+	t_list* metadatas = list_create();
+	DIR *tables_directory;
+	struct dirent *a_directory;
+	char* tablas_path = string_new();
+	string_append(&tablas_path, punto_montaje);
+	string_append(&tablas_path, "/tables/");
+	log_debug(logger, tablas_path);
+	tables_directory = opendir(tablas_path);
+	if (tables_directory) {
+		while ((a_directory = readdir(tables_directory)) != NULL) {
+			if (strcmp(a_directory->d_name, ".") && strcmp(a_directory->d_name, "..")) {
+				char* a_table_path = string_new();
+				char* table_name = malloc(strlen(a_directory->d_name));
+				memcpy(table_name, a_directory->d_name,strlen(a_directory->d_name) + 1);
+				string_append(&a_table_path, tablas_path);
+				string_append(&a_table_path, table_name);
+				Metadata* metadata = obtener_metadata(a_table_path);
+				strcpy(metadata->nombre_tabla, table_name);
+				list_add(metadatas, metadata);
+				free(table_name);
+				free(a_table_path);
+			}
+
+		}
+		closedir(tables_directory);
+	}
+	return metadatas;
+}
+
+
+int existe_tabla(char* nombre_tabla, char** ruta) {
+
+	char* tables = "/tables/";
+	printf("Me rompi aca \n");
+	string_append(ruta, tables);
+	string_append(ruta, nombre_tabla);
+	printf("Nono, me rompi aca papi \n");
+
 	int status=1;
 	log_debug(logger, temp);
 	DIR *dirp;
-	if ((dirp = opendir(temp)) == NULL) {
+
+	dirp = opendir(*ruta);
+
+	if (dirp == NULL) {
 		status= 0;
 	}
 	closedir(dirp);
 	return status;
 }
 
-void obtener_metadata(t_dictionary** metadata, char* ruta) {
+
+
+void loguear_metadata(Metadata* metadata) {
+	log_debug(logger, metadata->nombre_tabla);
+	log_debug(logger, consistency_to_str(metadata->consistency));
+	log_debug(logger, string_itoa(metadata->partitions));
+	log_debug(logger, string_itoa(metadata->compaction_time));
+}
+
+Metadata* obtener_metadata(char* ruta) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* mi_metadata = "/Metadata";
 	string_append(&mi_ruta, mi_metadata);
+	log_debug(logger, mi_ruta);
 
 	t_config* config_metadata = config_create(mi_ruta);
 
+	Metadata* metadata = malloc(sizeof(Metadata));
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
-	dictionary_put(*metadata, "particiones", particiones);
-	long tiempoDeCompactacion = config_get_long_value(config_metadata,
-			"COMPACTION_TIME");
-	dictionary_put(*metadata, "tiempoDeCompactacion", tiempoDeCompactacion);
 
-	char* consistencia = malloc(3 * sizeof(char));
-	char* temp = config_get_string_value(config_metadata, "CONSISTENCY");
-	memcpy(consistencia, temp, 3 * sizeof(char));
-	free(temp);
+	metadata->partitions = particiones;
+	long tiempoDeCompactacion = config_get_long_value(config_metadata,"COMPACTION_TIME");
+	metadata->compaction_time = tiempoDeCompactacion;
 
 
-	dictionary_put(*metadata, "consistencia", consistencia);
-
+	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	metadata->consistency = consistency_to_int(consistencia);
 
 	config_destroy(config_metadata);
-	//free(mi_ruta);
-	//free(mi_metadata);
+	free(mi_ruta);
 
+	return metadata;
 }
 
 int calcular_particion(int key, int cantidad_particiones) {
@@ -257,6 +327,29 @@ void encontrar_keys(int keyBuscada, int particion_objetivo,
 		}
 	}
 
+}
+
+int consistency_to_int(char* consistency){
+	if(strcmp(consistency, "SC") == 0){
+		return SC;
+	}
+	else if(strcmp(consistency, "SHC") == 0){
+		return SHC;
+	}
+	else if(strcmp(consistency, "EC") == 0){
+		return EC;
+	}
+}
+
+char* consistency_to_str(int consistency){
+	switch(consistency){
+		case SC:
+			return "SC";
+		case SHC:
+			return "SHC";
+		case EC:
+			return "EC";
+	}
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo
