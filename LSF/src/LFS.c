@@ -105,7 +105,7 @@ int main() {
 				t_PackageSelect package;
 				status = recieve_and_deserialize_select(&package, socketCliente);
 
-				ejecutar_comando(headerRecibido, &package, ruta);
+				//ejecutar_comando(headerRecibido, &package, ruta);
 
 			} else if (headerRecibido == INSERT) {
 
@@ -114,7 +114,7 @@ int main() {
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package, socketCliente);
 
-				ejecutar_comando(headerRecibido, &package, ruta);
+				//ejecutar_comando(headerRecibido, &package, ruta);
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
@@ -163,7 +163,7 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 void lfs_select(t_PackageSelect* package, char* ruta) {
-
+/*
 	printf("Antes de append \n");
 
 	char* mi_ruta = string_new();
@@ -212,6 +212,7 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 
 	log_debug(logger, "Going back");
 	printf("hola \n");
+	*/
 }
 
 void lfs_insert(t_PackageInsert* package) {
@@ -252,7 +253,7 @@ t_list* lfs_describe(char* punto_montaje){
 
 
 int existe_tabla(char* nombre_tabla, char** ruta) {
-
+/*
 	char* tables = "/tables/";
 	printf("Me rompi aca \n");
 	string_append(ruta, tables);
@@ -270,6 +271,7 @@ int existe_tabla(char* nombre_tabla, char** ruta) {
 	}
 	closedir(dirp);
 	return status;
+	*/
 }
 
 

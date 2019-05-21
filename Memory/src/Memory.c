@@ -89,36 +89,16 @@ int main() {
 
 	config_destroy(conection_conf);
 
-	/*
-	 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
-	 *	Tengo que encontrar una forma por la que conectarme al server... Ya se! Un socket!
-	 *
-	 * 	Obtiene un socket (un file descriptor -todo en linux es un archivo-), utilizando la estructura serverInfo que generamos antes.
-	 *
-	 */
 	int lfsSocket;
 	lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
 			serverInfo->ai_protocol);
 
-	/*
-	 * 	Perfecto, ya tengo el medio para conectarme (el archivo), y ya se lo pedi al sistema.
-	 * 	Ahora me conecto!
-	 *
-	 */
 	connect(lfsSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
 	freeaddrinfo(serverInfo);	// No lo necesitamos mas
 
 	printf("Conectado al LFS \n");
 
 	enviar_handshake(MEMORY, lfsSocket);
-	/*
-
-	 *
-	 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
-	 *
-	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
-	 *
-	 */
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
@@ -127,28 +107,9 @@ int main() {
 
 	getaddrinfo(NULL, PUERTO, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
 
-	/*
-	 * 	Descubiertos los misterios de la vida (por lo menos, para la conexion de red actual), necesito enterarme de alguna forma
-	 * 	cuales son las conexiones que quieren establecer conmigo.
-	 *
-	 * 	Para ello, y basandome en el postulado de que en Linux TODO es un archivo, voy a utilizar... Si, un archivo!
-	 *
-	 * 	Mediante socket(), obtengo el File Descriptor que me proporciona el sistema (un integer identificador).
-	 *
-	 */
-	/* Necesitamos un socket que escuche las conecciones entrantes */
 	int listenningSocket;
 	listenningSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
 			serverInfo->ai_protocol);
-
-	/*
-	 * 	Perfecto, ya tengo un archivo que puedo utilizar para analizar las conexiones entrantes. Pero... ������Por donde?
-	 *
-	 * 	Necesito decirle al sistema que voy a utilizar el archivo que me proporciono para escuchar las conexiones por un puerto especifico.
-	 *
-	 * 				OJO! Todavia no estoy escuchando las conexiones entrantes!
-	 *
-	 */
 
 	int waiting = 1;
 	if (bind(listenningSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
@@ -165,32 +126,10 @@ int main() {
 
 	freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
-	/*
-	 * 	Ya tengo un medio de comunicacion (el socket) y le dije por que "telefono" tiene que esperar las llamadas.
-	 *
-	 * 	Solo me queda decirle que vaya y escuche!
-	 *
-	 */
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
 	printf("Esperando kernel... \n");
 
-	/*
-	 * 	El sistema esperara hasta que reciba una conexion entrante...
-	 * 	...
-	 * 	...
-	 * 	BING!!! Nos estan llamando! ������Y ahora?
-	 *
-	 *	Aceptamos la conexion entrante, y creamos un nuevo socket mediante el cual nos podamos comunicar (que no es mas que un archivo).
-	 *
-	 *	������Por que crear un nuevo socket? Porque el anterior lo necesitamos para escuchar las conexiones entrantes. De la misma forma que
-	 *	uno no puede estar hablando por telefono a la vez que esta esperando que lo llamen, un socket no se puede encargar de escuchar
-	 *	las conexiones entrantes y ademas comunicarse con un cliente.
-	 *
-	 *			Nota: Para que el listenningSocket vuelva a esperar conexiones, necesitariamos volver a decirle que escuche, con listen();
-	 *				En este ejemplo nos dedicamos unicamente a trabajar con el cliente y no escuchamos mas conexiones.
-	 *
-	 */
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
 
@@ -201,12 +140,6 @@ int main() {
 		printf("Handshake invalido \n");
 		return 0;
 	}
-
-	/*
-	 * 	Ya estamos listos para recibir paquetes de nuestro cliente...
-	 *		 *
-	 *	Cuando el cliente cierra la conexion, recieve_and_deserialize() devolvera 0.
-	 */
 
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
@@ -268,7 +201,7 @@ int main() {
 				ejectuarComando(headerRecibido, &package);
 
 				package.header = SELECT;
-				//send_package(headerRecibido, &package, lfsSocket);
+				send_package(headerRecibido, &package, lfsSocket);
 
 				free(package.tabla);
 			} else if (headerRecibido == INSERT) {
@@ -279,7 +212,7 @@ int main() {
 				ejectuarComando(headerRecibido, &package);
 				package.header = INSERT;
 
-				//send_package(headerRecibido, &package, lfsSocket);
+				send_package(headerRecibido, &package, lfsSocket);
 			}
 
 		}
