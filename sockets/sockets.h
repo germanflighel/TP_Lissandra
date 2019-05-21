@@ -17,6 +17,7 @@
 #define EC 12
 
 #define MAX_MESSAGE_SIZE 300
+#define MAX_TABLE_LENGTH 20
 
 #include <stdio.h>
 #include <string.h>
@@ -29,6 +30,7 @@
 #include <commons/collections/list.h>
 #include <commons/string.h>
 
+
 typedef struct t_PackagePosta {
 	uint32_t header;
 	uint32_t message_long;
@@ -37,6 +39,15 @@ typedef struct t_PackagePosta {
 } t_PackagePosta;
 
 
+typedef struct t_metadata {
+    char nombre_tabla[MAX_TABLE_LENGTH];
+    uint8_t consistencia;
+} t_metadata;
+
+typedef struct t_describe {
+    uint16_t cant_tablas;
+    t_metadata* tablas;
+} t_describe;
 
 
 typedef struct t_PackageSelect {
