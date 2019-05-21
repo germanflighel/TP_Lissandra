@@ -126,6 +126,9 @@ int main() {
 
 	freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
+	t_describe describeRecibido;
+	recieve_and_deserialize_describe(&describeRecibido,lfsSocket);
+
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
 	printf("Esperando kernel... \n");
@@ -145,27 +148,12 @@ int main() {
 
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
 
-	t_describe describe;
-	t_metadata meta;
-	meta.consistencia = SC;
-	strcpy(meta.nombre_tabla, "TABLA_STRONG");
-	t_metadata meta2;
-	meta2.consistencia = EC;
-	strcpy(meta2.nombre_tabla, "TABLA_EVENTUAL");
-	describe.cant_tablas = 2;
-	describe.tablas = malloc(2 * sizeof(t_metadata));
-	describe.tablas[0] = meta;
-	describe.tablas[1] = meta2;
-
-	printf("Tabla %s \n", describe.tablas[0].nombre_tabla);
-	printf("Tabla %s \n", describe.tablas[1].nombre_tabla);
-
 	char* serializedPackage;
-	serializedPackage = serializarDescribe(&describe);
+	serializedPackage = serializarDescribe(&describeRecibido);
 	send(socketCliente, serializedPackage,
-			2 * sizeof(t_metadata) + sizeof(describe.cant_tablas), 0);
+			2 * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
 	dispose_package(&serializedPackage);
-	free(describe.tablas);
+	free(describeRecibido.tablas);
 
 	/*
 	 //thread

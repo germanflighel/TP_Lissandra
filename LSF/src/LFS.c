@@ -74,11 +74,12 @@ int main() {
 		describe->tablas[i] = *meta;
 	}
 
-	/*
-	char serializedPackage;
-	serializedPackage = serializarDescribe(&describe);
-	//send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
-	dispose_package(&serializedPackage);*/
+
+	char* serializedPackage;
+	serializedPackage = serializarDescribe(describe);
+	log_debug(logger, string_itoa(cantidad_de_tablas));
+	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+	dispose_package(&serializedPackage);
 
 
 	t_PackagePosta package;
@@ -329,29 +330,6 @@ void encontrar_keys(int keyBuscada, int particion_objetivo,
 		}
 	}
 
-}
-
-int consistency_to_int(char* consistency){
-	if(strcmp(consistency, "SC") == 0){
-		return SC;
-	}
-	else if(strcmp(consistency, "SHC") == 0){
-		return SHC;
-	}
-	else if(strcmp(consistency, "EC") == 0){
-		return EC;
-	}
-}
-
-char* consistency_to_str(int consistency){
-	switch(consistency){
-		case SC:
-			return "SC";
-		case SHC:
-			return "SHC";
-		case EC:
-			return "EC";
-	}
 }
 
 //Preguntar que onda esta opcion, si pierdo la referencia al hacer malloc y devolverlo. Comparar con la otra funcion de abajo

@@ -87,6 +87,30 @@ int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
 	return status;
 }
 
+
+int recieve_and_send_describe(t_describe *package, int socketCliente,int socketDestino) {
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint16_t));
+
+	status = recv(socketCliente, buffer, sizeof(package->cant_tablas), 0);
+	memcpy(&(package->cant_tablas), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+	int tamanio_lista = package->cant_tablas*sizeof(t_metadata);
+	package->tablas = malloc(tamanio_lista);
+
+	status = recv(socketCliente, package->tablas, tamanio_lista, 0);
+	if (!status)
+		return 0;
+
+	free(buffer);
+
+	return status;
+}
+
 int fill_package_select(t_PackageSelect *package ,char* parametros) {
 
 	char** parametrosSeparados = string_split(parametros, " ");
@@ -442,6 +466,29 @@ int recieve_and_deserialize(t_PackagePosta *package, int socketCliente) {
 	package->total_size = buffer_size * 2 + message_long;
 
 	return status;
+}
+
+int consistency_to_int(char* consistency){
+	if(strcmp(consistency, "SC") == 0){
+		return SC;
+	}
+	else if(strcmp(consistency, "SHC") == 0){
+		return SHC;
+	}
+	else if(strcmp(consistency, "EC") == 0){
+		return EC;
+	}
+}
+
+char* consistency_to_str(int consistency){
+	switch(consistency){
+		case SC:
+			return "SC";
+		case SHC:
+			return "SHC";
+		case EC:
+			return "EC";
+	}
 }
 
 /*
