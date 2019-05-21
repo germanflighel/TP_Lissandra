@@ -338,11 +338,28 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	    size = s.st_size;
 
 	    //TODO: Leer solo hasta el \n o hasta el tercer ; y manejar el offset
-	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
-	    for (int i = 0; i < size; i++) {
 
-	        char c;
-	        printf("%c", f[i]);
+	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+	    char** registros = string_split(f, "\n"); // Spliteo y obtengo una lista de los registros
+	    int j = 0;
+	    while (registros[j] != NULL) { //Recorro los registros hasta que no haya mas segun las commons
+			log_debug(logger, registros[j]); //Logueo el registro entero, se puede borrar
+			char** datos_registro = string_split(registros[j], ";"); //Spliteo un Registro para tener una lista de sus datos
+			int k = 0;
+			while (datos_registro[k] != NULL) { //Recorro los datos hasta que no haya mas segun las commons
+				log_debug(logger, datos_registro[k]); //Logueo cada dato (timestamp, key, value)
+				k++;
+
+				/* TODO
+				 * Usando la esctructura Registro, almacenar cada registro
+				 * que tenga la keyBuscada en una lista.
+				 * Sino, se podria ir chequeando e ir almacenando el Registro de timestamp
+				 * mas alto, que es el registro posta.
+				 * Tambien se puede refactorear un poco esto, hacer nombres mas expresivos, etc
+				 */
+			}
+			j++;
+
 	    }
 		close(fd);
 
