@@ -194,8 +194,15 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	log_debug(logger, string_itoa(particionObjetivo));
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	t_list* valuesEncontrados = list_create();
-	encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
+	t_list* keys = encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
+	//list_iterate(keys, (void*)loguear_registro);
+	list_sort(keys,(void*)timestamp_mayor_entre);
+	//list_iterate(keys,(void*)loguear_registro);
+
+	Registro* registro_mayor = list_get(keys,0);
+	log_debug(logger, "La value correspondiente al mayor timeStamp es: ");
+	log_debug(logger,registro_mayor->value);
+
 
 
 	//5) Devolver o mostrar el valor mayor
@@ -271,6 +278,13 @@ void loguear_metadata(Metadata* metadata) {
 	log_debug(logger, string_itoa(metadata->compaction_time));
 }
 
+void loguear_registro(Registro* registro) {
+	log_debug(logger, string_itoa(registro->timeStamp));
+	log_debug(logger, string_itoa(registro->key));
+	log_debug(logger, registro->value);
+}
+
+
 Metadata* obtener_metadata(char* ruta) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -303,6 +317,7 @@ int calcular_particion(int key, int cantidad_particiones) {
 }
 
 t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
+	t_list* lista_registros = list_create();
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* barra = "/";
@@ -312,6 +327,8 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	string_append(&mi_ruta, bin);
 
 	log_debug(logger, mi_ruta);
+
+	log_warning(logger, "Ahora voy a mostrar los datos de los bloques");
 
 	t_config* particion = config_create(mi_ruta);
 
@@ -343,20 +360,20 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	    char** registros = string_split(f, "\n"); // Spliteo y obtengo una lista de los registros
 	    int j = 0;
 	    while (registros[j] != NULL) { //Recorro los registros hasta que no haya mas segun las commons
-			log_debug(logger, registros[j]); //Logueo el registro entero, se puede borrar
+			//log_debug(logger, registros[j]); //Logueo el registro entero, se puede borrar
 			char** datos_registro = string_split(registros[j], ";"); //Spliteo un Registro para tener una lista de sus datos
 			int k = 0;
+			Registro* registro = malloc(sizeof(Registro)); //Yo deberia hacer un free de este registro despues? Creo que no, porque yo lo guardo en la lista y pierdo la referencia si le hago el free
+			if(atoi(datos_registro[1]) == keyBuscada){
+				registro->timeStamp = atol(datos_registro[0]);
+				registro->key = atoi(datos_registro[1]);
+				registro->value = malloc(strlen(datos_registro[2])+1); // Lo mismo, el free deberia hacerlo en algun momento sobre esto?
+				strcpy(registro->value, datos_registro[2]);
+				list_add(lista_registros, registro);
+			}
 			while (datos_registro[k] != NULL) { //Recorro los datos hasta que no haya mas segun las commons
-				log_debug(logger, datos_registro[k]); //Logueo cada dato (timestamp, key, value)
+				//log_debug(logger, datos_registro[k]); //Logueo cada dato (timestamp, key, value)
 				k++;
-
-				/* TODO
-				 * Usando la esctructura Registro, almacenar cada registro
-				 * que tenga la keyBuscada en una lista.
-				 * Sino, se podria ir chequeando e ir almacenando el Registro de timestamp
-				 * mas alto, que es el registro posta.
-				 * Tambien se puede refactorear un poco esto, hacer nombres mas expresivos, etc
-				 */
 			}
 			j++;
 
@@ -373,7 +390,15 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 
 	free(mi_ruta);
 
-	return list_create();
+	return lista_registros;
+}
+
+int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro){
+	if(un_registro->timeStamp>otro_registro->timeStamp){
+		return 1;
+	}else{
+		return 0;
+	}
 }
 
 int consistency_to_int(char* consistency){

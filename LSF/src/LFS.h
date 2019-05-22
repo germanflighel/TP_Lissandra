@@ -46,6 +46,8 @@ Metadata* obtener_metadata(char* ruta);
 char* consistency_to_str(int consistency);
 t_list* lfs_describe(char* punto_montaje);
 void loguear_metadata(Metadata* metadata);
+void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
 t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
+int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro);
 #endif
