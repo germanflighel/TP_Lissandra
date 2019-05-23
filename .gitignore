@@ -50,7 +50,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
-LSF/*.log
-Kernel/*.log
-Memory/*.log
+/LSF/*.log
