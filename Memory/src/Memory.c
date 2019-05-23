@@ -12,8 +12,9 @@
 #include "sockets.h"
 
 void *inputFunc(void *);
-pthread_mutex_t lock;
+//pthread_mutex_t lock;
 
+//Estructura Memoria Principal
 int cant_paginas;
 void* memoriaPrincipal;
 t_list* tabla_segmentos;
@@ -21,60 +22,32 @@ Tabla_paginas tabla_paginas;
 char* bit_map;
 int max_value_size;
 double memory_size;
+//Estructura Memoria Principal
 
 int main() {
 
+	//Estructura Conexiones
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 	char* ip;
 	char* puerto;
+	//Estructura Conexiones
+
 	memory_size = 5000;
 	max_value_size = 20;
 
-	/*
-	 //hardcode tablas
-	 Pagina franco;
-	 franco.timeStamp = 1557972674;
-	 franco.key = 20;
-	 strcpy(franco.value, "Franco");
-
-	 Pagina santi;
-	 santi.timeStamp = 1557972674;
-	 santi.key = 21;
-	 strcpy(santi.value, "Santi");
-
-	 tabla_paginas.renglones[0].numero = 0;
-	 tabla_paginas.renglones[0].modificado = 0;
-	 tabla_paginas.renglones[0].offset = tabla_paginas.renglones[0].numero * sizeof(Pagina);
-	 bit_map[tabla_paginas.renglones[0].numero] = 1;
-
-	 tabla_paginas.renglones[1].numero = 1;
-	 tabla_paginas.renglones[1].modificado = 0;
-	 tabla_paginas.renglones[1].offset = tabla_paginas.renglones[1].numero * sizeof(Pagina);
-	 bit_map[tabla_paginas.renglones[1].numero] = 1;
-
-	 memcpy((memoriaPrincipal + tabla_paginas.renglones[0].offset), &franco, sizeof(Pagina));
-	 memcpy((memoriaPrincipal + tabla_paginas.renglones[1].offset), &santi, sizeof(Pagina));
-
-
-	 Segmento tabla1;
-	 strcpy(tabla1.path, "TABLA1");
-	 tabla1.numeros_pagina = list_create();
-	 list_add(tabla1.numeros_pagina, 0);
-	 list_add(tabla1.numeros_pagina, 1);
-
-	 list_add(tabla_segmentos, &tabla1);
-
-	 //Harcode tablas
-	 */
+	//Estructura Conexiones
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
+	//Estructura Conexiones
 
+	//Abro log y config
 	abrir_log();
 
 	t_config *conection_conf;
 	abrir_con(&conection_conf);
+	//Abro log y config
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_DEST");
@@ -82,17 +55,27 @@ int main() {
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
 	config_destroy(conection_conf);
+	//Cierro config
 
+	//Socket a lfs
 	int lfsSocket;
 	lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
 			serverInfo->ai_protocol);
 
 	connect(lfsSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
-	freeaddrinfo(serverInfo);	// No lo necesitamos mas
+
+	freeaddrinfo(serverInfo);
 
 	printf("Conectado al LFS \n");
+	//Socket a lfs
 
+	//Handshake con LFS
 	enviar_handshake(MEMORY, lfsSocket);
+
+	t_describe describeRecibido;
+
+	recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
+	//Handshake con LFS
 
 	//inicializacion memoria
 
@@ -117,6 +100,7 @@ int main() {
 
 	//inicializacion memoria
 
+	//Socket a kernel (listener)
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
 	hints.ai_flags = AI_PASSIVE;// Asigna el address del localhost: 127.0.0.1
@@ -143,9 +127,6 @@ int main() {
 
 	freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
-	t_describe describeRecibido;
-	recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
-
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
 	printf("Esperando kernel... \n");
@@ -156,6 +137,9 @@ int main() {
 	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
 			&addrlen);
 
+	//Socket a kernel (listener)
+
+	//Handshake de kernel
 	if (!recibir_handshake(KERNEL, socketCliente)) {
 		printf("Handshake invalido \n");
 		return 0;
@@ -164,15 +148,18 @@ int main() {
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
+	//Handshake de kernel
 
+	//Describe a kernel
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(&describeRecibido);
 	send(socketCliente, serializedPackage,
 			2 * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
 	dispose_package(&serializedPackage);
 	free(describeRecibido.tablas);
+	//Describe a kernel
 
-	//thread
+	//thread ingreso por consola
 	pthread_t threadL;
 	int iret1;
 
@@ -181,7 +168,7 @@ int main() {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
-	//thread
+	//thread ingreso por consola
 
 	int headerRecibido;
 	int comando_valido;
@@ -195,8 +182,7 @@ int main() {
 			if (headerRecibido == SELECT) {
 				t_PackageSelect package;
 				package.header = SELECT;
-				status = recieve_and_deserialize_select(&package,
-						socketCliente);
+				status = recieve_and_deserialize_select(&package,socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
 
@@ -204,38 +190,15 @@ int main() {
 			} else if (headerRecibido == INSERT) {
 				t_PackageInsert package;
 				package.header = INSERT;
-				status = recieve_and_deserialize_insert(&package,
-						socketCliente);
-
-
+				status = recieve_and_deserialize_insert(&package,socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
-
-
 			}
-
 		}
-
-		//pthread_mutex_lock(&lock);
-		//status = recieve_and_deserialize(&package, socketCliente);
-		//pthread_mutex_unlock(&lock);
-
-		//fill_package(&packageEnvio, &username);
-
-		// Ver el "Deserializando estructuras dinamicas" en el comentario de la funcion.
-
 	}
 
 	printf("Cliente Desconectado.\n");
-	/*
-	 * 	Terminado el intercambio de paquetes, cerramos todas las conexiones y nos vamos a mirar Game of Thrones, que seguro nos vamos a divertir mas...
-	 *
-	 *
-	 * 																					~ Divertido es Disney ~
-	 *
-	 */
-	//pthread_exit(&threadL);
-	//pthread_mutex_destroy(&lock);
+
 	pthread_exit(&threadL);
 
 	close(socketCliente);
@@ -245,8 +208,6 @@ int main() {
 	free(memoriaPrincipal);
 	free(tabla_paginas.renglones);
 	log_destroy(g_logger);
-
-	/* See ya! */
 
 	return 0;
 }
@@ -372,8 +333,6 @@ int primerpaginaLibre() {
 
 int ejecutarInsert(t_PackageInsert* insert) {
 
-
-
 	typedef struct Pagina {
 		long timeStamp;
 		uint16_t key;
@@ -438,7 +397,6 @@ int ejecutarInsert(t_PackageInsert* insert) {
 		int numero_pagina = primerpaginaLibre();
 
 		if (numero_pagina != -1) {
-
 			Pagina* paginaNueva = (Pagina*) (memoriaPrincipal
 					+ numero_pagina * sizeof(Pagina));
 			paginaNueva->key = insert->key;
@@ -656,9 +614,38 @@ void insert_memory(char* parametros, int serverSocket) {
 }
 
 /*
- typedef struct t_Package {
- uint32_t message_long;
- char* message;
- uint32_t total_size;
- } t_Package;
- */
+	 //hardcode tablas
+	 Pagina franco;
+	 franco.timeStamp = 1557972674;
+	 franco.key = 20;
+	 strcpy(franco.value, "Franco");
+
+	 Pagina santi;
+	 santi.timeStamp = 1557972674;
+	 santi.key = 21;
+	 strcpy(santi.value, "Santi");
+
+	 tabla_paginas.renglones[0].numero = 0;
+	 tabla_paginas.renglones[0].modificado = 0;
+	 tabla_paginas.renglones[0].offset = tabla_paginas.renglones[0].numero * sizeof(Pagina);
+	 bit_map[tabla_paginas.renglones[0].numero] = 1;
+
+	 tabla_paginas.renglones[1].numero = 1;
+	 tabla_paginas.renglones[1].modificado = 0;
+	 tabla_paginas.renglones[1].offset = tabla_paginas.renglones[1].numero * sizeof(Pagina);
+	 bit_map[tabla_paginas.renglones[1].numero] = 1;
+
+	 memcpy((memoriaPrincipal + tabla_paginas.renglones[0].offset), &franco, sizeof(Pagina));
+	 memcpy((memoriaPrincipal + tabla_paginas.renglones[1].offset), &santi, sizeof(Pagina));
+
+
+	 Segmento tabla1;
+	 strcpy(tabla1.path, "TABLA1");
+	 tabla1.numeros_pagina = list_create();
+	 list_add(tabla1.numeros_pagina, 0);
+	 list_add(tabla1.numeros_pagina, 1);
+
+	 list_add(tabla_segmentos, &tabla1);
+
+	 //Harcode tablas
+	 */

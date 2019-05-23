@@ -166,13 +166,14 @@ int fill_package_insert(t_PackageInsert *package ,char* parametros, int filesys)
 
 	int cantParametros = cant_parametros(parametrosSeparados);
 
-	if(!(strlen(parametrosSeparados[2])>=3)){
-		return 0;
-	}
 	if(cantParametros != 3){
 		if(!filesys || cantParametros != 4){
 			return 0;
 		}
+	}
+
+	if(!(strlen(parametrosSeparados[2])>=3) || parametrosSeparados[2][0] != '"' || parametrosSeparados[2][strlen(parametrosSeparados[2])-1] != '"'){
+		return 0;
 	}
 
 	package->header = INSERT;
