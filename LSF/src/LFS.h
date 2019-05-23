@@ -21,11 +21,11 @@
 #define CONFIG_PATH "LFSSocket.config"
 #define LOG_FILE_PATH "lfs_global.log"
 
-typedef struct Reg {
+typedef struct Registro {
 	long int timeStamp;
 	int key;
 	char* value;
-};
+} Registro;
 
 typedef struct Metadata {
 	int consistency;
@@ -41,14 +41,13 @@ t_log* iniciar_logger();
 void lfs_select(t_PackageSelect* package, char* ruta);
 void lfs_insert(t_PackageInsert* package);
 
-int existe_tabla(char* nombre_tabla, char** ruta);
+int existe_tabla(char* tabla);
 Metadata* obtener_metadata(char* ruta);
 char* consistency_to_str(int consistency);
 t_list* lfs_describe(char* punto_montaje);
 void loguear_metadata(Metadata* metadata);
-
-//int calcular_particion(int key,int cantidad_particiones);
-//char* obtener_nombre_tabla(char** parametros_separados);
-//void obtener_nombre_tabla(char*,char**);
-
+void loguear_registro(Registro* registro);
+int calcular_particion(int key,int cantidad_particiones);
+t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
+int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro);
 #endif
