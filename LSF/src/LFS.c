@@ -208,6 +208,12 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	log_debug(logger, "La value correspondiente al mayor timeStamp es: ");
 	log_debug(logger,registro_mayor->value);
 
+	/*
+	t_Respuesta_Select respuesta;
+	respuesta.value = malloc(strlen(registro_mayor->value));
+	strcpy(respuesta.value,registro_mayor->value);
+	*/
+
 
 
 	//5) Devolver o mostrar el valor mayor

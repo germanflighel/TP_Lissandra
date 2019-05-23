@@ -353,6 +353,58 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 	return status;
 }
 
+char* serializarRespuestaSelect(t_Respuesta_Select *package) {
+
+	char *serializedPackage = malloc(sizeof(package->result) + sizeof(package->value_long) + package->value_long);
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->result);
+	memcpy(serializedPackage + offset, &(package->result), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->value_long);
+	memcpy(serializedPackage + offset, &(package->value_long), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = package->value_long;
+	memcpy(serializedPackage + offset, package->value, size_to_send);
+
+	return serializedPackage;
+}
+
+int recieve_and_deserialize_RespuestaSelect(t_Respuesta_Select *package, int socketServidor) {
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint16_t));
+
+	status = recv(socketServidor, buffer, sizeof(package->result), 0);
+	memcpy(&(package->result), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+	status = recv(socketServidor, buffer, sizeof(package->value_long), 0);
+		memcpy(&(package->value_long), buffer, buffer_size);
+		if (!status)
+			return 0;
+
+
+	package->value = malloc(package->value_long+1);
+
+	status = recv(socketServidor, package->value, package->value_long, 0);
+	if (!status)
+		return 0;
+
+	package->value[package->value_long] = '\0';
+
+	free(buffer);
+
+	return status;
+}
+
+
 
 
 int cant_parametros(char** params){

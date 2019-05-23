@@ -19,6 +19,9 @@
 #define MAX_MESSAGE_SIZE 300
 #define MAX_TABLE_LENGTH 20
 
+#define REGISTRO_ENCONTRADO 15
+#define REGISTRO_NO_ENCONTRADO 16
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -68,6 +71,14 @@ typedef struct t_PackageInsert {
 	long timestamp;
 	uint32_t total_size;
 } t_PackageInsert;
+
+
+typedef struct t_Respuesta_Select {
+	char result;
+	uint16_t value_long;
+	char* value;
+} t_Respuesta_Select;
+
 
 #define LFS 100
 #define MEMORY 101
