@@ -113,8 +113,22 @@ int main() {
 				t_PackageSelect package;
 				status = recieve_and_deserialize_select(&package, socketCliente);
 
-				ejecutar_comando(headerRecibido, &package, ruta);
+				Registro* registro_a_devolver = (Registro*) ejecutar_comando(headerRecibido, &package, ruta);
 
+				t_Respuesta_Select respuesta;
+
+				if(registro_a_devolver->value) {
+					respuesta.result = 1;
+					respuesta.value = malloc(strlen(registro_a_devolver->value));
+					strcpy(respuesta.value,registro_a_devolver->value);
+					respuesta.value_long = strlen(respuesta.value);
+				} else {
+					respuesta.result = 0;
+					respuesta.value = NULL;
+					respuesta.value_long = 0;
+				}
+
+				send(socketCliente, &respuesta, sizeof(respuesta));
 			} else if (headerRecibido == INSERT) {
 
 				log_debug(logger, "Got an INSERT");
@@ -158,7 +172,7 @@ t_log* iniciar_logger(void) {
 
 }
 
-void ejecutar_comando(int header, void* package, char* ruta) {
+void* ejecutar_comando(int header, void* package, char* ruta) {
 	switch (header) {
 	case SELECT:
 		lfs_select((t_PackageSelect*) package, ruta);
@@ -170,7 +184,7 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 }
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
-void lfs_select(t_PackageSelect* package, char* ruta) {
+Registro* lfs_select(t_PackageSelect* package, char* ruta) {
 
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta,ruta);
@@ -199,33 +213,22 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 	log_debug(logger, string_itoa(particionObjetivo));
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	t_list* keys = encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
-	//list_iterate(keys, (void*)loguear_registro);
-	list_sort(keys,(void*)timestamp_mayor_entre);
-	//list_iterate(keys,(void*)loguear_registro);
-
-	Registro* registro_mayor = list_get(keys,0);
-	log_debug(logger, "La value correspondiente al mayor timeStamp es: ");
-	log_debug(logger,registro_mayor->value);
-
-	/*
-	t_Respuesta_Select respuesta;
-	respuesta.value = malloc(strlen(registro_mayor->value));
-	strcpy(respuesta.value,registro_mayor->value);
-	*/
+	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
 
 
+	if(registro_mayor->value) {
+		log_debug(logger, "El value correspondiente al mayor timeStamp es: ");
+		log_debug(logger, registro_mayor->value);
+	} else {
+		log_debug(logger, "No existe un registro con esa key");
+	}
 
-	//5) Devolver o mostrar el valor mayor
-	//log_debug(logger, maximoTimestamp(valuesEncontrados));
-	//struct Reg *reg = list_get(valuesEncontrados, 0);
-	//log_debug(logger, reg->value);
+
 
 	free(metadata);
 	free(mi_ruta);
 
-
-
+	return registro_mayor;
 }
 
 void lfs_insert(t_PackageInsert* package) {
@@ -327,8 +330,7 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
-	t_list* lista_registros = list_create();
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* barra = "/";
@@ -346,6 +348,8 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
+	Registro* registro = malloc(sizeof(Registro));
+	registro->timeStamp = 0;
 	int i = 0;
 	while(blocks[i] != NULL){
 		char* ruta_a_bloque = string_new();
@@ -356,7 +360,6 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 
 		log_debug(logger, ruta_a_bloque);
 
-
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
 
 		log_debug(logger, "Abri el Bloque");
@@ -365,26 +368,18 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	    int status = fstat (fd, & s);
 	    size = s.st_size;
 
-	    //TODO: Leer solo hasta el \n o hasta el tercer ; y manejar el offset
-
 	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
-	    char** registros = string_split(f, "\n"); // Spliteo y obtengo una lista de los registros
+	    char** registros = string_split(f, "\n");
 	    int j = 0;
-	    while (registros[j] != NULL) { //Recorro los registros hasta que no haya mas segun las commons
-			//log_debug(logger, registros[j]); //Logueo el registro entero, se puede borrar
-			char** datos_registro = string_split(registros[j], ";"); //Spliteo un Registro para tener una lista de sus datos
-			int k = 0;
-			Registro* registro = malloc(sizeof(Registro)); //Yo deberia hacer un free de este registro despues? Creo que no, porque yo lo guardo en la lista y pierdo la referencia si le hago el free
+	    while (registros[j] != NULL) {
+			char** datos_registro = string_split(registros[j], ";");
 			if(atoi(datos_registro[1]) == keyBuscada){
-				registro->timeStamp = atol(datos_registro[0]);
-				registro->key = atoi(datos_registro[1]);
-				registro->value = malloc(strlen(datos_registro[2])+1); // Lo mismo, el free deberia hacerlo en algun momento sobre esto?
-				strcpy(registro->value, datos_registro[2]);
-				list_add(lista_registros, registro);
-			}
-			while (datos_registro[k] != NULL) { //Recorro los datos hasta que no haya mas segun las commons
-				//log_debug(logger, datos_registro[k]); //Logueo cada dato (timestamp, key, value)
-				k++;
+				if (atol(datos_registro[0]) > registro->timeStamp) {
+					registro->timeStamp = atol(datos_registro[0]);
+					registro->key = atoi(datos_registro[1]);
+					registro->value = malloc(strlen(datos_registro[2])+1);
+					strcpy(registro->value, datos_registro[2]);
+				}
 			}
 			j++;
 
@@ -396,15 +391,11 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 	}
 
 
+
+
 	free(mi_ruta);
 
-	return lista_registros;
+
+	return registro;
 }
 
-int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro){
-	if(un_registro->timeStamp>otro_registro->timeStamp){
-		return 1;
-	}else{
-		return 0;
-	}
-}
