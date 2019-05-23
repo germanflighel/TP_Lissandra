@@ -81,11 +81,12 @@ int main() {
 	t_describe describe;
 	recieve_and_deserialize_describe(&describe,serverSocket);
 
-	printf("Tabla %s \n",describe.tablas[0].nombre_tabla);
-	printf("Consistencia %d \n",describe.tablas[0].consistencia);
 
-	printf("Tabla %s \n",describe.tablas[1].nombre_tabla);
-	printf("Consistencia %d \n",describe.tablas[1].consistencia);
+	for(int tabla = 0; tabla < describe.cant_tablas; tabla++){
+		printf("Tabla %s \n",describe.tablas[tabla].nombre_tabla);
+		printf("Consistencia %s \n",consistency_to_str(describe.tablas[tabla].consistencia));
+	}
+
 
 	int enviar = 1;
 	int entradaValida;

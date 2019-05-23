@@ -77,11 +77,12 @@ int main() {
 		describe->tablas[i] = *meta;
 	}
 
-	/*
-	char serializedPackage;
-	serializedPackage = serializarDescribe(&describe);
-	//send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
-	dispose_package(&serializedPackage);*/
+
+	char* serializedPackage;
+	serializedPackage = serializarDescribe(describe);
+	log_debug(logger, string_itoa(cantidad_de_tablas));
+	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+	dispose_package(&serializedPackage);
 
 
 	t_PackagePosta package;
@@ -383,9 +384,6 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 		free(ruta_a_bloque);
 		i++;
 	}
-
-
-
 
 
 	free(mi_ruta);
