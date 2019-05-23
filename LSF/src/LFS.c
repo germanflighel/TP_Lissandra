@@ -90,7 +90,20 @@ int main() {
 	log_debug(logger, cantidad_de_tablas_string);
 	free(cantidad_de_tablas_string);
 	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+
 	dispose_package(&serializedPackage);
+
+	for (int i = 0; i < cantidad_de_tablas; i++) {
+		free(describe->tablas[i].nombre_tabla);
+	}
+
+
+	free(describe->tablas);
+	free(describe);
+	for (int i = 0; i < metadatas->elements_count; i++) {
+		free(list_get(metadatas,i));
+	}
+	list_destroy(metadatas);
 
 
 	t_PackagePosta package;
@@ -117,23 +130,27 @@ int main() {
 
 				Registro* registro_a_devolver = (Registro*) ejecutar_comando(headerRecibido, &package, ruta);
 
-				t_Respuesta_Select respuesta;
+				t_Respuesta_Select* respuesta = malloc(sizeof(t_Respuesta_Select));
 
 				if(registro_a_devolver->value) {
-					respuesta.result = 1;
-					respuesta.value = malloc(strlen(registro_a_devolver->value));
-					strcpy(respuesta.value,registro_a_devolver->value);
-					respuesta.value_long = strlen(respuesta.value);
-					respuesta.timestamp = registro_a_devolver->timeStamp;
+					respuesta->result = 1;
+					respuesta->value = malloc(strlen(registro_a_devolver->value));
+					strcpy(respuesta->value,registro_a_devolver->value);
+					respuesta->value_long = strlen(respuesta->value);
+					respuesta->timestamp = registro_a_devolver->timeStamp;
 				} else {
-					respuesta.result = 0;
-					respuesta.value = NULL;
-					respuesta.value_long = 0;
+					respuesta->result = 0;
+					respuesta->value = NULL;
+					respuesta->value_long = 0;
 				}
-				log_debug(logger, respuesta.value);
+				log_debug(logger, respuesta->value);
 
 
 				send(socketCliente, &respuesta, sizeof(respuesta), 0);
+				free(respuesta->value);
+				free(respuesta);
+				free(registro_a_devolver->value);
+				free(registro_a_devolver);
 			} else if (headerRecibido == INSERT) {
 
 				log_debug(logger, "Got an INSERT");
@@ -262,6 +279,7 @@ t_list* lfs_describe(char* punto_montaje){
 		}
 		closedir(tables_directory);
 	}
+	free(tablas_path);
 	return metadatas;
 }
 
@@ -371,15 +389,20 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 			char** datos_registro = string_split(registros[j], ";");
 			if(atoi(datos_registro[1]) == keyBuscada){
 				if (atol(datos_registro[0]) > registro->timeStamp) {
+					free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
 					registro->value = malloc(strlen(datos_registro[2])+1);
 					strcpy(registro->value, datos_registro[2]);
 				}
 			}
+			string_iterate_lines(datos_registro, (void*)free);
+			free(datos_registro);
 			j++;
-
 	    }
+	    free(f);
+	    string_iterate_lines(registros, (void*)free);
+	    free(registros);
 		close(fd);
 
 		free(ruta_a_bloque);
@@ -390,7 +413,8 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 
 	free(particion_objetivo_string);
 	free(mi_ruta);
-
+	free(blocks);
+	config_destroy(particion);
 
 	return registro;
 }
