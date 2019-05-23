@@ -34,7 +34,6 @@ int main() {
 	//Estructura Conexiones
 
 	memory_size = 5000;
-	max_value_size = 20;
 
 	//Estructura Conexiones
 	memset(&hints, 0, sizeof(hints));
@@ -72,6 +71,9 @@ int main() {
 	//Handshake con LFS
 	enviar_handshake(MEMORY, lfsSocket);
 
+	recv(lfsSocket, &max_value_size, sizeof(u_int16_t), 0);
+	printf("%d \n", max_value_size);
+
 	t_describe describeRecibido;
 
 	recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
@@ -88,7 +90,7 @@ int main() {
 	} Pagina;
 
 	cant_paginas = floor(memory_size / (double) sizeof(Pagina));
-	printf("%d \n", cant_paginas);
+	//printf("%d \n", cant_paginas);
 	memoriaPrincipal = malloc(memory_size);
 	tabla_segmentos = list_create();
 	tabla_paginas.renglones = malloc(cant_paginas * sizeof(Renglon_pagina));
@@ -433,7 +435,7 @@ void abrir_con(t_config** g_config) {
 
 void abrir_log(void) {
 
-	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_INFO);
+	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_INFO);
 
 }
 

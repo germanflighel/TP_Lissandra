@@ -60,6 +60,10 @@ int main() {
 		return 0;
 	}
 
+	int max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
+	log_debug(logger,string_itoa(max_value_size));
+	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
+
 	t_list* metadatas = lfs_describe(ruta);
 	list_iterate(metadatas, (void*) loguear_metadata);
 
