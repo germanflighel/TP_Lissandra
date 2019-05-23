@@ -185,6 +185,7 @@ int main() {
 				status = recieve_and_deserialize_select(&package,socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
+				send_package(package.header, &package, lfsSocket);
 
 				free(package.tabla);
 			} else if (headerRecibido == INSERT) {
@@ -193,6 +194,7 @@ int main() {
 				status = recieve_and_deserialize_insert(&package,socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
+				send_package(package.header, &package, lfsSocket);
 			}
 		}
 	}

@@ -398,26 +398,3 @@ int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro){
 		return 0;
 	}
 }
-
-int consistency_to_int(char* consistency){
-	if(strcmp(consistency, "SC") == 0){
-		return SC;
-	}
-	else if(strcmp(consistency, "SHC") == 0){
-		return SHC;
-	}
-	else if(strcmp(consistency, "EC") == 0){
-		return EC;
-	}
-}
-
-char* consistency_to_str(int consistency){
-	switch(consistency){
-		case SC:
-			return "SC";
-		case SHC:
-			return "SHC";
-		case EC:
-			return "EC";
-	}
-}
