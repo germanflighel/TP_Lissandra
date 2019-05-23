@@ -61,7 +61,9 @@ int main() {
 	}
 
 	int max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
-	log_debug(logger,string_itoa(max_value_size));
+	char* max_value_size_string = string_itoa(max_value_size);
+	log_debug(logger, max_value_size_string);
+	free(max_value_size_string);
 	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -84,7 +86,9 @@ int main() {
 
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(describe);
-	log_debug(logger, string_itoa(cantidad_de_tablas));
+	char* cantidad_de_tablas_string = string_itoa(cantidad_de_tablas);
+	log_debug(logger, cantidad_de_tablas_string);
+	free(cantidad_de_tablas_string);
 	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
 	dispose_package(&serializedPackage);
 
@@ -120,6 +124,7 @@ int main() {
 					respuesta.value = malloc(strlen(registro_a_devolver->value));
 					strcpy(respuesta.value,registro_a_devolver->value);
 					respuesta.value_long = strlen(respuesta.value);
+					respuesta.timestamp = registro_a_devolver->timeStamp;
 				} else {
 					respuesta.result = 0;
 					respuesta.value = NULL;
@@ -211,7 +216,9 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	//3) Calcular que particion contiene a KEY
 	int particionObjetivo = calcular_particion(package->key, metadata->partitions);
-	log_debug(logger, string_itoa(particionObjetivo));
+	char* particionObjetivo_string = string_itoa(particionObjetivo);
+	log_debug(logger, particionObjetivo_string);
+	free(particionObjetivo_string);
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
 	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje);
@@ -277,13 +284,19 @@ int existe_tabla(char* tabla) {
 void loguear_metadata(Metadata* metadata) {
 	//log_debug(logger, metadata->nombre_tabla);
 	log_debug(logger, consistency_to_str(metadata->consistency));
-	log_debug(logger, string_itoa(metadata->partitions));
-	log_debug(logger, string_itoa(metadata->compaction_time));
+	loguear_int(metadata->partitions);
+	loguear_int(metadata->compaction_time);
+}
+
+void loguear_int(int n) {
+	char* n_string = string_itoa(n);
+	log_debug(logger, n_string);
+	free(n_string);
 }
 
 void loguear_registro(Registro* registro) {
-	log_debug(logger, string_itoa(registro->timeStamp));
-	log_debug(logger, string_itoa(registro->key));
+	loguear_int(registro->timeStamp);
+	loguear_int(registro->key);
 	log_debug(logger, registro->value);
 }
 
@@ -324,7 +337,8 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	string_append(&mi_ruta, ruta);
 	char* barra = "/";
 	string_append(&mi_ruta, barra);
-	string_append(&mi_ruta, string_itoa(particion_objetivo));
+	char* particion_objetivo_string = string_itoa(particion_objetivo);
+	string_append(&mi_ruta, particion_objetivo_string);
 	char* bin = ".bin";
 	string_append(&mi_ruta, bin);
 
@@ -374,7 +388,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 
 
 
-
+	free(particion_objetivo_string);
 	free(mi_ruta);
 
 

@@ -50,4 +50,5 @@ void loguear_metadata(Metadata* metadata);
 void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
 Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
+void loguear_int(int n);
 #endif
