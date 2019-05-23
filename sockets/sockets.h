@@ -77,6 +77,7 @@ typedef struct t_Respuesta_Select {
 	char result;
 	uint16_t value_long;
 	char* value;
+	long timestamp;
 } t_Respuesta_Select;
 
 
