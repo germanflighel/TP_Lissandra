@@ -270,7 +270,7 @@ int recieve_and_deserialize_select(t_PackageSelect *package, int socketCliente) 
 
 //	printf("Tabla_long: %d \n", tabla_long);
 
-	package->tabla = malloc(package->tabla_long);
+	package->tabla = malloc(package->tabla_long+1);
 
 	status = recv(socketCliente, package->tabla, package->tabla_long, 0);
 	if (!status)
@@ -309,7 +309,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 		return 0;
 
 
-	package->tabla = malloc(package->tabla_long);
+	package->tabla = malloc(package->tabla_long+1);
 
 	status = recv(socketCliente, package->tabla, package->tabla_long, 0);
 	if (!status)
@@ -323,7 +323,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 			return 0;
 
 
-		package->value = malloc(package->value_long);
+		package->value = malloc(package->value_long+1);
 
 		status = recv(socketCliente, package->value, package->value_long, 0);
 		if (!status)

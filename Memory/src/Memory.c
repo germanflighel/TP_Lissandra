@@ -207,6 +207,8 @@ int main() {
 				status = recieve_and_deserialize_insert(&package,
 						socketCliente);
 
+
+
 				comando_valido = ejectuarComando(headerRecibido, &package);
 
 
@@ -248,6 +250,9 @@ int main() {
 
 	return 0;
 }
+
+
+
 
 void destruirTablas() {
 
@@ -367,6 +372,8 @@ int primerpaginaLibre() {
 
 int ejecutarInsert(t_PackageInsert* insert) {
 
+
+
 	typedef struct Pagina {
 		long timeStamp;
 		uint16_t key;
@@ -421,6 +428,7 @@ int ejecutarInsert(t_PackageInsert* insert) {
 		}
 	} else {
 
+
 		Segmento *nuevo_segmento = malloc(sizeof(Segmento));
 
 		strcpy(nuevo_segmento->path, insert->tabla);
@@ -437,6 +445,7 @@ int ejecutarInsert(t_PackageInsert* insert) {
 			paginaNueva->timeStamp = insert->timestamp;
 
 			strcpy(paginaNueva->value, insert->value);
+
 
 			tabla_paginas.renglones[numero_pagina].numero = numero_pagina;
 			tabla_paginas.renglones[numero_pagina].modificado = 0;
