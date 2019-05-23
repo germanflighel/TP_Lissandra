@@ -93,10 +93,6 @@ int main() {
 
 	dispose_package(&serializedPackage);
 
-	for (int i = 0; i < cantidad_de_tablas; i++) {
-		free(describe->tablas[i].nombre_tabla);
-	}
-
 
 	free(describe->tablas);
 	free(describe);
@@ -104,7 +100,6 @@ int main() {
 		free(list_get(metadatas,i));
 	}
 	list_destroy(metadatas);
-
 
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
@@ -138,12 +133,14 @@ int main() {
 					strcpy(respuesta->value,registro_a_devolver->value);
 					respuesta->value_long = strlen(respuesta->value);
 					respuesta->timestamp = registro_a_devolver->timeStamp;
+					log_debug(logger, respuesta->value);
 				} else {
 					respuesta->result = 0;
 					respuesta->value = NULL;
 					respuesta->value_long = 0;
+					log_debug(logger, "No esta la key buscada");
 				}
-				log_debug(logger, respuesta->value);
+
 
 
 				send(socketCliente, &respuesta, sizeof(respuesta), 0);
@@ -351,6 +348,7 @@ int calcular_particion(int key, int cantidad_particiones) {
 }
 
 Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
+	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* barra = "/";
@@ -366,6 +364,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
+
 	Registro* registro = malloc(sizeof(Registro));
 	registro->timeStamp = 0;
 	int i = 0;
@@ -376,16 +375,21 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 		string_append(&ruta_a_bloque, blocks[i]);
 		string_append(&ruta_a_bloque, ".bin");
 
+		log_debug(logger, ruta_a_bloque);
+
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
 
 		struct stat s;
 	    int status = fstat (fd, & s);
 	    size = s.st_size;
 
-	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+	    f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+	    log_debug(logger, "Lei el bloque a escanear");
 	    char** registros = string_split(f, "\n");
 	    int j = 0;
 	    while (registros[j] != NULL) {
+		    log_debug(logger, "Leyendo un registro");
+
 			char** datos_registro = string_split(registros[j], ";");
 			if(atoi(datos_registro[1]) == keyBuscada){
 				if (atol(datos_registro[0]) > registro->timeStamp) {
@@ -396,11 +400,15 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 					strcpy(registro->value, datos_registro[2]);
 				}
 			}
+
 			string_iterate_lines(datos_registro, (void*)free);
+		    log_debug(logger, "Libere los datos del registro");
+
 			free(datos_registro);
+		    log_debug(logger, "Libere datos_registro");
+
 			j++;
 	    }
-	    free(f);
 	    string_iterate_lines(registros, (void*)free);
 	    free(registros);
 		close(fd);
@@ -408,14 +416,13 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 		free(ruta_a_bloque);
 		i++;
 	}
-
-
-
 	free(particion_objetivo_string);
 	free(mi_ruta);
 	free(blocks);
+
 	config_destroy(particion);
+
+	log_debug(logger, "Destrui la config particion");
 
 	return registro;
 }
-
