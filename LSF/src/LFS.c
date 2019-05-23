@@ -98,10 +98,8 @@ int main() {
 
 	while (status) {
 
-		log_debug(logger, "Header");
+		log_info(logger, "Listo para recibir consulta");
 		headerRecibido = recieve_header(socketCliente);
-		printf("End Header. \n");
-		log_debug(logger, "Status");
 
 		status = headerRecibido;
 
@@ -127,8 +125,10 @@ int main() {
 					respuesta.value = NULL;
 					respuesta.value_long = 0;
 				}
+				log_debug(logger, respuesta.value);
 
-				send(socketCliente, &respuesta, sizeof(respuesta));
+
+				send(socketCliente, &respuesta, sizeof(respuesta), 0);
 			} else if (headerRecibido == INSERT) {
 
 				log_debug(logger, "Got an INSERT");
@@ -175,19 +175,19 @@ t_log* iniciar_logger(void) {
 void* ejecutar_comando(int header, void* package, char* ruta) {
 	switch (header) {
 	case SELECT:
-		lfs_select((t_PackageSelect*) package, ruta);
+		return lfs_select((t_PackageSelect*) package, ruta);
 		break;
 	case INSERT:
-		lfs_insert((t_PackageInsert*) package);
+		return lfs_insert((t_PackageInsert*) package);
 		break;
 	}
 }
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
-Registro* lfs_select(t_PackageSelect* package, char* ruta) {
+Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	char* mi_ruta = string_new();
-	string_append(&mi_ruta,ruta);
+	string_append(&mi_ruta, punto_montaje);
 
 	log_debug(logger, mi_ruta);
 
@@ -199,7 +199,8 @@ Registro* lfs_select(t_PackageSelect* package, char* ruta) {
 
 	if (!existe_tabla(mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
-		return;
+		Registro* registro;
+		return registro;
 	}
 	log_debug(logger, "Existe tabla, BRO!");
 
@@ -213,17 +214,7 @@ Registro* lfs_select(t_PackageSelect* package, char* ruta) {
 	log_debug(logger, string_itoa(particionObjetivo));
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
-
-
-	if(registro_mayor->value) {
-		log_debug(logger, "El value correspondiente al mayor timeStamp es: ");
-		log_debug(logger, registro_mayor->value);
-	} else {
-		log_debug(logger, "No existe un registro con esa key");
-	}
-
-
+	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje);
 
 	free(metadata);
 	free(mi_ruta);
@@ -231,7 +222,7 @@ Registro* lfs_select(t_PackageSelect* package, char* ruta) {
 	return registro_mayor;
 }
 
-void lfs_insert(t_PackageInsert* package) {
+void* lfs_insert(t_PackageInsert* package) {
 
 
 }
@@ -269,8 +260,6 @@ t_list* lfs_describe(char* punto_montaje){
 
 
 int existe_tabla(char* tabla) {
-	log_debug(logger, tabla);
-
 	int status=1;
 	DIR *dirp;
 
@@ -340,9 +329,6 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	string_append(&mi_ruta, bin);
 
 	log_debug(logger, mi_ruta);
-
-	log_warning(logger, "Ahora voy a mostrar los datos de los bloques");
-
 	t_config* particion = config_create(mi_ruta);
 
 	int size = config_get_int_value(particion, "SIZE");
@@ -358,11 +344,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 		string_append(&ruta_a_bloque, blocks[i]);
 		string_append(&ruta_a_bloque, ".bin");
 
-		log_debug(logger, ruta_a_bloque);
-
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
-
-		log_debug(logger, "Abri el Bloque");
 
 		struct stat s;
 	    int status = fstat (fd, & s);

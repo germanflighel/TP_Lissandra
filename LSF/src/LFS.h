@@ -39,7 +39,8 @@ t_config* leer_config();
 t_log* iniciar_logger();
 
 Registro* lfs_select(t_PackageSelect* package, char* ruta);
-void lfs_insert(t_PackageInsert* package);
+void* lfs_insert(t_PackageInsert* package);
+void* ejecutar_comando(int header, void* package, char* ruta);
 
 int existe_tabla(char* tabla);
 Metadata* obtener_metadata(char* ruta);
