@@ -131,9 +131,11 @@ int main() {
 					log_info(logger, "No se pudo insertar");
 				}
 
+				/* Esto es para probar antes de implementar en el SELECT la lectura del FS
 				Tabla* tabluqui = list_get(mem_table, 0);
 				Registro* registruli = list_get(tabluqui->registros, 0);
 				log_debug(logger, registruli->value);
+				*/
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
@@ -240,7 +242,6 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
-	log_debug(logger, package->value);
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta,ruta);
 
@@ -258,36 +259,34 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	}
 	log_debug(logger, "Existe tabla, BRO!");
 
+	//Para que obtengo la metadata? Ni se usa parece
+
 	Metadata* metadata = obtener_metadata(mi_ruta);
 
 	loguear_metadata(metadata);
 
 	if(!existe_tabla_en_mem_table(package->tabla)) {
-		if(agregar_tabla_a_mem_table(package->tabla)){
+		if(!agregar_tabla_a_mem_table(package->tabla)){
 			return 0;
 		}
 	}
 
 	log_debug(logger, "Voy a crear el registro");
 	Registro* registro_a_insertar  = malloc(sizeof(Registro));
-	log_debug(logger, "Hice malloc");
 	registro_a_insertar->key = package->key;
 	log_debug(logger, string_itoa(registro_a_insertar->key));
 	registro_a_insertar->timeStamp = package->timestamp;
 	log_debug(logger, string_itoa(registro_a_insertar->timeStamp));
 
-	char* value = malloc(package->value_long);
-	strcpy(value, package->value);
-
 	log_debug(logger, (package->value));
 
+	char* value = malloc(package->value_long);
+	strcpy(value, package->value);
 	registro_a_insertar->value = malloc(strlen(value) + 1);
 	strcpy(registro_a_insertar->value, value);
 	log_debug(logger, (registro_a_insertar->value));
 
-
-
-	return !(insertar_en_mem_table(registro_a_insertar, package->tabla));
+	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
 
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
@@ -299,20 +298,14 @@ int existe_tabla_en_mem_table(char* tabla_a_chequear) {
 		return 0;
 	}
 
-	log_debug(logger, "Voy a chequear si existe la tabla");
-
-	log_debug(logger, tabla_a_chequear);
 	//signal
 	Tabla* tabla_encontrada = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	//wait
 	if(tabla_encontrada) {
-		log_debug(logger, "Encontre tabla");
+		log_debug(logger, "Existe la tabla en mem_table");
 		return 1;
 	}
-	log_debug(logger, "No encontre tabla");
-
-
-
+	log_debug(logger, "No existe la tabla en mem_table");
 	return 0;
 }
 
@@ -323,11 +316,12 @@ int agregar_tabla_a_mem_table(char* tabla) {
 	strcpy(tabla_a_agregar->nombre_tabla, tabla);
 	tabla_a_agregar->registros = list_create();
 
+	int cantidad_anterior;
 	//signal
-	int status = list_add(mem_table, tabla_a_agregar);
+	cantidad_anterior = mem_table->elements_count;
+	int indice_agregado = list_add(mem_table, tabla_a_agregar);
 	//wait
-	log_debug(logger, string_itoa(status));
-	return status;
+	return indice_agregado + 1 > cantidad_anterior;
 }
 
 int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
@@ -338,13 +332,16 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 		}
 		return 0;
 	}
+	int cantidad_anterior;
 	//signal
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
-	int status = list_add(tabla->registros, registro_a_insertar);
+	cantidad_anterior = tabla->registros->elements_count;
+	int indice_insercion = list_add(tabla->registros, registro_a_insertar);
 	//wait
 
-	return status;
+	return indice_insercion + 1 > cantidad_anterior;
 }
+
 t_list* lfs_describe(char* punto_montaje){
 
 	t_list* metadatas = list_create();
@@ -520,3 +517,4 @@ int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro){
 		return 0;
 	}
 }
+
