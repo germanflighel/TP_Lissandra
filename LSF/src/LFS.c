@@ -20,9 +20,11 @@
 t_log* logger;
 t_list* mem_table;
 int max_value_size;
+pthread_mutex_t* mem_table_mutex;
 
 int main() {
 
+	pthread_mutex_init(mem_table_mutex, NULL);
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
@@ -303,8 +305,10 @@ int existe_tabla_en_mem_table(char* tabla_a_chequear) {
 	}
 
 	//signal
+	pthread_mutex_lock(mem_table_mutex);
 	Tabla* tabla_encontrada = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	//wait
+	pthread_mutex_unlock(mem_table_mutex);
 	if(tabla_encontrada) {
 		log_debug(logger, "Existe la tabla en mem_table");
 		return 1;
@@ -322,9 +326,12 @@ int agregar_tabla_a_mem_table(char* tabla) {
 
 	int cantidad_anterior;
 	//signal
+	pthread_mutex_lock(mem_table_mutex);
 	cantidad_anterior = mem_table->elements_count;
 	int indice_agregado = list_add(mem_table, tabla_a_agregar);
 	//wait
+	pthread_mutex_unlock(mem_table_mutex);
+
 	return indice_agregado + 1 > cantidad_anterior;
 }
 
@@ -338,10 +345,13 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 	}
 	int cantidad_anterior;
 	//signal
+	pthread_mutex_lock(mem_table_mutex);
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	cantidad_anterior = tabla->registros->elements_count;
 	int indice_insercion = list_add(tabla->registros, registro_a_insertar);
 	//wait
+	pthread_mutex_unlock(mem_table_mutex);
+
 
 	return indice_insercion + 1 > cantidad_anterior;
 }
