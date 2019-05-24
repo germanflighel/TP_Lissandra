@@ -19,6 +19,7 @@
 
 t_log* logger;
 t_list* mem_table;
+int max_value_size;
 
 int main() {
 
@@ -62,7 +63,7 @@ int main() {
 		return 0;
 	}
 
-	int max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
+	max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
 	log_debug(logger,string_itoa(max_value_size));
 	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
 
@@ -242,6 +243,9 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
+	if (package->value_long > max_value_size) {
+		return 0;
+	}
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta,ruta);
 
