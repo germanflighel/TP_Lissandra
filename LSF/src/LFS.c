@@ -18,12 +18,14 @@
 #include <commons/collections/list.h>
 
 t_log* logger;
+t_list* mem_table;
 
 int main() {
 
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
+	mem_table = list_create();
 	logger = iniciar_logger();
 	t_config* config = leer_config();
 
@@ -122,7 +124,12 @@ int main() {
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package, socketCliente);
 
-				//ejecutar_comando(headerRecibido, &package, ruta);
+				int fue_exitoso = ejecutar_comando(headerRecibido, &package, ruta);
+				if(fue_exitoso){
+					log_info(logger, "Se inserto exitosamente");
+				} else {
+					log_info(logger, "No se pudo insertar");
+				}
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
@@ -164,7 +171,7 @@ void ejecutar_comando(int header, void* package, char* ruta) {
 		lfs_select((t_PackageSelect*) package, ruta);
 		break;
 	case INSERT:
-		lfs_insert((t_PackageInsert*) package);
+		lfs_insert((t_PackageInsert*) package, ruta);
 		break;
 	}
 }
@@ -228,11 +235,82 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 
 }
 
-void lfs_insert(t_PackageInsert* package) {
+int lfs_insert(t_PackageInsert* package, char* ruta) {
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta,ruta);
+
+	log_debug(logger, mi_ruta);
+
+	char* tables = "/Tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, package->tabla);
+
+	log_debug(logger, mi_ruta);
+
+	if (!existe_tabla(mi_ruta)) {
+		log_debug(logger, "No existe la tabla");
+		return 0;
+	}
+	log_debug(logger, "Existe tabla, BRO!");
+
+	Metadata* metadata = obtener_metadata(mi_ruta);
+
+	loguear_metadata(metadata);
+
+	if(!existe_tabla_en_mem_table(package->tabla)) {
+		if(!agregar_tabla_a_mem_table(package->tabla)){
+			return 0;
+		}
+	}
+
+	Registro* registro_a_insertar  = malloc(sizeof(Registro));
+	registro_a_insertar->key = package->key;
+	registro_a_insertar->timeStamp = package->timestamp;
+	char* value = malloc(package->tabla_long);
+	strcpy(registro_a_insertar->value, package->value);
 
 
+	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
 
+int existe_tabla_en_mem_table(char* tabla_a_chequear) {
+
+	int es_tabla(Tabla* tabla) {
+		return !(strcmp(tabla->nombre_tabla, tabla_a_chequear));
+	}
+
+	//signal
+	Tabla* tabla_encontrada = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	//wait
+
+	return !(strcmp(tabla_encontrada->nombre_tabla, tabla_a_chequear));
+}
+
+
+
+int agregar_tabla_a_mem_table(char* tabla) {
+	Tabla* tabla_a_agregar = malloc(sizeof(Tabla));
+	strcpy(tabla_a_agregar->nombre_tabla, tabla);
+	tabla_a_agregar->registros = list_create();
+
+	//signal
+	int status = list_add(mem_table, tabla_a_agregar);
+	//wait
+	return status;
+}
+
+int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
+
+	int es_tabla(Tabla* tabla) {
+		return !(strcmp(tabla->nombre_tabla, nombre_tabla));
+	}
+	//signal
+	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	int status = list_add(tabla->registros, registro_a_insertar);
+	//wait
+
+	return status;
+}
 t_list* lfs_describe(char* punto_montaje){
 
 	t_list* metadatas = list_create();

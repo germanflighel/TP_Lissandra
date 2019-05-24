@@ -27,6 +27,12 @@ typedef struct Registro {
 	char* value;
 } Registro;
 
+typedef struct Tabla {
+	char nombre_tabla[MAX_TABLE_LENGTH];
+	t_list* registros;
+} Tabla;
+
+
 typedef struct Metadata {
 	int consistency;
 	int partitions;
@@ -39,7 +45,7 @@ t_config* leer_config();
 t_log* iniciar_logger();
 
 void lfs_select(t_PackageSelect* package, char* ruta);
-void lfs_insert(t_PackageInsert* package);
+int lfs_insert(t_PackageInsert* package, char* ruta);
 
 int existe_tabla(char* tabla);
 Metadata* obtener_metadata(char* ruta);
@@ -50,4 +56,7 @@ void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
 t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
 int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro);
+
+int agregar_tabla_a_mem_table(char* tabla);
+int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla);
 #endif
