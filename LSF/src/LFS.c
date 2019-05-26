@@ -162,18 +162,18 @@ int main() {
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package, socketCliente);
 
-				int fue_exitoso = ejecutar_comando(headerRecibido, &package, ruta);
+				int fue_exitoso = (int) ejecutar_comando(headerRecibido, &package, ruta);
 				if(fue_exitoso){
 					log_info(logger, "Se inserto exitosamente");
 				} else {
 					log_info(logger, "No se pudo insertar");
 				}
 
-				/* Esto es para probar antes de implementar en el SELECT la lectura del FS
+				// Esto es para probar antes de implementar en el SELECT la lectura del FS
 				Tabla* tabluqui = list_get(mem_table, 0);
 				Registro* registruli = list_get(tabluqui->registros, 0);
 				log_debug(logger, registruli->value);
-				*/
+
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
