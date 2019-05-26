@@ -22,6 +22,7 @@ Tabla_paginas tabla_paginas;
 char* bit_map;
 int max_value_size;
 double memory_size;
+char* conf_path;
 //Estructura Memoria Principal
 
 int main() {
@@ -33,20 +34,30 @@ int main() {
 	char* puerto;
 	//Estructura Conexiones
 
-	memory_size = 5000;
-
 	//Estructura Conexiones
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 	//Estructura Conexiones
 
+	//Cofig Path
+	printf("Ingrese nombre del archivo de configuración \n");
+	char* entrada = leerConsola();
+	conf_path = malloc(strlen(entrada));
+	strcpy(conf_path, entrada);
+	free(entrada);
+
+	//Cofig Path
+
 	//Abro log y config
 	abrir_log();
 
 	t_config *conection_conf;
 	abrir_con(&conection_conf);
+	printf("Archivo de configuración \"%s\" levantado\n", conf_path);
 	//Abro log y config
+
+	memory_size = config_get_double_value(conection_conf, "MEMORY_SIZE");
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_DEST");
@@ -72,7 +83,10 @@ int main() {
 	enviar_handshake(MEMORY, lfsSocket);
 
 	recv(lfsSocket, &max_value_size, sizeof(u_int16_t), 0);
-	printf("%d \n", max_value_size);
+	printf("Maximo tamaño del value: %d. \n", max_value_size);
+	char* loguear = string_itoa(max_value_size);
+	log_info(g_logger, loguear);
+	free(loguear);
 
 	t_describe describeRecibido;
 
@@ -184,7 +198,8 @@ int main() {
 			if (headerRecibido == SELECT) {
 				t_PackageSelect package;
 				package.header = SELECT;
-				status = recieve_and_deserialize_select(&package,socketCliente);
+				status = recieve_and_deserialize_select(&package,
+						socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
 				//send_package(package.header, &package, lfsSocket);
@@ -193,7 +208,8 @@ int main() {
 			} else if (headerRecibido == INSERT) {
 				t_PackageInsert package;
 				package.header = INSERT;
-				status = recieve_and_deserialize_insert(&package,socketCliente);
+				status = recieve_and_deserialize_insert(&package,
+						socketCliente);
 
 				comando_valido = ejectuarComando(headerRecibido, &package);
 				//send_package(package.header, &package, lfsSocket);
@@ -201,7 +217,7 @@ int main() {
 		}
 	}
 
-	printf("Cliente Desconectado.\n");
+	printf("Kernel Desconectado.\n");
 
 	pthread_exit(&threadL);
 
@@ -212,12 +228,10 @@ int main() {
 	free(memoriaPrincipal);
 	free(tabla_paginas.renglones);
 	log_destroy(g_logger);
+	free(conf_path);
 
 	return 0;
 }
-
-
-
 
 void destruirTablas() {
 
@@ -291,7 +305,7 @@ int ejectuarComando(int header, void* package) {
 	return -1;
 }
 
-int ejecutarSelect(t_PackageSelect* select) {
+int ejecutarSelect(t_PackageSelect* select, int lfs_socket) {
 
 	typedef struct Pagina {
 		long timeStamp;
@@ -310,17 +324,76 @@ int ejecutarSelect(t_PackageSelect* select) {
 			printf("Registro: TimeStamp: %d, Key:%d, Value: %s \n",
 					pagina_encontrada->timeStamp, pagina_encontrada->key,
 					pagina_encontrada->value);
-
 		} else {
+
+			int status;
 			printf("No tengo ese registro \n");
-			//lo pido a lfs
+
+			recibir_y_ejecutar(select, lfs_socket);
+
 		}
 	} else {
-		printf("No tengo esa tabla \n");
+		printf("Memoria no tiene esa tabla, pidiendo a LFS... \n");
 		//lo pido a lfs
+		recibir_y_ejecutar(select, lfs_socket);
+
 	}
 
 	return 1;
+}
+
+int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
+
+	send_package(paquete->header, paquete, socket);
+
+	t_PackageInsert* paquete_insert;
+	paquete_insert = malloc(sizeof(t_PackageInsert));
+
+	paquete_insert->header = INSERT;
+	paquete_insert->tabla_long = paquete->tabla_long;
+
+	paquete_insert->tabla = malloc(paquete->tabla_long + 1);
+	strcpy(paquete_insert->tabla, paquete->tabla);
+
+	paquete_insert->key = paquete->key;
+
+	t_Respuesta_Select* respuesta_select = malloc(sizeof(t_Respuesta_Select));
+
+	int status = recieve_and_deserialize_RespuestaSelect(respuesta_select,
+			socket);
+
+	if (!status) {
+		return 0;
+	}
+
+	status = respuesta_select->result;
+
+	if (!status) {
+		printf("No se tiene en LFS \n");
+		return 0;
+	}
+
+	paquete_insert->value = malloc(respuesta_select->value_long + 1);
+	strcpy(paquete_insert->value, respuesta_select->value);
+
+	paquete_insert->value_long = respuesta_select->value_long;
+	paquete_insert->timestamp = respuesta_select->timestamp;
+	paquete_insert->total_size = sizeof(paquete_insert->header)
+			+ sizeof(paquete_insert->value_long)
+			+ sizeof(paquete_insert->tabla_long) + sizeof(paquete_insert->key)
+			+ sizeof(paquete_insert->timestamp) + paquete_insert->value_long
+			+ paquete_insert->tabla_long;
+
+	ejecutarInsert(paquete_insert);
+
+	printf("Registro: TimeStamp: %d, Key:%d, Value: %s \n",
+			paquete_insert->timestamp, paquete_insert->key,
+			paquete_insert->value);
+
+	free(respuesta_select->value);
+	dispose_package(&paquete_insert);
+
+	return status;
 }
 
 int primerpaginaLibre() {
@@ -333,7 +406,6 @@ int primerpaginaLibre() {
 	}
 	return -1;
 }
-
 
 int ejecutarInsert(t_PackageInsert* insert) {
 
@@ -351,6 +423,7 @@ int ejecutarInsert(t_PackageInsert* insert) {
 	Segmento* segmento_encontrado = buscarSegmento(insert->tabla);
 	if (segmento_encontrado != NULL) {
 
+		Segmento *nuevo_segmento = malloc(sizeof(Segmento));
 		int num_pag;
 		Pagina* pagina_encontrada = buscarPagina(insert->key,
 				segmento_encontrado, &num_pag);
@@ -391,7 +464,6 @@ int ejecutarInsert(t_PackageInsert* insert) {
 		}
 	} else {
 
-
 		Segmento *nuevo_segmento = malloc(sizeof(Segmento));
 
 		strcpy(nuevo_segmento->path, insert->tabla);
@@ -407,7 +479,6 @@ int ejecutarInsert(t_PackageInsert* insert) {
 			paginaNueva->timeStamp = insert->timestamp;
 
 			strcpy(paginaNueva->value, insert->value);
-
 
 			tabla_paginas.renglones[numero_pagina].numero = numero_pagina;
 			tabla_paginas.renglones[numero_pagina].modificado = 0;
@@ -428,9 +499,7 @@ int ejecutarInsert(t_PackageInsert* insert) {
 }
 
 void abrir_con(t_config** g_config) {
-
-	(*g_config) = config_create(CONFIG_PATH);
-
+	(*g_config) = config_create(conf_path);
 }
 
 void abrir_log(void) {
@@ -469,8 +538,8 @@ void *inputFunc(void* serverSocket)
 	package.message = malloc(MAX_MESSAGE_SIZE);
 	char *serializedPackage;
 
-	//t_PackageRec packageRec;
-	//int status = 1;		// Estructura que manjea el status de los recieve.
+//t_PackageRec packageRec;
+//int status = 1;		// Estructura que manjea el status de los recieve.
 
 	printf(
 			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
@@ -618,38 +687,38 @@ void insert_memory(char* parametros, int serverSocket) {
 }
 
 /*
-	 //hardcode tablas
-	 Pagina franco;
-	 franco.timeStamp = 1557972674;
-	 franco.key = 20;
-	 strcpy(franco.value, "Franco");
+ //hardcode tablas
+ Pagina franco;
+ franco.timeStamp = 1557972674;
+ franco.key = 20;
+ strcpy(franco.value, "Franco");
 
-	 Pagina santi;
-	 santi.timeStamp = 1557972674;
-	 santi.key = 21;
-	 strcpy(santi.value, "Santi");
+ Pagina santi;
+ santi.timeStamp = 1557972674;
+ santi.key = 21;
+ strcpy(santi.value, "Santi");
 
-	 tabla_paginas.renglones[0].numero = 0;
-	 tabla_paginas.renglones[0].modificado = 0;
-	 tabla_paginas.renglones[0].offset = tabla_paginas.renglones[0].numero * sizeof(Pagina);
-	 bit_map[tabla_paginas.renglones[0].numero] = 1;
+ tabla_paginas.renglones[0].numero = 0;
+ tabla_paginas.renglones[0].modificado = 0;
+ tabla_paginas.renglones[0].offset = tabla_paginas.renglones[0].numero * sizeof(Pagina);
+ bit_map[tabla_paginas.renglones[0].numero] = 1;
 
-	 tabla_paginas.renglones[1].numero = 1;
-	 tabla_paginas.renglones[1].modificado = 0;
-	 tabla_paginas.renglones[1].offset = tabla_paginas.renglones[1].numero * sizeof(Pagina);
-	 bit_map[tabla_paginas.renglones[1].numero] = 1;
+ tabla_paginas.renglones[1].numero = 1;
+ tabla_paginas.renglones[1].modificado = 0;
+ tabla_paginas.renglones[1].offset = tabla_paginas.renglones[1].numero * sizeof(Pagina);
+ bit_map[tabla_paginas.renglones[1].numero] = 1;
 
-	 memcpy((memoriaPrincipal + tabla_paginas.renglones[0].offset), &franco, sizeof(Pagina));
-	 memcpy((memoriaPrincipal + tabla_paginas.renglones[1].offset), &santi, sizeof(Pagina));
+ memcpy((memoriaPrincipal + tabla_paginas.renglones[0].offset), &franco, sizeof(Pagina));
+ memcpy((memoriaPrincipal + tabla_paginas.renglones[1].offset), &santi, sizeof(Pagina));
 
 
-	 Segmento tabla1;
-	 strcpy(tabla1.path, "TABLA1");
-	 tabla1.numeros_pagina = list_create();
-	 list_add(tabla1.numeros_pagina, 0);
-	 list_add(tabla1.numeros_pagina, 1);
+ Segmento tabla1;
+ strcpy(tabla1.path, "TABLA1");
+ tabla1.numeros_pagina = list_create();
+ list_add(tabla1.numeros_pagina, 0);
+ list_add(tabla1.numeros_pagina, 1);
 
-	 list_add(tabla_segmentos, &tabla1);
+ list_add(tabla_segmentos, &tabla1);
 
-	 //Harcode tablas
-	 */
+ //Harcode tablas
+ */
