@@ -45,7 +45,9 @@ t_config* leer_config();
 
 t_log* iniciar_logger();
 
-void lfs_select(t_PackageSelect* package, char* ruta);
+Registro* lfs_select(t_PackageSelect* package, char* ruta);
+void* ejecutar_comando(int header, void* package, char* ruta);
+
 int lfs_insert(t_PackageInsert* package, char* ruta);
 
 int existe_tabla(char* tabla);
@@ -55,9 +57,11 @@ t_list* lfs_describe(char* punto_montaje);
 void loguear_metadata(Metadata* metadata);
 void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
-t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
-int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro);
+
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
+void loguear_int(int n);
 
 int agregar_tabla_a_mem_table(char* tabla);
 int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla);
+
 #endif

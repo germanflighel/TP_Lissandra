@@ -65,8 +65,12 @@ int main() {
 		return 0;
 	}
 
-	max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
-	log_debug(logger,string_itoa(max_value_size));
+
+  max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
+	char* max_value_size_string = string_itoa(max_value_size);
+	log_debug(logger, max_value_size_string);
+	free(max_value_size_string);
+
 	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -89,10 +93,20 @@ int main() {
 
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(describe);
-	log_debug(logger, string_itoa(cantidad_de_tablas));
+	char* cantidad_de_tablas_string = string_itoa(cantidad_de_tablas);
+	log_debug(logger, cantidad_de_tablas_string);
+	free(cantidad_de_tablas_string);
 	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+
 	dispose_package(&serializedPackage);
 
+
+	free(describe->tablas);
+	free(describe);
+	for (int i = 0; i < metadatas->elements_count; i++) {
+		free(list_get(metadatas,i));
+	}
+	list_destroy(metadatas);
 
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
@@ -103,10 +117,8 @@ int main() {
 
 	while (status) {
 
-		log_debug(logger, "Header");
+		log_info(logger, "Listo para recibir consulta");
 		headerRecibido = recieve_header(socketCliente);
-		printf("End Header. \n");
-		log_debug(logger, "Status");
 
 		status = headerRecibido;
 
@@ -118,8 +130,31 @@ int main() {
 				t_PackageSelect package;
 				status = recieve_and_deserialize_select(&package, socketCliente);
 
-				ejecutar_comando(headerRecibido, &package, ruta);
+				Registro* registro_a_devolver = (Registro*) ejecutar_comando(headerRecibido, &package, ruta);
 
+				t_Respuesta_Select* respuesta = malloc(sizeof(t_Respuesta_Select));
+
+				if(registro_a_devolver->value) {
+					respuesta->result = 1;
+					respuesta->value = malloc(strlen(registro_a_devolver->value));
+					strcpy(respuesta->value,registro_a_devolver->value);
+					respuesta->value_long = strlen(respuesta->value);
+					respuesta->timestamp = registro_a_devolver->timeStamp;
+					log_debug(logger, respuesta->value);
+				} else {
+					respuesta->result = 0;
+					respuesta->value = NULL;
+					respuesta->value_long = 0;
+					log_debug(logger, "No esta la key buscada");
+				}
+
+
+
+				send(socketCliente, &respuesta, sizeof(respuesta), 0);
+				free(respuesta->value);
+				free(respuesta);
+				free(registro_a_devolver->value);
+				free(registro_a_devolver);
 			} else if (headerRecibido == INSERT) {
 
 				log_debug(logger, "Got an INSERT");
@@ -174,22 +209,22 @@ t_log* iniciar_logger(void) {
 
 }
 
-void ejecutar_comando(int header, void* package, char* ruta) {
+void* ejecutar_comando(int header, void* package, char* ruta) {
 	switch (header) {
 	case SELECT:
-		lfs_select((t_PackageSelect*) package, ruta);
+		return lfs_select((t_PackageSelect*) package, ruta);
 		break;
 	case INSERT:
-		lfs_insert((t_PackageInsert*) package, ruta);
+		return lfs_insert((t_PackageInsert*) package, ruta);
 		break;
 	}
 }
 
 //Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
-void lfs_select(t_PackageSelect* package, char* ruta) {
+Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	char* mi_ruta = string_new();
-	string_append(&mi_ruta,ruta);
+	string_append(&mi_ruta, punto_montaje);
 
 	log_debug(logger, mi_ruta);
 
@@ -201,7 +236,8 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 
 	if (!existe_tabla(mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
-		return;
+		Registro* registro;
+		return registro;
 	}
 	log_debug(logger, "Existe tabla, BRO!");
 
@@ -212,36 +248,17 @@ void lfs_select(t_PackageSelect* package, char* ruta) {
 
 	//3) Calcular que particion contiene a KEY
 	int particionObjetivo = calcular_particion(package->key, metadata->partitions);
-	log_debug(logger, string_itoa(particionObjetivo));
+	char* particionObjetivo_string = string_itoa(particionObjetivo);
+	log_debug(logger, particionObjetivo_string);
+	free(particionObjetivo_string);
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	t_list* keys = encontrar_keys(package->key, particionObjetivo, mi_ruta, ruta);
-	//list_iterate(keys, (void*)loguear_registro);
-	list_sort(keys,(void*)timestamp_mayor_entre);
-	//list_iterate(keys,(void*)loguear_registro);
-
-	Registro* registro_mayor = list_get(keys,0);
-	log_debug(logger, "La value correspondiente al mayor timeStamp es: ");
-	log_debug(logger,registro_mayor->value);
-
-	/*
-	t_Respuesta_Select respuesta;
-	respuesta.value = malloc(strlen(registro_mayor->value));
-	strcpy(respuesta.value,registro_mayor->value);
-	*/
-
-
-
-	//5) Devolver o mostrar el valor mayor
-	//log_debug(logger, maximoTimestamp(valuesEncontrados));
-	//struct Reg *reg = list_get(valuesEncontrados, 0);
-	//log_debug(logger, reg->value);
+	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje);
 
 	free(metadata);
 	free(mi_ruta);
 
-
-
+	return registro_mayor;
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
@@ -296,7 +313,6 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 }
 
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
-
 	int es_tabla(Tabla* tabla) {
 		if (strcmp(tabla->nombre_tabla, tabla_a_chequear) == 0) {
 			return 1;
@@ -384,13 +400,12 @@ t_list* lfs_describe(char* punto_montaje){
 		}
 		closedir(tables_directory);
 	}
+	free(tablas_path);
 	return metadatas;
 }
 
 
 int existe_tabla(char* tabla) {
-	log_debug(logger, tabla);
-
 	int status=1;
 	DIR *dirp;
 
@@ -408,13 +423,19 @@ int existe_tabla(char* tabla) {
 void loguear_metadata(Metadata* metadata) {
 	//log_debug(logger, metadata->nombre_tabla);
 	log_debug(logger, consistency_to_str(metadata->consistency));
-	log_debug(logger, string_itoa(metadata->partitions));
-	log_debug(logger, string_itoa(metadata->compaction_time));
+	loguear_int(metadata->partitions);
+	loguear_int(metadata->compaction_time);
+}
+
+void loguear_int(int n) {
+	char* n_string = string_itoa(n);
+	log_debug(logger, n_string);
+	free(n_string);
 }
 
 void loguear_registro(Registro* registro) {
-	log_debug(logger, string_itoa(registro->timeStamp));
-	log_debug(logger, string_itoa(registro->key));
+	loguear_int(registro->timeStamp);
+	loguear_int(registro->key);
 	log_debug(logger, registro->value);
 }
 
@@ -450,25 +471,26 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
-	t_list* lista_registros = list_create();
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
+	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
 	char* barra = "/";
 	string_append(&mi_ruta, barra);
-	string_append(&mi_ruta, string_itoa(particion_objetivo));
+	char* particion_objetivo_string = string_itoa(particion_objetivo);
+	string_append(&mi_ruta, particion_objetivo_string);
 	char* bin = ".bin";
 	string_append(&mi_ruta, bin);
 
 	log_debug(logger, mi_ruta);
-
-	log_warning(logger, "Ahora voy a mostrar los datos de los bloques");
-
 	t_config* particion = config_create(mi_ruta);
 
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
+
+	Registro* registro = malloc(sizeof(Registro));
+	registro->timeStamp = 0;
 	int i = 0;
 	while(blocks[i] != NULL){
 		char* ruta_a_bloque = string_new();
@@ -479,56 +501,53 @@ t_list* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char*
 
 		log_debug(logger, ruta_a_bloque);
 
-
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
-
-		log_debug(logger, "Abri el Bloque");
 
 		struct stat s;
 	    int status = fstat (fd, & s);
 	    size = s.st_size;
 
-	    //TODO: Leer solo hasta el \n o hasta el tercer ; y manejar el offset
-
-	    char* f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
-	    char** registros = string_split(f, "\n"); // Spliteo y obtengo una lista de los registros
+	    f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+	    log_debug(logger, "Lei el bloque a escanear");
+	    char** registros = string_split(f, "\n");
 	    int j = 0;
-	    while (registros[j] != NULL) { //Recorro los registros hasta que no haya mas segun las commons
-			//log_debug(logger, registros[j]); //Logueo el registro entero, se puede borrar
-			char** datos_registro = string_split(registros[j], ";"); //Spliteo un Registro para tener una lista de sus datos
-			int k = 0;
-			Registro* registro = malloc(sizeof(Registro)); //Yo deberia hacer un free de este registro despues? Creo que no, porque yo lo guardo en la lista y pierdo la referencia si le hago el free
-			if(atoi(datos_registro[1]) == keyBuscada){
-				registro->timeStamp = atol(datos_registro[0]);
-				registro->key = atoi(datos_registro[1]);
-				registro->value = malloc(strlen(datos_registro[2])+1); // Lo mismo, el free deberia hacerlo en algun momento sobre esto?
-				strcpy(registro->value, datos_registro[2]);
-				list_add(lista_registros, registro);
-			}
-			while (datos_registro[k] != NULL) { //Recorro los datos hasta que no haya mas segun las commons
-				//log_debug(logger, datos_registro[k]); //Logueo cada dato (timestamp, key, value)
-				k++;
-			}
-			j++;
+	    while (registros[j] != NULL) {
+		    log_debug(logger, "Leyendo un registro");
 
+			char** datos_registro = string_split(registros[j], ";");
+			if(atoi(datos_registro[1]) == keyBuscada){
+				if (atol(datos_registro[0]) > registro->timeStamp) {
+					free(registro->value);
+					registro->timeStamp = atol(datos_registro[0]);
+					registro->key = atoi(datos_registro[1]);
+					registro->value = malloc(strlen(datos_registro[2])+1);
+					strcpy(registro->value, datos_registro[2]);
+				}
+			}
+
+			string_iterate_lines(datos_registro, (void*)free);
+		    log_debug(logger, "Libere los datos del registro");
+
+			free(datos_registro);
+		    log_debug(logger, "Libere datos_registro");
+
+			j++;
 	    }
+	    string_iterate_lines(registros, (void*)free);
+	    free(registros);
 		close(fd);
 
 		free(ruta_a_bloque);
 		i++;
 	}
-
-
+	free(particion_objetivo_string);
 	free(mi_ruta);
+	free(blocks);
 
-	return lista_registros;
-}
+	config_destroy(particion);
 
-int timestamp_mayor_entre(Registro* un_registro, Registro* otro_registro){
-	if(un_registro->timeStamp>otro_registro->timeStamp){
-		return 1;
-	}else{
-		return 0;
-	}
+	log_debug(logger, "Destrui la config particion");
+
+	return registro;
 }
 
