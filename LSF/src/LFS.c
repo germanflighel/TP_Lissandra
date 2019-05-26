@@ -18,12 +18,17 @@
 #include <commons/collections/list.h>
 
 t_log* logger;
+t_list* mem_table;
+int max_value_size;
+pthread_mutex_t* mem_table_mutex;
 
 int main() {
 
+	pthread_mutex_init(mem_table_mutex, NULL);
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
+	mem_table = list_create();
 	logger = iniciar_logger();
 	t_config* config = leer_config();
 
@@ -60,10 +65,12 @@ int main() {
 		return 0;
 	}
 
-	int max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
+
+  max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
 	char* max_value_size_string = string_itoa(max_value_size);
 	log_debug(logger, max_value_size_string);
 	free(max_value_size_string);
+
 	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -155,7 +162,18 @@ int main() {
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package, socketCliente);
 
-				//ejecutar_comando(headerRecibido, &package, ruta);
+				int fue_exitoso = ejecutar_comando(headerRecibido, &package, ruta);
+				if(fue_exitoso){
+					log_info(logger, "Se inserto exitosamente");
+				} else {
+					log_info(logger, "No se pudo insertar");
+				}
+
+				/* Esto es para probar antes de implementar en el SELECT la lectura del FS
+				Tabla* tabluqui = list_get(mem_table, 0);
+				Registro* registruli = list_get(tabluqui->registros, 0);
+				log_debug(logger, registruli->value);
+				*/
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
@@ -197,7 +215,7 @@ void* ejecutar_comando(int header, void* package, char* ruta) {
 		return lfs_select((t_PackageSelect*) package, ruta);
 		break;
 	case INSERT:
-		return lfs_insert((t_PackageInsert*) package);
+		return lfs_insert((t_PackageInsert*) package, ruta);
 		break;
 	}
 }
@@ -243,9 +261,115 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 	return registro_mayor;
 }
 
-void* lfs_insert(t_PackageInsert* package) {
+int lfs_insert(t_PackageInsert* package, char* ruta) {
+	if (package->value_long > max_value_size) {
+		return 0;
+	}
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta,ruta);
+
+	log_debug(logger, mi_ruta);
+
+	char* tables = "/Tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, package->tabla);
+
+	log_debug(logger, mi_ruta);
+
+	if (!existe_tabla(mi_ruta)) {
+		log_debug(logger, "No existe la tabla");
+		return 0;
+	}
+	log_debug(logger, "Existe tabla, BRO!");
+
+	//Para que obtengo la metadata? Ni se usa parece
+
+	Metadata* metadata = obtener_metadata(mi_ruta);
+
+	loguear_metadata(metadata);
+
+	if(!existe_tabla_en_mem_table(package->tabla)) {
+		if(!agregar_tabla_a_mem_table(package->tabla)){
+			return 0;
+		}
+	}
+
+	log_debug(logger, "Voy a crear el registro");
+	Registro* registro_a_insertar  = malloc(sizeof(Registro));
+	registro_a_insertar->key = package->key;
+	log_debug(logger, string_itoa(registro_a_insertar->key));
+	registro_a_insertar->timeStamp = package->timestamp;
+	log_debug(logger, string_itoa(registro_a_insertar->timeStamp));
+
+	log_debug(logger, (package->value));
+
+	char* value = malloc(package->value_long);
+	strcpy(value, package->value);
+	registro_a_insertar->value = malloc(strlen(value) + 1);
+	strcpy(registro_a_insertar->value, value);
+	log_debug(logger, (registro_a_insertar->value));
+
+	return insertar_en_mem_table(registro_a_insertar, package->tabla);
+}
+
+int existe_tabla_en_mem_table(char* tabla_a_chequear) {
+	int es_tabla(Tabla* tabla) {
+		if (strcmp(tabla->nombre_tabla, tabla_a_chequear) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+
+	//signal
+	pthread_mutex_lock(mem_table_mutex);
+	Tabla* tabla_encontrada = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	//wait
+	pthread_mutex_unlock(mem_table_mutex);
+	if(tabla_encontrada) {
+		log_debug(logger, "Existe la tabla en mem_table");
+		return 1;
+	}
+	log_debug(logger, "No existe la tabla en mem_table");
+	return 0;
+}
 
 
+
+int agregar_tabla_a_mem_table(char* tabla) {
+	Tabla* tabla_a_agregar = malloc(sizeof(Tabla));
+	strcpy(tabla_a_agregar->nombre_tabla, tabla);
+	tabla_a_agregar->registros = list_create();
+
+	int cantidad_anterior;
+	//signal
+	pthread_mutex_lock(mem_table_mutex);
+	cantidad_anterior = mem_table->elements_count;
+	int indice_agregado = list_add(mem_table, tabla_a_agregar);
+	//wait
+	pthread_mutex_unlock(mem_table_mutex);
+
+	return indice_agregado + 1 > cantidad_anterior;
+}
+
+int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
+
+	int es_tabla(Tabla* tabla) {
+		if (strcmp(tabla->nombre_tabla, nombre_tabla) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	int cantidad_anterior;
+	//signal
+	pthread_mutex_lock(mem_table_mutex);
+	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	cantidad_anterior = tabla->registros->elements_count;
+	int indice_insercion = list_add(tabla->registros, registro_a_insertar);
+	//wait
+	pthread_mutex_unlock(mem_table_mutex);
+
+
+	return indice_insercion + 1 > cantidad_anterior;
 }
 
 t_list* lfs_describe(char* punto_montaje){
@@ -426,3 +550,4 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 
 	return registro;
 }
+
