@@ -435,7 +435,6 @@ int recibir_handshake(int idEsperado, int socket) {
 	package.header = recieve_header(socket);
 
 	if (HANDSHAKE == package.header) {
-		printf("%d \n",package.header);
 		recieve_and_deserialize_handshake(&package, socket);
 		if (package.id == idEsperado) {
 			return 1;

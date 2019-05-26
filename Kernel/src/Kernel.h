@@ -25,6 +25,23 @@
 #define CONFIG_PATH "KernelSocket.config"
 #define LOG_FILE_PATH "kernel_global.log"
 
+
+t_list* tablas_actuales;
+typedef struct Tabla {
+	char nombre_tabla[MAX_TABLE_LENGTH];
+	uint8_t consistencia;
+} Tabla;
+
+typedef struct Memoria {
+	int socket;
+	int numero;
+} Memoria;
+
+
+t_list* memoriasSC;
+t_list* memoriasSHC;
+t_list* memoriasEC;
+
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);
 
