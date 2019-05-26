@@ -27,6 +27,10 @@ int main() {
 	char* ip;
 	char* puerto;
 
+	t_list* puertos = list_create();
+	list_add(puertos,6167);
+	list_add(puertos,6168);
+
 	t_log* logger_Kernel = iniciar_logger();
 
 	memset(&hints, 0, sizeof(hints));
@@ -78,13 +82,20 @@ int main() {
 
 	printf("Esperando describe.\n");
 
+	tablas_actuales = list_create();
+
 	t_describe describe;
 	recieve_and_deserialize_describe(&describe,serverSocket);
 
-
 	for(int tabla = 0; tabla < describe.cant_tablas; tabla++){
-		printf("Tabla %s \n",describe.tablas[tabla].nombre_tabla);
-		printf("Consistencia %s \n",consistency_to_str(describe.tablas[tabla].consistencia));
+		Tabla tabla_nueva;
+		strcpy(tabla_nueva.nombre_tabla,describe.tablas[tabla].nombre_tabla);
+		tabla_nueva.consistencia = describe.tablas[tabla].consistencia;
+
+		printf("Tabla %s \n",tabla_nueva.nombre_tabla);
+		printf("Consistencia %s \n",consistency_to_str(tabla_nueva.consistencia));
+
+		list_add(tablas_actuales,&tabla_nueva);
 	}
 
 
@@ -140,55 +151,6 @@ int main() {
 
 			interpretarComando(header, parametros, serverSocket);
 			free(parametros);
-			/*
-			 if (header == SELECT) {
-			 t_PackageSelect package;
-			 if (!fill_package_select(&package, parametros)) {
-			 printf("Incorrecta cantidad de parametros\n");
-			 entradaValida = 0;
-			 }
-
-			 if (entradaValida) {
-			 printf("SELECT enviado (Tabla: %s, Key: %d)\n",
-			 package.tabla, package.key);
-
-			 serializedPackage = serializarSelect(&package);
-
-			 send(serverSocket, serializedPackage, package.total_size,
-			 0);
-
-			 free(package.tabla);
-			 dispose_package(&serializedPackage);
-			 }
-			 } else if (header == INSERT) {
-			 t_PackageInsert package;
-			 if (!fill_package_insert(&package, parametros,0)) {
-			 printf("Incorrecta cantidad de parametros\n");
-			 entradaValida = 0;
-			 }
-
-			 if (entradaValida) {
-			 printf("INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n", package.tabla,
-			 package.key,package.value,package.timestamp);
-
-			 serializedPackage = serializarInsert(&package);
-
-			 send(serverSocket, serializedPackage, package.total_size,
-			 0);
-
-			 free(package.tabla);
-			 dispose_package(&serializedPackage);
-			 }
-			 }*/
-
-			/*
-			 interpretarComando(package.header,package.message);
-			 serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
-			 send(serverSocket, serializedPackage, package.total_size, 0);
-			 dispose_package(&serializedPackage);
-			 */
-			//status = recieve_and_deserialize(&packageRec, serverSocket);
-			//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
 		}
 
 	}
@@ -204,13 +166,15 @@ int main() {
 	/*
 	 *	Listo! Cree un medio de comunicacion con el servidor, me conecte con y le envie cosas...
 	 *
-	 *	...Pero me aburri. Era de esperarse, ������No?
+	 *	...Pero me aburri. Era de esperarse, No?
 	 *
 	 *	Asique ahora solo me queda cerrar la conexion con un close();
 	 */
 
 	close(serverSocket);
 	log_destroy(logger_Kernel);
+	list_destroy(puertos);
+	list_destroy(tablas_actuales);
 
 	/* ADIO'! */
 	return 0;

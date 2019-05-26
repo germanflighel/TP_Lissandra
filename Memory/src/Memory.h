@@ -22,7 +22,7 @@
 #define PUERTO "6667"
 #define BACKLOG 1			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
 
-#define CONFIG_PATH "MemorySocket.config"
+
 
 /*
 typedef struct Pagina {

@@ -355,7 +355,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 
 char* serializarRespuestaSelect(t_Respuesta_Select *package) {
 
-	char *serializedPackage = malloc(sizeof(package->result) + sizeof(package->value_long) + package->value_long);
+	char *serializedPackage = malloc(sizeof(package->result) + sizeof(package->value_long) + package->value_long + package->timestamp);
 
 	int offset = 0;
 	int size_to_send;
@@ -370,6 +370,9 @@ char* serializarRespuestaSelect(t_Respuesta_Select *package) {
 
 	size_to_send = package->value_long;
 	memcpy(serializedPackage + offset, package->value, size_to_send);
+
+	size_to_send = sizeof(package->timestamp);
+	memcpy(serializedPackage + offset, package->timestamp, size_to_send);
 
 	return serializedPackage;
 }
@@ -398,6 +401,12 @@ int recieve_and_deserialize_RespuestaSelect(t_Respuesta_Select *package, int soc
 		return 0;
 
 	package->value[package->value_long] = '\0';
+
+
+	status = recv(socketServidor, buffer, sizeof(package->timestamp), 0);
+		memcpy(&(package->timestamp), buffer, buffer_size);
+		if (!status)
+			return 0;
 
 	free(buffer);
 
@@ -435,7 +444,6 @@ int recibir_handshake(int idEsperado, int socket) {
 	package.header = recieve_header(socket);
 
 	if (HANDSHAKE == package.header) {
-		printf("%d \n",package.header);
 		recieve_and_deserialize_handshake(&package, socket);
 		if (package.id == idEsperado) {
 			return 1;
