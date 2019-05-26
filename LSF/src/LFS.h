@@ -23,7 +23,7 @@
 #define LOG_FILE_PATH "lfs_global.log"
 
 typedef struct Registro {
-	long int timeStamp;
+	long timeStamp;
 	int key;
 	char* value;
 } Registro;

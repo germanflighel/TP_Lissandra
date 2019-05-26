@@ -132,27 +132,29 @@ int main() {
 
 				Registro* registro_a_devolver = (Registro*) ejecutar_comando(headerRecibido, &package, ruta);
 
-				t_Respuesta_Select* respuesta = malloc(sizeof(t_Respuesta_Select));
+				t_Respuesta_Select respuesta;
 
 				if(registro_a_devolver->value) {
-					respuesta->result = 1;
-					respuesta->value = malloc(strlen(registro_a_devolver->value));
-					strcpy(respuesta->value,registro_a_devolver->value);
-					respuesta->value_long = strlen(respuesta->value);
-					respuesta->timestamp = registro_a_devolver->timeStamp;
-					log_debug(logger, respuesta->value);
+
+					respuesta.result = 1;
+					respuesta.value = malloc(strlen(registro_a_devolver->value)+1);
+					strcpy(respuesta.value,registro_a_devolver->value);
+					respuesta.value_long = strlen(respuesta.value);
+					respuesta.timestamp = registro_a_devolver->timeStamp;
+					log_debug(logger, respuesta.value);
 				} else {
-					respuesta->result = 0;
-					respuesta->value = NULL;
-					respuesta->value_long = 0;
+					respuesta.result = 0;
+					respuesta.value = malloc(1);
+					strcpy(respuesta.value,"");
+					respuesta.value_long = 1;
+					respuesta.timestamp = 0;
 					log_debug(logger, "No esta la key buscada");
 				}
 
-
-
-				send(socketCliente, &respuesta, sizeof(respuesta), 0);
-				free(respuesta->value);
-				free(respuesta);
+				char* serializedPackage = serializarRespuestaSelect(&respuesta);
+				send(socketCliente, serializedPackage, sizeof(respuesta.result) + sizeof(respuesta.value_long) + respuesta.value_long + sizeof(respuesta.timestamp), 0);
+				free(serializedPackage);
+				free(respuesta.value);
 				free(registro_a_devolver->value);
 				free(registro_a_devolver);
 			} else if (headerRecibido == INSERT) {
@@ -169,11 +171,12 @@ int main() {
 					log_info(logger, "No se pudo insertar");
 				}
 
+				/*
 				// Esto es para probar antes de implementar en el SELECT la lectura del FS
 				Tabla* tabluqui = list_get(mem_table, 0);
 				Registro* registruli = list_get(tabluqui->registros, 0);
 				log_debug(logger, registruli->value);
-
+				*/
 
 			} /*else if (headerRecibido == DESCRIBE) {
 
@@ -236,7 +239,8 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	if (!existe_tabla(mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
-		Registro* registro;
+		Registro* registro = malloc(sizeof(Registro));
+		registro->value=NULL;
 		return registro;
 	}
 	log_debug(logger, "Existe tabla, BRO!");
