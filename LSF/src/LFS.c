@@ -20,20 +20,24 @@
 t_log* logger;
 t_list* mem_table;
 int max_value_size;
-pthread_mutex_t* mem_table_mutex;
+pthread_mutex_t mem_table_mutex;
+char* ruta;
+void *receptorDeConsultas(void *);
 
 int main() {
 
-	pthread_mutex_init(mem_table_mutex, NULL);
+	pthread_mutex_init(&mem_table_mutex, NULL);
+
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 
 	mem_table = list_create();
 	logger = iniciar_logger();
+	log_debug(logger, "HOLA");
 	t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
-	char* ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
 
 	memset(&hints, 0, sizeof(hints));
@@ -65,13 +69,12 @@ int main() {
 		return 0;
 	}
 
-
-  max_value_size = config_get_int_value(config,"TAMAÑO_VALUE");
+	max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
 	char* max_value_size_string = string_itoa(max_value_size);
 	log_debug(logger, max_value_size_string);
-	free(max_value_size_string);
 
-	send(socketCliente, &max_value_size,sizeof(u_int16_t), 0);
+
+	send(socketCliente, &max_value_size, sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
 	list_iterate(metadatas, (void*) loguear_metadata);
@@ -81,7 +84,7 @@ int main() {
 	describe->cant_tablas = cantidad_de_tablas;
 	describe->tablas = malloc(cantidad_de_tablas * sizeof(t_metadata));
 
-	for (int i = 0;  i < cantidad_de_tablas; i++) {
+	for (int i = 0; i < cantidad_de_tablas; i++) {
 		Metadata* a_metadata = (Metadata*) list_get(metadatas, i);
 		t_metadata* meta = malloc(sizeof(t_metadata));
 		meta->consistencia = a_metadata->consistency;
@@ -90,112 +93,70 @@ int main() {
 		describe->tablas[i] = *meta;
 	}
 
-
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(describe);
 	char* cantidad_de_tablas_string = string_itoa(cantidad_de_tablas);
 	log_debug(logger, cantidad_de_tablas_string);
 	free(cantidad_de_tablas_string);
-	send(socketCliente, serializedPackage, cantidad_de_tablas*sizeof(t_metadata) + sizeof(describe->cant_tablas), 0);
+	send(socketCliente, serializedPackage,
+			cantidad_de_tablas * sizeof(t_metadata)
+					+ sizeof(describe->cant_tablas), 0);
 
 	dispose_package(&serializedPackage);
-
 
 	free(describe->tablas);
 	free(describe);
 	for (int i = 0; i < metadatas->elements_count; i++) {
-		free(list_get(metadatas,i));
+		free(list_get(metadatas, i));
 	}
 	list_destroy(metadatas);
 
-	t_PackagePosta package;
-	int status = 1;		// Estructura que maneja el status de los recieve.
+	//thread receptor
+	pthread_t threadL;
+	int iret1;
 
-	printf("Memoria conectada. Esperando Envio de mensajes.\n");
+	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
+			(void*) socketCliente);
+	if (iret1) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		exit(EXIT_FAILURE);
+	}
+	//thread receptor
 
-	int headerRecibido;
+	int socketNuevo;
+	while (true) {
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
+				&addrlen);
 
-	while (status) {
-
-		log_info(logger, "Listo para recibir consulta");
-		headerRecibido = recieve_header(socketCliente);
-
-		status = headerRecibido;
-
-		if (status) {
-			if (headerRecibido == SELECT) {
-
-				log_debug(logger, "Got a SELECT");
-
-				t_PackageSelect package;
-				status = recieve_and_deserialize_select(&package, socketCliente);
-
-				Registro* registro_a_devolver = (Registro*) ejecutar_comando(headerRecibido, &package, ruta);
-
-				t_Respuesta_Select respuesta;
-
-				if(registro_a_devolver->value) {
-
-					respuesta.result = 1;
-					respuesta.value = malloc(strlen(registro_a_devolver->value)+1);
-					strcpy(respuesta.value,registro_a_devolver->value);
-					respuesta.value_long = strlen(respuesta.value);
-					respuesta.timestamp = registro_a_devolver->timeStamp;
-					log_debug(logger, respuesta.value);
-				} else {
-					respuesta.result = 0;
-					respuesta.value = malloc(1);
-					strcpy(respuesta.value,"");
-					respuesta.value_long = 1;
-					respuesta.timestamp = 0;
-					log_debug(logger, "No esta la key buscada");
-				}
-
-				char* serializedPackage = serializarRespuestaSelect(&respuesta);
-				send(socketCliente, serializedPackage, sizeof(respuesta.result) + sizeof(respuesta.value_long) + respuesta.value_long + sizeof(respuesta.timestamp), 0);
-				free(serializedPackage);
-				free(respuesta.value);
-				free(registro_a_devolver->value);
-				free(registro_a_devolver);
-			} else if (headerRecibido == INSERT) {
-
-				log_debug(logger, "Got an INSERT");
-
-				t_PackageInsert package;
-				status = recieve_and_deserialize_insert(&package, socketCliente);
-
-				int fue_exitoso = (int) ejecutar_comando(headerRecibido, &package, ruta);
-				if(fue_exitoso){
-					log_info(logger, "Se inserto exitosamente");
-				} else {
-					log_info(logger, "No se pudo insertar");
-				}
-
-				/*
-				// Esto es para probar antes de implementar en el SELECT la lectura del FS
-				Tabla* tabluqui = list_get(mem_table, 0);
-				Registro* registruli = list_get(tabluqui->registros, 0);
-				log_debug(logger, registruli->value);
-				*/
-
-			} /*else if (headerRecibido == DESCRIBE) {
-
-				log_debug(logger, "Got an DESCRIBE");
-
-				t_describe package;
-
-
-			}*/
-
+		if (!recibir_handshake(MEMORY, socketNuevo)) {
+			printf("Handshake invalido \n");
+			return 0;
 		}
 
+		max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
+
+		loguear_int(max_value_size);
+
+		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
+
+		//thread receptor
+		pthread_t threadL;
+		int iret1;
+
+		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
+				(void*) socketNuevo);
+		if (iret1) {
+			fprintf(stderr, "Error - pthread_create() return code: %d\n",
+					iret1);
+			exit(EXIT_FAILURE);
+		}
+		//thread receptor
 	}
 
-	printf("Cliente Desconectado.\n");
+	//receptorDeConsultas(socketCliente);
 
-	close(socketCliente);
 	close(listenningSocket);
-
+	free(max_value_size_string);
 	log_destroy(logger);
 	config_destroy(config);
 
@@ -240,7 +201,7 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 	if (!existe_tabla(mi_ruta)) {
 		log_debug(logger, "No existe la tabla");
 		Registro* registro = malloc(sizeof(Registro));
-		registro->value=NULL;
+		registro->value = NULL;
 		return registro;
 	}
 	log_debug(logger, "Existe tabla, BRO!");
@@ -251,13 +212,15 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 	loguear_metadata(metadata);
 
 	//3) Calcular que particion contiene a KEY
-	int particionObjetivo = calcular_particion(package->key, metadata->partitions);
+	int particionObjetivo = calcular_particion(package->key,
+			metadata->partitions);
 	char* particionObjetivo_string = string_itoa(particionObjetivo);
 	log_debug(logger, particionObjetivo_string);
 	free(particionObjetivo_string);
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	Registro* registro_mayor  = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje);
+	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
+			mi_ruta, punto_montaje);
 
 	free(metadata);
 	free(mi_ruta);
@@ -270,7 +233,7 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 		return 0;
 	}
 	char* mi_ruta = string_new();
-	string_append(&mi_ruta,ruta);
+	string_append(&mi_ruta, ruta);
 
 	log_debug(logger, mi_ruta);
 
@@ -292,14 +255,14 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 
 	loguear_metadata(metadata);
 
-	if(!existe_tabla_en_mem_table(package->tabla)) {
-		if(!agregar_tabla_a_mem_table(package->tabla)){
+	if (!existe_tabla_en_mem_table(package->tabla)) {
+		if (!agregar_tabla_a_mem_table(package->tabla)) {
 			return 0;
 		}
 	}
 
 	log_debug(logger, "Voy a crear el registro");
-	Registro* registro_a_insertar  = malloc(sizeof(Registro));
+	Registro* registro_a_insertar = malloc(sizeof(Registro));
 	registro_a_insertar->key = package->key;
 	log_debug(logger, string_itoa(registro_a_insertar->key));
 	registro_a_insertar->timeStamp = package->timestamp;
@@ -325,19 +288,17 @@ int existe_tabla_en_mem_table(char* tabla_a_chequear) {
 	}
 
 	//signal
-	pthread_mutex_lock(mem_table_mutex);
+	pthread_mutex_lock(&mem_table_mutex);
 	Tabla* tabla_encontrada = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	//wait
-	pthread_mutex_unlock(mem_table_mutex);
-	if(tabla_encontrada) {
+	pthread_mutex_unlock(&mem_table_mutex);
+	if (tabla_encontrada) {
 		log_debug(logger, "Existe la tabla en mem_table");
 		return 1;
 	}
 	log_debug(logger, "No existe la tabla en mem_table");
 	return 0;
 }
-
-
 
 int agregar_tabla_a_mem_table(char* tabla) {
 	Tabla* tabla_a_agregar = malloc(sizeof(Tabla));
@@ -346,11 +307,11 @@ int agregar_tabla_a_mem_table(char* tabla) {
 
 	int cantidad_anterior;
 	//signal
-	pthread_mutex_lock(mem_table_mutex);
+	pthread_mutex_lock(&mem_table_mutex);
 	cantidad_anterior = mem_table->elements_count;
 	int indice_agregado = list_add(mem_table, tabla_a_agregar);
 	//wait
-	pthread_mutex_unlock(mem_table_mutex);
+	pthread_mutex_unlock(&mem_table_mutex);
 
 	return indice_agregado + 1 > cantidad_anterior;
 }
@@ -365,18 +326,17 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 	}
 	int cantidad_anterior;
 	//signal
-	pthread_mutex_lock(mem_table_mutex);
+	pthread_mutex_lock(&mem_table_mutex);
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	cantidad_anterior = tabla->registros->elements_count;
 	int indice_insercion = list_add(tabla->registros, registro_a_insertar);
 	//wait
-	pthread_mutex_unlock(mem_table_mutex);
-
+	pthread_mutex_unlock(&mem_table_mutex);
 
 	return indice_insercion + 1 > cantidad_anterior;
 }
 
-t_list* lfs_describe(char* punto_montaje){
+t_list* lfs_describe(char* punto_montaje) {
 
 	t_list* metadatas = list_create();
 	DIR *tables_directory;
@@ -388,10 +348,12 @@ t_list* lfs_describe(char* punto_montaje){
 	tables_directory = opendir(tablas_path);
 	if (tables_directory) {
 		while ((a_directory = readdir(tables_directory)) != NULL) {
-			if (strcmp(a_directory->d_name, ".") && strcmp(a_directory->d_name, "..")) {
+			if (strcmp(a_directory->d_name, ".")
+					&& strcmp(a_directory->d_name, "..")) {
 				char* a_table_path = string_new();
 				char* table_name = malloc(strlen(a_directory->d_name));
-				memcpy(table_name, a_directory->d_name,strlen(a_directory->d_name) + 1);
+				memcpy(table_name, a_directory->d_name,
+						strlen(a_directory->d_name) + 1);
 				string_append(&a_table_path, tablas_path);
 				string_append(&a_table_path, table_name);
 				Metadata* metadata = obtener_metadata(a_table_path);
@@ -408,21 +370,18 @@ t_list* lfs_describe(char* punto_montaje){
 	return metadatas;
 }
 
-
 int existe_tabla(char* tabla) {
-	int status=1;
+	int status = 1;
 	DIR *dirp;
 
 	dirp = opendir(tabla);
 
 	if (dirp == NULL) {
-		status= 0;
+		status = 0;
 	}
 	closedir(dirp);
 	return status;
 }
-
-
 
 void loguear_metadata(Metadata* metadata) {
 	//log_debug(logger, metadata->nombre_tabla);
@@ -443,7 +402,6 @@ void loguear_registro(Registro* registro) {
 	log_debug(logger, registro->value);
 }
 
-
 Metadata* obtener_metadata(char* ruta) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -457,11 +415,12 @@ Metadata* obtener_metadata(char* ruta) {
 	int particiones = config_get_int_value(config_metadata, "PARTITIONS");
 
 	metadata->partitions = particiones;
-	long tiempoDeCompactacion = config_get_long_value(config_metadata,"COMPACTION_TIME");
+	long tiempoDeCompactacion = config_get_long_value(config_metadata,
+			"COMPACTION_TIME");
 	metadata->compaction_time = tiempoDeCompactacion;
 
-
-	char* consistencia = config_get_string_value(config_metadata, "CONSISTENCY");
+	char* consistencia = config_get_string_value(config_metadata,
+			"CONSISTENCY");
 	metadata->consistency = consistency_to_int(consistencia);
 
 	config_destroy(config_metadata);
@@ -475,7 +434,8 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje) {
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
+		char* montaje) {
 	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -492,11 +452,10 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
-
 	Registro* registro = malloc(sizeof(Registro));
 	registro->timeStamp = 0;
 	int i = 0;
-	while(blocks[i] != NULL){
+	while (blocks[i] != NULL) {
 		char* ruta_a_bloque = string_new();
 		string_append(&ruta_a_bloque, montaje);
 		string_append(&ruta_a_bloque, "/Bloques/");
@@ -508,37 +467,37 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
 
 		struct stat s;
-	    int status = fstat (fd, & s);
-	    size = s.st_size;
+		int status = fstat(fd, &s);
+		size = s.st_size;
 
-	    f = mmap (NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
-	    log_debug(logger, "Lei el bloque a escanear");
-	    char** registros = string_split(f, "\n");
-	    int j = 0;
-	    while (registros[j] != NULL) {
-		    log_debug(logger, "Leyendo un registro");
+		f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+		log_debug(logger, "Lei el bloque a escanear");
+		char** registros = string_split(f, "\n");
+		int j = 0;
+		while (registros[j] != NULL) {
+			log_debug(logger, "Leyendo un registro");
 
 			char** datos_registro = string_split(registros[j], ";");
-			if(atoi(datos_registro[1]) == keyBuscada){
+			if (atoi(datos_registro[1]) == keyBuscada) {
 				if (atol(datos_registro[0]) > registro->timeStamp) {
 					free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
-					registro->value = malloc(strlen(datos_registro[2])+1);
+					registro->value = malloc(strlen(datos_registro[2]) + 1);
 					strcpy(registro->value, datos_registro[2]);
 				}
 			}
 
-			string_iterate_lines(datos_registro, (void*)free);
-		    log_debug(logger, "Libere los datos del registro");
+			string_iterate_lines(datos_registro, (void*) free);
+			log_debug(logger, "Libere los datos del registro");
 
 			free(datos_registro);
-		    log_debug(logger, "Libere datos_registro");
+			log_debug(logger, "Libere datos_registro");
 
 			j++;
-	    }
-	    string_iterate_lines(registros, (void*)free);
-	    free(registros);
+		}
+		string_iterate_lines(registros, (void*) free);
+		free(registros);
 		close(fd);
 
 		free(ruta_a_bloque);
@@ -555,3 +514,102 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	return registro;
 }
 
+void *receptorDeConsultas(void* socket) {
+
+	int socketCliente = (int) socket;
+
+	t_PackagePosta package;
+	int status = 1;		// Estructura que maneja el status de los recieve.
+
+	printf("Memoria conectada. Esperando Envio de mensajes.\n");
+
+	int headerRecibido;
+
+	while (status) {
+
+		log_info(logger, "Listo para recibir consulta");
+		headerRecibido = recieve_header(socketCliente);
+
+		status = headerRecibido;
+
+		if (status) {
+			if (headerRecibido == SELECT) {
+
+				log_debug(logger, "Got a SELECT");
+
+				t_PackageSelect package;
+				status = recieve_and_deserialize_select(&package,
+						socketCliente);
+
+				Registro* registro_a_devolver = (Registro*) ejecutar_comando(
+						headerRecibido, &package, ruta);
+
+				t_Respuesta_Select respuesta;
+
+				if (registro_a_devolver->value) {
+
+					respuesta.result = 1;
+					respuesta.value = malloc(
+							strlen(registro_a_devolver->value) + 1);
+					strcpy(respuesta.value, registro_a_devolver->value);
+					respuesta.value_long = strlen(respuesta.value);
+					respuesta.timestamp = registro_a_devolver->timeStamp;
+					log_debug(logger, respuesta.value);
+				} else {
+					respuesta.result = 0;
+					respuesta.value = malloc(1);
+					strcpy(respuesta.value, "");
+					respuesta.value_long = 1;
+					respuesta.timestamp = 0;
+					log_debug(logger, "No esta la key buscada");
+				}
+
+				char* serializedPackage = serializarRespuestaSelect(&respuesta);
+				send(socketCliente, serializedPackage,
+						sizeof(respuesta.result) + sizeof(respuesta.value_long)
+								+ respuesta.value_long
+								+ sizeof(respuesta.timestamp), 0);
+				free(serializedPackage);
+				free(respuesta.value);
+				free(registro_a_devolver->value);
+				free(registro_a_devolver);
+			} else if (headerRecibido == INSERT) {
+
+				log_debug(logger, "Got an INSERT");
+
+				t_PackageInsert package;
+				status = recieve_and_deserialize_insert(&package,
+						socketCliente);
+
+				int fue_exitoso = (int) ejecutar_comando(headerRecibido,
+						&package, ruta);
+				if (fue_exitoso) {
+					log_info(logger, "Se inserto exitosamente");
+				} else {
+					log_info(logger, "No se pudo insertar");
+				}
+
+				/*
+				 // Esto es para probar antes de implementar en el SELECT la lectura del FS
+				 Tabla* tabluqui = list_get(mem_table, 0);
+				 Registro* registruli = list_get(tabluqui->registros, 0);
+				 log_debug(logger, registruli->value);
+				 */
+
+			} /*else if (headerRecibido == DESCRIBE) {
+
+			 log_debug(logger, "Got an DESCRIBE");
+
+			 t_describe package;
+
+
+			 }*/
+
+		}
+
+	}
+
+	printf("Cliente Desconectado.\n");
+
+	close(socketCliente);
+}

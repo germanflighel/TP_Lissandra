@@ -20,7 +20,7 @@
 
 
 #define IP "127.0.0.1"
-#define PUERTO "6667"
+#define PUERTO "5555"
 
 #define CONFIG_PATH "KernelSocket.config"
 #define LOG_FILE_PATH "kernel_global.log"

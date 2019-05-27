@@ -14,6 +14,8 @@
 void *inputFunc(void *);
 //pthread_mutex_t lock;
 
+int es_primera_memoria;
+
 //Estructura Memoria Principal
 int cant_paginas;
 void* memoriaPrincipal;
@@ -24,6 +26,8 @@ int max_value_size;
 double memory_size;
 char* conf_path;
 //Estructura Memoria Principal
+
+char* puerto_propio;
 
 int main() {
 
@@ -58,13 +62,18 @@ int main() {
 	//Abro log y config
 
 	memory_size = config_get_double_value(conection_conf, "MEMORY_SIZE");
+	es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
+
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_DEST");
+	puerto_propio = config_get_string_value(conection_conf, "PUERTO");
+
+	log_info(g_logger,puerto_propio);
+
 
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
-	config_destroy(conection_conf);
 	//Cierro config
 
 	//Socket a lfs
@@ -88,9 +97,17 @@ int main() {
 	log_info(g_logger, loguear);
 	free(loguear);
 
+
+	log_info(g_logger,puerto_propio);
+
 	t_describe describeRecibido;
+	if(es_primera_memoria){
 
 	recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
+
+	}
+	log_info(g_logger,puerto_propio);
+
 	//Handshake con LFS
 
 	//inicializacion memoria
@@ -116,13 +133,16 @@ int main() {
 
 	//inicializacion memoria
 
+
 	//Socket a kernel (listener)
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
 	hints.ai_flags = AI_PASSIVE;// Asigna el address del localhost: 127.0.0.1
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-	getaddrinfo(NULL, PUERTO, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
+	getaddrinfo(NULL, puerto_propio, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
+
+	config_destroy(conection_conf);
 
 	int listenningSocket;
 	listenningSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
@@ -143,9 +163,9 @@ int main() {
 
 	freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
-	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
-
 	printf("Esperando kernel... \n");
+
+	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
@@ -154,6 +174,8 @@ int main() {
 			&addrlen);
 
 	//Socket a kernel (listener)
+
+
 
 	//Handshake de kernel
 	if (!recibir_handshake(KERNEL, socketCliente)) {
@@ -167,12 +189,14 @@ int main() {
 	//Handshake de kernel
 
 	//Describe a kernel
+	if(es_primera_memoria){
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(&describeRecibido);
 	send(socketCliente, serializedPackage,
 			2 * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
 	dispose_package(&serializedPackage);
 	free(describeRecibido.tablas);
+	}
 	//Describe a kernel
 
 	//thread ingreso por consola

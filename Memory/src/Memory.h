@@ -19,7 +19,6 @@
 #include <readline/readline.h>
 #include <pthread.h>
 
-#define PUERTO "6667"
 #define BACKLOG 1			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
 
 
