@@ -138,7 +138,6 @@ int main() {
 			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
 
 	while (enviar) {
-		entradaValida = 1;
 		char* entrada = leerConsola();
 
 		char* parametros;
@@ -148,18 +147,25 @@ int main() {
 
 		if (header == EXIT_CONSOLE) {
 			enviar = 0;
-		} else if (header == ERROR) {
-			printf("Comando no reconocido\n");
-			entradaValida = 0;
+		}
+
+		if (enviar) {
+
+			Script* script_consola = malloc(sizeof(Script));
+			script_consola->index=0;
+			char* linea_entrada= malloc(strlen(entrada)) ;
+			strcpy(linea_entrada,entrada);
+
+			script_consola->lineas = malloc(sizeof(char*));
+
+			script_consola->lineas[0] = linea_entrada;
+			script_consola->lineas[1] = NULL;
+			script_consola->cant_lineas = 1;
+
+			script_a_ready(script_consola);
 		}
 
 		free(entrada);
-
-		if (enviar && entradaValida) {
-
-			interpretarComando(header, parametros, serverSocket);
-			free(parametros);
-		}
 
 	}
 
@@ -437,6 +443,7 @@ void* exec(int serverSocket) {
 
 		switch (resultado_exec) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
+			log_info(logger_Kernel, script_en_ejecucion->lineas[script_en_ejecucion->index]);
 			log_info(logger_Kernel, "Finalizó");
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
@@ -460,6 +467,9 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 	int entradaValida;
 	int ejecutadas = 1;
 	do {
+		log_info(logger_Kernel, "Ejecutando un quantum");
+		log_info(logger_Kernel, scriptEnExec->lineas[scriptEnExec->index]);
+
 		entradaValida = 1;
 		char* entrada = scriptEnExec->lineas[scriptEnExec->index];
 
