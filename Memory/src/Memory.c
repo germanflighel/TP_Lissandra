@@ -193,7 +193,7 @@ int main() {
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(&describeRecibido);
 	send(socketCliente, serializedPackage,
-			2 * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
+			describeRecibido.cant_tablas * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
 	dispose_package(&serializedPackage);
 	free(describeRecibido.tablas);
 	}
