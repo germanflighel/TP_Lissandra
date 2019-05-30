@@ -20,6 +20,7 @@ t_queue* colaReady;
 t_queue* colaExec;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
+pthread_mutex_t exec_mutex;
 
 int main() {
 
@@ -112,6 +113,7 @@ int main() {
 	colaExec = queue_create();
 	sem_init(&ejecutar_sem, 0, 0);
 	pthread_mutex_init(&cola_ready_mutex, NULL);
+	pthread_mutex_init(&exec_mutex, NULL);
 	//setup planificacion
 
 	//thread executer
@@ -151,16 +153,12 @@ int main() {
 
 		if (enviar) {
 
+
 			Script* script_consola = malloc(sizeof(Script));
-			script_consola->index=0;
-			char* linea_entrada= malloc(strlen(entrada)) ;
-			strcpy(linea_entrada,entrada);
+			script_consola->index = 0;
 
-			script_consola->lineas = malloc(sizeof(char*));
-
-			script_consola->lineas[0] = linea_entrada;
-			script_consola->lineas[1] = NULL;
-			script_consola->cant_lineas = 1;
+			script_consola->lineas = string_split(entrada, "\n");
+			script_consola->cant_lineas = cant_parametros(script_consola->lineas);
 
 			script_a_ready(script_consola);
 		}
@@ -325,12 +323,6 @@ void metrics(char* parametros, int serverSocket) {
 
 void run(char* rutaRecibida, int serverSocket) {
 
-	char* entrada[MAX_MESSAGE_SIZE];
-	char* parametros;
-	int header;
-	int enviar = 1;
-	int entradaValida = 1;
-
 	char* rutaArchivo = malloc(strlen(rutaRecibida));
 	strcpy(rutaArchivo, rutaRecibida);
 
@@ -340,49 +332,6 @@ void run(char* rutaRecibida, int serverSocket) {
 
 	script_a_ready(test);
 
-	/*
-	 FILE *lql;
-	 lql = fopen(rutaArchivo, "r");
-
-	 if (!is_regular_file(rutaArchivo)) {
-	 printf("La ruta es un directorio\n");
-	 free(rutaArchivo);
-	 return;
-	 }
-
-	 if ((lql == NULL)) {
-	 printf("No se puede abrir el arhivo \n");
-	 free(rutaArchivo);
-	 return;	//Loguear que no se abrio el archivo
-	 } else {			//Se abrio el archivo y se va a leer los comandos
-
-	 while (feof(lql) == 0) {
-	 fgets(entrada, sizeof(entrada), lql);//Lee una linea del archivo de txt
-	 //printf("%s \n", entrada);
-
-	 separarEntrada(entrada, &header, &parametros);
-	 //printf("%d \n",header);
-	 if (header == EXIT_CONSOLE) {
-	 enviar = 0;
-	 return;
-	 } else if (header == ERROR) {
-	 printf("Comando no reconocido\n");
-	 entradaValida = 0;
-
-	 }
-
-	 if (enviar && entradaValida) {
-	 if (parametros[strlen(parametros) - 1] == '\n') {
-	 parametros[strlen(parametros) - 1] = '\0';
-	 }
-	 interpretarComando(header, parametros, serverSocket);
-	 }
-
-	 }
-	 }
-
-	 fclose(lql);
-	 */
 	free(rutaArchivo);
 
 }
@@ -392,12 +341,11 @@ Script* levantar_script(char* ruta) {
 	Script* nuevoScript = malloc(sizeof(Script));
 	nuevoScript->index = 0;
 	char* f;
-	log_info(logger_Kernel, ruta);
 
 	int fd = open(ruta, O_RDONLY, S_IRUSR | S_IWUSR);
 
 	struct stat s;
-	int status = fstat(fd, &s);
+	//int status = fstat(fd, &s);
 	int size = s.st_size;
 
 	f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
@@ -422,7 +370,7 @@ int is_regular_file(const char *path) {
 void script_a_ready(Script* script) {
 
 	pthread_mutex_lock(&cola_ready_mutex);
-	queue_push(colaReady, (void*) script);
+	queue_push(colaReady, script);
 	pthread_mutex_unlock(&cola_ready_mutex);
 
 	sem_post(&ejecutar_sem);
@@ -435,6 +383,8 @@ void* exec(int serverSocket) {
 
 		sem_wait(&ejecutar_sem);
 
+		pthread_mutex_lock(&exec_mutex);
+
 		pthread_mutex_lock(&cola_ready_mutex);
 		Script* script_en_ejecucion = (Script*) queue_pop(colaReady);
 		pthread_mutex_unlock(&cola_ready_mutex);
@@ -443,7 +393,7 @@ void* exec(int serverSocket) {
 
 		switch (resultado_exec) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
-			log_info(logger_Kernel, script_en_ejecucion->lineas[script_en_ejecucion->index]);
+			//log_info(logger_Kernel, script_en_ejecucion->lineas[script_en_ejecucion->index-1]);
 			log_info(logger_Kernel, "Finalizó");
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
@@ -458,7 +408,7 @@ void* exec(int serverSocket) {
 			free(script_en_ejecucion);
 			break;
 		}
-
+		pthread_mutex_unlock(&exec_mutex);
 	}
 }
 
@@ -466,15 +416,15 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 	Script* scriptEnExec = *script;
 	int entradaValida;
 	int ejecutadas = 1;
+	int header;
 	do {
-		log_info(logger_Kernel, "Ejecutando un quantum");
-		log_info(logger_Kernel, scriptEnExec->lineas[scriptEnExec->index]);
+		printf("Ejecutando un quantum \n");
+		printf("%s \n",scriptEnExec->lineas[scriptEnExec->index]);
 
 		entradaValida = 1;
 		char* entrada = scriptEnExec->lineas[scriptEnExec->index];
 
 		char* parametros;
-		int header;
 
 		separarEntrada(entrada, &header, &parametros);
 
