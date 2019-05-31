@@ -704,7 +704,12 @@ void interpretarComando(int header, char* parametros) {
 				break;
 			}
 			Registro* registro = lfs_select(package, ruta);
-			loguear_registro(registro);
+			if (registro->value) {
+				loguear_registro(registro);
+			} else {
+				log_error(logger, "No existe un registro con esa key");
+			}
+
 			free(registro->value);
 			free(registro);
 			free(package);
