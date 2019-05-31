@@ -217,8 +217,8 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 	free(particionObjetivo_string);
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
-			mi_ruta, punto_montaje);
+
+	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje, package->tabla);
 
 	free(metadata);
 	free(mi_ruta);
@@ -432,8 +432,7 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
-		char* montaje) {
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje, char* nombre_tabla) {
 	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -450,8 +449,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
-	Registro* registro = malloc(sizeof(Registro));
-	registro->timeStamp = 0;
+	Registro* registro = buscar_en_mem_table(nombre_tabla, keyBuscada);
 	int i = 0;
 	while (blocks[i] != NULL) {
 		char* ruta_a_bloque = string_new();
@@ -512,6 +510,45 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 	return registro;
 }
 
+Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
+	if (!existe_tabla_en_mem_table(nombre_tabla)) {
+		Registro* registro = malloc(sizeof(Registro));
+		registro->timeStamp = 0;
+		return registro;
+	}
+
+	int es_tabla(Tabla* tabla) {
+		if (strcmp(tabla->nombre_tabla, nombre_tabla) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	int es_registro(Registro* registro) { return registro->key == keyBuscada; }
+
+
+	Registro* get_mayor_timestamp(Registro* unRegistro, Registro* otroRegistro) {
+        return unRegistro->timeStamp >= otroRegistro->timeStamp ? unRegistro: otroRegistro;
+	}
+
+	Registro* registro_mayor;
+
+	pthread_mutex_lock(&mem_table_mutex);
+	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	t_list* registros_con_key = list_filter(tabla->registros, (int) &es_registro);
+	if(registros_con_key->elements_count) {
+		Registro* registro_mayor = list_get(registros_con_key, 0);
+		registro_mayor = list_fold(tabla->registros, registro_mayor, (void*) &get_mayor_timestamp);
+		pthread_mutex_unlock(&mem_table_mutex);
+		list_destroy(registros_con_key);
+		return registro_mayor;
+	}
+	pthread_mutex_unlock(&mem_table_mutex);
+
+	Registro* registro = malloc(sizeof(Registro));
+	registro->timeStamp = 0;
+	return registro;
+}
+
 void *receptorDeConsultas(void* socket) {
 
 	int socketCliente = (int) socket;
@@ -563,10 +600,10 @@ void *receptorDeConsultas(void* socket) {
 				}
 
 				char* serializedPackage = serializarRespuestaSelect(&respuesta);
-				send(socketCliente, serializedPackage,
+				/*send(socketCliente, serializedPackage,
 						sizeof(respuesta.result) + sizeof(respuesta.value_long)
 								+ respuesta.value_long
-								+ sizeof(respuesta.timestamp), 0);
+								+ sizeof(respuesta.timestamp), 0);*/
 				free(serializedPackage);
 				free(respuesta.value);
 				free(registro_a_devolver->value);

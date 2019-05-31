@@ -58,8 +58,8 @@ t_list* lfs_describe(char* punto_montaje);
 void loguear_metadata(Metadata* metadata);
 void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
-
-Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje);
+Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada);
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje, char* nombre_tabla);
 void loguear_int(int n);
 
 int agregar_tabla_a_mem_table(char* tabla);
