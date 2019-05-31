@@ -15,6 +15,8 @@
 #include <commons/string.h>
 #include <commons/config.h>
 #include <readline/readline.h>
+#include <readline/history.h>
+
 
 #include <sockets.h>
 
@@ -46,6 +48,7 @@ t_config* leer_config();
 
 t_log* iniciar_logger();
 
+void* recibir_por_consola();
 Registro* lfs_select(t_PackageSelect* package, char* ruta);
 void* ejecutar_comando(int header, void* package, char* ruta);
 

@@ -25,6 +25,15 @@ void *receptorDeConsultas(void *);
 
 int main() {
 
+	pthread_t threadConsola;
+	int retorno_de_consola;
+
+	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
+	if (retorno_de_consola) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
+		exit(EXIT_FAILURE);
+	}
+
 	pthread_mutex_init(&mem_table_mutex, NULL);
 
 	struct addrinfo hints;
@@ -54,7 +63,7 @@ int main() {
 
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-	printf("Esperando memoria... \n");
+	log_info(logger, "Esperando memoria...");
 
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
@@ -63,7 +72,7 @@ int main() {
 			&addrlen);
 
 	if (!recibir_handshake(MEMORY, socketCliente)) {
-		printf("Handshake invalido \n");
+		log_info(logger, "Handshake invalido \n");
 		return 0;
 	}
 
@@ -113,13 +122,16 @@ int main() {
 	pthread_t threadL;
 	int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-			(void*) socketCliente);
+	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketCliente);
 	if (iret1) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
 	//thread receptor
+
+
+
+
 
 	int socketNuevo;
 	while (true) {
@@ -127,7 +139,7 @@ int main() {
 				&addrlen);
 
 		if (!recibir_handshake(MEMORY, socketNuevo)) {
-			printf("Handshake invalido \n");
+			log_info(logger, "Handshake invalido \n");
 			return 0;
 		}
 
@@ -144,12 +156,13 @@ int main() {
 		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
 				(void*) socketNuevo);
 		if (iret1) {
-			fprintf(stderr, "Error - pthread_create() return code: %d\n",
-					iret1);
+			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 			exit(EXIT_FAILURE);
 		}
 		//thread receptor
 	}
+
+
 
 	//receptorDeConsultas(socketCliente);
 
@@ -556,7 +569,7 @@ void *receptorDeConsultas(void* socket) {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
-	printf("Memoria conectada. Esperando Envio de mensajes.\n");
+	log_info(logger, "Memoria conectada. Esperando Envio de mensajes");
 
 	int headerRecibido;
 
@@ -644,7 +657,40 @@ void *receptorDeConsultas(void* socket) {
 
 	}
 
-	printf("Cliente Desconectado.\n");
+	log_info(logger, "Cliente Desconectado");
 
 	close(socketCliente);
+}
+
+void *recibir_por_consola() {
+	char* consulta;
+	while(true) {
+		consulta = readline("LFS> ");
+		if (!consulta) {
+		  break;
+		}
+		char* parametros;
+		int header;
+		int entradaValida = 1;
+
+		separarEntrada(consulta, &header, &parametros);
+
+		if (header == EXIT_CONSOLE) {
+			log_error(logger, "Bye");
+
+			return NULL;
+		} else if (header == ERROR) {
+			log_error(logger, "Comando no valido");
+			entradaValida = 0;
+		}
+
+		if (entradaValida) {
+			//Ejecutar el comando
+		}
+		add_history(consulta);
+
+		free(consulta);
+
+
+	}
 }
