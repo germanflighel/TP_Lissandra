@@ -30,6 +30,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <semaphore.h>
 #include <commons/collections/list.h>
 #include <commons/string.h>
 

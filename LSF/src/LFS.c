@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
-#include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 
 t_log* logger;
@@ -33,7 +32,6 @@ int main() {
 
 	mem_table = list_create();
 	logger = iniciar_logger();
-	log_debug(logger, "HOLA");
 	t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
@@ -69,7 +67,7 @@ int main() {
 		return 0;
 	}
 
-	max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
+	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 	char* max_value_size_string = string_itoa(max_value_size);
 	log_debug(logger, max_value_size_string);
 

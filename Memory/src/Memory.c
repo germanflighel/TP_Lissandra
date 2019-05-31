@@ -16,6 +16,8 @@ void *inputFunc(void *);
 
 int es_primera_memoria;
 
+int numero_memoria;
+
 //Estructura Memoria Principal
 int cant_paginas;
 void* memoriaPrincipal;
@@ -63,6 +65,7 @@ int main() {
 
 	memory_size = config_get_double_value(conection_conf, "MEMORY_SIZE");
 	es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
+	numero_memoria = config_get_int_value(conection_conf, "NUMERO");
 
 
 	ip = config_get_string_value(conection_conf, "IP");
@@ -183,6 +186,8 @@ int main() {
 		return 0;
 	}
 
+	enviar_handshake(numero_memoria, socketCliente);
+
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
 	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
@@ -193,7 +198,7 @@ int main() {
 	char* serializedPackage;
 	serializedPackage = serializarDescribe(&describeRecibido);
 	send(socketCliente, serializedPackage,
-			2 * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
+			describeRecibido.cant_tablas * sizeof(t_metadata) + sizeof(describeRecibido.cant_tablas), 0);
 	dispose_package(&serializedPackage);
 	free(describeRecibido.tablas);
 	}

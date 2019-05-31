@@ -452,6 +452,18 @@ int recibir_handshake(int idEsperado, int socket) {
 	return 0;
 }
 
+int recibir_numero_memoria(int socket) {
+
+	t_Handshake package;
+	package.header = recieve_header(socket);
+
+	if (HANDSHAKE == package.header) {
+		recieve_and_deserialize_handshake(&package, socket);
+		return package.id;
+	}
+	return 0;
+}
+
 char* serializarHandShake(t_Handshake *package) {
 
 	char *serializedPackage = malloc(
