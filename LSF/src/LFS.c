@@ -46,6 +46,8 @@ int main() {
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
+	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
+
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -75,12 +77,6 @@ int main() {
 		log_info(logger, "Handshake invalido \n");
 		return 0;
 	}
-
-	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
-	char* max_value_size_string = string_itoa(max_value_size);
-	log_debug(logger, max_value_size_string);
-
-
 	send(socketCliente, &max_value_size, sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -167,7 +163,7 @@ int main() {
 	//receptorDeConsultas(socketCliente);
 
 	close(listenningSocket);
-	free(max_value_size_string);
+
 	log_destroy(logger);
 	config_destroy(config);
 
@@ -240,6 +236,7 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
+	loguear_int(max_value_size);
 	if (package->value_long > max_value_size) {
 		return 0;
 	}
@@ -677,7 +674,6 @@ void *recibir_por_consola() {
 
 		if (header == EXIT_CONSOLE) {
 			log_error(logger, "Bye");
-
 			return NULL;
 		} else if (header == ERROR) {
 			log_error(logger, "Comando no valido");
@@ -686,11 +682,58 @@ void *recibir_por_consola() {
 
 		if (entradaValida) {
 			//Ejecutar el comando
+			interpretarComando(header, parametros);
 		}
 		add_history(consulta);
 
 		free(consulta);
+		free(parametros);
 
 
 	}
+}
+
+void interpretarComando(int header, char* parametros) {
+
+	void* package;
+	switch (header) {
+		case SELECT:
+			package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
+			if (!fill_package_select(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			Registro* registro = lfs_select(package, ruta);
+			loguear_registro(registro);
+			free(registro->value);
+			free(registro);
+			free(package);
+			break;
+		case INSERT:
+			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
+			log_warning(logger, parametros);
+			if (!fill_package_insert(package, parametros, 1)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			if (lfs_insert(package, ruta)) {
+				log_info(logger, "Se inserto exitosamente");
+				break;
+			}
+			log_info(logger, "No se pudo insertar");
+			free(package);
+			break;
+		case DESCRIBE:
+			//describe(parametros, serverSocket);
+			break;
+		case DROP:
+			//drop(parametros, serverSocket);
+			break;
+		case CREATE:
+			//create(parametros, serverSocket);
+			break;
+		case -1:
+			break;
+	}
+
 }
