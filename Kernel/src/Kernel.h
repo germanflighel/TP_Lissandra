@@ -18,6 +18,7 @@
 #include <commons/collections/list.h>
 #include <commons/collections/queue.h>
 #include <commons/string.h>
+#include <commons/collections/dictionary.h>
 
 
 #define CONFIG_PATH "KernelSocket.config"
@@ -44,9 +45,8 @@ typedef struct Script {
 	char** lineas;
 } Script;
 
-t_list* memoriasSC;
-t_list* memoriasSHC;
-t_list* memoriasEC;
+t_list* memoriasConectadas;
+t_dictionary* memoriasAsignadas;
 
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);

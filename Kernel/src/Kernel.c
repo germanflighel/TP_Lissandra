@@ -80,6 +80,9 @@ int main() {
 
 		enviar_handshake(KERNEL, serverSocket);
 
+		int num_memoria = recibir_numero_memoria(serverSocket);
+		printf("Num memoria %d\n",num_memoria);
+
 		freeaddrinfo(serverInfo);	// No lo necesitamos mas
 		printf("Conectado al servidor.\n");
 		log_info(logger_Kernel, "Conecte al servidor.");
