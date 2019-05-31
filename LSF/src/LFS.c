@@ -710,6 +710,7 @@ void interpretarComando(int header, char* parametros) {
 			free(package);
 			break;
 		case INSERT:
+			//TODO: Arreglar fill_package_insert como file system
 			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
 			log_warning(logger, parametros);
 			if (!fill_package_insert(package, parametros, 1)) {
