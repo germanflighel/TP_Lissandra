@@ -263,12 +263,6 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	}
 	log_debug(logger, "Existe tabla, BRO!");
 
-	//Para que obtengo la metadata? Ni se usa parece
-
-	Metadata* metadata = obtener_metadata(mi_ruta);
-
-	loguear_metadata(metadata);
-
 	if (!existe_tabla_en_mem_table(package->tabla)) {
 		if (!agregar_tabla_a_mem_table(package->tabla)) {
 			return 0;
@@ -680,6 +674,8 @@ void *recibir_por_consola() {
 		separarEntrada(consulta, &header, &parametros);
 
 		if (header == EXIT_CONSOLE) {
+			free(consulta);
+			free(parametros);
 			log_error(logger, "Bye");
 			return NULL;
 		} else if (header == ERROR) {
