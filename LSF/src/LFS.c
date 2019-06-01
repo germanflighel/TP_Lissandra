@@ -25,6 +25,15 @@ void *receptorDeConsultas(void *);
 
 int main() {
 
+	pthread_t threadConsola;
+	int retorno_de_consola;
+
+	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
+	if (retorno_de_consola) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
+		exit(EXIT_FAILURE);
+	}
+
 	pthread_mutex_init(&mem_table_mutex, NULL);
 
 	struct addrinfo hints;
@@ -37,6 +46,8 @@ int main() {
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
+	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
+
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -54,7 +65,7 @@ int main() {
 
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-	printf("Esperando memoria... \n");
+	log_info(logger, "Esperando memoria...");
 
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
@@ -63,15 +74,9 @@ int main() {
 			&addrlen);
 
 	if (!recibir_handshake(MEMORY, socketCliente)) {
-		printf("Handshake invalido \n");
+		log_info(logger, "Handshake invalido \n");
 		return 0;
 	}
-
-	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
-	char* max_value_size_string = string_itoa(max_value_size);
-	log_debug(logger, max_value_size_string);
-
-
 	send(socketCliente, &max_value_size, sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -113,48 +118,58 @@ int main() {
 	pthread_t threadL;
 	int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-			(void*) socketCliente);
+	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketCliente);
 	if (iret1) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
 	//thread receptor
 
+
+
+
+
 	int socketNuevo;
 	while (true) {
-		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
-				&addrlen);
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+		log_debug(logger, "Acepte una conexion");
+
+		log_debug(logger, "A ver si es una memoria");
 
 		if (!recibir_handshake(MEMORY, socketNuevo)) {
-			printf("Handshake invalido \n");
+			log_debug(logger, "Acepte una conexion");
+
+			log_info(logger, "Handshake invalido \n");
 			return 0;
 		}
+		log_debug(logger, "Efectivamente Rick, es una memoria");
 
-		max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
 
-		loguear_int(max_value_size);
-
+//		loguear_int(max_value_size);
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
+		log_debug(logger, "Le mande el max_value_size");
+
 
 		//thread receptor
 		pthread_t threadL;
 		int iret1;
 
-		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-				(void*) socketNuevo);
+		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketNuevo);
 		if (iret1) {
-			fprintf(stderr, "Error - pthread_create() return code: %d\n",
-					iret1);
+			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 			exit(EXIT_FAILURE);
 		}
+		log_debug(logger, "Cree el hilo perf");
+
 		//thread receptor
 	}
+
+
 
 	//receptorDeConsultas(socketCliente);
 
 	close(listenningSocket);
-	free(max_value_size_string);
+
 	log_destroy(logger);
 	config_destroy(config);
 
@@ -227,6 +242,7 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
+	loguear_int(max_value_size);
 	if (package->value_long > max_value_size) {
 		return 0;
 	}
@@ -476,7 +492,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 			char** datos_registro = string_split(registros[j], ";");
 			if (atoi(datos_registro[1]) == keyBuscada) {
 				if (atol(datos_registro[0]) > registro->timeStamp) {
-					free(registro->value);
+					//free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
 					registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -513,6 +529,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 	if (!existe_tabla_en_mem_table(nombre_tabla)) {
 		Registro* registro = malloc(sizeof(Registro));
+		registro->value = NULL;
 		registro->timeStamp = 0;
 		return registro;
 	}
@@ -556,7 +573,7 @@ void *receptorDeConsultas(void* socket) {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
-	printf("Memoria conectada. Esperando Envio de mensajes.\n");
+	log_info(logger, "Memoria conectada. Esperando Envio de mensajes");
 
 	int headerRecibido;
 
@@ -644,7 +661,92 @@ void *receptorDeConsultas(void* socket) {
 
 	}
 
-	printf("Cliente Desconectado.\n");
+	log_info(logger, "Cliente Desconectado");
 
 	close(socketCliente);
+}
+
+void *recibir_por_consola() {
+	char* consulta;
+	while(true) {
+		consulta = readline("LFS> ");
+		if (!consulta) {
+		  break;
+		}
+		char* parametros;
+		int header;
+		int entradaValida = 1;
+
+		separarEntrada(consulta, &header, &parametros);
+
+		if (header == EXIT_CONSOLE) {
+			log_error(logger, "Bye");
+			return NULL;
+		} else if (header == ERROR) {
+			log_error(logger, "Comando no valido");
+			entradaValida = 0;
+		}
+
+		if (entradaValida) {
+			//Ejecutar el comando
+			interpretarComando(header, parametros);
+		}
+		add_history(consulta);
+
+		free(consulta);
+		free(parametros);
+
+
+	}
+}
+
+void interpretarComando(int header, char* parametros) {
+
+	void* package;
+	switch (header) {
+		case SELECT:
+			package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
+			if (!fill_package_select(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			Registro* registro = lfs_select(package, ruta);
+			if (registro->value) {
+				loguear_registro(registro);
+			} else {
+				log_error(logger, "No existe un registro con esa key");
+			}
+
+			free(registro->value);
+			free(registro);
+			free(package);
+			break;
+		case INSERT:
+			//TODO: Arreglar fill_package_insert como file system
+			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
+			log_warning(logger, parametros);
+			if (!fill_package_insert(package, parametros, 1)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			if (lfs_insert(package, ruta)) {
+				log_info(logger, "Se inserto exitosamente");
+				break;
+			}
+			log_info(logger, "No se pudo insertar");
+			free(package);
+			break;
+		case DESCRIBE:
+			//describe(parametros, serverSocket);
+			break;
+		case DROP:
+			//drop(parametros, serverSocket);
+			break;
+		case CREATE:
+			//create(parametros, serverSocket);
+			break;
+		case -1:
+			break;
+	}
+
 }
