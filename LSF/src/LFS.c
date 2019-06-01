@@ -131,9 +131,7 @@ int main() {
 			return 0;
 		}
 
-		max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
-
-		loguear_int(max_value_size);
+		//loguear_int(max_value_size);
 
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
 
@@ -452,6 +450,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 
 	Registro* registro = malloc(sizeof(Registro));
 	registro->timeStamp = 0;
+	registro->value = NULL;
 	int i = 0;
 	while (blocks[i] != NULL) {
 		char* ruta_a_bloque = string_new();
@@ -478,7 +477,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 			char** datos_registro = string_split(registros[j], ";");
 			if (atoi(datos_registro[1]) == keyBuscada) {
 				if (atol(datos_registro[0]) > registro->timeStamp) {
-					free(registro->value);
+					//free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
 					registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -544,8 +543,8 @@ void *receptorDeConsultas(void* socket) {
 
 				t_Respuesta_Select respuesta;
 
-				if (registro_a_devolver->value) {
-
+				if (registro_a_devolver->value != NULL) {
+					log_debug(logger, "hola");
 					respuesta.result = 1;
 					respuesta.value = malloc(
 							strlen(registro_a_devolver->value) + 1);
@@ -554,6 +553,7 @@ void *receptorDeConsultas(void* socket) {
 					respuesta.timestamp = registro_a_devolver->timeStamp;
 					log_debug(logger, respuesta.value);
 				} else {
+					log_debug(logger, "Llegue2");
 					respuesta.result = 0;
 					respuesta.value = malloc(1);
 					strcpy(respuesta.value, "");
