@@ -131,30 +131,36 @@ int main() {
 
 	int socketNuevo;
 	while (true) {
-		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
-				&addrlen);
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+		log_debug(logger, "Acepte una conexion");
+
+		log_debug(logger, "A ver si es una memoria");
 
 		if (!recibir_handshake(MEMORY, socketNuevo)) {
+			log_debug(logger, "Acepte una conexion");
+
 			log_info(logger, "Handshake invalido \n");
 			return 0;
 		}
+		log_debug(logger, "Efectivamente Rick, es una memoria");
 
-		max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
 
-		loguear_int(max_value_size);
-
+//		loguear_int(max_value_size);
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
+		log_debug(logger, "Le mande el max_value_size");
+
 
 		//thread receptor
 		pthread_t threadL;
 		int iret1;
 
-		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-				(void*) socketNuevo);
+		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketNuevo);
 		if (iret1) {
 			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 			exit(EXIT_FAILURE);
 		}
+		log_debug(logger, "Cree el hilo perf");
+
 		//thread receptor
 	}
 
@@ -486,7 +492,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 			char** datos_registro = string_split(registros[j], ";");
 			if (atoi(datos_registro[1]) == keyBuscada) {
 				if (atol(datos_registro[0]) > registro->timeStamp) {
-					free(registro->value);
+					//free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
 					registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -523,6 +529,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 	if (!existe_tabla_en_mem_table(nombre_tabla)) {
 		Registro* registro = malloc(sizeof(Registro));
+		registro->value = NULL;
 		registro->timeStamp = 0;
 		return registro;
 	}
