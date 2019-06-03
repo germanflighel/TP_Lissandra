@@ -149,9 +149,7 @@ int main() {
 			return 0;
 		}
 		log_debug(logger, "Efectivamente Rick, es una memoria");
-
-
-//		loguear_int(max_value_size);
+    
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
 		log_debug(logger, "Le mande el max_value_size");
 
@@ -579,6 +577,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, cha
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
 	Registro* registro = buscar_en_mem_table(nombre_tabla, keyBuscada);
+
 	int i = 0;
 	while (blocks[i] != NULL) {
 		char* ruta_a_bloque = string_new();
@@ -711,8 +710,8 @@ void *receptorDeConsultas(void* socket) {
 
 				t_Respuesta_Select respuesta;
 
-				if (registro_a_devolver->value) {
-
+				if (registro_a_devolver->value != NULL) {
+					log_debug(logger, "hola");
 					respuesta.result = 1;
 					respuesta.value = malloc(
 							strlen(registro_a_devolver->value) + 1);
@@ -721,6 +720,7 @@ void *receptorDeConsultas(void* socket) {
 					respuesta.timestamp = registro_a_devolver->timeStamp;
 					log_debug(logger, respuesta.value);
 				} else {
+					log_debug(logger, "Llegue2");
 					respuesta.result = 0;
 					respuesta.value = malloc(1);
 					strcpy(respuesta.value, "");
