@@ -296,9 +296,17 @@ int lfs_create(t_PackageCreate* package, char* punto_montaje) {
 		return 0;
 	}
 
-	if(mkdir(directorio, 0700)){
+	if (mkdir(directorio, 0700)) {
 		return 0;
 	}
+
+	//Creo el archivo metadata asociado a la tabla
+
+	if(!crear_metadata(package, directorio)){
+		return 0;
+	}
+
+
 	return 1;
 }
 
@@ -309,6 +317,41 @@ char* ruta_a_tabla(char* tabla, char* punto_montaje){
 	string_append(&mi_ruta, tables);
 	string_append(&mi_ruta, tabla);
 	return mi_ruta;
+}
+
+int crear_metadata(t_PackageCreate* package, char* directorio){
+	char* mi_directorio = string_new();
+	string_append(&mi_directorio, directorio);
+	char* metadata = "/Metadata";
+	string_append(&mi_directorio, metadata);
+	int fd = open(mi_directorio, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+	if (fd == -1) {
+		return 0;
+	}
+	char* escribir_metadata = string_new();
+	string_append(&escribir_metadata,"CONSISTENCY=");
+	char* consistencia = consistency_to_str(package->consistency);
+	string_append(&escribir_metadata, consistencia);
+	string_append(&escribir_metadata, "\nPARTITIONS=");
+	char* particiones = string_itoa(package->partitions);
+	string_append(&escribir_metadata, particiones);
+	string_append(&escribir_metadata, "\nCOMPACTION_TIME=");
+	char* tiempo_compactacion = string_itoa(package->compaction_time);
+	string_append(&escribir_metadata, tiempo_compactacion);
+	size_t textsize = strlen(escribir_metadata) + 1;
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, escribir_metadata, strlen(escribir_metadata));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+	close(fd);
+	free(mi_directorio);
+	free(particiones);
+	free(tiempo_compactacion);
+	free(escribir_metadata);
+	return 1;
 }
 
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
