@@ -133,6 +133,36 @@ int fill_package_select(t_PackageSelect *package, char* parametros) {
 	return 1;
 }
 
+int fill_package_create(t_PackageCreate* package, char* parametros){
+	char** parametrosSeparados = string_split(parametros, " ");
+
+	if (cant_parametros(parametrosSeparados) != 4) {
+		return 0;
+	}
+
+	package->header = CREATE;
+	package->tabla_long = strlen(parametrosSeparados[0]);
+	package->tabla = malloc(package->tabla_long + 1);
+
+	string_to_upper(parametrosSeparados[0]);
+
+	memcpy(package->tabla, parametrosSeparados[0], package->tabla_long + 1);
+
+	package->consistency = consistency_to_int(parametrosSeparados[1]);
+
+	if(!package->consistency) return 0;
+
+	package->partitions = atoi(parametrosSeparados[2]);
+
+	package->compaction_time = atol(parametrosSeparados[3]);
+
+	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
+			+ sizeof(package->consistency) +sizeof(package->compaction_time) +sizeof(package->partitions) + package->tabla_long;
+
+	free(parametrosSeparados);
+	return 1;
+}
+
 char* serializarSelect(t_PackageSelect *package) {
 
 	char *serializedPackage = malloc(package->total_size);
@@ -593,6 +623,7 @@ int consistency_to_int(char* consistency) {
 	} else if (strcmp(consistency, "EC") == 0) {
 		return EC;
 	}
+	return 0;
 }
 
 char* consistency_to_str(int consistency) {
