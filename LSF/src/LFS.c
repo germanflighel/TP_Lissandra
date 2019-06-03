@@ -287,6 +287,10 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
 
+int lfs_create(t_PackagePosta* package, char* ruta) {
+	mkdir("creaduki", 0700);
+}
+
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
 	int es_tabla(Tabla* tabla) {
 		if (strcmp(tabla->nombre_tabla, tabla_a_chequear) == 0) {
@@ -739,7 +743,16 @@ void interpretarComando(int header, char* parametros) {
 			//drop(parametros, serverSocket);
 			break;
 		case CREATE:
-			//create(parametros, serverSocket);
+			package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
+			if (!fill_package_create(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			if (lfs_create(package, ruta)) {
+				log_info(logger, "Se creo la tabla correctamente");
+				break;
+			}
+			log_info(logger, "No se pudo crear la tabla");
 			break;
 		case -1:
 			break;
