@@ -37,6 +37,7 @@ typedef struct Tabla {
 typedef struct Memoria {
 	int socket;
 	int numero;
+	int puerto;
 } Memoria;
 
 typedef struct Script {
@@ -46,7 +47,6 @@ typedef struct Script {
 } Script;
 
 t_list* memoriasConectadas;
-t_dictionary* memoriasAsignadas;
 
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);
@@ -65,6 +65,7 @@ void metrics(char*,int);
 void select_kernel(char*,int);
 Script* levantar_script(char*);
 void* exec(int);
+void* intentarEstablecerConexion();
 
 
 #endif

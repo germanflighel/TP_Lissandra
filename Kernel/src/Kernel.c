@@ -22,6 +22,13 @@ sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
 pthread_mutex_t exec_mutex;
 
+char* ip_destino;
+char** puertos_posibles;
+struct addrinfo hints;
+
+int strongC = NULL;
+t_queue* eventualC;
+
 int main() {
 
 	/*
@@ -31,14 +38,7 @@ int main() {
 	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
 	 *
 	 */
-	struct addrinfo hints;
-	struct addrinfo *serverInfo;
-	char* ip;
 	char* puerto;
-
-	t_list* puertos = list_create();
-	list_add(puertos, 6167);
-	list_add(puertos, 6168);
 
 	logger_Kernel = iniciar_logger();
 
@@ -49,12 +49,21 @@ int main() {
 	t_config *conection_conf;
 	abrir_config(&conection_conf);
 
-	ip = config_get_string_value(conection_conf, "IP");
+	char* ip = config_get_string_value(conection_conf, "IP");
+	ip_destino = malloc(strlen(ip));
+	strcpy(ip_destino, ip);
+
 	puerto = config_get_string_value(conection_conf, "PUERTO");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
-
+	printf("LLegue\n");
+	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
+	printf("LLegue\n");
 	log_info(logger_Kernel, puerto);
 
+	Memoria* mem_nueva = malloc(sizeof(Memoria));
+	mem_nueva->puerto = atoi(puerto);
+
+	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
 	config_destroy(conection_conf);
@@ -75,22 +84,26 @@ int main() {
 	 * 	Ahora me conecto!
 	 *
 	 */
+
 	if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
 			== 0) {
 
 		enviar_handshake(KERNEL, serverSocket);
 
 		int num_memoria = recibir_numero_memoria(serverSocket);
-		printf("Num memoria %d\n",num_memoria);
+		printf("Num memoria %d\n", num_memoria);
 
-		freeaddrinfo(serverInfo);	// No lo necesitamos mas
 		printf("Conectado al servidor.\n");
 		log_info(logger_Kernel, "Conecte al servidor.");
+
+		mem_nueva->numero = num_memoria;
+		mem_nueva->socket = serverSocket;
 
 	} else {
 		printf("No se pudo conectar al servidor...");
 		log_info(logger_Kernel, "No me pude conectar con el servidor");
 	}
+	freeaddrinfo(serverInfo);	// No lo necesitamos mas
 
 	printf("Esperando describe.\n");
 
@@ -100,16 +113,23 @@ int main() {
 	recieve_and_deserialize_describe(&describe, serverSocket);
 
 	for (int tabla = 0; tabla < describe.cant_tablas; tabla++) {
-		Tabla tabla_nueva;
-		strcpy(tabla_nueva.nombre_tabla, describe.tablas[tabla].nombre_tabla);
-		tabla_nueva.consistencia = describe.tablas[tabla].consistencia;
+		Tabla* tabla_nueva = malloc(sizeof(Tabla));
+		strcpy(tabla_nueva->nombre_tabla, describe.tablas[tabla].nombre_tabla);
+		tabla_nueva->consistencia = describe.tablas[tabla].consistencia;
 
-		printf("Tabla %s \n", tabla_nueva.nombre_tabla);
-		printf("Consistencia %s \n",
-				consistency_to_str(tabla_nueva.consistencia));
-
-		list_add(tablas_actuales, &tabla_nueva);
+		list_add(tablas_actuales, tabla_nueva);
 	}
+
+	for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count; tabla2++) {
+			Tabla* tabla = list_get(tablas_actuales,tabla2);
+			printf("Tabla %s \n", tabla->nombre_tabla);
+					printf("Consistencia %s \n",
+							consistency_to_str(tabla->consistencia));
+		}
+
+	memoriasConectadas = list_create();
+
+	list_add(memoriasConectadas, mem_nueva);
 
 	//setup planificacion
 	colaReady = queue_create();
@@ -118,6 +138,10 @@ int main() {
 	pthread_mutex_init(&cola_ready_mutex, NULL);
 	pthread_mutex_init(&exec_mutex, NULL);
 	//setup planificacion
+
+	//setup consistencias
+	eventualC = queue_create();
+	//setup consistencias
 
 	//thread executer
 	pthread_t threadL;
@@ -129,6 +153,17 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 	//thread executer
+
+	//threadConexiones
+	pthread_t threadC;
+	int iret2;
+
+	iret2 = pthread_create(&threadC, NULL, intentarEstablecerConexion, NULL);
+	if (iret2) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		exit(EXIT_FAILURE);
+	}
+	//threadConexiones
 
 	int enviar = 1;
 	int entradaValida;
@@ -156,12 +191,12 @@ int main() {
 
 		if (enviar) {
 
-
 			Script* script_consola = malloc(sizeof(Script));
 			script_consola->index = 0;
 
 			script_consola->lineas = string_split(entrada, "\n");
-			script_consola->cant_lineas = cant_parametros(script_consola->lineas);
+			script_consola->cant_lineas = cant_parametros(
+					script_consola->lineas);
 
 			script_a_ready(script_consola);
 		}
@@ -188,8 +223,8 @@ int main() {
 
 	close(serverSocket);
 	log_destroy(logger_Kernel);
-	list_destroy(puertos);
 	list_destroy(tablas_actuales);
+	list_destroy(memoriasConectadas);
 
 	queue_destroy(colaReady);
 	queue_destroy(colaExec);
@@ -207,6 +242,113 @@ void abrir_config(t_config** g_config) {
 t_log* iniciar_logger(void) {
 
 	return log_create(LOG_FILE_PATH, "kernel", 1, LOG_LEVEL_INFO);
+
+}
+
+int socketAUtilizar(char* tablaPath) {
+	int consistencia = NULL;
+
+	void buscarTabla(Tabla* tabla) {
+		if(strcmp(tabla->nombre_tabla, tablaPath) == 0) {
+			consistencia = tabla->consistencia;
+		}
+	}
+
+	list_iterate(tablas_actuales, buscarTabla);
+	if (consistencia != NULL) {
+		return socketFromConsistency(consistencia);
+	}
+	return -1;
+}
+
+int socketFromConsistency(int consistencia) {
+	printf("Cons %d.\n",consistencia);
+	int num_mem;
+	int* temp_mem;
+	switch (consistencia) {
+	case SC:
+		num_mem = strongC;
+		break;
+	case SHC:
+		return -1;
+		break;
+	case EC:
+		if (queue_size(eventualC) > 0) {
+			temp_mem = queue_pop(eventualC);
+			num_mem = *temp_mem;
+			queue_push(eventualC, temp_mem);
+		}else{
+			return -1;
+		}
+		break;
+	}
+	int socket = -1;
+
+	void esLaMemoria(Memoria* mem) {
+		if (mem->numero == num_mem) {
+			socket = mem->socket;
+		}
+	}
+
+	list_iterate(memoriasConectadas, esLaMemoria);
+	printf("Sock %d.\n",socket);
+	return socket;
+}
+
+void* intentarEstablecerConexion() {
+	int i;
+	int serverSocket;
+	int num_memoria;
+
+	while (true) {
+
+		i = 0;
+
+		while (puertos_posibles[i] != NULL) {
+
+			if (!puertoConectado(puertos_posibles[i])) {
+
+				struct addrinfo *serverInfo;
+				getaddrinfo(ip_destino, puertos_posibles[i], &hints,
+						&serverInfo);
+				serverSocket = socket(serverInfo->ai_family,
+						serverInfo->ai_socktype, serverInfo->ai_protocol);
+
+				if (connect(serverSocket, serverInfo->ai_addr,
+						serverInfo->ai_addrlen) == 0) {
+
+					enviar_handshake(KERNEL, serverSocket);
+
+					num_memoria = recibir_numero_memoria(serverSocket);
+
+					printf("Num memoria %d\n", num_memoria);
+					log_info(logger_Kernel, "Conecte a otra memoria.");
+
+					Memoria* mem_nueva = malloc(sizeof(Memoria));
+					mem_nueva->numero = num_memoria;
+					mem_nueva->puerto = atoi(puertos_posibles[i]);
+					mem_nueva->socket = serverSocket;
+
+					list_add(memoriasConectadas, mem_nueva);
+
+				}
+				freeaddrinfo(serverInfo);
+			}
+
+			i++;
+		}
+		sleep(5);
+	}
+}
+
+int puertoConectado(char* puertoChar) {
+	int puerto = atoi(puertoChar);
+
+	int tieneEsePuerto(Memoria* mem) {
+		return mem->puerto == puerto;
+	}
+
+	return list_any_satisfy(memoriasConectadas, tieneEsePuerto);
 
 }
 
@@ -268,7 +410,13 @@ void select_kernel(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarSelect(&package);
 
-		send(serverSocket, serializedPackage, package.total_size, 0);
+		int socketAEnviar = socketAUtilizar(package.tabla);
+
+		if (socketAEnviar != -1) {
+			send(socketAEnviar, serializedPackage, package.total_size, 0);
+		} else {
+			printf("Ninguna memoria asignada para este criterio\n");
+		}
 
 		free(package.tabla);
 		dispose_package(&serializedPackage);
@@ -293,8 +441,12 @@ void insert_kernel(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarInsert(&package);
 
-		send(serverSocket, serializedPackage, package.total_size, 0);
-
+		int socketAEnviar = socketAUtilizar(package.tabla);
+		if (socketAEnviar != -1) {
+			send(socketAEnviar, serializedPackage, package.total_size, 0);
+		} else {
+			printf("Ninguna memoria asignada para este criterio\n");
+		}
 		free(package.tabla);
 		dispose_package(&serializedPackage);
 	}
@@ -317,7 +469,41 @@ void journal(char* parametros, int serverSocket) {
 }
 
 void add(char* parametros, int serverSocket) {
-	printf("Recibi un add.\n");
+	char** parametrosSeparados = string_split(parametros, " ");
+	if (cant_parametros(parametrosSeparados) != 4) {
+		printf("Cantidad de parametros invalidos\n");
+	} else {
+		int num_mem = atoi(parametrosSeparados[1]);
+		int consistency = consistency_to_int(parametrosSeparados[3]);
+		int esta = 0;
+		int estaLaMem(Memoria* mem) {
+			if (mem->numero == num_mem) {
+				esta = 1;
+			}
+		}
+
+		list_iterate(memoriasConectadas, estaLaMem);
+
+		int* num_mem_puntero;
+
+		if (esta) {
+			switch (consistency) {
+			case SC:
+				strongC = num_mem;
+				break;
+			case SHC:
+				break;
+			case EC:
+				num_mem_puntero = malloc(sizeof(int));
+				memcpy(num_mem_puntero,&num_mem,sizeof(int));
+				queue_push(eventualC, num_mem_puntero);
+				break;
+			}
+		} else {
+			printf("Esa memoria no esta conectada\n");
+		}
+	}
+
 }
 
 void metrics(char* parametros, int serverSocket) {
@@ -422,7 +608,7 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 	int header;
 	do {
 		printf("Ejecutando un quantum \n");
-		printf("%s \n",scriptEnExec->lineas[scriptEnExec->index]);
+		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
 
 		entradaValida = 1;
 		char* entrada = scriptEnExec->lineas[scriptEnExec->index];

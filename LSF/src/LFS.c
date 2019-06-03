@@ -25,6 +25,21 @@ void *receptorDeConsultas(void *);
 
 int main() {
 
+	pthread_t threadConsola;
+	int retorno_de_consola;
+	char data[] = { 0b10000000, 0, 0b00000001 };
+
+	/*t_bitarray* bitmap = bitarray_create_with_mode(data,sizeof(data),LSB_FIRST);
+	if(bitarray_test_bit(bitmap, 7)) printf("La primera posicion es verdadera\n");
+	if(!bitarray_test_bit(bitmap, 8)) printf("La segunda posicion es falsa\n");
+	*/
+
+	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
+	if (retorno_de_consola) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
+		exit(EXIT_FAILURE);
+	}
+
 	pthread_mutex_init(&mem_table_mutex, NULL);
 
 	struct addrinfo hints;
@@ -37,6 +52,8 @@ int main() {
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
+	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
+
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -54,7 +71,7 @@ int main() {
 
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-	printf("Esperando memoria... \n");
+	log_info(logger, "Esperando memoria...");
 
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
@@ -63,15 +80,9 @@ int main() {
 			&addrlen);
 
 	if (!recibir_handshake(MEMORY, socketCliente)) {
-		printf("Handshake invalido \n");
+		log_info(logger, "Handshake invalido \n");
 		return 0;
 	}
-
-	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
-	char* max_value_size_string = string_itoa(max_value_size);
-	log_debug(logger, max_value_size_string);
-
-
 	send(socketCliente, &max_value_size, sizeof(u_int16_t), 0);
 
 	t_list* metadatas = lfs_describe(ruta);
@@ -113,48 +124,56 @@ int main() {
 	pthread_t threadL;
 	int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-			(void*) socketCliente);
+	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketCliente);
 	if (iret1) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
 	//thread receptor
 
+
+
+
+
 	int socketNuevo;
 	while (true) {
-		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
-				&addrlen);
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+		log_debug(logger, "Acepte una conexion");
+
+		log_debug(logger, "A ver si es una memoria");
 
 		if (!recibir_handshake(MEMORY, socketNuevo)) {
-			printf("Handshake invalido \n");
+			log_debug(logger, "Acepte una conexion");
+
+			log_info(logger, "Handshake invalido \n");
 			return 0;
 		}
-
-		max_value_size = config_get_int_value(config, "TAMAÑO_VALUE");
-
-		loguear_int(max_value_size);
-
+		log_debug(logger, "Efectivamente Rick, es una memoria");
+    
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
+		log_debug(logger, "Le mande el max_value_size");
+
 
 		//thread receptor
 		pthread_t threadL;
 		int iret1;
 
-		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
-				(void*) socketNuevo);
+		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketNuevo);
 		if (iret1) {
-			fprintf(stderr, "Error - pthread_create() return code: %d\n",
-					iret1);
+			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 			exit(EXIT_FAILURE);
 		}
+		log_debug(logger, "Cree el hilo perf");
+
 		//thread receptor
 	}
+
+
 
 	//receptorDeConsultas(socketCliente);
 
 	close(listenningSocket);
-	free(max_value_size_string);
+
 	log_destroy(logger);
 	config_destroy(config);
 
@@ -217,8 +236,8 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 	free(particionObjetivo_string);
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
-			mi_ruta, punto_montaje);
+
+	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje, package->tabla);
 
 	free(metadata);
 	free(mi_ruta);
@@ -227,6 +246,7 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
+	loguear_int(max_value_size);
 	if (package->value_long > max_value_size) {
 		return 0;
 	}
@@ -246,12 +266,6 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 		return 0;
 	}
 	log_debug(logger, "Existe tabla, BRO!");
-
-	//Para que obtengo la metadata? Ni se usa parece
-
-	Metadata* metadata = obtener_metadata(mi_ruta);
-
-	loguear_metadata(metadata);
 
 	if (!existe_tabla_en_mem_table(package->tabla)) {
 		if (!agregar_tabla_a_mem_table(package->tabla)) {
@@ -275,6 +289,119 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	log_debug(logger, (registro_a_insertar->value));
 
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
+}
+
+int lfs_create(t_PackageCreate* package, char* punto_montaje) {
+
+	//Primero creo el directorio para la tabla
+	char* directorio = ruta_a_tabla(package->tabla, punto_montaje);
+	if(existe_tabla(directorio)){
+		log_debug(logger,"Existe la tabla papi: %s",package->tabla);
+		return 0;
+	}
+
+	if (mkdir(directorio, 0700)) {
+		return 0;
+	}
+
+	//Creo el archivo metadata asociado a la tabla
+
+	if(!crear_metadata(package, directorio)){
+		return 0;
+	}
+
+	//Creo los archivos binarios
+	int bloques [] = {1, 0};
+	if(!crear_particiones(package->partitions, directorio, bloques)){
+		return 0;
+	}
+	log_debug(logger, "Cree las particiones");
+	return 1;
+}
+
+char* ruta_a_tabla(char* tabla, char* punto_montaje){
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta, punto_montaje);
+	char* tables = "/Tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, tabla);
+	return mi_ruta;
+}
+
+int crear_particiones(int particiones, char* tabla_path, int bloques[]){
+	for(int i = 1; i<= particiones; i++ ){
+		if(!crear_particion(i, tabla_path, i)){
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int crear_particion(int numero, char* tabla_path, int bloque){
+	char* mi_particion = string_new();
+	string_append(&mi_particion, tabla_path);
+	string_append(&mi_particion, "/");
+	char* numeroString = string_itoa(numero);
+	string_append(&mi_particion, numeroString);
+	char* bin = ".bin";
+	string_append(&mi_particion, bin);
+	log_debug(logger, mi_particion);
+	int fd = open(mi_particion, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+	if (fd == -1) {
+		return 0;
+	}
+	char* particion_a_crear = string_new();
+	string_append_with_format(&particion_a_crear,"SIZE=0\nBLOCKS=[%d]", bloque);
+	size_t textsize = strlen(particion_a_crear) + 1;
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, particion_a_crear, strlen(particion_a_crear));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+	close(fd);
+	free(particion_a_crear);
+	free(numeroString);
+	free(mi_particion);
+
+	return 1;
+
+}
+
+int crear_metadata(t_PackageCreate* package, char* directorio){
+	char* mi_directorio = string_new();
+	string_append(&mi_directorio, directorio);
+	char* metadata = "/Metadata";
+	string_append(&mi_directorio, metadata);
+	int fd = open(mi_directorio, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+	if (fd == -1) {
+		return 0;
+	}
+	char* escribir_metadata = string_new();
+	string_append(&escribir_metadata,"CONSISTENCY=");
+	char* consistencia = consistency_to_str(package->consistency);
+	string_append(&escribir_metadata, consistencia);
+	string_append(&escribir_metadata, "\nPARTITIONS=");
+	char* particiones = string_itoa(package->partitions);
+	string_append(&escribir_metadata, particiones);
+	string_append(&escribir_metadata, "\nCOMPACTION_TIME=");
+	char* tiempo_compactacion = string_itoa(package->compaction_time);
+	string_append(&escribir_metadata, tiempo_compactacion);
+	size_t textsize = strlen(escribir_metadata) + 1;
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, escribir_metadata, strlen(escribir_metadata));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+	close(fd);
+	free(mi_directorio);
+	free(particiones);
+	free(tiempo_compactacion);
+	free(escribir_metadata);
+	return 1;
 }
 
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
@@ -373,7 +500,7 @@ int existe_tabla(char* tabla) {
 	DIR *dirp;
 
 	dirp = opendir(tabla);
-
+	log_debug(logger, tabla);
 	if (dirp == NULL) {
 		status = 0;
 	}
@@ -432,8 +559,7 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
-		char* montaje) {
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje, char* nombre_tabla) {
 	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -450,8 +576,8 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 	int size = config_get_int_value(particion, "SIZE");
 	char** blocks = config_get_array_value(particion, "BLOCKS");
 
-	Registro* registro = malloc(sizeof(Registro));
-	registro->timeStamp = 0;
+	Registro* registro = buscar_en_mem_table(nombre_tabla, keyBuscada);
+
 	int i = 0;
 	while (blocks[i] != NULL) {
 		char* ruta_a_bloque = string_new();
@@ -478,7 +604,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 			char** datos_registro = string_split(registros[j], ";");
 			if (atoi(datos_registro[1]) == keyBuscada) {
 				if (atol(datos_registro[0]) > registro->timeStamp) {
-					free(registro->value);
+					//free(registro->value);
 					registro->timeStamp = atol(datos_registro[0]);
 					registro->key = atoi(datos_registro[1]);
 					registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -512,6 +638,46 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
 	return registro;
 }
 
+Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
+	if (!existe_tabla_en_mem_table(nombre_tabla)) {
+		Registro* registro = malloc(sizeof(Registro));
+		registro->value = NULL;
+		registro->timeStamp = 0;
+		return registro;
+	}
+
+	int es_tabla(Tabla* tabla) {
+		if (strcmp(tabla->nombre_tabla, nombre_tabla) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	int es_registro(Registro* registro) { return registro->key == keyBuscada; }
+
+
+	Registro* get_mayor_timestamp(Registro* unRegistro, Registro* otroRegistro) {
+        return unRegistro->timeStamp >= otroRegistro->timeStamp ? unRegistro: otroRegistro;
+	}
+
+	Registro* registro_mayor;
+
+	pthread_mutex_lock(&mem_table_mutex);
+	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
+	t_list* registros_con_key = list_filter(tabla->registros, (int) &es_registro);
+	if(registros_con_key->elements_count) {
+		Registro* registro_mayor = list_get(registros_con_key, 0);
+		registro_mayor = list_fold(tabla->registros, registro_mayor, (void*) &get_mayor_timestamp);
+		pthread_mutex_unlock(&mem_table_mutex);
+		list_destroy(registros_con_key);
+		return registro_mayor;
+	}
+	pthread_mutex_unlock(&mem_table_mutex);
+
+	Registro* registro = malloc(sizeof(Registro));
+	registro->timeStamp = 0;
+	return registro;
+}
+
 void *receptorDeConsultas(void* socket) {
 
 	int socketCliente = (int) socket;
@@ -519,7 +685,7 @@ void *receptorDeConsultas(void* socket) {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
-	printf("Memoria conectada. Esperando Envio de mensajes.\n");
+	log_info(logger, "Memoria conectada. Esperando Envio de mensajes");
 
 	int headerRecibido;
 
@@ -544,8 +710,8 @@ void *receptorDeConsultas(void* socket) {
 
 				t_Respuesta_Select respuesta;
 
-				if (registro_a_devolver->value) {
-
+				if (registro_a_devolver->value != NULL) {
+					log_debug(logger, "hola");
 					respuesta.result = 1;
 					respuesta.value = malloc(
 							strlen(registro_a_devolver->value) + 1);
@@ -554,6 +720,7 @@ void *receptorDeConsultas(void* socket) {
 					respuesta.timestamp = registro_a_devolver->timeStamp;
 					log_debug(logger, respuesta.value);
 				} else {
+					log_debug(logger, "Llegue2");
 					respuesta.result = 0;
 					respuesta.value = malloc(1);
 					strcpy(respuesta.value, "");
@@ -563,10 +730,10 @@ void *receptorDeConsultas(void* socket) {
 				}
 
 				char* serializedPackage = serializarRespuestaSelect(&respuesta);
-				send(socketCliente, serializedPackage,
+				/*send(socketCliente, serializedPackage,
 						sizeof(respuesta.result) + sizeof(respuesta.value_long)
 								+ respuesta.value_long
-								+ sizeof(respuesta.timestamp), 0);
+								+ sizeof(respuesta.timestamp), 0);*/
 				free(serializedPackage);
 				free(respuesta.value);
 				free(registro_a_devolver->value);
@@ -607,7 +774,103 @@ void *receptorDeConsultas(void* socket) {
 
 	}
 
-	printf("Cliente Desconectado.\n");
+	log_info(logger, "Cliente Desconectado");
 
 	close(socketCliente);
+}
+
+void *recibir_por_consola() {
+	char* consulta;
+	while(true) {
+		consulta = readline("LFS> ");
+		if (!consulta) {
+		  break;
+		}
+		char* parametros;
+		int header;
+		int entradaValida = 1;
+
+		separarEntrada(consulta, &header, &parametros);
+
+		if (header == EXIT_CONSOLE) {
+			free(consulta);
+			free(parametros);
+			log_error(logger, "Bye");
+			return NULL;
+		} else if (header == ERROR) {
+			log_error(logger, "Comando no valido");
+			entradaValida = 0;
+		}
+
+		if (entradaValida) {
+			//Ejecutar el comando
+			interpretarComando(header, parametros);
+		}
+		add_history(consulta);
+
+		free(consulta);
+		free(parametros);
+
+
+	}
+}
+
+void interpretarComando(int header, char* parametros) {
+
+	void* package;
+	switch (header) {
+		case SELECT:
+			package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
+			if (!fill_package_select(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			Registro* registro = lfs_select(package, ruta);
+			if (registro->value) {
+				loguear_registro(registro);
+			} else {
+				log_error(logger, "No existe un registro con esa key");
+			}
+
+			free(registro->value);
+			free(registro);
+			free(package);
+			break;
+		case INSERT:
+			//TODO: Arreglar fill_package_insert como file system
+			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
+			log_warning(logger, parametros);
+			if (!fill_package_insert(package, parametros, 1)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			if (lfs_insert(package, ruta)) {
+				log_info(logger, "Se inserto exitosamente");
+				break;
+			}
+			log_info(logger, "No se pudo insertar");
+			free(package);
+			break;
+		case DESCRIBE:
+			//describe(parametros, serverSocket);
+			break;
+		case DROP:
+			//drop(parametros, serverSocket);
+			break;
+		case CREATE:
+			package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
+			if (!fill_package_create(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+			if (lfs_create(package, ruta)) {
+				log_info(logger, "Se creo la tabla correctamente");
+				break;
+			}
+			log_info(logger, "No se pudo crear la tabla");
+			break;
+		case -1:
+			break;
+	}
+
 }

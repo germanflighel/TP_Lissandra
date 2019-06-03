@@ -74,6 +74,16 @@ typedef struct t_PackageInsert {
 } t_PackageInsert;
 
 
+typedef struct t_PackageCreate{
+	uint32_t header;
+	uint32_t tabla_long;
+	char* tabla;
+	int consistency;
+	int partitions;
+	long int compaction_time;
+	uint32_t total_size;
+} t_PackageCreate;
+
 typedef struct t_Respuesta_Select {
 	char result;
 	uint16_t value_long;
