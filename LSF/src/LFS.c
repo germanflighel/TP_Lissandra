@@ -287,8 +287,28 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
 
-int lfs_create(t_PackagePosta* package, char* ruta) {
-	mkdir("creaduki", 0700);
+int lfs_create(t_PackageCreate* package, char* punto_montaje) {
+
+	//Primero creo el directorio para la tabla
+	char* directorio = ruta_a_tabla(package->tabla, punto_montaje);
+	if(existe_tabla(directorio)){
+		log_debug(logger,"Existe la tabla papi: %s",package->tabla);
+		return 0;
+	}
+
+	if(mkdir(directorio, 0700)){
+		return 0;
+	}
+	return 1;
+}
+
+char* ruta_a_tabla(char* tabla, char* punto_montaje){
+	char* mi_ruta = string_new();
+	string_append(&mi_ruta, punto_montaje);
+	char* tables = "/Tables/";
+	string_append(&mi_ruta, tables);
+	string_append(&mi_ruta, tabla);
+	return mi_ruta;
 }
 
 int existe_tabla_en_mem_table(char* tabla_a_chequear) {
@@ -387,7 +407,7 @@ int existe_tabla(char* tabla) {
 	DIR *dirp;
 
 	dirp = opendir(tabla);
-
+	log_debug(logger, tabla);
 	if (dirp == NULL) {
 		status = 0;
 	}
