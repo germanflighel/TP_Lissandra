@@ -27,6 +27,12 @@ int main() {
 
 	pthread_t threadConsola;
 	int retorno_de_consola;
+	char data[] = { 0b10000000, 0, 0b00000001 };
+
+	/*t_bitarray* bitmap = bitarray_create_with_mode(data,sizeof(data),LSB_FIRST);
+	if(bitarray_test_bit(bitmap, 7)) printf("La primera posicion es verdadera\n");
+	if(!bitarray_test_bit(bitmap, 8)) printf("La segunda posicion es falsa\n");
+	*/
 
 	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
 	if (retorno_de_consola) {
@@ -306,7 +312,12 @@ int lfs_create(t_PackageCreate* package, char* punto_montaje) {
 		return 0;
 	}
 
-
+	//Creo los archivos binarios
+	int bloques [] = {1, 0};
+	if(!crear_particiones(package->partitions, directorio, bloques)){
+		return 0;
+	}
+	log_debug(logger, "Cree las particiones");
 	return 1;
 }
 
@@ -317,6 +328,47 @@ char* ruta_a_tabla(char* tabla, char* punto_montaje){
 	string_append(&mi_ruta, tables);
 	string_append(&mi_ruta, tabla);
 	return mi_ruta;
+}
+
+int crear_particiones(int particiones, char* tabla_path, int bloques[]){
+	for(int i = 1; i<= particiones; i++ ){
+		if(!crear_particion(i, tabla_path, i)){
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int crear_particion(int numero, char* tabla_path, int bloque){
+	char* mi_particion = string_new();
+	string_append(&mi_particion, tabla_path);
+	string_append(&mi_particion, "/");
+	char* numeroString = string_itoa(numero);
+	string_append(&mi_particion, numeroString);
+	char* bin = ".bin";
+	string_append(&mi_particion, bin);
+	log_debug(logger, mi_particion);
+	int fd = open(mi_particion, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+	if (fd == -1) {
+		return 0;
+	}
+	char* particion_a_crear = string_new();
+	string_append_with_format(&particion_a_crear,"SIZE=0\nBLOCKS=[%d]", bloque);
+	size_t textsize = strlen(particion_a_crear) + 1;
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, particion_a_crear, strlen(particion_a_crear));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+	close(fd);
+	free(particion_a_crear);
+	free(numeroString);
+	free(mi_particion);
+
+	return 1;
+
 }
 
 int crear_metadata(t_PackageCreate* package, char* directorio){
