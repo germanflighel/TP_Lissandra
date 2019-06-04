@@ -495,6 +495,27 @@ t_list* lfs_describe(char* punto_montaje) {
 	return metadatas;
 }
 
+Metadata* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla) {
+
+	Metadata* metadata = malloc(sizeof(Metadata));
+	DIR *tables_directory;
+	struct dirent *a_directory;
+	char* tabla_path = string_new();
+	string_append(&tabla_path, punto_montaje);
+	string_append(&tabla_path, "/Tables/");
+	log_debug(logger, tabla_path);
+	string_append(&tabla_path, nombre_tabla);
+
+	if (!existe_tabla(tabla_path)) {
+		return NULL;
+	}
+	metadata = obtener_metadata(tabla_path);
+	strcpy(metadata->nombre_tabla, nombre_tabla);
+	free(tabla_path);
+	return metadata;
+}
+
+
 int existe_tabla(char* tabla) {
 	int status = 1;
 	DIR *dirp;
@@ -509,10 +530,11 @@ int existe_tabla(char* tabla) {
 }
 
 void loguear_metadata(Metadata* metadata) {
-	//log_debug(logger, metadata->nombre_tabla);
-	log_debug(logger, consistency_to_str(metadata->consistency));
-	loguear_int(metadata->partitions);
-	loguear_int(metadata->compaction_time);
+	log_debug(logger, metadata->nombre_tabla);
+	log_debug(logger, "Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %i",
+			consistency_to_str(metadata->consistency),
+			metadata->partitions,
+			metadata->compaction_time);
 }
 
 void loguear_int(int n) {
@@ -842,7 +864,6 @@ void interpretarComando(int header, char* parametros) {
 			free(package);
 			break;
 		case INSERT:
-			//TODO: Arreglar fill_package_insert como file system
 			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
 			log_warning(logger, parametros);
 			if (!fill_package_insert(package, parametros, 1)) {
@@ -857,7 +878,34 @@ void interpretarComando(int header, char* parametros) {
 			free(package);
 			break;
 		case DESCRIBE:
-			//describe(parametros, serverSocket);
+			package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
+			if (parametros == NULL) {
+				log_warning(logger, "No vino el nombre de la tabla papi");
+			}
+
+			if (!fill_package_describe(package, parametros)) {
+				log_error(logger, "Parametros incorrectos");
+				break;
+			}
+
+			if (((t_PackageDescribe*) package)->nombre_tabla) {
+				Metadata* metadata = lfs_describe_a_table(ruta, ((t_PackageDescribe*) package)->nombre_tabla);
+				if (!metadata) {
+					log_info(logger, "No se hallo la metadata de la tabla: %s", ((t_PackageDescribe*) package)->nombre_tabla);
+					free(package);
+					break;
+				}
+				loguear_metadata(metadata);
+				free(metadata);
+				free(((t_PackageDescribe*) package)->nombre_tabla);
+				free(package);
+				break;
+			}
+			t_list* metadatas = lfs_describe(ruta);
+			list_iterate(metadatas, (void*) loguear_metadata);
+
+			list_destroy_and_destroy_elements(metadatas, (void*) free);
+			free(package);
 			break;
 		case DROP:
 			//drop(parametros, serverSocket);

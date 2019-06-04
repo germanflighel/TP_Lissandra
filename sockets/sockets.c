@@ -165,6 +165,33 @@ int fill_package_create(t_PackageCreate* package, char* parametros) {
 	return 1;
 }
 
+int fill_package_describe(t_PackageDescribe* package, char* parametros) {
+
+	if (parametros == NULL) {
+		package->tabla_long = 0;
+		package->nombre_tabla = NULL;
+
+		package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
+							+ package->tabla_long;
+		return 1;
+	}
+
+	char** parametrosSeparados = string_split(parametros, " ");
+
+	if (cant_parametros(parametrosSeparados) != 1) {
+		return 0;
+	}
+
+	package->header = DESCRIBE;
+	package->tabla_long = strlen(parametrosSeparados[0]);
+	package->nombre_tabla = malloc(package->tabla_long + 1);
+	memcpy(package->nombre_tabla, parametrosSeparados[0], package->tabla_long + 1);
+
+	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
+				+ package->tabla_long;
+	return 1;
+}
+
 char* serializarSelect(t_PackageSelect *package) {
 
 	char *serializedPackage = malloc(package->total_size);
@@ -278,6 +305,8 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 	free(parametrosSeparados);
 	return 1;
 }
+
+
 
 char* serializarInsert(t_PackageInsert *package) {
 
