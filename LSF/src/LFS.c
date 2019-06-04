@@ -730,10 +730,10 @@ void *receptorDeConsultas(void* socket) {
 				}
 
 				char* serializedPackage = serializarRespuestaSelect(&respuesta);
-				/*send(socketCliente, serializedPackage,
+				send(socketCliente, serializedPackage,
 						sizeof(respuesta.result) + sizeof(respuesta.value_long)
 								+ respuesta.value_long
-								+ sizeof(respuesta.timestamp), 0);*/
+								+ sizeof(respuesta.timestamp), 0);
 				free(serializedPackage);
 				free(respuesta.value);
 				free(registro_a_devolver->value);

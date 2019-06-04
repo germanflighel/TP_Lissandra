@@ -533,7 +533,7 @@ void abrir_con(t_config** g_config) {
 
 void abrir_log(void) {
 
-	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_INFO);
+	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_DEBUG);
 
 }
 

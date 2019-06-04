@@ -133,7 +133,7 @@ int fill_package_select(t_PackageSelect *package, char* parametros) {
 	return 1;
 }
 
-int fill_package_create(t_PackageCreate* package, char* parametros){
+int fill_package_create(t_PackageCreate* package, char* parametros) {
 	char** parametrosSeparados = string_split(parametros, " ");
 
 	if (cant_parametros(parametrosSeparados) != 4) {
@@ -150,14 +150,16 @@ int fill_package_create(t_PackageCreate* package, char* parametros){
 
 	package->consistency = consistency_to_int(parametrosSeparados[1]);
 
-	if(!package->consistency) return 0;
+	if (!package->consistency)
+		return 0;
 
 	package->partitions = atoi(parametrosSeparados[2]);
 
 	package->compaction_time = atol(parametrosSeparados[3]);
 
 	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
-			+ sizeof(package->consistency) +sizeof(package->compaction_time) +sizeof(package->partitions) + package->tabla_long;
+			+ sizeof(package->consistency) + sizeof(package->compaction_time)
+			+ sizeof(package->partitions) + package->tabla_long;
 
 	free(parametrosSeparados);
 	return 1;
@@ -200,7 +202,7 @@ int parametros_insert_filesystem(char* parametros, t_PackageInsert *package) {
 	string_trim(&tablaKey);
 	string_trim(&timeStamp);
 
-	char* tablakeySeparada = string_split(tablaKey, " ");
+	char** tablakeySeparada = string_split(tablaKey, " ");
 	if (cant_parametros(tablakeySeparada) != 2
 			|| string_contains(timeStamp, " ")) {
 		return 0;
@@ -214,12 +216,10 @@ int parametros_insert_filesystem(char* parametros, t_PackageInsert *package) {
 
 	package->timestamp = atoi(timeStamp);
 
-	package->value_long = strlen(parametrosSeparadosPorComilla[1]) - 2;
+	package->value_long = strlen(parametrosSeparadosPorComilla[1]);
 
 	package->value = malloc(package->value_long + 1);
-	memcpy(package->value, parametrosSeparadosPorComilla[1] + 1,
-			package->value_long);
-	package->value[package->value_long] = '\0';
+	strcpy(package->value, parametrosSeparadosPorComilla[1]);
 
 	return 2;
 }
@@ -232,15 +232,7 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 
 	int fs = 1;
 
-	if (cantParametros != 3) {
-		if (!filesys) {
-			return 0;
-		} else {
-			fs = parametros_insert_filesystem(parametros, package);
-		}
-	}
-
-	if (!fs) {
+	if (cantParametros < 3) {
 		return 0;
 	}
 
@@ -248,25 +240,34 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 			|| parametrosSeparados[2][0] != '"'
 			|| parametrosSeparados[2][strlen(parametrosSeparados[2]) - 1]
 					!= '"') {
+		if (filesys) {
+			fs = parametros_insert_filesystem(parametros, package);
+		} else {
+			return 0;
+		}
+	}
+
+	if (!fs) {
+		printf("Llegue2 \n");
 		return 0;
 	}
 
 	package->header = INSERT;
 	if (fs != 2) {
 		package->tabla_long = strlen(parametrosSeparados[0]);
-			package->tabla = malloc(package->tabla_long + 1);
+		package->tabla = malloc(package->tabla_long + 1);
 
-			memcpy(package->tabla, parametrosSeparados[0], package->tabla_long + 1);
+		memcpy(package->tabla, parametrosSeparados[0], package->tabla_long + 1);
 
-			package->value_long = strlen(parametrosSeparados[2]) - 2;
+		package->value_long = strlen(parametrosSeparados[2]) - 2;
 
-			package->value = malloc(package->value_long + 1);
-			memcpy(package->value, parametrosSeparados[2] + 1, package->value_long);
-			package->value[package->value_long] = '\0';
+		package->value = malloc(package->value_long + 1);
+		memcpy(package->value, parametrosSeparados[2] + 1, package->value_long);
+		package->value[package->value_long] = '\0';
 
-			package->key = atoi(parametrosSeparados[1]);
+		package->key = atoi(parametrosSeparados[1]);
 
-			package->timestamp = (unsigned) time(NULL);
+		package->timestamp = (unsigned) time(NULL);
 	}
 
 	package->total_size = sizeof(package->header) + sizeof(package->value_long)
