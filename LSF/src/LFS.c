@@ -20,31 +20,17 @@ t_log* logger;
 t_list* mem_table;
 int max_value_size;
 pthread_mutex_t mem_table_mutex;
+pthread_mutex_t bitarray_mutex;
+
 char* ruta;
 void *receptorDeConsultas(void *);
+int lfs_blocks;
+int lfs_block_size;
+t_bitarray* bitmap;
+
 
 int main() {
-
-	pthread_t threadConsola;
-	int retorno_de_consola;
-	char data[] = { 0b10000000, 0, 0b00000001 };
-
-	/*t_bitarray* bitmap = bitarray_create_with_mode(data,sizeof(data),LSB_FIRST);
-	if(bitarray_test_bit(bitmap, 7)) printf("La primera posicion es verdadera\n");
-	if(!bitarray_test_bit(bitmap, 8)) printf("La segunda posicion es falsa\n");
-	*/
-
-	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
-	if (retorno_de_consola) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
-		exit(EXIT_FAILURE);
-	}
-
 	pthread_mutex_init(&mem_table_mutex, NULL);
-
-	struct addrinfo hints;
-	struct addrinfo *serverInfo;
-
 	mem_table = list_create();
 	logger = iniciar_logger();
 	t_config* config = leer_config();
@@ -54,7 +40,28 @@ int main() {
 	log_debug(logger, puerto);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 
+	char* path_to_metadata = string_new();
+	string_append(&path_to_metadata, ruta);
+	string_append(&path_to_metadata, "/Metadata/Metadata.bin");
+	log_debug(logger, path_to_metadata);
 
+	t_config* metadata_lfs = config_create(path_to_metadata);
+	lfs_blocks = config_get_int_value(metadata_lfs, "BLOCKS");
+	lfs_block_size = config_get_int_value(metadata_lfs, "BLOCK_SIZE");
+
+	pthread_t threadConsola;
+	int retorno_de_consola;
+
+	escribir_bitarray(ruta);
+
+	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
+	if (retorno_de_consola) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
+		exit(EXIT_FAILURE);
+	}
+
+	struct addrinfo hints;
+	struct addrinfo *serverInfo;
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_flags = AI_PASSIVE; // Asigna el address del localhost: 127.0.0.1
@@ -928,4 +935,58 @@ void interpretarComando(int header, char* parametros) {
 			break;
 	}
 
+}
+
+int levantar_bitarray(char* punto_montaje) {
+	char* ruta_a_bitmap = string_new();
+	string_append(&ruta_a_bitmap, punto_montaje);
+
+	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
+
+	int fd = open(ruta_a_bitmap, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+
+	if (fd == -1) {
+		log_error(logger, "No se pudo abrir el Bitmap");
+		return 0;
+	}
+
+	truncate(ruta_a_bitmap, lfs_blocks/8);
+	char* bitmap_char = mmap(NULL, lfs_blocks, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+	bitmap = bitarray_create_with_mode(bitmap_char, lfs_blocks, LSB_FIRST);
+
+	log_warning(logger,"%i",bitarray_get_max_bit(bitmap));
+	return 1;
+}
+
+int escribir_bitarray(char* punto_montaje) {
+	char* ruta_a_bitmap = string_new();
+	string_append(&ruta_a_bitmap, punto_montaje);
+
+	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
+
+	int fd = open(ruta_a_bitmap, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+	if (fd == -1) {
+		log_error(logger, "No se pudo abrir el Bitmap");
+		return 0;
+	}
+
+	char bitmap_char[lfs_blocks/64];
+	for (int i = 0; i < (lfs_blocks/64); i++) {
+		bitmap_char[i] = 0;
+	}
+	size_t textsize = strlen(bitmap_char);
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, bitmap_char, strlen(bitmap_char));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+
+	close(fd);
+
+	levantar_bitarray(punto_montaje);
+
+	return 0;
 }
