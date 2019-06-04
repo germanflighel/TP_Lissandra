@@ -669,7 +669,13 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 		registro_mayor = list_fold(tabla->registros, registro_mayor, (void*) &get_mayor_timestamp);
 		pthread_mutex_unlock(&mem_table_mutex);
 		list_destroy(registros_con_key);
-		return registro_mayor;
+
+		Registro* copia_registro = malloc(sizeof(Registro*));
+		copia_registro->key = registro_mayor->key;
+		copia_registro->timeStamp = registro_mayor->timeStamp;
+		copia_registro->value = malloc(strlen(registro_mayor->value));
+		strcpy(copia_registro->value, registro_mayor->value);
+		return copia_registro;
 	}
 	pthread_mutex_unlock(&mem_table_mutex);
 
@@ -831,9 +837,6 @@ void interpretarComando(int header, char* parametros) {
 			} else {
 				log_error(logger, "No existe un registro con esa key");
 			}
-
-			free(registro->value);
-			free(registro);
 			free(package);
 			break;
 		case INSERT:
@@ -868,6 +871,8 @@ void interpretarComando(int header, char* parametros) {
 				break;
 			}
 			log_info(logger, "No se pudo crear la tabla");
+			free(((t_PackageCreate*)package)->tabla);
+			free(package);
 			break;
 		case -1:
 			break;
