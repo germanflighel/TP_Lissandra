@@ -121,11 +121,10 @@ int main() {
 	}
 
 	for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count; tabla2++) {
-			Tabla* tabla = list_get(tablas_actuales,tabla2);
-			printf("Tabla %s \n", tabla->nombre_tabla);
-					printf("Consistencia %s \n",
-							consistency_to_str(tabla->consistencia));
-		}
+		Tabla* tabla = list_get(tablas_actuales, tabla2);
+		printf("Tabla %s \n", tabla->nombre_tabla);
+		printf("Consistencia %s \n", consistency_to_str(tabla->consistencia));
+	}
 
 	memoriasConectadas = list_create();
 
@@ -249,7 +248,7 @@ int socketAUtilizar(char* tablaPath) {
 	int consistencia = NULL;
 
 	void buscarTabla(Tabla* tabla) {
-		if(strcmp(tabla->nombre_tabla, tablaPath) == 0) {
+		if (strcmp(tabla->nombre_tabla, tablaPath) == 0) {
 			consistencia = tabla->consistencia;
 		}
 	}
@@ -262,7 +261,7 @@ int socketAUtilizar(char* tablaPath) {
 }
 
 int socketFromConsistency(int consistencia) {
-	printf("Cons %d.\n",consistencia);
+	printf("Cons %d.\n", consistencia);
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -277,7 +276,7 @@ int socketFromConsistency(int consistencia) {
 			temp_mem = queue_pop(eventualC);
 			num_mem = *temp_mem;
 			queue_push(eventualC, temp_mem);
-		}else{
+		} else {
 			return -1;
 		}
 		break;
@@ -291,7 +290,7 @@ int socketFromConsistency(int consistencia) {
 	}
 
 	list_iterate(memoriasConectadas, esLaMemoria);
-	printf("Sock %d.\n",socket);
+	printf("Sock %d.\n", socket);
 	return socket;
 }
 
@@ -461,7 +460,30 @@ void drop(char* parametros, int serverSocket) {
 }
 
 void create(char* parametros, int serverSocket) {
-	printf("Recibi un create.\n");
+	char* serializedPackage;
+	int entradaValida = 1;
+	t_PackageCreate package;
+
+	if (!fill_package_create(&package, parametros)) {
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+
+	if (entradaValida) {
+		printf(
+				"CREATE enviado (Tabla: %s, CONSISTENCY: %s)\n",
+				package.tabla, consistency_to_str(package.consistency));
+
+		serializedPackage = serializarCreate(&package);
+
+		int socketAEnviar = ((Memoria*)list_get(memoriasConectadas,0))->socket;
+
+		send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+		free(package.tabla);
+		dispose_package(&serializedPackage);
+	}
+
 }
 
 void journal(char* parametros, int serverSocket) {
@@ -495,7 +517,7 @@ void add(char* parametros, int serverSocket) {
 				break;
 			case EC:
 				num_mem_puntero = malloc(sizeof(int));
-				memcpy(num_mem_puntero,&num_mem,sizeof(int));
+				memcpy(num_mem_puntero, &num_mem, sizeof(int));
 				queue_push(eventualC, num_mem_puntero);
 				break;
 			}
@@ -617,7 +639,7 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 
 		separarEntrada(entrada, &header, &parametros);
 
-		entradaValida = validarParametros(header,parametros);
+		entradaValida = validarParametros(header, parametros);
 
 		if (header == ERROR) {
 			printf("Comando no reconocido\n");

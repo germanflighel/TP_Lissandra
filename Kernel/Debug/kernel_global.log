@@ -4866,3 +4866,99 @@
 [INFO] 12:28:45:574 kernel/(7798:7800): Script terminado por linea erronea
 [INFO] 12:28:49:605 kernel/(7798:7800): Finalizó
 [INFO] 12:28:52:862 kernel/(7798:7800): Script terminado por linea erronea
+[INFO] 12:33:26:208 kernel/(8101:8101): 5555
+[INFO] 12:33:26:208 kernel/(8101:8101): Conecte al servidor.
+[INFO] 12:33:32:166 kernel/(8101:8103): Finalizó
+[INFO] 12:36:30:46 kernel/(8101:8103): Finalizó
+[INFO] 12:36:43:446 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:983 kernel/(8101:8103): 4
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:983 kernel/(8101:8103): 10
+[INFO] 12:37:11:983 kernel/(8101:8103): 9
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): 2
+[INFO] 12:37:11:984 kernel/(8101:8103): 6
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Script terminado por linea erronea
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 14:18:47:825 kernel/(10592:10592): 5555
+[INFO] 14:18:47:825 kernel/(10592:10592): Conecte al servidor.
+[INFO] 14:18:54:323 kernel/(10592:10594): Finalizó
+[INFO] 14:19:00:90 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): 4
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): 10
+[INFO] 14:19:02:908 kernel/(10592:10594): 9
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): 2
+[INFO] 14:19:02:908 kernel/(10592:10594): 6
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Script terminado por linea erronea
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:21:32:325 kernel/(10746:10746): 5555
+[INFO] 14:21:32:325 kernel/(10746:10746): Conecte al servidor.
+[INFO] 14:21:41:899 kernel/(10746:10748): Finalizó
+[INFO] 14:22:00:491 kernel/(10746:10748): Finalizó
+[INFO] 14:22:18:842 kernel/(10746:10748): Script terminado por linea erronea
+[INFO] 14:22:23:811 kernel/(10746:10748): Finalizó
+[INFO] 14:28:51:590 kernel/(11264:11264): 5555
+[INFO] 14:28:51:591 kernel/(11264:11264): Conecte al servidor.
+[INFO] 14:29:02:548 kernel/(11264:11266): Finalizó
+[INFO] 14:35:38:534 kernel/(11615:11615): 5555
+[INFO] 14:35:38:535 kernel/(11615:11615): Conecte al servidor.
+[INFO] 14:35:51:125 kernel/(11615:11617): Finalizó
+[INFO] 15:12:36:803 kernel/(12838:12838): 5555
+[INFO] 15:12:36:803 kernel/(12838:12838): Conecte al servidor.
+[INFO] 15:13:01:825 kernel/(12838:12841): Conecte a otra memoria.
+[INFO] 15:13:14:465 kernel/(12838:12840): Finalizó
+[INFO] 15:13:22:490 kernel/(12838:12840): Finalizó
+[INFO] 15:13:29:402 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:834 kernel/(12838:12840): 4
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:834 kernel/(12838:12840): 10
+[INFO] 15:13:33:834 kernel/(12838:12840): 9
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:835 kernel/(12838:12840): 2
+[INFO] 15:13:33:835 kernel/(12838:12840): 6
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Script terminado por linea erronea
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:53:331 kernel/(12838:12840): Finalizó
+[INFO] 15:14:12:237 kernel/(12867:12867): 5555
+[INFO] 15:14:12:237 kernel/(12867:12867): Conecte al servidor.

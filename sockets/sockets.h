@@ -115,5 +115,6 @@ void fill_package(t_PackagePosta*);
 void dispose_package(char**);
 int recieve_and_deserialize(t_PackagePosta*, int);
 char* serializarHandShake(t_Handshake*);
+char* consistency_to_str(int consistency);
 
 #endif

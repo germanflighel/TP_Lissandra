@@ -30,13 +30,15 @@ int main() {
 	char data[] = { 0b10000000, 0, 0b00000001 };
 
 	/*t_bitarray* bitmap = bitarray_create_with_mode(data,sizeof(data),LSB_FIRST);
-	if(bitarray_test_bit(bitmap, 7)) printf("La primera posicion es verdadera\n");
-	if(!bitarray_test_bit(bitmap, 8)) printf("La segunda posicion es falsa\n");
-	*/
+	 if(bitarray_test_bit(bitmap, 7)) printf("La primera posicion es verdadera\n");
+	 if(!bitarray_test_bit(bitmap, 8)) printf("La segunda posicion es falsa\n");
+	 */
 
-	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
+	retorno_de_consola = pthread_create(&threadConsola, NULL,
+			recibir_por_consola, NULL);
 	if (retorno_de_consola) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				retorno_de_consola);
 		exit(EXIT_FAILURE);
 	}
 
@@ -53,7 +55,6 @@ int main() {
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
-
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
@@ -124,20 +125,18 @@ int main() {
 	pthread_t threadL;
 	int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketCliente);
+	iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
+			(void*) socketCliente);
 	if (iret1) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
 	//thread receptor
 
-
-
-
-
 	int socketNuevo;
 	while (true) {
-		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
+				&addrlen);
 		log_debug(logger, "Acepte una conexion");
 
 		log_debug(logger, "A ver si es una memoria");
@@ -149,26 +148,25 @@ int main() {
 			return 0;
 		}
 		log_debug(logger, "Efectivamente Rick, es una memoria");
-    
+
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
 		log_debug(logger, "Le mande el max_value_size");
-
 
 		//thread receptor
 		pthread_t threadL;
 		int iret1;
 
-		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas, (void*) socketNuevo);
+		iret1 = pthread_create(&threadL, NULL, receptorDeConsultas,
+				(void*) socketNuevo);
 		if (iret1) {
-			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+			fprintf(stderr, "Error - pthread_create() return code: %d\n",
+					iret1);
 			exit(EXIT_FAILURE);
 		}
 		log_debug(logger, "Cree el hilo perf");
 
 		//thread receptor
 	}
-
-
 
 	//receptorDeConsultas(socketCliente);
 
@@ -197,6 +195,9 @@ void* ejecutar_comando(int header, void* package, char* ruta) {
 		break;
 	case INSERT:
 		return lfs_insert((t_PackageInsert*) package, ruta);
+		break;
+	case CREATE:
+		return lfs_create((t_PackageInsert*) package, ruta);
 		break;
 	}
 }
@@ -237,7 +238,8 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	//4) Escanear particion objetivo, archivos temporales y memoria temporal
 
-	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo, mi_ruta, punto_montaje, package->tabla);
+	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
+			mi_ruta, punto_montaje, package->tabla);
 
 	free(metadata);
 	free(mi_ruta);
@@ -295,8 +297,8 @@ int lfs_create(t_PackageCreate* package, char* punto_montaje) {
 
 	//Primero creo el directorio para la tabla
 	char* directorio = ruta_a_tabla(package->tabla, punto_montaje);
-	if(existe_tabla(directorio)){
-		log_debug(logger,"Existe la tabla papi: %s",package->tabla);
+	if (existe_tabla(directorio)) {
+		log_debug(logger, "Existe la tabla papi: %s", package->tabla);
 		return 0;
 	}
 
@@ -306,20 +308,20 @@ int lfs_create(t_PackageCreate* package, char* punto_montaje) {
 
 	//Creo el archivo metadata asociado a la tabla
 
-	if(!crear_metadata(package, directorio)){
+	if (!crear_metadata(package, directorio)) {
 		return 0;
 	}
 
 	//Creo los archivos binarios
-	int bloques [] = {1, 0};
-	if(!crear_particiones(package->partitions, directorio, bloques)){
+	int bloques[] = { 1, 0 };
+	if (!crear_particiones(package->partitions, directorio, bloques)) {
 		return 0;
 	}
 	log_debug(logger, "Cree las particiones");
 	return 1;
 }
 
-char* ruta_a_tabla(char* tabla, char* punto_montaje){
+char* ruta_a_tabla(char* tabla, char* punto_montaje) {
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, punto_montaje);
 	char* tables = "/Tables/";
@@ -328,16 +330,16 @@ char* ruta_a_tabla(char* tabla, char* punto_montaje){
 	return mi_ruta;
 }
 
-int crear_particiones(int particiones, char* tabla_path, int bloques[]){
-	for(int i = 1; i<= particiones; i++ ){
-		if(!crear_particion(i, tabla_path, i)){
+int crear_particiones(int particiones, char* tabla_path, int bloques[]) {
+	for (int i = 1; i <= particiones; i++) {
+		if (!crear_particion(i, tabla_path, i)) {
 			return 0;
 		}
 	}
 	return 1;
 }
 
-int crear_particion(int numero, char* tabla_path, int bloque){
+int crear_particion(int numero, char* tabla_path, int bloque) {
 	char* mi_particion = string_new();
 	string_append(&mi_particion, tabla_path);
 	string_append(&mi_particion, "/");
@@ -352,7 +354,8 @@ int crear_particion(int numero, char* tabla_path, int bloque){
 		return 0;
 	}
 	char* particion_a_crear = string_new();
-	string_append_with_format(&particion_a_crear,"SIZE=0\nBLOCKS=[%d]", bloque);
+	string_append_with_format(&particion_a_crear, "SIZE=0\nBLOCKS=[%d]",
+			bloque);
 	size_t textsize = strlen(particion_a_crear) + 1;
 	lseek(fd, textsize - 1, SEEK_SET);
 	write(fd, "", 1);
@@ -369,7 +372,7 @@ int crear_particion(int numero, char* tabla_path, int bloque){
 
 }
 
-int crear_metadata(t_PackageCreate* package, char* directorio){
+int crear_metadata(t_PackageCreate* package, char* directorio) {
 	char* mi_directorio = string_new();
 	string_append(&mi_directorio, directorio);
 	char* metadata = "/Metadata";
@@ -380,7 +383,7 @@ int crear_metadata(t_PackageCreate* package, char* directorio){
 		return 0;
 	}
 	char* escribir_metadata = string_new();
-	string_append(&escribir_metadata,"CONSISTENCY=");
+	string_append(&escribir_metadata, "CONSISTENCY=");
 	char* consistencia = consistency_to_str(package->consistency);
 	string_append(&escribir_metadata, consistencia);
 	string_append(&escribir_metadata, "\nPARTITIONS=");
@@ -515,7 +518,6 @@ Metadata* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla) {
 	return metadata;
 }
 
-
 int existe_tabla(char* tabla) {
 	int status = 1;
 	DIR *dirp;
@@ -531,9 +533,9 @@ int existe_tabla(char* tabla) {
 
 void loguear_metadata(Metadata* metadata) {
 	log_debug(logger, metadata->nombre_tabla);
-	log_debug(logger, "Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %i",
-			consistency_to_str(metadata->consistency),
-			metadata->partitions,
+	log_debug(logger,
+			"Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %i",
+			consistency_to_str(metadata->consistency), metadata->partitions,
 			metadata->compaction_time);
 }
 
@@ -581,7 +583,8 @@ int calcular_particion(int key, int cantidad_particiones) {
 	return (key % cantidad_particiones) + 1;
 }
 
-Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta, char* montaje, char* nombre_tabla) {
+Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* ruta,
+		char* montaje, char* nombre_tabla) {
 	char* f;
 	char* mi_ruta = string_new();
 	string_append(&mi_ruta, ruta);
@@ -674,21 +677,25 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 		}
 		return 0;
 	}
-	int es_registro(Registro* registro) { return registro->key == keyBuscada; }
-
+	int es_registro(Registro* registro) {
+		return registro->key == keyBuscada;
+	}
 
 	Registro* get_mayor_timestamp(Registro* unRegistro, Registro* otroRegistro) {
-        return unRegistro->timeStamp >= otroRegistro->timeStamp ? unRegistro: otroRegistro;
+		return unRegistro->timeStamp >= otroRegistro->timeStamp ?
+				unRegistro : otroRegistro;
 	}
 
 	Registro* registro_mayor;
 
 	pthread_mutex_lock(&mem_table_mutex);
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
-	t_list* registros_con_key = list_filter(tabla->registros, (int) &es_registro);
-	if(registros_con_key->elements_count) {
+	t_list* registros_con_key = list_filter(tabla->registros,
+			(int) &es_registro);
+	if (registros_con_key->elements_count) {
 		Registro* registro_mayor = list_get(registros_con_key, 0);
-		registro_mayor = list_fold(tabla->registros, registro_mayor, (void*) &get_mayor_timestamp);
+		registro_mayor = list_fold(tabla->registros, registro_mayor,
+				(void*) &get_mayor_timestamp);
 		pthread_mutex_unlock(&mem_table_mutex);
 		list_destroy(registros_con_key);
 
@@ -789,7 +796,30 @@ void *receptorDeConsultas(void* socket) {
 				 log_debug(logger, registruli->value);
 				 */
 
-			} /*else if (headerRecibido == DESCRIBE) {
+			}else if (headerRecibido == CREATE) {
+
+				log_debug(logger, "Got an CREATE");
+
+				t_PackageCreate package;
+				status = recieve_and_deserialize_create(&package,
+						socketCliente);
+
+				int fue_exitoso = (int) ejecutar_comando(headerRecibido,
+						&package, ruta);
+				if (fue_exitoso) {
+					log_info(logger, "Se creo exitosamente");
+				} else {
+					log_info(logger, "No se pudo crear");
+				}
+
+				/*
+				 // Esto es para probar antes de implementar en el SELECT la lectura del FS
+				 Tabla* tabluqui = list_get(mem_table, 0);
+				 Registro* registruli = list_get(tabluqui->registros, 0);
+				 log_debug(logger, registruli->value);
+				 */
+
+			}  /*else if (headerRecibido == DESCRIBE) {
 
 			 log_debug(logger, "Got an DESCRIBE");
 
@@ -809,10 +839,10 @@ void *receptorDeConsultas(void* socket) {
 
 void *recibir_por_consola() {
 	char* consulta;
-	while(true) {
+	while (true) {
 		consulta = readline("LFS> ");
 		if (!consulta) {
-		  break;
+			break;
 		}
 		char* parametros;
 		int header;
@@ -839,7 +869,6 @@ void *recibir_por_consola() {
 		free(consulta);
 		free(parametros);
 
-
 	}
 }
 
@@ -847,85 +876,87 @@ void interpretarComando(int header, char* parametros) {
 
 	void* package;
 	switch (header) {
-		case SELECT:
-			package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
-			if (!fill_package_select(package, parametros)) {
-				log_error(logger, "Parametros incorrectos");
-				break;
-			}
-			Registro* registro = lfs_select(package, ruta);
-			if (registro->value) {
-				loguear_registro(registro);
-			} else {
-				log_error(logger, "No existe un registro con esa key");
-			}
-			free(registro->value);
-			free(registro);
-			free(package);
+	case SELECT:
+		package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
+		if (!fill_package_select(package, parametros)) {
+			log_error(logger, "Parametros incorrectos");
 			break;
-		case INSERT:
-			package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
-			log_warning(logger, parametros);
-			if (!fill_package_insert(package, parametros, 1)) {
-				log_error(logger, "Parametros incorrectos");
-				break;
-			}
-			if (lfs_insert(package, ruta)) {
-				log_info(logger, "Se inserto exitosamente");
-				break;
-			}
-			log_info(logger, "No se pudo insertar");
-			free(package);
+		}
+		Registro* registro = lfs_select(package, ruta);
+		if (registro->value) {
+			loguear_registro(registro);
+		} else {
+			log_error(logger, "No existe un registro con esa key");
+		}
+		free(registro->value);
+		free(registro);
+		free(package);
+		break;
+	case INSERT:
+		package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
+		log_warning(logger, parametros);
+		if (!fill_package_insert(package, parametros, 1)) {
+			log_error(logger, "Parametros incorrectos");
 			break;
-		case DESCRIBE:
-			package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
-			if (parametros == NULL) {
-				log_warning(logger, "No vino el nombre de la tabla papi");
-			}
+		}
+		if (lfs_insert(package, ruta)) {
+			log_info(logger, "Se inserto exitosamente");
+			break;
+		}
+		log_info(logger, "No se pudo insertar");
+		free(package);
+		break;
+	case DESCRIBE:
+		package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
+		if (parametros == NULL) {
+			log_warning(logger, "No vino el nombre de la tabla papi");
+		}
 
-			if (!fill_package_describe(package, parametros)) {
-				log_error(logger, "Parametros incorrectos");
-				break;
-			}
+		if (!fill_package_describe(package, parametros)) {
+			log_error(logger, "Parametros incorrectos");
+			break;
+		}
 
-			if (((t_PackageDescribe*) package)->nombre_tabla) {
-				Metadata* metadata = lfs_describe_a_table(ruta, ((t_PackageDescribe*) package)->nombre_tabla);
-				if (!metadata) {
-					log_info(logger, "No se hallo la metadata de la tabla: %s", ((t_PackageDescribe*) package)->nombre_tabla);
-					free(package);
-					break;
-				}
-				loguear_metadata(metadata);
-				free(metadata);
-				free(((t_PackageDescribe*) package)->nombre_tabla);
+		if (((t_PackageDescribe*) package)->nombre_tabla) {
+			Metadata* metadata = lfs_describe_a_table(ruta,
+					((t_PackageDescribe*) package)->nombre_tabla);
+			if (!metadata) {
+				log_info(logger, "No se hallo la metadata de la tabla: %s",
+						((t_PackageDescribe*) package)->nombre_tabla);
 				free(package);
 				break;
 			}
-			t_list* metadatas = lfs_describe(ruta);
-			list_iterate(metadatas, (void*) loguear_metadata);
+			loguear_metadata(metadata);
+			free(metadata);
+			free(((t_PackageDescribe*) package)->nombre_tabla);
+			free(package);
+			break;
+		}
+		t_list* metadatas = lfs_describe(ruta);
+		list_iterate(metadatas, (void*) loguear_metadata);
 
-			list_destroy_and_destroy_elements(metadatas, (void*) free);
-			free(package);
+		list_destroy_and_destroy_elements(metadatas, (void*) free);
+		free(package);
+		break;
+	case DROP:
+		//drop(parametros, serverSocket);
+		break;
+	case CREATE:
+		package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
+		if (!fill_package_create(package, parametros)) {
+			log_error(logger, "Parametros incorrectos");
 			break;
-		case DROP:
-			//drop(parametros, serverSocket);
+		}
+		if (lfs_create(package, ruta)) {
+			log_info(logger, "Se creo la tabla correctamente");
 			break;
-		case CREATE:
-			package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
-			if (!fill_package_create(package, parametros)) {
-				log_error(logger, "Parametros incorrectos");
-				break;
-			}
-			if (lfs_create(package, ruta)) {
-				log_info(logger, "Se creo la tabla correctamente");
-				break;
-			}
-			log_info(logger, "No se pudo crear la tabla");
-			free(((t_PackageCreate*)package)->tabla);
-			free(package);
-			break;
-		case -1:
-			break;
+		}
+		log_info(logger, "No se pudo crear la tabla");
+		free(((t_PackageCreate*) package)->tabla);
+		free(package);
+		break;
+	case -1:
+		break;
 	}
 
 }
