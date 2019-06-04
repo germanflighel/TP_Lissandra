@@ -2,10 +2,10 @@
 *.d
 
 # Object files
-#*.o
-#*.ko
-#*.obj
-#*.elf
+*.o
+*.ko
+*.obj
+*.elf
 
 # Linker output
 *.ilk
@@ -37,10 +37,10 @@
 *.hex
 
 # Debug files
-# *.dSYM/
-#*.su
-#*.idb
-#*.pdb
+*.dSYM/
+*.su
+*.idb
+*.pdb
 
 # Kernel Module Compile Results
 *.mod*
