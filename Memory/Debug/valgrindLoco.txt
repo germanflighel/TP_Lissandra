@@ -1,0 +1,229 @@
+==7897== Memcheck, a memory error detector
+==7897== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==7897== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==7897== Command: ./Memory
+==7897== Parent PID: 7059
+==7897== 
+--7897-- 
+--7897-- Valgrind options:
+--7897--    --show-leak-kinds=all
+--7897--    --leak-check=full
+--7897--    -v
+--7897--    --log-file=valgrindLoco.txt
+--7897-- Contents of /proc/version:
+--7897--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--7897-- 
+--7897-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--7897-- Page sizes: currently 4096, max supported 4096
+--7897-- Valgrind library directory: /usr/lib/valgrind
+--7897-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--7897--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--7897--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--7897--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--7897--   .. CRC is valid
+--7897-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Memory/Debug/Memory
+--7897-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--7897--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--7897--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--7897--    object doesn't have a symbol table
+--7897--    object doesn't have a dynamic symbol table
+--7897-- Scheduler: using generic scheduler lock implementation.
+--7897-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==7897== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7897-by-utnso-on-???
+==7897== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7897-by-utnso-on-???
+==7897== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7897-by-utnso-on-???
+==7897== 
+==7897== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7897== don't want to do, unless you know exactly what you're doing,
+==7897== or are doing some strange experiment):
+==7897==   /usr/lib/valgrind/../../bin/vgdb --pid=7897 ...command...
+==7897== 
+==7897== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7897==   /path/to/gdb ./Memory
+==7897== and then give GDB the following command
+==7897==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=7897
+==7897== --pid is optional if only one valgrind process is running
+==7897== 
+--7897-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--7897-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--7897-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--7897--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--7897--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--7897--    object doesn't have a symbol table
+--7897-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--7897--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--7897--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--7897--    object doesn't have a symbol table
+==7897== WARNING: new redirection conflicts with existing -- ignoring it
+--7897--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--7897--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--7897-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--7897-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--7897--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--7897--   .. build-id is valid
+--7897-- Reading syms from /usr/lib/libcommons.so
+--7897-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--7897--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--7897--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--7897--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--7897--   .. CRC is valid
+--7897-- REDIR: 0x40f54b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x40fc140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x410eb20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x40f4350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--7897-- REDIR: 0x40f37e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--7897-- REDIR: 0x40eef00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--7897-- REDIR: 0x40f4fc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x41a34d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--7897-- REDIR: 0x40f35c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--7897-- REDIR: 0x40f5680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--7897-- REDIR: 0x40ef810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--7897-- REDIR: 0x40ef520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--7897-- REDIR: 0x40ef470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+--7897-- REDIR: 0x40f3580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x40fc440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--7897-- REDIR: 0x40f3700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x41b35c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--7897-- REDIR: 0x40f5610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x41a5b70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--7897-- REDIR: 0x40f4a30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+--7897-- REDIR: 0x40f2d20 (libc.so.6:__GI_strchr) redirected to 0x402ef30 (__GI_strchr)
+--7897-- REDIR: 0x40f4c10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--7897-- REDIR: 0x40f50d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+--7897-- REDIR: 0x40f7280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+==7897== Syscall param socketcall.send(msg) points to uninitialised byte(s)
+==7897==    at 0x4065549: send (send.c:35)
+==7897==    by 0x80492F0: main (Memory.c:227)
+==7897==  Address 0x423b26f is 15 bytes inside a block of size 44 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4039E13: serializarDescribe (sockets.c:47)
+==7897==    by 0x80492D1: main (Memory.c:226)
+==7897== 
+==7897== Invalid write of size 1
+==7897==    at 0x403A5A1: recieve_and_deserialize_select (sockets.c:252)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897==  Address 0x423b335 is 0 bytes after a block of size 5 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A55C: recieve_and_deserialize_select (sockets.c:246)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897== 
+--7897-- REDIR: 0x40f2ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7897-- REDIR: 0x41b2150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+==7897== Invalid read of size 1
+==7897==    at 0x403047D: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x8049456: esDeLaTabla.5815 (Memory.c:313)
+==7897==    by 0x40779BA: list_find_element (in /usr/lib/libcommons.so)
+==7897==    by 0x40770F6: list_find (in /usr/lib/libcommons.so)
+==7897==    by 0x80494BF: buscarSegmento (Memory.c:319)
+==7897==    by 0x80495F4: ejecutarSelect (Memory.c:354)
+==7897==    by 0x80495C8: ejectuarComando (Memory.c:345)
+==7897==    by 0x8049376: main (Memory.c:263)
+==7897==  Address 0x423b3de is 0 bytes after a block of size 6 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A55C: recieve_and_deserialize_select (sockets.c:246)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897== 
+==7897== 
+==7897== HEAP SUMMARY:
+==7897==     in use at exit: 8,853 bytes in 13 blocks
+==7897==   total heap usage: 85 allocs, 72 frees, 21,695 bytes allocated
+==7897== 
+==7897== Searching for pointers to 13 not-freed blocks
+==7897== Checked 70,676 bytes
+==7897== 
+==7897== 4 bytes in 1 blocks are definitely lost in loss record 1 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A47F: recieve_header (sockets.c:221)
+==7897==    by 0x8049318: main (Memory.c:253)
+==7897== 
+==7897== 8 bytes in 1 blocks are still reachable in loss record 2 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4076E01: list_create (in /usr/lib/libcommons.so)
+==7897==    by 0x8048CDD: main (Memory.c:31)
+==7897== 
+==7897== 8 bytes in 1 blocks are still reachable in loss record 3 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4077905: list_create_element (in /usr/lib/libcommons.so)
+==7897==    by 0x4076E3D: list_add (in /usr/lib/libcommons.so)
+==7897==    by 0x8048EE9: main (Memory.c:67)
+==7897== 
+==7897== 8 bytes in 1 blocks are indirectly lost in loss record 4 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4077905: list_create_element (in /usr/lib/libcommons.so)
+==7897==    by 0x4076E3D: list_add (in /usr/lib/libcommons.so)
+==7897==    by 0x8048EC3: main (Memory.c:64)
+==7897== 
+==7897== 8 bytes in 1 blocks are indirectly lost in loss record 5 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4077905: list_create_element (in /usr/lib/libcommons.so)
+==7897==    by 0x4076E3D: list_add (in /usr/lib/libcommons.so)
+==7897==    by 0x8048ED4: main (Memory.c:65)
+==7897== 
+==7897== 23 bytes in 4 blocks are definitely lost in loss record 6 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A55C: recieve_and_deserialize_select (sockets.c:246)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897== 
+==7897== 24 (8 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4076E01: list_create (in /usr/lib/libcommons.so)
+==7897==    by 0x8048EB2: main (Memory.c:63)
+==7897== 
+==7897== 42 bytes in 1 blocks are definitely lost in loss record 8 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x8049231: main (Memory.c:218)
+==7897== 
+==7897== 3,744 bytes in 1 blocks are still reachable in loss record 9 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x8048CFB: main (Memory.c:32)
+==7897== 
+==7897== 5,000 bytes in 1 blocks are still reachable in loss record 10 of 10
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x8048CD0: main (Memory.c:30)
+==7897== 
+==7897== LEAK SUMMARY:
+==7897==    definitely lost: 77 bytes in 7 blocks
+==7897==    indirectly lost: 16 bytes in 2 blocks
+==7897==      possibly lost: 0 bytes in 0 blocks
+==7897==    still reachable: 8,760 bytes in 4 blocks
+==7897==         suppressed: 0 bytes in 0 blocks
+==7897== 
+==7897== Use --track-origins=yes to see where uninitialised values come from
+==7897== ERROR SUMMARY: 12 errors from 7 contexts (suppressed: 0 from 0)
+==7897== 
+==7897== 1 errors in context 1 of 7:
+==7897== Syscall param socketcall.send(msg) points to uninitialised byte(s)
+==7897==    at 0x4065549: send (send.c:35)
+==7897==    by 0x80492F0: main (Memory.c:227)
+==7897==  Address 0x423b26f is 15 bytes inside a block of size 44 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x4039E13: serializarDescribe (sockets.c:47)
+==7897==    by 0x80492D1: main (Memory.c:226)
+==7897== 
+==7897== 
+==7897== 3 errors in context 2 of 7:
+==7897== Invalid read of size 1
+==7897==    at 0x403047D: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x8049456: esDeLaTabla.5815 (Memory.c:313)
+==7897==    by 0x40779BA: list_find_element (in /usr/lib/libcommons.so)
+==7897==    by 0x40770F6: list_find (in /usr/lib/libcommons.so)
+==7897==    by 0x80494BF: buscarSegmento (Memory.c:319)
+==7897==    by 0x80495F4: ejecutarSelect (Memory.c:354)
+==7897==    by 0x80495C8: ejectuarComando (Memory.c:345)
+==7897==    by 0x8049376: main (Memory.c:263)
+==7897==  Address 0x423b3de is 0 bytes after a block of size 6 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A55C: recieve_and_deserialize_select (sockets.c:246)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897== 
+==7897== 
+==7897== 4 errors in context 3 of 7:
+==7897== Invalid write of size 1
+==7897==    at 0x403A5A1: recieve_and_deserialize_select (sockets.c:252)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897==  Address 0x423b335 is 0 bytes after a block of size 5 alloc'd
+==7897==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==7897==    by 0x403A55C: recieve_and_deserialize_select (sockets.c:246)
+==7897==    by 0x8049358: main (Memory.c:260)
+==7897== 
+==7897== ERROR SUMMARY: 12 errors from 7 contexts (suppressed: 0 from 0)

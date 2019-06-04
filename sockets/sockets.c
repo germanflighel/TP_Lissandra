@@ -110,13 +110,59 @@ int recieve_and_send_describe(t_describe *package, int socketCliente,
 	return status;
 }
 
-int fill_package_select(t_PackageSelect *package, char* parametros) {
-
-	char** parametrosSeparados = string_split(parametros, " ");
-
-	if (cant_parametros(parametrosSeparados) != 2) {
+int validarParametros(int header, char* parametros) {
+	char** parametrosSeparados;
+	if (parametros == NULL) {
 		return 0;
 	}
+	switch (header) {
+	case SELECT:
+		parametrosSeparados = string_split(parametros, " ");
+
+		if (cant_parametros(parametrosSeparados) != 2) {
+			free(parametrosSeparados);
+			return 0;
+		}
+		break;
+	case INSERT:
+
+		parametrosSeparados = string_n_split(parametros, 3, " ");
+
+		if (cant_parametros(parametrosSeparados) < 3
+				|| !(strlen(parametrosSeparados[2]) >= 3)
+				|| parametrosSeparados[2][0] != '"'
+				|| parametrosSeparados[2][strlen(parametrosSeparados[2]) - 1]
+						!= '"') {
+			free(parametrosSeparados);
+			return 0;
+		}
+
+		break;
+	case CREATE:
+		parametrosSeparados = string_split(parametros, " ");
+		if (cant_parametros(parametrosSeparados) != 4) {
+			free(parametrosSeparados);
+			return 0;
+		}
+		break;
+	case DESCRIBE:
+		parametrosSeparados = string_split(parametros, " ");
+		if (cant_parametros(parametrosSeparados) != 1) {
+			free(parametrosSeparados);
+			return 0;
+		}
+		break;
+	}
+	return 1;
+}
+
+int fill_package_select(t_PackageSelect *package, char* parametros) {
+
+	if (!validarParametros(SELECT, parametros)) {
+		return 0;
+	}
+
+	char** parametrosSeparados = string_split(parametros, " ");
 
 	package->header = SELECT;
 	package->tabla_long = strlen(parametrosSeparados[0]);
@@ -134,11 +180,12 @@ int fill_package_select(t_PackageSelect *package, char* parametros) {
 }
 
 int fill_package_create(t_PackageCreate* package, char* parametros) {
-	char** parametrosSeparados = string_split(parametros, " ");
 
-	if (cant_parametros(parametrosSeparados) != 4) {
+	if (!validarParametros(CREATE, parametros)) {
 		return 0;
 	}
+
+	char** parametrosSeparados = string_split(parametros, " ");
 
 	package->header = CREATE;
 	package->tabla_long = strlen(parametrosSeparados[0]);
@@ -253,15 +300,15 @@ int parametros_insert_filesystem(char* parametros, t_PackageInsert *package) {
 
 int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys) {
 
+	if (!validarParametros(INSERT, parametros)) {
+		return 0;
+	}
+
 	char** parametrosSeparados = string_n_split(parametros, 3, " ");
 
 	int cantParametros = cant_parametros(parametrosSeparados);
 
 	int fs = 1;
-
-	if (cantParametros < 3) {
-		return 0;
-	}
 
 	if (!(strlen(parametrosSeparados[2]) >= 3)
 			|| parametrosSeparados[2][0] != '"'
@@ -275,7 +322,6 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 	}
 
 	if (!fs) {
-		printf("Llegue2 \n");
 		return 0;
 	}
 

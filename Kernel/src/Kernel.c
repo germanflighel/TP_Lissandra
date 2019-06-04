@@ -617,6 +617,8 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 
 		separarEntrada(entrada, &header, &parametros);
 
+		entradaValida = validarParametros(header,parametros);
+
 		if (header == ERROR) {
 			printf("Comando no reconocido\n");
 			entradaValida = 0;

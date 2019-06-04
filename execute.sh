@@ -36,8 +36,8 @@ imprimir "Instalando las commonds"
 #(cd so-commons-library && sudo make install)
 imprimir "commons instaladas"
 
-imprimir "Bajo el repositorio de SOcorro"
-#(git clone https://github.com/sisoputnfrba/tp-2019-1c-SOcorro.git)
+imprimir "Bajo el repositorio de Ckere"
+#(git clone https://github.com/sisoputnfrba/tp-2019-1c-Ckere.git)
 
 limpiar
 
