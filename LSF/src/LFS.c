@@ -837,6 +837,8 @@ void interpretarComando(int header, char* parametros) {
 			} else {
 				log_error(logger, "No existe un registro con esa key");
 			}
+			free(registro->value);
+			free(registro);
 			free(package);
 			break;
 		case INSERT:
