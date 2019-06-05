@@ -66,6 +66,7 @@ int main() {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", retorno_de_consola);
 		exit(EXIT_FAILURE);
 	}
+	pthread_detach(threadConsola);
 
 	struct addrinfo hints;
 	struct addrinfo *serverInfo;
@@ -200,7 +201,8 @@ t_config* leer_config() {
 
 t_log* iniciar_logger(void) {
 
-	return log_create(LOG_FILE_PATH, "LFS", 1, LOG_LEVEL_DEBUG);
+	char* lfs = "LFS";
+	return log_create(LOG_FILE_PATH, lfs, 1, LOG_LEVEL_DEBUG);
 
 }
 
@@ -260,7 +262,6 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 }
 
 int lfs_insert(t_PackageInsert* package, char* ruta) {
-	loguear_int(max_value_size);
 	if (package->value_long > max_value_size) {
 		return 0;
 	}
@@ -290,17 +291,14 @@ int lfs_insert(t_PackageInsert* package, char* ruta) {
 	log_debug(logger, "Voy a crear el registro");
 	Registro* registro_a_insertar = malloc(sizeof(Registro));
 	registro_a_insertar->key = package->key;
-	log_debug(logger, string_itoa(registro_a_insertar->key));
 	registro_a_insertar->timeStamp = package->timestamp;
-	log_debug(logger, string_itoa(registro_a_insertar->timeStamp));
-
-	log_debug(logger, (package->value));
 
 	char* value = malloc(package->value_long);
 	strcpy(value, package->value);
 	registro_a_insertar->value = malloc(strlen(value) + 1);
 	strcpy(registro_a_insertar->value, value);
-	log_debug(logger, (registro_a_insertar->value));
+
+	loguear_registro(registro_a_insertar);
 
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
@@ -586,9 +584,10 @@ void loguear_int(int n) {
 }
 
 void loguear_registro(Registro* registro) {
-	loguear_int(registro->timeStamp);
-	loguear_int(registro->key);
-	log_debug(logger, registro->value);
+	log_debug(logger, "Key: %i, Value: %s, Timestamp: %i",
+		registro->key,
+		registro->value,
+		registro->timeStamp);
 }
 
 Metadata* obtener_metadata(char* ruta) {
@@ -866,6 +865,7 @@ void *recibir_por_consola() {
 			bitarray_destroy(bitmap);
 			free(consulta);
 			free(parametros);
+			rl_clear_history();
 			log_error(logger, "Bye");
 			return NULL;
 		} else if (header == ERROR) {
@@ -918,6 +918,8 @@ void interpretarComando(int header, char* parametros) {
 				break;
 			}
 			log_info(logger, "No se pudo insertar");
+			free(((t_PackageInsert*)package)->tabla);
+			free(((t_PackageInsert*)package)->value);
 			free(package);
 			break;
 		case DESCRIBE:
@@ -948,6 +950,8 @@ void interpretarComando(int header, char* parametros) {
 			list_iterate(metadatas, (void*) loguear_metadata);
 
 			list_destroy_and_destroy_elements(metadatas, (void*) free);
+
+			free(((t_PackageDescribe*)package)->nombre_tabla);
 			free(package);
 			break;
 		case DROP:
