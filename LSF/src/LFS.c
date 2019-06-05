@@ -52,7 +52,7 @@ int main() {
 	pthread_t threadConsola;
 	int retorno_de_consola;
 
-	escribir_bitarray(ruta);
+	levantar_bitarray(ruta);
 
 	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
 	if (retorno_de_consola) {
@@ -950,8 +950,6 @@ int levantar_bitarray(char* punto_montaje) {
 		return 0;
 	}
 
-	log_debug(logger, "Size a mmapear necesarios: %i", lfs_blocks/8);
-
 	char* bitmap_char = mmap(NULL, lfs_blocks/8, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
 	bitmap = bitarray_create_with_mode(bitmap_char, lfs_blocks/8, LSB_FIRST);
@@ -960,38 +958,3 @@ int levantar_bitarray(char* punto_montaje) {
 	return 1;
 }
 
-int escribir_bitarray(char* punto_montaje) {
-	char* ruta_a_bitmap = string_new();
-	string_append(&ruta_a_bitmap, punto_montaje);
-
-	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
-	char bitmap_char[lfs_blocks/8];
-	for (int i = 0; i < (lfs_blocks/8); i++) {
-		bitmap_char[i] = 0;
-	}
-
-	int fd = open(ruta_a_bitmap, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
-
-	if (fd == -1) {
-		log_error(logger, "No se pudo abrir el Bitmap");
-		return 0;
-	}
-	log_debug(logger, "Cantidad de Bloques: %i", lfs_blocks);
-	log_debug(logger, "Bytes necesarios: %i", lfs_blocks/8);
-
-	int written_bytes = write(fd, bitmap_char, lfs_blocks/8);
-
-	log_debug(logger, "Bytes que escribi: %i", written_bytes);
-
-	close(fd);
-
-	levantar_bitarray(punto_montaje);
-
-	bitarray_set_bit(bitmap, 0);
-	if (bitarray_test_bit(bitmap, 0)) {
-		log_debug(logger, "Ahora la posicion 0 es True");
-	}
-
-
-	return 0;
-}
