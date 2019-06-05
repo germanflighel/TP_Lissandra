@@ -31,6 +31,8 @@ t_bitarray* bitmap;
 
 int main() {
 	pthread_mutex_init(&mem_table_mutex, NULL);
+	pthread_mutex_init(&bitarray_mutex, NULL);
+
 	mem_table = list_create();
 	logger = iniciar_logger();
 	t_config* config = leer_config();
@@ -52,7 +54,12 @@ int main() {
 	pthread_t threadConsola;
 	int retorno_de_consola;
 
-	levantar_bitarray(ruta);
+	//escribir_bitarray(ruta);
+	levantar_bitmap(ruta);
+
+	log_debug(logger, "Levante el Bitmap");
+
+	log_debug(logger, "Primer bloque libre: %i", primer_bloque_libre_sin_set());
 
 	retorno_de_consola = pthread_create(&threadConsola, NULL, recibir_por_consola, NULL);
 	if (retorno_de_consola) {
@@ -318,8 +325,7 @@ int lfs_create(t_PackageCreate* package, char* punto_montaje) {
 	}
 
 	//Creo los archivos binarios
-	int bloques [] = {1, 0};
-	if(!crear_particiones(package->partitions, directorio, bloques)){
+	if(!crear_particiones(package->partitions, directorio)){
 		return 0;
 	}
 	log_debug(logger, "Cree las particiones");
@@ -335,16 +341,38 @@ char* ruta_a_tabla(char* tabla, char* punto_montaje){
 	return mi_ruta;
 }
 
-int crear_particiones(int particiones, char* tabla_path, int bloques[]){
+int crear_particiones(int particiones, char* tabla_path){
 	for(int i = 1; i<= particiones; i++ ){
-		if(!crear_particion(i, tabla_path, i)){
+		if(!crear_particion(i, tabla_path)){
 			return 0;
 		}
 	}
 	return 1;
 }
 
-int crear_particion(int numero, char* tabla_path, int bloque){
+int primer_bloque_libre() {
+	int bloque = 0;
+	for (bloque; bloque < lfs_blocks; bloque++) {
+		if (!bitarray_test_bit(bitmap, bloque)) {
+			bitarray_set_bit(bitmap, bloque);
+			return bloque + 1;
+		}
+	}
+	return -1;
+}
+
+int primer_bloque_libre_sin_set() {
+	int bloque = 0;
+	for (bloque; bloque < lfs_blocks; bloque++) {
+		if (!bitarray_test_bit(bitmap, bloque)) {
+			//bitarray_set_bit(bitmap, bloque);
+			return bloque + 1;
+		}
+	}
+	return -1;
+}
+
+int crear_particion(int numero, char* tabla_path){
 	char* mi_particion = string_new();
 	string_append(&mi_particion, tabla_path);
 	string_append(&mi_particion, "/");
@@ -359,6 +387,14 @@ int crear_particion(int numero, char* tabla_path, int bloque){
 		return 0;
 	}
 	char* particion_a_crear = string_new();
+
+	pthread_mutex_lock(&bitarray_mutex);
+	int bloque = primer_bloque_libre();
+	pthread_mutex_unlock(&bitarray_mutex);
+	if (bloque == -1) {
+		return 0;
+	}
+
 	string_append_with_format(&particion_a_crear,"SIZE=0\nBLOCKS=[%d]", bloque);
 	size_t textsize = strlen(particion_a_crear) + 1;
 	lseek(fd, textsize - 1, SEEK_SET);
@@ -373,7 +409,6 @@ int crear_particion(int numero, char* tabla_path, int bloque){
 	free(mi_particion);
 
 	return 1;
-
 }
 
 int crear_metadata(t_PackageCreate* package, char* directorio){
@@ -828,6 +863,7 @@ void *recibir_por_consola() {
 		separarEntrada(consulta, &header, &parametros);
 
 		if (header == EXIT_CONSOLE) {
+			bitarray_destroy(bitmap);
 			free(consulta);
 			free(parametros);
 			log_error(logger, "Bye");
@@ -937,7 +973,7 @@ void interpretarComando(int header, char* parametros) {
 
 }
 
-int levantar_bitarray(char* punto_montaje) {
+int levantar_bitmap(char* punto_montaje) {
 	char* ruta_a_bitmap = string_new();
 	string_append(&ruta_a_bitmap, punto_montaje);
 
@@ -954,7 +990,46 @@ int levantar_bitarray(char* punto_montaje) {
 
 	bitmap = bitarray_create_with_mode(bitmap_char, lfs_blocks/8, LSB_FIRST);
 
+	munmap(ruta_a_bitmap, lfs_blocks/8);
+	close(fd);
+
 	log_warning(logger, "Bits que maneja el bitarray: %i", bitarray_get_max_bit(bitmap));
+
+	for (int i = 0; i < 5; i++) {
+		bitarray_set_bit(bitmap, i);
+	}
 	return 1;
 }
 
+int escribir_bitarray(char* punto_montaje) {
+	char* ruta_a_bitmap = string_new();
+	string_append(&ruta_a_bitmap, punto_montaje);
+
+ 	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
+	char bitmap_char[lfs_blocks/8];
+	for (int i = 0; i < (lfs_blocks/8); i++) {
+		bitmap_char[i] = 0;
+	}
+
+ 	int fd = open(ruta_a_bitmap, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+
+ 	if (fd == -1) {
+		log_error(logger, "No se pudo abrir el Bitmap");
+		return 0;
+	}
+	log_debug(logger, "Cantidad de Bloques: %i", lfs_blocks);
+	log_debug(logger, "Bytes necesarios: %i", lfs_blocks/8);
+
+ 	int written_bytes = write(fd, bitmap_char, lfs_blocks/8);
+
+ 	log_debug(logger, "Bytes que escribi: %i", written_bytes);
+
+ 	close(fd);
+
+ 	//levantar_bitarray(punto_montaje);
+
+
+
+
+ 	return 0;
+}
