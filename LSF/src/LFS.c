@@ -19,6 +19,7 @@
 t_log* logger;
 t_list* mem_table;
 int max_value_size;
+int tiempo_dump;
 pthread_mutex_t mem_table_mutex;
 pthread_mutex_t bitarray_mutex;
 
@@ -41,6 +42,7 @@ int main() {
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	log_debug(logger, puerto);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
+	tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
 
 	char* path_to_metadata = string_new();
 	string_append(&path_to_metadata, ruta);
@@ -147,7 +149,14 @@ int main() {
 	//thread receptor
 
 
+	pthread_t threadDumpeo;
+	int status_thread_dumpeo;
 
+	//status_thread_dumpeo = pthread_create(&threadDumpeo, NULL, dump, NULL);
+	//if (status_thread_dumpeo) {
+	//	fprintf(stderr, "Error - pthread_create() return code: %d\n", status_thread_dumpeo);
+	//	exit(EXIT_FAILURE);
+	//}
 
 
 	int socketNuevo;
@@ -498,6 +507,12 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 	//wait
 	pthread_mutex_unlock(&mem_table_mutex);
 
+	pthread_mutex_lock(&mem_table_mutex);
+	t_list* mem_table_duplicada = list_duplicate(mem_table);
+	pthread_mutex_unlock(&mem_table_mutex);
+
+	list_destroy(mem_table_duplicada);
+
 	return indice_insercion + 1 > cantidad_anterior;
 }
 
@@ -726,10 +741,13 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 
 	pthread_mutex_lock(&mem_table_mutex);
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
-	t_list* registros_con_key = list_filter(tabla->registros, (int) &es_registro);
+
+	t_list* registros_con_key = list_filter(tabla->registros, (void*) es_registro);
+
 	if(registros_con_key->elements_count) {
 		Registro* registro_mayor = list_get(registros_con_key, 0);
-		registro_mayor = list_fold(tabla->registros, registro_mayor, (void*) &get_mayor_timestamp);
+
+		registro_mayor = list_fold(registros_con_key, registro_mayor, (void*) &get_mayor_timestamp);
 		pthread_mutex_unlock(&mem_table_mutex);
 		list_destroy(registros_con_key);
 
@@ -994,7 +1012,7 @@ int levantar_bitmap(char* punto_montaje) {
 
 	bitmap = bitarray_create_with_mode(bitmap_char, lfs_blocks/8, LSB_FIRST);
 
-	munmap(ruta_a_bitmap, lfs_blocks/8);
+	//munmap(ruta_a_bitmap, lfs_blocks/8);
 	close(fd);
 
 	log_warning(logger, "Bits que maneja el bitarray: %i", bitarray_get_max_bit(bitmap));
@@ -1032,8 +1050,18 @@ int escribir_bitarray(char* punto_montaje) {
 
  	//levantar_bitarray(punto_montaje);
 
-
-
-
  	return 0;
+}
+
+void* dump() {
+	while (1) {
+		int segundos_dumpeo = tiempo_dump / 1000;
+		sleep(segundos_dumpeo);
+
+		pthread_mutex_lock(&mem_table_mutex);
+		t_list* mem_table_duplicada = list_duplicate(mem_table);
+		pthread_mutex_lock(&mem_table_mutex);
+
+		list_destroy(mem_table_duplicada);
+	}
 }
