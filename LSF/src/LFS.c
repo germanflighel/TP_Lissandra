@@ -27,6 +27,7 @@ char* ruta;
 void *receptorDeConsultas(void *);
 int lfs_blocks;
 int lfs_block_size;
+int cantidad_de_dumpeos = 1;
 t_bitarray* bitmap;
 
 
@@ -973,7 +974,7 @@ void interpretarComando(int header, char* parametros) {
 			free(package);
 			break;
 		case DROP:
-			//drop(parametros, serverSocket);
+			dump();
 			break;
 		case CREATE:
 			package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
@@ -1053,15 +1054,92 @@ int escribir_bitarray(char* punto_montaje) {
  	return 0;
 }
 
-void* dump() {
-	while (1) {
+void dump() {
+
+	void _crear_archivo_temporal(char* nombre_tabla, int bytes_a_dumpear) {
+
+
+		char* temporal_path = ruta_a_tabla(nombre_tabla, ruta);
+
+		string_append(&temporal_path, "/");
+		char* cantidad_dumpeos_string = string_itoa(cantidad_de_dumpeos);
+		string_append(&temporal_path, cantidad_dumpeos_string);
+
+		char* tmp = ".tmp";
+		string_append(&temporal_path, tmp);
+		log_debug(logger, temporal_path);
+		int fd = open(temporal_path, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+		if (fd == -1) {
+			return;
+		}
+		char* temporal_a_crear = string_new();
+		string_append_with_format(&temporal_a_crear,"SIZE=0\nBLOCKS=[");
+
+		int size_in_fs = 0;
+		while (size_in_fs < bytes_a_dumpear) {
+			pthread_mutex_lock(&bitarray_mutex);
+			int bloque = primer_bloque_libre();
+			pthread_mutex_unlock(&bitarray_mutex);
+
+			size_in_fs += lfs_block_size;
+			if (!(size_in_fs > bytes_a_dumpear)) {
+				string_append_with_format(&temporal_a_crear, "%d,", bloque);
+			} else {
+				string_append_with_format(&temporal_a_crear, "%d]", bloque);
+			}
+		}
+
+		log_debug(logger, "A escribir en tmp: %s", temporal_a_crear);
+
+		size_t textsize = strlen(temporal_a_crear) + 1;
+		lseek(fd, textsize - 1, SEEK_SET);
+		write(fd, "", 1);
+		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+		memcpy(map, temporal_a_crear, strlen(temporal_a_crear));
+		msync(map, textsize, MS_SYNC);
+		munmap(map, textsize);
+		close(fd);
+		free(temporal_a_crear);
+		free(cantidad_dumpeos_string);
+		free(temporal_path);
+		log_debug(logger, "Termine de dumpear papi");
+	}
+
+	void _dumpear_tabla (Tabla* tabla) {
+		int bytes_a_dumpear = tamanio_de_tabla(tabla);
+		_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
+		for(int i = 0; i < tabla->registros->elements_count; i++) {
+			log_debug(logger, "Agregado registro a fs");
+		}
+	}
+
+
+
+	//while (1) {
 		int segundos_dumpeo = tiempo_dump / 1000;
-		sleep(segundos_dumpeo);
+	//	sleep(segundos_dumpeo);
 
 		pthread_mutex_lock(&mem_table_mutex);
 		t_list* mem_table_duplicada = list_duplicate(mem_table);
-		pthread_mutex_lock(&mem_table_mutex);
+		pthread_mutex_unlock(&mem_table_mutex);
 
+		list_iterate(mem_table_duplicada, (void*) _dumpear_tabla);
+		cantidad_de_dumpeos++;
 		list_destroy(mem_table_duplicada);
+	//}
+}
+
+int tamanio_de_tabla(Tabla* tabla) {
+	log_debug(logger, "Tabla a Dumpear: %s", tabla->nombre_tabla);
+	int size = 0;
+	Registro* registro;
+	log_debug(logger, "Cantidad de Registros: %i", tabla->registros->elements_count);
+	for(int i = 0; i < tabla->registros->elements_count; i++) {
+		registro = list_get(tabla->registros, i);
+		size += sizeof(int);
+		size += sizeof(long);
+		size += strlen(registro->value);
 	}
+	log_debug(logger, "Tamanio de tabla: %i", size);
+	return size;
 }
