@@ -53,6 +53,10 @@ typedef struct t_describe {
     t_metadata* tablas;
 } t_describe;
 
+typedef struct t_PackageMensaje{
+	uint32_t mensaje_long;
+	char* mensaje;
+} t_PackageMensaje;
 
 typedef struct t_PackageSelect {
 	uint32_t header;
@@ -115,5 +119,6 @@ void fill_package(t_PackagePosta*);
 void dispose_package(char**);
 int recieve_and_deserialize(t_PackagePosta*, int);
 char* serializarHandShake(t_Handshake*);
+char* consistency_to_str(int consistency);
 
 #endif

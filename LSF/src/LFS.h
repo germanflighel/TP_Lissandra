@@ -69,6 +69,7 @@ int lfs_create(t_PackageCreate* package, char* ruta);
 char* ruta_a_tabla(char* tabla, char* punto_montaje);
 int agregar_tabla_a_mem_table(char* tabla);
 int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla);
+t_list* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla);
 
 
 #endif

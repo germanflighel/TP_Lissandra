@@ -670,3 +670,1003 @@
 [INFO] 12:28:41:967 memory/(7795:7795): 20
 [INFO] 12:28:41:967 memory/(7795:7795): 5555
 [INFO] 12:28:41:967 memory/(7795:7795): 5555
+[INFO] 12:33:21:661 memory/(8099:8099): 5555
+[INFO] 12:33:21:662 memory/(8099:8099): 20
+[INFO] 12:33:21:662 memory/(8099:8099): 5555
+[INFO] 12:33:21:662 memory/(8099:8099): 5555
+[INFO] 14:18:45:618 memory/(10590:10590): 5555
+[INFO] 14:18:45:619 memory/(10590:10590): 20
+[INFO] 14:18:45:619 memory/(10590:10590): 5555
+[INFO] 14:18:45:619 memory/(10590:10590): 5555
+[INFO] 14:21:30:668 memory/(10742:10742): 5555
+[INFO] 14:21:30:668 memory/(10742:10742): 20
+[INFO] 14:21:30:668 memory/(10742:10742): 5555
+[INFO] 14:21:30:669 memory/(10742:10742): 5555
+[INFO] 14:28:48:860 memory/(11262:11262): 5555
+[INFO] 14:28:48:861 memory/(11262:11262): 20
+[INFO] 14:28:48:861 memory/(11262:11262): 5555
+[INFO] 14:28:48:862 memory/(11262:11262): 5555
+[INFO] 14:35:36:638 memory/(11612:11612): 5555
+[INFO] 14:35:36:638 memory/(11612:11612): 20
+[INFO] 14:35:36:638 memory/(11612:11612): 5555
+[INFO] 14:35:36:639 memory/(11612:11612): 5555
+[INFO] 15:12:35:706 memory/(12834:12834): 5555
+[INFO] 15:12:35:706 memory/(12834:12834): 20
+[INFO] 15:12:35:706 memory/(12834:12834): 5555
+[INFO] 15:12:35:707 memory/(12834:12834): 5555
+[INFO] 15:12:59:509 memory/(12858:12858): 5556
+[INFO] 15:12:59:509 memory/(12858:12858): 20
+[INFO] 15:12:59:509 memory/(12858:12858): 5556
+[INFO] 15:12:59:509 memory/(12858:12858): 5556
+[INFO] 15:14:11:217 memory/(12865:12865): 5555
+[INFO] 15:14:11:218 memory/(12865:12865): 20
+[INFO] 15:14:11:218 memory/(12865:12865): 5555
+[INFO] 15:14:11:219 memory/(12865:12865): 5555
+[INFO] 14:10:01:734 memory/(6527:6527): 5555
+[INFO] 14:10:01:740 memory/(6527:6527): 20
+[INFO] 14:10:01:740 memory/(6527:6527): 5555
+[INFO] 14:10:01:750 memory/(6527:6527): 5555
+[INFO] 14:14:19:909 memory/(6719:6719): 5555
+[INFO] 14:14:19:910 memory/(6719:6719): 20
+[INFO] 14:14:19:910 memory/(6719:6719): 5555
+[INFO] 14:14:19:911 memory/(6719:6719): 5555
+[INFO] 14:16:58:123 memory/(6885:6885): 5555
+[INFO] 14:16:58:124 memory/(6885:6885): 20
+[INFO] 14:16:58:124 memory/(6885:6885): 5555
+[INFO] 14:16:58:124 memory/(6885:6885): 5555
+[INFO] 14:18:26:474 memory/(7072:7072): 5555
+[INFO] 14:18:26:475 memory/(7072:7072): 20
+[INFO] 14:18:26:475 memory/(7072:7072): 5555
+[INFO] 14:18:26:476 memory/(7072:7072): 5555
+[INFO] 14:19:53:763 memory/(7175:7175): 5555
+[INFO] 14:19:53:764 memory/(7175:7175): 20
+[INFO] 14:19:53:764 memory/(7175:7175): 5555
+[INFO] 14:19:53:764 memory/(7175:7175): 5555
+[INFO] 14:21:29:52 memory/(7286:7286): 5555
+[INFO] 14:21:29:53 memory/(7286:7286): 20
+[INFO] 14:21:29:53 memory/(7286:7286): 5555
+[INFO] 14:21:29:53 memory/(7286:7286): 5555
+[INFO] 15:02:01:224 memory/(9110:9110): 5555
+[INFO] 15:02:01:225 memory/(9110:9110): 20
+[INFO] 15:02:01:225 memory/(9110:9110): 5555
+[INFO] 15:02:01:225 memory/(9110:9110): 5555
+[INFO] 15:04:39:185 memory/(9150:9150): 5555
+[INFO] 15:04:39:186 memory/(9150:9150): 20
+[INFO] 15:04:39:186 memory/(9150:9150): 5555
+[INFO] 15:04:39:187 memory/(9150:9150): 5555
+[INFO] 15:05:04:362 memory/(9161:9161): 5555
+[INFO] 15:07:12:166 memory/(9281:9281): 5555
+[INFO] 15:07:12:167 memory/(9281:9281): 20
+[INFO] 15:07:12:167 memory/(9281:9281): 5555
+[INFO] 15:07:12:168 memory/(9281:9281): 5555
+[INFO] 15:14:08:153 memory/(9614:9614): 5555
+[INFO] 15:14:08:154 memory/(9614:9614): 20
+[INFO] 15:14:08:154 memory/(9614:9614): 5555
+[INFO] 15:14:08:154 memory/(9614:9614): 5555
+[INFO] 18:52:25:573 memory/(3613:3613): 5555
+[INFO] 18:52:25:573 memory/(3613:3613): 20
+[INFO] 18:52:25:573 memory/(3613:3613): 5555
+[INFO] 18:52:25:578 memory/(3613:3613): 5555
+[INFO] 18:52:28:596 memory/(3612:3612): 5555
+[INFO] 18:52:28:597 memory/(3612:3612): 20
+[INFO] 18:52:28:597 memory/(3612:3612): 5555
+[INFO] 18:52:52:453 memory/(3642:3642): 5556
+[INFO] 18:52:52:454 memory/(3642:3642): 20
+[INFO] 18:52:52:454 memory/(3642:3642): 5556
+[INFO] 18:52:52:454 memory/(3642:3642): 5556
+[INFO] 18:54:00:210 memory/(3729:3729): 5555
+[INFO] 18:54:00:210 memory/(3729:3729): 20
+[INFO] 18:54:00:210 memory/(3729:3729): 5555
+[INFO] 18:54:00:211 memory/(3729:3729): 5555
+[INFO] 18:54:05:867 memory/(3736:3736): 5556
+[INFO] 18:54:05:867 memory/(3736:3736): 20
+[INFO] 18:54:05:867 memory/(3736:3736): 5556
+[INFO] 18:54:05:867 memory/(3736:3736): 5556
+[INFO] 19:04:26:225 memory/(4119:4119): 5555
+[INFO] 19:04:26:227 memory/(4119:4119): 20
+[INFO] 19:04:26:227 memory/(4119:4119): 5555
+[INFO] 19:04:26:227 memory/(4119:4119): 5555
+[INFO] 19:26:41:912 memory/(6611:6611): 5555
+[INFO] 19:26:41:913 memory/(6611:6611): 20
+[INFO] 19:26:41:913 memory/(6611:6611): 5555
+[INFO] 19:26:41:913 memory/(6611:6611): 5555
+[INFO] 19:29:23:305 memory/(6745:6745): 5555
+[INFO] 19:29:23:305 memory/(6745:6745): 20
+[INFO] 19:29:23:305 memory/(6745:6745): 5555
+[INFO] 19:29:23:307 memory/(6745:6745): 5555
+[INFO] 19:29:32:791 memory/(6745:6745): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:31:09:877 memory/(6881:6881): 5555
+[INFO] 19:31:09:878 memory/(6881:6881): 20
+[INFO] 19:31:09:878 memory/(6881:6881): 5555
+[INFO] 19:31:09:879 memory/(6881:6881): 5555
+[INFO] 19:31:21:254 memory/(6881:6881): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:34:42:847 memory/(7118:7118): 5555
+[INFO] 19:34:42:848 memory/(7118:7118): 20
+[INFO] 19:34:42:848 memory/(7118:7118): 5555
+[INFO] 19:34:42:849 memory/(7118:7118): 5555
+[INFO] 19:34:53:763 memory/(7118:7118): Registro no encontrado,26
+[INFO] 19:38:37:578 memory/(7419:7419): 5555
+[INFO] 19:38:37:578 memory/(7419:7419): 20
+[INFO] 19:38:37:578 memory/(7419:7419): 5555
+[INFO] 19:38:37:579 memory/(7419:7419): 5555
+[INFO] 19:38:48:832 memory/(7419:7419): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:40:03:686 memory/(7745:7745): 5555
+[INFO] 19:40:03:687 memory/(7745:7745): 20
+[INFO] 19:40:03:687 memory/(7745:7745): 5555
+[INFO] 19:40:03:688 memory/(7745:7745): 5555
+[INFO] 19:40:12:291 memory/(7745:7745): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:41:01:332 memory/(7856:7856): 5555
+[INFO] 19:41:01:333 memory/(7856:7856): 20
+[INFO] 19:41:01:333 memory/(7856:7856): 5555
+[INFO] 19:41:01:335 memory/(7856:7856): 5555
+[INFO] 19:41:15:0 memory/(7856:7856): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:42:35:637 memory/(8005:8005): 5555
+[INFO] 19:42:35:637 memory/(8005:8005): 20
+[INFO] 19:42:35:638 memory/(8005:8005): 5555
+[INFO] 19:42:35:638 memory/(8005:8005): 5555
+[INFO] 19:42:48:531 memory/(8005:8005): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:44:56:785 memory/(8199:8199): 5555
+[INFO] 19:44:56:785 memory/(8199:8199): 20
+[INFO] 19:44:56:785 memory/(8199:8199): 5555
+[INFO] 19:44:56:786 memory/(8199:8199): 5555
+[INFO] 19:45:05:822 memory/(8199:8199): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:45:10:4 memory/(8199:8199): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:45:29:48 memory/(8199:8199): Registro: TimeStamp: 1, Key:500, Value: German,50
+[INFO] 19:45:29:87 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:500, Value: Gaston Raro,64
+[INFO] 19:45:29:89 memory/(8199:8199): Registro: TimeStamp: 300, Key:1, Value: Alex,48
+[INFO] 19:45:29:89 memory/(8199:8199): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[INFO] 19:45:29:90 memory/(8199:8199): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel,57
+[INFO] 19:45:29:94 memory/(8199:8199): Registro: TimeStamp: 10, Key:600, Value: Leandro,52
+[INFO] 19:45:29:95 memory/(8199:8199): Registro: TimeStamp: 15, Key:700, Value: Pinto,50
+[INFO] 19:45:29:137 memory/(8199:8199): Registro no encontrado,26
+[INFO] 19:45:29:174 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:500, Value: Pinto loco,63
+[INFO] 19:45:29:176 memory/(8199:8199): Registro no encontrado,26
+[INFO] 19:45:29:177 memory/(8199:8199): Registro no encontrado,26
+[INFO] 19:45:29:177 memory/(8199:8199): Registro: TimeStamp: 15, Key:700, Value: Pinto,50
+[INFO] 19:45:29:179 memory/(8199:8199): Registro: TimeStamp: 20, Key:800, Value: Lacha,50
+[INFO] 19:45:29:180 memory/(8199:8199): Registro: TimeStamp: 30, Key:900, Value: Santi,50
+[INFO] 19:45:29:181 memory/(8199:8199): Registro no encontrado,26
+[INFO] 19:45:29:181 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:555, Value: Pinto Loco,63
+[INFO] 19:45:29:181 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:876, Value: Leandrovich,64
+[INFO] 19:45:29:182 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:876, Value: Leandrovich,64
+[INFO] 19:45:29:182 memory/(8199:8199): Registro: TimeStamp: 1559861129, Key:555, Value: Pinto Loco,63
+[INFO] 19:45:29:182 memory/(8199:8199): Registro: TimeStamp: 300, Key:1, Value: Alex,48
+[INFO] 19:45:29:183 memory/(8199:8199): Registro no encontrado,26
+[INFO] 19:47:17:819 memory/(8365:8365): 5555
+[INFO] 19:47:17:819 memory/(8365:8365): 20
+[INFO] 19:47:17:819 memory/(8365:8365): 5555
+[INFO] 19:47:17:820 memory/(8365:8365): 5555
+[INFO] 19:47:26:249 memory/(8464:8464): 5556
+[INFO] 19:47:26:250 memory/(8464:8464): 20
+[INFO] 19:47:26:250 memory/(8464:8464): 5556
+[INFO] 19:47:26:250 memory/(8464:8464): 5556
+[DEBUG] 19:47:42:255 memory/(8464:8464): Registro: TimeStamp: 1, Key:500, Value: German,50
+[DEBUG] 19:47:42:297 memory/(8464:8464): Registro: TimeStamp: 1559861262, Key:500, Value: Gaston Raro,64
+[DEBUG] 19:47:42:300 memory/(8365:8365): Registro: TimeStamp: 300, Key:1, Value: Alex,48
+[DEBUG] 19:47:42:301 memory/(8365:8365): Registro: TimeStamp: 1000, Key:2, Value: Pasca,50
+[DEBUG] 19:47:42:302 memory/(8365:8365): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel,57
+[DEBUG] 19:47:42:303 memory/(8464:8464): Registro: TimeStamp: 10, Key:600, Value: Leandro,52
+[DEBUG] 19:47:42:304 memory/(8464:8464): Registro: TimeStamp: 15, Key:700, Value: Pinto,50
+[DEBUG] 19:47:42:347 memory/(8365:8365): Registro no encontrado,26
+[DEBUG] 19:47:42:348 memory/(8464:8464): Registro: TimeStamp: 1559861262, Key:500, Value: Pinto loco,63
+[DEBUG] 19:47:42:349 memory/(8464:8464): Registro no encontrado,26
+[DEBUG] 19:47:42:389 memory/(8365:8365): Registro no encontrado,26
+[DEBUG] 19:47:42:389 memory/(8464:8464): Registro: TimeStamp: 15, Key:700, Value: Pinto,50
+[DEBUG] 19:47:42:391 memory/(8464:8464): Registro: TimeStamp: 20, Key:800, Value: Lacha,50
+[DEBUG] 19:47:42:393 memory/(8464:8464): Registro: TimeStamp: 30, Key:900, Value: Santi,50
+[DEBUG] 19:47:42:395 memory/(8365:8365): Registro no encontrado,26
+[DEBUG] 19:47:42:395 memory/(8365:8365): Registro: TimeStamp: 1559861262, Key:555, Value: Pinto Loco,63
+[DEBUG] 19:47:42:395 memory/(8365:8365): Registro: TimeStamp: 1559861262, Key:876, Value: Leandrovich,64
+[DEBUG] 19:47:42:396 memory/(8365:8365): Registro: TimeStamp: 1559861262, Key:876, Value: Leandrovich,64
+[DEBUG] 19:47:42:396 memory/(8365:8365): Registro: TimeStamp: 1559861262, Key:555, Value: Pinto Loco,63
+[DEBUG] 19:47:42:396 memory/(8365:8365): Registro: TimeStamp: 300, Key:1, Value: Alex,48
+[DEBUG] 19:47:42:397 memory/(8464:8464): Registro no encontrado,26
+[INFO] 19:56:49:923 memory/(9235:9235): 5555
+[DEBUG] 19:56:49:923 memory/(9235:9235): Conectado al LFS
+[INFO] 19:56:49:923 memory/(9235:9235): Maximo tamaño del value: 20.
+[INFO] 19:56:49:923 memory/(9235:9235): 20
+[INFO] 19:56:49:923 memory/(9235:9235): 5555
+[INFO] 19:56:49:924 memory/(9235:9235): 5555
+[DEBUG] 19:56:54:613 memory/(9235:9235): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 19:57:26:831 memory/(9235:9235): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 19:57:26:833 memory/(9235:9235): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 19:57:26:874 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:500, Value: Gaston Raro
+[INFO] 19:57:26:874 memory/(9235:9235): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 19:57:26:875 memory/(9235:9235): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 19:57:26:875 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:876 memory/(9235:9235): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 19:57:26:877 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:878 memory/(9235:9235): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 19:57:26:879 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:880 memory/(9235:9235): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 19:57:26:880 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:881 memory/(9235:9235): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 19:57:26:921 memory/(9235:9235): No tengo ese registro
+[WARNING] 19:57:26:922 memory/(9235:9235): Registro no encontrado
+[DEBUG] 19:57:26:961 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:500, Value: Pinto loco
+[INFO] 19:57:26:961 memory/(9235:9235): No tengo ese registro
+[WARNING] 19:57:26:963 memory/(9235:9235): Registro no encontrado
+[INFO] 19:57:26:963 memory/(9235:9235): No tengo ese registro
+[WARNING] 19:57:26:964 memory/(9235:9235): Registro no encontrado
+[DEBUG] 19:57:26:965 memory/(9235:9235): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 19:57:26:965 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:966 memory/(9235:9235): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 19:57:26:966 memory/(9235:9235): No tengo ese registro
+[DEBUG] 19:57:26:967 memory/(9235:9235): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 19:57:26:967 memory/(9235:9235): No tengo ese registro
+[WARNING] 19:57:26:968 memory/(9235:9235): Registro no encontrado
+[DEBUG] 19:57:26:968 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:555, Value: Pinto Loco
+[DEBUG] 19:57:26:968 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:876, Value: Leandrovich
+[DEBUG] 19:57:26:970 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:876, Value: Leandrovich
+[DEBUG] 19:57:26:971 memory/(9235:9235): Registro: TimeStamp: 1559861846, Key:555, Value: Pinto Loco
+[DEBUG] 19:57:26:971 memory/(9235:9235): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 19:57:26:971 memory/(9235:9235): No tengo ese registro
+[WARNING] 19:57:26:972 memory/(9235:9235): Registro no encontrado
+[WARNING] 19:57:48:387 memory/(9235:9240): Comando no reconocido
+[WARNING] 19:57:54:225 memory/(9235:9235): Kernel Desconectado.
+[WARNING] 19:57:58:529 memory/(9235:9240): Desconectado.
+[INFO] 20:00:52:478 memory/(9367:9367): 5555
+[DEBUG] 20:00:52:478 memory/(9367:9367): Conectado al LFS
+[INFO] 20:00:52:478 memory/(9367:9367): Maximo tamaño del value: 20.
+[INFO] 20:00:52:478 memory/(9367:9367): 20
+[INFO] 20:00:52:478 memory/(9367:9367): 5555
+[INFO] 20:00:52:479 memory/(9367:9367): 5555
+[DEBUG] 20:00:53:776 memory/(9367:9367): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 20:01:09:933 memory/(9367:9367): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 20:01:09:934 memory/(9367:9367): Registro no encontrado
+[WARNING] 20:01:28:901 memory/(9367:9367): Kernel Desconectado.
+[WARNING] 20:01:30:872 memory/(9367:9372): Desconectado.
+[INFO] 20:02:05:476 memory/(9442:9442): 5556
+[DEBUG] 20:02:05:476 memory/(9442:9442): Conectado al LFS
+[INFO] 20:02:05:476 memory/(9442:9442): Maximo tamaño del value: 20.
+[INFO] 20:02:05:476 memory/(9442:9442): 20
+[INFO] 20:02:05:476 memory/(9442:9442): 5556
+[INFO] 20:02:05:476 memory/(9442:9442): 5556
+[INFO] 20:02:10:322 memory/(9441:9441): 5555
+[DEBUG] 20:02:10:322 memory/(9441:9441): Conectado al LFS
+[INFO] 20:02:10:323 memory/(9441:9441): Maximo tamaño del value: 20.
+[INFO] 20:02:10:323 memory/(9441:9441): 20
+[INFO] 20:02:10:323 memory/(9441:9441): 5555
+[INFO] 20:04:35:612 memory/(9582:9582): 5555
+[DEBUG] 20:04:35:612 memory/(9582:9582): Conectado al LFS
+[INFO] 20:04:35:612 memory/(9582:9582): Maximo tamaño del value: 20.
+[INFO] 20:04:35:612 memory/(9582:9582): 20
+[INFO] 20:04:35:612 memory/(9582:9582): 5555
+[INFO] 20:04:35:614 memory/(9582:9582): 5555
+[INFO] 20:04:40:332 memory/(9581:9581): 5556
+[DEBUG] 20:04:40:333 memory/(9581:9581): Conectado al LFS
+[INFO] 20:04:40:333 memory/(9581:9581): Maximo tamaño del value: 20.
+[INFO] 20:04:40:333 memory/(9581:9581): 20
+[INFO] 20:04:40:333 memory/(9581:9581): 5556
+[INFO] 20:04:40:333 memory/(9581:9581): 5556
+[DEBUG] 20:04:41:919 memory/(9582:9582): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 20:04:41:921 memory/(9581:9581): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 20:04:58:887 memory/(9581:9581): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 20:04:58:889 memory/(9581:9581): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 20:04:58:929 memory/(9581:9581): Registro: TimeStamp: 1559862298, Key:500, Value: Gaston Raro
+[INFO] 20:04:58:930 memory/(9582:9582): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 20:04:58:931 memory/(9582:9582): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 20:04:58:931 memory/(9582:9582): No tengo ese registro
+[DEBUG] 20:04:58:932 memory/(9582:9582): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 20:04:58:932 memory/(9582:9582): No tengo ese registro
+[DEBUG] 20:04:58:933 memory/(9582:9582): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 20:04:58:933 memory/(9581:9581): No tengo ese registro
+[DEBUG] 20:04:58:934 memory/(9581:9581): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 20:04:58:934 memory/(9581:9581): No tengo ese registro
+[DEBUG] 20:04:58:935 memory/(9581:9581): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 20:04:58:974 memory/(9582:9582): No tengo ese registro
+[WARNING] 20:04:58:975 memory/(9582:9582): Registro no encontrado
+[DEBUG] 20:04:58:976 memory/(9581:9581): Registro: TimeStamp: 1559862298, Key:500, Value: Pinto loco
+[INFO] 20:04:58:976 memory/(9581:9581): No tengo ese registro
+[WARNING] 20:04:58:978 memory/(9581:9581): Registro no encontrado
+[INFO] 20:04:59:13 memory/(9582:9582): No tengo ese registro
+[WARNING] 20:04:59:14 memory/(9582:9582): Registro no encontrado
+[DEBUG] 20:04:59:14 memory/(9581:9581): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 20:04:59:14 memory/(9581:9581): No tengo ese registro
+[DEBUG] 20:04:59:15 memory/(9581:9581): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 20:04:59:15 memory/(9581:9581): No tengo ese registro
+[DEBUG] 20:04:59:16 memory/(9581:9581): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 20:04:59:17 memory/(9582:9582): No tengo ese registro
+[WARNING] 20:04:59:18 memory/(9582:9582): Registro no encontrado
+[DEBUG] 20:04:59:18 memory/(9582:9582): Registro: TimeStamp: 1559862298, Key:555, Value: Pinto Loco
+[DEBUG] 20:04:59:18 memory/(9582:9582): Registro: TimeStamp: 1559862298, Key:876, Value: Leandrovich
+[DEBUG] 20:04:59:18 memory/(9582:9582): Registro: TimeStamp: 1559862298, Key:876, Value: Leandrovich
+[DEBUG] 20:04:59:19 memory/(9582:9582): Registro: TimeStamp: 1559862298, Key:555, Value: Pinto Loco
+[DEBUG] 20:04:59:19 memory/(9582:9582): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 20:04:59:20 memory/(9581:9581): No tengo ese registro
+[WARNING] 20:04:59:21 memory/(9581:9581): Registro no encontrado
+[WARNING] 20:05:47:667 memory/(9582:9582): Kernel Desconectado.
+[WARNING] 20:05:47:668 memory/(9581:9581): Kernel Desconectado.
+[WARNING] 20:05:49:315 memory/(9582:9606): Desconectado.
+[WARNING] 20:05:50:871 memory/(9581:9609): Desconectado.
+[INFO] 20:09:45:939 memory/(9832:9832): 5555
+[DEBUG] 20:09:45:939 memory/(9832:9832): Conectado al LFS
+[INFO] 20:09:45:940 memory/(9832:9832): Maximo tamaño del value: 20.
+[INFO] 20:09:45:940 memory/(9832:9832): 20
+[INFO] 20:09:45:940 memory/(9832:9832): 5555
+[DEBUG] 20:09:47:662 memory/(9832:9832): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:09:47:801 memory/(9832:9832): Kernel Desconectado.
+[WARNING] 20:10:56:211 memory/(9832:9837): Desconectado.
+[INFO] 20:11:05:401 memory/(9946:9946): 5555
+[DEBUG] 20:11:05:402 memory/(9946:9946): Conectado al LFS
+[INFO] 20:11:05:402 memory/(9946:9946): Maximo tamaño del value: 20.
+[INFO] 20:11:05:402 memory/(9946:9946): 20
+[INFO] 20:11:05:402 memory/(9946:9946): 5555
+[DEBUG] 20:11:06:725 memory/(9946:9946): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 20:11:25:49 memory/(9946:9946): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 20:11:25:50 memory/(9946:9946): Registro: TimeStamp: 1146440192, Key:500, Value: S
+[DEBUG] 20:11:25:89 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:500, Value: Gaston Raro
+[INFO] 20:11:25:89 memory/(9946:9946): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 20:11:25:89 memory/(9946:9946): Registro: TimeStamp: 1, Key:1, Value: German
+[INFO] 20:11:25:89 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:90 memory/(9946:9946): Registro: TimeStamp: 300, Key:2, Value: Alex
+[INFO] 20:11:25:90 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:91 memory/(9946:9946): Registro: TimeStamp: 1000, Key:3, Value: Pasca
+[INFO] 20:11:25:91 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:92 memory/(9946:9946): Registro: TimeStamp: 500, Key:600, Value: Felipe Israel
+[INFO] 20:11:25:92 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:93 memory/(9946:9946): Registro: TimeStamp: 10, Key:700, Value: Leandro
+[INFO] 20:11:25:133 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:133 memory/(9946:9946): Registro: TimeStamp: 15, Key:4, Value: Pinto
+[DEBUG] 20:11:25:173 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:500, Value: Pinto loco
+[INFO] 20:11:25:173 memory/(9946:9946): No tengo ese registro
+[WARNING] 20:11:25:173 memory/(9946:9946): Registro no encontrado
+[DEBUG] 20:11:25:174 memory/(9946:9946): Registro: TimeStamp: 15, Key:4, Value: Pinto
+[DEBUG] 20:11:25:174 memory/(9946:9946): Registro: TimeStamp: 10, Key:700, Value: Leandro
+[INFO] 20:11:25:174 memory/(9946:9946): No tengo ese registro
+[WARNING] 20:11:25:174 memory/(9946:9946): Registro no encontrado
+[INFO] 20:11:25:175 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:175 memory/(9946:9946): Registro: TimeStamp: 20, Key:900, Value: Lacha
+[INFO] 20:11:25:175 memory/(9946:9946): No tengo ese registro
+[DEBUG] 20:11:25:176 memory/(9946:9946): Registro: TimeStamp: 30, Key:5, Value: Santi
+[DEBUG] 20:11:25:176 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:555, Value: Pinto Loco
+[DEBUG] 20:11:25:177 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:876, Value: Leandrovich
+[DEBUG] 20:11:25:177 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:876, Value: Leandrovich
+[DEBUG] 20:11:25:177 memory/(9946:9946): Registro: TimeStamp: 1559862685, Key:555, Value: Pinto Loco
+[DEBUG] 20:11:25:177 memory/(9946:9946): Registro: TimeStamp: 1, Key:1, Value: German
+[INFO] 20:11:25:178 memory/(9946:9946): No tengo ese registro
+[WARNING] 20:11:25:178 memory/(9946:9946): Registro no encontrado
+[INFO] 20:12:02:353 memory/(9985:9985): 5556
+[DEBUG] 20:12:02:353 memory/(9985:9985): Conectado al LFS
+[INFO] 20:12:02:354 memory/(9985:9985): Maximo tamaño del value: 20.
+[INFO] 20:12:02:354 memory/(9985:9985): 20
+[INFO] 20:12:02:354 memory/(9985:9985): 5556
+[DEBUG] 20:12:06:773 memory/(9985:9985): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:14:00:999 memory/(9946:9946): Kernel Desconectado.
+[WARNING] 20:14:00:0 memory/(9985:9985): Kernel Desconectado.
+[WARNING] 20:14:36:444 memory/(9946:9949): Desconectado.
+[WARNING] 20:14:38:211 memory/(9985:9987): Desconectado.
+[INFO] 20:14:51:98 memory/(10050:10050): 5555
+[DEBUG] 20:14:51:98 memory/(10050:10050): Conectado al LFS
+[INFO] 20:14:51:100 memory/(10050:10050): Maximo tamaño del value: 20.
+[INFO] 20:14:51:100 memory/(10050:10050): 20
+[INFO] 20:14:51:100 memory/(10050:10050): 5555
+[DEBUG] 20:14:52:555 memory/(10050:10050): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:18:09:476 memory/(10050:10050): Kernel Desconectado.
+[WARNING] 20:18:11:236 memory/(10050:10058): Desconectado.
+[INFO] 20:18:35:615 memory/(10217:10217): 5555
+[DEBUG] 20:18:35:615 memory/(10217:10217): Conectado al LFS
+[INFO] 20:18:35:616 memory/(10217:10217): Maximo tamaño del value: 20.
+[INFO] 20:18:35:616 memory/(10217:10217): 20
+[INFO] 20:18:35:617 memory/(10217:10217): 5555
+[DEBUG] 20:18:42:319 memory/(10217:10217): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:20:39:764 memory/(10217:10217): Kernel Desconectado.
+[WARNING] 20:20:41:937 memory/(10217:10220): Desconectado.
+[INFO] 20:20:50:57 memory/(10517:10517): 5555
+[DEBUG] 20:20:50:57 memory/(10517:10517): Conectado al LFS
+[INFO] 20:20:50:58 memory/(10517:10517): Maximo tamaño del value: 20.
+[INFO] 20:20:50:58 memory/(10517:10517): 20
+[INFO] 20:20:50:58 memory/(10517:10517): 5555
+[DEBUG] 20:20:51:667 memory/(10517:10517): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:24:24:531 memory/(10517:10517): Kernel Desconectado.
+[WARNING] 20:24:26:100 memory/(10517:10520): Desconectado.
+[INFO] 20:24:53:739 memory/(10643:10643): 5555
+[DEBUG] 20:24:53:739 memory/(10643:10643): Conectado al LFS
+[INFO] 20:24:53:741 memory/(10643:10643): Maximo tamaño del value: 20.
+[INFO] 20:24:53:741 memory/(10643:10643): 20
+[INFO] 20:24:53:741 memory/(10643:10643): 5555
+[DEBUG] 20:24:55:589 memory/(10643:10643): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:26:45:913 memory/(10643:10643): Kernel Desconectado.
+[WARNING] 20:26:48:519 memory/(10643:10653): Desconectado.
+[INFO] 20:27:52:470 memory/(10875:10875): 5555
+[DEBUG] 20:27:52:470 memory/(10875:10875): Conectado al LFS
+[INFO] 20:27:52:471 memory/(10875:10875): Maximo tamaño del value: 20.
+[INFO] 20:27:52:471 memory/(10875:10875): 20
+[INFO] 20:27:52:471 memory/(10875:10875): 5555
+[DEBUG] 20:27:53:488 memory/(10875:10875): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:27:59:205 memory/(10875:10875): Kernel Desconectado.
+[WARNING] 20:28:00:775 memory/(10875:10878): Desconectado.
+[INFO] 20:28:46:967 memory/(10978:10978): 5555
+[DEBUG] 20:28:46:967 memory/(10978:10978): Conectado al LFS
+[INFO] 20:29:03:965 memory/(11084:11084): 5555
+[DEBUG] 20:29:03:965 memory/(11084:11084): Conectado al LFS
+[INFO] 20:29:26:771 memory/(11092:11092): 5555
+[DEBUG] 20:29:26:771 memory/(11092:11092): Conectado al LFS
+[INFO] 20:29:26:771 memory/(11092:11092): Maximo tamaño del value: 20.
+[INFO] 20:29:26:771 memory/(11092:11092): 20
+[INFO] 20:29:26:771 memory/(11092:11092): 5555
+[DEBUG] 20:29:28:317 memory/(11092:11092): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:29:37:953 memory/(11092:11092): Kernel Desconectado.
+[WARNING] 20:29:39:656 memory/(11092:11096): Desconectado.
+[INFO] 20:30:36:866 memory/(11165:11165): 5555
+[DEBUG] 20:30:36:866 memory/(11165:11165): Conectado al LFS
+[INFO] 20:31:01:935 memory/(11209:11209): 5555
+[DEBUG] 20:31:01:935 memory/(11209:11209): Conectado al LFS
+[INFO] 20:31:01:935 memory/(11209:11209): Maximo tamaño del value: 20.
+[INFO] 20:31:01:935 memory/(11209:11209): 20
+[INFO] 20:31:01:935 memory/(11209:11209): 5555
+[DEBUG] 20:31:04:865 memory/(11209:11209): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:35:43:184 memory/(11209:11209): Kernel Desconectado.
+[WARNING] 20:35:45:136 memory/(11209:11212): Desconectado.
+[INFO] 20:35:56:789 memory/(11373:11373): 5555
+[DEBUG] 20:35:56:790 memory/(11373:11373): Conectado al LFS
+[INFO] 20:35:56:790 memory/(11373:11373): Maximo tamaño del value: 20.
+[INFO] 20:35:56:790 memory/(11373:11373): 20
+[INFO] 20:35:56:790 memory/(11373:11373): 5555
+[DEBUG] 20:35:58:953 memory/(11373:11373): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:37:24:112 memory/(11373:11373): Kernel Desconectado.
+[WARNING] 20:37:26:468 memory/(11373:11378): Desconectado.
+[INFO] 20:37:34:267 memory/(11455:11455): 5555
+[DEBUG] 20:37:34:267 memory/(11455:11455): Conectado al LFS
+[INFO] 20:37:34:267 memory/(11455:11455): Maximo tamaño del value: 20.
+[INFO] 20:37:34:267 memory/(11455:11455): 20
+[INFO] 20:37:34:267 memory/(11455:11455): 5555
+[DEBUG] 20:37:36:87 memory/(11455:11455): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:38:43:30 memory/(11455:11455): Kernel Desconectado.
+[WARNING] 20:38:45:292 memory/(11455:11458): Desconectado.
+[INFO] 20:41:32:929 memory/(11585:11585): 5555
+[DEBUG] 20:41:32:929 memory/(11585:11585): Conectado al LFS
+[INFO] 20:41:32:929 memory/(11585:11585): Maximo tamaño del value: 20.
+[INFO] 20:41:32:929 memory/(11585:11585): 20
+[INFO] 20:41:32:929 memory/(11585:11585): 5555
+[DEBUG] 20:41:34:44 memory/(11585:11585): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:41:55:112 memory/(11585:11585): Kernel Desconectado.
+[WARNING] 20:41:57:615 memory/(11585:11588): Desconectado.
+[INFO] 20:44:14:445 memory/(11742:11742): 5555
+[DEBUG] 20:44:14:445 memory/(11742:11742): Conectado al LFS
+[INFO] 20:44:14:445 memory/(11742:11742): Maximo tamaño del value: 20.
+[INFO] 20:44:14:445 memory/(11742:11742): 20
+[INFO] 20:44:14:445 memory/(11742:11742): 5555
+[DEBUG] 20:44:16:70 memory/(11742:11742): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:44:43:667 memory/(11742:11742): Kernel Desconectado.
+[WARNING] 20:44:47:210 memory/(11742:11745): Desconectado.
+[INFO] 20:46:50:433 memory/(11880:11880): 5555
+[DEBUG] 20:46:50:433 memory/(11880:11880): Conectado al LFS
+[INFO] 20:46:50:433 memory/(11880:11880): Maximo tamaño del value: 20.
+[INFO] 20:46:50:433 memory/(11880:11880): 20
+[INFO] 20:46:50:433 memory/(11880:11880): 5555
+[DEBUG] 20:46:51:715 memory/(11880:11880): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:47:02:137 memory/(11880:11880): Kernel Desconectado.
+[WARNING] 20:47:04:850 memory/(11880:11884): Desconectado.
+[INFO] 20:49:51:697 memory/(12074:12074): 5555
+[DEBUG] 20:49:51:697 memory/(12074:12074): Conectado al LFS
+[INFO] 20:49:51:697 memory/(12074:12074): Maximo tamaño del value: 20.
+[INFO] 20:49:51:697 memory/(12074:12074): 20
+[INFO] 20:49:51:697 memory/(12074:12074): 5555
+[DEBUG] 20:49:52:771 memory/(12074:12074): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:50:18:623 memory/(12074:12074): Kernel Desconectado.
+[WARNING] 20:50:20:720 memory/(12074:12077): Desconectado.
+[INFO] 20:55:59:580 memory/(12598:12598): 5555
+[DEBUG] 20:55:59:580 memory/(12598:12598): Conectado al LFS
+[INFO] 20:56:19:401 memory/(12604:12604): 5555
+[DEBUG] 20:56:19:401 memory/(12604:12604): Conectado al LFS
+[INFO] 20:56:19:402 memory/(12604:12604): Maximo tamaño del value: 20.
+[INFO] 20:56:19:402 memory/(12604:12604): 20
+[INFO] 20:56:19:402 memory/(12604:12604): 5555
+[DEBUG] 20:56:22:163 memory/(12604:12604): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 20:56:33:70 memory/(12604:12604): Kernel Desconectado.
+[WARNING] 20:56:34:845 memory/(12604:12607): Desconectado.
+[INFO] 21:01:42:654 memory/(12933:12933): 5555
+[DEBUG] 21:01:42:654 memory/(12933:12933): Conectado al LFS
+[INFO] 21:01:42:658 memory/(12933:12933): Maximo tamaño del value: 20.
+[INFO] 21:01:42:658 memory/(12933:12933): 20
+[INFO] 21:01:42:658 memory/(12933:12933): 5555
+[DEBUG] 21:01:44:560 memory/(12933:12933): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 21:01:56:260 memory/(12933:12933): Kernel Desconectado.
+[WARNING] 21:01:58:273 memory/(12933:12936): Desconectado.
+[INFO] 21:04:26:555 memory/(13084:13084): 5555
+[DEBUG] 21:04:26:557 memory/(13084:13084): Conectado al LFS
+[INFO] 21:04:26:562 memory/(13084:13084): Maximo tamaño del value: 20.
+[INFO] 21:04:26:562 memory/(13084:13084): 20
+[INFO] 21:04:26:562 memory/(13084:13084): 5555
+[DEBUG] 21:04:27:734 memory/(13084:13084): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 21:04:37:385 memory/(13084:13084): Kernel Desconectado.
+[WARNING] 21:04:39:137 memory/(13084:13088): Desconectado.
+[INFO] 21:09:53:977 memory/(13243:13243): 5555
+[DEBUG] 21:09:53:977 memory/(13243:13243): Conectado al LFS
+[INFO] 21:09:53:978 memory/(13243:13243): Maximo tamaño del value: 20.
+[INFO] 21:09:53:978 memory/(13243:13243): 20
+[INFO] 21:09:53:978 memory/(13243:13243): 5555
+[DEBUG] 21:10:01:827 memory/(13243:13243): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:13:13:808 memory/(13348:13348): 5555
+[DEBUG] 21:13:13:808 memory/(13348:13348): Conectado al LFS
+[INFO] 21:13:13:808 memory/(13348:13348): Maximo tamaño del value: 20.
+[INFO] 21:13:13:808 memory/(13348:13348): 20
+[INFO] 21:13:13:808 memory/(13348:13348): 5555
+[DEBUG] 21:13:18:422 memory/(13348:13348): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:14:45:157 memory/(13392:13392): 5555
+[DEBUG] 21:14:45:160 memory/(13392:13392): Conectado al LFS
+[INFO] 21:14:45:163 memory/(13392:13392): Maximo tamaño del value: 20.
+[INFO] 21:14:45:163 memory/(13392:13392): 20
+[INFO] 21:14:45:163 memory/(13392:13392): 5555
+[DEBUG] 21:14:46:280 memory/(13392:13392): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 21:14:56:690 memory/(13392:13392): Kernel Desconectado.
+[WARNING] 21:14:59:10 memory/(13392:13395): Desconectado.
+[INFO] 21:19:21:483 memory/(13800:13800): 5555
+[DEBUG] 21:19:21:483 memory/(13800:13800): Conectado al LFS
+[INFO] 21:19:21:483 memory/(13800:13800): Maximo tamaño del value: 20.
+[INFO] 21:19:21:483 memory/(13800:13800): 20
+[INFO] 21:19:21:483 memory/(13800:13800): 5555
+[DEBUG] 21:19:22:525 memory/(13800:13800): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 21:20:31:85 memory/(13800:13800): Registro: TimeStamp: 1559866825, Key:1998, Value: 8===D
+[INFO] 21:20:53:179 memory/(13929:13929): 5556
+[DEBUG] 21:20:53:180 memory/(13929:13929): Conectado al LFS
+[INFO] 21:20:53:180 memory/(13929:13929): Maximo tamaño del value: 20.
+[INFO] 21:20:53:180 memory/(13929:13929): 20
+[INFO] 21:20:53:180 memory/(13929:13929): 5556
+[DEBUG] 21:20:57:576 memory/(13929:13929): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:21:10:978 memory/(13800:13800): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:21:10:979 memory/(13800:13800): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:21:11:19 memory/(13800:13800): Registro: TimeStamp: 1559866870, Key:500, Value: Gaston Raro
+[INFO] 21:21:11:20 memory/(13929:13929): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:21:11:21 memory/(13929:13929): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:21:11:21 memory/(13929:13929): No tengo ese registro
+[DEBUG] 21:21:11:22 memory/(13929:13929): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 21:21:11:22 memory/(13929:13929): No tengo ese registro
+[DEBUG] 21:21:11:23 memory/(13929:13929): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:21:11:24 memory/(13800:13800): No tengo ese registro
+[DEBUG] 21:21:11:25 memory/(13800:13800): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 21:21:11:25 memory/(13800:13800): No tengo ese registro
+[DEBUG] 21:21:11:26 memory/(13800:13800): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:21:11:64 memory/(13929:13929): No tengo ese registro
+[WARNING] 21:21:11:65 memory/(13929:13929): Registro no encontrado
+[DEBUG] 21:21:11:66 memory/(13800:13800): Registro: TimeStamp: 1559866871, Key:500, Value: Pinto loco
+[INFO] 21:21:11:66 memory/(13800:13800): No tengo ese registro
+[WARNING] 21:21:11:67 memory/(13800:13800): Registro no encontrado
+[INFO] 21:21:11:104 memory/(13929:13929): No tengo ese registro
+[WARNING] 21:21:11:105 memory/(13929:13929): Registro no encontrado
+[DEBUG] 21:21:11:105 memory/(13800:13800): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:21:11:105 memory/(13800:13800): No tengo ese registro
+[DEBUG] 21:21:11:106 memory/(13800:13800): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 21:21:11:107 memory/(13800:13800): No tengo ese registro
+[DEBUG] 21:21:11:108 memory/(13800:13800): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:21:11:108 memory/(13929:13929): No tengo ese registro
+[WARNING] 21:21:11:109 memory/(13929:13929): Registro no encontrado
+[DEBUG] 21:21:11:110 memory/(13929:13929): Registro: TimeStamp: 1559866871, Key:555, Value: Pinto Loco
+[DEBUG] 21:21:11:110 memory/(13929:13929): Registro: TimeStamp: 1559866871, Key:876, Value: Leandrovich
+[DEBUG] 21:21:11:110 memory/(13929:13929): Registro: TimeStamp: 1559866871, Key:876, Value: Leandrovich
+[DEBUG] 21:21:11:110 memory/(13929:13929): Registro: TimeStamp: 1559866871, Key:555, Value: Pinto Loco
+[DEBUG] 21:21:11:111 memory/(13929:13929): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:21:11:111 memory/(13800:13800): No tengo ese registro
+[WARNING] 21:21:11:112 memory/(13800:13800): Registro no encontrado
+[WARNING] 21:23:05:182 memory/(13800:13800): Kernel Desconectado.
+[WARNING] 21:23:05:182 memory/(13929:13929): Kernel Desconectado.
+[WARNING] 21:23:07:238 memory/(13800:13803): Desconectado.
+[INFO] 21:25:20:837 memory/(14105:14105): 5555
+[DEBUG] 21:25:20:862 memory/(14105:14105): Conectado al LFS
+[INFO] 21:25:20:868 memory/(14105:14105): Maximo tamaño del value: 20.
+[INFO] 21:25:20:868 memory/(14105:14105): 20
+[INFO] 21:25:20:869 memory/(14105:14105): 5555
+[DEBUG] 21:25:23:386 memory/(14105:14105): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:25:55:413 memory/(14105:14105): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:25:55:423 memory/(14105:14105): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:25:55:469 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:500, Value: Gaston Raro
+[INFO] 21:25:55:471 memory/(14105:14105): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:25:55:474 memory/(14105:14105): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:25:55:476 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:479 memory/(14105:14105): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 21:25:55:481 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:483 memory/(14105:14105): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:25:55:484 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:486 memory/(14105:14105): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 21:25:55:487 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:489 memory/(14105:14105): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:25:55:528 memory/(14105:14105): No tengo ese registro
+[WARNING] 21:25:55:530 memory/(14105:14105): Registro no encontrado
+[DEBUG] 21:25:55:568 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:500, Value: Pinto loco
+[INFO] 21:25:55:570 memory/(14105:14105): No tengo ese registro
+[WARNING] 21:25:55:571 memory/(14105:14105): Registro no encontrado
+[INFO] 21:25:55:573 memory/(14105:14105): No tengo ese registro
+[WARNING] 21:25:55:574 memory/(14105:14105): Registro no encontrado
+[DEBUG] 21:25:55:576 memory/(14105:14105): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:25:55:577 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:579 memory/(14105:14105): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 21:25:55:580 memory/(14105:14105): No tengo ese registro
+[DEBUG] 21:25:55:581 memory/(14105:14105): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:25:55:582 memory/(14105:14105): No tengo ese registro
+[WARNING] 21:25:55:583 memory/(14105:14105): Registro no encontrado
+[DEBUG] 21:25:55:585 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:555, Value: Pinto Loco
+[DEBUG] 21:25:55:586 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:876, Value: Leandrovich
+[DEBUG] 21:25:55:587 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:876, Value: Leandrovich
+[DEBUG] 21:25:55:588 memory/(14105:14105): Registro: TimeStamp: 1559867155, Key:555, Value: Pinto Loco
+[DEBUG] 21:25:55:589 memory/(14105:14105): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:25:55:591 memory/(14105:14105): No tengo ese registro
+[WARNING] 21:25:55:593 memory/(14105:14105): Registro no encontrado
+[WARNING] 21:26:09:982 memory/(14105:14105): Kernel Desconectado.
+[WARNING] 21:26:13:345 memory/(14105:14110): Desconectado.
+[INFO] 21:35:36:643 memory/(14392:14392): 5555
+[DEBUG] 21:35:36:668 memory/(14392:14392): Conectado al LFS
+[INFO] 21:35:36:673 memory/(14392:14392): Maximo tamaño del value: 20.
+[INFO] 21:35:36:674 memory/(14392:14392): 20
+[INFO] 21:35:36:674 memory/(14392:14392): 5555
+[DEBUG] 21:35:37:962 memory/(14392:14392): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:35:53:184 memory/(14392:14392): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:35:53:196 memory/(14392:14392): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:35:53:241 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:500, Value: Gaston Raro
+[INFO] 21:35:53:243 memory/(14392:14392): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:35:53:245 memory/(14392:14392): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:35:53:247 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:251 memory/(14392:14392): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 21:35:53:253 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:256 memory/(14392:14392): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:35:53:258 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:261 memory/(14392:14392): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 21:35:53:262 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:264 memory/(14392:14392): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:35:53:308 memory/(14392:14392): No tengo ese registro
+[WARNING] 21:35:53:310 memory/(14392:14392): Registro no encontrado
+[DEBUG] 21:35:53:350 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:500, Value: Pinto loco
+[INFO] 21:35:53:352 memory/(14392:14392): No tengo ese registro
+[WARNING] 21:35:53:354 memory/(14392:14392): Registro no encontrado
+[INFO] 21:35:53:356 memory/(14392:14392): No tengo ese registro
+[WARNING] 21:35:53:357 memory/(14392:14392): Registro no encontrado
+[DEBUG] 21:35:53:359 memory/(14392:14392): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:35:53:360 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:363 memory/(14392:14392): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 21:35:53:364 memory/(14392:14392): No tengo ese registro
+[DEBUG] 21:35:53:366 memory/(14392:14392): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:35:53:367 memory/(14392:14392): No tengo ese registro
+[WARNING] 21:35:53:368 memory/(14392:14392): Registro no encontrado
+[DEBUG] 21:35:53:370 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:555, Value: Pinto Loco
+[DEBUG] 21:35:53:371 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:876, Value: Leandrovich
+[DEBUG] 21:35:53:373 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:876, Value: Leandrovich
+[DEBUG] 21:35:53:374 memory/(14392:14392): Registro: TimeStamp: 1559867753, Key:555, Value: Pinto Loco
+[DEBUG] 21:35:53:375 memory/(14392:14392): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:35:53:377 memory/(14392:14392): No tengo ese registro
+[WARNING] 21:35:53:378 memory/(14392:14392): Registro no encontrado
+[WARNING] 21:35:55:869 memory/(14392:14392): Kernel Desconectado.
+[WARNING] 21:35:57:918 memory/(14392:14399): Desconectado.
+[WARNING] 21:49:25:949 memory/(13929:13938): Desconectado.
+[INFO] 21:49:44:182 memory/(14902:14902): 5555
+[DEBUG] 21:49:44:212 memory/(14902:14902): Conectado al LFS
+[INFO] 21:49:44:217 memory/(14902:14902): Maximo tamaño del value: 20.
+[INFO] 21:49:44:218 memory/(14902:14902): 20
+[INFO] 21:49:44:219 memory/(14902:14902): 5555
+[DEBUG] 21:49:45:538 memory/(14902:14902): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 21:50:08:116 memory/(14902:14902): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:50:08:125 memory/(14902:14902): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:50:08:169 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:500, Value: Gaston Raro
+[INFO] 21:50:08:170 memory/(14902:14902): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 21:50:08:173 memory/(14902:14902): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:50:08:174 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:178 memory/(14902:14902): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 21:50:08:179 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:181 memory/(14902:14902): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:50:08:182 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:184 memory/(14902:14902): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 21:50:08:185 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:187 memory/(14902:14902): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:50:08:229 memory/(14902:14902): No tengo ese registro
+[WARNING] 21:50:08:230 memory/(14902:14902): Registro no encontrado
+[DEBUG] 21:50:08:271 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:500, Value: Pinto loco
+[INFO] 21:50:08:273 memory/(14902:14902): No tengo ese registro
+[WARNING] 21:50:08:275 memory/(14902:14902): Registro no encontrado
+[INFO] 21:50:08:277 memory/(14902:14902): No tengo ese registro
+[WARNING] 21:50:08:279 memory/(14902:14902): Registro no encontrado
+[DEBUG] 21:50:08:281 memory/(14902:14902): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:50:08:282 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:284 memory/(14902:14902): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 21:50:08:285 memory/(14902:14902): No tengo ese registro
+[DEBUG] 21:50:08:286 memory/(14902:14902): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:50:08:287 memory/(14902:14902): No tengo ese registro
+[WARNING] 21:50:08:288 memory/(14902:14902): Registro no encontrado
+[DEBUG] 21:50:08:290 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:555, Value: Pinto Loco
+[DEBUG] 21:50:08:291 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:876, Value: Leandrovich
+[DEBUG] 21:50:08:292 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:876, Value: Leandrovich
+[DEBUG] 21:50:08:293 memory/(14902:14902): Registro: TimeStamp: 1559868608, Key:555, Value: Pinto Loco
+[DEBUG] 21:50:08:293 memory/(14902:14902): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:50:08:294 memory/(14902:14902): No tengo ese registro
+[WARNING] 21:50:08:295 memory/(14902:14902): Registro no encontrado
+[WARNING] 21:50:14:751 memory/(14902:14902): Kernel Desconectado.
+[WARNING] 21:50:18:419 memory/(14902:14911): Desconectado.
+[INFO] 22:06:18:7 memory/(15541:15541): 5555
+[DEBUG] 22:06:19:32 memory/(15541:15541): Conectado al LFS
+[INFO] 22:06:19:38 memory/(15541:15541): Maximo tamaño del value: 20.
+[INFO] 22:06:19:39 memory/(15541:15541): 20
+[INFO] 22:06:19:40 memory/(15541:15541): 5555
+[DEBUG] 22:06:20:739 memory/(15541:15541): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:06:43:64 memory/(15541:15541): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:06:43:78 memory/(15541:15541): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:06:43:125 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:500, Value: Gaston Raro
+[INFO] 22:06:43:127 memory/(15541:15541): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:06:43:130 memory/(15541:15541): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:06:43:131 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:134 memory/(15541:15541): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:06:43:135 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:137 memory/(15541:15541): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:06:43:139 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:142 memory/(15541:15541): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:06:43:143 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:146 memory/(15541:15541): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:06:43:189 memory/(15541:15541): No tengo ese registro
+[WARNING] 22:06:43:191 memory/(15541:15541): Registro no encontrado
+[DEBUG] 22:06:43:233 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:500, Value: Pinto loco
+[INFO] 22:06:43:235 memory/(15541:15541): No tengo ese registro
+[WARNING] 22:06:43:237 memory/(15541:15541): Registro no encontrado
+[INFO] 22:06:43:238 memory/(15541:15541): No tengo ese registro
+[WARNING] 22:06:43:240 memory/(15541:15541): Registro no encontrado
+[DEBUG] 22:06:43:241 memory/(15541:15541): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:06:43:242 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:245 memory/(15541:15541): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 22:06:43:248 memory/(15541:15541): No tengo ese registro
+[DEBUG] 22:06:43:257 memory/(15541:15541): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:06:43:258 memory/(15541:15541): No tengo ese registro
+[WARNING] 22:06:43:260 memory/(15541:15541): Registro no encontrado
+[DEBUG] 22:06:43:261 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:555, Value: Pinto Loco
+[DEBUG] 22:06:43:263 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:876, Value: Leandrovich
+[DEBUG] 22:06:43:265 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:876, Value: Leandrovich
+[DEBUG] 22:06:43:266 memory/(15541:15541): Registro: TimeStamp: 1559869603, Key:555, Value: Pinto Loco
+[DEBUG] 22:06:43:268 memory/(15541:15541): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:06:43:269 memory/(15541:15541): No tengo ese registro
+[WARNING] 22:06:43:271 memory/(15541:15541): Registro no encontrado
+[WARNING] 22:06:52:43 memory/(15541:15541): Kernel Desconectado.
+[INFO] 22:08:39:103 memory/(15656:15656): 5555
+[DEBUG] 22:08:39:130 memory/(15656:15656): Conectado al LFS
+[INFO] 22:08:39:135 memory/(15656:15656): Maximo tamaño del value: 20.
+[INFO] 22:08:39:136 memory/(15656:15656): 20
+[INFO] 22:08:39:136 memory/(15656:15656): 5555
+[DEBUG] 22:08:40:84 memory/(15656:15656): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:09:02:417 memory/(15656:15656): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:09:02:434 memory/(15656:15656): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:09:02:476 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:500, Value: Gaston Raro
+[INFO] 22:09:02:478 memory/(15656:15656): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:09:02:481 memory/(15656:15656): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:09:02:484 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:489 memory/(15656:15656): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:09:02:491 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:493 memory/(15656:15656): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:09:02:494 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:496 memory/(15656:15656): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:09:02:499 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:501 memory/(15656:15656): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:09:02:543 memory/(15656:15656): No tengo ese registro
+[WARNING] 22:09:02:544 memory/(15656:15656): Registro no encontrado
+[DEBUG] 22:09:02:584 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:500, Value: Pinto loco
+[INFO] 22:09:02:585 memory/(15656:15656): No tengo ese registro
+[WARNING] 22:09:02:587 memory/(15656:15656): Registro no encontrado
+[INFO] 22:09:02:588 memory/(15656:15656): No tengo ese registro
+[WARNING] 22:09:02:590 memory/(15656:15656): Registro no encontrado
+[DEBUG] 22:09:02:591 memory/(15656:15656): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:09:02:593 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:595 memory/(15656:15656): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 22:09:02:598 memory/(15656:15656): No tengo ese registro
+[DEBUG] 22:09:02:603 memory/(15656:15656): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:09:02:607 memory/(15656:15656): No tengo ese registro
+[WARNING] 22:09:02:608 memory/(15656:15656): Registro no encontrado
+[DEBUG] 22:09:02:610 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:555, Value: Pinto Loco
+[DEBUG] 22:09:02:612 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:876, Value: Leandrovich
+[DEBUG] 22:09:02:615 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:876, Value: Leandrovich
+[DEBUG] 22:09:02:617 memory/(15656:15656): Registro: TimeStamp: 1559869742, Key:555, Value: Pinto Loco
+[DEBUG] 22:09:02:619 memory/(15656:15656): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:09:02:621 memory/(15656:15656): No tengo ese registro
+[WARNING] 22:09:02:622 memory/(15656:15656): Registro no encontrado
+[WARNING] 22:09:04:3 memory/(15656:15656): Kernel Desconectado.
+[INFO] 22:12:04:926 memory/(16058:16058): 5555
+[DEBUG] 22:12:04:955 memory/(16058:16058): Conectado al LFS
+[INFO] 22:12:04:961 memory/(16058:16058): Maximo tamaño del value: 20.
+[INFO] 22:12:04:962 memory/(16058:16058): 20
+[INFO] 22:12:04:963 memory/(16058:16058): 5555
+[DEBUG] 22:12:06:33 memory/(16058:16058): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:12:22:808 memory/(16058:16058): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:12:22:823 memory/(16058:16058): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:12:22:870 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:500, Value: Gaston Raro
+[INFO] 22:12:22:873 memory/(16058:16058): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:12:22:877 memory/(16058:16058): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:12:22:879 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:883 memory/(16058:16058): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:12:22:885 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:887 memory/(16058:16058): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:12:22:889 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:891 memory/(16058:16058): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:12:22:892 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:895 memory/(16058:16058): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:12:22:935 memory/(16058:16058): No tengo ese registro
+[WARNING] 22:12:22:937 memory/(16058:16058): Registro no encontrado
+[DEBUG] 22:12:22:980 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:500, Value: Pinto loco
+[INFO] 22:12:22:982 memory/(16058:16058): No tengo ese registro
+[WARNING] 22:12:22:984 memory/(16058:16058): Registro no encontrado
+[INFO] 22:12:22:986 memory/(16058:16058): No tengo ese registro
+[WARNING] 22:12:22:987 memory/(16058:16058): Registro no encontrado
+[DEBUG] 22:12:22:988 memory/(16058:16058): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:12:22:989 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:991 memory/(16058:16058): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 22:12:22:992 memory/(16058:16058): No tengo ese registro
+[DEBUG] 22:12:22:994 memory/(16058:16058): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:12:22:996 memory/(16058:16058): No tengo ese registro
+[WARNING] 22:12:22:997 memory/(16058:16058): Registro no encontrado
+[DEBUG] 22:12:22:999 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:555, Value: Pinto Loco
+[DEBUG] 22:12:22:1 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:876, Value: Leandrovich
+[DEBUG] 22:12:23:2 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:876, Value: Leandrovich
+[DEBUG] 22:12:23:4 memory/(16058:16058): Registro: TimeStamp: 1559869942, Key:555, Value: Pinto Loco
+[DEBUG] 22:12:23:6 memory/(16058:16058): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:12:23:8 memory/(16058:16058): No tengo ese registro
+[WARNING] 22:12:23:9 memory/(16058:16058): Registro no encontrado
+[WARNING] 22:12:24:531 memory/(16058:16058): Kernel Desconectado.
+[INFO] 22:15:05:647 memory/(16220:16220): 5555
+[DEBUG] 22:15:05:674 memory/(16220:16220): Conectado al LFS
+[INFO] 22:15:05:680 memory/(16220:16220): Maximo tamaño del value: 20.
+[INFO] 22:15:05:681 memory/(16220:16220): 20
+[INFO] 22:15:05:681 memory/(16220:16220): 5555
+[DEBUG] 22:15:06:675 memory/(16220:16220): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:15:27:307 memory/(16220:16220): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:15:27:320 memory/(16220:16220): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:15:27:364 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:500, Value: Gaston Raro
+[INFO] 22:15:27:368 memory/(16220:16220): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:15:27:371 memory/(16220:16220): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:15:27:372 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:375 memory/(16220:16220): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:15:27:377 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:379 memory/(16220:16220): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:15:27:381 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:383 memory/(16220:16220): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:15:27:384 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:385 memory/(16220:16220): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:15:27:428 memory/(16220:16220): No tengo ese registro
+[WARNING] 22:15:27:430 memory/(16220:16220): Registro no encontrado
+[DEBUG] 22:15:27:471 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:500, Value: Pinto loco
+[INFO] 22:15:27:473 memory/(16220:16220): No tengo ese registro
+[WARNING] 22:15:27:476 memory/(16220:16220): Registro no encontrado
+[INFO] 22:15:27:478 memory/(16220:16220): No tengo ese registro
+[WARNING] 22:15:27:479 memory/(16220:16220): Registro no encontrado
+[DEBUG] 22:15:27:480 memory/(16220:16220): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:15:27:482 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:484 memory/(16220:16220): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 22:15:27:486 memory/(16220:16220): No tengo ese registro
+[DEBUG] 22:15:27:488 memory/(16220:16220): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:15:27:489 memory/(16220:16220): No tengo ese registro
+[WARNING] 22:15:27:490 memory/(16220:16220): Registro no encontrado
+[DEBUG] 22:15:27:492 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:555, Value: Pinto Loco
+[DEBUG] 22:15:27:495 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:876, Value: Leandrovich
+[DEBUG] 22:15:27:496 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:876, Value: Leandrovich
+[DEBUG] 22:15:27:497 memory/(16220:16220): Registro: TimeStamp: 1559870127, Key:555, Value: Pinto Loco
+[DEBUG] 22:15:27:499 memory/(16220:16220): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:15:27:500 memory/(16220:16220): No tengo ese registro
+[WARNING] 22:15:27:502 memory/(16220:16220): Registro no encontrado
+[WARNING] 22:15:32:416 memory/(16220:16220): Kernel Desconectado.
+[INFO] 22:19:09:860 memory/(16286:16286): 5555
+[DEBUG] 22:19:09:861 memory/(16286:16286): Conectado al LFS
+[INFO] 22:19:09:865 memory/(16286:16286): Maximo tamaño del value: 20.
+[INFO] 22:19:09:865 memory/(16286:16286): 20
+[INFO] 22:19:09:866 memory/(16286:16286): 5555
+[INFO] 22:19:15:228 memory/(16290:16290): 5556
+[DEBUG] 22:19:15:228 memory/(16290:16290): Conectado al LFS
+[INFO] 22:19:15:229 memory/(16290:16290): Maximo tamaño del value: 20.
+[INFO] 22:19:15:229 memory/(16290:16290): 20
+[INFO] 22:19:15:229 memory/(16290:16290): 5556
+[DEBUG] 22:19:17:70 memory/(16286:16286): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 22:19:17:70 memory/(16290:16290): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:19:35:306 memory/(16286:16286): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:19:35:307 memory/(16286:16286): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:19:35:346 memory/(16286:16286): Registro: TimeStamp: 1559870375, Key:500, Value: Gaston Raro
+[INFO] 22:19:35:347 memory/(16290:16290): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:19:35:348 memory/(16290:16290): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:19:35:348 memory/(16290:16290): No tengo ese registro
+[DEBUG] 22:19:35:349 memory/(16290:16290): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:19:35:349 memory/(16290:16290): No tengo ese registro
+[DEBUG] 22:19:35:350 memory/(16290:16290): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:19:35:351 memory/(16286:16286): No tengo ese registro
+[DEBUG] 22:19:35:352 memory/(16286:16286): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:19:35:352 memory/(16286:16286): No tengo ese registro
+[DEBUG] 22:19:35:352 memory/(16286:16286): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:19:35:389 memory/(16290:16290): No tengo ese registro
+[WARNING] 22:19:35:391 memory/(16290:16290): Registro no encontrado
+[DEBUG] 22:19:35:391 memory/(16286:16286): Registro: TimeStamp: 1559870375, Key:500, Value: Pinto loco
+[INFO] 22:19:35:391 memory/(16286:16286): No tengo ese registro
+[WARNING] 22:19:35:393 memory/(16286:16286): Registro no encontrado
+[INFO] 22:19:35:430 memory/(16290:16290): No tengo ese registro
+[INFO] 22:21:13:329 memory/(16380:16380): 5555
+[DEBUG] 22:21:13:329 memory/(16380:16380): Conectado al LFS
+[INFO] 22:21:13:332 memory/(16380:16380): Maximo tamaño del value: 20.
+[INFO] 22:21:13:332 memory/(16380:16380): 20
+[INFO] 22:21:13:332 memory/(16380:16380): 5555
+[INFO] 22:21:25:547 memory/(16379:16379): 5556
+[DEBUG] 22:21:25:548 memory/(16379:16379): Conectado al LFS
+[INFO] 22:21:25:548 memory/(16379:16379): Maximo tamaño del value: 20.
+[INFO] 22:21:25:548 memory/(16379:16379): 20
+[INFO] 22:21:25:548 memory/(16379:16379): 5556
+[DEBUG] 22:21:30:593 memory/(16380:16380): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 22:21:30:594 memory/(16379:16379): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:21:49:856 memory/(16380:16380): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:21:49:858 memory/(16380:16380): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:21:49:901 memory/(16380:16380): Registro: TimeStamp: 1559870509, Key:500, Value: Gaston Raro
+[INFO] 22:21:49:902 memory/(16379:16379): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:21:49:904 memory/(16379:16379): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:21:49:905 memory/(16379:16379): No tengo ese registro
+[DEBUG] 22:21:49:907 memory/(16379:16379): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:21:49:907 memory/(16379:16379): No tengo ese registro
+[DEBUG] 22:21:49:908 memory/(16379:16379): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:21:49:909 memory/(16380:16380): No tengo ese registro
+[DEBUG] 22:21:49:910 memory/(16380:16380): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:21:49:910 memory/(16380:16380): No tengo ese registro
+[DEBUG] 22:21:49:911 memory/(16380:16380): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:21:49:951 memory/(16379:16379): No tengo ese registro
+[WARNING] 22:21:49:952 memory/(16379:16379): Registro no encontrado
+[DEBUG] 22:21:49:953 memory/(16380:16380): Registro: TimeStamp: 1559870509, Key:500, Value: Pinto loco
+[INFO] 22:21:49:953 memory/(16380:16380): No tengo ese registro
+[WARNING] 22:21:49:954 memory/(16380:16380): Registro no encontrado
+[INFO] 22:21:49:990 memory/(16379:16379): No tengo ese registro
+[INFO] 22:23:59:638 memory/(16485:16485): 5555
+[DEBUG] 22:23:59:638 memory/(16485:16485): Conectado al LFS
+[INFO] 22:23:59:639 memory/(16485:16485): Maximo tamaño del value: 20.
+[INFO] 22:23:59:639 memory/(16485:16485): 20
+[INFO] 22:23:59:639 memory/(16485:16485): 5555
+[INFO] 22:24:03:81 memory/(16489:16489): 5556
+[DEBUG] 22:24:03:81 memory/(16489:16489): Conectado al LFS
+[INFO] 22:24:03:82 memory/(16489:16489): Maximo tamaño del value: 20.
+[INFO] 22:24:03:82 memory/(16489:16489): 20
+[INFO] 22:24:03:82 memory/(16489:16489): 5556
+[DEBUG] 22:24:04:121 memory/(16485:16485): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 22:24:04:122 memory/(16489:16489): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 22:24:25:94 memory/(16485:16485): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:24:25:97 memory/(16485:16485): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:24:25:138 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:500, Value: Gaston Raro
+[INFO] 22:24:25:139 memory/(16485:16485): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:24:25:140 memory/(16485:16485): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:25:141 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:142 memory/(16485:16485): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 22:24:25:142 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:144 memory/(16485:16485): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:24:25:144 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:146 memory/(16485:16485): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 22:24:25:146 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:148 memory/(16485:16485): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:24:25:186 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:25:187 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:25:226 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:500, Value: Pinto loco
+[INFO] 22:24:25:226 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:25:227 memory/(16485:16485): Registro no encontrado
+[INFO] 22:24:25:227 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:25:229 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:25:229 memory/(16485:16485): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:24:25:230 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:231 memory/(16485:16485): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 22:24:25:231 memory/(16485:16485): No tengo ese registro
+[DEBUG] 22:24:25:232 memory/(16485:16485): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:24:25:232 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:25:233 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:25:233 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:25:233 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[DEBUG] 22:24:25:233 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[DEBUG] 22:24:25:234 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:25:234 memory/(16485:16485): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:25:234 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:25:235 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:43:664 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:500, Value: Pinto loco
+[DEBUG] 22:24:43:710 memory/(16485:16485): Registro: TimeStamp: 1559870683, Key:500, Value: Gaston Raro
+[DEBUG] 22:24:43:710 memory/(16485:16485): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:43:711 memory/(16489:16489): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 22:24:43:712 memory/(16489:16489): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:24:43:712 memory/(16485:16485): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[DEBUG] 22:24:43:713 memory/(16485:16485): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:24:43:713 memory/(16485:16485): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:24:43:749 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:43:750 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:43:751 memory/(16485:16485): Registro: TimeStamp: 1559870683, Key:500, Value: Pinto loco
+[INFO] 22:24:43:751 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:43:752 memory/(16485:16485): Registro no encontrado
+[INFO] 22:24:43:752 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:43:753 memory/(16485:16485): Registro no encontrado
+[DEBUG] 22:24:43:753 memory/(16485:16485): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:24:43:753 memory/(16485:16485): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:24:43:753 memory/(16485:16485): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:24:43:753 memory/(16489:16489): No tengo ese registro
+[WARNING] 22:24:43:754 memory/(16489:16489): Registro no encontrado
+[DEBUG] 22:24:43:755 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:43:755 memory/(16489:16489): Registro: TimeStamp: 1559870683, Key:876, Value: Leandrovich
+[DEBUG] 22:24:43:755 memory/(16485:16485): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[DEBUG] 22:24:43:755 memory/(16489:16489): Registro: TimeStamp: 1559870683, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:43:756 memory/(16485:16485): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:43:756 memory/(16485:16485): No tengo ese registro
+[WARNING] 22:24:43:757 memory/(16485:16485): Registro no encontrado
+[WARNING] 22:24:48:470 memory/(16485:16485): Kernel Desconectado.
+[WARNING] 22:24:48:470 memory/(16489:16489): Kernel Desconectado.

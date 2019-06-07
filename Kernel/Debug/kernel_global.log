@@ -4866,3 +4866,1021 @@
 [INFO] 12:28:45:574 kernel/(7798:7800): Script terminado por linea erronea
 [INFO] 12:28:49:605 kernel/(7798:7800): Finalizó
 [INFO] 12:28:52:862 kernel/(7798:7800): Script terminado por linea erronea
+[INFO] 12:33:26:208 kernel/(8101:8101): 5555
+[INFO] 12:33:26:208 kernel/(8101:8101): Conecte al servidor.
+[INFO] 12:33:32:166 kernel/(8101:8103): Finalizó
+[INFO] 12:36:30:46 kernel/(8101:8103): Finalizó
+[INFO] 12:36:43:446 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:983 kernel/(8101:8103): 4
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:983 kernel/(8101:8103): 10
+[INFO] 12:37:11:983 kernel/(8101:8103): 9
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:983 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): 2
+[INFO] 12:37:11:984 kernel/(8101:8103): 6
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Script terminado por linea erronea
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:984 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó quantum
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 12:37:11:985 kernel/(8101:8103): Finalizó
+[INFO] 14:18:47:825 kernel/(10592:10592): 5555
+[INFO] 14:18:47:825 kernel/(10592:10592): Conecte al servidor.
+[INFO] 14:18:54:323 kernel/(10592:10594): Finalizó
+[INFO] 14:19:00:90 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): 4
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): 10
+[INFO] 14:19:02:908 kernel/(10592:10594): 9
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): 2
+[INFO] 14:19:02:908 kernel/(10592:10594): 6
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:908 kernel/(10592:10594): Script terminado por linea erronea
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó quantum
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:19:02:909 kernel/(10592:10594): Finalizó
+[INFO] 14:21:32:325 kernel/(10746:10746): 5555
+[INFO] 14:21:32:325 kernel/(10746:10746): Conecte al servidor.
+[INFO] 14:21:41:899 kernel/(10746:10748): Finalizó
+[INFO] 14:22:00:491 kernel/(10746:10748): Finalizó
+[INFO] 14:22:18:842 kernel/(10746:10748): Script terminado por linea erronea
+[INFO] 14:22:23:811 kernel/(10746:10748): Finalizó
+[INFO] 14:28:51:590 kernel/(11264:11264): 5555
+[INFO] 14:28:51:591 kernel/(11264:11264): Conecte al servidor.
+[INFO] 14:29:02:548 kernel/(11264:11266): Finalizó
+[INFO] 14:35:38:534 kernel/(11615:11615): 5555
+[INFO] 14:35:38:535 kernel/(11615:11615): Conecte al servidor.
+[INFO] 14:35:51:125 kernel/(11615:11617): Finalizó
+[INFO] 15:12:36:803 kernel/(12838:12838): 5555
+[INFO] 15:12:36:803 kernel/(12838:12838): Conecte al servidor.
+[INFO] 15:13:01:825 kernel/(12838:12841): Conecte a otra memoria.
+[INFO] 15:13:14:465 kernel/(12838:12840): Finalizó
+[INFO] 15:13:22:490 kernel/(12838:12840): Finalizó
+[INFO] 15:13:29:402 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:834 kernel/(12838:12840): 4
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:834 kernel/(12838:12840): 10
+[INFO] 15:13:33:834 kernel/(12838:12840): 9
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:834 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:835 kernel/(12838:12840): 2
+[INFO] 15:13:33:835 kernel/(12838:12840): 6
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:835 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Script terminado por linea erronea
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:836 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó quantum
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:33:837 kernel/(12838:12840): Finalizó
+[INFO] 15:13:53:331 kernel/(12838:12840): Finalizó
+[INFO] 15:14:12:237 kernel/(12867:12867): 5555
+[INFO] 15:14:12:237 kernel/(12867:12867): Conecte al servidor.
+[INFO] 14:10:06:273 kernel/(6529:6529): 5555
+[INFO] 14:10:06:279 kernel/(6529:6529): Conecte al servidor.
+[INFO] 14:10:19:727 kernel/(6529:6531): Finalizó
+[INFO] 14:10:28:303 kernel/(6529:6531): Script terminado por linea erronea
+[INFO] 14:10:34:624 kernel/(6529:6531): Finalizó
+[INFO] 14:14:21:447 kernel/(6721:6721): 5555
+[INFO] 14:14:21:448 kernel/(6721:6721): Conecte al servidor.
+[INFO] 14:14:23:950 kernel/(6721:6723): Finalizó
+[INFO] 14:14:29:294 kernel/(6721:6723): Finalizó
+[INFO] 14:16:59:388 kernel/(6894:6894): 5555
+[INFO] 14:16:59:389 kernel/(6894:6894): Conecte al servidor.
+[INFO] 14:17:03:419 kernel/(6894:6896): Finalizó
+[INFO] 14:18:27:379 kernel/(7074:7074): 5555
+[INFO] 14:18:27:379 kernel/(7074:7074): Conecte al servidor.
+[INFO] 14:18:30:51 kernel/(7074:7076): Finalizó
+[INFO] 14:19:56:284 kernel/(7179:7179): 5555
+[INFO] 14:19:56:285 kernel/(7179:7179): Conecte al servidor.
+[INFO] 14:19:58:474 kernel/(7179:7181): Finalizó
+[INFO] 14:20:03:251 kernel/(7179:7181): Finalizó
+[INFO] 14:20:10:27 kernel/(7179:7181): Script terminado por linea erronea
+[INFO] 14:21:32:917 kernel/(7290:7290): 5555
+[INFO] 14:21:32:917 kernel/(7290:7290): Conecte al servidor.
+[INFO] 14:21:35:884 kernel/(7290:7292): Finalizó
+[INFO] 14:21:39:620 kernel/(7290:7292): Finalizó
+[INFO] 14:21:47:365 kernel/(7290:7292): Script terminado por linea erronea
+[INFO] 15:02:02:968 kernel/(9112:9112): 5555
+[INFO] 15:02:02:969 kernel/(9112:9112): Conecte al servidor.
+[INFO] 15:02:20:624 kernel/(9112:9114): Script terminado por linea erronea
+[INFO] 15:02:37:360 kernel/(9112:9114): Finalizó
+[INFO] 15:04:40:716 kernel/(9152:9152): 5555
+[INFO] 15:04:40:716 kernel/(9152:9152): Conecte al servidor.
+[INFO] 15:07:13:682 kernel/(9283:9283): 5555
+[INFO] 15:07:13:683 kernel/(9283:9283): Conecte al servidor.
+[INFO] 15:07:32:222 kernel/(9283:9285): Finalizó
+[INFO] 15:07:54:126 kernel/(9283:9285): Finalizó
+[INFO] 15:07:57:943 kernel/(9283:9285): Finalizó
+[INFO] 15:08:04:586 kernel/(9283:9285): Finalizó
+[INFO] 15:08:13:520 kernel/(9283:9285): Finalizó
+[INFO] 15:14:11:652 kernel/(9616:9616): 5555
+[INFO] 15:14:11:652 kernel/(9616:9616): Conecte al servidor.
+[INFO] 15:14:24:115 kernel/(9616:9618): Finalizó
+[INFO] 15:14:43:859 kernel/(9616:9618): Finalizó
+[INFO] 15:14:56:2 kernel/(9616:9618): Finalizó
+[INFO] 15:15:00:3 kernel/(9616:9618): Finalizó
+[INFO] 15:15:10:26 kernel/(9616:9618): Finalizó
+[INFO] 15:15:21:769 kernel/(9616:9618): Finalizó
+[INFO] 15:15:26:889 kernel/(9616:9618): Finalizó
+[INFO] 15:15:31:489 kernel/(9616:9618): Finalizó
+[INFO] 18:52:33:271 kernel/(3631:3631): 5555
+[INFO] 18:52:33:272 kernel/(3631:3631): Conecte al servidor.
+[INFO] 18:52:53:288 kernel/(3631:3634): Conecte a otra memoria.
+[INFO] 18:53:02:654 kernel/(3631:3633): Finalizó
+[INFO] 18:53:07:158 kernel/(3631:3633): Finalizó
+[INFO] 18:53:11:391 kernel/(3631:3633): 4
+[INFO] 18:53:11:391 kernel/(3631:3633): Finalizó
+[INFO] 18:53:11:391 kernel/(3631:3633): 10
+[INFO] 18:53:11:392 kernel/(3631:3633): 9
+[INFO] 18:53:11:392 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:392 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:392 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:392 kernel/(3631:3633): 2
+[INFO] 18:53:11:393 kernel/(3631:3633): 6
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Script terminado por linea erronea
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó quantum
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó
+[INFO] 18:53:11:393 kernel/(3631:3633): Finalizó
+[INFO] 18:54:07:692 kernel/(3738:3738): 5555
+[INFO] 18:54:07:692 kernel/(3738:3738): Conecte al servidor.
+[INFO] 18:54:07:693 kernel/(3738:3741): Conecte a otra memoria.
+[INFO] 18:54:19:782 kernel/(3738:3740): Finalizó
+[INFO] 18:54:26:194 kernel/(3738:3740): Finalizó
+[INFO] 18:54:30:105 kernel/(3738:3740): Finalizó
+[INFO] 18:54:36:270 kernel/(3738:3740): 4
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó
+[INFO] 18:54:36:270 kernel/(3738:3740): 10
+[INFO] 18:54:36:270 kernel/(3738:3740): 9
+[INFO] 18:54:36:270 kernel/(3738:3740): 2
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:270 kernel/(3738:3740): Script terminado por linea erronea
+[INFO] 18:54:36:270 kernel/(3738:3740): 6
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:270 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:271 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:271 kernel/(3738:3740): Finalizó quantum
+[INFO] 18:54:36:271 kernel/(3738:3740): Finalizó
+[INFO] 18:54:36:271 kernel/(3738:3740): Finalizó
+[INFO] 18:54:36:271 kernel/(3738:3740): Finalizó
+[INFO] 19:04:27:827 kernel/(4121:4121): 5555
+[INFO] 19:04:27:828 kernel/(4121:4121): Conecte al servidor.
+[INFO] 19:04:32:455 kernel/(4121:4123): Finalizó
+[INFO] 19:04:37:477 kernel/(4121:4123): Finalizó
+[INFO] 19:26:43:810 kernel/(6613:6613): 5555
+[INFO] 19:26:43:811 kernel/(6613:6613): Conecte al servidor.
+[INFO] 19:26:54:54 kernel/(6613:6615): Finalizó
+[INFO] 19:26:59:532 kernel/(6613:6615): Finalizó
+[INFO] 19:27:08:714 kernel/(6613:6615): Finalizó
+[INFO] 19:27:16:559 kernel/(6613:6615): Finalizó
+[INFO] 19:27:27:852 kernel/(6613:6615): Finalizó
+[INFO] 19:27:32:651 kernel/(6613:6615): B#
+[INFO] 19:29:24:323 kernel/(6748:6748): 5555
+[INFO] 19:29:24:323 kernel/(6748:6748): Conecte al servidor.
+[INFO] 19:29:28:663 kernel/(6748:6750): Finalizó
+[INFO] 19:29:32:791 kernel/(6748:6750): B#
+[INFO] 19:31:12:350 kernel/(6883:6883): 5555
+[INFO] 19:31:12:350 kernel/(6883:6883): Conecte al servidor.
+[INFO] 19:31:17:956 kernel/(6883:6885): Finalizó
+[INFO] 19:31:21:254 kernel/(6883:6885): �"
+[INFO] 19:34:44:571 kernel/(7120:7120): 5555
+[INFO] 19:34:44:571 kernel/(7120:7120): Conecte al servidor.
+[INFO] 19:34:49:880 kernel/(7120:7122): Finalizó
+[INFO] 19:38:38:956 kernel/(7421:7421): 5555
+[INFO] 19:38:38:956 kernel/(7421:7421): Conecte al servidor.
+[INFO] 19:38:44:712 kernel/(7421:7423): Finalizó
+[INFO] 19:40:04:768 kernel/(7747:7747): 5555
+[INFO] 19:40:04:769 kernel/(7747:7747): Conecte al servidor.
+[INFO] 19:40:09:548 kernel/(7747:7749): Finalizó
+[INFO] 19:41:02:398 kernel/(7858:7858): 5555
+[INFO] 19:41:02:399 kernel/(7858:7858): Conecte al servidor.
+[INFO] 19:41:05:457 kernel/(7858:7860): Finalizó
+[INFO] 19:41:12:808 kernel/(7858:7860): Finalizó
+[INFO] 19:42:36:768 kernel/(8022:8022): 5555
+[INFO] 19:42:36:768 kernel/(8022:8022): Conecte al servidor.
+[INFO] 19:42:42:859 kernel/(8022:8024): Finalizó
+[INFO] 19:44:59:66 kernel/(8201:8201): 5555
+[INFO] 19:44:59:66 kernel/(8201:8201): Conecte al servidor.
+[INFO] 19:45:03:70 kernel/(8201:8203): Finalizó
+[INFO] 19:45:05:823 kernel/(8201:8203): Finalizó
+[INFO] 19:45:10:4 kernel/(8201:8203): Finalizó
+[INFO] 19:45:26:16 kernel/(8201:8203): Finalizó
+[INFO] 19:45:29:46 kernel/(8201:8203): 4
+[INFO] 19:45:29:46 kernel/(8201:8203): Finalizó
+[INFO] 19:45:29:47 kernel/(8201:8203): 10
+[INFO] 19:45:29:47 kernel/(8201:8203): 9
+[INFO] 19:45:29:47 kernel/(8201:8203): 2
+[INFO] 19:45:29:47 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:87 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:90 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:91 kernel/(8201:8203): Script terminado por linea erronea
+[INFO] 19:45:29:91 kernel/(8201:8203): 6
+[INFO] 19:45:29:91 kernel/(8201:8203): Finalizó
+[INFO] 19:45:29:96 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:137 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:177 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:180 kernel/(8201:8203): Finalizó quantum
+[INFO] 19:45:29:182 kernel/(8201:8203): Finalizó
+[INFO] 19:45:29:182 kernel/(8201:8203): Finalizó
+[INFO] 19:45:29:183 kernel/(8201:8203): Finalizó
+[INFO] 19:47:27:795 kernel/(8467:8467): 5555
+[INFO] 19:47:27:796 kernel/(8467:8467): Conecte al servidor.
+[INFO] 19:47:27:797 kernel/(8467:8470): Conecte a otra memoria.
+[INFO] 19:47:33:615 kernel/(8467:8469): Finalizó
+[INFO] 19:47:38:39 kernel/(8467:8469): Finalizó
+[INFO] 19:47:42:253 kernel/(8467:8469): 4
+[INFO] 19:47:42:253 kernel/(8467:8469): Finalizó
+[INFO] 19:47:42:253 kernel/(8467:8469): 10
+[INFO] 19:47:42:253 kernel/(8467:8469): 9
+[INFO] 19:47:42:253 kernel/(8467:8469): 2
+[INFO] 19:47:42:253 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:297 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:302 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:302 kernel/(8467:8469): Script terminado por linea erronea
+[INFO] 19:47:42:302 kernel/(8467:8469): 6
+[INFO] 19:47:42:302 kernel/(8467:8469): Finalizó
+[INFO] 19:47:42:304 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:348 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:389 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:393 kernel/(8467:8469): Finalizó quantum
+[INFO] 19:47:42:395 kernel/(8467:8469): Finalizó
+[INFO] 19:47:42:396 kernel/(8467:8469): Finalizó
+[INFO] 19:47:42:397 kernel/(8467:8469): Finalizó
+[INFO] 19:56:54:612 kernel/(9239:9239): 5555
+[INFO] 19:56:54:613 kernel/(9239:9239): Conecte al servidor.
+[INFO] 19:57:14:775 kernel/(9239:9241): Finalizó
+[INFO] 19:57:22:119 kernel/(9239:9241): Finalizó
+[INFO] 19:57:26:831 kernel/(9239:9241): 4
+[INFO] 19:57:26:831 kernel/(9239:9241): Finalizó
+[INFO] 19:57:26:831 kernel/(9239:9241): 10
+[INFO] 19:57:26:831 kernel/(9239:9241): 9
+[INFO] 19:57:26:831 kernel/(9239:9241): 2
+[INFO] 19:57:26:831 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:874 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:878 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:878 kernel/(9239:9241): Script terminado por linea erronea
+[INFO] 19:57:26:878 kernel/(9239:9241): 6
+[INFO] 19:57:26:878 kernel/(9239:9241): Finalizó
+[INFO] 19:57:26:881 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:922 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:965 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:967 kernel/(9239:9241): Finalizó quantum
+[INFO] 19:57:26:970 kernel/(9239:9241): Finalizó
+[INFO] 19:57:26:971 kernel/(9239:9241): Finalizó
+[INFO] 19:57:26:972 kernel/(9239:9241): Finalizó
+[INFO] 20:00:53:775 kernel/(9371:9371): 5555
+[INFO] 20:00:53:776 kernel/(9371:9371): Conecte al servidor.
+[INFO] 20:01:05:341 kernel/(9371:9373): Finalizó
+[INFO] 20:01:09:935 kernel/(9371:9373): Finalizó
+[INFO] 20:02:12:37 kernel/(9445:9445): 5555
+[INFO] 20:02:12:37 kernel/(9445:9445): No me pude conectar con el servidor
+[INFO] 20:04:41:919 kernel/(9605:9605): 5555
+[INFO] 20:04:41:919 kernel/(9605:9605): Conecte al servidor.
+[DEBUG] 20:04:41:921 kernel/(9605:9608): Conecte a la memoria numero 2
+[INFO] 20:04:49:885 kernel/(9605:9607): Finalizó
+[INFO] 20:04:55:229 kernel/(9605:9607): Finalizó
+[INFO] 20:04:58:887 kernel/(9605:9607): 4
+[INFO] 20:04:58:887 kernel/(9605:9607): Finalizó
+[INFO] 20:04:58:887 kernel/(9605:9607): 10
+[INFO] 20:04:58:887 kernel/(9605:9607): 9
+[INFO] 20:04:58:887 kernel/(9605:9607): 2
+[INFO] 20:04:58:887 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:58:889 kernel/(9605:9607): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 20:04:58:930 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:500, Value: Gaston Raro
+[INFO] 20:04:58:930 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:58:931 kernel/(9605:9607): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 20:04:58:932 kernel/(9605:9607): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 20:04:58:933 kernel/(9605:9607): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 20:04:58:933 kernel/(9605:9607): Finalizó quantum
+[WARNING] 20:04:58:933 kernel/(9605:9607): Comando no reconocido
+[ERROR] 20:04:58:933 kernel/(9605:9607): Script terminado por linea erronea
+[INFO] 20:04:58:933 kernel/(9605:9607): 6
+[INFO] 20:04:58:933 kernel/(9605:9607): Finalizó
+[DEBUG] 20:04:58:934 kernel/(9605:9607): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 20:04:58:935 kernel/(9605:9607): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 20:04:58:935 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:58:975 kernel/(9605:9607): Registro no encontrado
+[INFO] 20:04:58:976 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:58:976 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:500, Value: Pinto loco
+[DEBUG] 20:04:58:978 kernel/(9605:9607): Registro no encontrado
+[DEBUG] 20:04:59:14 kernel/(9605:9607): Registro no encontrado
+[INFO] 20:04:59:14 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:59:14 kernel/(9605:9607): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 20:04:59:15 kernel/(9605:9607): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 20:04:59:17 kernel/(9605:9607): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 20:04:59:17 kernel/(9605:9607): Finalizó quantum
+[DEBUG] 20:04:59:18 kernel/(9605:9607): Registro no encontrado
+[DEBUG] 20:04:59:18 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:555, Value: Pinto Loco
+[DEBUG] 20:04:59:18 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:876, Value: Leandrovich
+[INFO] 20:04:59:18 kernel/(9605:9607): Finalizó
+[DEBUG] 20:04:59:19 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:876, Value: Leandrovich
+[DEBUG] 20:04:59:19 kernel/(9605:9607): Registro: TimeStamp: 1559862298, Key:555, Value: Pinto Loco
+[DEBUG] 20:04:59:19 kernel/(9605:9607): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 20:04:59:19 kernel/(9605:9607): Finalizó
+[DEBUG] 20:04:59:21 kernel/(9605:9607): Registro no encontrado
+[INFO] 20:04:59:21 kernel/(9605:9607): Finalizó
+[INFO] 20:09:47:662 kernel/(9836:9836): 5555
+[INFO] 20:09:47:662 kernel/(9836:9836): Conecte al servidor.
+[INFO] 20:11:06:725 kernel/(9948:9948): 5555
+[INFO] 20:11:06:726 kernel/(9948:9948): Conecte al servidor.
+[INFO] 20:11:15:202 kernel/(9948:9950): Finalizó
+[INFO] 20:11:21:954 kernel/(9948:9950): Finalizó
+[INFO] 20:11:25:49 kernel/(9948:9950): 4
+[INFO] 20:11:25:49 kernel/(9948:9950): Finalizó
+[INFO] 20:11:25:49 kernel/(9948:9950): 10
+[INFO] 20:11:25:49 kernel/(9948:9950): 9
+[INFO] 20:11:25:49 kernel/(9948:9950): 2
+[INFO] 20:11:25:49 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:50 kernel/(9948:9950): Registro: TimeStamp: 1146440192, Key:500, Value: S
+[DEBUG] 20:11:25:89 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:500, Value: Gaston Raro
+[INFO] 20:11:25:89 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:89 kernel/(9948:9950): Registro: TimeStamp: 1, Key:1, Value: German
+[DEBUG] 20:11:25:90 kernel/(9948:9950): Registro: TimeStamp: 300, Key:2, Value: Alex
+[DEBUG] 20:11:25:91 kernel/(9948:9950): Registro: TimeStamp: 1000, Key:3, Value: Pasca
+[INFO] 20:11:25:91 kernel/(9948:9950): Finalizó quantum
+[WARNING] 20:11:25:91 kernel/(9948:9950): Comando no reconocido
+[ERROR] 20:11:25:91 kernel/(9948:9950): Script terminado por linea erronea
+[INFO] 20:11:25:91 kernel/(9948:9950): 6
+[INFO] 20:11:25:91 kernel/(9948:9950): Finalizó
+[DEBUG] 20:11:25:92 kernel/(9948:9950): Registro: TimeStamp: 500, Key:600, Value: Felipe Israel
+[DEBUG] 20:11:25:93 kernel/(9948:9950): Registro: TimeStamp: 10, Key:700, Value: Leandro
+[INFO] 20:11:25:93 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:133 kernel/(9948:9950): Registro: TimeStamp: 15, Key:4, Value: Pinto
+[INFO] 20:11:25:133 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:173 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:500, Value: Pinto loco
+[DEBUG] 20:11:25:173 kernel/(9948:9950): Registro no encontrado
+[DEBUG] 20:11:25:174 kernel/(9948:9950): Registro: TimeStamp: 15, Key:4, Value: Pinto
+[INFO] 20:11:25:174 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:174 kernel/(9948:9950): Registro: TimeStamp: 10, Key:700, Value: Leandro
+[DEBUG] 20:11:25:175 kernel/(9948:9950): Registro no encontrado
+[DEBUG] 20:11:25:175 kernel/(9948:9950): Registro: TimeStamp: 20, Key:900, Value: Lacha
+[INFO] 20:11:25:175 kernel/(9948:9950): Finalizó quantum
+[DEBUG] 20:11:25:176 kernel/(9948:9950): Registro: TimeStamp: 30, Key:5, Value: Santi
+[DEBUG] 20:11:25:177 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:555, Value: Pinto Loco
+[DEBUG] 20:11:25:177 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:876, Value: Leandrovich
+[INFO] 20:11:25:177 kernel/(9948:9950): Finalizó
+[DEBUG] 20:11:25:177 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:876, Value: Leandrovich
+[DEBUG] 20:11:25:177 kernel/(9948:9950): Registro: TimeStamp: 1559862685, Key:555, Value: Pinto Loco
+[DEBUG] 20:11:25:178 kernel/(9948:9950): Registro: TimeStamp: 1, Key:1, Value: German
+[INFO] 20:11:25:178 kernel/(9948:9950): Finalizó
+[DEBUG] 20:11:25:178 kernel/(9948:9950): Registro no encontrado
+[INFO] 20:11:25:178 kernel/(9948:9950): Finalizó
+[DEBUG] 20:12:06:773 kernel/(9948:9951): Conecte a la memoria numero 2
+[ERROR] 20:12:11:754 kernel/(9948:9950): Script terminado por linea erronea
+[INFO] 20:12:31:576 kernel/(9948:9950): Finalizó
+[INFO] 20:12:42:191 kernel/(9948:9950): Finalizó
+[INFO] 20:12:49:711 kernel/(9948:9950): Finalizó
+[INFO] 20:13:02:854 kernel/(9948:9950): Finalizó
+[INFO] 20:14:52:555 kernel/(10057:10057): 5555
+[INFO] 20:14:52:555 kernel/(10057:10057): Conecte al servidor.
+[INFO] 20:15:13:327 kernel/(10057:10059): Finalizó
+[INFO] 20:15:21:101 kernel/(10057:10059): Finalizó
+[INFO] 20:15:30:915 kernel/(10057:10059): Finalizó
+[INFO] 20:15:42:82 kernel/(10057:10059): Finalizó
+[INFO] 20:18:42:319 kernel/(10219:10219): 5555
+[INFO] 20:18:42:319 kernel/(10219:10219): Conecte al servidor.
+[INFO] 20:18:57:578 kernel/(10219:10221): Finalizó
+[INFO] 20:19:14:190 kernel/(10219:10221): Finalizó
+[INFO] 20:20:51:667 kernel/(10519:10519): 5555
+[INFO] 20:20:51:668 kernel/(10519:10519): Conecte al servidor.
+[INFO] 20:21:09:995 kernel/(10519:10521): Finalizó
+[INFO] 20:24:55:589 kernel/(10652:10652): 5555
+[INFO] 20:24:55:589 kernel/(10652:10652): Conecte al servidor.
+[INFO] 20:24:57:333 kernel/(10652:10654): Finalizó
+[INFO] 20:27:53:488 kernel/(10877:10877): 5555
+[INFO] 20:27:53:489 kernel/(10877:10877): Conecte al servidor.
+[INFO] 20:27:56:575 kernel/(10877:10879): Finalizó
+[INFO] 20:29:28:317 kernel/(11095:11095): 5555
+[INFO] 20:29:28:318 kernel/(11095:11095): Conecte al servidor.
+[INFO] 20:29:34:409 kernel/(11095:11098): Finalizó
+[INFO] 20:31:04:864 kernel/(11211:11211): 5555
+[INFO] 20:31:04:865 kernel/(11211:11211): Conecte al servidor.
+[INFO] 20:31:08:431 kernel/(11211:11213): Finalizó
+[INFO] 20:35:58:953 kernel/(11377:11377): 5555
+[INFO] 20:35:58:953 kernel/(11377:11377): Conecte al servidor.
+[INFO] 20:36:05:797 kernel/(11377:11379): Finalizó
+[INFO] 20:37:36:87 kernel/(11457:11457): 5555
+[INFO] 20:37:36:87 kernel/(11457:11457): Conecte al servidor.
+[INFO] 20:37:39:939 kernel/(11457:11459): Finalizó
+[INFO] 20:38:15:812 kernel/(11457:11459): Finalizó
+[INFO] 20:38:21:202 kernel/(11457:11459): Finalizó
+[INFO] 20:38:26:755 kernel/(11457:11459): Finalizó
+[INFO] 20:38:28:993 kernel/(11457:11459): Finalizó
+[INFO] 20:38:31:344 kernel/(11457:11459): Finalizó
+[INFO] 20:38:33:951 kernel/(11457:11459): Finalizó
+[INFO] 20:38:38:512 kernel/(11457:11459): Finalizó
+[INFO] 20:41:34:44 kernel/(11587:11587): 5555
+[INFO] 20:41:34:44 kernel/(11587:11587): Conecte al servidor.
+[INFO] 20:41:40:984 kernel/(11587:11589): Finalizó
+[INFO] 20:41:45:224 kernel/(11587:11589): Finalizó
+[INFO] 20:41:52:64 kernel/(11587:11589): Finalizó
+[INFO] 20:41:54:207 kernel/(11587:11589): Finalizó
+[INFO] 20:44:16:70 kernel/(11744:11744): 5555
+[INFO] 20:44:16:71 kernel/(11744:11744): Conecte al servidor.
+[INFO] 20:44:16:71 kernel/(11744:11746): Finalizó
+[INFO] 20:44:25:612 kernel/(11744:11746): Finalizó
+[INFO] 20:44:31:283 kernel/(11744:11746): Finalizó
+[INFO] 20:44:35:443 kernel/(11744:11746): Finalizó
+[INFO] 20:44:37:754 kernel/(11744:11746): Finalizó
+[INFO] 20:44:42:267 kernel/(11744:11746): Finalizó
+[INFO] 20:46:51:714 kernel/(11882:11882): 5555
+[INFO] 20:46:51:715 kernel/(11882:11882): Conecte al servidor.
+[INFO] 20:46:51:716 kernel/(11882:11883): Finalizó
+[INFO] 20:46:57:10 kernel/(11882:11883): Finalizó
+[INFO] 20:47:00:386 kernel/(11882:11883): Finalizó
+[INFO] 20:49:52:771 kernel/(12076:12076): 5555
+[INFO] 20:49:52:771 kernel/(12076:12076): Conecte al servidor.
+[INFO] 20:49:52:772 kernel/(12076:12078): Finalizó
+[INFO] 20:50:03:335 kernel/(12076:12078): Finalizó
+[INFO] 20:50:14:464 kernel/(12076:12078): Finalizó
+[INFO] 20:56:22:162 kernel/(12606:12606): 5555
+[INFO] 20:56:22:163 kernel/(12606:12606): Conecte al servidor.
+[INFO] 20:56:22:163 kernel/(12606:12608): Finalizó
+[INFO] 20:56:28:519 kernel/(12606:12608): Finalizó
+[INFO] 21:01:44:560 kernel/(12935:12935): 5555
+[INFO] 21:01:44:560 kernel/(12935:12935): Conecte al servidor.
+[INFO] 21:01:44:562 kernel/(12935:12937): Finalizó
+[INFO] 21:01:50:85 kernel/(12935:12937): Finalizó
+[INFO] 21:04:27:734 kernel/(13087:13087): 5555
+[INFO] 21:04:27:734 kernel/(13087:13087): Conecte al servidor.
+[INFO] 21:04:27:735 kernel/(13087:13089): Finalizó
+[INFO] 21:04:32:403 kernel/(13087:13089): Finalizó
+[INFO] 21:04:34:771 kernel/(13087:13089): Finalizó
+[INFO] 21:10:01:827 kernel/(13247:13247): 5555
+[INFO] 21:10:01:828 kernel/(13247:13247): Conecte al servidor.
+[INFO] 21:13:18:421 kernel/(13350:13350): 5555
+[INFO] 21:13:18:422 kernel/(13350:13350): Conecte al servidor.
+[INFO] 21:14:46:280 kernel/(13394:13394): 5555
+[INFO] 21:14:46:280 kernel/(13394:13394): Conecte al servidor.
+[INFO] 21:14:46:309 kernel/(13394:13396): Finalizó
+[INFO] 21:19:22:524 kernel/(13802:13802): 5555
+[INFO] 21:19:22:525 kernel/(13802:13802): Conecte al servidor.
+[INFO] 21:19:22:526 kernel/(13802:13804): Finalizó
+[INFO] 21:19:31:146 kernel/(13802:13804): Finalizó
+[INFO] 21:19:37:145 kernel/(13802:13804): Finalizó
+[INFO] 21:19:48:864 kernel/(13802:13804): Finalizó
+[INFO] 21:19:54:984 kernel/(13802:13804): Finalizó
+[INFO] 21:20:06:215 kernel/(13802:13804): Finalizó
+[INFO] 21:20:13:46 kernel/(13802:13804): Finalizó
+[INFO] 21:20:25:474 kernel/(13802:13804): Finalizó
+[DEBUG] 21:20:31:85 kernel/(13802:13804): Registro: TimeStamp: 1559866825, Key:1998, Value: 8===D
+[INFO] 21:20:31:85 kernel/(13802:13804): Finalizó
+[DEBUG] 21:20:57:576 kernel/(13802:13805): Conecte a la memoria numero 2
+[INFO] 21:21:05:810 kernel/(13802:13804): Finalizó
+[INFO] 21:21:10:977 kernel/(13802:13804): 4
+[INFO] 21:21:10:977 kernel/(13802:13804): Finalizó
+[INFO] 21:21:10:977 kernel/(13802:13804): 10
+[INFO] 21:21:10:977 kernel/(13802:13804): 9
+[INFO] 21:21:10:977 kernel/(13802:13804): 2
+[INFO] 21:21:10:977 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:10:979 kernel/(13802:13804): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:21:11:19 kernel/(13802:13804): Registro: TimeStamp: 1559866870, Key:500, Value: Gaston Raro
+[INFO] 21:21:11:19 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:11:21 kernel/(13802:13804): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 21:21:11:22 kernel/(13802:13804): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 21:21:11:23 kernel/(13802:13804): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:21:11:23 kernel/(13802:13804): Finalizó quantum
+[WARNING] 21:21:11:23 kernel/(13802:13804): Comando no reconocido
+[ERROR] 21:21:11:23 kernel/(13802:13804): Script terminado por linea erronea
+[INFO] 21:21:11:23 kernel/(13802:13804): 6
+[INFO] 21:21:11:23 kernel/(13802:13804): Finalizó
+[DEBUG] 21:21:11:25 kernel/(13802:13804): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 21:21:11:26 kernel/(13802:13804): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:21:11:26 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:11:65 kernel/(13802:13804): Registro no encontrado
+[INFO] 21:21:11:65 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:11:66 kernel/(13802:13804): Registro: TimeStamp: 1559866871, Key:500, Value: Pinto loco
+[DEBUG] 21:21:11:68 kernel/(13802:13804): Registro no encontrado
+[DEBUG] 21:21:11:105 kernel/(13802:13804): Registro no encontrado
+[INFO] 21:21:11:105 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:11:105 kernel/(13802:13804): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 21:21:11:107 kernel/(13802:13804): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 21:21:11:108 kernel/(13802:13804): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:21:11:108 kernel/(13802:13804): Finalizó quantum
+[DEBUG] 21:21:11:109 kernel/(13802:13804): Registro no encontrado
+[DEBUG] 21:21:11:110 kernel/(13802:13804): Registro: TimeStamp: 1559866871, Key:555, Value: Pinto Loco
+[DEBUG] 21:21:11:110 kernel/(13802:13804): Registro: TimeStamp: 1559866871, Key:876, Value: Leandrovich
+[INFO] 21:21:11:110 kernel/(13802:13804): Finalizó
+[DEBUG] 21:21:11:110 kernel/(13802:13804): Registro: TimeStamp: 1559866871, Key:876, Value: Leandrovich
+[DEBUG] 21:21:11:110 kernel/(13802:13804): Registro: TimeStamp: 1559866871, Key:555, Value: Pinto Loco
+[DEBUG] 21:21:11:111 kernel/(13802:13804): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:21:11:111 kernel/(13802:13804): Finalizó
+[DEBUG] 21:21:11:113 kernel/(13802:13804): Registro no encontrado
+[INFO] 21:21:11:113 kernel/(13802:13804): Finalizó
+[INFO] 21:21:29:968 kernel/(13802:13804): 1
+[INFO] 21:21:29:968 kernel/(13802:13804): Finalizó
+[INFO] 21:21:29:968 kernel/(13802:13804): Finalizó
+[INFO] 21:25:23:382 kernel/(14107:14107): 5555
+[INFO] 21:25:23:386 kernel/(14107:14107): Conecte al servidor.
+[INFO] 21:25:23:415 kernel/(14107:14108): Finalizó
+[INFO] 21:25:42:858 kernel/(14107:14108): Finalizó
+[INFO] 21:25:48:808 kernel/(14107:14108): Finalizó
+[INFO] 21:25:55:408 kernel/(14107:14108): 4
+[INFO] 21:25:55:408 kernel/(14107:14108): Finalizó
+[INFO] 21:25:55:408 kernel/(14107:14108): 10
+[INFO] 21:25:55:408 kernel/(14107:14108): 9
+[INFO] 21:25:55:408 kernel/(14107:14108): 2
+[INFO] 21:25:55:408 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:426 kernel/(14107:14108): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:25:55:470 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:500, Value: Gaston Raro
+[INFO] 21:25:55:470 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:475 kernel/(14107:14108): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 21:25:55:480 kernel/(14107:14108): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 21:25:55:483 kernel/(14107:14108): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:25:55:483 kernel/(14107:14108): Finalizó quantum
+[WARNING] 21:25:55:483 kernel/(14107:14108): Comando no reconocido
+[ERROR] 21:25:55:483 kernel/(14107:14108): Script terminado por linea erronea
+[INFO] 21:25:55:483 kernel/(14107:14108): 6
+[INFO] 21:25:55:483 kernel/(14107:14108): Finalizó
+[DEBUG] 21:25:55:486 kernel/(14107:14108): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 21:25:55:489 kernel/(14107:14108): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:25:55:490 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:531 kernel/(14107:14108): Registro no encontrado
+[INFO] 21:25:55:531 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:569 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:500, Value: Pinto loco
+[DEBUG] 21:25:55:572 kernel/(14107:14108): Registro no encontrado
+[DEBUG] 21:25:55:575 kernel/(14107:14108): Registro no encontrado
+[INFO] 21:25:55:575 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:576 kernel/(14107:14108): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 21:25:55:579 kernel/(14107:14108): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 21:25:55:582 kernel/(14107:14108): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:25:55:582 kernel/(14107:14108): Finalizó quantum
+[DEBUG] 21:25:55:584 kernel/(14107:14108): Registro no encontrado
+[DEBUG] 21:25:55:585 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:555, Value: Pinto Loco
+[DEBUG] 21:25:55:586 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:876, Value: Leandrovich
+[INFO] 21:25:55:586 kernel/(14107:14108): Finalizó
+[DEBUG] 21:25:55:587 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:876, Value: Leandrovich
+[DEBUG] 21:25:55:588 kernel/(14107:14108): Registro: TimeStamp: 1559867155, Key:555, Value: Pinto Loco
+[DEBUG] 21:25:55:590 kernel/(14107:14108): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:25:55:590 kernel/(14107:14108): Finalizó
+[DEBUG] 21:25:55:593 kernel/(14107:14108): Registro no encontrado
+[INFO] 21:25:55:593 kernel/(14107:14108): Finalizó
+[INFO] 21:35:37:958 kernel/(14396:14396): 5555
+[INFO] 21:35:37:962 kernel/(14396:14396): Conecte al servidor.
+[INFO] 21:35:37:986 kernel/(14396:14397): Finalizó
+[INFO] 21:35:43:931 kernel/(14396:14397): Finalizó
+[INFO] 21:35:49:996 kernel/(14396:14397): Finalizó
+[INFO] 21:35:53:179 kernel/(14396:14397): 4
+[INFO] 21:35:53:179 kernel/(14396:14397): Finalizó
+[INFO] 21:35:53:179 kernel/(14396:14397): 10
+[INFO] 21:35:53:179 kernel/(14396:14397): 9
+[INFO] 21:35:53:179 kernel/(14396:14397): 2
+[INFO] 21:35:53:180 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:199 kernel/(14396:14397): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:35:53:242 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:500, Value: Gaston Raro
+[INFO] 21:35:53:242 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:246 kernel/(14396:14397): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 21:35:53:251 kernel/(14396:14397): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 21:35:53:257 kernel/(14396:14397): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:35:53:257 kernel/(14396:14397): Finalizó quantum
+[WARNING] 21:35:53:257 kernel/(14396:14397): Comando no reconocido
+[ERROR] 21:35:53:257 kernel/(14396:14397): Script terminado por linea erronea
+[INFO] 21:35:53:257 kernel/(14396:14397): 6
+[INFO] 21:35:53:257 kernel/(14396:14397): Finalizó
+[DEBUG] 21:35:53:262 kernel/(14396:14397): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 21:35:53:264 kernel/(14396:14397): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:35:53:264 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:311 kernel/(14396:14397): Registro no encontrado
+[INFO] 21:35:53:311 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:351 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:500, Value: Pinto loco
+[DEBUG] 21:35:53:354 kernel/(14396:14397): Registro no encontrado
+[DEBUG] 21:35:53:358 kernel/(14396:14397): Registro no encontrado
+[INFO] 21:35:53:358 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:359 kernel/(14396:14397): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 21:35:53:363 kernel/(14396:14397): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 21:35:53:367 kernel/(14396:14397): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:35:53:367 kernel/(14396:14397): Finalizó quantum
+[DEBUG] 21:35:53:369 kernel/(14396:14397): Registro no encontrado
+[DEBUG] 21:35:53:370 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:555, Value: Pinto Loco
+[DEBUG] 21:35:53:372 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:876, Value: Leandrovich
+[INFO] 21:35:53:372 kernel/(14396:14397): Finalizó
+[DEBUG] 21:35:53:373 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:876, Value: Leandrovich
+[DEBUG] 21:35:53:374 kernel/(14396:14397): Registro: TimeStamp: 1559867753, Key:555, Value: Pinto Loco
+[DEBUG] 21:35:53:376 kernel/(14396:14397): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:35:53:376 kernel/(14396:14397): Finalizó
+[DEBUG] 21:35:53:378 kernel/(14396:14397): Registro no encontrado
+[INFO] 21:35:53:378 kernel/(14396:14397): Finalizó
+[INFO] 21:49:45:534 kernel/(14908:14908): 5555
+[INFO] 21:49:45:538 kernel/(14908:14908): Conecte al servidor.
+[INFO] 21:49:45:559 kernel/(14908:14909): Finalizó
+[INFO] 21:49:58:217 kernel/(14908:14909): Finalizó
+[INFO] 21:50:03:737 kernel/(14908:14909): Finalizó
+[INFO] 21:50:08:112 kernel/(14908:14909): 4
+[INFO] 21:50:08:112 kernel/(14908:14909): Finalizó
+[INFO] 21:50:08:112 kernel/(14908:14909): 10
+[INFO] 21:50:08:112 kernel/(14908:14909): 9
+[INFO] 21:50:08:113 kernel/(14908:14909): 2
+[INFO] 21:50:08:113 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:127 kernel/(14908:14909): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 21:50:08:170 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:500, Value: Gaston Raro
+[INFO] 21:50:08:170 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:173 kernel/(14908:14909): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 21:50:08:178 kernel/(14908:14909): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 21:50:08:181 kernel/(14908:14909): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 21:50:08:181 kernel/(14908:14909): Finalizó quantum
+[WARNING] 21:50:08:181 kernel/(14908:14909): Comando no reconocido
+[ERROR] 21:50:08:181 kernel/(14908:14909): Script terminado por linea erronea
+[INFO] 21:50:08:181 kernel/(14908:14909): 6
+[INFO] 21:50:08:181 kernel/(14908:14909): Finalizó
+[DEBUG] 21:50:08:185 kernel/(14908:14909): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 21:50:08:187 kernel/(14908:14909): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 21:50:08:187 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:231 kernel/(14908:14909): Registro no encontrado
+[INFO] 21:50:08:231 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:272 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:500, Value: Pinto loco
+[DEBUG] 21:50:08:276 kernel/(14908:14909): Registro no encontrado
+[DEBUG] 21:50:08:280 kernel/(14908:14909): Registro no encontrado
+[INFO] 21:50:08:280 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:281 kernel/(14908:14909): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 21:50:08:284 kernel/(14908:14909): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 21:50:08:287 kernel/(14908:14909): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 21:50:08:287 kernel/(14908:14909): Finalizó quantum
+[DEBUG] 21:50:08:289 kernel/(14908:14909): Registro no encontrado
+[DEBUG] 21:50:08:290 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:555, Value: Pinto Loco
+[DEBUG] 21:50:08:291 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:876, Value: Leandrovich
+[INFO] 21:50:08:291 kernel/(14908:14909): Finalizó
+[DEBUG] 21:50:08:292 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:876, Value: Leandrovich
+[DEBUG] 21:50:08:293 kernel/(14908:14909): Registro: TimeStamp: 1559868608, Key:555, Value: Pinto Loco
+[DEBUG] 21:50:08:294 kernel/(14908:14909): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 21:50:08:294 kernel/(14908:14909): Finalizó
+[DEBUG] 21:50:08:295 kernel/(14908:14909): Registro no encontrado
+[INFO] 21:50:08:295 kernel/(14908:14909): Finalizó
+[INFO] 21:50:12:752 kernel/(14908:14909): 1
+[INFO] 21:50:12:752 kernel/(14908:14909): Finalizó
+[INFO] 21:50:12:752 kernel/(14908:14909): Finalizó
+[INFO] 22:06:20:735 kernel/(15547:15547): 5555
+[INFO] 22:06:20:739 kernel/(15547:15547): Conecte al servidor.
+[INFO] 22:06:20:764 kernel/(15547:15548): Finalizó
+[INFO] 22:06:29:515 kernel/(15547:15548): Finalizó
+[INFO] 22:06:37:507 kernel/(15547:15548): Finalizó
+[INFO] 22:06:43:59 kernel/(15547:15548): 4
+[INFO] 22:06:43:59 kernel/(15547:15548): Finalizó
+[INFO] 22:06:43:59 kernel/(15547:15548): 10
+[INFO] 22:06:43:59 kernel/(15547:15548): 9
+[INFO] 22:06:43:59 kernel/(15547:15548): 2
+[INFO] 22:06:43:59 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:80 kernel/(15547:15548): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:06:43:126 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:500, Value: Gaston Raro
+[INFO] 22:06:43:126 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:130 kernel/(15547:15548): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:06:43:135 kernel/(15547:15548): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:06:43:138 kernel/(15547:15548): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:06:43:138 kernel/(15547:15548): Finalizó quantum
+[WARNING] 22:06:43:138 kernel/(15547:15548): Comando no reconocido
+[ERROR] 22:06:43:138 kernel/(15547:15548): Script terminado por linea erronea
+[INFO] 22:06:43:138 kernel/(15547:15548): 6
+[INFO] 22:06:43:138 kernel/(15547:15548): Finalizó
+[DEBUG] 22:06:43:143 kernel/(15547:15548): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:06:43:147 kernel/(15547:15548): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:06:43:147 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:192 kernel/(15547:15548): Registro no encontrado
+[INFO] 22:06:43:192 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:234 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:500, Value: Pinto loco
+[DEBUG] 22:06:43:237 kernel/(15547:15548): Registro no encontrado
+[DEBUG] 22:06:43:240 kernel/(15547:15548): Registro no encontrado
+[INFO] 22:06:43:240 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:242 kernel/(15547:15548): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:06:43:246 kernel/(15547:15548): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:06:43:257 kernel/(15547:15548): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:06:43:257 kernel/(15547:15548): Finalizó quantum
+[DEBUG] 22:06:43:260 kernel/(15547:15548): Registro no encontrado
+[DEBUG] 22:06:43:262 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:555, Value: Pinto Loco
+[DEBUG] 22:06:43:264 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:876, Value: Leandrovich
+[INFO] 22:06:43:264 kernel/(15547:15548): Finalizó
+[DEBUG] 22:06:43:265 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:876, Value: Leandrovich
+[DEBUG] 22:06:43:267 kernel/(15547:15548): Registro: TimeStamp: 1559869603, Key:555, Value: Pinto Loco
+[DEBUG] 22:06:43:269 kernel/(15547:15548): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:06:43:269 kernel/(15547:15548): Finalizó
+[DEBUG] 22:06:43:271 kernel/(15547:15548): Registro no encontrado
+[INFO] 22:06:43:271 kernel/(15547:15548): Finalizó
+[INFO] 22:06:48:802 kernel/(15547:15548): 1
+[INFO] 22:06:48:802 kernel/(15547:15548): Finalizó
+[INFO] 22:06:48:802 kernel/(15547:15548): Finalizó
+[INFO] 22:08:40:79 kernel/(15660:15660): 5555
+[INFO] 22:08:40:84 kernel/(15660:15660): Conecte al servidor.
+[INFO] 22:08:40:106 kernel/(15660:15661): Finalizó
+[INFO] 22:08:47:874 kernel/(15660:15661): Finalizó
+[INFO] 22:08:59:3 kernel/(15660:15661): Finalizó
+[INFO] 22:09:02:413 kernel/(15660:15661): 4
+[INFO] 22:09:02:413 kernel/(15660:15661): Finalizó
+[INFO] 22:09:02:413 kernel/(15660:15661): 10
+[INFO] 22:09:02:413 kernel/(15660:15661): 9
+[INFO] 22:09:02:413 kernel/(15660:15661): 2
+[INFO] 22:09:02:413 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:437 kernel/(15660:15661): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:09:02:477 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:500, Value: Gaston Raro
+[INFO] 22:09:02:477 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:482 kernel/(15660:15661): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:09:02:489 kernel/(15660:15661): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:09:02:493 kernel/(15660:15661): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:09:02:493 kernel/(15660:15661): Finalizó quantum
+[WARNING] 22:09:02:493 kernel/(15660:15661): Comando no reconocido
+[ERROR] 22:09:02:493 kernel/(15660:15661): Script terminado por linea erronea
+[INFO] 22:09:02:493 kernel/(15660:15661): 6
+[INFO] 22:09:02:493 kernel/(15660:15661): Finalizó
+[DEBUG] 22:09:02:497 kernel/(15660:15661): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:09:02:502 kernel/(15660:15661): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:09:02:502 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:545 kernel/(15660:15661): Registro no encontrado
+[INFO] 22:09:02:546 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:585 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:500, Value: Pinto loco
+[DEBUG] 22:09:02:587 kernel/(15660:15661): Registro no encontrado
+[DEBUG] 22:09:02:590 kernel/(15660:15661): Registro no encontrado
+[INFO] 22:09:02:590 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:592 kernel/(15660:15661): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:09:02:596 kernel/(15660:15661): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:09:02:606 kernel/(15660:15661): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:09:02:606 kernel/(15660:15661): Finalizó quantum
+[DEBUG] 22:09:02:609 kernel/(15660:15661): Registro no encontrado
+[DEBUG] 22:09:02:610 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:555, Value: Pinto Loco
+[DEBUG] 22:09:02:613 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:876, Value: Leandrovich
+[INFO] 22:09:02:613 kernel/(15660:15661): Finalizó
+[DEBUG] 22:09:02:615 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:876, Value: Leandrovich
+[DEBUG] 22:09:02:618 kernel/(15660:15661): Registro: TimeStamp: 1559869742, Key:555, Value: Pinto Loco
+[DEBUG] 22:09:02:619 kernel/(15660:15661): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:09:02:620 kernel/(15660:15661): Finalizó
+[DEBUG] 22:09:02:622 kernel/(15660:15661): Registro no encontrado
+[INFO] 22:09:02:622 kernel/(15660:15661): Finalizó
+[INFO] 22:12:06:29 kernel/(16065:16065): 5555
+[INFO] 22:12:06:34 kernel/(16065:16065): Conecte al servidor.
+[INFO] 22:12:06:54 kernel/(16065:16066): Finalizó
+[INFO] 22:12:12:713 kernel/(16065:16066): Finalizó
+[INFO] 22:12:19:288 kernel/(16065:16066): Finalizó
+[INFO] 22:12:22:802 kernel/(16065:16066): 4
+[INFO] 22:12:22:802 kernel/(16065:16066): Finalizó
+[INFO] 22:12:22:802 kernel/(16065:16066): 10
+[INFO] 22:12:22:802 kernel/(16065:16066): 9
+[INFO] 22:12:22:802 kernel/(16065:16066): 2
+[INFO] 22:12:22:802 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:826 kernel/(16065:16066): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:12:22:871 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:500, Value: Gaston Raro
+[INFO] 22:12:22:872 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:878 kernel/(16065:16066): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:12:22:884 kernel/(16065:16066): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:12:22:888 kernel/(16065:16066): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:12:22:888 kernel/(16065:16066): Finalizó quantum
+[WARNING] 22:12:22:888 kernel/(16065:16066): Comando no reconocido
+[ERROR] 22:12:22:888 kernel/(16065:16066): Script terminado por linea erronea
+[INFO] 22:12:22:888 kernel/(16065:16066): 6
+[INFO] 22:12:22:888 kernel/(16065:16066): Finalizó
+[DEBUG] 22:12:22:892 kernel/(16065:16066): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:12:22:895 kernel/(16065:16066): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:12:22:895 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:938 kernel/(16065:16066): Registro no encontrado
+[INFO] 22:12:22:938 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:981 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:500, Value: Pinto loco
+[DEBUG] 22:12:22:984 kernel/(16065:16066): Registro no encontrado
+[DEBUG] 22:12:22:987 kernel/(16065:16066): Registro no encontrado
+[INFO] 22:12:22:987 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:988 kernel/(16065:16066): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:12:22:991 kernel/(16065:16066): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:12:22:995 kernel/(16065:16066): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:12:22:995 kernel/(16065:16066): Finalizó quantum
+[DEBUG] 22:12:22:998 kernel/(16065:16066): Registro no encontrado
+[DEBUG] 22:12:22:0 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:555, Value: Pinto Loco
+[DEBUG] 22:12:23:1 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:876, Value: Leandrovich
+[INFO] 22:12:23:1 kernel/(16065:16066): Finalizó
+[DEBUG] 22:12:23:3 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:876, Value: Leandrovich
+[DEBUG] 22:12:23:4 kernel/(16065:16066): Registro: TimeStamp: 1559869942, Key:555, Value: Pinto Loco
+[DEBUG] 22:12:23:6 kernel/(16065:16066): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:12:23:6 kernel/(16065:16066): Finalizó
+[DEBUG] 22:12:23:9 kernel/(16065:16066): Registro no encontrado
+[INFO] 22:12:23:9 kernel/(16065:16066): Finalizó
+[INFO] 22:15:06:670 kernel/(16226:16226): 5555
+[INFO] 22:15:06:675 kernel/(16226:16226): Conecte al servidor.
+[INFO] 22:15:06:701 kernel/(16226:16227): Finalizó
+[INFO] 22:15:11:896 kernel/(16226:16227): Finalizó
+[INFO] 22:15:17:488 kernel/(16226:16227): Finalizó
+[INFO] 22:15:27:303 kernel/(16226:16227): 4
+[INFO] 22:15:27:303 kernel/(16226:16227): Finalizó
+[INFO] 22:15:27:303 kernel/(16226:16227): 10
+[INFO] 22:15:27:303 kernel/(16226:16227): 9
+[INFO] 22:15:27:303 kernel/(16226:16227): 2
+[INFO] 22:15:27:303 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:324 kernel/(16226:16227): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:15:27:366 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:500, Value: Gaston Raro
+[INFO] 22:15:27:366 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:371 kernel/(16226:16227): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:15:27:376 kernel/(16226:16227): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:15:27:380 kernel/(16226:16227): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:15:27:380 kernel/(16226:16227): Finalizó quantum
+[WARNING] 22:15:27:380 kernel/(16226:16227): Comando no reconocido
+[ERROR] 22:15:27:380 kernel/(16226:16227): Script terminado por linea erronea
+[INFO] 22:15:27:380 kernel/(16226:16227): 6
+[INFO] 22:15:27:380 kernel/(16226:16227): Finalizó
+[DEBUG] 22:15:27:383 kernel/(16226:16227): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:15:27:386 kernel/(16226:16227): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:15:27:386 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:431 kernel/(16226:16227): Registro no encontrado
+[INFO] 22:15:27:431 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:472 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:500, Value: Pinto loco
+[DEBUG] 22:15:27:476 kernel/(16226:16227): Registro no encontrado
+[DEBUG] 22:15:27:479 kernel/(16226:16227): Registro no encontrado
+[INFO] 22:15:27:479 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:481 kernel/(16226:16227): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:15:27:485 kernel/(16226:16227): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:15:27:488 kernel/(16226:16227): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:15:27:488 kernel/(16226:16227): Finalizó quantum
+[DEBUG] 22:15:27:491 kernel/(16226:16227): Registro no encontrado
+[DEBUG] 22:15:27:493 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:555, Value: Pinto Loco
+[DEBUG] 22:15:27:495 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:876, Value: Leandrovich
+[INFO] 22:15:27:495 kernel/(16226:16227): Finalizó
+[DEBUG] 22:15:27:497 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:876, Value: Leandrovich
+[DEBUG] 22:15:27:498 kernel/(16226:16227): Registro: TimeStamp: 1559870127, Key:555, Value: Pinto Loco
+[DEBUG] 22:15:27:499 kernel/(16226:16227): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:15:27:499 kernel/(16226:16227): Finalizó
+[DEBUG] 22:15:27:502 kernel/(16226:16227): Registro no encontrado
+[INFO] 22:15:27:502 kernel/(16226:16227): Finalizó
+[INFO] 22:19:17:70 kernel/(16293:16293): 5555
+[INFO] 22:19:17:70 kernel/(16293:16293): Conecte al servidor.
+[DEBUG] 22:19:17:70 kernel/(16293:16295): Conecte a la memoria numero 2
+[INFO] 22:19:17:71 kernel/(16293:16294): Finalizó
+[INFO] 22:19:24:891 kernel/(16293:16294): Finalizó
+[INFO] 22:19:31:850 kernel/(16293:16294): Finalizó
+[INFO] 22:19:35:305 kernel/(16293:16294): 4
+[INFO] 22:19:35:305 kernel/(16293:16294): Finalizó
+[INFO] 22:19:35:305 kernel/(16293:16294): 10
+[INFO] 22:19:35:305 kernel/(16293:16294): 9
+[INFO] 22:19:35:306 kernel/(16293:16294): 2
+[INFO] 22:19:35:306 kernel/(16293:16294): Finalizó quantum
+[DEBUG] 22:19:35:307 kernel/(16293:16294): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:19:35:346 kernel/(16293:16294): Registro: TimeStamp: 1559870375, Key:500, Value: Gaston Raro
+[INFO] 22:19:35:346 kernel/(16293:16294): Finalizó quantum
+[DEBUG] 22:19:35:348 kernel/(16293:16294): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:19:35:349 kernel/(16293:16294): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:19:35:351 kernel/(16293:16294): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:19:35:351 kernel/(16293:16294): Finalizó quantum
+[WARNING] 22:19:35:351 kernel/(16293:16294): Comando no reconocido
+[ERROR] 22:19:35:351 kernel/(16293:16294): Script terminado por linea erronea
+[INFO] 22:19:35:351 kernel/(16293:16294): 6
+[INFO] 22:19:35:351 kernel/(16293:16294): Finalizó
+[DEBUG] 22:19:35:352 kernel/(16293:16294): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:19:35:353 kernel/(16293:16294): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:19:35:353 kernel/(16293:16294): Finalizó quantum
+[DEBUG] 22:19:35:391 kernel/(16293:16294): Registro no encontrado
+[INFO] 22:19:35:391 kernel/(16293:16294): Finalizó quantum
+[DEBUG] 22:19:35:391 kernel/(16293:16294): Registro: TimeStamp: 1559870375, Key:500, Value: Pinto loco
+[DEBUG] 22:19:35:394 kernel/(16293:16294): Registro no encontrado
+[DEBUG] 22:19:35:612 kernel/(16293:16294): 
+[INFO] 22:19:35:612 kernel/(16293:16294): Finalizó quantum
+[DEBUG] 22:19:35:612 kernel/(16293:16294): ): 
+
+[INFO] 22:21:30:592 kernel/(16389:16389): 5555
+[INFO] 22:21:30:593 kernel/(16389:16389): Conecte al servidor.
+[DEBUG] 22:21:30:594 kernel/(16389:16392): Conecte a la memoria numero 2
+[INFO] 22:21:30:594 kernel/(16389:16391): Finalizó
+[INFO] 22:21:40:628 kernel/(16389:16391): Finalizó
+[INFO] 22:21:46:499 kernel/(16389:16391): Finalizó
+[INFO] 22:21:49:855 kernel/(16389:16391): 4
+[INFO] 22:21:49:855 kernel/(16389:16391): Finalizó
+[INFO] 22:21:49:855 kernel/(16389:16391): 10
+[INFO] 22:21:49:855 kernel/(16389:16391): 9
+[INFO] 22:21:49:856 kernel/(16389:16391): 2
+[INFO] 22:21:49:856 kernel/(16389:16391): Finalizó quantum
+[DEBUG] 22:21:49:858 kernel/(16389:16391): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:21:49:901 kernel/(16389:16391): Registro: TimeStamp: 1559870509, Key:500, Value: Gaston Raro
+[INFO] 22:21:49:901 kernel/(16389:16391): Finalizó quantum
+[DEBUG] 22:21:49:905 kernel/(16389:16391): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:21:49:907 kernel/(16389:16391): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:21:49:908 kernel/(16389:16391): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:21:49:908 kernel/(16389:16391): Finalizó quantum
+[WARNING] 22:21:49:908 kernel/(16389:16391): Comando no reconocido
+[ERROR] 22:21:49:908 kernel/(16389:16391): Script terminado por linea erronea
+[INFO] 22:21:49:908 kernel/(16389:16391): 6
+[INFO] 22:21:49:909 kernel/(16389:16391): Finalizó
+[DEBUG] 22:21:49:910 kernel/(16389:16391): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:21:49:911 kernel/(16389:16391): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:21:49:911 kernel/(16389:16391): Finalizó quantum
+[DEBUG] 22:21:49:953 kernel/(16389:16391): Registro no encontrado
+[INFO] 22:21:49:953 kernel/(16389:16391): Finalizó quantum
+[DEBUG] 22:21:49:953 kernel/(16389:16391): Registro: TimeStamp: 1559870509, Key:500, Value: Pinto loco
+[DEBUG] 22:21:49:954 kernel/(16389:16391): Registro no encontrado
+[DEBUG] 22:21:50:192 kernel/(16389:16391): 
+[INFO] 22:21:50:192 kernel/(16389:16391): Finalizó quantum
+[DEBUG] 22:21:50:192 kernel/(16389:16391): ): 
+
+[INFO] 22:24:04:121 kernel/(16501:16501): 5555
+[INFO] 22:24:04:121 kernel/(16501:16501): Conecte al servidor.
+[DEBUG] 22:24:04:122 kernel/(16501:16504): Conecte a la memoria numero 2
+[INFO] 22:24:04:123 kernel/(16501:16503): Finalizó
+[INFO] 22:24:12:877 kernel/(16501:16503): Finalizó
+[INFO] 22:24:19:795 kernel/(16501:16503): Finalizó
+[INFO] 22:24:25:92 kernel/(16501:16503): 4
+[INFO] 22:24:25:92 kernel/(16501:16503): Finalizó
+[INFO] 22:24:25:93 kernel/(16501:16503): 10
+[INFO] 22:24:25:93 kernel/(16501:16503): 9
+[INFO] 22:24:25:93 kernel/(16501:16503): 2
+[INFO] 22:24:25:94 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:98 kernel/(16501:16503): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 22:24:25:139 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:500, Value: Gaston Raro
+[INFO] 22:24:25:139 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:141 kernel/(16501:16503): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:24:25:142 kernel/(16501:16503): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:24:25:144 kernel/(16501:16503): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:24:25:144 kernel/(16501:16503): Finalizó quantum
+[WARNING] 22:24:25:144 kernel/(16501:16503): Comando no reconocido
+[ERROR] 22:24:25:144 kernel/(16501:16503): Script terminado por linea erronea
+[INFO] 22:24:25:144 kernel/(16501:16503): 6
+[INFO] 22:24:25:144 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:25:146 kernel/(16501:16503): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:24:25:148 kernel/(16501:16503): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:24:25:148 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:187 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:25:187 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:226 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:500, Value: Pinto loco
+[DEBUG] 22:24:25:227 kernel/(16501:16503): Registro no encontrado
+[DEBUG] 22:24:25:229 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:25:229 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:230 kernel/(16501:16503): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:24:25:231 kernel/(16501:16503): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:24:25:232 kernel/(16501:16503): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:24:25:232 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:25:233 kernel/(16501:16503): Registro no encontrado
+[DEBUG] 22:24:25:233 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:25:233 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[INFO] 22:24:25:233 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:25:234 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[DEBUG] 22:24:25:234 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:25:234 kernel/(16501:16503): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:25:234 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:25:236 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:25:236 kernel/(16501:16503): Finalizó
+[INFO] 22:24:39:96 kernel/(16501:16503): Finalizó
+[INFO] 22:24:43:663 kernel/(16501:16503): 4
+[INFO] 22:24:43:663 kernel/(16501:16503): Finalizó
+[INFO] 22:24:43:663 kernel/(16501:16503): 10
+[INFO] 22:24:43:664 kernel/(16501:16503): 9
+[INFO] 22:24:43:664 kernel/(16501:16503): 2
+[INFO] 22:24:43:664 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:664 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:500, Value: Pinto loco
+[DEBUG] 22:24:43:710 kernel/(16501:16503): Registro: TimeStamp: 1559870683, Key:500, Value: Gaston Raro
+[INFO] 22:24:43:710 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:711 kernel/(16501:16503): Registro: TimeStamp: 300, Key:1, Value: Alex
+[DEBUG] 22:24:43:712 kernel/(16501:16503): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[DEBUG] 22:24:43:712 kernel/(16501:16503): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 22:24:43:712 kernel/(16501:16503): Finalizó quantum
+[WARNING] 22:24:43:713 kernel/(16501:16503): Comando no reconocido
+[ERROR] 22:24:43:713 kernel/(16501:16503): Script terminado por linea erronea
+[INFO] 22:24:43:713 kernel/(16501:16503): 6
+[INFO] 22:24:43:713 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:43:713 kernel/(16501:16503): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[DEBUG] 22:24:43:713 kernel/(16501:16503): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 22:24:43:713 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:750 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:43:750 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:751 kernel/(16501:16503): Registro: TimeStamp: 1559870683, Key:500, Value: Pinto loco
+[DEBUG] 22:24:43:752 kernel/(16501:16503): Registro no encontrado
+[DEBUG] 22:24:43:753 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:43:753 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:753 kernel/(16501:16503): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[DEBUG] 22:24:43:753 kernel/(16501:16503): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[DEBUG] 22:24:43:753 kernel/(16501:16503): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 22:24:43:753 kernel/(16501:16503): Finalizó quantum
+[DEBUG] 22:24:43:755 kernel/(16501:16503): Registro no encontrado
+[DEBUG] 22:24:43:755 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:43:755 kernel/(16501:16503): Registro: TimeStamp: 1559870683, Key:876, Value: Leandrovich
+[INFO] 22:24:43:755 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:43:755 kernel/(16501:16503): Registro: TimeStamp: 1559870665, Key:876, Value: Leandrovich
+[DEBUG] 22:24:43:755 kernel/(16501:16503): Registro: TimeStamp: 1559870683, Key:555, Value: Pinto Loco
+[DEBUG] 22:24:43:756 kernel/(16501:16503): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 22:24:43:756 kernel/(16501:16503): Finalizó
+[DEBUG] 22:24:43:757 kernel/(16501:16503): Registro no encontrado
+[INFO] 22:24:43:757 kernel/(16501:16503): Finalizó
