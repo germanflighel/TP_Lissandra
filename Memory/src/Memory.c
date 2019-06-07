@@ -70,8 +70,8 @@ int main() {
 	//es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
 	numero_memoria = config_get_int_value(conection_conf, "MEMORY_NUMBER");
 
-	retardo_mem = config_get_int_value(conection_conf, "RETARDO_MEM");
-	retardo_fs = config_get_int_value(conection_conf, "RETARDO_FS");
+	retardo_mem = 1000*config_get_int_value(conection_conf, "RETARDO_MEM");
+	retardo_fs = 1000*config_get_int_value(conection_conf, "RETARDO_FS");
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
@@ -416,7 +416,7 @@ void enviarMensaje(char* mensaje, int socket) {
 	int total_size;
 	char* serializedMesagge = serializarMensaje(mensaje, &total_size);
 
-	sleep(retardo_mem / 1000);
+	usleep(retardo_mem);
 
 	send(socket, serializedMesagge, total_size, 0);
 	dispose_package(&serializedMesagge);
@@ -625,14 +625,14 @@ void send_package(int header, void* package, int lfsSocket) {
 	switch (header) {
 	case SELECT:
 		serializedPackage = serializarSelect((t_PackageSelect*) package);
-		sleep(retardo_fs / 1000);
+		usleep(retardo_fs);
 		send(lfsSocket, serializedPackage,
 				((t_PackageSelect*) package)->total_size, 0);
 
 		break;
 	case INSERT:
 		serializedPackage = serializarInsert((t_PackageInsert*) package);
-		sleep(retardo_fs / 1000);
+		usleep(retardo_fs);
 		send(lfsSocket, serializedPackage,
 				((t_PackageInsert*) package)->total_size, 0);
 
@@ -640,7 +640,7 @@ void send_package(int header, void* package, int lfsSocket) {
 
 	case CREATE:
 		serializedPackage = serializarCreate((t_PackageCreate*) package);
-		sleep(retardo_fs / 1000);
+		usleep(retardo_fs);
 		send(lfsSocket, serializedPackage,
 				((t_PackageCreate*) package)->total_size, 0);
 
@@ -649,7 +649,7 @@ void send_package(int header, void* package, int lfsSocket) {
 
 		serializedPackage = serializarRequestDescribe(
 				(t_PackageDescribe*) package);
-		sleep(retardo_fs / 1000);
+		usleep(retardo_fs);
 		send(lfsSocket, serializedPackage,
 				((t_PackageDescribe*) package)->total_size, 0);
 
@@ -664,7 +664,7 @@ void send_package(int header, void* package, int lfsSocket) {
 		char* serializedPackage2;
 		serializedPackage2 = serializarDescribe(&describeRecibido);
 
-		sleep(retardo_mem / 1000);
+		usleep(retardo_mem);
 
 		send(socketCliente, serializedPackage2,
 				describeRecibido.cant_tablas * sizeof(t_metadata)
