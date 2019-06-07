@@ -26,7 +26,7 @@ endif
 all: Memory
 
 dependents:
-	-cd /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug && $(MAKE) all
+	-cd /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug && $(MAKE) clean all
 
 # Tool invocations
 Memory: $(OBJS) $(USER_OBJS) /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so

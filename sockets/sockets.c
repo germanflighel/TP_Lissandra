@@ -63,7 +63,7 @@ char* serializarDescribe(t_describe *package) {
 	return serializedPackage;
 }
 
-char* serializarMensaje(char* mensaje,int* size) {
+char* serializarMensaje(char* mensaje, int* size) {
 
 	int msg_length = strlen(mensaje);
 	int total_size = sizeof(uint32_t) + msg_length;
@@ -97,7 +97,7 @@ int recieve_and_deserialize_mensaje(int socketCliente) {
 	if (!status)
 		return 0;
 
-	printf("%d \n",strlen);
+	printf("%d \n", strlen);
 
 	mensaje = malloc(strlen + 1);
 	status = recv(socketCliente, mensaje, strlen, 0);
@@ -170,6 +170,9 @@ int validarParametros(int header, char* parametros) {
 		if (cant_parametros(parametrosSeparados) != 2) {
 			free(parametrosSeparados);
 			return 0;
+		}else if (!esUnNumero(parametrosSeparados[1])) {
+			free(parametrosSeparados);
+			return 0;
 		}
 		break;
 	case INSERT:
@@ -181,6 +184,9 @@ int validarParametros(int header, char* parametros) {
 				|| parametrosSeparados[2][0] != '"'
 				|| parametrosSeparados[2][strlen(parametrosSeparados[2]) - 1]
 						!= '"') {
+			free(parametrosSeparados);
+			return 0;
+		} else if (!esUnNumero(parametrosSeparados[1])) {
 			free(parametrosSeparados);
 			return 0;
 		}
@@ -205,6 +211,13 @@ int validarParametros(int header, char* parametros) {
 		break;
 	}
 	return 1;
+}
+
+int esUnNumero(char* parametro){
+	int num;
+	num = atoi( parametro );
+
+	return !(num == 0 && parametro[0] != '0');
 }
 
 int fill_package_select(t_PackageSelect *package, char* parametros) {
@@ -550,7 +563,7 @@ int recieve_header(int socketCliente) {
 
 	memcpy(&(header), buffer, buffer_size);
 
-	if (!status){
+	if (!status) {
 		free(buffer);
 		return 0;
 	}
@@ -828,7 +841,6 @@ void enviar_describe(char* tabla, int socket) {
 
 	dispose_package(&serializedPackage);
 }
-
 
 int recibir_handshake(int idEsperado, int socket) {
 

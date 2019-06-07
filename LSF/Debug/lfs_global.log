@@ -1,0 +1,536 @@
+[DEBUG] 12:15:03:481 LFS/(4669:4669): 6668
+[DEBUG] 12:15:03:481 LFS/(4669:4669): /home/utnso/workspace/LISSANDRA_FS/Metadata/Metadata.bin
+[WARNING] 12:15:03:482 LFS/(4669:4669): Bits que maneja el bitarray: 5192
+[DEBUG] 12:15:03:482 LFS/(4669:4669): Levante el Bitmap
+[DEBUG] 12:15:03:482 LFS/(4669:4669): Primer bloque libre: 9
+[INFO] 12:15:03:483 LFS/(4669:4669): Esperando memoria...
+[INFO] 12:15:08:280 LFS/(4669:4673): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:15:08:280 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:11:499 LFS/(4669:4673): Got a DESCRIBE
+[DEBUG] 12:15:11:499 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/
+[DEBUG] 12:15:11:500 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:11:500 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:11:501 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/PINTO/Metadata
+[DEBUG] 12:15:11:501 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/TABLA1/Metadata
+[DEBUG] 12:15:11:502 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/HOLA/Metadata
+[DEBUG] 12:15:11:502 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/PRUEBA/Metadata
+[DEBUG] 12:15:11:503 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/SERIES/Metadata
+[DEBUG] 12:15:11:503 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/LEAN/Metadata
+[DEBUG] 12:15:11:504 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/NOMBRES/Metadata
+[DEBUG] 12:15:11:504 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/SANTIGAY/Metadata
+[DEBUG] 12:15:11:504 LFS/(4669:4673): 10
+[INFO] 12:15:11:505 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:50 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:50 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:50 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:50 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:50 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:50 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:50 LFS/(4669:4673): 
+[DEBUG] 12:15:27:50 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:50 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:50 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:50 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:51 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:51 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:51 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:51 LFS/(4669:4673): German
+[INFO] 12:15:27:51 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:95 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:95 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:95 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:95 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:95 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:95 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:95 LFS/(4669:4673): 
+[DEBUG] 12:15:27:95 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:95 LFS/(4669:4673): 2
+[DEBUG] 12:15:27:95 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/2.bin
+[DEBUG] 12:15:27:96 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:96 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/5.bin
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:96 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:96 LFS/(4669:4673): Alex
+[INFO] 12:15:27:96 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:97 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:97 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:97 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:97 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:97 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:97 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:97 LFS/(4669:4673): 
+[DEBUG] 12:15:27:97 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:97 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:97 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/1.bin
+[DEBUG] 12:15:27:98 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:98 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/4.bin
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:98 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:98 LFS/(4669:4673): Pasca
+[INFO] 12:15:27:98 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:99 LFS/(4669:4673): 
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:99 LFS/(4669:4673): 2
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/2.bin
+[DEBUG] 12:15:27:99 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:99 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/5.bin
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:99 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:99 LFS/(4669:4673): Felipe Israel
+[INFO] 12:15:27:99 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:100 LFS/(4669:4673): O/Metadata
+
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:100 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:100 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:100 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:100 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:101 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Leandro
+[INFO] 12:15:27:101 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:101 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:101 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:101 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:101 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:101 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:102 LFS/(4669:4673): IME
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:102 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:102 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:102 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:102 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:102 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:102 LFS/(4669:4673): Pinto
+[INFO] 12:15:27:102 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:144 LFS/(4669:4673): 
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:144 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/1.bin
+[DEBUG] 12:15:27:144 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:144 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/4.bin
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:144 LFS/(4669:4673): Llegue2
+[DEBUG] 12:15:27:144 LFS/(4669:4673): No esta la key buscada
+[INFO] 12:15:27:145 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:184 LFS/(4669:4673): 
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:184 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:184 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:184 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:184 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Llegue2
+[DEBUG] 12:15:27:185 LFS/(4669:4673): No esta la key buscada
+[INFO] 12:15:27:185 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:185 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:185 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:185 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:185 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:185 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:186 LFS/(4669:4673): o un registro
+
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:186 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:186 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/1.bin
+[DEBUG] 12:15:27:186 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:186 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/4.bin
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:186 LFS/(4669:4673): Llegue2
+[DEBUG] 12:15:27:186 LFS/(4669:4673): No esta la key buscada
+[INFO] 12:15:27:186 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:187 LFS/(4669:4673):  tabla en mem_table
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:187 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:187 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:187 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:187 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:187 LFS/(4669:4673): Lacha
+[INFO] 12:15:27:188 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:188 LFS/(4669:4673): ta
+
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:188 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:188 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:188 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:188 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:189 LFS/(4669:4673): hola
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Santi
+[INFO] 12:15:27:189 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:15:27:189 LFS/(4669:4673): 5:27:189 LFS/(4669:4673)¹
+[DEBUG] 12:15:27:189 LFS/(4669:4673): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:15:27:189 LFS/(4669:4673): 2
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/2.bin
+[DEBUG] 12:15:27:189 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:189 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/5.bin
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:190 LFS/(4669:4673): Llegue2
+[DEBUG] 12:15:27:190 LFS/(4669:4673): No esta la key buscada
+[INFO] 12:15:27:190 LFS/(4669:4673): Listo para recibir consulta
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Got a SELECT
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Existe tabla, BRO!
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:15:27:192 LFS/(4669:4673): IME
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 12:15:27:192 LFS/(4669:4673): 1
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/1.bin
+[DEBUG] 12:15:27:192 LFS/(4669:4673): No existe la tabla en mem_table
+[DEBUG] 12:15:27:192 LFS/(4669:4673): /home/utnso/workspace/LISSANDRA_FS/Bloques/3.bin
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Lei el bloque a escanear
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Leyendo un registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere los datos del registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Libere datos_registro
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Destrui la config particion
+[DEBUG] 12:15:27:192 LFS/(4669:4673): Llegue2
+[DEBUG] 12:15:27:192 LFS/(4669:4673): No esta la key buscada
+[INFO] 12:15:27:192 LFS/(4669:4673): Listo para recibir consulta
+[INFO] 12:15:30:931 LFS/(4669:4673): Cliente Desconectado
+[ERROR] 12:15:33:145 LFS/(4669:4670): Bye
+[DEBUG] 12:16:56:398 LFS/(4708:4708): 6668
+[DEBUG] 12:16:56:398 LFS/(4708:4708): /home/utnso/workspace/LISSANDRA_FS/Metadata/Metadata.bin
+[WARNING] 12:16:56:398 LFS/(4708:4708): Bits que maneja el bitarray: 5192
+[DEBUG] 12:16:56:398 LFS/(4708:4708): Levante el Bitmap
+[DEBUG] 12:16:56:398 LFS/(4708:4708): Primer bloque libre: 9
+[INFO] 12:16:56:399 LFS/(4708:4708): Esperando memoria...
+[INFO] 12:17:00:277 LFS/(4708:4711): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:17:00:277 LFS/(4708:4711): Listo para recibir consulta
+[DEBUG] 12:17:01:656 LFS/(4708:4711): Got a DESCRIBE
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/PINTO/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/TABLA1/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/HOLA/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/PRUEBA/Metadata
+[DEBUG] 12:17:01:656 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/SERIES/Metadata
+[DEBUG] 12:17:01:657 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/LEAN/Metadata
+[DEBUG] 12:17:01:657 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/NOMBRES/Metadata
+[DEBUG] 12:17:01:657 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/SANTIGAY/Metadata
+[DEBUG] 12:17:01:657 LFS/(4708:4711): 10
+[INFO] 12:17:01:657 LFS/(4708:4711): Listo para recibir consulta
+[DEBUG] 12:17:31:193 LFS/(4708:4711): Got a SELECT
+[DEBUG] 12:17:31:193 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:17:31:193 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:17:31:194 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Existe tabla, BRO!
+[DEBUG] 12:17:31:194 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:17:31:194 LFS/(4708:4711): 
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:17:31:194 LFS/(4708:4711): 1
+[DEBUG] 12:17:31:194 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/1.bin
+[DEBUG] 12:17:31:194 LFS/(4708:4711): No existe la tabla en mem_table
+[DEBUG] 12:17:31:194 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Bloques/4.bin
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Lei el bloque a escanear
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Leyendo un registro
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Libere los datos del registro
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Libere datos_registro
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Destrui la config particion
+[DEBUG] 12:17:31:194 LFS/(4708:4711): hola
+[DEBUG] 12:17:31:194 LFS/(4708:4711): Pasca
+[INFO] 12:17:31:194 LFS/(4708:4711): Listo para recibir consulta
+[DEBUG] 12:17:37:275 LFS/(4708:4711): Got a SELECT
+[DEBUG] 12:17:37:275 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:17:37:275 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:17:37:275 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:17:37:275 LFS/(4708:4711): Existe tabla, BRO!
+[DEBUG] 12:17:37:275 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:17:37:275 LFS/(4708:4711): 
+[DEBUG] 12:17:37:275 LFS/(4708:4711): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 20000
+[DEBUG] 12:17:37:275 LFS/(4708:4711): 1
+[DEBUG] 12:17:37:276 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/1.bin
+[DEBUG] 12:17:37:276 LFS/(4708:4711): No existe la tabla en mem_table
+[DEBUG] 12:17:37:276 LFS/(4708:4711): /home/utnso/workspace/LISSANDRA_FS/Bloques/4.bin
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Lei el bloque a escanear
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Leyendo un registro
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Libere los datos del registro
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Libere datos_registro
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Destrui la config particion
+[DEBUG] 12:17:37:276 LFS/(4708:4711): Llegue2
+[DEBUG] 12:17:37:276 LFS/(4708:4711): No esta la key buscada
+[INFO] 12:17:37:276 LFS/(4708:4711): Listo para recibir consulta
+[INFO] 12:17:52:734 LFS/(4708:4711): Cliente Desconectado
+[ERROR] 12:17:55:933 LFS/(4708:4709): Bye
+[DEBUG] 12:20:41:374 LFS/(4778:4778): 6668
+[DEBUG] 12:20:41:374 LFS/(4778:4778): /home/utnso/workspace/LISSANDRA_FS/Metadata/Metadata.bin
+[WARNING] 12:20:41:375 LFS/(4778:4778): Bits que maneja el bitarray: 5192
+[DEBUG] 12:20:41:375 LFS/(4778:4778): Levante el Bitmap
+[DEBUG] 12:20:41:375 LFS/(4778:4778): Primer bloque libre: 9
+[INFO] 12:20:41:375 LFS/(4778:4778): Esperando memoria...
+[INFO] 12:20:44:487 LFS/(4778:4781): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:20:44:487 LFS/(4778:4781): Listo para recibir consulta
+[DEBUG] 12:20:46:127 LFS/(4778:4781): Got a DESCRIBE
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/PINTO/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/TABLA1/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/HOLA/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/PRUEBA/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/SERIES/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/LEAN/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/NOMBRES/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): /home/utnso/workspace/LISSANDRA_FS/Tables/SANTIGAY/Metadata
+[DEBUG] 12:20:46:127 LFS/(4778:4781): 10
+[INFO] 12:20:46:127 LFS/(4778:4781): Listo para recibir consulta
+[WARNING] 12:20:56:714 LFS/(4778:4779): JUDIOS hola "german"
+[DEBUG] 12:20:56:714 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:20:56:714 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:20:56:714 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:20:56:714 LFS/(4778:4779): Existe tabla, BRO!
+[DEBUG] 12:20:56:714 LFS/(4778:4779): No existe la tabla en mem_table
+[DEBUG] 12:20:56:714 LFS/(4778:4779): Voy a crear el registro
+[DEBUG] 12:20:56:714 LFS/(4778:4779): Key: 0, Value: german, Timestamp: 1559920856
+[INFO] 12:20:56:714 LFS/(4778:4779): Se inserto exitosamente
+[WARNING] 12:21:31:824 LFS/(4778:4779): JUDIOS kiwiss "germi"
+[DEBUG] 12:21:31:824 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:21:31:824 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:31:824 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:31:824 LFS/(4778:4779): Existe tabla, BRO!
+[DEBUG] 12:21:31:824 LFS/(4778:4779): Existe la tabla en mem_table
+[DEBUG] 12:21:31:824 LFS/(4778:4779): Voy a crear el registro
+[DEBUG] 12:21:31:824 LFS/(4778:4779): Key: 0, Value: germi, Timestamp: 1559920891
+[INFO] 12:21:31:824 LFS/(4778:4779): Se inserto exitosamente
+[WARNING] 12:21:42:764 LFS/(4778:4779): JUDIOS ki4ss "germi"
+[DEBUG] 12:21:42:764 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:21:42:764 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:42:764 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:42:764 LFS/(4778:4779): Existe tabla, BRO!
+[DEBUG] 12:21:42:764 LFS/(4778:4779): Existe la tabla en mem_table
+[DEBUG] 12:21:42:764 LFS/(4778:4779): Voy a crear el registro
+[DEBUG] 12:21:42:764 LFS/(4778:4779): Key: 0, Value: germi, Timestamp: 1559920902
+[INFO] 12:21:42:764 LFS/(4778:4779): Se inserto exitosamente
+[WARNING] 12:21:48:771 LFS/(4778:4779): JUDIOS s "germi"
+[DEBUG] 12:21:48:771 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:21:48:771 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:48:771 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:48:771 LFS/(4778:4779): Existe tabla, BRO!
+[DEBUG] 12:21:48:771 LFS/(4778:4779): Existe la tabla en mem_table
+[DEBUG] 12:21:48:771 LFS/(4778:4779): Voy a crear el registro
+[DEBUG] 12:21:48:771 LFS/(4778:4779): Key: 0, Value: germi, Timestamp: 1559920908
+[INFO] 12:21:48:771 LFS/(4778:4779): Se inserto exitosamente
+[WARNING] 12:21:53:249 LFS/(4778:4779): JUDIOS 44 "germi"
+[DEBUG] 12:21:53:249 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS
+[DEBUG] 12:21:53:249 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:53:249 LFS/(4778:4779): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS
+[DEBUG] 12:21:53:249 LFS/(4778:4779): Existe tabla, BRO!
+[DEBUG] 12:21:53:249 LFS/(4778:4779): Existe la tabla en mem_table
+[DEBUG] 12:21:53:249 LFS/(4778:4779): Voy a crear el registro
+[DEBUG] 12:21:53:249 LFS/(4778:4779): Key: 44, Value: germi, Timestamp: 1559920913
+[INFO] 12:21:53:249 LFS/(4778:4779): Se inserto exitosamente
+[ERROR] 12:21:55:920 LFS/(4778:4779): Bye
+[DEBUG] 12:27:21:919 LFS/(5244:5244): 6668
+[DEBUG] 12:27:21:919 LFS/(5244:5244): /home/utnso/workspace/LISSANDRA_FS/Metadata/Metadata.bin
+[WARNING] 12:27:21:919 LFS/(5244:5244): Bits que maneja el bitarray: 5192
+[DEBUG] 12:27:21:920 LFS/(5244:5244): Levante el Bitmap
+[DEBUG] 12:27:21:920 LFS/(5244:5244): Primer bloque libre: 9
+[INFO] 12:27:21:920 LFS/(5244:5244): Esperando memoria...
+[INFO] 12:27:24:975 LFS/(5244:5247): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:27:24:975 LFS/(5244:5247): Listo para recibir consulta
+[DEBUG] 12:27:26:216 LFS/(5244:5247): Got a DESCRIBE
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/JUDIOS/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/GRUPO/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/PINTO/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/TABLA1/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/HOLA/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/PRUEBA/Metadata
+[DEBUG] 12:27:26:216 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/SERIES/Metadata
+[DEBUG] 12:27:26:217 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/LEAN/Metadata
+[DEBUG] 12:27:26:217 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/NOMBRES/Metadata
+[DEBUG] 12:27:26:217 LFS/(5244:5247): /home/utnso/workspace/LISSANDRA_FS/Tables/SANTIGAY/Metadata
+[DEBUG] 12:27:26:217 LFS/(5244:5247): 10
+[INFO] 12:27:26:217 LFS/(5244:5247): Listo para recibir consulta
+[INFO] 12:28:11:186 LFS/(5244:5247): Cliente Desconectado
+[ERROR] 12:28:13:704 LFS/(5244:5245): Bye

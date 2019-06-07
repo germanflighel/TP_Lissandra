@@ -1,0 +1,67 @@
+[INFO] 12:15:08:280 memory/(4672:4672): 5555
+[DEBUG] 12:15:08:280 memory/(4672:4672): Conectado al LFS
+[INFO] 12:15:08:280 memory/(4672:4672): Maximo tamaño del value: 20.
+[INFO] 12:15:08:280 memory/(4672:4672): 20
+[INFO] 12:15:08:280 memory/(4672:4672): 5555
+[DEBUG] 12:15:11:499 memory/(4672:4672): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 12:15:27:50 memory/(4672:4672): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 12:15:27:52 memory/(4672:4672): Registro: TimeStamp: 1, Key:500, Value: German
+[DEBUG] 12:15:27:94 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:500, Value: Gaston Raro
+[INFO] 12:15:27:95 memory/(4672:4672): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 12:15:27:97 memory/(4672:4672): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 12:15:27:97 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:98 memory/(4672:4672): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 12:15:27:99 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:100 memory/(4672:4672): Registro: TimeStamp: 500, Key:3, Value: Felipe Israel
+[INFO] 12:15:27:100 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:101 memory/(4672:4672): Registro: TimeStamp: 10, Key:600, Value: Leandro
+[INFO] 12:15:27:101 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:102 memory/(4672:4672): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 12:15:27:143 memory/(4672:4672): No tengo ese registro
+[WARNING] 12:15:27:145 memory/(4672:4672): Registro no encontrado
+[DEBUG] 12:15:27:183 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:500, Value: Pinto loco
+[INFO] 12:15:27:184 memory/(4672:4672): No tengo ese registro
+[WARNING] 12:15:27:185 memory/(4672:4672): Registro no encontrado
+[INFO] 12:15:27:185 memory/(4672:4672): No tengo ese registro
+[WARNING] 12:15:27:186 memory/(4672:4672): Registro no encontrado
+[DEBUG] 12:15:27:186 memory/(4672:4672): Registro: TimeStamp: 15, Key:700, Value: Pinto
+[INFO] 12:15:27:187 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:188 memory/(4672:4672): Registro: TimeStamp: 20, Key:800, Value: Lacha
+[INFO] 12:15:27:188 memory/(4672:4672): No tengo ese registro
+[DEBUG] 12:15:27:189 memory/(4672:4672): Registro: TimeStamp: 30, Key:900, Value: Santi
+[INFO] 12:15:27:189 memory/(4672:4672): No tengo ese registro
+[WARNING] 12:15:27:190 memory/(4672:4672): Registro no encontrado
+[DEBUG] 12:15:27:190 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:555, Value: Pinto Loco
+[DEBUG] 12:15:27:191 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:876, Value: Leandrovich
+[DEBUG] 12:15:27:191 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:876, Value: Leandrovich
+[DEBUG] 12:15:27:191 memory/(4672:4672): Registro: TimeStamp: 1559920527, Key:555, Value: Pinto Loco
+[DEBUG] 12:15:27:191 memory/(4672:4672): Registro: TimeStamp: 300, Key:1, Value: Alex
+[INFO] 12:15:27:192 memory/(4672:4672): No tengo ese registro
+[WARNING] 12:15:27:192 memory/(4672:4672): Registro no encontrado
+[WARNING] 12:15:30:931 memory/(4672:4672): Kernel Desconectado.
+[INFO] 12:17:00:277 memory/(4710:4710): 5555
+[DEBUG] 12:17:00:277 memory/(4710:4710): Conectado al LFS
+[INFO] 12:17:00:277 memory/(4710:4710): Maximo tamaño del value: 20.
+[INFO] 12:17:00:277 memory/(4710:4710): 20
+[INFO] 12:17:00:277 memory/(4710:4710): 5555
+[DEBUG] 12:17:01:655 memory/(4710:4710): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 12:17:31:193 memory/(4710:4710): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 12:17:31:194 memory/(4710:4710): Registro: TimeStamp: 1000, Key:2, Value: Pasca
+[INFO] 12:17:37:275 memory/(4710:4710): No tengo ese registro
+[WARNING] 12:17:37:276 memory/(4710:4710): Registro no encontrado
+[WARNING] 12:17:52:733 memory/(4710:4710): Kernel Desconectado.
+[INFO] 12:20:44:485 memory/(4780:4780): 5555
+[DEBUG] 12:20:44:486 memory/(4780:4780): Conectado al LFS
+[INFO] 12:20:44:486 memory/(4780:4780): Maximo tamaño del value: 20.
+[INFO] 12:20:44:486 memory/(4780:4780): 20
+[INFO] 12:20:44:486 memory/(4780:4780): 5555
+[DEBUG] 12:20:46:126 memory/(4780:4780): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 12:22:01:583 memory/(4780:4780): Kernel Desconectado.
+[INFO] 12:27:24:974 memory/(5246:5246): 5555
+[DEBUG] 12:27:24:974 memory/(5246:5246): Conectado al LFS
+[INFO] 12:27:24:975 memory/(5246:5246): Maximo tamaño del value: 20.
+[INFO] 12:27:24:975 memory/(5246:5246): 20
+[INFO] 12:27:24:975 memory/(5246:5246): 5555
+[DEBUG] 12:27:26:216 memory/(5246:5246): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 12:28:01:822 memory/(5246:5246): Registro: TimeStamp: 1559921276, Key:22, Value: putilla
+[WARNING] 12:28:11:185 memory/(5246:5246): Kernel Desconectado.
