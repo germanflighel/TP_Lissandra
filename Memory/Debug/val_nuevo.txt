@@ -1,0 +1,288 @@
+==16220== Memcheck, a memory error detector
+==16220== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==16220== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==16220== Command: ./Memory
+==16220== Parent PID: 3219
+==16220== 
+--16220-- 
+--16220-- Valgrind options:
+--16220--    --show-leak-kinds=all
+--16220--    --leak-check=full
+--16220--    -v
+--16220--    --log-file=val_nuevo.txt
+--16220-- Contents of /proc/version:
+--16220--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--16220-- 
+--16220-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--16220-- Page sizes: currently 4096, max supported 4096
+--16220-- Valgrind library directory: /usr/lib/valgrind
+--16220-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--16220--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--16220--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--16220--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--16220--   .. CRC is valid
+--16220-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Memory/Debug/Memory
+--16220-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--16220--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--16220--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--16220--    object doesn't have a symbol table
+--16220--    object doesn't have a dynamic symbol table
+--16220-- Scheduler: using generic scheduler lock implementation.
+--16220-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==16220== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-16220-by-utnso-on-???
+==16220== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-16220-by-utnso-on-???
+==16220== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-16220-by-utnso-on-???
+==16220== 
+==16220== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==16220== don't want to do, unless you know exactly what you're doing,
+==16220== or are doing some strange experiment):
+==16220==   /usr/lib/valgrind/../../bin/vgdb --pid=16220 ...command...
+==16220== 
+==16220== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==16220==   /path/to/gdb ./Memory
+==16220== and then give GDB the following command
+==16220==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=16220
+==16220== --pid is optional if only one valgrind process is running
+==16220== 
+--16220-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--16220-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--16220-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--16220--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--16220--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--16220--    object doesn't have a symbol table
+--16220-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--16220--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--16220--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--16220--    object doesn't have a symbol table
+==16220== WARNING: new redirection conflicts with existing -- ignoring it
+--16220--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--16220--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--16220-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--16220-- Reading syms from /lib/i386-linux-gnu/libm-2.23.so
+--16220--   Considering /lib/i386-linux-gnu/libm-2.23.so ..
+--16220--   .. CRC mismatch (computed 9ba663e0 wanted 0c56bc99)
+--16220--   Considering /usr/lib/debug/lib/i386-linux-gnu/libm-2.23.so ..
+--16220--   .. CRC is valid
+--16220-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--16220--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--16220--   .. build-id is valid
+--16220-- Reading syms from /usr/lib/libcommons.so
+--16220-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--16220--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--16220--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--16220--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--16220--   .. CRC is valid
+--16220-- REDIR: 0x414b4b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x4152140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x4164b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x414a350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--16220-- REDIR: 0x41497e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--16220-- REDIR: 0x414afc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x41f94d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--16220-- REDIR: 0x41495c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--16220-- REDIR: 0x4144f00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--16220-- REDIR: 0x414aa30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+--16220-- REDIR: 0x414b680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--16220-- REDIR: 0x4149580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x4152440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--16220-- REDIR: 0x4148f90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x4152570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+==16220== Invalid write of size 1
+==16220==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x804943E: main (Memory.c:53)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+--16220-- REDIR: 0x4145470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+==16220== Syscall param open(filename) points to unaddressable byte(s)
+==16220==    at 0x41A9713: __open_nocancel (syscall-template.S:84)
+==16220==    by 0x413DACF: _IO_file_open (fileops.c:221)
+==16220==    by 0x413DC50: _IO_file_fopen@@GLIBC_2.1 (fileops.c:328)
+==16220==    by 0x41323B0: __fopen_internal (iofopen.c:86)
+==16220==    by 0x413241D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==16220==    by 0x40CF35E: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== Syscall param stat64(file_name) points to unaddressable byte(s)
+==16220==    at 0x41A905F: _xstat (xstat.c:48)
+==16220==    by 0x40CFC9D: stat (in /usr/lib/libcommons.so)
+==16220==    by 0x40CF386: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== Invalid read of size 1
+==16220==    at 0x402F3A3: __GI_strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x41492BA: strdup (strdup.c:41)
+==16220==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== Invalid read of size 2
+==16220==    at 0x4031200: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x41492D7: strdup (strdup.c:47)
+==16220==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f0 is 8 bytes inside a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+--16220-- REDIR: 0x4145810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--16220-- REDIR: 0x4145520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--16220-- REDIR: 0x4149700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x42095c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--16220-- REDIR: 0x414d280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--16220-- REDIR: 0x414b0d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+==16220== Invalid read of size 1
+==16220==    at 0x4118383: vfprintf (vfprintf.c:1632)
+==16220==    by 0x411D695: printf (printf.c:33)
+==16220==    by 0x804947C: main (Memory.c:63)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+--16220-- REDIR: 0x4148ae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x415db30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--16220-- REDIR: 0x414ac10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--16220-- REDIR: 0x414d1b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--16220-- REDIR: 0x414b610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x41fbb70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--16220-- REDIR: 0x4148d20 (libc.so.6:__GI_strchr) redirected to 0x402ef30 (__GI_strchr)
+--16220-- REDIR: 0x4148ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--16220-- REDIR: 0x4208150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+==16220== Conditional jump or move depends on uninitialised value(s)
+==16220==    at 0x402D31B: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x804A29A: recibir_y_ejecutar (Memory.c:452)
+==16220==    by 0x804A08C: ejecutarSelect (Memory.c:397)
+==16220==    by 0x8049F1A: ejectuarComando (Memory.c:348)
+==16220==    by 0x8049A30: main (Memory.c:228)
+==16220== 
+==16220== 
+==16220== HEAP SUMMARY:
+==16220==     in use at exit: 736 bytes in 3 blocks
+==16220==   total heap usage: 925 allocs, 922 frees, 56,330 bytes allocated
+==16220== 
+==16220== Searching for pointers to 3 not-freed blocks
+==16220== Checked 8,462,960 bytes
+==16220== 
+==16220== 136 bytes in 1 blocks are possibly lost in loss record 1 of 3
+==16220==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==16220==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==16220==    by 0x40B2CC3: allocate_stack (allocatestack.c:588)
+==16220==    by 0x40B2CC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==16220==    by 0x8049996: main (Memory.c:206)
+==16220== 
+==16220== 300 bytes in 1 blocks are still reachable in loss record 2 of 3
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x804AA1E: inputFunc (Memory.c:672)
+==16220==    by 0x40B2294: start_thread (pthread_create.c:333)
+==16220==    by 0x41BB0AD: clone (clone.S:114)
+==16220== 
+==16220== 300 bytes in 1 blocks are still reachable in loss record 3 of 3
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x403A1C9: leerConsola (sockets.c:28)
+==16220==    by 0x804AA45: inputFunc (Memory.c:681)
+==16220==    by 0x40B2294: start_thread (pthread_create.c:333)
+==16220==    by 0x41BB0AD: clone (clone.S:114)
+==16220== 
+==16220== LEAK SUMMARY:
+==16220==    definitely lost: 0 bytes in 0 blocks
+==16220==    indirectly lost: 0 bytes in 0 blocks
+==16220==      possibly lost: 136 bytes in 1 blocks
+==16220==    still reachable: 600 bytes in 2 blocks
+==16220==         suppressed: 0 bytes in 0 blocks
+==16220== 
+==16220== Use --track-origins=yes to see where uninitialised values come from
+==16220== ERROR SUMMARY: 12 errors from 8 contexts (suppressed: 0 from 0)
+==16220== 
+==16220== 1 errors in context 1 of 8:
+==16220== Invalid read of size 1
+==16220==    at 0x4118383: vfprintf (vfprintf.c:1632)
+==16220==    by 0x411D695: printf (printf.c:33)
+==16220==    by 0x804947C: main (Memory.c:63)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 1 errors in context 2 of 8:
+==16220== Invalid read of size 2
+==16220==    at 0x4031200: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x41492D7: strdup (strdup.c:47)
+==16220==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f0 is 8 bytes inside a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 1 errors in context 3 of 8:
+==16220== Invalid read of size 1
+==16220==    at 0x402F3A3: __GI_strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x41492BA: strdup (strdup.c:41)
+==16220==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 1 errors in context 4 of 8:
+==16220== Syscall param stat64(file_name) points to unaddressable byte(s)
+==16220==    at 0x41A905F: _xstat (xstat.c:48)
+==16220==    by 0x40CFC9D: stat (in /usr/lib/libcommons.so)
+==16220==    by 0x40CF386: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 1 errors in context 5 of 8:
+==16220== Syscall param open(filename) points to unaddressable byte(s)
+==16220==    at 0x41A9713: __open_nocancel (syscall-template.S:84)
+==16220==    by 0x413DACF: _IO_file_open (fileops.c:221)
+==16220==    by 0x413DC50: _IO_file_fopen@@GLIBC_2.1 (fileops.c:328)
+==16220==    by 0x41323B0: __fopen_internal (iofopen.c:86)
+==16220==    by 0x413241D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==16220==    by 0x40CF35E: config_create (in /usr/lib/libcommons.so)
+==16220==    by 0x804A804: abrir_con (Memory.c:606)
+==16220==    by 0x8049466: main (Memory.c:62)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 1 errors in context 6 of 8:
+==16220== Invalid write of size 1
+==16220==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x804943E: main (Memory.c:53)
+==16220==  Address 0x428b9f1 is 0 bytes after a block of size 9 alloc'd
+==16220==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x8049422: main (Memory.c:52)
+==16220== 
+==16220== 
+==16220== 5 errors in context 7 of 8:
+==16220== Conditional jump or move depends on uninitialised value(s)
+==16220==    at 0x402D31B: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==16220==    by 0x804A29A: recibir_y_ejecutar (Memory.c:452)
+==16220==    by 0x804A08C: ejecutarSelect (Memory.c:397)
+==16220==    by 0x8049F1A: ejectuarComando (Memory.c:348)
+==16220==    by 0x8049A30: main (Memory.c:228)
+==16220== 
+==16220== ERROR SUMMARY: 12 errors from 8 contexts (suppressed: 0 from 0)

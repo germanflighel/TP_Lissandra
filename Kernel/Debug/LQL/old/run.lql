@@ -1,0 +1,4 @@
+RUN grupo.lql
+RUN judios.lql
+RUN roto.lql
+RUN variado.lql
