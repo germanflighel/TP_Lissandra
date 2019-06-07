@@ -1,0 +1,295 @@
+[WARNING] 15:31:56:648 memory/(11565:11565): Kernel Desconectado.
+[INFO] 15:32:12:12 memory/(11923:11923): 8001
+[DEBUG] 15:32:12:12 memory/(11923:11923): Conectado al LFS
+[INFO] 15:32:12:13 memory/(11923:11923): Maximo tamaño del value: 15.
+[INFO] 15:32:12:13 memory/(11923:11923): 15
+[INFO] 15:32:12:13 memory/(11923:11923): 8001
+[DEBUG] 15:32:13:518 memory/(11923:11923): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 15:32:37:182 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:11, Value: Halcon
+[DEBUG] 15:32:37:260 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:310, Value: Calamar
+[DEBUG] 15:32:37:340 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:983, Value: Pez globo
+[DEBUG] 15:32:37:380 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:11, Value: Pinguino
+[DEBUG] 15:32:37:381 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:6262, Value: Loro
+[DEBUG] 15:32:37:420 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:272, Value: Vaca
+[DEBUG] 15:32:37:422 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:310, Value: Calamar
+[DEBUG] 15:32:37:461 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:11, Value: Pinguino
+[INFO] 15:32:37:461 memory/(11923:11923): No tengo ese registro
+[WARNING] 15:32:37:462 memory/(11923:11923): Registro no encontrado
+[DEBUG] 15:32:37:463 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:1102, Value: Buho
+[DEBUG] 15:32:37:504 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:33, Value: Raya
+[DEBUG] 15:32:37:505 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:239, Value: Burro
+[DEBUG] 15:32:37:505 memory/(11923:11923): Registro: TimeStamp: 1559932357, Key:3103, Value: Delfin
+[WARNING] 15:32:52:158 memory/(11923:11923): Kernel Desconectado.
+[INFO] 15:34:59:963 memory/(12028:12028): 8001
+[DEBUG] 15:34:59:963 memory/(12028:12028): Conectado al LFS
+[INFO] 15:34:59:964 memory/(12028:12028): Maximo tamaño del value: 15.
+[INFO] 15:34:59:964 memory/(12028:12028): 15
+[INFO] 15:34:59:964 memory/(12028:12028): 8001
+[DEBUG] 15:35:02:565 memory/(12028:12028): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 15:35:25:175 memory/(12028:12028): Registro: TimeStamp: 1559932525, Key:11, Value: Halcon
+[DEBUG] 15:35:26:977 memory/(12028:12028): Registro: TimeStamp: 1559932526, Key:310, Value: Calamar
+[DEBUG] 15:35:28:779 memory/(12028:12028): Registro: TimeStamp: 1559932527, Key:983, Value: Pez globo
+[DEBUG] 15:35:30:580 memory/(12028:12028): Registro: TimeStamp: 1559932528, Key:11, Value: Pinguino
+[DEBUG] 15:35:31:180 memory/(12028:12028): Registro: TimeStamp: 1559932527, Key:6262, Value: Loro
+[DEBUG] 15:35:31:781 memory/(12028:12028): Registro: TimeStamp: 1559932531, Key:272, Value: Vaca
+[DEBUG] 15:35:33:582 memory/(12028:12028): Registro: TimeStamp: 1559932526, Key:310, Value: Calamar
+[DEBUG] 15:35:34:183 memory/(12028:12028): Registro: TimeStamp: 1559932528, Key:11, Value: Pinguino
+[INFO] 15:35:34:783 memory/(12028:12028): No tengo ese registro
+[WARNING] 15:35:35:385 memory/(12028:12028): Registro no encontrado
+[DEBUG] 15:35:35:985 memory/(12028:12028): Registro: TimeStamp: 1559932526, Key:1102, Value: Buho
+[DEBUG] 15:35:37:787 memory/(12028:12028): Registro: TimeStamp: 1559932530, Key:33, Value: Raya
+[DEBUG] 15:35:38:387 memory/(12028:12028): Registro: TimeStamp: 1559932534, Key:239, Value: Burro
+[DEBUG] 15:35:38:988 memory/(12028:12028): Registro: TimeStamp: 1559932534, Key:3103, Value: Delfin
+[DEBUG] 15:35:46:823 memory/(12028:12028): Registro: TimeStamp: 1559932546, Key:101, Value: Helado
+[DEBUG] 15:35:48:625 memory/(12028:12028): Registro: TimeStamp: 1559932547, Key:101, Value: Almendrado
+[DEBUG] 15:35:50:426 memory/(12028:12028): Registro: TimeStamp: 1559932550, Key:34, Value: Cereza
+[INFO] 15:35:51:26 memory/(12028:12028): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:35:51:627 memory/(12028:12028): Registro no encontrado
+[INFO] 15:35:52:228 memory/(12028:12028): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:35:52:828 memory/(12028:12028): Registro no encontrado
+[DEBUG] 15:35:54:29 memory/(12028:12028): Registro: TimeStamp: 1559932549, Key:222, Value: Manzana
+[DEBUG] 15:35:54:630 memory/(12028:12028): Registro: TimeStamp: 1559932553, Key:231, Value: Flan
+[INFO] 15:35:55:230 memory/(12028:12028): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:35:55:831 memory/(12028:12028): Registro no encontrado
+[DEBUG] 15:35:56:431 memory/(12028:12028): Registro: TimeStamp: 1559932553, Key:80, Value: Tiramisu
+[DEBUG] 15:35:57:32 memory/(12028:12028): Registro: TimeStamp: 1559932552, Key:10245, Value: Frutilla
+[INFO] 15:35:57:632 memory/(12028:12028): No tengo ese registro
+[WARNING] 15:35:58:233 memory/(12028:12028): Registro no encontrado
+[DEBUG] 15:35:58:834 memory/(12028:12028): Registro: TimeStamp: 1559932558, Key:100, Value: Helado
+[INFO] 15:35:59:435 memory/(12028:12028): No tengo ese registro
+[WARNING] 15:36:00:36 memory/(12028:12028): Registro no encontrado
+[DEBUG] 15:36:00:637 memory/(12028:12028): Registro: TimeStamp: 1559932559, Key:101, Value: Muffin
+[DEBUG] 15:36:01:238 memory/(12028:12028): Registro: TimeStamp: 1559932557, Key:10, Value: Fanta
+[DEBUG] 15:36:01:838 memory/(12028:12028): Registro: TimeStamp: 1559932557, Key:8927, Value: Helado
+[WARNING] 15:38:07:893 memory/(12028:12028): Kernel Desconectado.
+[INFO] 15:40:09:169 memory/(12131:12131): 8001
+[DEBUG] 15:40:09:169 memory/(12131:12131): Conectado al LFS
+[INFO] 15:40:09:169 memory/(12131:12131): Maximo tamaño del value: 15.
+[INFO] 15:40:09:169 memory/(12131:12131): 15
+[INFO] 15:40:09:169 memory/(12131:12131): 8001
+[DEBUG] 15:40:11:584 memory/(12131:12131): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 15:40:44:870 memory/(12131:12131): Registro: TimeStamp: 1559932844, Key:11, Value: Halcon
+[DEBUG] 15:40:46:672 memory/(12131:12131): Registro: TimeStamp: 1559932846, Key:310, Value: Calamar
+[DEBUG] 15:40:48:474 memory/(12131:12131): Registro: TimeStamp: 1559932847, Key:983, Value: Pez globo
+[DEBUG] 15:40:50:275 memory/(12131:12131): Registro: TimeStamp: 1559932848, Key:11, Value: Pinguino
+[DEBUG] 15:40:50:876 memory/(12131:12131): Registro: TimeStamp: 1559932847, Key:6262, Value: Loro
+[DEBUG] 15:40:51:476 memory/(12131:12131): Registro: TimeStamp: 1559932851, Key:272, Value: Vaca
+[DEBUG] 15:40:53:278 memory/(12131:12131): Registro: TimeStamp: 1559932846, Key:310, Value: Calamar
+[DEBUG] 15:40:53:878 memory/(12131:12131): Registro: TimeStamp: 1559932848, Key:11, Value: Pinguino
+[INFO] 15:40:54:479 memory/(12131:12131): No tengo ese registro
+[WARNING] 15:40:55:80 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:40:55:680 memory/(12131:12131): Registro: TimeStamp: 1559932846, Key:1102, Value: Buho
+[DEBUG] 15:40:57:481 memory/(12131:12131): Registro: TimeStamp: 1559932850, Key:33, Value: Raya
+[DEBUG] 15:40:58:82 memory/(12131:12131): Registro: TimeStamp: 1559932853, Key:239, Value: Burro
+[DEBUG] 15:40:58:682 memory/(12131:12131): Registro: TimeStamp: 1559932853, Key:3103, Value: Delfin
+[DEBUG] 15:41:21:670 memory/(12131:12131): Registro: TimeStamp: 1559932881, Key:101, Value: Helado
+[DEBUG] 15:41:24:73 memory/(12131:12131): Registro: TimeStamp: 1559932882, Key:101, Value: Almendrado
+[DEBUG] 15:41:26:476 memory/(12131:12131): Registro: TimeStamp: 1559932886, Key:34, Value: Cereza
+[INFO] 15:41:27:76 memory/(12131:12131): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:41:27:677 memory/(12131:12131): Registro no encontrado
+[INFO] 15:41:29:479 memory/(12131:12131): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:41:30:80 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:31:281 memory/(12131:12131): Registro: TimeStamp: 1559932884, Key:222, Value: Manzana
+[DEBUG] 15:41:31:882 memory/(12131:12131): Registro: TimeStamp: 1559932890, Key:231, Value: Flan
+[INFO] 15:41:32:482 memory/(12131:12131): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:41:33:83 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:33:684 memory/(12131:12131): Registro: TimeStamp: 1559932890, Key:80, Value: Tiramisu
+[INFO] 15:41:34:285 memory/(12131:12131): No tengo ese registro
+[WARNING] 15:41:34:885 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:36:687 memory/(12131:12131): Registro: TimeStamp: 1559932893, Key:123, Value: Celular
+[DEBUG] 15:41:37:288 memory/(12131:12131): Registro: TimeStamp: 1559932888, Key:10245, Value: Frutilla
+[INFO] 15:41:37:888 memory/(12131:12131): No tengo ese registro
+[WARNING] 15:41:38:489 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:39:90 memory/(12131:12131): Registro: TimeStamp: 1559932890, Key:332, Value: Lapicera
+[INFO] 15:41:39:690 memory/(12131:12131): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 15:41:40:291 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:40:892 memory/(12131:12131): Registro: TimeStamp: 1559932899, Key:100, Value: Helado
+[INFO] 15:41:41:492 memory/(12131:12131): No tengo ese registro
+[WARNING] 15:41:42:93 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:42:693 memory/(12131:12131): Registro: TimeStamp: 1559932890, Key:332, Value: Lapicera
+[INFO] 15:41:43:294 memory/(12131:12131): No tengo ese registro
+[WARNING] 15:41:43:895 memory/(12131:12131): Registro no encontrado
+[DEBUG] 15:41:44:495 memory/(12131:12131): Registro: TimeStamp: 1559932901, Key:101, Value: Muffin
+[DEBUG] 15:41:45:96 memory/(12131:12131): Registro: TimeStamp: 1559932894, Key:10, Value: Fanta
+[DEBUG] 15:41:45:696 memory/(12131:12131): Registro: TimeStamp: 1559932896, Key:8927, Value: Helado
+[DEBUG] 15:44:56:758 memory/(12131:12134): Registro: TimeStamp: 1559932896, Key:8927, Value: Helado
+[DEBUG] 15:45:19:197 memory/(12131:12134): Registro: TimeStamp: 1559932884, Key:621, Value: Melon
+[INFO] 15:45:42:517 memory/(12131:12134): No tengo ese registro
+[WARNING] 15:45:43:118 memory/(12131:12134): Registro no encontrado
+[DEBUG] 15:45:58:405 memory/(12131:12134): Registro: TimeStamp: 1559933152, Key:63, Value: Mango
+[WARNING] 16:02:35:784 memory/(12131:12131): Kernel Desconectado.
+[INFO] 16:03:49:645 memory/(12705:12705): 8001
+[DEBUG] 16:03:49:645 memory/(12705:12705): Conectado al LFS
+[INFO] 16:03:49:645 memory/(12705:12705): Maximo tamaño del value: 15.
+[INFO] 16:03:49:645 memory/(12705:12705): 15
+[INFO] 16:03:49:645 memory/(12705:12705): 8001
+[DEBUG] 16:03:51:358 memory/(12705:12705): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 16:04:26:226 memory/(12705:12705): Registro: TimeStamp: 1559934266, Key:11, Value: Halcon
+[DEBUG] 16:04:28:28 memory/(12705:12705): Registro: TimeStamp: 1559934268, Key:310, Value: Calamar
+[DEBUG] 16:04:29:831 memory/(12705:12705): Registro: TimeStamp: 1559934268, Key:983, Value: Pez globo
+[DEBUG] 16:04:31:635 memory/(12705:12705): Registro: TimeStamp: 1559934269, Key:11, Value: Pinguino
+[DEBUG] 16:04:32:236 memory/(12705:12705): Registro: TimeStamp: 1559934268, Key:6262, Value: Loro
+[DEBUG] 16:04:32:838 memory/(12705:12705): Registro: TimeStamp: 1559934272, Key:272, Value: Vaca
+[DEBUG] 16:04:34:640 memory/(12705:12705): Registro: TimeStamp: 1559934268, Key:310, Value: Calamar
+[DEBUG] 16:04:35:241 memory/(12705:12705): Registro: TimeStamp: 1559934269, Key:11, Value: Pinguino
+[INFO] 16:04:35:841 memory/(12705:12705): No tengo ese registro
+[WARNING] 16:04:36:442 memory/(12705:12705): Registro no encontrado
+[DEBUG] 16:04:37:43 memory/(12705:12705): Registro: TimeStamp: 1559934268, Key:1102, Value: Buho
+[DEBUG] 16:04:38:845 memory/(12705:12705): Registro: TimeStamp: 1559934271, Key:33, Value: Raya
+[DEBUG] 16:04:39:446 memory/(12705:12705): Registro: TimeStamp: 1559934275, Key:239, Value: Burro
+[DEBUG] 16:04:40:47 memory/(12705:12705): Registro: TimeStamp: 1559934275, Key:3103, Value: Delfin
+[WARNING] 16:10:12:329 memory/(12705:12705): Kernel Desconectado.
+[INFO] 16:10:29:993 memory/(12883:12883): 8001
+[DEBUG] 16:10:29:994 memory/(12883:12883): Conectado al LFS
+[INFO] 16:10:29:994 memory/(12883:12883): Maximo tamaño del value: 15.
+[INFO] 16:10:29:994 memory/(12883:12883): 15
+[INFO] 16:10:29:994 memory/(12883:12883): 8001
+[DEBUG] 16:10:31:556 memory/(12883:12883): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 16:13:32:175 memory/(12883:12883): Registro: TimeStamp: 1559934809, Key:34, Value: Banana
+[DEBUG] 16:13:33:376 memory/(12883:12883): Registro: TimeStamp: 1559934812, Key:101, Value: Helado
+[DEBUG] 16:13:35:779 memory/(12883:12883): Registro: TimeStamp: 1559934812, Key:0, Value: Azul
+[DEBUG] 16:13:36:379 memory/(12883:12883): Registro: TimeStamp: 1559934815, Key:11, Value: Coca Cola
+[DEBUG] 16:13:36:980 memory/(12883:12883): Registro: TimeStamp: 1559934813, Key:101, Value: Almendrado
+[DEBUG] 16:13:37:581 memory/(12883:12883): Registro: TimeStamp: 1559934817, Key:332, Value: Vaso
+[DEBUG] 16:13:38:182 memory/(12883:12883): Registro: TimeStamp: 1559934816, Key:11, Value: Sprite
+[DEBUG] 16:13:39:383 memory/(12883:12883): Registro: TimeStamp: 1559934818, Key:123, Value: Marcador
+[DEBUG] 16:13:41:185 memory/(12883:12883): Registro: TimeStamp: 1559934817, Key:163, Value: Rojo
+[DEBUG] 16:13:41:786 memory/(12883:12883): Registro: TimeStamp: 1559934821, Key:34, Value: Cereza
+[DEBUG] 16:13:42:386 memory/(12883:12883): Registro: TimeStamp: 1559934818, Key:44, Value: Exprimido
+[DEBUG] 16:13:42:987 memory/(12883:12883): Registro: TimeStamp: 1559934818, Key:11, Value: Vaca
+[DEBUG] 16:13:43:588 memory/(12883:12883): Registro: TimeStamp: 1559934822, Key:9, Value: Negro
+[DEBUG] 16:13:45:390 memory/(12883:12883): Registro: TimeStamp: 1559934816, Key:11, Value: Sprite
+[DEBUG] 16:13:46:591 memory/(12883:12883): Registro: TimeStamp: 1559934825, Key:11, Value: Perro
+[DEBUG] 16:13:47:193 memory/(12883:12883): Registro: TimeStamp: 1559934819, Key:222, Value: Manzana
+[DEBUG] 16:13:47:793 memory/(12883:12883): Registro: TimeStamp: 1559934825, Key:231, Value: Flan
+[DEBUG] 16:13:48:394 memory/(12883:12883): Registro: TimeStamp: 1559934818, Key:44, Value: Exprimido
+[DEBUG] 16:13:48:994 memory/(12883:12883): Registro: TimeStamp: 1559934828, Key:9, Value: Gris
+[DEBUG] 16:13:49:595 memory/(12883:12883): Registro: TimeStamp: 1559934827, Key:80, Value: Tiramisu
+[DEBUG] 16:13:50:196 memory/(12883:12883): Registro: TimeStamp: 1559934827, Key:271, Value: Milanesa
+[DEBUG] 16:13:50:796 memory/(12883:12883): Registro: TimeStamp: 1559934818, Key:8291, Value: Cable
+[DEBUG] 16:13:51:397 memory/(12883:12883): Registro: TimeStamp: 1559934830, Key:319, Value: Oso hormiguero
+[DEBUG] 16:13:53:199 memory/(12883:12883): Registro: TimeStamp: 1559934828, Key:123, Value: Celular
+[DEBUG] 16:13:53:800 memory/(12883:12883): Registro: TimeStamp: 1559934812, Key:0, Value: Azul
+[DEBUG] 16:13:54:400 memory/(12883:12883): Registro: TimeStamp: 1559934822, Key:10245, Value: Frutilla
+[INFO] 16:13:55:1 memory/(12883:12883): No tengo ese registro
+[WARNING] 16:13:55:602 memory/(12883:12883): Registro no encontrado
+[DEBUG] 16:13:56:203 memory/(12883:12883): Registro: TimeStamp: 1559934827, Key:332, Value: Lapicera
+[DEBUG] 16:13:56:804 memory/(12883:12883): Registro: TimeStamp: 1559934830, Key:901, Value: Paloma
+[DEBUG] 16:13:57:404 memory/(12883:12883): Registro: TimeStamp: 1559934836, Key:100, Value: Helado
+[DEBUG] 16:13:58:5 memory/(12883:12883): Registro: TimeStamp: 1559934830, Key:54, Value: Hamburguesa
+[DEBUG] 16:13:58:606 memory/(12883:12883): Registro: TimeStamp: 1559934817, Key:1, Value: Libro
+[DEBUG] 16:13:59:207 memory/(12883:12883): Registro: TimeStamp: 1559934827, Key:332, Value: Lapicera
+[INFO] 16:13:59:807 memory/(12883:12883): No tengo ese registro
+[WARNING] 16:14:00:408 memory/(12883:12883): Registro no encontrado
+[DEBUG] 16:14:01:9 memory/(12883:12883): Registro: TimeStamp: 1559934838, Key:101, Value: Muffin
+[DEBUG] 16:14:01:609 memory/(12883:12883): Registro: TimeStamp: 1559934830, Key:10, Value: Fanta
+[DEBUG] 16:14:02:210 memory/(12883:12883): Registro: TimeStamp: 1559934833, Key:8927, Value: Helado
+[DEBUG] 16:14:02:811 memory/(12883:12883): Registro: TimeStamp: 1559934830, Key:271, Value: Pizza
+[DEBUG] 16:15:50:54 memory/(12883:12883): Registro: TimeStamp: 1559934948, Key:0, Value: Azul
+[DEBUG] 16:15:52:456 memory/(12883:12883): Registro: TimeStamp: 1559934950, Key:332, Value: Vaso
+[DEBUG] 16:15:56:58 memory/(12883:12883): Registro: TimeStamp: 1559934955, Key:123, Value: Marcador
+[DEBUG] 16:15:56:659 memory/(12883:12883): Registro: TimeStamp: 1559934950, Key:163, Value: Rojo
+[DEBUG] 16:15:57:259 memory/(12883:12883): Registro: TimeStamp: 1559934955, Key:11, Value: Vaca
+[DEBUG] 16:15:57:860 memory/(12883:12883): Registro: TimeStamp: 1559934957, Key:9, Value: Negro
+[DEBUG] 16:15:59:663 memory/(12883:12883): Registro: TimeStamp: 1559934959, Key:11, Value: Perro
+[DEBUG] 16:16:00:264 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:9, Value: Gris
+[DEBUG] 16:16:00:865 memory/(12883:12883): Registro: TimeStamp: 1559934955, Key:8291, Value: Cable
+[DEBUG] 16:16:01:465 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:319, Value: Oso hormiguero
+[DEBUG] 16:16:03:267 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:123, Value: Celular
+[DEBUG] 16:16:03:868 memory/(12883:12883): Registro: TimeStamp: 1559934948, Key:0, Value: Azul
+[DEBUG] 16:16:04:468 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:332, Value: Lapicera
+[DEBUG] 16:16:05:69 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:901, Value: Paloma
+[DEBUG] 16:16:05:669 memory/(12883:12883): Registro: TimeStamp: 1559934950, Key:1, Value: Libro
+[DEBUG] 16:16:06:270 memory/(12883:12883): Registro: TimeStamp: 1559934960, Key:332, Value: Lapicera
+[WARNING] 16:16:26:598 memory/(12883:12883): Kernel Desconectado.
+[INFO] 16:19:06:265 memory/(12975:12975): 8001
+[DEBUG] 16:19:06:265 memory/(12975:12975): Conectado al LFS
+[INFO] 16:19:06:266 memory/(12975:12975): Maximo tamaño del value: 15.
+[INFO] 16:19:06:266 memory/(12975:12975): 15
+[INFO] 16:19:06:266 memory/(12975:12975): 8001
+[DEBUG] 16:19:08:754 memory/(12975:12975): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:19:14:169 memory/(12975:12975): Kernel Desconectado.
+[INFO] 16:21:32:883 memory/(13088:13088): 8001
+[DEBUG] 16:21:32:883 memory/(13088:13088): Conectado al LFS
+[INFO] 16:21:32:884 memory/(13088:13088): Maximo tamaño del value: 15.
+[INFO] 16:21:32:884 memory/(13088:13088): 15
+[INFO] 16:21:32:884 memory/(13088:13088): 8001
+[DEBUG] 16:21:34:277 memory/(13088:13088): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:21:47:833 memory/(13088:13088): Kernel Desconectado.
+[INFO] 16:23:34:278 memory/(13170:13170): 8001
+[DEBUG] 16:23:34:278 memory/(13170:13170): Conectado al LFS
+[INFO] 16:23:34:278 memory/(13170:13170): Maximo tamaño del value: 15.
+[INFO] 16:23:34:278 memory/(13170:13170): 15
+[INFO] 16:23:34:278 memory/(13170:13170): 8001
+[DEBUG] 16:23:36:247 memory/(13170:13170): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:24:29:35 memory/(13170:13170): Kernel Desconectado.
+[INFO] 16:26:06:905 memory/(13279:13279): 8001
+[DEBUG] 16:26:06:905 memory/(13279:13279): Conectado al LFS
+[INFO] 16:26:06:905 memory/(13279:13279): Maximo tamaño del value: 15.
+[INFO] 16:26:06:905 memory/(13279:13279): 15
+[INFO] 16:26:06:905 memory/(13279:13279): 8001
+[DEBUG] 16:26:08:547 memory/(13279:13279): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:26:19:105 memory/(13279:13279): Kernel Desconectado.
+[INFO] 16:27:15:154 memory/(13393:13393): 8001
+[DEBUG] 16:27:15:155 memory/(13393:13393): Conectado al LFS
+[INFO] 16:27:15:155 memory/(13393:13393): Maximo tamaño del value: 15.
+[INFO] 16:27:15:155 memory/(13393:13393): 15
+[INFO] 16:27:15:155 memory/(13393:13393): 8001
+[DEBUG] 16:27:16:212 memory/(13393:13393): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:27:24:989 memory/(13393:13393): Kernel Desconectado.
+[INFO] 16:36:17:304 memory/(13674:13674): 8001
+[DEBUG] 16:36:17:304 memory/(13674:13674): Conectado al LFS
+[INFO] 16:36:17:304 memory/(13674:13674): Maximo tamaño del value: 15.
+[INFO] 16:36:17:304 memory/(13674:13674): 15
+[INFO] 16:36:17:304 memory/(13674:13674): 8001
+[DEBUG] 16:36:18:314 memory/(13674:13674): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:36:30:914 memory/(13674:13674): Kernel Desconectado.
+[INFO] 16:37:26:386 memory/(13759:13759): 8001
+[DEBUG] 16:37:26:386 memory/(13759:13759): Conectado al LFS
+[INFO] 16:37:26:386 memory/(13759:13759): Maximo tamaño del value: 15.
+[INFO] 16:37:26:386 memory/(13759:13759): 15
+[INFO] 16:37:26:386 memory/(13759:13759): 8001
+[DEBUG] 16:37:30:956 memory/(13759:13759): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 16:37:48:374 memory/(13759:13759): Registro: TimeStamp: 1559936268, Key:11, Value: Halcon
+[DEBUG] 16:37:50:176 memory/(13759:13759): Registro: TimeStamp: 1559936270, Key:310, Value: Calamar
+[DEBUG] 16:37:51:978 memory/(13759:13759): Registro: TimeStamp: 1559936270, Key:983, Value: Pez globo
+[DEBUG] 16:37:53:780 memory/(13759:13759): Registro: TimeStamp: 1559936271, Key:11, Value: Pinguino
+[DEBUG] 16:37:54:380 memory/(13759:13759): Registro: TimeStamp: 1559936270, Key:6262, Value: Loro
+[DEBUG] 16:37:54:981 memory/(13759:13759): Registro: TimeStamp: 1559936274, Key:272, Value: Vaca
+[DEBUG] 16:37:56:783 memory/(13759:13759): Registro: TimeStamp: 1559936270, Key:310, Value: Calamar
+[DEBUG] 16:37:57:384 memory/(13759:13759): Registro: TimeStamp: 1559936271, Key:11, Value: Pinguino
+[INFO] 16:37:57:985 memory/(13759:13759): No tengo ese registro
+[WARNING] 16:37:58:586 memory/(13759:13759): Registro no encontrado
+[DEBUG] 16:37:59:186 memory/(13759:13759): Registro: TimeStamp: 1559936270, Key:1102, Value: Buho
+[DEBUG] 16:38:00:988 memory/(13759:13759): Registro: TimeStamp: 1559936273, Key:33, Value: Raya
+[DEBUG] 16:38:01:588 memory/(13759:13759): Registro: TimeStamp: 1559936277, Key:239, Value: Burro
+[DEBUG] 16:38:02:188 memory/(13759:13759): Registro: TimeStamp: 1559936277, Key:3103, Value: Delfin
+[WARNING] 16:38:17:17 memory/(13759:13759): Kernel Desconectado.
+[INFO] 16:39:43:541 memory/(13835:13835): 8001
+[DEBUG] 16:39:43:542 memory/(13835:13835): Conectado al LFS
+[INFO] 16:39:43:542 memory/(13835:13835): Maximo tamaño del value: 15.
+[INFO] 16:39:43:542 memory/(13835:13835): 15
+[INFO] 16:39:43:542 memory/(13835:13835): 8001
+[DEBUG] 16:39:44:568 memory/(13835:13835): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:39:52:903 memory/(13835:13835): Kernel Desconectado.
+[INFO] 16:44:15:646 memory/(13944:13944): 8001
+[DEBUG] 16:44:15:647 memory/(13944:13944): Conectado al LFS
+[INFO] 16:44:15:647 memory/(13944:13944): Maximo tamaño del value: 15.
+[INFO] 16:44:15:647 memory/(13944:13944): 15
+[INFO] 16:44:15:647 memory/(13944:13944): 8001
+[DEBUG] 16:44:19:275 memory/(13944:13944): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:44:51:783 memory/(13944:13944): Kernel Desconectado.
+[INFO] 16:56:21:123 memory/(14233:14233): 8001
+[DEBUG] 16:56:21:123 memory/(14233:14233): Conectado al LFS
+[INFO] 16:56:21:123 memory/(14233:14233): Maximo tamaño del value: 15.
+[INFO] 16:56:21:123 memory/(14233:14233): 15
+[INFO] 16:56:21:123 memory/(14233:14233): 8001
+[DEBUG] 16:56:23:123 memory/(14233:14233): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:56:31:594 memory/(14233:14233): Kernel Desconectado.
+[INFO] 16:56:46:283 memory/(14249:14249): 8001
+[DEBUG] 16:56:46:283 memory/(14249:14249): Conectado al LFS
+[INFO] 16:56:46:283 memory/(14249:14249): Maximo tamaño del value: 15.
+[INFO] 16:56:46:283 memory/(14249:14249): 15
+[INFO] 16:56:46:283 memory/(14249:14249): 8001
+[DEBUG] 16:56:48:237 memory/(14249:14249): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 16:57:00:719 memory/(14249:14249): Kernel Desconectado.

@@ -1,0 +1,279 @@
+==14235== Memcheck, a memory error detector
+==14235== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==14235== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==14235== Command: ./Kernel
+==14235== Parent PID: 3551
+==14235== 
+--14235-- 
+--14235-- Valgrind options:
+--14235--    --show-leak-kinds=all
+--14235--    --leak-check=full
+--14235--    -v
+--14235--    --log-file=val_size.txt
+--14235-- Contents of /proc/version:
+--14235--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--14235-- 
+--14235-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--14235-- Page sizes: currently 4096, max supported 4096
+--14235-- Valgrind library directory: /usr/lib/valgrind
+--14235-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--14235--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--14235--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--14235--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--14235--   .. CRC is valid
+--14235-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Kernel/Debug/Kernel
+--14235-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--14235--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--14235--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--14235--    object doesn't have a symbol table
+--14235--    object doesn't have a dynamic symbol table
+--14235-- Scheduler: using generic scheduler lock implementation.
+--14235-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==14235== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-14235-by-utnso-on-???
+==14235== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-14235-by-utnso-on-???
+==14235== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-14235-by-utnso-on-???
+==14235== 
+==14235== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==14235== don't want to do, unless you know exactly what you're doing,
+==14235== or are doing some strange experiment):
+==14235==   /usr/lib/valgrind/../../bin/vgdb --pid=14235 ...command...
+==14235== 
+==14235== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==14235==   /path/to/gdb ./Kernel
+==14235== and then give GDB the following command
+==14235==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=14235
+==14235== --pid is optional if only one valgrind process is running
+==14235== 
+--14235-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--14235-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--14235-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--14235--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--14235--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--14235--    object doesn't have a symbol table
+--14235-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--14235--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--14235--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--14235--    object doesn't have a symbol table
+==14235== WARNING: new redirection conflicts with existing -- ignoring it
+--14235--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--14235--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--14235-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--14235-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--14235--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--14235--   .. build-id is valid
+--14235-- Reading syms from /usr/lib/libcommons.so
+--14235-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--14235--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--14235--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--14235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--14235--   .. CRC is valid
+--14235-- REDIR: 0x40f64b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x40fd140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x410fb20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x40f5350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--14235-- REDIR: 0x40f47e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--14235-- REDIR: 0x40eff00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--14235-- REDIR: 0x40f45c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--14235-- REDIR: 0x40f6680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--14235-- REDIR: 0x40f5fc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x41a44d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--14235-- REDIR: 0x40f0810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--14235-- REDIR: 0x40f0520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--14235-- REDIR: 0x40f0470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+--14235-- REDIR: 0x40f4580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x40fd440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--14235-- REDIR: 0x40f4700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x41b45c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--14235-- REDIR: 0x40f3f90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x40fd570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+==14235== Invalid write of size 1
+==14235==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495EE: main (Kernel.c:54)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+--14235-- REDIR: 0x40f4750 (libc.so.6:strncpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x40fedc0 (libc.so.6:__strncpy_ssse3) redirected to 0x402f5f0 (strncpy)
+--14235-- REDIR: 0x40f60d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+--14235-- REDIR: 0x40f8280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--14235-- REDIR: 0x40f3ae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x4108b30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--14235-- REDIR: 0x40f5c10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--14235-- REDIR: 0x40f81b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--14235-- REDIR: 0x40f6610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x41a6b70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+==14235== Thread 3:
+==14235== Invalid read of size 1
+==14235==    at 0x40AF887: ____strtoul_l_internal (strtol_l.c:433)
+==14235==    by 0x40AEF9F: strtoul (strtol.c:106)
+==14235==    by 0x41820EC: inet_aton (inet_addr.c:144)
+==14235==    by 0x414C74A: gaih_inet (getaddrinfo.c:480)
+==14235==    by 0x414E3E2: getaddrinfo (getaddrinfo.c:2425)
+==14235==    by 0x8049D02: intentarEstablecerConexion (Kernel.c:305)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+==14235== Invalid read of size 1
+==14235==    at 0x41820F9: inet_aton (inet_addr.c:153)
+==14235==    by 0x414C74A: gaih_inet (getaddrinfo.c:480)
+==14235==    by 0x414E3E2: getaddrinfo (getaddrinfo.c:2425)
+==14235==    by 0x8049D02: intentarEstablecerConexion (Kernel.c:305)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+--14235-- REDIR: 0x40f3ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--14235-- REDIR: 0x41b3150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+--14235-- REDIR: 0x40f5a30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+==14235== 
+==14235== HEAP SUMMARY:
+==14235==     in use at exit: 578 bytes in 24 blocks
+==14235==   total heap usage: 240 allocs, 216 frees, 20,793 bytes allocated
+==14235== 
+==14235== Searching for pointers to 24 not-freed blocks
+==14235== Checked 16,844,524 bytes
+==14235== 
+==14235== Thread 1:
+==14235== 4 bytes in 1 blocks are still reachable in loss record 1 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x4077C29: queue_create (in /usr/lib/libcommons.so)
+==14235==    by 0x8049828: main (Kernel.c:125)
+==14235== 
+==14235== 5 bytes in 1 blocks are definitely lost in loss record 2 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x40F42C5: strdup (strdup.c:42)
+==14235==    by 0x407709A: string_duplicate (in /usr/lib/libcommons.so)
+==14235==    by 0x4077B44: _string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x40776AF: string_n_split (in /usr/lib/libcommons.so)
+==14235==    by 0x403A292: separarEntrada (sockets.c:35)
+==14235==    by 0x8049959: main (Kernel.c:176)
+==14235== 
+==14235== 8 bytes in 1 blocks are still reachable in loss record 3 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x4077E01: list_create (in /usr/lib/libcommons.so)
+==14235==    by 0x4077C34: queue_create (in /usr/lib/libcommons.so)
+==14235==    by 0x8049828: main (Kernel.c:125)
+==14235== 
+==14235== 9 bytes in 1 blocks are still reachable in loss record 4 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+==14235== 9 bytes in 1 blocks are definitely lost in loss record 5 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x40F42C5: strdup (strdup.c:42)
+==14235==    by 0x407709A: string_duplicate (in /usr/lib/libcommons.so)
+==14235==    by 0x4077B44: _string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x40775F3: string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x804989B: main (Kernel.c:142)
+==14235== 
+==14235== 9 bytes in 1 blocks are definitely lost in loss record 6 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x40F42C5: strdup (strdup.c:42)
+==14235==    by 0x407709A: string_duplicate (in /usr/lib/libcommons.so)
+==14235==    by 0x4077B44: _string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x40776AF: string_n_split (in /usr/lib/libcommons.so)
+==14235==    by 0x403A292: separarEntrada (sockets.c:35)
+==14235==    by 0x804AB7B: ejecutar_quantum (Kernel.c:706)
+==14235==    by 0x804AA4C: exec (Kernel.c:669)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235== 
+==14235== 12 bytes in 1 blocks are definitely lost in loss record 7 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x8049678: main (Kernel.c:63)
+==14235== 
+==14235== 20 bytes in 1 blocks are still reachable in loss record 8 of 12
+==14235==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x4077BC4: _string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x40775F3: string_split (in /usr/lib/libcommons.so)
+==14235==    by 0x4077716: string_get_string_as_array (in /usr/lib/libcommons.so)
+==14235==    by 0x40795D5: config_get_array_value (in /usr/lib/libcommons.so)
+==14235==    by 0x8049642: main (Kernel.c:59)
+==14235== 
+==14235== 20 bytes in 4 blocks are still reachable in loss record 9 of 12
+==14235==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x407745E: string_trim_right (in /usr/lib/libcommons.so)
+==14235==    by 0x4077354: string_trim (in /usr/lib/libcommons.so)
+==14235==    by 0x407773D: string_get_string_as_array (in /usr/lib/libcommons.so)
+==14235==    by 0x40795D5: config_get_array_value (in /usr/lib/libcommons.so)
+==14235==    by 0x8049642: main (Kernel.c:59)
+==14235== 
+==14235== 136 bytes in 1 blocks are possibly lost in loss record 10 of 12
+==14235==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==14235==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==14235==    by 0x405DCC3: allocate_stack (allocatestack.c:588)
+==14235==    by 0x405DCC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==14235==    by 0x8049841: main (Kernel.c:132)
+==14235== 
+==14235== 136 bytes in 1 blocks are possibly lost in loss record 11 of 12
+==14235==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==14235==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==14235==    by 0x405DCC3: allocate_stack (allocatestack.c:588)
+==14235==    by 0x405DCC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==14235==    by 0x80498E0: main (Kernel.c:151)
+==14235== 
+==14235== 210 bytes in 10 blocks are definitely lost in loss record 12 of 12
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x804A3A6: recibirDescribe (Kernel.c:500)
+==14235==    by 0x804A2B6: describe (Kernel.c:474)
+==14235==    by 0x8049F0C: interpretarComando (Kernel.c:358)
+==14235==    by 0x804ABD2: ejecutar_quantum (Kernel.c:716)
+==14235==    by 0x804AA4C: exec (Kernel.c:669)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235== 
+==14235== LEAK SUMMARY:
+==14235==    definitely lost: 245 bytes in 14 blocks
+==14235==    indirectly lost: 0 bytes in 0 blocks
+==14235==      possibly lost: 272 bytes in 2 blocks
+==14235==    still reachable: 61 bytes in 8 blocks
+==14235==         suppressed: 0 bytes in 0 blocks
+==14235== 
+==14235== ERROR SUMMARY: 24 errors from 10 contexts (suppressed: 0 from 0)
+==14235== 
+==14235== 1 errors in context 1 of 10:
+==14235== Invalid write of size 1
+==14235==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495EE: main (Kernel.c:54)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+==14235== 
+==14235== 8 errors in context 2 of 10:
+==14235== Thread 3:
+==14235== Invalid read of size 1
+==14235==    at 0x41820F9: inet_aton (inet_addr.c:153)
+==14235==    by 0x414C74A: gaih_inet (getaddrinfo.c:480)
+==14235==    by 0x414E3E2: getaddrinfo (getaddrinfo.c:2425)
+==14235==    by 0x8049D02: intentarEstablecerConexion (Kernel.c:305)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+==14235== 
+==14235== 8 errors in context 3 of 10:
+==14235== Invalid read of size 1
+==14235==    at 0x40AF887: ____strtoul_l_internal (strtol_l.c:433)
+==14235==    by 0x40AEF9F: strtoul (strtol.c:106)
+==14235==    by 0x41820EC: inet_aton (inet_addr.c:144)
+==14235==    by 0x414C74A: gaih_inet (getaddrinfo.c:480)
+==14235==    by 0x414E3E2: getaddrinfo (getaddrinfo.c:2425)
+==14235==    by 0x8049D02: intentarEstablecerConexion (Kernel.c:305)
+==14235==    by 0x405D294: start_thread (pthread_create.c:333)
+==14235==    by 0x41660AD: clone (clone.S:114)
+==14235==  Address 0x4238851 is 0 bytes after a block of size 9 alloc'd
+==14235==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==14235==    by 0x80495D5: main (Kernel.c:53)
+==14235== 
+==14235== ERROR SUMMARY: 24 errors from 10 contexts (suppressed: 0 from 0)

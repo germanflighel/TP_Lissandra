@@ -243,7 +243,7 @@ Registro* lfs_select(t_PackageSelect* package, char* punto_montaje) {
 
 	//2) Obtener Metadata
 	Metadata* metadata = obtener_metadata(mi_ruta);
-
+	strcpy(metadata->nombre_tabla,package->tabla);
 	loguear_metadata(metadata);
 
 	//3) Calcular que particion contiene a KEY
@@ -590,7 +590,7 @@ int existe_tabla(char* tabla) {
 void loguear_metadata(Metadata* metadata) {
 	log_debug(logger, metadata->nombre_tabla);
 	log_debug(logger,
-			"Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %i",
+			"Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld",
 			consistency_to_str(metadata->consistency), metadata->partitions,
 			metadata->compaction_time);
 }

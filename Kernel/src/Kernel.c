@@ -608,6 +608,7 @@ Script* levantar_script(char* ruta) {
 	Script* nuevoScript = malloc(sizeof(Script));
 	nuevoScript->index = 0;
 	char* f;
+	char* lineasnuevas;
 
 	int fd = open(ruta, O_RDONLY, S_IRUSR | S_IWUSR);
 
@@ -615,16 +616,25 @@ Script* levantar_script(char* ruta) {
 	int status = fstat(fd, &s);
 	int size = s.st_size;
 
+
+	printf("1\n");
 	f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
 
-	nuevoScript->lineas = string_split(f, "\n");
+	printf("2\n");
+	lineasnuevas = malloc(strlen(f));
+	strcpy(lineasnuevas,f);
+	printf("3\n");
+	munmap(f,size);
+	close(fd);
+	printf("4\n");
+	nuevoScript->lineas = string_split(lineasnuevas, "\n");
+
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
 	//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
 
-	close(fd);
+	printf("5\n");
 	return nuevoScript;
-
 }
 
 int is_regular_file(const char *path) {
