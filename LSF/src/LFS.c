@@ -29,15 +29,30 @@ int lfs_blocks;
 int lfs_block_size;
 int cantidad_de_dumpeos = 1;
 t_bitarray* bitmap;
+t_config* config;
 
 
 int main() {
+	logger = iniciar_logger();
+	char* config_path;
+	printf("Ingrese ruta del archivo de configuración de LFS \n");
+	char* entrada = leerConsola();
+	config_path = malloc(strlen(entrada));
+	strcpy(config_path, entrada);
+	free(entrada);
+
+	config = config_create(config_path);
+
+	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	if (!existe_filesystem(ruta)) {
+		montar_filesystem();
+	}
 	pthread_mutex_init(&mem_table_mutex, NULL);
 	pthread_mutex_init(&bitarray_mutex, NULL);
 
 	mem_table = list_create();
 	logger = iniciar_logger();
-	t_config* config = leer_config();
+	//t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
@@ -1096,9 +1111,6 @@ int levantar_bitmap(char* punto_montaje) {
 
 	log_warning(logger, "Bits que maneja el bitarray: %i", bitarray_get_max_bit(bitmap));
 
-	for (int i = 0; i < 5; i++) {
-		bitarray_set_bit(bitmap, i);
-	}
 	return 1;
 }
 
@@ -1107,6 +1119,7 @@ int escribir_bitarray(char* punto_montaje) {
 	string_append(&ruta_a_bitmap, punto_montaje);
 
  	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
+	printf("%s\n", ruta_a_bitmap);
 	char bitmap_char[lfs_blocks/8];
 	for (int i = 0; i < (lfs_blocks/8); i++) {
 		bitmap_char[i] = 0;
@@ -1126,8 +1139,6 @@ int escribir_bitarray(char* punto_montaje) {
  	log_debug(logger, "Bytes que escribi: %i", written_bytes);
 
  	close(fd);
-
- 	//levantar_bitarray(punto_montaje);
 
  	return 0;
 }
@@ -1318,6 +1329,108 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 	}
 	free(registro_a_escribir);
 	config_destroy(temporal);
+}
+
+void montar_filesystem() {
+	crear_carpeta_en(ruta);
+	char* ruta_a_bloques = string_new();
+	string_append(&ruta_a_bloques, ruta);
+	string_append(&ruta_a_bloques, "/Bloques/");
+	crear_carpeta_en(ruta_a_bloques);
+	char* ruta_a_metadata = string_new();
+	string_append(&ruta_a_metadata, ruta);
+	string_append(&ruta_a_metadata, "/Metadata/");
+	crear_carpeta_en(ruta_a_metadata);
+	char* ruta_a_tables = string_new();
+	string_append(&ruta_a_tables, ruta);
+	string_append(&ruta_a_tables, "/Tables/");
+	crear_carpeta_en(ruta_a_tables);
+	free(ruta_a_tables);
+
+	char* metadata_lfs_path;
+	printf("Ingrese la ruta metadata del file system \n");
+	char* otra_entrada = leerConsola();
+	metadata_lfs_path = malloc(strlen(otra_entrada));
+	strcpy(metadata_lfs_path , otra_entrada);
+	free(otra_entrada);
+
+	printf("%s\n", metadata_lfs_path);
+
+	t_config* metadata_lfs = config_create(metadata_lfs_path);
+	lfs_blocks = config_get_int_value(metadata_lfs, "BLOCKS");
+	lfs_block_size = config_get_int_value(metadata_lfs, "BLOCK_SIZE");
+
+	printf("%i\n", lfs_blocks);
+	printf("%i\n", lfs_block_size);
+
+
+	crear_n_bloques(lfs_blocks, ruta_a_bloques);
+
+	copiar_metadata_lfs(ruta_a_metadata);
+
+	escribir_bitarray(ruta);
+
+	config_destroy(metadata_lfs);
+}
+
+int crear_carpeta_en(char* una_ruta) {
+	printf("%s\n", una_ruta);
+	if (mkdir(una_ruta, 0700)) {
+		return 0;
+	}
+	return 1;
+}
+
+void crear_n_bloques(int n, char* ruta_a_bloques) {
+	for (int i = 1; i <= n; i++) {
+		char* ruta_a_bloque = string_new();
+		string_append(&ruta_a_bloque, ruta_a_bloques);
+		string_append_with_format(&ruta_a_bloque, "%i.bin", i);
+		printf("%s\n", ruta_a_bloque);
+	 	int fd = open(ruta_a_bloque, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+	 	close(fd);
+	 	free(ruta_a_bloque);
+	}
+}
+
+void copiar_metadata_lfs(char* ruta_a_metadata) {
+	char* metadata_path = string_new();
+	string_append(&metadata_path, ruta_a_metadata);
+
+	string_append(&metadata_path, "Metadata.bin");
+
+	printf("%s\n", metadata_path);
+
+	int fd = open(metadata_path, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
+	if (fd == -1) {
+		return;
+	}
+	char* metadata_a_crear = string_new();
+	string_append_with_format(&metadata_a_crear,
+			"BLOCK_SIZE=%i\nBLOCKS=%i\nMAGIC_NUMBER=LISSANDRA",
+			lfs_block_size, lfs_blocks);
+	size_t textsize = strlen(metadata_a_crear) + 1;
+	lseek(fd, textsize - 1, SEEK_SET);
+	write(fd, "", 1);
+	char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	memcpy(map, metadata_a_crear, strlen(metadata_a_crear));
+	msync(map, textsize, MS_SYNC);
+	munmap(map, textsize);
+	close(fd);
+	free(metadata_a_crear);
+	free(metadata_path);
+}
+
+int existe_filesystem(char* punto_montaje) {
+	int status = 1;
+	DIR *dirp;
+	log_debug(logger, punto_montaje);
+	dirp = opendir(punto_montaje);
+	if (dirp == NULL) {
+		status = 0;
+	}
+	closedir(dirp);
+	return status;
 }
 
 /*
