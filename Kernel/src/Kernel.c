@@ -109,23 +109,6 @@ int main() {
 
 	tablas_actuales = list_create();
 
-	t_describe describe;
-	recieve_and_deserialize_describe(&describe, serverSocket);
-
-	for (int tabla = 0; tabla < describe.cant_tablas; tabla++) {
-		Tabla* tabla_nueva = malloc(sizeof(Tabla));
-		strcpy(tabla_nueva->nombre_tabla, describe.tablas[tabla].nombre_tabla);
-		tabla_nueva->consistencia = describe.tablas[tabla].consistencia;
-
-		list_add(tablas_actuales, tabla_nueva);
-	}
-
-	for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count; tabla2++) {
-		Tabla* tabla = list_get(tablas_actuales, tabla2);
-		printf("Tabla %s \n", tabla->nombre_tabla);
-		printf("Consistencia %s \n", consistency_to_str(tabla->consistencia));
-	}
-
 	memoriasConectadas = list_create();
 
 	list_add(memoriasConectadas, mem_nueva);
@@ -152,6 +135,14 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 	//thread executer
+
+	Script* script_consola = malloc(sizeof(Script));
+	script_consola->index = 0;
+
+	script_consola->lineas = string_split("DESCRIBE\n", "\n");
+	script_consola->cant_lineas = cant_parametros(script_consola->lineas);
+
+	script_a_ready(script_consola);
 
 	//threadConexiones
 	pthread_t threadC;
@@ -240,13 +231,12 @@ void abrir_config(t_config** g_config) {
 
 t_log* iniciar_logger(void) {
 
-	return log_create(LOG_FILE_PATH, "kernel", 1, LOG_LEVEL_INFO);
+	return log_create(LOG_FILE_PATH, "kernel", 1, LOG_LEVEL_DEBUG);
 
 }
 
-int socketAUtilizar(char* tablaPath) {
+int obtenerConsistencia(char* tablaPath) {
 	int consistencia = NULL;
-
 	void buscarTabla(Tabla* tabla) {
 		if (strcmp(tabla->nombre_tabla, tablaPath) == 0) {
 			consistencia = tabla->consistencia;
@@ -254,6 +244,12 @@ int socketAUtilizar(char* tablaPath) {
 	}
 
 	list_iterate(tablas_actuales, buscarTabla);
+	return consistencia;
+}
+
+int socketAUtilizar(char* tablaPath) {
+	int consistencia = obtenerConsistencia(tablaPath);
+
 	if (consistencia != NULL) {
 		return socketFromConsistency(consistencia);
 	}
@@ -261,7 +257,6 @@ int socketAUtilizar(char* tablaPath) {
 }
 
 int socketFromConsistency(int consistencia) {
-	printf("Cons %d.\n", consistencia);
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -290,7 +285,6 @@ int socketFromConsistency(int consistencia) {
 	}
 
 	list_iterate(memoriasConectadas, esLaMemoria);
-	printf("Sock %d.\n", socket);
 	return socket;
 }
 
@@ -320,8 +314,8 @@ void* intentarEstablecerConexion() {
 
 					num_memoria = recibir_numero_memoria(serverSocket);
 
-					printf("Num memoria %d\n", num_memoria);
-					log_info(logger_Kernel, "Conecte a otra memoria.");
+					log_debug(logger_Kernel, "Conecte a la memoria numero %d",
+							num_memoria);
 
 					Memoria* mem_nueva = malloc(sizeof(Memoria));
 					mem_nueva->numero = num_memoria;
@@ -413,6 +407,12 @@ void select_kernel(char* parametros, int serverSocket) {
 
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+			log_debug(logger_Kernel, respuesta);
+			//printf("%s\n", respuesta);
+			free(respuesta);
+
 		} else {
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
@@ -452,11 +452,68 @@ void insert_kernel(char* parametros, int serverSocket) {
 }
 
 void describe(char* parametros, int serverSocket) {
-	printf("Recibi un describe.\n");
+	char *serializedPackage;
+	int entradaValida = 1;
+	t_PackageDescribe package;
+
+	if (!fill_package_describe(&package, parametros)) {
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+	if (entradaValida) {
+		printf("DESCRIBE enviado\n");
+
+		serializedPackage = serializarRequestDescribe(&package);
+
+		int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
+
+		if (socketAEnviar != -1) {
+			printf("Lo mande\n");
+			send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+			recibirDescribe(serverSocket);
+
+		} else {
+			printf("Ninguna memoria asignada para este criterio\n");
+		}
+
+		free(package.nombre_tabla);
+		dispose_package(&serializedPackage);
+	}
 }
 
 void drop(char* parametros, int serverSocket) {
 	printf("Recibi un drop.\n");
+}
+
+void recibirDescribe(int serverSocket) {
+
+	t_describe describe;
+	recieve_and_deserialize_describe(&describe, serverSocket);
+
+	if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
+		printf("La tabla no existe\n");
+	} else {
+		for (int i = 0; i < describe.cant_tablas; i++) {
+			printf("%s\n", describe.tablas[i].nombre_tabla);
+			if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
+				Tabla* tabla_nueva = malloc(sizeof(Tabla));
+				strcpy(tabla_nueva->nombre_tabla,
+						describe.tablas[i].nombre_tabla);
+				tabla_nueva->consistencia = describe.tablas[i].consistencia;
+				list_add(tablas_actuales, tabla_nueva);
+			}
+		}
+
+		for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
+				tabla2++) {
+			Tabla* tabla = list_get(tablas_actuales, tabla2);
+			printf("Tabla %s \n", tabla->nombre_tabla);
+			printf("Consistencia %s \n",
+					consistency_to_str(tabla->consistencia));
+		}
+	}
+	free(describe.tablas);
 }
 
 void create(char* parametros, int serverSocket) {
@@ -470,13 +527,12 @@ void create(char* parametros, int serverSocket) {
 	}
 
 	if (entradaValida) {
-		printf(
-				"CREATE enviado (Tabla: %s, CONSISTENCY: %s)\n",
-				package.tabla, consistency_to_str(package.consistency));
+		printf("CREATE enviado (Tabla: %s, CONSISTENCY: %s)\n", package.tabla,
+				consistency_to_str(package.consistency));
 
 		serializedPackage = serializarCreate(&package);
 
-		int socketAEnviar = ((Memoria*)list_get(memoriasConectadas,0))->socket;
+		int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
 
 		send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -614,7 +670,7 @@ void* exec(int serverSocket) {
 			script_a_ready(script_en_ejecucion);
 			break;
 		case CORTE_SCRIPT_POR_LINEA_ERRONEA:
-			log_info(logger_Kernel, "Script terminado por linea erronea");
+			log_error(logger_Kernel, "Script terminado por linea erronea");
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
 			break;
@@ -630,7 +686,7 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 	int header;
 	do {
 		printf("Ejecutando un quantum \n");
-		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
+		//printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
 
 		entradaValida = 1;
 		char* entrada = scriptEnExec->lineas[scriptEnExec->index];
@@ -642,7 +698,7 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 		entradaValida = validarParametros(header, parametros);
 
 		if (header == ERROR) {
-			printf("Comando no reconocido\n");
+			log_warning(logger_Kernel, "Comando no reconocido");
 			entradaValida = 0;
 		}
 

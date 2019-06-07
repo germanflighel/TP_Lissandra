@@ -53,6 +53,10 @@ typedef struct t_describe {
     t_metadata* tablas;
 } t_describe;
 
+typedef struct t_PackageMensaje{
+	uint32_t mensaje_long;
+	char* mensaje;
+} t_PackageMensaje;
 
 typedef struct t_PackageSelect {
 	uint32_t header;

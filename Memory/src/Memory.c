@@ -10,11 +10,10 @@
 
 #include "Memory.h"
 
-
 void *inputFunc(void *);
 //pthread_mutex_t lock;
 
-int es_primera_memoria;
+//int es_primera_memoria;
 
 int numero_memoria;
 
@@ -30,6 +29,7 @@ char* conf_path;
 //Estructura Memoria Principal
 
 char* puerto_propio;
+int socketCliente;
 
 int main() {
 
@@ -64,7 +64,7 @@ int main() {
 	//Abro log y config
 
 	memory_size = config_get_double_value(conection_conf, "MEMORY_SIZE");
-	es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
+	//es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
 	numero_memoria = config_get_int_value(conection_conf, "NUMERO");
 
 	ip = config_get_string_value(conection_conf, "IP");
@@ -86,34 +86,33 @@ int main() {
 
 	freeaddrinfo(serverInfo);
 
-	printf("Conectado al LFS \n");
+	log_debug(g_logger, "Conectado al LFS");
 	//Socket a lfs
 
 	//Handshake con LFS
 	enviar_handshake(MEMORY, lfsSocket);
 
 	recv(lfsSocket, &max_value_size, sizeof(u_int16_t), 0);
-	printf("Maximo tamaño del value: %d. \n", max_value_size);
+	log_info(g_logger, "Maximo tamaño del value: %d.", max_value_size);
 	char* loguear = string_itoa(max_value_size);
 	log_info(g_logger, loguear);
 	free(loguear);
 
 	log_info(g_logger, puerto_propio);
 
-	t_describe describeRecibido;
-	if (es_primera_memoria) {
+	/*
+	 t_describe describeRecibido;
+	 if (es_primera_memoria) {
 
-		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
+	 recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
 
-	}
-	log_info(g_logger, puerto_propio);
+	 }
+	 log_info(g_logger, puerto_propio);
+	 */
 
 	//Handshake con LFS
-
 	//inicializacion memoria
-
 	//recibir_max_value_size(lfsSocket,&max_value_size);
-
 	typedef struct Pagina {
 		long timeStamp;
 		uint16_t key;
@@ -169,14 +168,14 @@ int main() {
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
 
-	int socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
+	socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
 			&addrlen);
 
 	//Socket a kernel (listener)
 
 	//Handshake de kernel
 	if (!recibir_handshake(KERNEL, socketCliente)) {
-		printf("Handshake invalido \n");
+		log_warning(g_logger, "Handshake invalido");
 		return 0;
 	}
 
@@ -184,21 +183,22 @@ int main() {
 
 	int status = 1;		// Estructura que manjea el status de los recieve.
 
-	printf("Cliente conectado. Esperando Envío de mensajessss.\n");
+	log_debug(g_logger, "Cliente conectado. Esperando Envío de mensajessss.");
 	//Handshake de kernel
 
 	//Describe a kernel
-	if (es_primera_memoria) {
-		char* serializedPackage;
-		serializedPackage = serializarDescribe(&describeRecibido);
-		send(socketCliente, serializedPackage,
-				describeRecibido.cant_tablas * sizeof(t_metadata)
-						+ sizeof(describeRecibido.cant_tablas), 0);
-		dispose_package(&serializedPackage);
-		free(describeRecibido.tablas);
-	}
+	/*
+	 if (es_primera_memoria) {
+	 char* serializedPackage;
+	 serializedPackage = serializarDescribe(&describeRecibido);
+	 send(socketCliente, serializedPackage,
+	 describeRecibido.cant_tablas * sizeof(t_metadata)
+	 + sizeof(describeRecibido.cant_tablas), 0);
+	 dispose_package(&serializedPackage);
+	 free(describeRecibido.tablas);
+	 }
+	 */
 	//Describe a kernel
-
 	//thread ingreso por consola
 	pthread_t threadL;
 	int iret1;
@@ -225,7 +225,8 @@ int main() {
 				status = recieve_and_deserialize_select(&package,
 						socketCliente);
 
-				comando_valido = ejectuarComando(headerRecibido, &package,lfsSocket);
+				comando_valido = ejectuarComando(headerRecibido, &package,
+						lfsSocket);
 				//send_package(package.header, &package, lfsSocket);
 
 				free(package.tabla);
@@ -235,23 +236,37 @@ int main() {
 				status = recieve_and_deserialize_insert(&package,
 						socketCliente);
 
-				comando_valido = ejectuarComando(headerRecibido, &package,lfsSocket);
+				comando_valido = ejectuarComando(headerRecibido, &package,
+						lfsSocket);
+				free(package.value);
+				free(package.tabla);
 				//send_package(package.header, &package, lfsSocket);
-			}else if (headerRecibido == CREATE) {
+			} else if (headerRecibido == CREATE) {
 				t_PackageCreate package;
 				package.header = CREATE;
 				status = recieve_and_deserialize_create(&package,
 						socketCliente);
 
-				comando_valido = ejectuarComando(headerRecibido, &package,lfsSocket);
+				comando_valido = ejectuarComando(headerRecibido, &package,
+						lfsSocket);
+				//send_package(package.header, &package, lfsSocket);
+			} else if (headerRecibido == DESCRIBE) {
+				t_PackageDescribe package;
+				package.header = DESCRIBE;
+				status = recieve_and_deserialize_describe_request(&package,
+						socketCliente);
+
+				comando_valido = ejectuarComando(headerRecibido, &package,
+						lfsSocket);
+				free(package.nombre_tabla);
 				//send_package(package.header, &package, lfsSocket);
 			}
 		}
 	}
 
-	printf("Kernel Desconectado.\n");
+	log_warning(g_logger, "Kernel Desconectado.");
 
-	pthread_exit(&threadL);
+	pthread_join(&threadL, NULL);
 
 	close(socketCliente);
 	close(listenningSocket);
@@ -259,6 +274,7 @@ int main() {
 	list_destroy(tabla_segmentos);
 	free(memoriaPrincipal);
 	free(tabla_paginas.renglones);
+	free(bit_map);
 	log_destroy(g_logger);
 	free(conf_path);
 
@@ -269,15 +285,16 @@ void destruirTablas() {
 
 	void destruir(Segmento *segmento) {
 		list_destroy(segmento->numeros_pagina);
+		free(segmento);
 	}
 
-	list_iterate(tabla_segmentos, &destruir);
+	list_iterate(tabla_segmentos, destruir);
 }
 
 void printearTablas() {
 
 	void printear(Segmento *segmento) {
-		printf("%s.\n", segmento->path);
+		log_info(g_logger, "Tabla %s", segmento->path);
 	}
 	;
 
@@ -328,13 +345,16 @@ void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
 int ejectuarComando(int header, void* package, int socket) {
 	switch (header) {
 	case SELECT:
-		return ejecutarSelect((t_PackageSelect*) package,socket);
+		return ejecutarSelect((t_PackageSelect*) package, socket);
 		break;
 	case INSERT:
-		return ejecutarInsert((t_PackageInsert*) package,socket);
+		return ejecutarInsert((t_PackageInsert*) package, socket);
 		break;
 	case CREATE:
-		return ejecutarCreate((t_PackageCreate*) package,socket);
+		return ejecutarCreate((t_PackageCreate*) package, socket);
+		break;
+	case DESCRIBE:
+		return ejecutarDescribe((t_PackageDescribe*) package, socket);
 		break;
 	}
 	return -1;
@@ -356,25 +376,42 @@ int ejecutarSelect(t_PackageSelect* select, int lfs_socket) {
 				segmento_encontrado, &num_pag);
 
 		if (pagina_encontrada != NULL) {
-			printf("Registro: TimeStamp: %d, Key:%d, Value: %s \n",
+			log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
 					pagina_encontrada->timeStamp, pagina_encontrada->key,
 					pagina_encontrada->value);
+
+			char* mensaje_a_enviar = string_from_format(
+					"Registro: TimeStamp: %d, Key:%d, Value: %s",
+					pagina_encontrada->timeStamp, pagina_encontrada->key,
+					pagina_encontrada->value);
+
+			enviarMensaje(mensaje_a_enviar, socketCliente);
+
+			free(mensaje_a_enviar);
+
 		} else {
 
 			int status;
-			printf("No tengo ese registro \n");
+			log_info(g_logger, "No tengo ese registro");
 
 			recibir_y_ejecutar(select, lfs_socket);
 
 		}
 	} else {
-		printf("Memoria no tiene esa tabla, pidiendo a LFS... \n");
-		//lo pido a lfs
+		log_info(g_logger, "Memoria no tiene esa tabla, pidiendo a LFS...");
 		recibir_y_ejecutar(select, lfs_socket);
 
 	}
 
 	return 1;
+}
+
+void enviarMensaje(char* mensaje, int socket) {
+	int total_size;
+	char* serializedMesagge = serializarMensaje(mensaje, &total_size);
+
+	send(socket, serializedMesagge, total_size, 0);
+	dispose_package(&serializedMesagge);
 }
 
 int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
@@ -404,7 +441,17 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 	status = respuesta_select->result;
 
 	if (!status) {
-		printf("No se tiene en LFS \n");
+		log_warning(g_logger, "Registro no encontrado");
+
+		char* mensaje_a_enviar = string_from_format("Registro no encontrado");
+		enviarMensaje(mensaje_a_enviar, socketCliente);
+		free(mensaje_a_enviar);
+
+		free(respuesta_select->value);
+		free(paquete_insert->tabla);
+		dispose_package(&paquete_insert);
+		dispose_package(&respuesta_select);
+
 		return 0;
 	}
 
@@ -421,12 +468,22 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 
 	ejecutarInsert(paquete_insert);
 
-	printf("Registro: TimeStamp: %d, Key:%d, Value: %s \n",
+	log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
 			paquete_insert->timestamp, paquete_insert->key,
 			paquete_insert->value);
 
+	char* mensaje_a_enviar = string_from_format(
+			"Registro: TimeStamp: %d, Key:%d, Value: %s",
+			paquete_insert->timestamp, paquete_insert->key,
+			paquete_insert->value);
+	enviarMensaje(mensaje_a_enviar, socketCliente);
+	free(mensaje_a_enviar);
+
 	free(respuesta_select->value);
+	free(paquete_insert->tabla);
+	free(paquete_insert->value);
 	dispose_package(&paquete_insert);
+	dispose_package(&respuesta_select);
 
 	return status;
 }
@@ -451,14 +508,13 @@ int ejecutarInsert(t_PackageInsert* insert) {
 	} Pagina;
 
 	if (strlen(insert->value) > max_value_size) {
-		printf("Tamaño de value mayor al permitido \n");
+		log_warning(g_logger, "Tamaño de value mayor al permitido");
 		return -1;
 	}
 
 	Segmento* segmento_encontrado = buscarSegmento(insert->tabla);
 	if (segmento_encontrado != NULL) {
 
-		Segmento *nuevo_segmento = malloc(sizeof(Segmento));
 		int num_pag;
 		Pagina* pagina_encontrada = buscarPagina(insert->key,
 				segmento_encontrado, &num_pag);
@@ -539,6 +595,12 @@ int ejecutarCreate(t_PackageCreate* paquete, int lfs_socket) {
 	return 1;
 }
 
+int ejecutarDescribe(t_PackageDescribe* paquete, int lfs_socket) {
+
+	send_package(DESCRIBE, paquete, lfs_socket);
+	return 1;
+}
+
 void abrir_con(t_config** g_config) {
 	(*g_config) = config_create(conf_path);
 }
@@ -567,12 +629,35 @@ void send_package(int header, void* package, int lfsSocket) {
 		break;
 
 	case CREATE:
-			serializedPackage = serializarCreate((t_PackageCreate*) package);
-			send(lfsSocket, serializedPackage,
-					((t_PackageCreate*) package)->total_size, 0);
+		serializedPackage = serializarCreate((t_PackageCreate*) package);
+		send(lfsSocket, serializedPackage,
+				((t_PackageCreate*) package)->total_size, 0);
 
-			break;
+		break;
+	case DESCRIBE:
+
+		serializedPackage = serializarRequestDescribe(
+				(t_PackageDescribe*) package);
+		send(lfsSocket, serializedPackage,
+				((t_PackageDescribe*) package)->total_size, 0);
+
+		t_describe describeRecibido;
+		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
+
+		for (int i = 0; i < describeRecibido.cant_tablas; i++) {
+			printf("%s\n", describeRecibido.tablas[i].nombre_tabla);
 		}
+
+		char* serializedPackage2;
+		serializedPackage2 = serializarDescribe(&describeRecibido);
+		send(socketCliente, serializedPackage2,
+				describeRecibido.cant_tablas * sizeof(t_metadata)
+						+ sizeof(describeRecibido.cant_tablas), 0);
+		dispose_package(&serializedPackage2);
+		free(describeRecibido.tablas);
+
+		break;
+	}
 	dispose_package(&serializedPackage);
 
 }
@@ -585,9 +670,6 @@ void *inputFunc(void* serverSocket)
 	t_PackagePosta package;
 	package.message = malloc(MAX_MESSAGE_SIZE);
 	char *serializedPackage;
-
-//t_PackageRec packageRec;
-//int status = 1;		// Estructura que manjea el status de los recieve.
 
 	printf(
 			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
@@ -605,7 +687,7 @@ void *inputFunc(void* serverSocket)
 		if (header == EXIT_CONSOLE) {
 			enviar = 0;
 		} else if (header == ERROR) {
-			printf("Comando no reconocido\n");
+			log_warning(g_logger, "Comando no reconocido");
 			entradaValida = 0;
 		}
 
@@ -615,60 +697,11 @@ void *inputFunc(void* serverSocket)
 
 			interpretarComando(header, parametros, serverSocket);
 			free(parametros);
-			/*
-			 if (header == SELECT) {
-			 t_PackageSelect package;
-			 if (!fill_package_select(&package, parametros)) {
-			 printf("Incorrecta cantidad de parametros\n");
-			 entradaValida = 0;
-			 }
-
-			 if (entradaValida) {
-			 printf("SELECT enviado (Tabla: %s, Key: %d)\n",
-			 package.tabla, package.key);
-
-			 serializedPackage = serializarSelect(&package);
-
-			 send(serverSocket, serializedPackage, package.total_size,
-			 0);
-
-			 free(package.tabla);
-			 dispose_package(&serializedPackage);
-			 }
-			 } else if (header == INSERT) {
-			 t_PackageInsert package;
-			 if (!fill_package_insert(&package, parametros,0)) {
-			 printf("Incorrecta cantidad de parametros\n");
-			 entradaValida = 0;
-			 }
-
-			 if (entradaValida) {
-			 printf("INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n", package.tabla,
-			 package.key,package.value,package.timestamp);
-
-			 serializedPackage = serializarInsert(&package);
-
-			 send(serverSocket, serializedPackage, package.total_size,
-			 0);
-
-			 free(package.tabla);
-			 dispose_package(&serializedPackage);
-			 }
-			 }*/
-
-			/*
-			 interpretarComando(package.header,package.message);
-			 serializedPackage = serializarOperandos(&package);	// Ver: ������Por que serializacion dinamica? En el comentario de la definicion de la funcion.
-			 send(serverSocket, serializedPackage, package.total_size, 0);
-			 dispose_package(&serializedPackage);
-			 */
-			//status = recieve_and_deserialize(&packageRec, serverSocket);
-			//if (status) printf("%s says: %s", packageRec.username, packageRec.message);
 		}
 
 	}
 
-	printf("Desconectado.\n");
+	log_warning(g_logger, "Desconectado.");
 
 	free(package.message);
 
@@ -706,11 +739,11 @@ void select_memory(char* parametros, int serverSocket) {
 
 	if (!fill_package_select(&package, parametros)) {
 
-		printf("Incorrecta cantidad de parametros\n");
+		log_warning(g_logger, "Incorrecta cantidad de parametros");
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(SELECT, &package,serverSocket);
+		comando_valido = ejectuarComando(SELECT, &package, serverSocket);
 	}
 	free(package.tabla);
 }
@@ -722,11 +755,11 @@ void create(char* parametros, int serverSocket) {
 	t_PackageCreate package;
 
 	if (!fill_package_create(&package, parametros)) {
-		printf("Incorrecta cantidad de parametros\n");
+		log_warning(g_logger, "Incorrecta cantidad de parametros");
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(CREATE, &package,serverSocket);
+		comando_valido = ejectuarComando(CREATE, &package, serverSocket);
 	}
 	free(package.tabla);
 }
@@ -738,13 +771,13 @@ void insert_memory(char* parametros, int serverSocket) {
 	t_PackageInsert package;
 
 	if (!fill_package_insert(&package, parametros, 0)) {
-		printf("Incorrecta cantidad de parametros\n");
+		log_warning(g_logger, "Incorrecta cantidad de parametros");
 		entradaValida = 0;
 	}
 
 	if (entradaValida) {
 
-		comando_valido = ejectuarComando(INSERT, &package,serverSocket);
+		comando_valido = ejectuarComando(INSERT, &package, serverSocket);
 
 		free(package.tabla);
 	}
