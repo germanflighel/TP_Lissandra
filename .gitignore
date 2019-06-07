@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+/**/*.log
 
 # Object files
 *.o
@@ -50,4 +51,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-/LSF/*.log

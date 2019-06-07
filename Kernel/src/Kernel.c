@@ -53,7 +53,7 @@ int main() {
 	ip_destino = malloc(strlen(ip));
 	strcpy(ip_destino, ip);
 
-	puerto = config_get_string_value(conection_conf, "PUERTO");
+	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
 	printf("LLegue\n");
 	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
@@ -398,7 +398,7 @@ void select_kernel(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		printf("SELECT enviado (Tabla: %s, Key: %d)\n", package.tabla,
+		log_info(logger_Kernel,"SELECT enviado (Tabla: %s, Key: %d)", package.tabla,
 				package.key);
 
 		serializedPackage = serializarSelect(&package);
@@ -434,8 +434,8 @@ void insert_kernel(char* parametros, int serverSocket) {
 	}
 
 	if (entradaValida) {
-		printf(
-				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)\n",
+		log_info(logger_Kernel,
+				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)",
 				package.tabla, package.key, package.value, package.timestamp);
 
 		serializedPackage = serializarInsert(&package);
@@ -461,14 +461,14 @@ void describe(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		printf("DESCRIBE enviado\n");
+		log_info(logger_Kernel,"DESCRIBE enviado");
 
 		serializedPackage = serializarRequestDescribe(&package);
 
 		int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
 
 		if (socketAEnviar != -1) {
-			printf("Lo mande\n");
+			//printf("Lo mande\n");
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
 			recibirDescribe(serverSocket);
@@ -492,10 +492,10 @@ void recibirDescribe(int serverSocket) {
 	recieve_and_deserialize_describe(&describe, serverSocket);
 
 	if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
-		printf("La tabla no existe\n");
+		log_warning(logger_Kernel,"La tabla no existe");
 	} else {
 		for (int i = 0; i < describe.cant_tablas; i++) {
-			printf("%s\n", describe.tablas[i].nombre_tabla);
+			//printf("%s\n", describe.tablas[i].nombre_tabla);
 			if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
 				Tabla* tabla_nueva = malloc(sizeof(Tabla));
 				strcpy(tabla_nueva->nombre_tabla,
@@ -527,7 +527,7 @@ void create(char* parametros, int serverSocket) {
 	}
 
 	if (entradaValida) {
-		printf("CREATE enviado (Tabla: %s, CONSISTENCY: %s)\n", package.tabla,
+		log_info(logger_Kernel,"CREATE enviado (Tabla: %s, CONSISTENCY: %s)", package.tabla,
 				consistency_to_str(package.consistency));
 
 		serializedPackage = serializarCreate(&package);
@@ -578,7 +578,7 @@ void add(char* parametros, int serverSocket) {
 				break;
 			}
 		} else {
-			printf("Esa memoria no esta conectada\n");
+			log_error(logger_Kernel,"Esa memoria no esta conectada");
 		}
 	}
 
@@ -593,7 +593,7 @@ void run(char* rutaRecibida, int serverSocket) {
 	char* rutaArchivo = malloc(strlen(rutaRecibida));
 	strcpy(rutaArchivo, rutaRecibida);
 
-	printf("%s\n", rutaArchivo);
+	printf("%s viajando a new!\n", rutaArchivo);
 
 	Script* test = levantar_script(rutaArchivo);
 
@@ -612,7 +612,7 @@ Script* levantar_script(char* ruta) {
 	int fd = open(ruta, O_RDONLY, S_IRUSR | S_IWUSR);
 
 	struct stat s;
-	//int status = fstat(fd, &s);
+	int status = fstat(fd, &s);
 	int size = s.st_size;
 
 	f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
@@ -620,7 +620,7 @@ Script* levantar_script(char* ruta) {
 	nuevoScript->lineas = string_split(f, "\n");
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
-	log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
+	//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
 
 	close(fd);
 	return nuevoScript;
