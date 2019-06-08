@@ -50,7 +50,7 @@ int main() {
 	abrir_config(&conection_conf);
 
 	char* ip = config_get_string_value(conection_conf, "IP");
-	ip_destino = malloc(strlen(ip));
+	ip_destino = malloc(strlen(ip) + 1);
 	strcpy(ip_destino, ip);
 
 	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
