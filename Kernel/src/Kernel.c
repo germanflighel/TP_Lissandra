@@ -345,14 +345,14 @@ int puertoConectado(char* puertoChar) {
 
 }
 
-void interpretarComando(int header, char* parametros, int serverSocket) {
+int interpretarComando(int header, char* parametros, int serverSocket) {
 
 	switch (header) {
 	case SELECT:
-		select_kernel(parametros, serverSocket);
+		return select_kernel(parametros, serverSocket);
 		break;
 	case INSERT:
-		insert_kernel(parametros, serverSocket);
+		return insert_kernel(parametros, serverSocket);
 		break;
 	case DESCRIBE:
 		describe(parametros, serverSocket);
@@ -367,12 +367,7 @@ void interpretarComando(int header, char* parametros, int serverSocket) {
 		journal(parametros, serverSocket);
 		break;
 	case RUN:
-
-		if (cant_parametros(string_split(parametros, " ")) != 1) {
-			printf("Cantidad de parametros invalidos\n");
-		} else {
-			run(parametros, serverSocket);
-		}
+		return run(parametros, serverSocket);
 		break;
 	case ADD:
 		add(parametros, serverSocket);
@@ -383,11 +378,12 @@ void interpretarComando(int header, char* parametros, int serverSocket) {
 	case -1:
 		break;
 	}
-
+	return 1;
 }
 
-void select_kernel(char* parametros, int serverSocket) {
+int select_kernel(char* parametros, int serverSocket) {
 
+	int ok = 1;
 	char *serializedPackage;
 	int entradaValida = 1;
 	t_PackageSelect package;
@@ -398,8 +394,8 @@ void select_kernel(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		log_info(logger_Kernel,"SELECT enviado (Tabla: %s, Key: %d)", package.tabla,
-				package.key);
+		log_info(logger_Kernel, "SELECT enviado (Tabla: %s, Key: %d)",
+				package.tabla, package.key);
 
 		serializedPackage = serializarSelect(&package);
 
@@ -414,16 +410,19 @@ void select_kernel(char* parametros, int serverSocket) {
 			free(respuesta);
 
 		} else {
+			ok = 0;
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
 
 		free(package.tabla);
 		dispose_package(&serializedPackage);
 	}
+	return ok;
 }
 
-void insert_kernel(char* parametros, int serverSocket) {
+int insert_kernel(char* parametros, int serverSocket) {
 
+	int ok = 1;
 	char* serializedPackage;
 	int entradaValida = 1;
 	t_PackageInsert package;
@@ -444,11 +443,13 @@ void insert_kernel(char* parametros, int serverSocket) {
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 		} else {
+			ok = 0;
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
 		free(package.tabla);
 		dispose_package(&serializedPackage);
 	}
+	return ok;
 }
 
 void describe(char* parametros, int serverSocket) {
@@ -461,7 +462,7 @@ void describe(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		log_info(logger_Kernel,"DESCRIBE enviado");
+		log_info(logger_Kernel, "DESCRIBE enviado");
 
 		serializedPackage = serializarRequestDescribe(&package);
 
@@ -477,7 +478,7 @@ void describe(char* parametros, int serverSocket) {
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
 
-		free(package.nombre_tabla);
+		//free(package.nombre_tabla);
 		dispose_package(&serializedPackage);
 	}
 }
@@ -492,7 +493,7 @@ void recibirDescribe(int serverSocket) {
 	recieve_and_deserialize_describe(&describe, serverSocket);
 
 	if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
-		log_warning(logger_Kernel,"La tabla no existe");
+		log_warning(logger_Kernel, "La tabla no existe");
 	} else {
 		for (int i = 0; i < describe.cant_tablas; i++) {
 			//printf("%s\n", describe.tablas[i].nombre_tabla);
@@ -527,8 +528,8 @@ void create(char* parametros, int serverSocket) {
 	}
 
 	if (entradaValida) {
-		log_info(logger_Kernel,"CREATE enviado (Tabla: %s, CONSISTENCY: %s)", package.tabla,
-				consistency_to_str(package.consistency));
+		log_info(logger_Kernel, "CREATE enviado (Tabla: %s, CONSISTENCY: %s)",
+				package.tabla, consistency_to_str(package.consistency));
 
 		serializedPackage = serializarCreate(&package);
 
@@ -578,7 +579,7 @@ void add(char* parametros, int serverSocket) {
 				break;
 			}
 		} else {
-			log_error(logger_Kernel,"Esa memoria no esta conectada");
+			log_error(logger_Kernel, "Esa memoria no esta conectada");
 		}
 	}
 
@@ -588,19 +589,23 @@ void metrics(char* parametros, int serverSocket) {
 	printf("Recibi un metrics.\n");
 }
 
-void run(char* rutaRecibida, int serverSocket) {
+int run(char* rutaRecibida, int serverSocket) {
 
-	char* rutaArchivo = malloc(strlen(rutaRecibida));
-	strcpy(rutaArchivo, rutaRecibida);
+	//char* rutaArchivo = malloc(strlen(rutaRecibida));
+	//strcpy(rutaArchivo, rutaRecibida);
 
-	printf("%s viajando a new!\n", rutaArchivo);
+	printf("%s viajando a new!\n", rutaRecibida);
 
-	Script* test = levantar_script(rutaArchivo);
+	Script* test = levantar_script(rutaRecibida);
 
-	script_a_ready(test);
-
-	free(rutaArchivo);
-
+	if (test->lineas != NULL) {
+		script_a_ready(test);
+	} else {
+		free(test);
+		return 0;
+	}
+	//free(rutaArchivo);
+	return 1;
 }
 
 Script* levantar_script(char* ruta) {
@@ -612,28 +617,31 @@ Script* levantar_script(char* ruta) {
 
 	int fd = open(ruta, O_RDONLY, S_IRUSR | S_IWUSR);
 
+	if (fd == -1) {
+		nuevoScript->lineas = NULL;
+		return nuevoScript;
+	}
+
 	struct stat s;
 	int status = fstat(fd, &s);
 	int size = s.st_size;
 
+	f = (char *) mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
 
-	printf("1\n");
-	f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
+	lineasnuevas = malloc(size + 1);
 
-	printf("2\n");
-	lineasnuevas = malloc(strlen(f));
-	strcpy(lineasnuevas,f);
-	printf("3\n");
-	munmap(f,size);
+	memcpy(lineasnuevas, f, size);
+
+	lineasnuevas[size] = '\0';
+	munmap(f, size);
 	close(fd);
-	printf("4\n");
+
 	nuevoScript->lineas = string_split(lineasnuevas, "\n");
 
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
 	//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
 
-	printf("5\n");
 	return nuevoScript;
 }
 
@@ -693,11 +701,13 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 	Script* scriptEnExec = *script;
 	int entradaValida;
 	int ejecutadas = 1;
+	int ejecucionCorrecta = 1;
 	int header;
 	do {
 		printf("Ejecutando un quantum \n");
 		//printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
 
+		ejecucionCorrecta = 1;
 		entradaValida = 1;
 		char* entrada = scriptEnExec->lineas[scriptEnExec->index];
 
@@ -713,8 +723,10 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 		}
 
 		if (entradaValida) {
-			interpretarComando(header, parametros, serverSocket);
-		} else {
+			ejecucionCorrecta = interpretarComando(header, parametros,
+					serverSocket);
+		}
+		if (!entradaValida || !ejecucionCorrecta) {
 			return CORTE_SCRIPT_POR_LINEA_ERRONEA;
 		}
 		free(parametros);

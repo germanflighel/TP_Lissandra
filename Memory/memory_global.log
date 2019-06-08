@@ -2,3 +2,8 @@
 [INFO] 18:30:06:947 memory/(13666:13666): Franco Pinto
 [INFO] 18:30:06:947 memory/(13666:13666): TABLA1
 [INFO] 18:30:06:947 memory/(13666:13666): 1558899291
+[INFO] 17:05:53:805 memory/(14495:14495): 8001
+[DEBUG] 17:05:53:814 memory/(14495:14495): Conectado al LFS
+[INFO] 17:05:57:134 memory/(14495:14495): Maximo tamaño del value: 0.
+[INFO] 17:05:57:134 memory/(14495:14495): 0
+[INFO] 17:05:57:134 memory/(14495:14495): 8001

@@ -197,8 +197,18 @@ int validarParametros(int header, char* parametros) {
 		if (cant_parametros(parametrosSeparados) != 4) {
 			free(parametrosSeparados);
 			return 0;
+		}else if (!esUnNumero(parametrosSeparados[3])||!esUnNumero(parametrosSeparados[2])) {
+			free(parametrosSeparados);
+			return 0;
 		}
 		break;
+	case RUN:
+			parametrosSeparados = string_split(parametros, " ");
+			if (cant_parametros(parametrosSeparados) != 1) {
+				free(parametrosSeparados);
+				return 0;
+			}
+			break;
 	case DESCRIBE:
 		if (parametros == NULL) {
 			return 1;
@@ -309,8 +319,8 @@ char* serializarRequestDescribe(t_PackageDescribe* package) {
 
 	if (!package->tabla_long) {
 		package->tabla_long = 1;
-		package->nombre_tabla = malloc(2);
-		strcpy(package->nombre_tabla, " ");
+		package->nombre_tabla = " ";
+		//strcpy(package->nombre_tabla, " ");
 	}
 
 	int offset = 0;

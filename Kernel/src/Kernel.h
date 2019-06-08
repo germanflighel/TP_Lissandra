@@ -53,16 +53,16 @@ void abrir_config(t_config **);
 
 int is_regular_file(const char*);
 
-void interpretarComando(int,char*,int);
-void insert_kernel(char*,int);
+int interpretarComando(int,char*,int);
+int insert_kernel(char*,int);
 void describe(char*,int);
 void drop(char*,int);
 void create(char*,int);
 void journal(char*,int);
-void run(char*,int);
+int run(char*,int);
 void add(char*,int);
 void metrics(char*,int);
-void select_kernel(char*,int);
+int select_kernel(char*,int);
 Script* levantar_script(char*);
 void* exec(int);
 void* intentarEstablecerConexion();
