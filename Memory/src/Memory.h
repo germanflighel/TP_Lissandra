@@ -19,6 +19,8 @@
 #include <commons/config.h>
 #include <readline/readline.h>
 #include <pthread.h>
+#include <readline/history.h>
+
 
 #define BACKLOG 1			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
 

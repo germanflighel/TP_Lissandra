@@ -168,7 +168,11 @@ int main() {
 			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
 
 	while (enviar) {
-		char* entrada = leerConsola();
+
+
+		char* entrada;
+
+		entrada = readline("");
 
 		char* parametros;
 		int header;
@@ -178,6 +182,8 @@ int main() {
 		if (header == EXIT_CONSOLE) {
 			enviar = 0;
 		}
+
+		add_history(entrada);
 
 		if (enviar) {
 

@@ -693,7 +693,10 @@ void *inputFunc(void* serverSocket)
 	while (enviar) {
 		entradaValida = 1;
 
-		char* entrada = leerConsola();
+		char* entrada;
+
+		entrada = readline("Memory> ");
+
 
 		char* parametros;
 		int header;
@@ -706,6 +709,8 @@ void *inputFunc(void* serverSocket)
 			log_warning(g_logger, "Comando no reconocido");
 			entradaValida = 0;
 		}
+
+		add_history(entrada);
 
 		free(entrada);
 
