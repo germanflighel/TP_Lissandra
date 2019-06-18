@@ -22,7 +22,7 @@
 #include <pthread.h>
 
 #define BACKLOG 50			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
-
+#define TABLA_NAME_SIZE 50
 
 
 /*
@@ -41,7 +41,7 @@ typedef struct Renglon_pagina {
 } Renglon_pagina;
 
 typedef struct Segmento {
-	char path[50];
+	char path[TABLA_NAME_SIZE];
 	t_list* tablaDePaginas;
 	//t_list* numeros_pagina;
 }Segmento;

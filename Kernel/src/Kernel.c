@@ -217,7 +217,7 @@ int main() {
 
 	close(serverSocket);
 	log_destroy(logger_Kernel);
-	list_destroy_and_destroy_elements(tablas_actuales,(void*)free);
+	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
 	list_destroy(memoriasConectadas);
 	queue_destroy(colaReady);
 	queue_destroy(colaExec);
@@ -367,7 +367,7 @@ int interpretarComando(int header, char* parametros, int serverSocket) {
 		create(parametros, serverSocket);
 		break;
 	case JOURNAL:
-		journal(parametros, serverSocket);
+		journal("", serverSocket);
 		break;
 	case RUN:
 		return run(parametros, serverSocket);
@@ -445,6 +445,23 @@ int insert_kernel(char* parametros, int serverSocket) {
 		int socketAEnviar = socketAUtilizar(package.tabla);
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+
+			log_info(logger_Kernel,"Insert: %s",respuesta);
+
+			if (strcmp(respuesta, "FULL") == 0) {
+				journal("",serverSocket);
+				send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+				free(respuesta);
+				respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+				log_info(logger_Kernel,"Insert: %s",respuesta);
+			}
+			free(respuesta);
+			//printf("%s\n", respuesta);
+
+
 		} else {
 			ok = 0;
 			printf("Ninguna memoria asignada para este criterio\n");
@@ -547,7 +564,21 @@ void create(char* parametros, int serverSocket) {
 }
 
 void journal(char* parametros, int serverSocket) {
-	printf("Recibi un journal.\n");
+	char* serializedPackage;
+	int header = JOURNAL;
+	serializedPackage = malloc(sizeof(int));
+
+	//int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
+
+	memcpy(serializedPackage, &header, sizeof(int));
+
+	void enviarJournal(Memoria* mem) {
+		send(mem->socket, serializedPackage, sizeof(int), 0);
+	}
+
+	list_iterate(memoriasConectadas, &enviarJournal);
+
+	dispose_package(&serializedPackage);
 }
 
 void add(char* parametros, int serverSocket) {
@@ -596,8 +627,8 @@ void metrics(char* parametros, int serverSocket) {
 
 int run(char* rutaRecibida, int serverSocket) {
 
-	//char* rutaArchivo = malloc(strlen(rutaRecibida));
-	//strcpy(rutaArchivo, rutaRecibida);
+//char* rutaArchivo = malloc(strlen(rutaRecibida));
+//strcpy(rutaArchivo, rutaRecibida);
 
 	printf("%s viajando a new!\n", rutaRecibida);
 
@@ -609,7 +640,7 @@ int run(char* rutaRecibida, int serverSocket) {
 		free(test);
 		return 0;
 	}
-	//free(rutaArchivo);
+//free(rutaArchivo);
 	return 1;
 }
 
@@ -647,7 +678,7 @@ Script* levantar_script(char* ruta) {
 
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
-	//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
+//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
 
 	return nuevoScript;
 }

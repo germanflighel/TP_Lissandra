@@ -34,6 +34,8 @@ int lfsSocket;
 int retardo_mem;
 int retardo_fs;
 
+pthread_mutex_t journaling;
+
 int main() {
 
 	//Estructura Conexiones
@@ -124,7 +126,6 @@ int main() {
 		char value[max_value_size];
 	} Pagina;
 
-
 	cant_marcos = floor(memory_size / (double) sizeof(Pagina));
 	//printf("%d \n", cant_marcos);
 	memoriaPrincipal = malloc(memory_size);
@@ -133,9 +134,7 @@ int main() {
 	//tabla_paginas.renglones = malloc(cant_marcos * sizeof(Renglon_pagina));
 
 	bit_map = malloc(cant_marcos);
-	for (int pag = 0; pag < cant_marcos; pag++) {
-		bit_map[pag] = 0;
-	}
+	liberarBitMap();
 
 	//inicializacion memoria
 
@@ -157,6 +156,8 @@ int main() {
 	struct timeval tv;
 	//char buffer[MAX_BUFFER_SIZE+1];
 	struct sockaddr_in addr;
+
+	pthread_mutex_init(&journaling, NULL);
 
 	//binding
 
@@ -238,7 +239,9 @@ int main() {
 
 					do {
 						//printf("2\n");
+
 						result = recieve(j);
+
 					} while (result == -1 && errno == EINTR);
 
 					if (result > 0) {
@@ -273,6 +276,12 @@ int main() {
 	return 0;
 }
 
+void liberarBitMap() {
+	for (int pag = 0; pag < cant_marcos; pag++) {
+		bit_map[pag] = 0;
+	}
+}
+
 int recieve(int socketCliente) {
 
 	int headerRecibido;
@@ -288,18 +297,23 @@ int recieve(int socketCliente) {
 			package.header = SELECT;
 			status = recieve_and_deserialize_select(&package, socketCliente);
 
+			pthread_mutex_lock(&journaling);
 			comando_valido = ejectuarComando(headerRecibido, &package,
 					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
 			//send_package(package.header, &package, lfsSocket);
 
 			free(package.tabla);
 		} else if (headerRecibido == INSERT) {
 			t_PackageInsert package;
 			package.header = INSERT;
+
 			status = recieve_and_deserialize_insert(&package, socketCliente);
 
+			pthread_mutex_lock(&journaling);
 			comando_valido = ejectuarComando(headerRecibido, &package,
 					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
 			free(package.value);
 			free(package.tabla);
 			//send_package(package.header, &package, lfsSocket);
@@ -308,8 +322,10 @@ int recieve(int socketCliente) {
 			package.header = CREATE;
 			status = recieve_and_deserialize_create(&package, socketCliente);
 
+			pthread_mutex_lock(&journaling);
 			comando_valido = ejectuarComando(headerRecibido, &package,
 					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
 			//send_package(package.header, &package, lfsSocket);
 		} else if (headerRecibido == DESCRIBE) {
 			t_PackageDescribe package;
@@ -317,9 +333,16 @@ int recieve(int socketCliente) {
 			status = recieve_and_deserialize_describe_request(&package,
 					socketCliente);
 
+			pthread_mutex_lock(&journaling);
 			comando_valido = ejectuarComando(headerRecibido, &package,
 					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
 			free(package.nombre_tabla);
+			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == JOURNAL) {
+
+			log_warning(g_logger, "JOURNAL RECIBIDO");
+			journal();
 			//send_package(package.header, &package, lfsSocket);
 		}
 	}
@@ -392,7 +415,7 @@ int ejectuarComando(int header, void* package, int socket, int esAPI) {
 		return ejecutarSelect((t_PackageSelect*) package, socket, esAPI);
 		break;
 	case INSERT:
-		return ejecutarInsert((t_PackageInsert*) package, 1);
+		return ejecutarInsert((t_PackageInsert*) package, socket, 1, !esAPI);
 		break;
 	case CREATE:
 		return ejecutarCreate((t_PackageCreate*) package, socket);
@@ -519,7 +542,7 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 			+ sizeof(paquete_insert->timestamp) + paquete_insert->value_long
 			+ paquete_insert->tabla_long;
 
-	ejecutarInsert(paquete_insert,0);
+	ejecutarInsert(paquete_insert, 0, NULL, 0);
 
 	log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
 			paquete_insert->timestamp, paquete_insert->key,
@@ -606,7 +629,10 @@ int algoritmoDeReemplazo() {
 	return marcoLiberado;
 }
 
-int ejecutarInsert(t_PackageInsert* insert, int mod) {
+int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
+		int vieneDeKernel) {
+
+	int full = 0;
 
 	typedef struct Pagina {
 		long timeStamp;
@@ -616,6 +642,11 @@ int ejecutarInsert(t_PackageInsert* insert, int mod) {
 
 	if (strlen(insert->value) > max_value_size) {
 		log_warning(g_logger, "Tamaño de value mayor al permitido");
+
+		if (vieneDeKernel) {
+			enviarMensaje("OK", socket);
+		}
+
 		return -1;
 	}
 
@@ -661,6 +692,7 @@ int ejecutarInsert(t_PackageInsert* insert, int mod) {
 
 			} else {
 
+				full = 1;
 				log_warning(g_logger, "Memoria full");
 				//JOURNALING
 			}
@@ -695,9 +727,17 @@ int ejecutarInsert(t_PackageInsert* insert, int mod) {
 			list_add(nuevo_segmento->tablaDePaginas, entrada_nueva);
 			list_add(tabla_segmentos, (Segmento*) nuevo_segmento);
 		} else {
-
+			full = 1;
 			log_warning(g_logger, "Memoria full");
 			//JOURNALING
+		}
+
+	}
+	if (vieneDeKernel) {
+		if (full) {
+			enviarMensaje("FULL", socket);
+		} else {
+			enviarMensaje("OK", socket);
 		}
 
 	}
@@ -724,6 +764,80 @@ void abrir_log(void) {
 
 	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_DEBUG);
 
+}
+
+void journal() {
+
+	typedef struct Pagina {
+		long timeStamp;
+		uint16_t key;
+		char value[max_value_size];
+	} Pagina;
+
+	pthread_mutex_lock(&journaling);
+
+	char* nombreTabla;
+
+	void porEntrada(Renglon_pagina* renglon) {
+		log_debug(g_logger,"Entre");
+		if (renglon->modificado) {
+			int offsetPagina = renglon->offset;
+			Pagina* pag = ((Pagina*) (memoriaPrincipal + offsetPagina));
+
+			t_PackageInsert* paquete_insert;
+			paquete_insert = malloc(sizeof(t_PackageInsert));
+
+			paquete_insert->header = INSERT;
+			paquete_insert->tabla_long = strlen(nombreTabla);
+
+			paquete_insert->tabla = malloc(paquete_insert->tabla_long + 1);
+			strcpy(paquete_insert->tabla, nombreTabla);
+
+			paquete_insert->key = pag->key;
+
+			paquete_insert->value_long = strlen(pag->value);
+
+			paquete_insert->value = malloc(paquete_insert->value_long + 1);
+			strcpy(paquete_insert->value, pag->value);
+
+			paquete_insert->timestamp = pag->timeStamp;
+
+			paquete_insert->total_size = sizeof(paquete_insert->header)
+					+ sizeof(paquete_insert->value_long)
+					+ sizeof(paquete_insert->tabla_long)
+					+ sizeof(paquete_insert->key)
+					+ sizeof(paquete_insert->timestamp)
+					+ paquete_insert->value_long + paquete_insert->tabla_long;
+
+			char* serializedPackage = serializarInsert(paquete_insert);
+			send(lfsSocket, serializedPackage, paquete_insert->total_size, 0);
+
+			free(paquete_insert->tabla);
+			free(paquete_insert->value);
+			free(paquete_insert);
+			dispose_package(&serializedPackage);
+		}
+	}
+
+	void porSegmento(Segmento* seg) {
+		nombreTabla = malloc(strlen(seg->path)+1);
+		strcpy(nombreTabla,seg->path);
+		log_debug(g_logger,nombreTabla);
+		list_iterate(seg->tablaDePaginas, &porEntrada);
+		free(nombreTabla);
+	}
+
+	list_iterate(tabla_segmentos, &porSegmento);
+
+	reinciarMemoria();
+
+	pthread_mutex_unlock(&journaling);
+}
+
+void reinciarMemoria() {
+	destruirTablas();
+	list_clean(tabla_segmentos);
+	liberarBitMap();
 }
 
 void send_package(int header, void* package, int socketCliente) {
@@ -887,7 +1001,7 @@ void create(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(CREATE, &package, serverSocket, 0);
+		comando_valido = ejectuarComando(CREATE, &package, serverSocket, 1);
 	}
 	free(package.tabla);
 }
@@ -905,7 +1019,7 @@ void insert_memory(char* parametros, int serverSocket) {
 
 	if (entradaValida) {
 
-		comando_valido = ejectuarComando(INSERT, &package, serverSocket, 0);
+		comando_valido = ejectuarComando(INSERT, &package, serverSocket, 1);
 
 		free(package.tabla);
 	}
