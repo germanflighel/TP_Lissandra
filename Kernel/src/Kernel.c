@@ -16,6 +16,7 @@
 #include <sys/mman.h>
 t_log* logger_Kernel;
 int quantum;
+int tiempoDescribe;
 t_queue* colaReady;
 t_queue* colaExec;
 sem_t ejecutar_sem;
@@ -55,6 +56,8 @@ int main() {
 
 	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
+	tiempoDescribe = 1000
+			* config_get_int_value(conection_conf, "METADATA_REFRESH");
 	//multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
 	//printf("LLegue\n");
 	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
@@ -159,6 +162,21 @@ int main() {
 	}
 	//threadConexiones
 
+	//threadDescribe
+
+	pthread_t threadD;
+
+	int iret3;
+
+	iret3 = pthread_create(&threadD, NULL, describeCadaX, (void*) serverSocket);
+
+	if (iret3) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		exit(EXIT_FAILURE);
+	}
+
+	//threadDescribe
+
 	int enviar = 1;
 	int entradaValida;
 	t_PackagePosta package;
@@ -173,38 +191,36 @@ int main() {
 
 	while (enviar) {
 
-
 		char* entrada;
 
 		entrada = readline("");
 
+		if (strcmp(entrada, "") != 0) {
 
-		if(strcmp(entrada,"")!=0) {
+			char* parametros;
+			int header;
 
-		char* parametros;
-		int header;
+			separarEntrada(entrada, &header, &parametros);
 
-		separarEntrada(entrada, &header, &parametros);
+			free(parametros);
 
-		free(parametros);
+			if (header == EXIT_CONSOLE) {
+				enviar = 0;
+			}
 
-		if (header == EXIT_CONSOLE) {
-			enviar = 0;
-		}
+			add_history(entrada);
 
-		add_history(entrada);
+			if (enviar) {
 
-		if (enviar) {
+				Script* script_consola = malloc(sizeof(Script));
+				script_consola->index = 0;
 
-			Script* script_consola = malloc(sizeof(Script));
-			script_consola->index = 0;
+				script_consola->lineas = string_split(entrada, "\n");
+				script_consola->cant_lineas = cant_parametros(
+						script_consola->lineas);
 
-			script_consola->lineas = string_split(entrada, "\n");
-			script_consola->cant_lineas = cant_parametros(
-					script_consola->lineas);
-
-			script_a_ready(script_consola);
-		}
+				script_a_ready(script_consola);
+			}
 		}
 		free(entrada);
 
@@ -228,7 +244,7 @@ int main() {
 
 	close(serverSocket);
 	log_destroy(logger_Kernel);
-	list_destroy_and_destroy_elements(tablas_actuales,(void*)free);
+	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
 	list_destroy(memoriasConectadas);
 	queue_destroy(colaReady);
 	queue_destroy(colaExec);
@@ -559,6 +575,16 @@ void create(char* parametros, int serverSocket) {
 
 void journal(char* parametros, int serverSocket) {
 	printf("Recibi un journal.\n");
+}
+
+void* describeCadaX(int serverSocket) {
+	// tiempoDescribe = config_get_int_value(conection_conf,"METADATA_REFRESH")*1000;
+
+	while (true) {
+		usleep(tiempoDescribe);
+		interpretarComando(DESCRIBE, NULL, serverSocket);
+	}
+
 }
 
 void add(char* parametros, int serverSocket) {

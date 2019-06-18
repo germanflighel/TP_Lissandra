@@ -69,6 +69,7 @@ int select_kernel(char*,int);
 Script* levantar_script(char*);
 void* exec(int);
 void* intentarEstablecerConexion();
+void* describeCadaX(int);
 
 
 #endif
