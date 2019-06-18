@@ -803,6 +803,8 @@ void *inputFunc(void* serverSocket)
 
 		entrada = readline("Memory> ");
 
+		if(strcmp(entrada,"")!=0) {
+
 
 		char* parametros;
 		int header;
@@ -822,12 +824,15 @@ void *inputFunc(void* serverSocket)
 
 		add_history(entrada);
 
+
 		free(entrada);
 
 		if (memoryUP && entradaValida && okParams) {
 
 			interpretarComando(header, parametros, serverSocket);
 			free(parametros);
+		}
+
 		}
 
 	}

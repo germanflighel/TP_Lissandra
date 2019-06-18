@@ -178,10 +178,14 @@ int main() {
 
 		entrada = readline("");
 
+
+		if(strcmp(entrada,"")!=0) {
+
 		char* parametros;
 		int header;
 
 		separarEntrada(entrada, &header, &parametros);
+
 		free(parametros);
 
 		if (header == EXIT_CONSOLE) {
@@ -201,7 +205,7 @@ int main() {
 
 			script_a_ready(script_consola);
 		}
-
+		}
 		free(entrada);
 
 	}
