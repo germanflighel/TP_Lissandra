@@ -55,6 +55,7 @@ int main() {
 
 	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
+	//multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
 	//printf("LLegue\n");
 	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
 	//printf("LLegue\n");
