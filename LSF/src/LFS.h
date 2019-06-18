@@ -77,6 +77,7 @@ char* contenido_de_los_bloques(char* nombre_tabla, char** blocks);
 void* dump();
 
 char* contenido_de_temporales(char* nombre_tabla);
+t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido_temporal);
 
 
 
