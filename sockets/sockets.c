@@ -35,6 +35,9 @@ void separarEntrada(char* entrada, int* header, char** parametros) {
 	char** entradaSeparada = string_n_split(entrada, 2, " ");
 
 	*header = strToHeader(entradaSeparada[0]);
+
+	free(entradaSeparada[0]);
+
 	*parametros = entradaSeparada[1];
 
 	free(entradaSeparada);
@@ -134,7 +137,6 @@ int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
 	return status;
 }
 
-
 int recieve_and_send_describe(t_describe *package, int socketCliente,
 		int socketDestino) {
 
@@ -169,12 +171,16 @@ int validarParametros(int header, char* parametros) {
 		parametrosSeparados = string_split(parametros, " ");
 
 		if (cant_parametros(parametrosSeparados) != 2) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
-		}else if (!esUnNumero(parametrosSeparados[1])) {
+		} else if (!esUnNumero(parametrosSeparados[1])) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
 		}
+		string_iterate_lines(parametrosSeparados, (void*) free);
+		free(parametrosSeparados);
 		break;
 	case INSERT:
 
@@ -185,48 +191,63 @@ int validarParametros(int header, char* parametros) {
 				|| parametrosSeparados[2][0] != '"'
 				|| parametrosSeparados[2][strlen(parametrosSeparados[2]) - 1]
 						!= '"') {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
 		} else if (!esUnNumero(parametrosSeparados[1])) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
+			;
 			return 0;
 		}
-
+		string_iterate_lines(parametrosSeparados, (void*) free);
+		free(parametrosSeparados);
 		break;
 	case CREATE:
 		parametrosSeparados = string_split(parametros, " ");
 		if (cant_parametros(parametrosSeparados) != 4) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
-		}else if (!esUnNumero(parametrosSeparados[3])||!esUnNumero(parametrosSeparados[2])) {
+		} else if (!esUnNumero(parametrosSeparados[3])
+				|| !esUnNumero(parametrosSeparados[2])) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
 		}
+		string_iterate_lines(parametrosSeparados, (void*) free);
+		free(parametrosSeparados);
 		break;
 	case RUN:
-			parametrosSeparados = string_split(parametros, " ");
-			if (cant_parametros(parametrosSeparados) != 1) {
-				free(parametrosSeparados);
-				return 0;
-			}
-			break;
+		parametrosSeparados = string_split(parametros, " ");
+		if (cant_parametros(parametrosSeparados) != 1) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
+			free(parametrosSeparados);
+			return 0;
+		}
+		string_iterate_lines(parametrosSeparados, (void*) free);
+		free(parametrosSeparados);
+		break;
 	case DESCRIBE:
 		if (parametros == NULL) {
 			return 1;
 		}
 		parametrosSeparados = string_split(parametros, " ");
 		if (cant_parametros(parametrosSeparados) != 1) {
+			string_iterate_lines(parametrosSeparados, (void*) free);
 			free(parametrosSeparados);
 			return 0;
 		}
+		string_iterate_lines(parametrosSeparados, (void*) free);
+		free(parametrosSeparados);
 		break;
 	}
 	return 1;
 }
 
-int esUnNumero(char* parametro){
+int esUnNumero(char* parametro) {
 	int num;
-	num = atoi( parametro );
+	num = atoi(parametro);
 
 	return !(num == 0 && parametro[0] != '0');
 }
@@ -250,6 +271,7 @@ int fill_package_select(t_PackageSelect *package, char* parametros) {
 	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
 			+ sizeof(package->key) + package->tabla_long;
 
+	string_iterate_lines(parametrosSeparados, (void*) free);
 	free(parametrosSeparados);
 	return 1;
 }
@@ -283,6 +305,7 @@ int fill_package_create(t_PackageCreate* package, char* parametros) {
 			+ sizeof(package->consistency) + sizeof(package->compaction_time)
 			+ sizeof(package->partitions) + package->tabla_long;
 
+	string_iterate_lines(parametrosSeparados, (void*) free);
 	free(parametrosSeparados);
 	return 1;
 }
@@ -313,9 +336,12 @@ int fill_package_describe(t_PackageDescribe* package, char* parametros) {
 
 	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
 			+ package->tabla_long;
+
+	string_iterate_lines(parametrosSeparados, (void*) free);
+	free(parametrosSeparados);
+
 	return 1;
 }
-
 
 int fill_package_drop(t_PackageDrop* package, char* parametros) {
 
@@ -541,6 +567,7 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 			+ sizeof(package->timestamp) + package->value_long
 			+ package->tabla_long;
 
+	string_iterate_lines(parametrosSeparados, (void*) free);
 	free(parametrosSeparados);
 	return 1;
 }
@@ -742,7 +769,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 	return status;
 }
 
-int recieve_and_deserialize_drop(t_PackageDrop* package, int socketCliente){
+int recieve_and_deserialize_drop(t_PackageDrop* package, int socketCliente) {
 
 	int status;
 	int buffer_size;

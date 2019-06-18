@@ -462,3 +462,750 @@
 [DEBUG] 19:30:03:201 memory/(9828:9828): Registro: TimeStamp: 1560724198, Key:239, Value: Burro
 [INFO] 19:30:03:809 memory/(9828:9828): No tengo ese registro
 [WARNING] 19:30:04:410 memory/(9828:9828): Registro no encontrado
+[INFO] 10:25:20:185 memory/(3620:3620): 8001
+[DEBUG] 10:25:20:185 memory/(3620:3620): Conectado al LFS
+[INFO] 10:25:20:185 memory/(3620:3620): Maximo tamaño del value: 15.
+[INFO] 10:25:20:185 memory/(3620:3620): 15
+[INFO] 10:25:20:185 memory/(3620:3620): 8001
+[DEBUG] 10:25:24:99 memory/(3620:3620): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 10:25:58:215 memory/(3620:3620): Registro: TimeStamp: 1560864358, Key:11, Value: Halcon
+[DEBUG] 10:26:00:20 memory/(3620:3620): Registro: TimeStamp: 1560864360, Key:310, Value: Calamar
+[WARNING] 10:26:00:621 memory/(3620:3620): Memoria full
+[WARNING] 10:26:00:621 memory/(3620:3620): Memoria full
+[WARNING] 10:26:01:824 memory/(3620:3620): Memoria full
+[WARNING] 10:26:01:825 memory/(3620:3620): Memoria full
+[DEBUG] 10:26:01:825 memory/(3620:3620): Registro: TimeStamp: 1560864360, Key:983, Value: Pez globo
+[DEBUG] 10:26:03:642 memory/(3620:3620): Registro: TimeStamp: 1560864361, Key:11, Value: Pinguino
+[INFO] 10:26:04:242 memory/(3620:3620): No tengo ese registro
+[WARNING] 10:26:04:845 memory/(3620:3620): Registro no encontrado
+[WARNING] 10:26:05:448 memory/(3620:3620): Memoria full
+[INFO] 10:26:05:448 memory/(3620:3620): No tengo ese registro
+[WARNING] 10:26:06:51 memory/(3620:3620): Registro no encontrado
+[DEBUG] 10:26:07:858 memory/(3620:3620): Registro: TimeStamp: 1560864360, Key:310, Value: Calamar
+[WARNING] 10:26:08:466 memory/(3620:3620): Memoria full
+[WARNING] 10:26:08:466 memory/(3620:3620): Memoria full
+[WARNING] 10:26:08:466 memory/(3620:3620): Memoria full
+[WARNING] 10:26:08:466 memory/(3620:3620): Memoria full
+[DEBUG] 10:26:08:466 memory/(3620:3620): Registro: TimeStamp: 1560864361, Key:11, Value: Pinguino
+[INFO] 10:26:09:74 memory/(3620:3620): No tengo ese registro
+[WARNING] 10:26:09:677 memory/(3620:3620): Registro no encontrado
+[DEBUG] 10:26:10:289 memory/(3620:3620): Registro: TimeStamp: 1560864360, Key:1102, Value: Buho
+[WARNING] 10:26:12:152 memory/(3620:3620): Memoria full
+[DEBUG] 10:26:12:152 memory/(3620:3620): Registro: TimeStamp: 1560864363, Key:33, Value: Raya
+[DEBUG] 10:26:12:753 memory/(3620:3620): Registro: TimeStamp: 1560864368, Key:239, Value: Burro
+[INFO] 10:26:13:355 memory/(3620:3620): No tengo ese registro
+[WARNING] 10:26:13:956 memory/(3620:3620): Registro no encontrado
+[WARNING] 10:26:57:456 memory/(3620:3622): Desconectado.
+[WARNING] 10:26:57:456 memory/(3620:3622): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 10:27:04:713 memory/(3620:3620): Termina proceso
+[INFO] 10:29:52:860 memory/(4085:4085): 8001
+[DEBUG] 10:29:52:884 memory/(4085:4085): Conectado al LFS
+[INFO] 10:29:52:890 memory/(4085:4085): Maximo tamaño del value: 15.
+[INFO] 10:29:52:891 memory/(4085:4085): 15
+[INFO] 10:29:52:891 memory/(4085:4085): 8001
+[DEBUG] 10:30:00:995 memory/(4085:4085): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 10:30:19:484 memory/(4085:4085): Registro: TimeStamp: 1560864619, Key:11, Value: Halcon
+[DEBUG] 10:30:21:294 memory/(4085:4085): Registro: TimeStamp: 1560864621, Key:310, Value: Calamar
+[WARNING] 10:30:21:904 memory/(4085:4085): Memoria full
+[WARNING] 10:30:21:905 memory/(4085:4085): Memoria full
+[WARNING] 10:30:23:111 memory/(4085:4085): Memoria full
+[WARNING] 10:30:23:112 memory/(4085:4085): Memoria full
+[DEBUG] 10:30:23:112 memory/(4085:4085): Registro: TimeStamp: 1560864621, Key:983, Value: Pez globo
+[DEBUG] 10:30:24:920 memory/(4085:4085): Registro: TimeStamp: 1560864623, Key:11, Value: Pinguino
+[INFO] 10:30:25:525 memory/(4085:4085): No tengo ese registro
+[WARNING] 10:30:26:163 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:26:767 memory/(4085:4085): Memoria full
+[INFO] 10:30:26:768 memory/(4085:4085): No tengo ese registro
+[WARNING] 10:30:27:379 memory/(4085:4085): Registro no encontrado
+[DEBUG] 10:30:29:187 memory/(4085:4085): Registro: TimeStamp: 1560864621, Key:310, Value: Calamar
+[WARNING] 10:30:29:791 memory/(4085:4085): Memoria full
+[WARNING] 10:30:29:792 memory/(4085:4085): Memoria full
+[WARNING] 10:30:29:793 memory/(4085:4085): Memoria full
+[WARNING] 10:30:29:794 memory/(4085:4085): Memoria full
+[DEBUG] 10:30:29:795 memory/(4085:4085): Registro: TimeStamp: 1560864623, Key:11, Value: Pinguino
+[INFO] 10:30:30:396 memory/(4085:4085): No tengo ese registro
+[WARNING] 10:30:31:7 memory/(4085:4085): Registro no encontrado
+[DEBUG] 10:30:31:609 memory/(4085:4085): Registro: TimeStamp: 1560864621, Key:1102, Value: Buho
+[WARNING] 10:30:33:415 memory/(4085:4085): Memoria full
+[DEBUG] 10:30:33:416 memory/(4085:4085): Registro: TimeStamp: 1560864624, Key:33, Value: Raya
+[DEBUG] 10:30:34:17 memory/(4085:4085): Registro: TimeStamp: 1560864629, Key:239, Value: Burro
+[INFO] 10:30:34:619 memory/(4085:4085): No tengo ese registro
+[WARNING] 10:30:35:225 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:48:573 memory/(4085:4085): Memoria full
+[WARNING] 10:30:48:573 memory/(4085:4085): Memoria full
+[WARNING] 10:30:48:574 memory/(4085:4085): Memoria full
+[WARNING] 10:30:48:574 memory/(4085:4085): Memoria full
+[WARNING] 10:30:50:381 memory/(4085:4085): Memoria full
+[INFO] 10:30:50:382 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:50:990 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:51:597 memory/(4085:4085): Memoria full
+[WARNING] 10:30:51:597 memory/(4085:4085): Memoria full
+[WARNING] 10:30:51:598 memory/(4085:4085): Memoria full
+[WARNING] 10:30:51:598 memory/(4085:4085): Memoria full
+[INFO] 10:30:51:599 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:52:212 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:52:815 memory/(4085:4085): Memoria full
+[WARNING] 10:30:52:815 memory/(4085:4085): Memoria full
+[WARNING] 10:30:52:816 memory/(4085:4085): Memoria full
+[WARNING] 10:30:53:417 memory/(4085:4085): Memoria full
+[WARNING] 10:30:54:627 memory/(4085:4085): Memoria full
+[INFO] 10:30:54:627 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:55:238 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:55:840 memory/(4085:4085): Memoria full
+[INFO] 10:30:55:840 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:56:448 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:57:50 memory/(4085:4085): Memoria full
+[WARNING] 10:30:57:51 memory/(4085:4085): Memoria full
+[WARNING] 10:30:57:51 memory/(4085:4085): Memoria full
+[INFO] 10:30:57:52 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:57:662 memory/(4085:4085): Registro no encontrado
+[INFO] 10:30:58:263 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:30:58:871 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:30:59:474 memory/(4085:4085): Memoria full
+[WARNING] 10:31:00:678 memory/(4085:4085): Memoria full
+[WARNING] 10:31:00:678 memory/(4085:4085): Memoria full
+[INFO] 10:31:00:679 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:01:286 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:31:01:889 memory/(4085:4085): Memoria full
+[WARNING] 10:31:01:890 memory/(4085:4085): Memoria full
+[WARNING] 10:31:01:890 memory/(4085:4085): Memoria full
+[WARNING] 10:31:01:891 memory/(4085:4085): Memoria full
+[WARNING] 10:31:01:891 memory/(4085:4085): Memoria full
+[WARNING] 10:31:01:892 memory/(4085:4085): Memoria full
+[INFO] 10:31:01:892 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:02:503 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:31:03:108 memory/(4085:4085): Memoria full
+[WARNING] 10:31:03:109 memory/(4085:4085): Memoria full
+[WARNING] 10:31:03:110 memory/(4085:4085): Memoria full
+[INFO] 10:31:03:110 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:03:725 memory/(4085:4085): Registro no encontrado
+[INFO] 10:31:04:326 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:04:934 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:31:06:739 memory/(4085:4085): Memoria full
+[INFO] 10:31:06:740 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:07:350 memory/(4085:4085): Registro no encontrado
+[INFO] 10:31:07:951 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:08:563 memory/(4085:4085): Registro no encontrado
+[INFO] 10:31:09:165 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:09:782 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:31:10:384 memory/(4085:4085): Memoria full
+[INFO] 10:31:10:385 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:10:995 memory/(4085:4085): Registro no encontrado
+[INFO] 10:31:11:596 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:12:206 memory/(4085:4085): Registro no encontrado
+[INFO] 10:31:12:807 memory/(4085:4085): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 10:31:13:416 memory/(4085:4085): Registro no encontrado
+[WARNING] 10:31:19:852 memory/(4085:4093): Desconectado.
+[WARNING] 10:31:19:852 memory/(4085:4093): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 10:31:27:583 memory/(4085:4085): Termina proceso
+[INFO] 10:52:24:704 memory/(4718:4718): 8001
+[DEBUG] 10:52:24:704 memory/(4718:4718): Conectado al LFS
+[INFO] 10:52:24:704 memory/(4718:4718): Maximo tamaño del value: 15.
+[INFO] 10:52:24:704 memory/(4718:4718): 15
+[INFO] 10:52:24:704 memory/(4718:4718): 8001
+[DEBUG] 10:52:27:84 memory/(4718:4718): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 10:56:52:84 memory/(4718:4720): Desconectado.
+[WARNING] 10:56:52:84 memory/(4718:4720): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 10:56:59:194 memory/(4718:4718): Termina proceso
+[INFO] 10:57:12:381 memory/(4904:4904): 8001
+[DEBUG] 10:57:12:381 memory/(4904:4904): Conectado al LFS
+[INFO] 10:57:12:381 memory/(4904:4904): Maximo tamaño del value: 15.
+[INFO] 10:57:12:381 memory/(4904:4904): 15
+[INFO] 10:57:12:381 memory/(4904:4904): 8001
+[DEBUG] 10:57:14:994 memory/(4904:4904): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 10:59:54:851 memory/(4904:4906): Desconectado.
+[WARNING] 10:59:54:851 memory/(4904:4906): Aguarde mientras desconectamos la memoria por favor...
+[INFO] 11:01:08:29 memory/(4980:4980): 8001
+[DEBUG] 11:01:08:30 memory/(4980:4980): Conectado al LFS
+[INFO] 11:01:08:30 memory/(4980:4980): Maximo tamaño del value: 15.
+[INFO] 11:01:08:30 memory/(4980:4980): 15
+[INFO] 11:01:08:30 memory/(4980:4980): 8001
+[DEBUG] 11:01:09:816 memory/(4980:4980): Cliente conectado. Esperando Envío de mensajessss.
+[WARNING] 11:01:42:988 memory/(4980:4982): Comando no reconocido
+[WARNING] 11:01:45:140 memory/(4980:4982): Desconectado.
+[WARNING] 11:01:45:140 memory/(4980:4982): Aguarde mientras desconectamos la memoria por favor...
+[INFO] 11:06:01:227 memory/(5125:5125): 8001
+[DEBUG] 11:06:01:228 memory/(5125:5125): Conectado al LFS
+[INFO] 11:06:01:228 memory/(5125:5125): Maximo tamaño del value: 15.
+[INFO] 11:06:01:228 memory/(5125:5125): 15
+[INFO] 11:06:01:228 memory/(5125:5125): 8001
+[DEBUG] 11:06:02:645 memory/(5125:5125): Cliente conectado. Esperando Envío de mensajessss.
+[INFO] 11:07:39:420 memory/(5149:5149): 8001
+[DEBUG] 11:07:39:422 memory/(5149:5149): Conectado al LFS
+[INFO] 11:07:39:425 memory/(5149:5149): Maximo tamaño del value: 15.
+[INFO] 11:07:39:425 memory/(5149:5149): 15
+[INFO] 11:07:39:425 memory/(5149:5149): 8001
+[DEBUG] 11:07:41:390 memory/(5149:5149): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:07:58:815 memory/(5149:5149): Registro: TimeStamp: 1560866878, Key:11, Value: Halcon
+[DEBUG] 11:08:00:629 memory/(5149:5149): Registro: TimeStamp: 1560866880, Key:310, Value: Calamar
+[WARNING] 11:08:01:232 memory/(5149:5149): Memoria full
+[WARNING] 11:08:01:233 memory/(5149:5149): Memoria full
+[WARNING] 11:08:02:435 memory/(5149:5149): Memoria full
+[WARNING] 11:08:02:435 memory/(5149:5149): Memoria full
+[DEBUG] 11:08:02:435 memory/(5149:5149): Registro: TimeStamp: 1560866881, Key:983, Value: Pez globo
+[DEBUG] 11:08:04:244 memory/(5149:5149): Registro: TimeStamp: 1560866882, Key:11, Value: Pinguino
+[INFO] 11:08:04:854 memory/(5149:5149): No tengo ese registro
+[WARNING] 11:08:05:506 memory/(5149:5149): Registro no encontrado
+[WARNING] 11:08:06:111 memory/(5149:5149): Memoria full
+[INFO] 11:08:06:111 memory/(5149:5149): No tengo ese registro
+[WARNING] 11:08:06:724 memory/(5149:5149): Registro no encontrado
+[DEBUG] 11:08:08:535 memory/(5149:5149): Registro: TimeStamp: 1560866880, Key:310, Value: Calamar
+[WARNING] 11:08:09:141 memory/(5149:5149): Memoria full
+[WARNING] 11:08:09:141 memory/(5149:5149): Memoria full
+[WARNING] 11:08:09:141 memory/(5149:5149): Memoria full
+[WARNING] 11:08:09:142 memory/(5149:5149): Memoria full
+[DEBUG] 11:08:09:142 memory/(5149:5149): Registro: TimeStamp: 1560866882, Key:11, Value: Pinguino
+[INFO] 11:08:09:742 memory/(5149:5149): No tengo ese registro
+[WARNING] 11:08:10:348 memory/(5149:5149): Registro no encontrado
+[DEBUG] 11:08:10:950 memory/(5149:5149): Registro: TimeStamp: 1560866880, Key:1102, Value: Buho
+[WARNING] 11:08:12:756 memory/(5149:5149): Memoria full
+[DEBUG] 11:08:12:756 memory/(5149:5149): Registro: TimeStamp: 1560866884, Key:33, Value: Raya
+[DEBUG] 11:08:13:362 memory/(5149:5149): Registro: TimeStamp: 1560866889, Key:239, Value: Burro
+[INFO] 11:08:13:970 memory/(5149:5149): No tengo ese registro
+[WARNING] 11:08:14:577 memory/(5149:5149): Registro no encontrado
+[WARNING] 11:10:02:262 memory/(5149:5150): Desconectado.
+[WARNING] 11:10:02:262 memory/(5149:5150): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:10:08:16 memory/(5149:5149): Termina proceso
+[INFO] 11:12:53:855 memory/(5295:5295): 8001
+[DEBUG] 11:12:53:855 memory/(5295:5295): Conectado al LFS
+[INFO] 11:12:53:855 memory/(5295:5295): Maximo tamaño del value: 15.
+[INFO] 11:12:53:855 memory/(5295:5295): 15
+[INFO] 11:12:53:855 memory/(5295:5295): 8001
+[DEBUG] 11:12:55:249 memory/(5295:5295): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:13:13:207 memory/(5295:5295): Registro: TimeStamp: 1560867193, Key:11, Value: Halcon
+[DEBUG] 11:13:15:21 memory/(5295:5295): Registro: TimeStamp: 1560867195, Key:310, Value: Calamar
+[WARNING] 11:13:15:633 memory/(5295:5295): Memoria full
+[WARNING] 11:13:15:633 memory/(5295:5295): Memoria full
+[WARNING] 11:13:16:847 memory/(5295:5295): Memoria full
+[WARNING] 11:13:16:847 memory/(5295:5295): Memoria full
+[DEBUG] 11:13:16:847 memory/(5295:5295): Registro: TimeStamp: 1560867195, Key:983, Value: Pez globo
+[DEBUG] 11:13:18:665 memory/(5295:5295): Registro: TimeStamp: 1560867196, Key:11, Value: Pinguino
+[INFO] 11:13:19:266 memory/(5295:5295): No tengo ese registro
+[WARNING] 11:13:19:868 memory/(5295:5295): Registro no encontrado
+[WARNING] 11:13:20:473 memory/(5295:5295): Memoria full
+[INFO] 11:13:20:473 memory/(5295:5295): No tengo ese registro
+[WARNING] 11:13:21:75 memory/(5295:5295): Registro no encontrado
+[DEBUG] 11:13:22:878 memory/(5295:5295): Registro: TimeStamp: 1560867195, Key:310, Value: Calamar
+[WARNING] 11:13:23:479 memory/(5295:5295): Memoria full
+[WARNING] 11:13:23:479 memory/(5295:5295): Memoria full
+[WARNING] 11:13:23:479 memory/(5295:5295): Memoria full
+[WARNING] 11:13:23:480 memory/(5295:5295): Memoria full
+[DEBUG] 11:13:23:480 memory/(5295:5295): Registro: TimeStamp: 1560867196, Key:11, Value: Pinguino
+[INFO] 11:13:24:80 memory/(5295:5295): No tengo ese registro
+[WARNING] 11:13:24:683 memory/(5295:5295): Registro no encontrado
+[DEBUG] 11:13:25:288 memory/(5295:5295): Registro: TimeStamp: 1560867195, Key:1102, Value: Buho
+[WARNING] 11:13:27:94 memory/(5295:5295): Memoria full
+[DEBUG] 11:13:27:94 memory/(5295:5295): Registro: TimeStamp: 1560867198, Key:33, Value: Raya
+[DEBUG] 11:13:27:695 memory/(5295:5295): Registro: TimeStamp: 1560867203, Key:239, Value: Burro
+[INFO] 11:13:28:297 memory/(5295:5295): No tengo ese registro
+[WARNING] 11:13:28:901 memory/(5295:5295): Registro no encontrado
+[WARNING] 11:13:43:217 memory/(5295:5298): Desconectado.
+[WARNING] 11:13:43:217 memory/(5295:5298): Aguarde mientras desconectamos la memoria por favor...
+[INFO] 11:14:28:210 memory/(5335:5335): 8001
+[DEBUG] 11:14:28:211 memory/(5335:5335): Conectado al LFS
+[INFO] 11:14:28:211 memory/(5335:5335): Maximo tamaño del value: 15.
+[INFO] 11:14:28:211 memory/(5335:5335): 15
+[INFO] 11:14:28:211 memory/(5335:5335): 8001
+[DEBUG] 11:15:03:134 memory/(5335:5335): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:15:21:403 memory/(5335:5335): Registro: TimeStamp: 1560867321, Key:11, Value: Halcon
+[DEBUG] 11:15:23:221 memory/(5335:5335): Registro: TimeStamp: 1560867323, Key:310, Value: Calamar
+[WARNING] 11:15:23:829 memory/(5335:5335): Memoria full
+[WARNING] 11:15:23:830 memory/(5335:5335): Memoria full
+[WARNING] 11:15:25:36 memory/(5335:5335): Memoria full
+[WARNING] 11:15:25:40 memory/(5335:5335): Memoria full
+[DEBUG] 11:15:25:42 memory/(5335:5335): Registro: TimeStamp: 1560867323, Key:983, Value: Pez globo
+[WARNING] 11:15:27:454 memory/(5335:5335): Memoria full
+[WARNING] 11:15:28:661 memory/(5335:5335): Memoria full
+[WARNING] 11:15:28:662 memory/(5335:5335): Memoria full
+[WARNING] 11:15:28:664 memory/(5335:5335): Memoria full
+[DEBUG] 11:15:28:665 memory/(5335:5335): Registro: TimeStamp: 1560867325, Key:11, Value: Pinguino
+[INFO] 11:15:29:275 memory/(5335:5335): No tengo ese registro
+[WARNING] 11:15:29:877 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:30:479 memory/(5335:5335): Memoria full
+[WARNING] 11:15:32:286 memory/(5335:5335): Memoria full
+[INFO] 11:15:32:288 memory/(5335:5335): No tengo ese registro
+[WARNING] 11:15:32:890 memory/(5335:5335): Registro no encontrado
+[DEBUG] 11:15:34:703 memory/(5335:5335): Registro: TimeStamp: 1560867323, Key:310, Value: Calamar
+[INFO] 11:15:35:311 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:35:915 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:36:518 memory/(5335:5335): Memoria full
+[WARNING] 11:15:36:519 memory/(5335:5335): Memoria full
+[WARNING] 11:15:36:522 memory/(5335:5335): Memoria full
+[WARNING] 11:15:36:523 memory/(5335:5335): Memoria full
+[WARNING] 11:15:36:525 memory/(5335:5335): Memoria full
+[WARNING] 11:15:36:526 memory/(5335:5335): Memoria full
+[INFO] 11:15:36:527 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:37:130 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:37:733 memory/(5335:5335): Memoria full
+[WARNING] 11:15:37:735 memory/(5335:5335): Memoria full
+[WARNING] 11:15:37:736 memory/(5335:5335): Memoria full
+[WARNING] 11:15:37:737 memory/(5335:5335): Memoria full
+[WARNING] 11:15:37:738 memory/(5335:5335): Memoria full
+[DEBUG] 11:15:37:739 memory/(5335:5335): Registro: TimeStamp: 1560867325, Key:11, Value: Pinguino
+[INFO] 11:15:38:342 memory/(5335:5335): No tengo ese registro
+[WARNING] 11:15:38:944 memory/(5335:5335): Registro no encontrado
+[DEBUG] 11:15:39:547 memory/(5335:5335): Registro: TimeStamp: 1560867323, Key:1102, Value: Buho
+[WARNING] 11:15:40:751 memory/(5335:5335): Memoria full
+[WARNING] 11:15:43:176 memory/(5335:5335): Memoria full
+[DEBUG] 11:15:43:177 memory/(5335:5335): Registro: TimeStamp: 1560867328, Key:33, Value: Raya
+[WARNING] 11:15:43:784 memory/(5335:5335): Memoria full
+[INFO] 11:15:43:785 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:44:390 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:44:992 memory/(5335:5335): Memoria full
+[DEBUG] 11:15:44:993 memory/(5335:5335): Registro: TimeStamp: 1560867337, Key:239, Value: Burro
+[INFO] 11:15:45:596 memory/(5335:5335): No tengo ese registro
+[WARNING] 11:15:46:201 memory/(5335:5335): Registro no encontrado
+[INFO] 11:15:46:803 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:47:405 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:48:8 memory/(5335:5335): Memoria full
+[WARNING] 11:15:48:10 memory/(5335:5335): Memoria full
+[WARNING] 11:15:48:11 memory/(5335:5335): Memoria full
+[INFO] 11:15:48:13 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:48:617 memory/(5335:5335): Registro no encontrado
+[INFO] 11:15:49:221 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:49:822 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:50:426 memory/(5335:5335): Memoria full
+[WARNING] 11:15:51:631 memory/(5335:5335): Memoria full
+[WARNING] 11:15:51:632 memory/(5335:5335): Memoria full
+[INFO] 11:15:51:634 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:52:239 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:52:844 memory/(5335:5335): Memoria full
+[WARNING] 11:15:52:845 memory/(5335:5335): Memoria full
+[WARNING] 11:15:52:846 memory/(5335:5335): Memoria full
+[WARNING] 11:15:52:847 memory/(5335:5335): Memoria full
+[WARNING] 11:15:52:848 memory/(5335:5335): Memoria full
+[WARNING] 11:15:52:849 memory/(5335:5335): Memoria full
+[INFO] 11:15:52:850 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:53:452 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:54:61 memory/(5335:5335): Memoria full
+[WARNING] 11:15:54:62 memory/(5335:5335): Memoria full
+[WARNING] 11:15:54:63 memory/(5335:5335): Memoria full
+[INFO] 11:15:54:65 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:54:672 memory/(5335:5335): Registro no encontrado
+[INFO] 11:15:55:274 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:55:876 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:15:57:709 memory/(5335:5335): Memoria full
+[INFO] 11:15:57:710 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:58:312 memory/(5335:5335): Registro no encontrado
+[INFO] 11:15:58:922 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:15:59:524 memory/(5335:5335): Registro no encontrado
+[INFO] 11:16:00:126 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:16:00:728 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:16:01:330 memory/(5335:5335): Memoria full
+[INFO] 11:16:01:331 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:16:01:933 memory/(5335:5335): Registro no encontrado
+[INFO] 11:16:02:539 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:16:03:140 memory/(5335:5335): Registro no encontrado
+[INFO] 11:16:03:746 memory/(5335:5335): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:16:04:347 memory/(5335:5335): Registro no encontrado
+[WARNING] 11:16:26:216 memory/(5335:5338): Desconectado.
+[WARNING] 11:16:26:216 memory/(5335:5338): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:16:32:601 memory/(5335:5335): Termina proceso
+[INFO] 11:27:21:665 memory/(5758:5758): 8001
+[DEBUG] 11:27:21:665 memory/(5758:5758): Conectado al LFS
+[INFO] 11:27:21:665 memory/(5758:5758): Maximo tamaño del value: 15.
+[INFO] 11:27:21:665 memory/(5758:5758): 15
+[INFO] 11:27:21:665 memory/(5758:5758): 8001
+[DEBUG] 11:27:24:331 memory/(5758:5758): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:27:54:979 memory/(5758:5758): Registro: TimeStamp: 1560868068, Key:0, Value: Azul
+[WARNING] 11:27:55:590 memory/(5758:5758): Memoria full
+[WARNING] 11:27:55:590 memory/(5758:5758): Memoria full
+[INFO] 11:27:55:591 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:27:56:195 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:27:56:799 memory/(5758:5758): Memoria full
+[WARNING] 11:27:56:800 memory/(5758:5758): Memoria full
+[WARNING] 11:27:56:802 memory/(5758:5758): Memoria full
+[WARNING] 11:27:56:803 memory/(5758:5758): Memoria full
+[WARNING] 11:27:56:804 memory/(5758:5758): Memoria full
+[DEBUG] 11:27:56:806 memory/(5758:5758): Registro: TimeStamp: 1560868076, Key:11, Value: Halcon
+[WARNING] 11:27:59:235 memory/(5758:5758): Memoria full
+[WARNING] 11:28:00:445 memory/(5758:5758): Memoria full
+[WARNING] 11:28:00:446 memory/(5758:5758): Memoria full
+[INFO] 11:28:00:448 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:01:51 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:01:655 memory/(5758:5758): Memoria full
+[INFO] 11:28:01:657 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:02:260 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:02:863 memory/(5758:5758): Memoria full
+[WARNING] 11:28:02:865 memory/(5758:5758): Memoria full
+[WARNING] 11:28:02:867 memory/(5758:5758): Memoria full
+[INFO] 11:28:02:868 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:03:472 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:04:81 memory/(5758:5758): Memoria full
+[WARNING] 11:28:04:83 memory/(5758:5758): Memoria full
+[WARNING] 11:28:04:85 memory/(5758:5758): Memoria full
+[WARNING] 11:28:04:86 memory/(5758:5758): Memoria full
+[WARNING] 11:28:04:87 memory/(5758:5758): Memoria full
+[INFO] 11:28:04:89 memory/(5758:5758): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:28:04:691 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:05:296 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:05:900 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:07:711 memory/(5758:5758): Memoria full
+[WARNING] 11:28:07:712 memory/(5758:5758): Memoria full
+[WARNING] 11:28:07:717 memory/(5758:5758): Memoria full
+[WARNING] 11:28:08:936 memory/(5758:5758): Memoria full
+[WARNING] 11:28:08:939 memory/(5758:5758): Memoria full
+[DEBUG] 11:28:08:940 memory/(5758:5758): Registro: TimeStamp: 1560868084, Key:983, Value: Pez globo
+[WARNING] 11:28:09:543 memory/(5758:5758): Memoria full
+[INFO] 11:28:09:545 memory/(5758:5758): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:28:10:146 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:10:750 memory/(5758:5758): Memoria full
+[WARNING] 11:28:11:959 memory/(5758:5758): Memoria full
+[WARNING] 11:28:11:960 memory/(5758:5758): Memoria full
+[WARNING] 11:28:11:961 memory/(5758:5758): Memoria full
+[DEBUG] 11:28:11:962 memory/(5758:5758): Registro: TimeStamp: 1560868088, Key:11, Value: Pinguino
+[INFO] 11:28:12:566 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:13:167 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:13:770 memory/(5758:5758): Memoria full
+[WARNING] 11:28:13:772 memory/(5758:5758): Memoria full
+[WARNING] 11:28:13:773 memory/(5758:5758): Memoria full
+[INFO] 11:28:13:774 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:14:375 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:14:981 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:15:583 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:17:394 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:17:998 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:18:604 memory/(5758:5758): Memoria full
+[WARNING] 11:28:18:605 memory/(5758:5758): Memoria full
+[WARNING] 11:28:18:606 memory/(5758:5758): Memoria full
+[WARNING] 11:28:18:609 memory/(5758:5758): Memoria full
+[WARNING] 11:28:18:610 memory/(5758:5758): Memoria full
+[INFO] 11:28:18:611 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:19:213 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:19:822 memory/(5758:5758): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:28:20:431 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:22:242 memory/(5758:5758): Memoria full
+[WARNING] 11:28:22:244 memory/(5758:5758): Memoria full
+[WARNING] 11:28:22:245 memory/(5758:5758): Memoria full
+[WARNING] 11:28:22:247 memory/(5758:5758): Memoria full
+[INFO] 11:28:22:248 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:22:850 memory/(5758:5758): Registro no encontrado
+[DEBUG] 11:28:23:453 memory/(5758:5758): Registro: TimeStamp: 1560868068, Key:0, Value: Azul
+[DEBUG] 11:28:24:56 memory/(5758:5758): Registro: TimeStamp: 1560868088, Key:11, Value: Pinguino
+[INFO] 11:28:24:661 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:25:270 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:25:874 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:26:476 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:27:81 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:27:685 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:28:287 memory/(5758:5758): Memoria full
+[INFO] 11:28:28:288 memory/(5758:5758): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:28:28:890 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:28:30:698 memory/(5758:5758): Memoria full
+[DEBUG] 11:28:30:699 memory/(5758:5758): Registro: TimeStamp: 1560868091, Key:33, Value: Raya
+[DEBUG] 11:28:31:302 memory/(5758:5758): Registro: TimeStamp: 1560868075, Key:1, Value: Libro
+[INFO] 11:28:31:906 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:32:507 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:33:112 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:33:713 memory/(5758:5758): Registro no encontrado
+[INFO] 11:28:34:323 memory/(5758:5758): No tengo ese registro
+[WARNING] 11:28:34:925 memory/(5758:5758): Registro no encontrado
+[WARNING] 11:29:41:824 memory/(5758:5760): Desconectado.
+[WARNING] 11:29:41:824 memory/(5758:5760): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:29:49:273 memory/(5758:5758): Termina proceso
+[INFO] 11:45:08:110 memory/(6440:6440): 8001
+[DEBUG] 11:45:08:110 memory/(6440:6440): Conectado al LFS
+[INFO] 11:45:08:110 memory/(6440:6440): Maximo tamaño del value: 15.
+[INFO] 11:45:08:110 memory/(6440:6440): 15
+[INFO] 11:45:08:110 memory/(6440:6440): 8001
+[DEBUG] 11:45:09:667 memory/(6440:6440): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:45:44:108 memory/(6440:6440): Registro: TimeStamp: 1560869137, Key:0, Value: Azul
+[WARNING] 11:45:44:730 memory/(6440:6440): Memoria full
+[WARNING] 11:45:44:732 memory/(6440:6440): Memoria full
+[INFO] 11:45:44:733 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:45:45:345 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:45:971 memory/(6440:6440): Memoria full
+[WARNING] 11:45:45:973 memory/(6440:6440): Memoria full
+[WARNING] 11:45:45:975 memory/(6440:6440): Memoria full
+[WARNING] 11:45:45:977 memory/(6440:6440): Memoria full
+[WARNING] 11:45:45:978 memory/(6440:6440): Memoria full
+[DEBUG] 11:45:45:980 memory/(6440:6440): Registro: TimeStamp: 1560869145, Key:11, Value: Halcon
+[WARNING] 11:45:48:402 memory/(6440:6440): Memoria full
+[WARNING] 11:45:49:611 memory/(6440:6440): Memoria full
+[WARNING] 11:45:49:612 memory/(6440:6440): Memoria full
+[INFO] 11:45:49:613 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:45:50:218 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:50:825 memory/(6440:6440): Memoria full
+[INFO] 11:45:50:826 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:45:51:429 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:52:38 memory/(6440:6440): Memoria full
+[WARNING] 11:45:52:39 memory/(6440:6440): Memoria full
+[WARNING] 11:45:52:41 memory/(6440:6440): Memoria full
+[INFO] 11:45:52:43 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:45:52:645 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:53:254 memory/(6440:6440): Memoria full
+[WARNING] 11:45:53:255 memory/(6440:6440): Memoria full
+[WARNING] 11:45:53:258 memory/(6440:6440): Memoria full
+[WARNING] 11:45:53:259 memory/(6440:6440): Memoria full
+[WARNING] 11:45:53:260 memory/(6440:6440): Memoria full
+[INFO] 11:45:53:261 memory/(6440:6440): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:45:53:864 memory/(6440:6440): Registro no encontrado
+[INFO] 11:45:54:471 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:45:55:72 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:56:885 memory/(6440:6440): Memoria full
+[WARNING] 11:45:56:886 memory/(6440:6440): Memoria full
+[WARNING] 11:45:56:887 memory/(6440:6440): Memoria full
+[WARNING] 11:45:58:95 memory/(6440:6440): Memoria full
+[WARNING] 11:45:58:98 memory/(6440:6440): Memoria full
+[DEBUG] 11:45:58:99 memory/(6440:6440): Registro: TimeStamp: 1560869153, Key:983, Value: Pez globo
+[WARNING] 11:45:58:702 memory/(6440:6440): Memoria full
+[INFO] 11:45:58:703 memory/(6440:6440): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:45:59:309 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:45:59:912 memory/(6440:6440): Memoria full
+[WARNING] 11:46:01:120 memory/(6440:6440): Memoria full
+[WARNING] 11:46:01:121 memory/(6440:6440): Memoria full
+[WARNING] 11:46:01:122 memory/(6440:6440): Memoria full
+[DEBUG] 11:46:01:124 memory/(6440:6440): Registro: TimeStamp: 1560869158, Key:11, Value: Pinguino
+[INFO] 11:46:01:731 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:02:339 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:02:947 memory/(6440:6440): Memoria full
+[WARNING] 11:46:02:949 memory/(6440:6440): Memoria full
+[WARNING] 11:46:02:950 memory/(6440:6440): Memoria full
+[INFO] 11:46:02:951 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:03:556 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:04:161 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:04:765 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:06:577 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:07:180 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:07:787 memory/(6440:6440): Memoria full
+[WARNING] 11:46:07:788 memory/(6440:6440): Memoria full
+[WARNING] 11:46:07:790 memory/(6440:6440): Memoria full
+[WARNING] 11:46:07:792 memory/(6440:6440): Memoria full
+[WARNING] 11:46:07:793 memory/(6440:6440): Memoria full
+[INFO] 11:46:07:795 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:08:397 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:08:1 memory/(6440:6440): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:46:09:606 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:11:421 memory/(6440:6440): Memoria full
+[WARNING] 11:46:11:422 memory/(6440:6440): Memoria full
+[WARNING] 11:46:11:423 memory/(6440:6440): Memoria full
+[WARNING] 11:46:11:424 memory/(6440:6440): Memoria full
+[INFO] 11:46:11:425 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:12:29 memory/(6440:6440): Registro no encontrado
+[DEBUG] 11:46:12:632 memory/(6440:6440): Registro: TimeStamp: 1560869137, Key:0, Value: Azul
+[DEBUG] 11:46:13:240 memory/(6440:6440): Registro: TimeStamp: 1560869158, Key:11, Value: Pinguino
+[INFO] 11:46:13:842 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:14:446 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:15:49 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:15:654 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:16:260 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:16:865 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:17:468 memory/(6440:6440): Memoria full
+[INFO] 11:46:17:470 memory/(6440:6440): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:46:18:71 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:19:889 memory/(6440:6440): Memoria full
+[DEBUG] 11:46:19:891 memory/(6440:6440): Registro: TimeStamp: 1560869161, Key:33, Value: Raya
+[DEBUG] 11:46:20:494 memory/(6440:6440): Registro: TimeStamp: 1560869144, Key:1, Value: Libro
+[INFO] 11:46:21:99 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:21:707 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:22:314 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:22:915 memory/(6440:6440): Registro no encontrado
+[INFO] 11:46:23:522 memory/(6440:6440): No tengo ese registro
+[WARNING] 11:46:24:125 memory/(6440:6440): Registro no encontrado
+[WARNING] 11:46:44:494 memory/(6440:6444): Desconectado.
+[WARNING] 11:46:44:494 memory/(6440:6444): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:46:50:255 memory/(6440:6440): Termina proceso
+[INFO] 11:51:21:40 memory/(6687:6687): 8001
+[DEBUG] 11:51:21:40 memory/(6687:6687): Conectado al LFS
+[INFO] 11:51:21:40 memory/(6687:6687): Maximo tamaño del value: 15.
+[INFO] 11:51:21:40 memory/(6687:6687): 15
+[INFO] 11:51:21:40 memory/(6687:6687): 8001
+[DEBUG] 11:51:24:150 memory/(6687:6687): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:52:09:87 memory/(6687:6687): Registro: TimeStamp: 1560869523, Key:0, Value: Azul
+[WARNING] 11:52:09:700 memory/(6687:6687): Memoria full
+[WARNING] 11:52:09:701 memory/(6687:6687): Memoria full
+[INFO] 11:52:09:702 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:10:312 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:10:917 memory/(6687:6687): Memoria full
+[WARNING] 11:52:10:919 memory/(6687:6687): Memoria full
+[WARNING] 11:52:10:922 memory/(6687:6687): Memoria full
+[WARNING] 11:52:10:923 memory/(6687:6687): Memoria full
+[WARNING] 11:52:10:925 memory/(6687:6687): Memoria full
+[DEBUG] 11:52:10:927 memory/(6687:6687): Registro: TimeStamp: 1560869530, Key:11, Value: Halcon
+[WARNING] 11:52:13:345 memory/(6687:6687): Memoria full
+[WARNING] 11:52:14:554 memory/(6687:6687): Memoria full
+[WARNING] 11:52:14:556 memory/(6687:6687): Memoria full
+[INFO] 11:52:14:557 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:15:161 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:15:766 memory/(6687:6687): Memoria full
+[INFO] 11:52:15:767 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:16:371 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:16:974 memory/(6687:6687): Memoria full
+[WARNING] 11:52:16:976 memory/(6687:6687): Memoria full
+[WARNING] 11:52:16:978 memory/(6687:6687): Memoria full
+[INFO] 11:52:16:980 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:17:586 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:18:195 memory/(6687:6687): Memoria full
+[WARNING] 11:52:18:197 memory/(6687:6687): Memoria full
+[WARNING] 11:52:18:200 memory/(6687:6687): Memoria full
+[WARNING] 11:52:18:202 memory/(6687:6687): Memoria full
+[WARNING] 11:52:18:204 memory/(6687:6687): Memoria full
+[INFO] 11:52:18:206 memory/(6687:6687): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:52:18:811 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:19:423 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:20:26 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:21:881 memory/(6687:6687): Memoria full
+[WARNING] 11:52:21:882 memory/(6687:6687): Memoria full
+[WARNING] 11:52:21:884 memory/(6687:6687): Memoria full
+[WARNING] 11:52:23:109 memory/(6687:6687): Memoria full
+[WARNING] 11:52:23:112 memory/(6687:6687): Memoria full
+[DEBUG] 11:52:23:113 memory/(6687:6687): Registro: TimeStamp: 1560869538, Key:983, Value: Pez globo
+[WARNING] 11:52:23:722 memory/(6687:6687): Memoria full
+[INFO] 11:52:23:724 memory/(6687:6687): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:52:24:330 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:24:972 memory/(6687:6687): Memoria full
+[WARNING] 11:52:26:187 memory/(6687:6687): Memoria full
+[WARNING] 11:52:26:188 memory/(6687:6687): Memoria full
+[WARNING] 11:52:26:189 memory/(6687:6687): Memoria full
+[DEBUG] 11:52:26:190 memory/(6687:6687): Registro: TimeStamp: 1560869543, Key:11, Value: Pinguino
+[INFO] 11:52:26:798 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:27:402 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:28:11 memory/(6687:6687): Memoria full
+[WARNING] 11:52:28:12 memory/(6687:6687): Memoria full
+[WARNING] 11:52:28:13 memory/(6687:6687): Memoria full
+[INFO] 11:52:28:15 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:28:620 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:29:223 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:29:830 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:31:646 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:32:250 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:32:853 memory/(6687:6687): Memoria full
+[WARNING] 11:52:32:854 memory/(6687:6687): Memoria full
+[WARNING] 11:52:32:856 memory/(6687:6687): Memoria full
+[WARNING] 11:52:32:858 memory/(6687:6687): Memoria full
+[WARNING] 11:52:32:859 memory/(6687:6687): Memoria full
+[INFO] 11:52:32:861 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:33:463 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:34:67 memory/(6687:6687): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:52:34:670 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:36:489 memory/(6687:6687): Memoria full
+[WARNING] 11:52:36:490 memory/(6687:6687): Memoria full
+[WARNING] 11:52:36:491 memory/(6687:6687): Memoria full
+[WARNING] 11:52:36:492 memory/(6687:6687): Memoria full
+[INFO] 11:52:36:494 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:37:95 memory/(6687:6687): Registro no encontrado
+[DEBUG] 11:52:37:701 memory/(6687:6687): Registro: TimeStamp: 1560869523, Key:0, Value: Azul
+[DEBUG] 11:52:38:306 memory/(6687:6687): Registro: TimeStamp: 1560869543, Key:11, Value: Pinguino
+[INFO] 11:52:38:912 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:39:514 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:40:118 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:40:720 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:41:324 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:41:930 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:42:533 memory/(6687:6687): Memoria full
+[INFO] 11:52:42:534 memory/(6687:6687): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:52:43:137 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:44:948 memory/(6687:6687): Memoria full
+[DEBUG] 11:52:44:949 memory/(6687:6687): Registro: TimeStamp: 1560869546, Key:33, Value: Raya
+[DEBUG] 11:52:45:554 memory/(6687:6687): Registro: TimeStamp: 1560869529, Key:1, Value: Libro
+[INFO] 11:52:46:158 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:46:770 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:47:387 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:47:1 memory/(6687:6687): Registro no encontrado
+[INFO] 11:52:48:604 memory/(6687:6687): No tengo ese registro
+[WARNING] 11:52:49:205 memory/(6687:6687): Registro no encontrado
+[WARNING] 11:52:55:609 memory/(6687:6689): Desconectado.
+[WARNING] 11:52:55:609 memory/(6687:6689): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:53:03:363 memory/(6687:6687): Termina proceso
+[INFO] 11:55:49:438 memory/(6873:6873): 8001
+[DEBUG] 11:55:49:438 memory/(6873:6873): Conectado al LFS
+[INFO] 11:55:49:438 memory/(6873:6873): Maximo tamaño del value: 15.
+[INFO] 11:55:49:438 memory/(6873:6873): 15
+[INFO] 11:55:49:439 memory/(6873:6873): 8001
+[DEBUG] 11:55:51:223 memory/(6873:6873): Cliente conectado. Esperando Envío de mensajessss.
+[DEBUG] 11:56:13:917 memory/(6873:6873): Registro: TimeStamp: 1560869767, Key:0, Value: Azul
+[WARNING] 11:56:14:525 memory/(6873:6873): Memoria full
+[WARNING] 11:56:14:525 memory/(6873:6873): Memoria full
+[INFO] 11:56:14:525 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:15:127 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:15:741 memory/(6873:6873): Memoria full
+[WARNING] 11:56:15:741 memory/(6873:6873): Memoria full
+[WARNING] 11:56:15:741 memory/(6873:6873): Memoria full
+[WARNING] 11:56:15:741 memory/(6873:6873): Memoria full
+[WARNING] 11:56:15:741 memory/(6873:6873): Memoria full
+[DEBUG] 11:56:15:741 memory/(6873:6873): Registro: TimeStamp: 1560869775, Key:11, Value: Halcon
+[WARNING] 11:56:18:165 memory/(6873:6873): Memoria full
+[WARNING] 11:56:19:370 memory/(6873:6873): Memoria full
+[WARNING] 11:56:19:370 memory/(6873:6873): Memoria full
+[INFO] 11:56:19:370 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:19:972 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:20:575 memory/(6873:6873): Memoria full
+[INFO] 11:56:20:576 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:21:182 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:21:786 memory/(6873:6873): Memoria full
+[WARNING] 11:56:21:786 memory/(6873:6873): Memoria full
+[WARNING] 11:56:21:786 memory/(6873:6873): Memoria full
+[INFO] 11:56:21:786 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:22:393 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:22:3 memory/(6873:6873): Memoria full
+[WARNING] 11:56:22:3 memory/(6873:6873): Memoria full
+[WARNING] 11:56:22:3 memory/(6873:6873): Memoria full
+[WARNING] 11:56:22:4 memory/(6873:6873): Memoria full
+[WARNING] 11:56:23:4 memory/(6873:6873): Memoria full
+[INFO] 11:56:23:4 memory/(6873:6873): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:56:23:606 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:24:208 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:24:811 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:26:646 memory/(6873:6873): Memoria full
+[WARNING] 11:56:26:646 memory/(6873:6873): Memoria full
+[WARNING] 11:56:26:646 memory/(6873:6873): Memoria full
+[WARNING] 11:56:27:848 memory/(6873:6873): Memoria full
+[WARNING] 11:56:27:849 memory/(6873:6873): Memoria full
+[DEBUG] 11:56:27:849 memory/(6873:6873): Registro: TimeStamp: 1560869782, Key:983, Value: Pez globo
+[WARNING] 11:56:28:450 memory/(6873:6873): Memoria full
+[INFO] 11:56:28:450 memory/(6873:6873): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:56:29:54 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:29:655 memory/(6873:6873): Memoria full
+[WARNING] 11:56:30:859 memory/(6873:6873): Memoria full
+[WARNING] 11:56:30:859 memory/(6873:6873): Memoria full
+[WARNING] 11:56:30:859 memory/(6873:6873): Memoria full
+[DEBUG] 11:56:30:859 memory/(6873:6873): Registro: TimeStamp: 1560869787, Key:11, Value: Pinguino
+[INFO] 11:56:31:497 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:32:102 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:32:723 memory/(6873:6873): Memoria full
+[WARNING] 11:56:32:723 memory/(6873:6873): Memoria full
+[WARNING] 11:56:32:723 memory/(6873:6873): Memoria full
+[INFO] 11:56:32:723 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:33:333 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:33:938 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:34:560 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:36:376 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:36:978 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:37:582 memory/(6873:6873): Memoria full
+[WARNING] 11:56:37:582 memory/(6873:6873): Memoria full
+[WARNING] 11:56:37:582 memory/(6873:6873): Memoria full
+[WARNING] 11:56:37:583 memory/(6873:6873): Memoria full
+[WARNING] 11:56:37:583 memory/(6873:6873): Memoria full
+[INFO] 11:56:37:583 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:38:197 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:38:811 memory/(6873:6873): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:56:39:419 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:41:226 memory/(6873:6873): Memoria full
+[WARNING] 11:56:41:227 memory/(6873:6873): Memoria full
+[WARNING] 11:56:41:227 memory/(6873:6873): Memoria full
+[WARNING] 11:56:41:227 memory/(6873:6873): Memoria full
+[INFO] 11:56:41:227 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:41:830 memory/(6873:6873): Registro no encontrado
+[DEBUG] 11:56:42:436 memory/(6873:6873): Registro: TimeStamp: 1560869767, Key:0, Value: Azul
+[DEBUG] 11:56:43:38 memory/(6873:6873): Registro: TimeStamp: 1560869787, Key:11, Value: Pinguino
+[INFO] 11:56:43:639 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:44:244 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:44:855 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:45:465 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:46:71 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:46:686 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:47:287 memory/(6873:6873): Memoria full
+[INFO] 11:56:47:287 memory/(6873:6873): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 11:56:47:889 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:56:49:694 memory/(6873:6873): Memoria full
+[DEBUG] 11:56:49:695 memory/(6873:6873): Registro: TimeStamp: 1560869790, Key:33, Value: Raya
+[DEBUG] 11:56:50:297 memory/(6873:6873): Registro: TimeStamp: 1560869774, Key:1, Value: Libro
+[INFO] 11:56:50:898 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:51:500 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:52:106 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:52:708 memory/(6873:6873): Registro no encontrado
+[INFO] 11:56:53:309 memory/(6873:6873): No tengo ese registro
+[WARNING] 11:56:53:912 memory/(6873:6873): Registro no encontrado
+[WARNING] 11:57:01:268 memory/(6873:6875): Desconectado.
+[WARNING] 11:57:01:268 memory/(6873:6875): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 11:57:09:146 memory/(6873:6873): Termina proceso

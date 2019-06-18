@@ -9,7 +9,6 @@
  */
 
 #include "Memory.h"
-
 void *inputFunc(void *);
 //pthread_mutex_t lock;
 

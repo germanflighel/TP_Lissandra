@@ -1,0 +1,304 @@
+==4085== Memcheck, a memory error detector
+==4085== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==4085== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==4085== Command: ./Memory
+==4085== Parent PID: 3810
+==4085== 
+--4085-- 
+--4085-- Valgrind options:
+--4085--    --show-leak-kinds=all
+--4085--    --leak-check=full
+--4085--    -v
+--4085--    --log-file=val2019.txt
+--4085-- Contents of /proc/version:
+--4085--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--4085-- 
+--4085-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--4085-- Page sizes: currently 4096, max supported 4096
+--4085-- Valgrind library directory: /usr/lib/valgrind
+--4085-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--4085--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--4085--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--4085--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--4085--   .. CRC is valid
+--4085-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Memory/Debug/Memory
+--4085-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--4085--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--4085--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--4085--    object doesn't have a symbol table
+--4085--    object doesn't have a dynamic symbol table
+--4085-- Scheduler: using generic scheduler lock implementation.
+--4085-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==4085== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4085-by-utnso-on-???
+==4085== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4085-by-utnso-on-???
+==4085== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4085-by-utnso-on-???
+==4085== 
+==4085== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4085== don't want to do, unless you know exactly what you're doing,
+==4085== or are doing some strange experiment):
+==4085==   /usr/lib/valgrind/../../bin/vgdb --pid=4085 ...command...
+==4085== 
+==4085== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4085==   /path/to/gdb ./Memory
+==4085== and then give GDB the following command
+==4085==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=4085
+==4085== --pid is optional if only one valgrind process is running
+==4085== 
+--4085-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--4085-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--4085-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--4085--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--4085--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--4085--    object doesn't have a symbol table
+--4085-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--4085--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--4085--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--4085--    object doesn't have a symbol table
+==4085== WARNING: new redirection conflicts with existing -- ignoring it
+--4085--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--4085--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--4085-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--4085-- Reading syms from /lib/i386-linux-gnu/libm-2.23.so
+--4085--   Considering /lib/i386-linux-gnu/libm-2.23.so ..
+--4085--   .. CRC mismatch (computed 9ba663e0 wanted 0c56bc99)
+--4085--   Considering /usr/lib/debug/lib/i386-linux-gnu/libm-2.23.so ..
+--4085--   .. CRC is valid
+--4085-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--4085--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--4085--   .. build-id is valid
+--4085-- Reading syms from /usr/lib/libcommons.so
+--4085-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--4085--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--4085--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--4085--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--4085--   .. CRC is valid
+--4085-- REDIR: 0x414b4b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x4152140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x4164b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x414a350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--4085-- REDIR: 0x41497e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--4085-- REDIR: 0x414afc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x41f94d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--4085-- REDIR: 0x41495c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--4085-- REDIR: 0x4144f00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--4085-- REDIR: 0x414aa30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+--4085-- REDIR: 0x414b680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--4085-- REDIR: 0x4149580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x4152440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--4085-- REDIR: 0x4148f90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x4152570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+==4085== Invalid write of size 1
+==4085==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495D7: main (Memory.c:57)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+--4085-- REDIR: 0x4145470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+==4085== Syscall param open(filename) points to unaddressable byte(s)
+==4085==    at 0x41A9713: __open_nocancel (syscall-template.S:84)
+==4085==    by 0x413DACF: _IO_file_open (fileops.c:221)
+==4085==    by 0x413DC50: _IO_file_fopen@@GLIBC_2.1 (fileops.c:328)
+==4085==    by 0x41323B0: __fopen_internal (iofopen.c:86)
+==4085==    by 0x413241D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==4085==    by 0x40CF35E: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== Syscall param stat64(file_name) points to unaddressable byte(s)
+==4085==    at 0x41A905F: _xstat (xstat.c:48)
+==4085==    by 0x40CFC9D: stat (in /usr/lib/libcommons.so)
+==4085==    by 0x40CF386: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== Invalid read of size 1
+==4085==    at 0x402F3A3: __GI_strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x41492BA: strdup (strdup.c:41)
+==4085==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== Invalid read of size 1
+==4085==    at 0x4031230: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x41492D7: strdup (strdup.c:47)
+==4085==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+--4085-- REDIR: 0x4145810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--4085-- REDIR: 0x4145520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--4085-- REDIR: 0x4149700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x42095c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--4085-- REDIR: 0x414d280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--4085-- REDIR: 0x414b0d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+==4085== Invalid read of size 1
+==4085==    at 0x4118383: vfprintf (vfprintf.c:1632)
+==4085==    by 0x411D695: printf (printf.c:33)
+==4085==    by 0x8049615: main (Memory.c:67)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+--4085-- REDIR: 0x4148ae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x415db30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--4085-- REDIR: 0x414ac10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--4085-- REDIR: 0x414d1b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--4085-- REDIR: 0x414b610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x41fbb70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--4085-- REDIR: 0x4148d20 (libc.so.6:__GI_strchr) redirected to 0x402ef30 (__GI_strchr)
+--4085-- REDIR: 0x4148ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--4085-- REDIR: 0x4208150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+==4085== 
+==4085== HEAP SUMMARY:
+==4085==     in use at exit: 2,395 bytes in 82 blocks
+==4085==   total heap usage: 2,242 allocs, 2,160 frees, 78,187 bytes allocated
+==4085== 
+==4085== Searching for pointers to 82 not-freed blocks
+==4085== Checked 8,460,836 bytes
+==4085== 
+==4085== 5 bytes in 1 blocks are definitely lost in loss record 1 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x41492C5: strdup (strdup.c:42)
+==4085==    by 0x40CD09A: string_duplicate (in /usr/lib/libcommons.so)
+==4085==    by 0x40CDB44: _string_split (in /usr/lib/libcommons.so)
+==4085==    by 0x40CD6AF: string_n_split (in /usr/lib/libcommons.so)
+==4085==    by 0x403A2F2: separarEntrada (sockets.c:35)
+==4085==    by 0x804B1EC: inputFunc (Memory.c:808)
+==4085==    by 0x40B2294: start_thread (pthread_create.c:333)
+==4085==    by 0x41BB0AD: clone (clone.S:114)
+==4085== 
+==4085== 46 bytes in 6 blocks are definitely lost in loss record 2 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x403BA19: recieve_and_deserialize_create (sockets.c:658)
+==4085==    by 0x804A0BC: recieve (Memory.c:310)
+==4085==    by 0x8049E35: main (Memory.c:242)
+==4085== 
+==4085== 48 bytes in 3 blocks are definitely lost in loss record 3 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x804AE63: ejecutarInsert (Memory.c:687)
+==4085==    by 0x804A424: ejectuarComando (Memory.c:396)
+==4085==    by 0x804A077: recieve (Memory.c:302)
+==4085==    by 0x8049E35: main (Memory.c:242)
+==4085== 
+==4085== 112 bytes in 7 blocks are definitely lost in loss record 4 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x804AD38: ejecutarInsert (Memory.c:652)
+==4085==    by 0x804A424: ejectuarComando (Memory.c:396)
+==4085==    by 0x804A077: recieve (Memory.c:302)
+==4085==    by 0x8049E35: main (Memory.c:242)
+==4085== 
+==4085== 136 bytes in 1 blocks are possibly lost in loss record 5 of 7
+==4085==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==4085==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==4085==    by 0x40B2CC3: allocate_stack (allocatestack.c:588)
+==4085==    by 0x40B2CC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==4085==    by 0x8049988: main (Memory.c:147)
+==4085== 
+==4085== 256 bytes in 32 blocks are indirectly lost in loss record 6 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x40CDE01: list_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804ADF2: ejecutarInsert (Memory.c:675)
+==4085==    by 0x804A424: ejectuarComando (Memory.c:396)
+==4085==    by 0x804A077: recieve (Memory.c:302)
+==4085==    by 0x8049E35: main (Memory.c:242)
+==4085== 
+==4085== 2,048 (1,792 direct, 256 indirect) bytes in 32 blocks are definitely lost in loss record 7 of 7
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x804ADD1: ejecutarInsert (Memory.c:671)
+==4085==    by 0x804A424: ejectuarComando (Memory.c:396)
+==4085==    by 0x804A077: recieve (Memory.c:302)
+==4085==    by 0x8049E35: main (Memory.c:242)
+==4085== 
+==4085== LEAK SUMMARY:
+==4085==    definitely lost: 2,003 bytes in 49 blocks
+==4085==    indirectly lost: 256 bytes in 32 blocks
+==4085==      possibly lost: 136 bytes in 1 blocks
+==4085==    still reachable: 0 bytes in 0 blocks
+==4085==         suppressed: 0 bytes in 0 blocks
+==4085== 
+==4085== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)
+==4085== 
+==4085== 1 errors in context 1 of 12:
+==4085== Invalid read of size 1
+==4085==    at 0x4118383: vfprintf (vfprintf.c:1632)
+==4085==    by 0x411D695: printf (printf.c:33)
+==4085==    by 0x8049615: main (Memory.c:67)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== 
+==4085== 1 errors in context 2 of 12:
+==4085== Invalid read of size 1
+==4085==    at 0x4031230: __GI_memcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x41492D7: strdup (strdup.c:47)
+==4085==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== 
+==4085== 1 errors in context 3 of 12:
+==4085== Invalid read of size 1
+==4085==    at 0x402F3A3: __GI_strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x41492BA: strdup (strdup.c:41)
+==4085==    by 0x40CF3A7: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== 
+==4085== 1 errors in context 4 of 12:
+==4085== Syscall param stat64(file_name) points to unaddressable byte(s)
+==4085==    at 0x41A905F: _xstat (xstat.c:48)
+==4085==    by 0x40CFC9D: stat (in /usr/lib/libcommons.so)
+==4085==    by 0x40CF386: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== 
+==4085== 1 errors in context 5 of 12:
+==4085== Syscall param open(filename) points to unaddressable byte(s)
+==4085==    at 0x41A9713: __open_nocancel (syscall-template.S:84)
+==4085==    by 0x413DACF: _IO_file_open (fileops.c:221)
+==4085==    by 0x413DC50: _IO_file_fopen@@GLIBC_2.1 (fileops.c:328)
+==4085==    by 0x41323B0: __fopen_internal (iofopen.c:86)
+==4085==    by 0x413241D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==4085==    by 0x40CF35E: config_create (in /usr/lib/libcommons.so)
+==4085==    by 0x804AF70: abrir_con (Memory.c:721)
+==4085==    by 0x80495FF: main (Memory.c:66)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== 
+==4085== 1 errors in context 6 of 12:
+==4085== Invalid write of size 1
+==4085==    at 0x402F495: strcpy (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495D7: main (Memory.c:57)
+==4085==  Address 0x428b9f0 is 0 bytes after a block of size 8 alloc'd
+==4085==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==4085==    by 0x80495BB: main (Memory.c:56)
+==4085== 
+==4085== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)

@@ -177,6 +177,7 @@ int main() {
 		int header;
 
 		separarEntrada(entrada, &header, &parametros);
+		free(parametros);
 
 		if (header == EXIT_CONSOLE) {
 			enviar = 0;
@@ -216,9 +217,8 @@ int main() {
 
 	close(serverSocket);
 	log_destroy(logger_Kernel);
-	list_destroy(tablas_actuales);
+	list_destroy_and_destroy_elements(tablas_actuales,(void*)free);
 	list_destroy(memoriasConectadas);
-
 	queue_destroy(colaReady);
 	queue_destroy(colaExec);
 
@@ -450,6 +450,7 @@ int insert_kernel(char* parametros, int serverSocket) {
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
 		free(package.tabla);
+		free(package.value);
 		dispose_package(&serializedPackage);
 	}
 	return ok;
@@ -481,7 +482,6 @@ void describe(char* parametros, int serverSocket) {
 			printf("Ninguna memoria asignada para este criterio\n");
 		}
 
-		//free(package.nombre_tabla);
 		dispose_package(&serializedPackage);
 	}
 }
@@ -586,6 +586,8 @@ void add(char* parametros, int serverSocket) {
 		}
 	}
 
+	string_iterate_lines(parametrosSeparados, (void*) free);
+	free(parametrosSeparados);
 }
 
 void metrics(char* parametros, int serverSocket) {
@@ -641,6 +643,8 @@ Script* levantar_script(char* ruta) {
 
 	nuevoScript->lineas = string_split(lineasnuevas, "\n");
 
+	free(lineasnuevas);
+
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
 	//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
@@ -683,6 +687,7 @@ void* exec(int serverSocket) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
 			//log_info(logger_Kernel, script_en_ejecucion->lineas[script_en_ejecucion->index-1]);
 			log_info(logger_Kernel, "Finalizó");
+			string_iterate_lines(script_en_ejecucion->lineas, (void*) free);
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
 			break;
@@ -692,6 +697,7 @@ void* exec(int serverSocket) {
 			break;
 		case CORTE_SCRIPT_POR_LINEA_ERRONEA:
 			log_error(logger_Kernel, "Script terminado por linea erronea");
+			string_iterate_lines(script_en_ejecucion->lineas, (void*) free);
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
 			break;

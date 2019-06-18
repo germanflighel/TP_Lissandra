@@ -1,0 +1,206 @@
+==6691== Memcheck, a memory error detector
+==6691== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==6691== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==6691== Command: ./Kernel
+==6691== Parent PID: 3945
+==6691== 
+--6691-- 
+--6691-- Valgrind options:
+--6691--    --show-leak-kinds=all
+--6691--    --leak-check=full
+--6691--    -v
+--6691--    --log-file=kernel2019valgrind.txt
+--6691-- Contents of /proc/version:
+--6691--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--6691-- 
+--6691-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--6691-- Page sizes: currently 4096, max supported 4096
+--6691-- Valgrind library directory: /usr/lib/valgrind
+--6691-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--6691--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--6691--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--6691--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--6691--   .. CRC is valid
+--6691-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Kernel/Debug/Kernel
+--6691-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--6691--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--6691--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--6691--    object doesn't have a symbol table
+--6691--    object doesn't have a dynamic symbol table
+--6691-- Scheduler: using generic scheduler lock implementation.
+--6691-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==6691== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6691-by-utnso-on-???
+==6691== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6691-by-utnso-on-???
+==6691== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6691-by-utnso-on-???
+==6691== 
+==6691== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==6691== don't want to do, unless you know exactly what you're doing,
+==6691== or are doing some strange experiment):
+==6691==   /usr/lib/valgrind/../../bin/vgdb --pid=6691 ...command...
+==6691== 
+==6691== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==6691==   /path/to/gdb ./Kernel
+==6691== and then give GDB the following command
+==6691==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=6691
+==6691== --pid is optional if only one valgrind process is running
+==6691== 
+--6691-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--6691-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--6691-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--6691--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--6691--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--6691--    object doesn't have a symbol table
+--6691-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--6691--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--6691--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--6691--    object doesn't have a symbol table
+==6691== WARNING: new redirection conflicts with existing -- ignoring it
+--6691--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--6691--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--6691-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--6691-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--6691--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--6691--   .. build-id is valid
+--6691-- Reading syms from /usr/lib/libcommons.so
+--6691-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--6691--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--6691--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--6691--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--6691--   .. CRC is valid
+--6691-- REDIR: 0x40f74b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x40fe140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x4110b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x40f6350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--6691-- REDIR: 0x40f57e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--6691-- REDIR: 0x40f0f00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--6691-- REDIR: 0x40f55c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--6691-- REDIR: 0x40f7680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--6691-- REDIR: 0x40f6fc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x41a54d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--6691-- REDIR: 0x40f1810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--6691-- REDIR: 0x40f1520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--6691-- REDIR: 0x40f1470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+--6691-- REDIR: 0x40f5580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x40fe440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--6691-- REDIR: 0x40f5700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x41b55c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--6691-- REDIR: 0x40f4f90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x40fe570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+--6691-- REDIR: 0x40f5750 (libc.so.6:strncpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x40ffdc0 (libc.so.6:__strncpy_ssse3) redirected to 0x402f5f0 (strncpy)
+--6691-- REDIR: 0x40f9280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--6691-- REDIR: 0x40f4ae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x4109b30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--6691-- REDIR: 0x40f6c10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--6691-- REDIR: 0x40f91b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--6691-- REDIR: 0x40f70d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+--6691-- REDIR: 0x40f7610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x41a7b70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--6691-- REDIR: 0x40f4ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--6691-- REDIR: 0x41b4150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+==6691== Thread 2:
+==6691== Invalid free() / delete / delete[] / realloc()
+==6691==    at 0x402D358: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x804A3B0: describe (Kernel.c:485)
+==6691==    by 0x8049FF3: interpretarComando (Kernel.c:361)
+==6691==    by 0x804ACCA: ejecutar_quantum (Kernel.c:736)
+==6691==    by 0x804AB08: exec (Kernel.c:685)
+==6691==    by 0x405E294: start_thread (pthread_create.c:333)
+==6691==    by 0x41670AD: clone (clone.S:114)
+==6691==  Address 0x403c840 is in a r-x mapped file /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so segment
+==6691== 
+--6691-- REDIR: 0x40f6a30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+==6691== 
+==6691== HEAP SUMMARY:
+==6691==     in use at exit: 388 bytes in 13 blocks
+==6691==   total heap usage: 6,875 allocs, 6,866 frees, 204,639 bytes allocated
+==6691== 
+==6691== Searching for pointers to 13 not-freed blocks
+==6691== Checked 16,844,476 bytes
+==6691== 
+==6691== Thread 1:
+==6691== 4 bytes in 1 blocks are still reachable in loss record 1 of 9
+==6691==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x4078C29: queue_create (in /usr/lib/libcommons.so)
+==6691==    by 0x80498FB: main (Kernel.c:128)
+==6691== 
+==6691== 8 bytes in 1 blocks are still reachable in loss record 2 of 9
+==6691==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==6691==    by 0x4078C34: queue_create (in /usr/lib/libcommons.so)
+==6691==    by 0x80498FB: main (Kernel.c:128)
+==6691== 
+==6691== 10 bytes in 1 blocks are still reachable in loss record 3 of 9
+==6691==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x8049698: main (Kernel.c:53)
+==6691== 
+==6691== 12 bytes in 1 blocks are definitely lost in loss record 4 of 9
+==6691==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x804971B: main (Kernel.c:63)
+==6691== 
+==6691== 20 bytes in 1 blocks are still reachable in loss record 5 of 9
+==6691==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x4078BC4: _string_split (in /usr/lib/libcommons.so)
+==6691==    by 0x40785F3: string_split (in /usr/lib/libcommons.so)
+==6691==    by 0x4078716: string_get_string_as_array (in /usr/lib/libcommons.so)
+==6691==    by 0x407A5D5: config_get_array_value (in /usr/lib/libcommons.so)
+==6691==    by 0x80496F5: main (Kernel.c:59)
+==6691== 
+==6691== 20 bytes in 4 blocks are still reachable in loss record 6 of 9
+==6691==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x407845E: string_trim_right (in /usr/lib/libcommons.so)
+==6691==    by 0x4078354: string_trim (in /usr/lib/libcommons.so)
+==6691==    by 0x407873D: string_get_string_as_array (in /usr/lib/libcommons.so)
+==6691==    by 0x407A5D5: config_get_array_value (in /usr/lib/libcommons.so)
+==6691==    by 0x80496F5: main (Kernel.c:59)
+==6691== 
+==6691== 42 bytes in 2 blocks are definitely lost in loss record 7 of 9
+==6691==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x40F52C5: strdup (strdup.c:42)
+==6691==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==6691==    by 0x4078BA9: _string_split (in /usr/lib/libcommons.so)
+==6691==    by 0x40786AF: string_n_split (in /usr/lib/libcommons.so)
+==6691==    by 0x403A332: separarEntrada (sockets.c:35)
+==6691==    by 0x804AC73: ejecutar_quantum (Kernel.c:726)
+==6691==    by 0x804AB08: exec (Kernel.c:685)
+==6691==    by 0x405E294: start_thread (pthread_create.c:333)
+==6691==    by 0x41670AD: clone (clone.S:114)
+==6691== 
+==6691== 136 bytes in 1 blocks are possibly lost in loss record 8 of 9
+==6691==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==6691==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==6691==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==6691==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==6691==    by 0x8049914: main (Kernel.c:135)
+==6691== 
+==6691== 136 bytes in 1 blocks are possibly lost in loss record 9 of 9
+==6691==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==6691==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==6691==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==6691==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==6691==    by 0x80499B3: main (Kernel.c:154)
+==6691== 
+==6691== LEAK SUMMARY:
+==6691==    definitely lost: 54 bytes in 3 blocks
+==6691==    indirectly lost: 0 bytes in 0 blocks
+==6691==      possibly lost: 272 bytes in 2 blocks
+==6691==    still reachable: 62 bytes in 8 blocks
+==6691==         suppressed: 0 bytes in 0 blocks
+==6691== 
+==6691== ERROR SUMMARY: 8 errors from 5 contexts (suppressed: 0 from 0)
+==6691== 
+==6691== 4 errors in context 1 of 5:
+==6691== Thread 2:
+==6691== Invalid free() / delete / delete[] / realloc()
+==6691==    at 0x402D358: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==6691==    by 0x804A3B0: describe (Kernel.c:485)
+==6691==    by 0x8049FF3: interpretarComando (Kernel.c:361)
+==6691==    by 0x804ACCA: ejecutar_quantum (Kernel.c:736)
+==6691==    by 0x804AB08: exec (Kernel.c:685)
+==6691==    by 0x405E294: start_thread (pthread_create.c:333)
+==6691==    by 0x41670AD: clone (clone.S:114)
+==6691==  Address 0x403c840 is in a r-x mapped file /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so segment
+==6691== 
+==6691== ERROR SUMMARY: 8 errors from 5 contexts (suppressed: 0 from 0)

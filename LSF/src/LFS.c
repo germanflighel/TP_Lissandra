@@ -200,6 +200,7 @@ t_log* iniciar_logger(void) {
 }
 
 void* ejecutar_comando(int header, void* package) {
+	log_debug(logger, "Ejecutando");
 	switch (header) {
 	case SELECT:
 		return lfs_select((t_PackageSelect*) package);
@@ -311,7 +312,7 @@ int lfs_insert(t_PackageInsert* package) {
 }
 
 int lfs_create(t_PackageCreate* package) {
-
+	log_debug(logger, "Creando");
 	//Primero creo el directorio para la tabla
 	char* directorio = ruta_a_tabla(package->tabla);
 	if (existe_tabla(directorio)) {
@@ -1099,6 +1100,7 @@ void *receptorDeConsultas(void* socket) {
 				free(respuesta.value);
 				free(registro_a_devolver->value);
 				free(registro_a_devolver);
+				free(package.tabla);
 			} else if (headerRecibido == INSERT) {
 
 				log_debug(logger, "Got an INSERT");
@@ -1115,12 +1117,9 @@ void *receptorDeConsultas(void* socket) {
 					log_info(logger, "No se pudo insertar");
 				}
 
-				/*
-				 // Esto es para probar antes de implementar en el SELECT la lectura del FS
-				 Tabla* tabluqui = list_get(mem_table, 0);
-				 Registro* registruli = list_get(tabluqui->registros, 0);
-				 log_debug(logger, registruli->value);
-				 */
+				free(package.tabla);
+				free(package.value);
+
 
 			} else if (headerRecibido == CREATE) {
 
@@ -1138,12 +1137,7 @@ void *receptorDeConsultas(void* socket) {
 					log_info(logger, "No se pudo crear");
 				}
 
-				/*
-				 // Esto es para probar antes de implementar en el SELECT la lectura del FS
-				 Tabla* tabluqui = list_get(mem_table, 0);
-				 Registro* registruli = list_get(tabluqui->registros, 0);
-				 log_debug(logger, registruli->value);
-				 */
+				free(package.tabla);
 
 			}else if (headerRecibido == DROP) {
 				log_debug(logger, "Got a DROP");
@@ -1158,6 +1152,9 @@ void *receptorDeConsultas(void* socket) {
 				} else {
 					log_info(logger, "No pude eliminar la tabla %s ", package.nombre_tabla);
 				}
+
+				free(package.nombre_tabla);
+
 
 			}else if (headerRecibido == DESCRIBE) {
 
