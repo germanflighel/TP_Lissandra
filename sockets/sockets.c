@@ -134,6 +134,7 @@ int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
 	return status;
 }
 
+
 int recieve_and_send_describe(t_describe *package, int socketCliente,
 		int socketDestino) {
 
@@ -305,6 +306,26 @@ int fill_package_describe(t_PackageDescribe* package, char* parametros) {
 	}
 
 	package->header = DESCRIBE;
+	package->tabla_long = strlen(parametrosSeparados[0]);
+	package->nombre_tabla = malloc(package->tabla_long + 1);
+	memcpy(package->nombre_tabla, parametrosSeparados[0],
+			package->tabla_long + 1);
+
+	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
+			+ package->tabla_long;
+	return 1;
+}
+
+
+int fill_package_drop(t_PackageDrop* package, char* parametros) {
+
+	char** parametrosSeparados = string_split(parametros, " ");
+
+	if (cant_parametros(parametrosSeparados) != 1) {
+		return 0;
+	}
+
+	package->header = DROP;
 	package->tabla_long = strlen(parametrosSeparados[0]);
 	package->nombre_tabla = malloc(package->tabla_long + 1);
 	memcpy(package->nombre_tabla, parametrosSeparados[0],
@@ -716,6 +737,33 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 	package->total_size = sizeof(package->header) + sizeof(package->value_long)
 			+ sizeof(package->tabla_long) + sizeof(package->key)
 			+ sizeof(package->timestamp) + package->value_long
+			+ package->tabla_long;
+
+	return status;
+}
+
+int recieve_and_deserialize_drop(t_PackageDrop* package, int socketCliente){
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+
+	status = recv(socketCliente, buffer, sizeof(package->tabla_long), 0);
+	memcpy(&(package->tabla_long), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+	package->nombre_tabla = malloc(package->tabla_long + 1);
+
+	status = recv(socketCliente, package->nombre_tabla, package->tabla_long, 0);
+	if (!status)
+		return 0;
+
+	package->nombre_tabla[package->tabla_long] = '\0';
+
+	free(buffer);
+
+	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
 			+ package->tabla_long;
 
 	return status;

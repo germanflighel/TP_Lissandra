@@ -96,6 +96,13 @@ typedef struct t_PackageDescribe{
 } t_PackageDescribe;
 
 
+typedef struct t_PackageDrop{
+	uint32_t header;
+	uint32_t tabla_long;
+	char* nombre_tabla;
+	uint32_t total_size;
+} t_PackageDrop;
+
 typedef struct t_Respuesta_Select {
 	char result;
 	uint16_t value_long;

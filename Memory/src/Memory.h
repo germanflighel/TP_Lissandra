@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
+#include <errno.h>
 #include <unistd.h>
 #include <stdint.h>
 #include <math.h>
@@ -20,7 +21,7 @@
 #include <readline/readline.h>
 #include <pthread.h>
 
-#define BACKLOG 1			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
+#define BACKLOG 50			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
 
 
 
@@ -35,16 +36,14 @@ typedef struct Pagina {
 typedef struct Renglon_pagina {
 	uint32_t numero;
 	char modificado;
+	long last_used_ts;
 	uint32_t offset;
 } Renglon_pagina;
 
-typedef struct Tabla_paginas {
-	Renglon_pagina* renglones;
-}Tabla_paginas;
-
 typedef struct Segmento {
 	char path[50];
-	t_list* numeros_pagina;
+	t_list* tablaDePaginas;
+	//t_list* numeros_pagina;
 }Segmento;
 
 
@@ -54,6 +53,6 @@ void abrir_con(t_config **);
 void send_package(int header, void* package, int lfsSocket);
 Segmento* buscarSegmento(char* tabla);
 void* buscarPagina(int key,Segmento* segmento,int* num_pag);
-int ejecutarSelect(t_PackageSelect* select, int lfs_socket);
+int ejecutarSelect(t_PackageSelect* select, int lfs_socket,int esAPI);
 
 #endif

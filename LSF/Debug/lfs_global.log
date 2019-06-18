@@ -1,0 +1,2152 @@
+[DEBUG] 12:18:00:137 LFS/(8375:8375): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:18:00:137 LFS/(8375:8375): 5003
+[DEBUG] 12:18:00:137 LFS/(8375:8375): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 12:18:00:137 LFS/(8375:8375): Bits que maneja el bitarray: 4096
+[DEBUG] 12:18:00:137 LFS/(8375:8375): Levante el Bitmap
+[DEBUG] 12:18:00:138 LFS/(8375:8375): Primer bloque libre: 55
+[INFO] 12:18:00:138 LFS/(8375:8375): Esperando memoria...
+[INFO] 12:18:10:635 LFS/(8375:8383): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:18:10:635 LFS/(8375:8383): Listo para recibir consulta
+[INFO] 12:18:12:802 LFS/(8375:8383): Cliente Desconectado
+[DEBUG] 12:26:48:366 LFS/(8375:8375): Acepte una conexion
+[DEBUG] 12:26:48:366 LFS/(8375:8375): A ver si es una memoria
+[DEBUG] 12:26:48:366 LFS/(8375:8375): Efectivamente Rick, es una memoria
+[DEBUG] 12:26:48:366 LFS/(8375:8375): Le mande el max_value_size
+[DEBUG] 12:26:48:366 LFS/(8375:8375): Cree el hilo perf
+[INFO] 12:26:48:366 LFS/(8375:8715): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:26:48:366 LFS/(8375:8715): Listo para recibir consulta
+[INFO] 12:26:49:310 LFS/(8375:8715): Cliente Desconectado
+[DEBUG] 12:27:00:96 LFS/(8375:8375): Acepte una conexion
+[DEBUG] 12:27:00:96 LFS/(8375:8375): A ver si es una memoria
+[DEBUG] 12:27:00:96 LFS/(8375:8375): Efectivamente Rick, es una memoria
+[DEBUG] 12:27:00:96 LFS/(8375:8375): Le mande el max_value_size
+[DEBUG] 12:27:00:97 LFS/(8375:8375): Cree el hilo perf
+[INFO] 12:27:00:97 LFS/(8375:8719): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:27:00:97 LFS/(8375:8719): Listo para recibir consulta
+[INFO] 12:27:00:146 LFS/(8375:8719): Cliente Desconectado
+[DEBUG] 12:27:18:183 LFS/(8375:8375): Acepte una conexion
+[DEBUG] 12:27:18:183 LFS/(8375:8375): A ver si es una memoria
+[DEBUG] 12:27:18:183 LFS/(8375:8375): Efectivamente Rick, es una memoria
+[DEBUG] 12:27:18:183 LFS/(8375:8375): Le mande el max_value_size
+[DEBUG] 12:27:18:183 LFS/(8375:8375): Cree el hilo perf
+[INFO] 12:27:18:183 LFS/(8375:8723): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:27:18:183 LFS/(8375:8723): Listo para recibir consulta
+[INFO] 12:27:18:267 LFS/(8375:8723): Cliente Desconectado
+[DEBUG] 12:29:51:534 LFS/(8375:8375): Acepte una conexion
+[DEBUG] 12:29:51:534 LFS/(8375:8375): A ver si es una memoria
+[DEBUG] 12:29:51:534 LFS/(8375:8375): Efectivamente Rick, es una memoria
+[DEBUG] 12:29:51:534 LFS/(8375:8375): Le mande el max_value_size
+[DEBUG] 12:29:51:534 LFS/(8375:8375): Cree el hilo perf
+[INFO] 12:29:51:535 LFS/(8375:8793): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:29:51:535 LFS/(8375:8793): Listo para recibir consulta
+[DEBUG] 12:30:18:901 LFS/(8375:8793): Got a SELECT
+[DEBUG] 12:30:18:902 LFS/(8375:8793): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:30:18:902 LFS/(8375:8793): /home/utnso/workspace/FS_TEST/Tables/hola
+[DEBUG] 12:30:18:902 LFS/(8375:8793): /home/utnso/workspace/FS_TEST/Tables/hola
+[DEBUG] 12:30:18:902 LFS/(8375:8793): No existe la tabla
+[DEBUG] 12:30:18:902 LFS/(8375:8793): Llegue2
+[DEBUG] 12:30:18:902 LFS/(8375:8793): No esta la key buscada
+[INFO] 12:30:18:902 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:19:503 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:32:788 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:36:186 LFS/(8375:8793): Listo para recibir consulta
+[INFO] 12:30:36:186 LFS/(8375:8793): Cliente Desconectado
+[ERROR] 12:30:48:55 LFS/(8375:8376): Bye
+[DEBUG] 12:33:29:27 LFS/(8906:8906): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:33:29:27 LFS/(8906:8906): 5003
+[DEBUG] 12:33:29:27 LFS/(8906:8906): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 12:33:29:27 LFS/(8906:8906): Bits que maneja el bitarray: 4096
+[DEBUG] 12:33:29:27 LFS/(8906:8906): Levante el Bitmap
+[DEBUG] 12:33:29:27 LFS/(8906:8906): Primer bloque libre: 55
+[INFO] 12:33:29:27 LFS/(8906:8906): Esperando memoria...
+[INFO] 12:33:34:689 LFS/(8906:8909): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:33:34:690 LFS/(8906:8909): Listo para recibir consulta
+[DEBUG] 12:33:40:989 LFS/(8906:8909): Got a SELECT
+[DEBUG] 12:33:40:989 LFS/(8906:8909): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:33:40:989 LFS/(8906:8909): /home/utnso/workspace/FS_TEST/Tables/chau
+[DEBUG] 12:33:40:989 LFS/(8906:8909): /home/utnso/workspace/FS_TEST/Tables/chau
+[DEBUG] 12:33:40:989 LFS/(8906:8909): No existe la tabla
+[DEBUG] 12:33:40:989 LFS/(8906:8909): Llegue2
+[DEBUG] 12:33:40:989 LFS/(8906:8909): No esta la key buscada
+[INFO] 12:33:40:990 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:590 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:591 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:591 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:41:591 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:52:336 LFS/(8906:8909): Listo para recibir consulta
+[INFO] 12:33:52:336 LFS/(8906:8909): Cliente Desconectado
+[DEBUG] 12:33:57:492 LFS/(8906:8906): Acepte una conexion
+[DEBUG] 12:33:57:492 LFS/(8906:8906): A ver si es una memoria
+[DEBUG] 12:33:57:492 LFS/(8906:8906): Efectivamente Rick, es una memoria
+[DEBUG] 12:33:57:492 LFS/(8906:8906): Le mande el max_value_size
+[DEBUG] 12:33:57:493 LFS/(8906:8906): Cree el hilo perf
+[INFO] 12:33:57:493 LFS/(8906:8913): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:33:57:493 LFS/(8906:8913): Listo para recibir consulta
+[INFO] 12:35:10:796 LFS/(8906:8913): Cliente Desconectado
+[ERROR] 12:35:13:494 LFS/(8906:8907): Bye
+[DEBUG] 12:35:18:198 LFS/(8963:8963): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:35:18:198 LFS/(8963:8963): 5003
+[DEBUG] 12:35:18:198 LFS/(8963:8963): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 12:35:18:198 LFS/(8963:8963): Bits que maneja el bitarray: 4096
+[DEBUG] 12:35:18:198 LFS/(8963:8963): Levante el Bitmap
+[DEBUG] 12:35:18:198 LFS/(8963:8963): Primer bloque libre: 55
+[INFO] 12:35:18:198 LFS/(8963:8963): Esperando memoria...
+[INFO] 12:35:24:153 LFS/(8963:8968): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:35:24:153 LFS/(8963:8968): Listo para recibir consulta
+[INFO] 12:35:34:248 LFS/(8963:8968): Cliente Desconectado
+[ERROR] 12:35:36:226 LFS/(8963:8964): Bye
+[DEBUG] 12:37:03:789 LFS/(9053:9053): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:37:03:789 LFS/(9053:9053): 5003
+[DEBUG] 12:37:03:789 LFS/(9053:9053): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 12:37:03:789 LFS/(9053:9053): Bits que maneja el bitarray: 4096
+[DEBUG] 12:37:03:789 LFS/(9053:9053): Levante el Bitmap
+[DEBUG] 12:37:03:789 LFS/(9053:9053): Primer bloque libre: 55
+[INFO] 12:37:03:790 LFS/(9053:9053): Esperando memoria...
+[INFO] 12:42:57:534 LFS/(9053:9233): Memoria conectada. Esperando Envio de mensajes
+[INFO] 12:42:57:534 LFS/(9053:9233): Listo para recibir consulta
+[DEBUG] 12:43:13:828 LFS/(9053:9233): Got a SELECT
+[DEBUG] 12:43:13:828 LFS/(9053:9233): /home/utnso/workspace/FS_TEST
+[DEBUG] 12:43:13:828 LFS/(9053:9233): /home/utnso/workspace/FS_TEST/Tables/cosarara
+[DEBUG] 12:43:13:828 LFS/(9053:9233): /home/utnso/workspace/FS_TEST/Tables/cosarara
+[DEBUG] 12:43:13:828 LFS/(9053:9233): No existe la tabla
+[DEBUG] 12:43:13:828 LFS/(9053:9233): Llegue2
+[DEBUG] 12:43:13:828 LFS/(9053:9233): No esta la key buscada
+[INFO] 12:43:13:828 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 12:43:14:429 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 13:10:50:55 LFS/(9053:9233): Listo para recibir consulta
+[INFO] 13:10:50:55 LFS/(9053:9233): Cliente Desconectado
+[ERROR] 13:19:13:654 LFS/(9053:9054): Bye
+[DEBUG] 13:19:16:842 LFS/(9747:9747): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:19:16:842 LFS/(9747:9747): 5003
+[DEBUG] 13:19:16:842 LFS/(9747:9747): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:19:16:842 LFS/(9747:9747): Bits que maneja el bitarray: 4096
+[DEBUG] 13:19:16:842 LFS/(9747:9747): Levante el Bitmap
+[DEBUG] 13:19:16:842 LFS/(9747:9747): Primer bloque libre: 55
+[INFO] 13:19:16:842 LFS/(9747:9747): Esperando memoria...
+[INFO] 13:19:24:80 LFS/(9747:9751): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:19:24:80 LFS/(9747:9751): Listo para recibir consulta
+[DEBUG] 13:19:27:458 LFS/(9747:9751): Got a DESCRIBE
+[DEBUG] 13:19:27:458 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:19:27:458 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:19:27:459 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:19:27:460 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:19:27:460 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:19:27:461 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:19:27:461 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:19:27:462 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:19:27:462 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:19:27:462 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:19:27:463 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:19:27:463 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:19:27:463 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:19:27:463 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:19:27:464 LFS/(9747:9751): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:19:27:464 LFS/(9747:9751): 14
+[INFO] 13:19:27:464 LFS/(9747:9751): Listo para recibir consulta
+[INFO] 13:19:28:72 LFS/(9747:9751): Listo para recibir consulta
+[INFO] 13:19:28:72 LFS/(9747:9751): Listo para recibir consulta
+[INFO] 13:19:28:72 LFS/(9747:9751): Cliente Desconectado
+[ERROR] 13:20:00:799 LFS/(9747:9748): Bye
+[DEBUG] 13:20:22:579 LFS/(9758:9758): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:20:22:579 LFS/(9758:9758): 5003
+[DEBUG] 13:20:22:579 LFS/(9758:9758): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:20:22:579 LFS/(9758:9758): Bits que maneja el bitarray: 4096
+[DEBUG] 13:20:22:579 LFS/(9758:9758): Levante el Bitmap
+[DEBUG] 13:20:22:579 LFS/(9758:9758): Primer bloque libre: 55
+[INFO] 13:20:22:579 LFS/(9758:9758): Esperando memoria...
+[INFO] 13:20:30:668 LFS/(9758:9767): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:20:30:668 LFS/(9758:9767): Listo para recibir consulta
+[DEBUG] 13:20:46:326 LFS/(9758:9767): Got a SELECT
+[DEBUG] 13:20:46:326 LFS/(9758:9767): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:20:46:326 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/tablarara
+[DEBUG] 13:20:46:326 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/tablarara
+[DEBUG] 13:20:46:327 LFS/(9758:9767): No existe la tabla
+[DEBUG] 13:20:46:327 LFS/(9758:9767): Llegue2
+[DEBUG] 13:20:46:327 LFS/(9758:9767): No esta la key buscada
+[INFO] 13:20:46:327 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:927 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:20:46:928 LFS/(9758:9767): Listo para recibir consulta
+[DEBUG] 13:20:57:888 LFS/(9758:9764): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:20:57:888 LFS/(9758:9764): /home/utnso/workspace/FS_TEST/Tables/tablararisima
+[DEBUG] 13:20:57:888 LFS/(9758:9764): /home/utnso/workspace/FS_TEST/Tables/tablararisima
+[DEBUG] 13:20:57:888 LFS/(9758:9764): No existe la tabla
+[ERROR] 13:20:57:889 LFS/(9758:9764): No existe un registro con esa key
+[DEBUG] 13:21:43:710 LFS/(9758:9767): Got a DESCRIBE
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:21:43:710 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:21:43:711 LFS/(9758:9767): 14
+[INFO] 13:21:43:711 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:21:44:316 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:22:09:38 LFS/(9758:9767): Listo para recibir consulta
+[INFO] 13:22:09:38 LFS/(9758:9767): Cliente Desconectado
+[ERROR] 13:22:16:307 LFS/(9758:9764): Bye
+[DEBUG] 13:23:40:531 LFS/(9796:9796): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:23:40:531 LFS/(9796:9796): 5003
+[DEBUG] 13:23:40:531 LFS/(9796:9796): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:23:40:531 LFS/(9796:9796): Bits que maneja el bitarray: 4096
+[DEBUG] 13:23:40:531 LFS/(9796:9796): Levante el Bitmap
+[DEBUG] 13:23:40:531 LFS/(9796:9796): Primer bloque libre: 55
+[INFO] 13:23:40:531 LFS/(9796:9796): Esperando memoria...
+[INFO] 13:23:45:416 LFS/(9796:9799): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:23:45:416 LFS/(9796:9799): Listo para recibir consulta
+[DEBUG] 13:23:48:806 LFS/(9796:9799): Got a DESCRIBE
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:23:48:806 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:23:48:807 LFS/(9796:9799): 14
+[INFO] 13:23:48:807 LFS/(9796:9799): Listo para recibir consulta
+[INFO] 13:23:49:409 LFS/(9796:9799): Listo para recibir consulta
+[INFO] 13:23:49:409 LFS/(9796:9799): Listo para recibir consulta
+[INFO] 13:23:49:410 LFS/(9796:9799): Cliente Desconectado
+[DEBUG] 13:24:43:794 LFS/(9796:9796): Acepte una conexion
+[DEBUG] 13:24:43:794 LFS/(9796:9796): A ver si es una memoria
+[DEBUG] 13:24:43:795 LFS/(9796:9796): Efectivamente Rick, es una memoria
+[DEBUG] 13:24:43:795 LFS/(9796:9796): Le mande el max_value_size
+[DEBUG] 13:24:43:795 LFS/(9796:9796): Cree el hilo perf
+[INFO] 13:24:43:795 LFS/(9796:9819): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:24:43:795 LFS/(9796:9819): Listo para recibir consulta
+[INFO] 13:25:03:18 LFS/(9796:9819): Cliente Desconectado
+[ERROR] 13:25:05:188 LFS/(9796:9797): Bye
+[DEBUG] 13:29:44:212 LFS/(10006:10006): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:29:44:212 LFS/(10006:10006): 5003
+[DEBUG] 13:29:44:212 LFS/(10006:10006): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:29:44:212 LFS/(10006:10006): Bits que maneja el bitarray: 4096
+[DEBUG] 13:29:44:212 LFS/(10006:10006): Levante el Bitmap
+[DEBUG] 13:29:44:212 LFS/(10006:10006): Primer bloque libre: 55
+[INFO] 13:29:44:212 LFS/(10006:10006): Esperando memoria...
+[INFO] 13:29:53:196 LFS/(10006:10009): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:29:53:197 LFS/(10006:10009): Listo para recibir consulta
+[DEBUG] 13:29:56:885 LFS/(10006:10009): Got a DESCRIBE
+[DEBUG] 13:29:56:885 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:29:56:885 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:29:56:885 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:29:56:886 LFS/(10006:10009): 14
+[INFO] 13:29:56:886 LFS/(10006:10009): Listo para recibir consulta
+[INFO] 13:29:57:487 LFS/(10006:10009): Listo para recibir consulta
+[INFO] 13:29:57:487 LFS/(10006:10009): Listo para recibir consulta
+[INFO] 13:29:57:487 LFS/(10006:10009): Cliente Desconectado
+[ERROR] 13:30:07:743 LFS/(10006:10007): Bye
+[DEBUG] 13:32:29:778 LFS/(10091:10091): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:32:29:778 LFS/(10091:10091): 5003
+[DEBUG] 13:32:29:778 LFS/(10091:10091): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:32:29:778 LFS/(10091:10091): Bits que maneja el bitarray: 4096
+[DEBUG] 13:32:29:778 LFS/(10091:10091): Levante el Bitmap
+[DEBUG] 13:32:29:778 LFS/(10091:10091): Primer bloque libre: 55
+[INFO] 13:32:29:778 LFS/(10091:10091): Esperando memoria...
+[INFO] 13:32:34:126 LFS/(10091:10095): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:32:34:126 LFS/(10091:10095): Listo para recibir consulta
+[DEBUG] 13:32:37:157 LFS/(10091:10095): Got a DESCRIBE
+[DEBUG] 13:32:37:157 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:32:37:157 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:32:37:157 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:32:37:157 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:32:37:157 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:32:37:158 LFS/(10091:10095): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:32:37:159 LFS/(10091:10095): 14
+[INFO] 13:32:37:159 LFS/(10091:10095): Listo para recibir consulta
+[INFO] 13:32:37:760 LFS/(10091:10095): Listo para recibir consulta
+[INFO] 13:32:37:760 LFS/(10091:10095): Listo para recibir consulta
+[INFO] 13:32:37:760 LFS/(10091:10095): Cliente Desconectado
+[ERROR] 13:32:48:268 LFS/(10091:10092): Bye
+[DEBUG] 13:34:45:934 LFS/(10180:10180): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:34:45:934 LFS/(10180:10180): 5003
+[DEBUG] 13:34:45:935 LFS/(10180:10180): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:34:45:935 LFS/(10180:10180): Bits que maneja el bitarray: 4096
+[DEBUG] 13:34:45:935 LFS/(10180:10180): Levante el Bitmap
+[DEBUG] 13:34:45:935 LFS/(10180:10180): Primer bloque libre: 55
+[INFO] 13:34:45:935 LFS/(10180:10180): Esperando memoria...
+[INFO] 13:34:50:519 LFS/(10180:10183): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:34:50:519 LFS/(10180:10183): Listo para recibir consulta
+[DEBUG] 13:34:53:81 LFS/(10180:10183): Got a DESCRIBE
+[DEBUG] 13:34:53:81 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:34:53:81 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:34:53:81 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:34:53:82 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:34:53:83 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:34:53:83 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:34:53:83 LFS/(10180:10183): 14
+[INFO] 13:34:53:83 LFS/(10180:10183): Listo para recibir consulta
+[DEBUG] 13:35:23:275 LFS/(10180:10183): Got a DESCRIBE
+[DEBUG] 13:35:23:275 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:35:23:275 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:35:23:276 LFS/(10180:10183): 14
+[INFO] 13:35:23:276 LFS/(10180:10183): Listo para recibir consulta
+[DEBUG] 13:35:36:1 LFS/(10180:10183): Got a DESCRIBE
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:35:36:1 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:35:36:2 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:35:36:2 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:35:36:2 LFS/(10180:10183): 14
+[INFO] 13:35:36:2 LFS/(10180:10183): Listo para recibir consulta
+[DEBUG] 13:35:56:919 LFS/(10180:10183): Got a DESCRIBE
+[DEBUG] 13:35:56:919 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:35:56:920 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:35:56:921 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:35:56:921 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:35:56:921 LFS/(10180:10183): 14
+[INFO] 13:35:56:921 LFS/(10180:10183): Listo para recibir consulta
+[DEBUG] 13:36:46:704 LFS/(10180:10183): Got a SELECT
+[DEBUG] 13:36:46:704 LFS/(10180:10183): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:36:46:704 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:36:46:704 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:36:46:704 LFS/(10180:10183): Existe tabla, BRO!
+[DEBUG] 13:36:46:704 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:36:46:704 LFS/(10180:10183): MARINOS
+[DEBUG] 13:36:46:705 LFS/(10180:10183): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 13:36:46:705 LFS/(10180:10183): 1
+[DEBUG] 13:36:46:705 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 13:36:46:705 LFS/(10180:10183): No existe la tabla en mem_table
+[DEBUG] 13:36:46:705 LFS/(10180:10183): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 13:36:46:705 LFS/(10180:10183): Lei el bloque a escanear
+[WARNING] 13:36:46:705 LFS/(10180:10183): Bloque vacío
+[DEBUG] 13:36:46:705 LFS/(10180:10183): Destrui la config particion
+[DEBUG] 13:36:46:705 LFS/(10180:10183): Llegue2
+[DEBUG] 13:36:46:705 LFS/(10180:10183): No esta la key buscada
+[INFO] 13:36:46:705 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:36:47:306 LFS/(10180:10183): Listo para recibir consulta
+[INFO] 13:37:06:633 LFS/(10180:10183): Cliente Desconectado
+[ERROR] 13:37:08:682 LFS/(10180:10181): Bye
+[DEBUG] 13:37:31:782 LFS/(10360:10360): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:37:31:782 LFS/(10360:10360): 5003
+[DEBUG] 13:37:31:782 LFS/(10360:10360): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:37:31:782 LFS/(10360:10360): Bits que maneja el bitarray: 4096
+[DEBUG] 13:37:31:782 LFS/(10360:10360): Levante el Bitmap
+[DEBUG] 13:37:31:783 LFS/(10360:10360): Primer bloque libre: 55
+[INFO] 13:37:31:783 LFS/(10360:10360): Esperando memoria...
+[INFO] 13:37:38:732 LFS/(10360:10363): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:37:38:732 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:37:40:790 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:37:40:790 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:37:40:791 LFS/(10360:10363): 14
+[INFO] 13:37:40:791 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:37:57:823 LFS/(10360:10363): Got a CREATE
+[DEBUG] 13:37:57:823 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:37:57:823 LFS/(10360:10363): Existe la tabla papi: MARINOS
+[INFO] 13:37:57:823 LFS/(10360:10363): No se pudo crear
+[INFO] 13:37:57:823 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:37:58:427 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:37:58:427 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:37:58:427 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:37:58:427 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:37:58:428 LFS/(10360:10363): 1
+[INFO] 13:37:58:428 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:37:59:638 LFS/(10360:10363): Got a CREATE
+[DEBUG] 13:37:59:638 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 13:37:59:638 LFS/(10360:10363): Existe la tabla papi: AVES
+[INFO] 13:37:59:638 LFS/(10360:10363): No se pudo crear
+[INFO] 13:37:59:638 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:00:238 LFS/(10360:10363): Got a CREATE
+[DEBUG] 13:38:00:238 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 13:38:00:238 LFS/(10360:10363): Existe la tabla papi: MAMIFEROS
+[INFO] 13:38:00:238 LFS/(10360:10363): No se pudo crear
+[INFO] 13:38:00:238 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:00:841 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:00:841 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:00:841 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:38:00:842 LFS/(10360:10363): 14
+[INFO] 13:38:00:843 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:02:649 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:02:649 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:02:649 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 13:38:02:649 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:38:02:649 LFS/(10360:10363): 1
+[INFO] 13:38:02:650 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:04:504 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:04:504 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:04:504 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 13:38:04:504 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:38:04:505 LFS/(10360:10363): 1
+[INFO] 13:38:04:505 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:06:321 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:06:322 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:06:322 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 13:38:06:322 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:38:06:322 LFS/(10360:10363): 1
+[INFO] 13:38:06:322 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:09:334 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:09:334 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:09:334 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 13:38:09:335 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:38:09:335 LFS/(10360:10363): 1
+[INFO] 13:38:09:335 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:11:739 LFS/(10360:10363): Got a SELECT
+[DEBUG] 13:38:11:739 LFS/(10360:10363): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:38:11:739 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:38:11:739 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:38:11:740 LFS/(10360:10363): Existe tabla, BRO!
+[DEBUG] 13:38:11:740 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:38:11:740 LFS/(10360:10363): MARINOS
+[DEBUG] 13:38:11:740 LFS/(10360:10363): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 13:38:11:740 LFS/(10360:10363): 1
+[DEBUG] 13:38:11:740 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 13:38:11:740 LFS/(10360:10363): No existe la tabla en mem_table
+[DEBUG] 13:38:11:740 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 13:38:11:740 LFS/(10360:10363): Lei el bloque a escanear
+[WARNING] 13:38:11:740 LFS/(10360:10363): Bloque vacío
+[DEBUG] 13:38:11:741 LFS/(10360:10363): Destrui la config particion
+[DEBUG] 13:38:11:741 LFS/(10360:10363): Llegue2
+[DEBUG] 13:38:11:741 LFS/(10360:10363): No esta la key buscada
+[INFO] 13:38:11:741 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:13:549 LFS/(10360:10363): Got a DESCRIBE
+[DEBUG] 13:38:13:549 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:38:13:550 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 13:38:13:550 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:38:13:550 LFS/(10360:10363): 1
+[INFO] 13:38:13:550 LFS/(10360:10363): Listo para recibir consulta
+[DEBUG] 13:38:23:581 LFS/(10360:10363): Got a SELECT
+[DEBUG] 13:38:23:581 LFS/(10360:10363): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:38:23:581 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:38:23:581 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:38:23:581 LFS/(10360:10363): Existe tabla, BRO!
+[DEBUG] 13:38:23:581 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:38:23:581 LFS/(10360:10363): MARINOS
+[DEBUG] 13:38:23:581 LFS/(10360:10363): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 13:38:23:582 LFS/(10360:10363): 1
+[DEBUG] 13:38:23:582 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 13:38:23:582 LFS/(10360:10363): No existe la tabla en mem_table
+[DEBUG] 13:38:23:582 LFS/(10360:10363): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 13:38:23:582 LFS/(10360:10363): Lei el bloque a escanear
+[WARNING] 13:38:23:582 LFS/(10360:10363): Bloque vacío
+[DEBUG] 13:38:23:582 LFS/(10360:10363): Destrui la config particion
+[DEBUG] 13:38:23:582 LFS/(10360:10363): Llegue2
+[DEBUG] 13:38:23:582 LFS/(10360:10363): No esta la key buscada
+[INFO] 13:38:23:582 LFS/(10360:10363): Listo para recibir consulta
+[INFO] 13:38:47:288 LFS/(10360:10363): Cliente Desconectado
+[ERROR] 13:38:52:981 LFS/(10360:10361): Bye
+[DEBUG] 13:43:49:604 LFS/(10755:10755): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:43:49:604 LFS/(10755:10755): 5003
+[DEBUG] 13:43:49:604 LFS/(10755:10755): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:43:49:604 LFS/(10755:10755): Bits que maneja el bitarray: 4096
+[DEBUG] 13:43:49:604 LFS/(10755:10755): Levante el Bitmap
+[DEBUG] 13:43:49:604 LFS/(10755:10755): Primer bloque libre: 55
+[INFO] 13:43:49:605 LFS/(10755:10755): Esperando memoria...
+[INFO] 13:43:57:107 LFS/(10755:10762): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:43:57:107 LFS/(10755:10762): Listo para recibir consulta
+[DEBUG] 13:44:03:410 LFS/(10755:10762): Got a SELECT
+[DEBUG] 13:44:03:410 LFS/(10755:10762): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:44:03:410 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:44:03:410 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 13:44:03:410 LFS/(10755:10762): Existe tabla, BRO!
+[DEBUG] 13:44:03:411 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:44:03:411 LFS/(10755:10762): MARINOS
+[DEBUG] 13:44:03:411 LFS/(10755:10762): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 13:44:03:411 LFS/(10755:10762): 1
+[DEBUG] 13:44:03:411 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 13:44:03:411 LFS/(10755:10762): No existe la tabla en mem_table
+[DEBUG] 13:44:03:411 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 13:44:03:411 LFS/(10755:10762): Lei el bloque a escanear
+[WARNING] 13:44:03:411 LFS/(10755:10762): Bloque vacío
+[DEBUG] 13:44:03:411 LFS/(10755:10762): Destrui la config particion
+[DEBUG] 13:44:03:411 LFS/(10755:10762): Llegue2
+[DEBUG] 13:44:03:411 LFS/(10755:10762): No esta la key buscada
+[INFO] 13:44:03:411 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:04:12 LFS/(10755:10762): Listo para recibir consulta
+[DEBUG] 13:44:10:387 LFS/(10755:10762): Got a SELECT
+[DEBUG] 13:44:10:387 LFS/(10755:10762): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:44:10:387 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/loco
+[DEBUG] 13:44:10:387 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/loco
+[DEBUG] 13:44:10:387 LFS/(10755:10762): No existe la tabla
+[DEBUG] 13:44:10:387 LFS/(10755:10762): Llegue2
+[DEBUG] 13:44:10:387 LFS/(10755:10762): No esta la key buscada
+[INFO] 13:44:10:387 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:988 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:988 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:988 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:988 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:989 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:989 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:10:989 LFS/(10755:10762): Listo para recibir consulta
+[DEBUG] 13:44:40:597 LFS/(10755:10762): Got a SELECT
+[DEBUG] 13:44:40:597 LFS/(10755:10762): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:44:40:597 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/hola
+[DEBUG] 13:44:40:597 LFS/(10755:10762): /home/utnso/workspace/FS_TEST/Tables/hola
+[DEBUG] 13:44:40:597 LFS/(10755:10762): No existe la tabla
+[DEBUG] 13:44:40:598 LFS/(10755:10762): Llegue2
+[DEBUG] 13:44:40:598 LFS/(10755:10762): No esta la key buscada
+[INFO] 13:44:40:598 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:233 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:233 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:233 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:233 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:233 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:234 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:41:234 LFS/(10755:10762): Listo para recibir consulta
+[INFO] 13:44:45:286 LFS/(10755:10762): Cliente Desconectado
+[DEBUG] 13:44:50:682 LFS/(10755:10755): Acepte una conexion
+[DEBUG] 13:44:50:682 LFS/(10755:10755): A ver si es una memoria
+[DEBUG] 13:44:50:682 LFS/(10755:10755): Efectivamente Rick, es una memoria
+[DEBUG] 13:44:50:682 LFS/(10755:10755): Le mande el max_value_size
+[DEBUG] 13:44:50:683 LFS/(10755:10755): Cree el hilo perf
+[INFO] 13:44:50:683 LFS/(10755:10774): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:44:50:683 LFS/(10755:10774): Listo para recibir consulta
+[DEBUG] 13:44:57:385 LFS/(10755:10774): Got a SELECT
+[DEBUG] 13:44:57:385 LFS/(10755:10774): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:44:57:385 LFS/(10755:10774): /home/utnso/workspace/FS_TEST/Tables/JUDIOS
+[DEBUG] 13:44:57:385 LFS/(10755:10774): /home/utnso/workspace/FS_TEST/Tables/JUDIOS
+[DEBUG] 13:44:57:385 LFS/(10755:10774): No existe la tabla
+[DEBUG] 13:44:57:385 LFS/(10755:10774): Llegue2
+[DEBUG] 13:44:57:385 LFS/(10755:10774): No esta la key buscada
+[INFO] 13:44:57:386 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:44:57:987 LFS/(10755:10774): Listo para recibir consulta
+[INFO] 13:45:05:878 LFS/(10755:10774): Cliente Desconectado
+[DEBUG] 13:45:28:9 LFS/(10755:10755): Acepte una conexion
+[DEBUG] 13:45:28:9 LFS/(10755:10755): A ver si es una memoria
+[DEBUG] 13:45:28:9 LFS/(10755:10755): Efectivamente Rick, es una memoria
+[DEBUG] 13:45:28:9 LFS/(10755:10755): Le mande el max_value_size
+[DEBUG] 13:45:28:9 LFS/(10755:10755): Cree el hilo perf
+[INFO] 13:45:28:10 LFS/(10755:10788): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:45:28:10 LFS/(10755:10788): Listo para recibir consulta
+[DEBUG] 13:45:30:744 LFS/(10755:10788): Got a DESCRIBE
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 13:45:30:744 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:45:30:745 LFS/(10755:10788): 14
+[INFO] 13:45:30:745 LFS/(10755:10788): Listo para recibir consulta
+[DEBUG] 13:45:52:15 LFS/(10755:10788): Got a SELECT
+[DEBUG] 13:45:52:15 LFS/(10755:10788): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:45:52:15 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/LIBROS
+[DEBUG] 13:45:52:15 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/LIBROS
+[DEBUG] 13:45:52:15 LFS/(10755:10788): Existe tabla, BRO!
+[DEBUG] 13:45:52:15 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 13:45:52:15 LFS/(10755:10788): LIBROS
+[DEBUG] 13:45:52:15 LFS/(10755:10788): Consistencia: SC, Particiones: 2, Tiempo de Compactacion: 35000
+[DEBUG] 13:45:52:16 LFS/(10755:10788): 1
+[DEBUG] 13:45:52:16 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/LIBROS/1.bin
+[DEBUG] 13:45:52:16 LFS/(10755:10788): No existe la tabla en mem_table
+[DEBUG] 13:45:52:16 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Bloques/9.bin
+[DEBUG] 13:45:52:16 LFS/(10755:10788): Lei el bloque a escanear
+[WARNING] 13:45:52:16 LFS/(10755:10788): Bloque vacío
+[DEBUG] 13:45:52:16 LFS/(10755:10788): Destrui la config particion
+[DEBUG] 13:45:52:16 LFS/(10755:10788): Llegue2
+[DEBUG] 13:45:52:16 LFS/(10755:10788): No esta la key buscada
+[INFO] 13:45:52:16 LFS/(10755:10788): Listo para recibir consulta
+[DEBUG] 13:46:02:409 LFS/(10755:10788): Got a SELECT
+[DEBUG] 13:46:02:409 LFS/(10755:10788): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:46:02:409 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/SERIES
+[DEBUG] 13:46:02:409 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/SERIES
+[DEBUG] 13:46:02:409 LFS/(10755:10788): Existe tabla, BRO!
+[DEBUG] 13:46:02:409 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 13:46:02:409 LFS/(10755:10788): SERIES
+[DEBUG] 13:46:02:409 LFS/(10755:10788): Consistencia: SC, Particiones: 6, Tiempo de Compactacion: 65000
+[DEBUG] 13:46:02:409 LFS/(10755:10788): 3
+[DEBUG] 13:46:02:409 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Tables/SERIES/3.bin
+[DEBUG] 13:46:02:410 LFS/(10755:10788): No existe la tabla en mem_table
+[DEBUG] 13:46:02:410 LFS/(10755:10788): /home/utnso/workspace/FS_TEST/Bloques/5.bin
+[DEBUG] 13:46:02:410 LFS/(10755:10788): Lei el bloque a escanear
+[WARNING] 13:46:02:410 LFS/(10755:10788): Bloque vacío
+[DEBUG] 13:46:02:410 LFS/(10755:10788): Destrui la config particion
+[DEBUG] 13:46:02:410 LFS/(10755:10788): Llegue2
+[DEBUG] 13:46:02:410 LFS/(10755:10788): No esta la key buscada
+[INFO] 13:46:02:410 LFS/(10755:10788): Listo para recibir consulta
+[INFO] 13:46:11:175 LFS/(10755:10788): Cliente Desconectado
+[ERROR] 13:46:13:127 LFS/(10755:10756): Bye
+[DEBUG] 13:57:13:675 LFS/(11106:11106): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:57:13:675 LFS/(11106:11106): 5003
+[DEBUG] 13:57:13:675 LFS/(11106:11106): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 13:57:13:675 LFS/(11106:11106): Bits que maneja el bitarray: 4096
+[DEBUG] 13:57:13:675 LFS/(11106:11106): Levante el Bitmap
+[DEBUG] 13:57:13:675 LFS/(11106:11106): Primer bloque libre: 55
+[INFO] 13:57:13:675 LFS/(11106:11106): Esperando memoria...
+[INFO] 13:57:26:811 LFS/(11106:11109): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:57:26:811 LFS/(11106:11109): Listo para recibir consulta
+[DEBUG] 13:57:32:545 LFS/(11106:11109): Got a SELECT
+[DEBUG] 13:57:32:545 LFS/(11106:11109): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:57:32:545 LFS/(11106:11109): /home/utnso/workspace/FS_TEST/Tables/JUDIOS
+[DEBUG] 13:57:32:545 LFS/(11106:11109): /home/utnso/workspace/FS_TEST/Tables/JUDIOS
+[DEBUG] 13:57:32:545 LFS/(11106:11109): No existe la tabla
+[DEBUG] 13:57:32:545 LFS/(11106:11109): Llegue2
+[DEBUG] 13:57:32:545 LFS/(11106:11109): No esta la key buscada
+[INFO] 13:57:32:545 LFS/(11106:11109): Listo para recibir consulta
+[DEBUG] 13:57:39:297 LFS/(11106:11109): Got a SELECT
+[DEBUG] 13:57:39:297 LFS/(11106:11109): /home/utnso/workspace/FS_TEST
+[DEBUG] 13:57:39:297 LFS/(11106:11109): /home/utnso/workspace/FS_TEST/Tables/HOLIS
+[DEBUG] 13:57:39:297 LFS/(11106:11109): /home/utnso/workspace/FS_TEST/Tables/HOLIS
+[DEBUG] 13:57:39:297 LFS/(11106:11109): No existe la tabla
+[DEBUG] 13:57:39:297 LFS/(11106:11109): Llegue2
+[DEBUG] 13:57:39:297 LFS/(11106:11109): No esta la key buscada
+[INFO] 13:57:39:297 LFS/(11106:11109): Listo para recibir consulta
+[INFO] 13:57:46:956 LFS/(11106:11109): Cliente Desconectado
+[DEBUG] 13:59:56:505 LFS/(11106:11106): Acepte una conexion
+[DEBUG] 13:59:56:505 LFS/(11106:11106): A ver si es una memoria
+[DEBUG] 13:59:56:505 LFS/(11106:11106): Efectivamente Rick, es una memoria
+[DEBUG] 13:59:56:505 LFS/(11106:11106): Le mande el max_value_size
+[DEBUG] 13:59:56:506 LFS/(11106:11106): Cree el hilo perf
+[INFO] 13:59:56:506 LFS/(11106:11214): Memoria conectada. Esperando Envio de mensajes
+[INFO] 13:59:56:506 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:01:998 LFS/(11106:11214): Got a SELECT
+[DEBUG] 14:00:01:998 LFS/(11106:11214): /home/utnso/workspace/FS_TEST
+[DEBUG] 14:00:01:998 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/hols
+[DEBUG] 14:00:01:998 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/hols
+[DEBUG] 14:00:01:998 LFS/(11106:11214): No existe la tabla
+[DEBUG] 14:00:01:998 LFS/(11106:11214): Llegue2
+[DEBUG] 14:00:01:998 LFS/(11106:11214): No esta la key buscada
+[INFO] 14:00:01:998 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:18:204 LFS/(11106:11214): Got a SELECT
+[DEBUG] 14:00:18:204 LFS/(11106:11214): /home/utnso/workspace/FS_TEST
+[DEBUG] 14:00:18:204 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/holu
+[DEBUG] 14:00:18:204 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/holu
+[DEBUG] 14:00:18:204 LFS/(11106:11214): No existe la tabla
+[DEBUG] 14:00:18:204 LFS/(11106:11214): Llegue2
+[DEBUG] 14:00:18:204 LFS/(11106:11214): No esta la key buscada
+[INFO] 14:00:18:204 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:21:701 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 14:00:21:701 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 14:00:21:702 LFS/(11106:11214): 14
+[INFO] 14:00:21:702 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:28:165 LFS/(11106:11214): Got a CREATE
+[DEBUG] 14:00:28:166 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:28:166 LFS/(11106:11214): Existe la tabla papi: MARINOS
+[INFO] 14:00:28:166 LFS/(11106:11214): No se pudo crear
+[INFO] 14:00:28:166 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:28:766 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:28:766 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:28:766 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:28:766 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:00:28:766 LFS/(11106:11214): 1
+[INFO] 14:00:28:767 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:40:351 LFS/(11106:11214): Got a CREATE
+[DEBUG] 14:00:40:351 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:40:351 LFS/(11106:11214): Existe la tabla papi: MARINOS
+[INFO] 14:00:40:351 LFS/(11106:11214): No se pudo crear
+[INFO] 14:00:40:351 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:40:951 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:40:952 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:40:952 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:40:952 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:00:40:952 LFS/(11106:11214): 1
+[INFO] 14:00:40:952 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:42:158 LFS/(11106:11214): Got a CREATE
+[DEBUG] 14:00:42:158 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 14:00:42:158 LFS/(11106:11214): Existe la tabla papi: AVES
+[INFO] 14:00:42:158 LFS/(11106:11214): No se pudo crear
+[INFO] 14:00:42:158 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:42:759 LFS/(11106:11214): Got a CREATE
+[DEBUG] 14:00:42:759 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 14:00:42:759 LFS/(11106:11214): Existe la tabla papi: MAMIFEROS
+[INFO] 14:00:42:759 LFS/(11106:11214): No se pudo crear
+[INFO] 14:00:42:759 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:43:359 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:43:359 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:43:359 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 14:00:43:360 LFS/(11106:11214): 14
+[INFO] 14:00:43:360 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:45:180 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:45:180 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:45:180 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 14:00:45:180 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:00:45:180 LFS/(11106:11214): 1
+[INFO] 14:00:45:180 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:46:995 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:46:995 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:46:995 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 14:00:46:995 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:00:46:995 LFS/(11106:11214): 1
+[INFO] 14:00:46:995 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:48:805 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:48:805 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:48:805 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 14:00:48:805 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:00:48:805 LFS/(11106:11214): 1
+[INFO] 14:00:48:805 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:51:812 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:51:812 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:51:812 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 14:00:51:813 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:00:51:813 LFS/(11106:11214): 1
+[INFO] 14:00:51:813 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:54:223 LFS/(11106:11214): Got a SELECT
+[DEBUG] 14:00:54:223 LFS/(11106:11214): /home/utnso/workspace/FS_TEST
+[DEBUG] 14:00:54:223 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:54:223 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 14:00:54:223 LFS/(11106:11214): Existe tabla, BRO!
+[DEBUG] 14:00:54:223 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:00:54:224 LFS/(11106:11214): MARINOS
+[DEBUG] 14:00:54:224 LFS/(11106:11214): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 14:00:54:224 LFS/(11106:11214): 1
+[DEBUG] 14:00:54:224 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 14:00:54:224 LFS/(11106:11214): No existe la tabla en mem_table
+[DEBUG] 14:00:54:224 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 14:00:54:224 LFS/(11106:11214): Lei el bloque a escanear
+[WARNING] 14:00:54:224 LFS/(11106:11214): Bloque vacío
+[DEBUG] 14:00:54:224 LFS/(11106:11214): Destrui la config particion
+[DEBUG] 14:00:54:224 LFS/(11106:11214): Llegue2
+[DEBUG] 14:00:54:224 LFS/(11106:11214): No esta la key buscada
+[INFO] 14:00:54:224 LFS/(11106:11214): Listo para recibir consulta
+[DEBUG] 14:00:56:28 LFS/(11106:11214): Got a DESCRIBE
+[DEBUG] 14:00:56:28 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:00:56:28 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 14:00:56:28 LFS/(11106:11214): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:00:56:28 LFS/(11106:11214): 1
+[INFO] 14:00:56:33 LFS/(11106:11214): Listo para recibir consulta
+[INFO] 14:03:59:948 LFS/(11106:11214): Cliente Desconectado
+[DEBUG] 14:04:04:127 LFS/(11106:11106): Acepte una conexion
+[DEBUG] 14:04:04:127 LFS/(11106:11106): A ver si es una memoria
+[DEBUG] 14:04:04:127 LFS/(11106:11106): Efectivamente Rick, es una memoria
+[DEBUG] 14:04:04:128 LFS/(11106:11106): Le mande el max_value_size
+[DEBUG] 14:04:04:128 LFS/(11106:11106): Cree el hilo perf
+[INFO] 14:04:04:128 LFS/(11106:11297): Memoria conectada. Esperando Envio de mensajes
+[INFO] 14:04:04:128 LFS/(11106:11297): Listo para recibir consulta
+[DEBUG] 14:04:06:270 LFS/(11106:11297): Got a DESCRIBE
+[DEBUG] 14:04:06:270 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:04:06:270 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 14:04:06:270 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 14:04:06:270 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 14:04:06:271 LFS/(11106:11297): 14
+[INFO] 14:04:06:271 LFS/(11106:11297): Listo para recibir consulta
+[DEBUG] 14:05:23:570 LFS/(11106:11297): Got a DESCRIBE
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 14:05:23:570 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 14:05:23:571 LFS/(11106:11297): 14
+[INFO] 14:05:23:571 LFS/(11106:11297): Listo para recibir consulta
+[INFO] 15:21:36:255 LFS/(11106:11297): Cliente Desconectado
+[ERROR] 15:21:38:625 LFS/(11106:11107): Bye
+[DEBUG] 17:13:34:497 LFS/(3935:3935): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:13:34:497 LFS/(3935:3935): 5003
+[DEBUG] 17:13:34:497 LFS/(3935:3935): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 17:13:34:498 LFS/(3935:3935): Bits que maneja el bitarray: 4096
+[DEBUG] 17:13:34:498 LFS/(3935:3935): Levante el Bitmap
+[DEBUG] 17:13:34:498 LFS/(3935:3935): Primer bloque libre: 55
+[INFO] 17:13:34:498 LFS/(3935:3935): Esperando memoria...
+[INFO] 17:13:46:768 LFS/(3935:4054): Memoria conectada. Esperando Envio de mensajes
+[INFO] 17:13:46:768 LFS/(3935:4054): Listo para recibir consulta
+[DEBUG] 17:13:57:136 LFS/(3935:3935): Acepte una conexion
+[DEBUG] 17:13:57:137 LFS/(3935:3935): A ver si es una memoria
+[DEBUG] 17:13:57:137 LFS/(3935:3935): Efectivamente Rick, es una memoria
+[DEBUG] 17:13:57:137 LFS/(3935:3935): Le mande el max_value_size
+[DEBUG] 17:13:57:137 LFS/(3935:3935): Cree el hilo perf
+[INFO] 17:13:57:138 LFS/(3935:4064): Memoria conectada. Esperando Envio de mensajes
+[INFO] 17:13:57:138 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:14:06:772 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:14:06:772 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:14:06:772 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:14:06:773 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:14:06:774 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:14:06:774 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:14:06:774 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:14:06:775 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:14:06:776 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:14:06:776 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:14:06:777 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:14:06:777 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:14:06:778 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:14:06:778 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:14:06:779 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:14:06:779 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:14:06:780 LFS/(3935:4064): 14
+[INFO] 17:14:06:780 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:14:36:855 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:14:36:855 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:14:36:857 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/1.bin
+[DEBUG] 17:14:36:859 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/2.bin
+[DEBUG] 17:14:36:861 LFS/(3935:4064): Cree las particiones
+[INFO] 17:14:36:861 LFS/(3935:4064): Se creo exitosamente
+[INFO] 17:14:36:861 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:14:51:712 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:14:51:712 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:14:51:712 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:14:51:712 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:14:51:712 LFS/(3935:4064): 1
+[INFO] 17:14:51:712 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:19:781 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:15:19:781 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:19:781 LFS/(3935:4064): Existe la tabla papi: MARINOS
+[INFO] 17:15:19:781 LFS/(3935:4064): No se pudo crear
+[INFO] 17:15:19:781 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:20:384 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:20:384 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:20:384 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:20:384 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:15:20:384 LFS/(3935:4064): 1
+[INFO] 17:15:20:384 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:21:590 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:15:21:590 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:15:21:590 LFS/(3935:4064): Existe la tabla papi: AVES
+[INFO] 17:15:21:590 LFS/(3935:4064): No se pudo crear
+[INFO] 17:15:21:590 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:22:190 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:15:22:190 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:15:22:190 LFS/(3935:4064): Existe la tabla papi: MAMIFEROS
+[INFO] 17:15:22:190 LFS/(3935:4064): No se pudo crear
+[INFO] 17:15:22:190 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:22:793 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:15:22:793 LFS/(3935:4064): 15
+[INFO] 17:15:22:793 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:24:598 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:24:598 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:24:598 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:15:24:598 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:15:24:598 LFS/(3935:4064): 1
+[INFO] 17:15:24:598 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:26:404 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:26:404 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:26:404 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:15:26:404 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:15:26:405 LFS/(3935:4064): 1
+[INFO] 17:15:26:405 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:28:208 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:28:208 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:28:209 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:15:28:209 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:15:28:209 LFS/(3935:4064): 1
+[INFO] 17:15:28:209 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:31:216 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:31:217 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:31:217 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:15:31:217 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:15:31:217 LFS/(3935:4064): 1
+[INFO] 17:15:31:217 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:33:624 LFS/(3935:4064): Got a SELECT
+[DEBUG] 17:15:33:624 LFS/(3935:4064): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:15:33:624 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:33:624 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:33:624 LFS/(3935:4064): Existe tabla, BRO!
+[DEBUG] 17:15:33:624 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:15:33:624 LFS/(3935:4064): MARINOS
+[DEBUG] 17:15:33:624 LFS/(3935:4064): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:15:33:624 LFS/(3935:4064): 1
+[DEBUG] 17:15:33:624 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:15:33:624 LFS/(3935:4064): No existe la tabla en mem_table
+[DEBUG] 17:15:33:625 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:15:33:625 LFS/(3935:4064): Lei el bloque a escanear
+[WARNING] 17:15:33:626 LFS/(3935:4064): Bloque vacío
+[DEBUG] 17:15:33:626 LFS/(3935:4064): Destrui la config particion
+[DEBUG] 17:15:33:626 LFS/(3935:4064): Llegue2
+[DEBUG] 17:15:33:626 LFS/(3935:4064): No esta la key buscada
+[INFO] 17:15:33:626 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:35:437 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:15:35:437 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:15:35:437 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:15:35:437 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:15:35:437 LFS/(3935:4064): 1
+[INFO] 17:15:35:437 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:15:44:355 LFS/(3935:4054): Got a SELECT
+[DEBUG] 17:15:44:355 LFS/(3935:4054): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:15:44:355 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:15:44:356 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:15:44:356 LFS/(3935:4054): Existe tabla, BRO!
+[DEBUG] 17:15:44:356 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:15:44:356 LFS/(3935:4054): ANIMALES
+[DEBUG] 17:15:44:356 LFS/(3935:4054): Consistencia: SC, Particiones: 5, Tiempo de Compactacion: 65000
+[DEBUG] 17:15:44:356 LFS/(3935:4054): 2
+[DEBUG] 17:15:44:356 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/2.bin
+[DEBUG] 17:15:44:357 LFS/(3935:4054): No existe la tabla en mem_table
+[DEBUG] 17:15:44:357 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Bloques/23.bin
+[DEBUG] 17:15:44:357 LFS/(3935:4054): Lei el bloque a escanear
+[WARNING] 17:15:44:357 LFS/(3935:4054): Bloque vacío
+[DEBUG] 17:15:44:357 LFS/(3935:4054): Destrui la config particion
+[DEBUG] 17:15:44:357 LFS/(3935:4054): Llegue2
+[DEBUG] 17:15:44:357 LFS/(3935:4054): No esta la key buscada
+[INFO] 17:15:44:357 LFS/(3935:4054): Listo para recibir consulta
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Got a SELECT
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Existe tabla, BRO!
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:15:56:383 LFS/(3935:4054): MARINOS
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:15:56:383 LFS/(3935:4054): 1
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:15:56:383 LFS/(3935:4054): No existe la tabla en mem_table
+[DEBUG] 17:15:56:383 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Lei el bloque a escanear
+[WARNING] 17:15:56:383 LFS/(3935:4054): Bloque vacío
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Destrui la config particion
+[DEBUG] 17:15:56:383 LFS/(3935:4054): Llegue2
+[DEBUG] 17:15:56:383 LFS/(3935:4054): No esta la key buscada
+[INFO] 17:15:56:383 LFS/(3935:4054): Listo para recibir consulta
+[DEBUG] 17:16:03:874 LFS/(3935:4064): Got a SELECT
+[DEBUG] 17:16:03:874 LFS/(3935:4064): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:16:03:874 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:16:03:874 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:16:03:874 LFS/(3935:4064): Existe tabla, BRO!
+[DEBUG] 17:16:03:874 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:16:03:874 LFS/(3935:4064): MARINOS
+[DEBUG] 17:16:03:875 LFS/(3935:4064): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:16:03:875 LFS/(3935:4064): 1
+[DEBUG] 17:16:03:875 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:16:03:875 LFS/(3935:4064): No existe la tabla en mem_table
+[DEBUG] 17:16:03:875 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:16:03:875 LFS/(3935:4064): Lei el bloque a escanear
+[WARNING] 17:16:03:875 LFS/(3935:4064): Bloque vacío
+[DEBUG] 17:16:03:875 LFS/(3935:4064): Destrui la config particion
+[DEBUG] 17:16:03:875 LFS/(3935:4064): Llegue2
+[DEBUG] 17:16:03:875 LFS/(3935:4064): No esta la key buscada
+[INFO] 17:16:03:875 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Got a SELECT
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Existe tabla, BRO!
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:16:18:168 LFS/(3935:4054): MARINOS
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:16:18:168 LFS/(3935:4054): 1
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:16:18:168 LFS/(3935:4054): No existe la tabla en mem_table
+[DEBUG] 17:16:18:168 LFS/(3935:4054): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Lei el bloque a escanear
+[WARNING] 17:16:18:168 LFS/(3935:4054): Bloque vacío
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Destrui la config particion
+[DEBUG] 17:16:18:168 LFS/(3935:4054): Llegue2
+[DEBUG] 17:16:18:168 LFS/(3935:4054): No esta la key buscada
+[INFO] 17:16:18:168 LFS/(3935:4054): Listo para recibir consulta
+[DEBUG] 17:16:34:9 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:16:34:9 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES
+[DEBUG] 17:16:34:9 LFS/(3935:4064): Existe la tabla papi: COLORES
+[INFO] 17:16:34:9 LFS/(3935:4064): No se pudo crear
+[INFO] 17:16:34:9 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:34:609 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:16:34:610 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:16:34:610 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES
+[DEBUG] 17:16:34:610 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:16:34:610 LFS/(3935:4064): 1
+[INFO] 17:16:34:610 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:35:815 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:16:35:815 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS
+[DEBUG] 17:16:35:815 LFS/(3935:4064): Existe la tabla papi: COSAS
+[INFO] 17:16:35:815 LFS/(3935:4064): No se pudo crear
+[INFO] 17:16:35:815 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:36:419 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:16:36:420 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:16:36:421 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:16:36:421 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:16:36:421 LFS/(3935:4064): 15
+[INFO] 17:16:36:421 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:38:831 LFS/(3935:4064): Got a CREATE
+[DEBUG] 17:16:38:831 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:16:38:831 LFS/(3935:4064): Existe la tabla papi: ANIMALES
+[INFO] 17:16:38:832 LFS/(3935:4064): No se pudo crear
+[INFO] 17:16:38:832 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:39:433 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:16:39:433 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:16:39:433 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:16:39:433 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:16:39:433 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:16:39:434 LFS/(3935:4064): 15
+[INFO] 17:16:39:434 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:43:55 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:16:43:55 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:16:43:55 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS
+[DEBUG] 17:16:43:55 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:16:43:55 LFS/(3935:4064): 1
+[INFO] 17:16:43:55 LFS/(3935:4064): Listo para recibir consulta
+[DEBUG] 17:16:46:672 LFS/(3935:4064): Got a DESCRIBE
+[DEBUG] 17:16:46:672 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:16:46:673 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:16:46:673 LFS/(3935:4064): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:16:46:673 LFS/(3935:4064): 1
+[INFO] 17:16:46:673 LFS/(3935:4064): Listo para recibir consulta
+[INFO] 17:17:26:765 LFS/(3935:4054): Cliente Desconectado
+[INFO] 17:17:27:527 LFS/(3935:4064): Cliente Desconectado
+[ERROR] 17:17:34:55 LFS/(3935:3936): Bye
+[DEBUG] 17:18:46:139 LFS/(4508:4508): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:18:46:139 LFS/(4508:4508): 5003
+[DEBUG] 17:18:46:139 LFS/(4508:4508): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 17:18:46:139 LFS/(4508:4508): Bits que maneja el bitarray: 4096
+[DEBUG] 17:18:46:139 LFS/(4508:4508): Levante el Bitmap
+[DEBUG] 17:18:46:139 LFS/(4508:4508): Primer bloque libre: 57
+[INFO] 17:18:46:139 LFS/(4508:4508): Esperando memoria...
+[INFO] 17:18:50:5 LFS/(4508:4510): Memoria conectada. Esperando Envio de mensajes
+[INFO] 17:18:50:5 LFS/(4508:4510): Listo para recibir consulta
+[DEBUG] 17:19:00:45 LFS/(4508:4510): Got a SELECT
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:00:46 LFS/(4508:4510): Existe tabla, BRO!
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:19:00:46 LFS/(4508:4510): MARINOS
+[DEBUG] 17:19:00:46 LFS/(4508:4510): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:19:00:46 LFS/(4508:4510): 1
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:19:00:46 LFS/(4508:4510): No existe la tabla en mem_table
+[DEBUG] 17:19:00:46 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:19:00:46 LFS/(4508:4510): Lei el bloque a escanear
+[WARNING] 17:19:00:46 LFS/(4508:4510): Bloque vacío
+[DEBUG] 17:19:00:46 LFS/(4508:4510): Destrui la config particion
+[DEBUG] 17:19:00:46 LFS/(4508:4510): Llegue2
+[DEBUG] 17:19:00:46 LFS/(4508:4510): No esta la key buscada
+[INFO] 17:19:00:47 LFS/(4508:4510): Listo para recibir consulta
+[DEBUG] 17:19:15:734 LFS/(4508:4510): Got a SELECT
+[DEBUG] 17:19:15:734 LFS/(4508:4510): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:19:15:734 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:15:735 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:15:735 LFS/(4508:4510): Existe tabla, BRO!
+[DEBUG] 17:19:15:735 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:19:15:735 LFS/(4508:4510): MARINOS
+[DEBUG] 17:19:15:735 LFS/(4508:4510): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:19:15:735 LFS/(4508:4510): 1
+[DEBUG] 17:19:15:735 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:19:15:735 LFS/(4508:4510): No existe la tabla en mem_table
+[DEBUG] 17:19:15:735 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:19:15:735 LFS/(4508:4510): Lei el bloque a escanear
+[WARNING] 17:19:15:735 LFS/(4508:4510): Bloque vacío
+[DEBUG] 17:19:15:735 LFS/(4508:4510): Destrui la config particion
+[DEBUG] 17:19:15:735 LFS/(4508:4510): Llegue2
+[DEBUG] 17:19:15:735 LFS/(4508:4510): No esta la key buscada
+[INFO] 17:19:15:735 LFS/(4508:4510): Listo para recibir consulta
+[WARNING] 17:19:28:338 LFS/(4508:4509): MARINOS 3103 "Delfin"
+[DEBUG] 17:19:28:339 LFS/(4508:4509): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:19:28:339 LFS/(4508:4509): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:28:339 LFS/(4508:4509): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:28:339 LFS/(4508:4509): Existe tabla, BRO!
+[DEBUG] 17:19:28:339 LFS/(4508:4509): No existe la tabla en mem_table
+[DEBUG] 17:19:28:339 LFS/(4508:4509): Voy a crear el registro
+[DEBUG] 17:19:28:339 LFS/(4508:4509): Key: 3103, Value: Delfin, Timestamp: 1560716368
+[INFO] 17:19:28:339 LFS/(4508:4509): Se inserto exitosamente
+[DEBUG] 17:19:35:832 LFS/(4508:4510): Got a SELECT
+[DEBUG] 17:19:35:832 LFS/(4508:4510): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:19:35:832 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:35:832 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:19:35:832 LFS/(4508:4510): Existe tabla, BRO!
+[DEBUG] 17:19:35:833 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:19:35:833 LFS/(4508:4510): MARINOS
+[DEBUG] 17:19:35:833 LFS/(4508:4510): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:19:35:833 LFS/(4508:4510): 1
+[DEBUG] 17:19:35:833 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:19:35:833 LFS/(4508:4510): Existe la tabla en mem_table
+[DEBUG] 17:19:35:833 LFS/(4508:4510): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:19:35:833 LFS/(4508:4510): Lei el bloque a escanear
+[WARNING] 17:19:35:833 LFS/(4508:4510): Bloque vacío
+[DEBUG] 17:19:35:833 LFS/(4508:4510): Destrui la config particion
+[DEBUG] 17:19:35:833 LFS/(4508:4510): hola
+[DEBUG] 17:19:35:833 LFS/(4508:4510): Delfin
+[INFO] 17:19:35:833 LFS/(4508:4510): Listo para recibir consulta
+[INFO] 17:19:47:233 LFS/(4508:4510): Cliente Desconectado
+[ERROR] 17:19:49:770 LFS/(4508:4509): Bye
+[DEBUG] 17:52:11:148 LFS/(6252:6252): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:52:11:148 LFS/(6252:6252): 5003
+[DEBUG] 17:52:11:148 LFS/(6252:6252): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 17:52:11:148 LFS/(6252:6252): Bits que maneja el bitarray: 4096
+[DEBUG] 17:52:11:148 LFS/(6252:6252): Levante el Bitmap
+[DEBUG] 17:52:11:148 LFS/(6252:6252): Primer bloque libre: 57
+[INFO] 17:52:11:148 LFS/(6252:6252): Esperando memoria...
+[INFO] 17:52:50:418 LFS/(6252:6330): Memoria conectada. Esperando Envio de mensajes
+[INFO] 17:52:50:418 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:52:53:711 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:52:53:711 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:52:53:712 LFS/(6252:6330): 15
+[INFO] 17:52:53:712 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:11:530 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:53:11:530 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:53:11:530 LFS/(6252:6330): Existe la tabla papi: MARINOS
+[INFO] 17:53:11:530 LFS/(6252:6330): No se pudo crear
+[INFO] 17:53:11:530 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:12:133 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:12:133 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:12:133 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:53:12:133 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:53:12:133 LFS/(6252:6330): 1
+[INFO] 17:53:12:133 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:13:337 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:53:13:337 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:53:13:337 LFS/(6252:6330): Existe la tabla papi: AVES
+[INFO] 17:53:13:337 LFS/(6252:6330): No se pudo crear
+[INFO] 17:53:13:337 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:13:939 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:53:13:939 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:53:13:939 LFS/(6252:6330): Existe la tabla papi: MAMIFEROS
+[INFO] 17:53:13:939 LFS/(6252:6330): No se pudo crear
+[INFO] 17:53:13:939 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:14:539 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:14:539 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:14:539 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:53:14:539 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:53:14:539 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:53:14:540 LFS/(6252:6330): 15
+[INFO] 17:53:14:541 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:16:343 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:16:344 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:16:344 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:53:16:344 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:53:16:344 LFS/(6252:6330): 1
+[INFO] 17:53:16:345 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:18:159 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:18:159 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:18:159 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:53:18:159 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:53:18:159 LFS/(6252:6330): 1
+[INFO] 17:53:18:159 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:19:970 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:19:970 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:19:970 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:53:19:970 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:53:19:970 LFS/(6252:6330): 1
+[INFO] 17:53:19:970 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:22:977 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:22:977 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:22:977 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 17:53:22:977 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:53:22:978 LFS/(6252:6330): 1
+[INFO] 17:53:22:978 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:25:386 LFS/(6252:6330): Got a SELECT
+[DEBUG] 17:53:25:386 LFS/(6252:6330): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:53:25:386 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:53:25:386 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 17:53:25:386 LFS/(6252:6330): Existe tabla, BRO!
+[DEBUG] 17:53:25:386 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:53:25:387 LFS/(6252:6330): MARINOS
+[DEBUG] 17:53:25:387 LFS/(6252:6330): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 17:53:25:387 LFS/(6252:6330): 1
+[DEBUG] 17:53:25:387 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 17:53:25:387 LFS/(6252:6330): No existe la tabla en mem_table
+[DEBUG] 17:53:25:387 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 17:53:25:387 LFS/(6252:6330): Lei el bloque a escanear
+[WARNING] 17:53:25:387 LFS/(6252:6330): Bloque vacío
+[DEBUG] 17:53:25:387 LFS/(6252:6330): Destrui la config particion
+[DEBUG] 17:53:25:387 LFS/(6252:6330): Llegue2
+[DEBUG] 17:53:25:387 LFS/(6252:6330): No esta la key buscada
+[INFO] 17:53:25:387 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:27:200 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:53:27:200 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:53:27:200 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 17:53:27:201 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:53:27:201 LFS/(6252:6330): 1
+[INFO] 17:53:27:201 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:53:42:316 LFS/(6252:6252): Acepte una conexion
+[DEBUG] 17:53:42:316 LFS/(6252:6252): A ver si es una memoria
+[DEBUG] 17:53:42:316 LFS/(6252:6252): Efectivamente Rick, es una memoria
+[DEBUG] 17:53:42:316 LFS/(6252:6252): Le mande el max_value_size
+[DEBUG] 17:53:42:317 LFS/(6252:6252): Cree el hilo perf
+[INFO] 17:53:42:317 LFS/(6252:6365): Memoria conectada. Esperando Envio de mensajes
+[INFO] 17:53:42:317 LFS/(6252:6365): Listo para recibir consulta
+[DEBUG] 17:53:54:535 LFS/(6252:6365): Got a SELECT
+[DEBUG] 17:53:54:535 LFS/(6252:6365): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:53:54:535 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:53:54:535 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:53:54:536 LFS/(6252:6365): Existe tabla, BRO!
+[DEBUG] 17:53:54:536 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:53:54:536 LFS/(6252:6365): LOCO
+[DEBUG] 17:53:54:536 LFS/(6252:6365): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 1000
+[DEBUG] 17:53:54:536 LFS/(6252:6365): 1
+[DEBUG] 17:53:54:536 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO/1.bin
+[DEBUG] 17:53:54:536 LFS/(6252:6365): No existe la tabla en mem_table
+[DEBUG] 17:53:54:536 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Bloques/55.bin
+[DEBUG] 17:53:54:536 LFS/(6252:6365): Lei el bloque a escanear
+[WARNING] 17:53:54:536 LFS/(6252:6365): Bloque vacío
+[DEBUG] 17:53:54:536 LFS/(6252:6365): Destrui la config particion
+[DEBUG] 17:53:54:536 LFS/(6252:6365): Llegue2
+[DEBUG] 17:53:54:536 LFS/(6252:6365): No esta la key buscada
+[INFO] 17:53:54:536 LFS/(6252:6365): Listo para recibir consulta
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Got a SELECT
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Existe tabla, BRO!
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:54:00:240 LFS/(6252:6365): LOCO
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Consistencia: EC, Particiones: 2, Tiempo de Compactacion: 1000
+[DEBUG] 17:54:00:240 LFS/(6252:6365): 2
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Tables/LOCO/2.bin
+[DEBUG] 17:54:00:240 LFS/(6252:6365): No existe la tabla en mem_table
+[DEBUG] 17:54:00:240 LFS/(6252:6365): /home/utnso/workspace/FS_TEST/Bloques/56.bin
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Lei el bloque a escanear
+[WARNING] 17:54:00:240 LFS/(6252:6365): Bloque vacío
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Destrui la config particion
+[DEBUG] 17:54:00:240 LFS/(6252:6365): Llegue2
+[DEBUG] 17:54:00:240 LFS/(6252:6365): No esta la key buscada
+[INFO] 17:54:00:241 LFS/(6252:6365): Listo para recibir consulta
+[DEBUG] 17:54:20:309 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:54:20:309 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES
+[DEBUG] 17:54:20:309 LFS/(6252:6330): Existe la tabla papi: COLORES
+[INFO] 17:54:20:309 LFS/(6252:6330): No se pudo crear
+[INFO] 17:54:20:309 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:20:909 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:54:20:910 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:54:20:910 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES
+[DEBUG] 17:54:20:910 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:54:20:910 LFS/(6252:6330): 1
+[INFO] 17:54:20:910 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:22:115 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:54:22:116 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS
+[DEBUG] 17:54:22:116 LFS/(6252:6330): Existe la tabla papi: COSAS
+[INFO] 17:54:22:116 LFS/(6252:6330): No se pudo crear
+[INFO] 17:54:22:116 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:22:716 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:54:22:716 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:54:22:716 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:54:22:717 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:54:22:718 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:54:22:719 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:54:22:719 LFS/(6252:6330): 15
+[INFO] 17:54:22:719 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:25:123 LFS/(6252:6330): Got a CREATE
+[DEBUG] 17:54:25:123 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:54:25:123 LFS/(6252:6330): Existe la tabla papi: ANIMALES
+[INFO] 17:54:25:124 LFS/(6252:6330): No se pudo crear
+[INFO] 17:54:25:124 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:25:724 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 17:54:25:724 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 17:54:25:725 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 17:54:25:726 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 17:54:25:726 LFS/(6252:6330): 15
+[INFO] 17:54:25:726 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:29:343 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:54:29:343 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:54:29:343 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS
+[DEBUG] 17:54:29:343 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 17:54:29:343 LFS/(6252:6330): 1
+[INFO] 17:54:29:343 LFS/(6252:6330): Listo para recibir consulta
+[DEBUG] 17:54:32:952 LFS/(6252:6330): Got a DESCRIBE
+[DEBUG] 17:54:32:952 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 17:54:32:952 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES
+[DEBUG] 17:54:32:952 LFS/(6252:6330): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 17:54:32:952 LFS/(6252:6330): 1
+[INFO] 17:54:32:952 LFS/(6252:6330): Listo para recibir consulta
+[INFO] 17:54:44:966 LFS/(6252:6330): Cliente Desconectado
+[INFO] 17:54:47:143 LFS/(6252:6365): Cliente Desconectado
+[ERROR] 17:54:49:46 LFS/(6252:6253): Bye
+[DEBUG] 18:08:48:628 LFS/(6892:6892): /home/utnso/workspace/FS_TEST
+[DEBUG] 18:08:48:628 LFS/(6892:6892): 5003
+[DEBUG] 18:08:48:628 LFS/(6892:6892): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 18:08:48:628 LFS/(6892:6892): Bits que maneja el bitarray: 4096
+[DEBUG] 18:08:48:628 LFS/(6892:6892): Levante el Bitmap
+[DEBUG] 18:08:48:628 LFS/(6892:6892): Primer bloque libre: 57
+[INFO] 18:08:48:628 LFS/(6892:6892): Esperando memoria...
+[INFO] 18:08:52:445 LFS/(6892:6895): Memoria conectada. Esperando Envio de mensajes
+[INFO] 18:08:52:445 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:08:54:33 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:08:54:33 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:08:54:33 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 18:08:54:33 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 18:08:54:34 LFS/(6892:6895): 15
+[INFO] 18:08:54:35 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:10:886 LFS/(6892:6895): Got a CREATE
+[DEBUG] 18:09:10:886 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 18:09:10:886 LFS/(6892:6895): Existe la tabla papi: MARINOS
+[INFO] 18:09:10:886 LFS/(6892:6895): No se pudo crear
+[INFO] 18:09:10:886 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:11:487 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:11:487 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:11:487 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 18:09:11:487 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 18:09:11:487 LFS/(6892:6895): 1
+[INFO] 18:09:11:487 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:12:689 LFS/(6892:6895): Got a CREATE
+[DEBUG] 18:09:12:689 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 18:09:12:689 LFS/(6892:6895): Existe la tabla papi: AVES
+[INFO] 18:09:12:689 LFS/(6892:6895): No se pudo crear
+[INFO] 18:09:12:689 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:13:290 LFS/(6892:6895): Got a CREATE
+[DEBUG] 18:09:13:290 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 18:09:13:290 LFS/(6892:6895): Existe la tabla papi: MAMIFEROS
+[INFO] 18:09:13:290 LFS/(6892:6895): No se pudo crear
+[INFO] 18:09:13:290 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:13:890 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:13:890 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 18:09:13:891 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 18:09:13:892 LFS/(6892:6895): 15
+[INFO] 18:09:13:892 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:15:697 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:15:697 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:15:698 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 18:09:15:698 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 18:09:15:698 LFS/(6892:6895): 1
+[INFO] 18:09:15:698 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:17:510 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:17:510 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:17:510 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 18:09:17:510 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:09:17:510 LFS/(6892:6895): 1
+[INFO] 18:09:17:510 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:19:337 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:19:337 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:19:337 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 18:09:19:337 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:09:19:337 LFS/(6892:6895): 1
+[INFO] 18:09:19:337 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:22:367 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:22:367 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:22:367 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 18:09:22:367 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:09:22:367 LFS/(6892:6895): 1
+[INFO] 18:09:22:367 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Got a SELECT
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Existe tabla, BRO!
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 18:09:24:859 LFS/(6892:6895): MARINOS
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 18:09:24:859 LFS/(6892:6895): 1
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 18:09:24:859 LFS/(6892:6895): No existe la tabla en mem_table
+[DEBUG] 18:09:24:859 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Lei el bloque a escanear
+[WARNING] 18:09:24:859 LFS/(6892:6895): Bloque vacío
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Destrui la config particion
+[DEBUG] 18:09:24:859 LFS/(6892:6895): Llegue2
+[DEBUG] 18:09:24:859 LFS/(6892:6895): No esta la key buscada
+[INFO] 18:09:24:860 LFS/(6892:6895): Listo para recibir consulta
+[DEBUG] 18:09:26:667 LFS/(6892:6895): Got a DESCRIBE
+[DEBUG] 18:09:26:667 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:09:26:667 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 18:09:26:667 LFS/(6892:6895): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 18:09:26:667 LFS/(6892:6895): 1
+[INFO] 18:09:26:667 LFS/(6892:6895): Listo para recibir consulta
+[INFO] 18:10:04:948 LFS/(6892:6895): Cliente Desconectado
+[ERROR] 18:10:08:719 LFS/(6892:6893): Bye
+[DEBUG] 18:11:22:185 LFS/(6984:6984): /home/utnso/workspace/FS_TEST
+[DEBUG] 18:11:22:185 LFS/(6984:6984): 5003
+[DEBUG] 18:11:22:185 LFS/(6984:6984): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 18:11:22:185 LFS/(6984:6984): Bits que maneja el bitarray: 4096
+[DEBUG] 18:11:22:185 LFS/(6984:6984): Levante el Bitmap
+[DEBUG] 18:11:22:185 LFS/(6984:6984): Primer bloque libre: 57
+[INFO] 18:11:22:185 LFS/(6984:6984): Esperando memoria...
+[INFO] 18:11:27:255 LFS/(6984:6993): Memoria conectada. Esperando Envio de mensajes
+[INFO] 18:11:27:255 LFS/(6984:6993): Listo para recibir consulta
+[DEBUG] 18:11:29:219 LFS/(6984:6993): Got a DESCRIBE
+[DEBUG] 18:11:29:219 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 18:11:29:219 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 18:11:29:219 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 18:11:29:219 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 18:11:29:220 LFS/(6984:6993): 15
+[INFO] 18:11:29:220 LFS/(6984:6993): Listo para recibir consulta
+[INFO] 18:11:42:20 LFS/(6984:6993): Cliente Desconectado
+[ERROR] 18:11:46:727 LFS/(6984:6990): Bye
+[DEBUG] 19:02:37:777 LFS/(9156:9156): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:02:37:777 LFS/(9156:9156): 5003
+[DEBUG] 19:02:37:777 LFS/(9156:9156): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 19:02:37:777 LFS/(9156:9156): Bits que maneja el bitarray: 4096
+[DEBUG] 19:02:37:777 LFS/(9156:9156): Levante el Bitmap
+[DEBUG] 19:02:37:777 LFS/(9156:9156): Primer bloque libre: 57
+[INFO] 19:02:37:777 LFS/(9156:9156): Esperando memoria...
+[INFO] 19:02:41:425 LFS/(9156:9164): Memoria conectada. Esperando Envio de mensajes
+[INFO] 19:02:41:425 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:02:44:419 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:02:44:419 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:02:44:419 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 19:02:44:420 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 19:02:44:421 LFS/(9156:9164): 15
+[INFO] 19:02:44:421 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:00:562 LFS/(9156:9164): Got a CREATE
+[DEBUG] 19:03:00:562 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:03:00:562 LFS/(9156:9164): Existe la tabla papi: MARINOS
+[INFO] 19:03:00:562 LFS/(9156:9164): No se pudo crear
+[INFO] 19:03:00:562 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:01:164 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:01:164 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:01:164 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:03:01:164 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:03:01:164 LFS/(9156:9164): 1
+[INFO] 19:03:01:164 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:02:373 LFS/(9156:9164): Got a CREATE
+[DEBUG] 19:03:02:373 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:03:02:373 LFS/(9156:9164): Existe la tabla papi: AVES
+[INFO] 19:03:02:373 LFS/(9156:9164): No se pudo crear
+[INFO] 19:03:02:373 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:02:974 LFS/(9156:9164): Got a CREATE
+[DEBUG] 19:03:02:974 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:03:02:974 LFS/(9156:9164): Existe la tabla papi: MAMIFEROS
+[INFO] 19:03:02:974 LFS/(9156:9164): No se pudo crear
+[INFO] 19:03:02:974 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:03:575 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:03:575 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:03:575 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 19:03:03:576 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 19:03:03:577 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 19:03:03:577 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:03:03:577 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 19:03:03:577 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 19:03:03:577 LFS/(9156:9164): 15
+[INFO] 19:03:03:577 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:05:380 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:05:380 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:05:380 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:03:05:380 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:03:05:380 LFS/(9156:9164): 1
+[INFO] 19:03:05:381 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:07:202 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:07:202 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:07:202 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:03:07:202 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:03:07:202 LFS/(9156:9164): 1
+[INFO] 19:03:07:202 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:09:6 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:09:6 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:09:6 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:03:09:6 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:03:09:6 LFS/(9156:9164): 1
+[INFO] 19:03:09:6 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:12:13 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:12:13 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:12:13 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:03:12:13 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:03:12:14 LFS/(9156:9164): 1
+[INFO] 19:03:12:14 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:14:439 LFS/(9156:9164): Got a SELECT
+[DEBUG] 19:03:14:439 LFS/(9156:9164): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:03:14:439 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:03:14:439 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:03:14:439 LFS/(9156:9164): Existe tabla, BRO!
+[DEBUG] 19:03:14:439 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:03:14:439 LFS/(9156:9164): MARINOS
+[DEBUG] 19:03:14:439 LFS/(9156:9164): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 19:03:14:440 LFS/(9156:9164): 1
+[DEBUG] 19:03:14:440 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:03:14:440 LFS/(9156:9164): No existe la tabla en mem_table
+[DEBUG] 19:03:14:440 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 19:03:14:440 LFS/(9156:9164): Lei el bloque a escanear
+[WARNING] 19:03:14:440 LFS/(9156:9164): Bloque vacío
+[DEBUG] 19:03:14:440 LFS/(9156:9164): Destrui la config particion
+[DEBUG] 19:03:14:440 LFS/(9156:9164): Llegue2
+[DEBUG] 19:03:14:440 LFS/(9156:9164): No esta la key buscada
+[INFO] 19:03:14:440 LFS/(9156:9164): Listo para recibir consulta
+[DEBUG] 19:03:16:243 LFS/(9156:9164): Got a DESCRIBE
+[DEBUG] 19:03:16:243 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:03:16:243 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:03:16:243 LFS/(9156:9164): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:03:16:243 LFS/(9156:9164): 1
+[INFO] 19:03:16:244 LFS/(9156:9164): Listo para recibir consulta
+[INFO] 19:03:31:197 LFS/(9156:9164): Cliente Desconectado
+[ERROR] 19:03:35:398 LFS/(9156:9157): Bye
+[DEBUG] 19:07:47:357 LFS/(9315:9315): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:07:47:357 LFS/(9315:9315): 5003
+[DEBUG] 19:07:47:357 LFS/(9315:9315): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 19:07:47:357 LFS/(9315:9315): Bits que maneja el bitarray: 4096
+[DEBUG] 19:07:47:357 LFS/(9315:9315): Levante el Bitmap
+[DEBUG] 19:07:47:357 LFS/(9315:9315): Primer bloque libre: 57
+[INFO] 19:07:47:358 LFS/(9315:9315): Esperando memoria...
+[INFO] 19:07:51:646 LFS/(9315:9324): Memoria conectada. Esperando Envio de mensajes
+[INFO] 19:07:51:646 LFS/(9315:9324): Listo para recibir consulta
+[INFO] 19:08:01:650 LFS/(9315:9324): Cliente Desconectado
+[ERROR] 19:08:05:340 LFS/(9315:9316): Bye
+[DEBUG] 19:08:39:348 LFS/(9373:9373): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:08:39:348 LFS/(9373:9373): 5003
+[DEBUG] 19:08:39:348 LFS/(9373:9373): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 19:08:39:348 LFS/(9373:9373): Bits que maneja el bitarray: 4096
+[DEBUG] 19:08:39:348 LFS/(9373:9373): Levante el Bitmap
+[DEBUG] 19:08:39:348 LFS/(9373:9373): Primer bloque libre: 57
+[INFO] 19:08:39:348 LFS/(9373:9373): Esperando memoria...
+[INFO] 19:08:42:877 LFS/(9373:9376): Memoria conectada. Esperando Envio de mensajes
+[INFO] 19:08:42:877 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:08:45:752 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 19:08:45:752 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 19:08:45:753 LFS/(9373:9376): 15
+[INFO] 19:08:45:753 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:09:58:132 LFS/(9373:9376): Got a CREATE
+[DEBUG] 19:09:58:132 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:09:58:132 LFS/(9373:9376): Existe la tabla papi: MARINOS
+[INFO] 19:09:58:132 LFS/(9373:9376): No se pudo crear
+[INFO] 19:09:58:132 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:09:58:735 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:09:58:735 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:09:58:735 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:09:58:735 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:09:58:735 LFS/(9373:9376): 1
+[INFO] 19:09:58:735 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:09:59:944 LFS/(9373:9376): Got a CREATE
+[DEBUG] 19:09:59:944 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:09:59:945 LFS/(9373:9376): Existe la tabla papi: AVES
+[INFO] 19:09:59:945 LFS/(9373:9376): No se pudo crear
+[INFO] 19:09:59:945 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:00:545 LFS/(9373:9376): Got a CREATE
+[DEBUG] 19:10:00:545 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:00:545 LFS/(9373:9376): Existe la tabla papi: MAMIFEROS
+[INFO] 19:10:00:545 LFS/(9373:9376): No se pudo crear
+[INFO] 19:10:00:545 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:01:148 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/COSAS/Metadata
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/BEBIDAS/Metadata
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/PELICULAS/Metadata
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/PLATOS_PRINCIPALES/Metadata
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/POSTRES/Metadata
+[DEBUG] 19:10:01:148 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/COLORES/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/ANIMALES/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/NOVELAS_ARGENTINAS/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/LOCO/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/FRUTAS/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/SERIES/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/LIBROS/Metadata
+[DEBUG] 19:10:01:149 LFS/(9373:9376): 15
+[INFO] 19:10:01:149 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:02:965 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:02:965 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:02:966 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:10:02:966 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:10:02:966 LFS/(9373:9376): 1
+[INFO] 19:10:02:966 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:04:777 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:04:777 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:04:778 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:04:778 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:10:04:778 LFS/(9373:9376): 1
+[INFO] 19:10:04:778 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:06:595 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:06:595 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:06:595 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:06:595 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:10:06:595 LFS/(9373:9376): 1
+[INFO] 19:10:06:596 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:08:403 LFS/(9373:9376): Got a SELECT
+[DEBUG] 19:10:08:403 LFS/(9373:9376): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:10:08:403 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:10:08:403 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:10:08:404 LFS/(9373:9376): Existe tabla, BRO!
+[DEBUG] 19:10:08:404 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:10:08:404 LFS/(9373:9376): AVES
+[DEBUG] 19:10:08:404 LFS/(9373:9376): Consistencia: SC, Particiones: 5, Tiempo de Compactacion: 50000
+[DEBUG] 19:10:08:404 LFS/(9373:9376): 3
+[DEBUG] 19:10:08:404 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/3.bin
+[DEBUG] 19:10:08:416 LFS/(9373:9376): No existe la tabla en mem_table
+[DEBUG] 19:10:08:416 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Bloques/30.bin
+[DEBUG] 19:10:08:416 LFS/(9373:9376): Lei el bloque a escanear
+[WARNING] 19:10:08:416 LFS/(9373:9376): Bloque vacío
+[DEBUG] 19:10:08:416 LFS/(9373:9376): Destrui la config particion
+[DEBUG] 19:10:08:416 LFS/(9373:9376): Llegue2
+[DEBUG] 19:10:08:416 LFS/(9373:9376): No esta la key buscada
+[INFO] 19:10:08:416 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:09:622 LFS/(9373:9376): Got a SELECT
+[DEBUG] 19:10:09:622 LFS/(9373:9376): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:10:09:622 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:09:622 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:09:622 LFS/(9373:9376): Existe tabla, BRO!
+[DEBUG] 19:10:09:622 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:10:09:623 LFS/(9373:9376): MAMIFEROS
+[DEBUG] 19:10:09:623 LFS/(9373:9376): Consistencia: SC, Particiones: 3, Tiempo de Compactacion: 60000
+[DEBUG] 19:10:09:623 LFS/(9373:9376): 3
+[DEBUG] 19:10:09:623 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/3.bin
+[DEBUG] 19:10:09:623 LFS/(9373:9376): No existe la tabla en mem_table
+[DEBUG] 19:10:09:623 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Bloques/35.bin
+[DEBUG] 19:10:09:624 LFS/(9373:9376): Lei el bloque a escanear
+[WARNING] 19:10:09:624 LFS/(9373:9376): Bloque vacío
+[DEBUG] 19:10:09:624 LFS/(9373:9376): Destrui la config particion
+[DEBUG] 19:10:09:624 LFS/(9373:9376): Llegue2
+[DEBUG] 19:10:09:624 LFS/(9373:9376): No esta la key buscada
+[INFO] 19:10:09:624 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:10:827 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:10:827 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:10:827 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:10:10:827 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:10:10:827 LFS/(9373:9376): 1
+[INFO] 19:10:10:827 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:13:237 LFS/(9373:9376): Got a SELECT
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:10:13:238 LFS/(9373:9376): Existe tabla, BRO!
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:10:13:238 LFS/(9373:9376): MARINOS
+[DEBUG] 19:10:13:238 LFS/(9373:9376): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 19:10:13:238 LFS/(9373:9376): 1
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:10:13:238 LFS/(9373:9376): No existe la tabla en mem_table
+[DEBUG] 19:10:13:238 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 19:10:13:238 LFS/(9373:9376): Lei el bloque a escanear
+[WARNING] 19:10:13:238 LFS/(9373:9376): Bloque vacío
+[DEBUG] 19:10:13:238 LFS/(9373:9376): Destrui la config particion
+[DEBUG] 19:10:13:238 LFS/(9373:9376): Llegue2
+[DEBUG] 19:10:13:238 LFS/(9373:9376): No esta la key buscada
+[INFO] 19:10:13:238 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:15:42 LFS/(9373:9376): Got a DESCRIBE
+[DEBUG] 19:10:15:42 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:10:15:42 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:10:15:42 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:10:15:42 LFS/(9373:9376): 1
+[INFO] 19:10:15:42 LFS/(9373:9376): Listo para recibir consulta
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Got a SELECT
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Existe tabla, BRO!
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:10:17:462 LFS/(9373:9376): MARINOS
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 19:10:17:462 LFS/(9373:9376): 1
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:10:17:462 LFS/(9373:9376): No existe la tabla en mem_table
+[DEBUG] 19:10:17:462 LFS/(9373:9376): /home/utnso/workspace/FS_TEST/Bloques/27.bin
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Lei el bloque a escanear
+[WARNING] 19:10:17:462 LFS/(9373:9376): Bloque vacío
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Destrui la config particion
+[DEBUG] 19:10:17:462 LFS/(9373:9376): Llegue2
+[DEBUG] 19:10:17:462 LFS/(9373:9376): No esta la key buscada
+[INFO] 19:10:17:463 LFS/(9373:9376): Listo para recibir consulta
+[INFO] 19:28:51:766 LFS/(9373:9376): Cliente Desconectado
+[ERROR] 19:28:54:245 LFS/(9373:9374): Bye
+[DEBUG] 19:29:10:516 LFS/(9825:9825): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:29:17:800 LFS/(9825:9825): Cantidad de Bloques: 4096
+[DEBUG] 19:29:17:800 LFS/(9825:9825): Bytes necesarios: 512
+[DEBUG] 19:29:17:800 LFS/(9825:9825): Bytes que escribi: 512
+[DEBUG] 19:29:17:800 LFS/(9825:9825): 5003
+[DEBUG] 19:29:17:800 LFS/(9825:9825): /home/utnso/workspace/FS_TEST/Metadata/Metadata.bin
+[WARNING] 19:29:17:800 LFS/(9825:9825): Bits que maneja el bitarray: 4096
+[DEBUG] 19:29:17:800 LFS/(9825:9825): Levante el Bitmap
+[DEBUG] 19:29:17:800 LFS/(9825:9825): Primer bloque libre: 1
+[INFO] 19:29:17:801 LFS/(9825:9825): Esperando memoria...
+[INFO] 19:29:25:516 LFS/(9825:9829): Memoria conectada. Esperando Envio de mensajes
+[INFO] 19:29:25:516 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:28:386 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:28:386 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[INFO] 19:29:28:387 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:44:966 LFS/(9825:9829): Got a CREATE
+[DEBUG] 19:29:44:966 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:29:44:974 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:29:44:976 LFS/(9825:9829): Cree las particiones
+[INFO] 19:29:44:977 LFS/(9825:9829): Se creo exitosamente
+[INFO] 19:29:44:977 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:45:566 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:45:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:45:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:29:45:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:29:45:566 LFS/(9825:9829): 1
+[INFO] 19:29:45:567 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:46:770 LFS/(9825:9829): Got a CREATE
+[DEBUG] 19:29:46:770 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:29:46:780 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/1.bin
+[DEBUG] 19:29:46:782 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/2.bin
+[DEBUG] 19:29:46:784 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/3.bin
+[DEBUG] 19:29:46:785 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/4.bin
+[DEBUG] 19:29:46:787 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/5.bin
+[DEBUG] 19:29:46:788 LFS/(9825:9829): Cree las particiones
+[INFO] 19:29:46:788 LFS/(9825:9829): Se creo exitosamente
+[INFO] 19:29:46:788 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:47:371 LFS/(9825:9829): Got a CREATE
+[DEBUG] 19:29:47:371 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:47:379 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/1.bin
+[DEBUG] 19:29:47:381 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/2.bin
+[DEBUG] 19:29:47:383 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/3.bin
+[DEBUG] 19:29:47:385 LFS/(9825:9829): Cree las particiones
+[INFO] 19:29:47:385 LFS/(9825:9829): Se creo exitosamente
+[INFO] 19:29:47:385 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:47:971 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:47:971 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:47:972 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:29:47:972 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:29:47:972 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:29:47:972 LFS/(9825:9829): 3
+[INFO] 19:29:47:972 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:49:779 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:49:779 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:49:779 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:29:49:779 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:29:49:779 LFS/(9825:9829): 1
+[INFO] 19:29:49:780 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:51:641 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:51:641 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:51:641 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:51:641 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:29:51:641 LFS/(9825:9829): 1
+[INFO] 19:29:51:641 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:53:530 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:53:530 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:53:530 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:53:530 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:29:53:530 LFS/(9825:9829): 1
+[INFO] 19:29:53:530 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Got a SELECT
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Existe tabla, BRO!
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:29:55:363 LFS/(9825:9829): AVES
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Consistencia: SC, Particiones: 5, Tiempo de Compactacion: 50000
+[DEBUG] 19:29:55:363 LFS/(9825:9829): 3
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/3.bin
+[DEBUG] 19:29:55:363 LFS/(9825:9829): No existe la tabla en mem_table
+[DEBUG] 19:29:55:363 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Bloques/4.bin
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Lei el bloque a escanear
+[WARNING] 19:29:55:363 LFS/(9825:9829): Bloque vacío
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Destrui la config particion
+[DEBUG] 19:29:55:363 LFS/(9825:9829): Llegue2
+[DEBUG] 19:29:55:363 LFS/(9825:9829): No esta la key buscada
+[INFO] 19:29:55:363 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:56:566 LFS/(9825:9829): Got a SELECT
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:56:566 LFS/(9825:9829): Existe tabla, BRO!
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:29:56:566 LFS/(9825:9829): MAMIFEROS
+[DEBUG] 19:29:56:566 LFS/(9825:9829): Consistencia: SC, Particiones: 3, Tiempo de Compactacion: 60000
+[DEBUG] 19:29:56:566 LFS/(9825:9829): 3
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/3.bin
+[DEBUG] 19:29:56:566 LFS/(9825:9829): No existe la tabla en mem_table
+[DEBUG] 19:29:56:566 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Bloques/9.bin
+[DEBUG] 19:29:56:567 LFS/(9825:9829): Lei el bloque a escanear
+[WARNING] 19:29:56:567 LFS/(9825:9829): Bloque vacío
+[DEBUG] 19:29:56:567 LFS/(9825:9829): Destrui la config particion
+[DEBUG] 19:29:56:567 LFS/(9825:9829): Llegue2
+[DEBUG] 19:29:56:567 LFS/(9825:9829): No esta la key buscada
+[INFO] 19:29:56:567 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:29:57:771 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:29:57:771 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:29:57:771 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS
+[DEBUG] 19:29:57:771 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MAMIFEROS/Metadata
+[DEBUG] 19:29:57:771 LFS/(9825:9829): 1
+[INFO] 19:29:57:771 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:30:00:182 LFS/(9825:9829): Got a SELECT
+[DEBUG] 19:30:00:182 LFS/(9825:9829): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:30:00:182 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:30:00:182 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:30:00:182 LFS/(9825:9829): Existe tabla, BRO!
+[DEBUG] 19:30:00:182 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:30:00:182 LFS/(9825:9829): MARINOS
+[DEBUG] 19:30:00:182 LFS/(9825:9829): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 19:30:00:183 LFS/(9825:9829): 1
+[DEBUG] 19:30:00:183 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:30:00:183 LFS/(9825:9829): No existe la tabla en mem_table
+[DEBUG] 19:30:00:183 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Bloques/1.bin
+[DEBUG] 19:30:00:183 LFS/(9825:9829): Lei el bloque a escanear
+[WARNING] 19:30:00:183 LFS/(9825:9829): Bloque vacío
+[DEBUG] 19:30:00:183 LFS/(9825:9829): Destrui la config particion
+[DEBUG] 19:30:00:183 LFS/(9825:9829): Llegue2
+[DEBUG] 19:30:00:183 LFS/(9825:9829): No esta la key buscada
+[INFO] 19:30:00:183 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:30:01:993 LFS/(9825:9829): Got a DESCRIBE
+[DEBUG] 19:30:01:993 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/
+[DEBUG] 19:30:01:993 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES
+[DEBUG] 19:30:01:993 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/AVES/Metadata
+[DEBUG] 19:30:01:994 LFS/(9825:9829): 1
+[INFO] 19:30:01:994 LFS/(9825:9829): Listo para recibir consulta
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Got a SELECT
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Existe tabla, BRO!
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/Metadata
+[DEBUG] 19:30:04:410 LFS/(9825:9829): MARINOS
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Consistencia: SC, Particiones: 1, Tiempo de Compactacion: 10000
+[DEBUG] 19:30:04:410 LFS/(9825:9829): 1
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Tables/MARINOS/1.bin
+[DEBUG] 19:30:04:410 LFS/(9825:9829): No existe la tabla en mem_table
+[DEBUG] 19:30:04:410 LFS/(9825:9829): /home/utnso/workspace/FS_TEST/Bloques/1.bin
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Lei el bloque a escanear
+[WARNING] 19:30:04:410 LFS/(9825:9829): Bloque vacío
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Destrui la config particion
+[DEBUG] 19:30:04:410 LFS/(9825:9829): Llegue2
+[DEBUG] 19:30:04:410 LFS/(9825:9829): No esta la key buscada
+[INFO] 19:30:04:410 LFS/(9825:9829): Listo para recibir consulta

@@ -16,12 +16,12 @@ void *inputFunc(void *);
 //int es_primera_memoria;
 
 int numero_memoria;
+int memoryUP = 1;
 
 //Estructura Memoria Principal
-int cant_paginas;
+int cant_marcos;
 void* memoriaPrincipal;
 t_list* tabla_segmentos;
-Tabla_paginas tabla_paginas;
 char* bit_map;
 int max_value_size;
 double memory_size;
@@ -29,7 +29,8 @@ char* conf_path;
 //Estructura Memoria Principal
 
 char* puerto_propio;
-int socketCliente;
+//int socketCliente;
+int lfsSocket;
 
 int retardo_mem;
 int retardo_fs;
@@ -70,8 +71,8 @@ int main() {
 	//es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
 	numero_memoria = config_get_int_value(conection_conf, "MEMORY_NUMBER");
 
-	retardo_mem = 1000*config_get_int_value(conection_conf, "RETARDO_MEM");
-	retardo_fs = 1000*config_get_int_value(conection_conf, "RETARDO_FS");
+	retardo_mem = 1000 * config_get_int_value(conection_conf, "RETARDO_MEM");
+	retardo_fs = 1000 * config_get_int_value(conection_conf, "RETARDO_FS");
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
@@ -84,7 +85,6 @@ int main() {
 	//Cierro config
 
 	//Socket a lfs
-	int lfsSocket;
 	lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
 			serverInfo->ai_protocol);
 
@@ -125,20 +125,42 @@ int main() {
 		char value[max_value_size];
 	} Pagina;
 
-	cant_paginas = floor(memory_size / (double) sizeof(Pagina));
-	//printf("%d \n", cant_paginas);
+
+	cant_marcos = floor(memory_size / (double) sizeof(Pagina));
+	//printf("%d \n", cant_marcos);
 	memoriaPrincipal = malloc(memory_size);
 	tabla_segmentos = list_create();
-	tabla_paginas.renglones = malloc(cant_paginas * sizeof(Renglon_pagina));
 
-	bit_map = malloc(cant_paginas);
-	for (int pag = 0; pag < cant_paginas; pag++) {
+	//tabla_paginas.renglones = malloc(cant_marcos * sizeof(Renglon_pagina));
+
+	bit_map = malloc(cant_marcos);
+	for (int pag = 0; pag < cant_marcos; pag++) {
 		bit_map[pag] = 0;
 	}
 
 	//inicializacion memoria
 
-	//Socket a kernel (listener)
+	//thread ingreso por consola
+	pthread_t threadL;
+	int iret1;
+
+	iret1 = pthread_create(&threadL, NULL, inputFunc, (void*) lfsSocket);
+	if (iret1) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		exit(EXIT_FAILURE);
+	}
+	//thread ingreso por consola
+
+	fd_set readset, tempset;
+	int maxfd, flags;
+	int srvsock, peersock, j, result, result1, sent;
+	socklen_t len;
+	struct timeval tv;
+	//char buffer[MAX_BUFFER_SIZE+1];
+	struct sockaddr_in addr;
+
+	//binding
+
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;		// No importa si uso IPv4 o IPv6
 	hints.ai_flags = AI_PASSIVE;// Asigna el address del localhost: 127.0.0.1
@@ -167,119 +189,84 @@ int main() {
 
 	freeaddrinfo(serverInfo); // Ya no lo vamos a necesitar
 
-	printf("Esperando kernel... \n");
+	srvsock = listenningSocket;
 
-	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
+	listen(srvsock, BACKLOG);
 
-	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
-	socklen_t addrlen = sizeof(addr);
+	//binding
 
-	socketCliente = accept(listenningSocket, (struct sockaddr *) &addr,
-			&addrlen);
+	FD_ZERO(&readset);
+	FD_SET(srvsock, &readset);
+	maxfd = srvsock;
 
-	//Socket a kernel (listener)
+	do {
+		memcpy(&tempset, &readset, sizeof(tempset));
+		tv.tv_sec = 10;
+		tv.tv_usec = 0;
+		result = select(maxfd + 1, &tempset, NULL, NULL, &tv);
 
-	//Handshake de kernel
-	if (!recibir_handshake(KERNEL, socketCliente)) {
-		log_warning(g_logger, "Handshake invalido");
-		return 0;
-	}
+		if (result == 0) {
+			//printf("Han pasado 10 segundos sin novedades de Kernel !\n");
+		} else if (result < 0 && errno != EINTR) {
+			printf("Error in select(): %s\n", strerror(errno));
+		} else if (result > 0) {
 
-	enviar_handshake(numero_memoria, socketCliente);
+			if (FD_ISSET(srvsock, &tempset)) {
+				len = sizeof(addr);
+				peersock = accept(srvsock, &addr, &len);
+				if (peersock < 0) {
+					printf("Error in accept(): %s\n", strerror(errno));
+				} else {
+					FD_SET(peersock, &readset);
+					maxfd = (maxfd < peersock) ? peersock : maxfd;
 
-	int status = 1;		// Estructura que manjea el status de los recieve.
+					if (!recibir_handshake(KERNEL, peersock)) {
+						log_warning(g_logger, "Handshake invalido");
+						return 0;
+					}
 
-	log_debug(g_logger, "Cliente conectado. Esperando Envío de mensajessss.");
-	//Handshake de kernel
+					enviar_handshake(numero_memoria, peersock);
 
-	//Describe a kernel
-	/*
-	 if (es_primera_memoria) {
-	 char* serializedPackage;
-	 serializedPackage = serializarDescribe(&describeRecibido);
-	 send(socketCliente, serializedPackage,
-	 describeRecibido.cant_tablas * sizeof(t_metadata)
-	 + sizeof(describeRecibido.cant_tablas), 0);
-	 dispose_package(&serializedPackage);
-	 free(describeRecibido.tablas);
-	 }
-	 */
-	//Describe a kernel
-	//thread ingreso por consola
-	pthread_t threadL;
-	int iret1;
-
-	iret1 = pthread_create(&threadL, NULL, inputFunc, (void*) lfsSocket);
-	if (iret1) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
-		exit(EXIT_FAILURE);
-	}
-	//thread ingreso por consola
-
-	int headerRecibido;
-	int comando_valido;
-
-	while (status) {
-		headerRecibido = recieve_header(socketCliente);
-
-		status = headerRecibido;
-
-		if (status) {
-			if (headerRecibido == SELECT) {
-				t_PackageSelect package;
-				package.header = SELECT;
-				status = recieve_and_deserialize_select(&package,
-						socketCliente);
-
-				comando_valido = ejectuarComando(headerRecibido, &package,
-						lfsSocket);
-				//send_package(package.header, &package, lfsSocket);
-
-				free(package.tabla);
-			} else if (headerRecibido == INSERT) {
-				t_PackageInsert package;
-				package.header = INSERT;
-				status = recieve_and_deserialize_insert(&package,
-						socketCliente);
-
-				comando_valido = ejectuarComando(headerRecibido, &package,
-						lfsSocket);
-				free(package.value);
-				free(package.tabla);
-				//send_package(package.header, &package, lfsSocket);
-			} else if (headerRecibido == CREATE) {
-				t_PackageCreate package;
-				package.header = CREATE;
-				status = recieve_and_deserialize_create(&package,
-						socketCliente);
-
-				comando_valido = ejectuarComando(headerRecibido, &package,
-						lfsSocket);
-				//send_package(package.header, &package, lfsSocket);
-			} else if (headerRecibido == DESCRIBE) {
-				t_PackageDescribe package;
-				package.header = DESCRIBE;
-				status = recieve_and_deserialize_describe_request(&package,
-						socketCliente);
-
-				comando_valido = ejectuarComando(headerRecibido, &package,
-						lfsSocket);
-				free(package.nombre_tabla);
-				//send_package(package.header, &package, lfsSocket);
+					log_debug(g_logger,
+							"Cliente conectado. Esperando Envío de mensajessss.");
+				}
+				FD_CLR(srvsock, &tempset);
 			}
-		}
-	}
 
-	log_warning(g_logger, "Kernel Desconectado.");
+			for (j = 0; j < maxfd + 1; j++) {
+				if (FD_ISSET(j, &tempset)) {
+					//printf("1\n");
+
+					do {
+						//printf("2\n");
+						result = recieve(j);
+					} while (result == -1 && errno == EINTR);
+
+					if (result > 0) {
+						//printf("3\n");
+						//ok
+
+					} else if (result == 0) {
+						//printf("4\n");
+						close(j);
+						FD_CLR(j, &readset);
+					} else {
+						printf("Error in recv(): %s\n", strerror(errno));
+					}
+				}      // end if (FD_ISSET(j, &tempset))
+			}      // end for (j=0;...)
+		}      // end else if (result > 0)
+	} while (memoryUP);
+
+	log_warning(g_logger, "Termina proceso");
 
 	pthread_join(&threadL, NULL);
 
-	close(socketCliente);
+	//close(socketCliente);
 	close(listenningSocket);
 	destruirTablas();
 	list_destroy(tabla_segmentos);
 	free(memoriaPrincipal);
-	free(tabla_paginas.renglones);
 	free(bit_map);
 	log_destroy(g_logger);
 	free(conf_path);
@@ -287,10 +274,63 @@ int main() {
 	return 0;
 }
 
+int recieve(int socketCliente) {
+
+	int headerRecibido;
+	int comando_valido;
+	int status;
+	headerRecibido = recieve_header(socketCliente);
+
+	status = headerRecibido;
+
+	if (status) {
+		if (headerRecibido == SELECT) {
+			t_PackageSelect package;
+			package.header = SELECT;
+			status = recieve_and_deserialize_select(&package, socketCliente);
+
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			//send_package(package.header, &package, lfsSocket);
+
+			free(package.tabla);
+		} else if (headerRecibido == INSERT) {
+			t_PackageInsert package;
+			package.header = INSERT;
+			status = recieve_and_deserialize_insert(&package, socketCliente);
+
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			free(package.value);
+			free(package.tabla);
+			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == CREATE) {
+			t_PackageCreate package;
+			package.header = CREATE;
+			status = recieve_and_deserialize_create(&package, socketCliente);
+
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == DESCRIBE) {
+			t_PackageDescribe package;
+			package.header = DESCRIBE;
+			status = recieve_and_deserialize_describe_request(&package,
+					socketCliente);
+
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			free(package.nombre_tabla);
+			//send_package(package.header, &package, lfsSocket);
+		}
+	}
+	return status;
+}
+
 void destruirTablas() {
 
 	void destruir(Segmento *segmento) {
-		list_destroy(segmento->numeros_pagina);
+		list_destroy(segmento->tablaDePaginas);
 		free(segmento);
 	}
 
@@ -330,31 +370,30 @@ void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
 
 	Pagina* paginaEncontrada = NULL;
 
-	void esDeLaTabla(int num_pag) {
-		Renglon_pagina* renglon = tabla_paginas.renglones + num_pag;
+	void esDeLaTabla(Renglon_pagina* renglon) {
 		int offsetPagina = renglon->offset;
 		int keyPagina = ((Pagina*) (memoriaPrincipal + offsetPagina))->key;
 
 		if (keyBuscado == keyPagina) {
 			paginaEncontrada = ((Pagina*) (memoriaPrincipal + offsetPagina));
-			*numerodePagina = num_pag;
+			*numerodePagina = renglon->numero;
 		}
 
 	}
 	;
 
-	list_iterate(segmento->numeros_pagina, &esDeLaTabla);
+	list_iterate(segmento->tablaDePaginas, &esDeLaTabla);
 
 	return (void*) paginaEncontrada;
 }
 
-int ejectuarComando(int header, void* package, int socket) {
+int ejectuarComando(int header, void* package, int socket, int esAPI) {
 	switch (header) {
 	case SELECT:
-		return ejecutarSelect((t_PackageSelect*) package, socket);
+		return ejecutarSelect((t_PackageSelect*) package, socket, esAPI);
 		break;
 	case INSERT:
-		return ejecutarInsert((t_PackageInsert*) package, socket);
+		return ejecutarInsert((t_PackageInsert*) package, 1);
 		break;
 	case CREATE:
 		return ejecutarCreate((t_PackageCreate*) package, socket);
@@ -366,7 +405,7 @@ int ejectuarComando(int header, void* package, int socket) {
 	return -1;
 }
 
-int ejecutarSelect(t_PackageSelect* select, int lfs_socket) {
+int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 
 	typedef struct Pagina {
 		long timeStamp;
@@ -382,30 +421,36 @@ int ejecutarSelect(t_PackageSelect* select, int lfs_socket) {
 				segmento_encontrado, &num_pag);
 
 		if (pagina_encontrada != NULL) {
+
+			((Renglon_pagina*) list_get(segmento_encontrado->tablaDePaginas,
+					num_pag))->last_used_ts = (unsigned) time(NULL);
+
 			log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
 					pagina_encontrada->timeStamp, pagina_encontrada->key,
 					pagina_encontrada->value);
 
-			char* mensaje_a_enviar = string_from_format(
-					"Registro: TimeStamp: %d, Key:%d, Value: %s",
-					pagina_encontrada->timeStamp, pagina_encontrada->key,
-					pagina_encontrada->value);
+			if (!esAPI) {
+				char* mensaje_a_enviar = string_from_format(
+						"Registro: TimeStamp: %d, Key:%d, Value: %s",
+						pagina_encontrada->timeStamp, pagina_encontrada->key,
+						pagina_encontrada->value);
 
-			enviarMensaje(mensaje_a_enviar, socketCliente);
+				enviarMensaje(mensaje_a_enviar, socketCliente);
 
-			free(mensaje_a_enviar);
+				free(mensaje_a_enviar);
+			}
 
 		} else {
 
 			int status;
 			log_info(g_logger, "No tengo ese registro");
 
-			recibir_y_ejecutar(select, lfs_socket);
+			recibir_y_ejecutar(select, socketCliente, esAPI);
 
 		}
 	} else {
 		log_info(g_logger, "Memoria no tiene esa tabla, pidiendo a LFS...");
-		recibir_y_ejecutar(select, lfs_socket);
+		recibir_y_ejecutar(select, socketCliente, esAPI);
 
 	}
 
@@ -422,9 +467,9 @@ void enviarMensaje(char* mensaje, int socket) {
 	dispose_package(&serializedMesagge);
 }
 
-int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
+int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 
-	send_package(paquete->header, paquete, socket);
+	send_package(paquete->header, paquete, lfsSocket);
 
 	t_PackageInsert* paquete_insert;
 	paquete_insert = malloc(sizeof(t_PackageInsert));
@@ -440,7 +485,7 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 	t_Respuesta_Select* respuesta_select = malloc(sizeof(t_Respuesta_Select));
 
 	int status = recieve_and_deserialize_RespuestaSelect(respuesta_select,
-			socket);
+			lfsSocket);
 
 	if (!status) {
 		return 0;
@@ -450,11 +495,12 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 
 	if (!status) {
 		log_warning(g_logger, "Registro no encontrado");
-
-		char* mensaje_a_enviar = string_from_format("Registro no encontrado");
-		enviarMensaje(mensaje_a_enviar, socketCliente);
-		free(mensaje_a_enviar);
-
+		if (!esAPI) {
+			char* mensaje_a_enviar = string_from_format(
+					"Registro no encontrado");
+			enviarMensaje(mensaje_a_enviar, socketCliente);
+			free(mensaje_a_enviar);
+		}
 		free(respuesta_select->value);
 		free(paquete_insert->tabla);
 		dispose_package(&paquete_insert);
@@ -474,19 +520,20 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 			+ sizeof(paquete_insert->timestamp) + paquete_insert->value_long
 			+ paquete_insert->tabla_long;
 
-	ejecutarInsert(paquete_insert);
+	ejecutarInsert(paquete_insert,0);
 
 	log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
 			paquete_insert->timestamp, paquete_insert->key,
 			paquete_insert->value);
 
-	char* mensaje_a_enviar = string_from_format(
-			"Registro: TimeStamp: %d, Key:%d, Value: %s",
-			paquete_insert->timestamp, paquete_insert->key,
-			paquete_insert->value);
-	enviarMensaje(mensaje_a_enviar, socketCliente);
-	free(mensaje_a_enviar);
-
+	if (!esAPI) {
+		char* mensaje_a_enviar = string_from_format(
+				"Registro: TimeStamp: %d, Key:%d, Value: %s",
+				paquete_insert->timestamp, paquete_insert->key,
+				paquete_insert->value);
+		enviarMensaje(mensaje_a_enviar, socketCliente);
+		free(mensaje_a_enviar);
+	}
 	free(respuesta_select->value);
 	free(paquete_insert->tabla);
 	free(paquete_insert->value);
@@ -496,18 +543,71 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socket) {
 	return status;
 }
 
-int primerpaginaLibre() {
+int obtenerOLiberarMarco() {
 	int bit;
-	for (int pag = 0; pag < cant_paginas; pag++) {
+	for (int pag = 0; pag < cant_marcos; pag++) {
 		bit = bit_map[pag];
 		if (!bit) {
 			return pag;
 		}
 	}
-	return -1;
+
+	return algoritmoDeReemplazo();
 }
 
-int ejecutarInsert(t_PackageInsert* insert) {
+int algoritmoDeReemplazo() {
+
+	typedef struct Pagina {
+		long timeStamp;
+		uint16_t key;
+		char value[max_value_size];
+	} Pagina;
+
+	Renglon_pagina* renglon_encontrado = NULL;
+	Segmento* segmento_encontrado = NULL;
+	Segmento* segmento_actual = NULL;
+	long timestamp = -1;
+	int marcoLiberado = -1;
+
+	void porTabla(Renglon_pagina *renglon) {
+		if (!renglon->modificado && timestamp < renglon->last_used_ts) {
+			segmento_encontrado = segmento_actual;
+			renglon_encontrado = renglon;
+		}
+	}
+	;
+
+	void porSegmento(Segmento *segmento) {
+		segmento_actual = segmento;
+		list_iterate(segmento->tablaDePaginas, &porTabla);
+	}
+	;
+
+	int index = 0;
+	void ordenar(Renglon_pagina *renglon) {
+		renglon->numero = index;
+		index++;
+	}
+	;
+
+	list_iterate(tabla_segmentos, &porSegmento);
+
+	if (renglon_encontrado != NULL) {
+
+		list_remove(segmento_encontrado->tablaDePaginas,
+				renglon_encontrado->numero);
+		list_iterate(segmento_encontrado->tablaDePaginas, &ordenar);
+
+		marcoLiberado = renglon_encontrado->offset / sizeof(Pagina);
+
+		bit_map[marcoLiberado] = 0;
+
+	}
+
+	return marcoLiberado;
+}
+
+int ejecutarInsert(t_PackageInsert* insert, int mod) {
 
 	typedef struct Pagina {
 		long timeStamp;
@@ -532,33 +632,38 @@ int ejecutarInsert(t_PackageInsert* insert) {
 			pagina_encontrada->timeStamp = insert->timestamp;
 			strcpy(pagina_encontrada->value, insert->value);
 
-			tabla_paginas.renglones[num_pag].modificado = 1;
+			((Renglon_pagina*) list_get(segmento_encontrado->tablaDePaginas,
+					num_pag))->modificado = 1;
+			((Renglon_pagina*) list_get(segmento_encontrado->tablaDePaginas,
+					num_pag))->last_used_ts = (unsigned) time(NULL);
 
 		} else {
-			int numero_pagina = primerpaginaLibre();
+			int numero_marco = obtenerOLiberarMarco();
 
-			if (numero_pagina != -1) {
+			if (numero_marco != -1) {
 
 				Pagina* paginaNueva = (Pagina*) (memoriaPrincipal
-						+ numero_pagina * sizeof(Pagina));
+						+ numero_marco * sizeof(Pagina));
 				paginaNueva->key = insert->key;
 				paginaNueva->timeStamp = insert->timestamp;
 
 				strcpy(paginaNueva->value, insert->value);
 
-				tabla_paginas.renglones[numero_pagina].numero = numero_pagina;
-				tabla_paginas.renglones[numero_pagina].modificado = 0;
+				Renglon_pagina* entrada_nueva = malloc(sizeof(Renglon_pagina));
+				entrada_nueva->modificado = mod;
+				entrada_nueva->last_used_ts = (unsigned) time(NULL);
+				entrada_nueva->numero =
+						segmento_encontrado->tablaDePaginas->elements_count;
+				entrada_nueva->offset = numero_marco * sizeof(Pagina);
 
-				tabla_paginas.renglones[numero_pagina].offset =
-						tabla_paginas.renglones[numero_pagina].numero
-								* sizeof(Pagina);
+				bit_map[numero_marco] = 1;
 
-				bit_map[numero_pagina] = 1;
-
-				list_add(segmento_encontrado->numeros_pagina, numero_pagina);
+				list_add(segmento_encontrado->tablaDePaginas, entrada_nueva);
 
 			} else {
-				//criterio
+
+				log_warning(g_logger, "Memoria full");
+				//JOURNALING
 			}
 		}
 	} else {
@@ -567,45 +672,48 @@ int ejecutarInsert(t_PackageInsert* insert) {
 
 		strcpy(nuevo_segmento->path, insert->tabla);
 
-		nuevo_segmento->numeros_pagina = list_create();
+		nuevo_segmento->tablaDePaginas = list_create();
 
-		int numero_pagina = primerpaginaLibre();
+		int numero_marco = obtenerOLiberarMarco();
 
-		if (numero_pagina != -1) {
+		if (numero_marco != -1) {
 			Pagina* paginaNueva = (Pagina*) (memoriaPrincipal
-					+ numero_pagina * sizeof(Pagina));
+					+ numero_marco * sizeof(Pagina));
 			paginaNueva->key = insert->key;
 			paginaNueva->timeStamp = insert->timestamp;
 
 			strcpy(paginaNueva->value, insert->value);
 
-			tabla_paginas.renglones[numero_pagina].numero = numero_pagina;
-			tabla_paginas.renglones[numero_pagina].modificado = 0;
+			Renglon_pagina* entrada_nueva = malloc(sizeof(Renglon_pagina));
+			entrada_nueva->modificado = mod;
+			entrada_nueva->last_used_ts = (unsigned) time(NULL);
+			entrada_nueva->numero =
+					nuevo_segmento->tablaDePaginas->elements_count;
+			entrada_nueva->offset = numero_marco * sizeof(Pagina);
 
-			tabla_paginas.renglones[numero_pagina].offset = numero_pagina
-					* sizeof(Pagina);
+			bit_map[numero_marco] = 1;
 
-			bit_map[numero_pagina] = 1;
-
-			list_add(nuevo_segmento->numeros_pagina, numero_pagina);
+			list_add(nuevo_segmento->tablaDePaginas, entrada_nueva);
 			list_add(tabla_segmentos, (Segmento*) nuevo_segmento);
 		} else {
-			//criterio
+
+			log_warning(g_logger, "Memoria full");
+			//JOURNALING
 		}
 
 	}
 	return 1;
 }
 
-int ejecutarCreate(t_PackageCreate* paquete, int lfs_socket) {
+int ejecutarCreate(t_PackageCreate* paquete, int lfsSocket) {
 
-	send_package(CREATE, paquete, lfs_socket);
+	send_package(CREATE, paquete, lfsSocket);
 	return 1;
 }
 
-int ejecutarDescribe(t_PackageDescribe* paquete, int lfs_socket) {
+int ejecutarDescribe(t_PackageDescribe* paquete, int clienteSocket) {
 
-	send_package(DESCRIBE, paquete, lfs_socket);
+	send_package(DESCRIBE, paquete, clienteSocket);
 	return 1;
 }
 
@@ -619,7 +727,7 @@ void abrir_log(void) {
 
 }
 
-void send_package(int header, void* package, int lfsSocket) {
+void send_package(int header, void* package, int socketCliente) {
 
 	char* serializedPackage;
 	switch (header) {
@@ -681,7 +789,6 @@ void send_package(int header, void* package, int lfsSocket) {
 void *inputFunc(void* serverSocket)
 
 {
-	int enviar = 1;
 	int entradaValida;
 	t_PackagePosta package;
 	package.message = malloc(MAX_MESSAGE_SIZE);
@@ -690,7 +797,7 @@ void *inputFunc(void* serverSocket)
 	printf(
 			"Bienvenido al sistema, puede comenzar a escribir. Escriba 'exit' para salir.\n");
 
-	while (enviar) {
+	while (memoryUP) {
 		entradaValida = 1;
 
 		char* entrada = leerConsola();
@@ -700,16 +807,20 @@ void *inputFunc(void* serverSocket)
 
 		separarEntrada(entrada, &header, &parametros);
 
+		int okParams = validarParametros(header, parametros);
+
 		if (header == EXIT_CONSOLE) {
-			enviar = 0;
+			memoryUP = 0;
 		} else if (header == ERROR) {
 			log_warning(g_logger, "Comando no reconocido");
 			entradaValida = 0;
+		} else if (!okParams) {
+			log_warning(g_logger, "Parametros incorrectos");
 		}
 
 		free(entrada);
 
-		if (enviar && entradaValida) {
+		if (memoryUP && entradaValida && okParams) {
 
 			interpretarComando(header, parametros, serverSocket);
 			free(parametros);
@@ -718,6 +829,8 @@ void *inputFunc(void* serverSocket)
 	}
 
 	log_warning(g_logger, "Desconectado.");
+	log_warning(g_logger,
+			"Aguarde mientras desconectamos la memoria por favor...");
 
 	free(package.message);
 
@@ -759,7 +872,7 @@ void select_memory(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(SELECT, &package, serverSocket);
+		comando_valido = ejectuarComando(SELECT, &package, serverSocket, 1);
 	}
 	free(package.tabla);
 }
@@ -775,7 +888,7 @@ void create(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(CREATE, &package, serverSocket);
+		comando_valido = ejectuarComando(CREATE, &package, serverSocket, 0);
 	}
 	free(package.tabla);
 }
@@ -793,7 +906,7 @@ void insert_memory(char* parametros, int serverSocket) {
 
 	if (entradaValida) {
 
-		comando_valido = ejectuarComando(INSERT, &package, serverSocket);
+		comando_valido = ejectuarComando(INSERT, &package, serverSocket, 0);
 
 		free(package.tabla);
 	}

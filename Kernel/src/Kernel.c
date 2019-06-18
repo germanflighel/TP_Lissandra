@@ -55,9 +55,9 @@ int main() {
 
 	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
-	printf("LLegue\n");
+	//printf("LLegue\n");
 	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
-	printf("LLegue\n");
+	//printf("LLegue\n");
 	log_info(logger_Kernel, puerto);
 
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
@@ -88,6 +88,8 @@ int main() {
 	if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
 			== 0) {
 
+		log_info(logger_Kernel, "conecte");
+
 		enviar_handshake(KERNEL, serverSocket);
 
 		int num_memoria = recibir_numero_memoria(serverSocket);
@@ -100,6 +102,7 @@ int main() {
 		mem_nueva->socket = serverSocket;
 
 	} else {
+		log_info(logger_Kernel, "No conecte");
 		printf("No se pudo conectar al servidor...");
 		log_info(logger_Kernel, "No me pude conectar con el servidor");
 	}
