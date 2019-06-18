@@ -1241,9 +1241,7 @@ void *recibir_por_consola() {
 	char* consulta;
 	while (true) {
 		consulta = readline("LFS> ");
-		if (!consulta) {
-			break;
-		}
+
 		char* parametros;
 		int header;
 		int entradaValida = 1;

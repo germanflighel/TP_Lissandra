@@ -19,6 +19,9 @@
 #include <commons/collections/queue.h>
 #include <commons/string.h>
 #include <commons/collections/dictionary.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
 
 
 #define CONFIG_PATH "KernelSocket.config"
