@@ -1886,6 +1886,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		registro = list_get(registros, i);
 		size += size_of_Registro(registro);
 	}
+	//TODO: Falta actualizar el archivo .bin, bloqueando la tabla
 	char* blocks = string_new();
 	string_append(&blocks, "[");
 	int size_in_fs = 0;
