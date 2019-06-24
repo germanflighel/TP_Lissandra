@@ -1731,10 +1731,7 @@ void modificar_bloques(char* nombre_tabla, t_list* registros_a_guardar) {
 	log_debug(logger, "Libere todos los bloques de temporales");
 
 
-	list_iterate(registros_a_guardar, (void*) loguear_registro);
 	escribir_registros_en_bloques_nuevos(nombre_tabla, registros_a_guardar);
-	log_debug(logger, "Escribi todito");
-
 }
 
 void liberar_bloques_de_particion(char* nombre_tabla) {
@@ -1814,12 +1811,14 @@ void escribir_registros_en_bloques_nuevos(char* nombre_tabla, t_list* registros_
 	}
 
 
+	t_list* bloques_usados = list_create();
 	for (int i = 1; i <= particiones; i++) {
 		particion_actual = i;
 		t_list* registros_de_particion = list_filter(registros_a_guardar, (void*) _es_de_la_particion);
 
 		escribir_registros_de_particion(nombre_tabla, particion_actual, registros_de_particion);
 	}
+
 
 }
 
@@ -1953,6 +1952,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		size += size_of_Registro(registro);
 	}
 	//TODO: Falta actualizar el archivo .bin, bloqueando la tabla
+	t_list* block_list = list_create();
 	char* blocks = string_new();
 	string_append(&blocks, "[");
 	int size_in_fs = 0;
@@ -1967,6 +1967,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		} else {
 			string_append_with_format(&blocks, "%d]", bloque);
 		}
+		list_add(block_list, bloque);
 		log_debug(logger, "Necesite el bloque: %i", bloque);
 	}
 
@@ -2034,6 +2035,47 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		i++;
 	}
 	free(registro_a_escribir);
+
+	actualizar_bloques_particion(nombre_tabla, particion, block_list);
+	list_destroy(block_list);
+}
+
+void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blocks) {
+
+	char* bloques = blocks_to_string(blocks);
+
+	char* mi_ruta_a_particion = ruta_a_tabla(nombre_tabla);;
+	string_append_with_format(&mi_ruta_a_particion, "/%i", particion);;
+	char* bin = ".bin";
+	string_append(&mi_ruta_a_particion, bin);
+
+	log_debug(logger, "Ruta a particion: %s", mi_ruta_a_particion);
+
+	log_debug(logger, bloques);
+	//bloquear la tabla
+	t_config* config_particion = config_create(mi_ruta_a_particion);
+	config_set_value(config_particion, "BLOCKS", bloques);
+	config_save(config_particion);
+	config_destroy(config_particion);
+	//desbloquear la tabla
+	free(mi_ruta_a_particion);
+	free(bloques);
+}
+
+char* blocks_to_string(t_list* blocks)  {
+	char* bloques = string_new();
+	string_append(&bloques, "[");
+
+	void _block_to_string(int block) {
+		char* bloque_string = string_itoa(block);
+		string_append_with_format(&bloques, "%i,", block);
+	}
+	list_iterate(blocks, (void*)_block_to_string);
+    char *bloques_posta = string_substring_until(bloques, strlen(bloques) - 1);
+	string_append(&bloques_posta, "]");
+	free(bloques);
+
+	return bloques_posta;
 }
 
 void escribir_registros_en_bloques(Tabla* tabla) {
