@@ -338,6 +338,7 @@ int lfs_insert(t_PackageInsert* package) {
 	strcpy(registro_a_insertar->value, value);
 
 	loguear_registro(registro_a_insertar);
+	free(mi_ruta);
 
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
@@ -1113,6 +1114,11 @@ int eliminar_contenido_bloques(char** blocks){
 	return 1;
 }
 
+void liberar_registro(Registro* registro) {
+	free(registro->value);
+	free(registro);
+}
+
 void *receptorDeConsultas(void* socket) {
 
 	int socketCliente = (int) socket;
@@ -1377,6 +1383,9 @@ void interpretarComando(int header, char* parametros) {
 		}
 		if (lfs_insert(package)) {
 			log_info(logger, "Se inserto exitosamente");
+			free(((t_PackageInsert*) package)->tabla);
+			free(((t_PackageInsert*) package)->value);
+			free(package);
 			break;
 		}
 		log_info(logger, "No se pudo insertar");
@@ -1530,6 +1539,7 @@ void* compactar_tabla(Metadata* una_tabla) {
 
 		list_iterate(diferencia, (void*) loguear_registro);
 		modificar_bloques(una_tabla->nombre_tabla, diferencia);
+		list_destroy_and_destroy_elements(diferencia, (void*) liberar_registro);
 	}
 }
 
@@ -1613,8 +1623,8 @@ t_list* obtener_lista_de_registros(char** registros) {
 	return lista_registros_actuales;
 }
 
+
 t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido_temporal) {
-	char* a_escribir = string_new();
 	char* mi_ruta_a_tabla = ruta_a_tabla(nombre_tabla);
 	char* todos_los_registros = string_new();
 	for (int i = 1; i <= particiones; i++) {
@@ -1633,6 +1643,7 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 		log_debug(logger, "Contenido de particion: %s", contenido_particion);
 		string_append(&todos_los_registros, contenido_particion);
 		string_iterate_lines(blocks, (void*) free);
+		free(blocks);
 		config_destroy(particion);
 		free(contenido_particion);
 		free(mi_ruta_a_particion);
@@ -1650,51 +1661,14 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 	string_iterate_lines(mis_registros_temporales, (void*) free);
 	free(mis_registros_temporales);
 	free(contenido_temporal);
+	free(mi_ruta_a_tabla);
 
 	Registro* registro_a_comparar;
 
 	int _es_registro_por_key(Registro* registro) {
 		return registro->key == registro_a_comparar->key;
 	}
-	void _escribir_registro_string(Registro* registro_temporal) {
-		char* registro_a_escribir = string_new();
-		string_append_with_format(&registro_a_escribir, "%ld;", registro_temporal->timeStamp);
-		string_append_with_format(&registro_a_escribir, "%i;", registro_temporal->key);
-		string_append_with_format(&registro_a_escribir, "%s\n", registro_temporal->value);
-		string_append(&a_escribir, registro_a_escribir);
-		free(registro_a_escribir);
-	}
-	/*
-	int _es_registro(Registro* registro) {
-		return registro == registro_a_verificar;
-	}
 
-	void agregar_si_no_existe(t_list* lista, Registro* registro) {
-		if (!list_find(registros_a_escribir, (int) &_es_registro)) {
-			list_add(registros_a_escribir, registro);
-		}
-	}
-
-	void _agregar_diferencia(Registro* registro_temporal) {
-		registro_a_comparar = registro_temporal;
-		Registro* registro_con_misma_key = list_find(registros_actuales, (int) &_es_registro_por_key);
-		if (registro_con_misma_key) {
-			if (registro_con_misma_key->timeStamp <= registro_temporal->timeStamp) {
-				registro_a_verificar = registro_temporal;
-				agregar_si_no_existe(registros_a_escribir, registro_temporal);
-			} else {
-				registro_a_verificar = registro_con_misma_key;
-				agregar_si_no_existe(registros_a_escribir, registro_con_misma_key);
-			}
-		} else {
-			registro_a_verificar = registro_temporal;
-			agregar_si_no_existe(registros_a_escribir, registro_temporal);
-		}
-	}
-
-	void _agregar_registro(Registro* registro_actual) {
-
-	}*/
 	void _actualizar_registros_actuales(Registro* registro_actual) {
 		registro_a_comparar = registro_actual;
 		Registro* registro_temporal_con_misma_key = list_find(registros_temporales, (void*) _es_registro_por_key);
@@ -1714,15 +1688,22 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 	void _agregar_temporal_si_no_existe(Registro* registro) {
 		registro_a_comparar = registro;
 		if (!list_find(registros_actuales, (void*) &_es_registro_por_key)) {
-			list_add(registros_actuales, registro);
+			Registro* registro_duplicado = malloc(sizeof(Registro));
+			registro_duplicado->key = registro->key;
+			registro_duplicado->timeStamp = registro->timeStamp;
+			registro_duplicado->value = malloc(strlen(registro->value) + 1);
+			strcpy(registro_duplicado->value, registro->value);
+			list_add(registros_actuales, registro_duplicado);
 		}
 	}
 
 
 	list_iterate(registros_actuales, (void*) _actualizar_registros_actuales);
 	list_iterate(registros_temporales, (void*) _agregar_temporal_si_no_existe);
+	list_destroy_and_destroy_elements(registros_temporales, (void*) liberar_registro);
 	return registros_actuales;
 }
+
 
 void modificar_bloques(char* nombre_tabla, t_list* registros_a_guardar) {
 	liberar_bloques_de_particion(nombre_tabla);
@@ -1760,7 +1741,10 @@ void liberar_bloques_de_particion(char* nombre_tabla) {
 		config_destroy(particion);
 		//desbloquear la tabla
 		free(mi_ruta_a_particion);
+		string_iterate_lines(blocks, (void*) free);
+		free(blocks);
 	}
+	free(mi_ruta_a_tabla);
 }
 
 void liberar_bloques_de_temporales(char* nombre_tabla) {
@@ -1785,6 +1769,8 @@ void liberar_bloques_de_temporales(char* nombre_tabla) {
 				char** blocks = config_get_array_value(temporal, "BLOCKS");
 				eliminar_contenido_bloques(blocks);
 				config_destroy(temporal);
+				string_iterate_lines(blocks, (void*) free);
+				free(blocks);
 				unlink(ruta_a_temporal);
 				//desbloquear la tabla
 			}
@@ -1811,12 +1797,12 @@ void escribir_registros_en_bloques_nuevos(char* nombre_tabla, t_list* registros_
 	}
 
 
-	t_list* bloques_usados = list_create();
 	for (int i = 1; i <= particiones; i++) {
 		particion_actual = i;
 		t_list* registros_de_particion = list_filter(registros_a_guardar, (void*) _es_de_la_particion);
 
 		escribir_registros_de_particion(nombre_tabla, particion_actual, registros_de_particion);
+		list_destroy(registros_de_particion);
 	}
 
 
@@ -1874,11 +1860,6 @@ void* dump() {
 	void _dumpear_tabla(Tabla* tabla) {
 		int bytes_a_dumpear = tamanio_de_tabla(tabla);
 		_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
-		/*Registro* registro;
-		for(int i = 0; i < tabla->registros->elements_count; i++) {
-		 registro = list_get(tabla->registros, i);
-		 escribir_registro_en_bloque(registro, tabla->nombre_tabla);
-		 }*/
 		escribir_registros_en_bloques(tabla);
 	}
 
@@ -1898,6 +1879,7 @@ void* dump() {
 		pthread_mutex_lock(&mem_table_mutex);
 		mem_table = list_create();
 		pthread_mutex_unlock(&mem_table_mutex);
+		//TODO: Destroy elements para liberar el puntero del registro en mem_table
 		list_destroy(mem_table_duplicada);
 	}
 }
@@ -1951,7 +1933,6 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		registro = list_get(registros, i);
 		size += size_of_Registro(registro);
 	}
-	//TODO: Falta actualizar el archivo .bin, bloqueando la tabla
 	t_list* block_list = list_create();
 	char* blocks = string_new();
 	string_append(&blocks, "[");
@@ -2034,10 +2015,14 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 
 		i++;
 	}
+
 	free(registro_a_escribir);
 
 	actualizar_bloques_particion(nombre_tabla, particion, block_list, size);
 	list_destroy(block_list);
+	free(blocks);
+	string_iterate_lines(blocks_as_array, (void*) free);
+	free(blocks_as_array);
 }
 
 void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blocks, int size) {
@@ -2071,7 +2056,6 @@ char* blocks_to_string(t_list* blocks)  {
 	string_append(&bloques, "[");
 
 	void _block_to_string(int block) {
-		char* bloque_string = string_itoa(block);
 		string_append_with_format(&bloques, "%i,", block);
 	}
 	list_iterate(blocks, (void*)_block_to_string);
@@ -2180,6 +2164,9 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 	}
 	free(registro_a_escribir);
 	config_destroy(temporal);
+	string_iterate_lines(blocks, (void*) free);
+	free(blocks);
+	free(temporal_path);
 }
 
 void montar_filesystem() {
