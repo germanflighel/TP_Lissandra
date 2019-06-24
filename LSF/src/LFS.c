@@ -2036,11 +2036,11 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 	}
 	free(registro_a_escribir);
 
-	actualizar_bloques_particion(nombre_tabla, particion, block_list);
+	actualizar_bloques_particion(nombre_tabla, particion, block_list, size);
 	list_destroy(block_list);
 }
 
-void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blocks) {
+void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blocks, int size) {
 
 	char* bloques = blocks_to_string(blocks);
 
@@ -2055,11 +2055,15 @@ void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blo
 	//bloquear la tabla
 	t_config* config_particion = config_create(mi_ruta_a_particion);
 	config_set_value(config_particion, "BLOCKS", bloques);
+	log_debug(logger, "size = %i", size);
+	char* string_size = string_itoa(size);
+	config_set_value(config_particion, "SIZE", string_size);
 	config_save(config_particion);
 	config_destroy(config_particion);
 	//desbloquear la tabla
 	free(mi_ruta_a_particion);
 	free(bloques);
+	free(string_size);
 }
 
 char* blocks_to_string(t_list* blocks)  {
