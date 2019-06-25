@@ -76,7 +76,7 @@ t_list* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla);
 char* contenido_de_los_bloques(char* nombre_tabla, char** blocks);
 void* dump();
 
-char* contenido_de_temporales(char* nombre_tabla);
+char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado);
 t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido_temporal);
 
 void escribir_registros_en_bloques(Tabla* tabla);
