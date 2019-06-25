@@ -23,6 +23,8 @@ sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
 pthread_mutex_t exec_mutex;
 
+pthread_mutex_t describing;
+
 char* ip_destino;
 char** puertos_posibles;
 struct addrinfo hints;
@@ -126,6 +128,7 @@ int main() {
 	sem_init(&ejecutar_sem, 0, 0);
 	pthread_mutex_init(&cola_ready_mutex, NULL);
 	pthread_mutex_init(&exec_mutex, NULL);
+	pthread_mutex_init(&describing, NULL);
 	//setup planificacion
 
 	//setup consistencias
@@ -376,39 +379,55 @@ int puertoConectado(char* puertoChar) {
 }
 
 int interpretarComando(int header, char* parametros, int serverSocket) {
-
+	int result = 1;
 	switch (header) {
 	case SELECT:
-		return select_kernel(parametros, serverSocket);
+		pthread_mutex_lock(&describing);
+		result = select_kernel(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case INSERT:
-		return insert_kernel(parametros, serverSocket);
+		pthread_mutex_lock(&describing);
+		result = insert_kernel(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case DESCRIBE:
+		pthread_mutex_lock(&describing);
 		describe(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case DROP:
+		pthread_mutex_lock(&describing);
 		drop(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case CREATE:
+		pthread_mutex_lock(&describing);
 		create(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case JOURNAL:
+		pthread_mutex_lock(&describing);
 		journal("", serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case RUN:
 		return run(parametros, serverSocket);
 		break;
 	case ADD:
+		pthread_mutex_lock(&describing);
 		add(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case 9:
+		pthread_mutex_lock(&describing);
 		metrics(parametros, serverSocket);
+		pthread_mutex_unlock(&describing);
 		break;
 	case -1:
 		break;
 	}
-	return 1;
+	return result;
 }
 
 int select_kernel(char* parametros, int serverSocket) {
@@ -475,19 +494,18 @@ int insert_kernel(char* parametros, int serverSocket) {
 
 			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
 
-			log_info(logger_Kernel,"Insert: %s",respuesta);
+			log_info(logger_Kernel, "Insert: %s", respuesta);
 
 			if (strcmp(respuesta, "FULL") == 0) {
-				journal("",serverSocket);
+				journal("", serverSocket);
 				send(socketAEnviar, serializedPackage, package.total_size, 0);
 
 				free(respuesta);
 				respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
-				log_info(logger_Kernel,"Insert: %s",respuesta);
+				log_info(logger_Kernel, "Insert: %s", respuesta);
 			}
 			free(respuesta);
 			//printf("%s\n", respuesta);
-
 
 		} else {
 			ok = 0;
@@ -520,7 +538,7 @@ void describe(char* parametros, int serverSocket) {
 			//printf("Lo mande\n");
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
-			recibirDescribe(serverSocket);
+			recibirDescribe(socketAEnviar);
 
 		} else {
 			printf("Ninguna memoria asignada para este criterio\n");
