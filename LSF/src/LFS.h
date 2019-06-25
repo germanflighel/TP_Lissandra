@@ -82,4 +82,5 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 void escribir_registros_en_bloques(Tabla* tabla);
 char* blocks_to_string(t_list* blocks);
 
+char* leer_registros_de(char* nombre_tabla, char* extension);
 #endif

@@ -745,38 +745,10 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	config_destroy(particion);
 	free(contenido_particion);
 
-
-	int maximo_dumpeo = 0;
-	int cantidad_de_dumpeos_fs = cantidad_de_temporales(nombre_tabla);
-	if (cantidad_de_dumpeos_fs) {
-		int numero_de_temporal = 1;
-		do {
-			char* mi_ruta_a_a_tabla = ruta_a_tabla(nombre_tabla);
-
-			char* ruta_a_temporal = string_new();
-			string_append(&ruta_a_temporal, mi_ruta_a_a_tabla);
-			char* otra_barra = "/";
-			string_append(&ruta_a_temporal, otra_barra);
-			string_append_with_format(&ruta_a_temporal, "%i", numero_de_temporal);
-			char* tmp = ".tmp";
-			string_append(&ruta_a_temporal, tmp);
-
-			if (access(ruta_a_temporal, F_OK) != -1) {
-				t_config* temporal = config_create(ruta_a_temporal);
-				char** temporal_blocks = config_get_array_value(temporal, "BLOCKS");
-				char* contenido = contenido_de_los_bloques(nombre_tabla, temporal_blocks);
-				string_iterate_lines(temporal_blocks, (void*) free);
-				string_append(&todos_los_registros, contenido);
-				config_destroy(temporal);
-				free(temporal_blocks);
-				free(contenido);
-			}
-			free(mi_ruta_a_a_tabla);
-			free(ruta_a_temporal);
-			numero_de_temporal++;
-		} while (numero_de_temporal <= maximo_dumpeo);
-	}
-
+	char* registros_temporales = leer_registros_de(nombre_tabla, ".tmp");
+	string_append(&todos_los_registros, registros_temporales);
+	char* registros_temporales_c = leer_registros_de(nombre_tabla, ".tmpc");
+	string_append(&todos_los_registros, registros_temporales_c);
 	free(blocks);
 	free(mi_ruta);
 
@@ -807,40 +779,49 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	}
 	string_iterate_lines(registros, (void*) free);
 	free(registros);
+	free(registros_temporales);
+	free(registros_temporales_c);
 	free(todos_los_registros);
 
 	return registro;
 }
 
-int cantidad_de_temporales(char* nombre_tabla) {
-	char* mi_ruta = ruta_a_tabla(nombre_tabla);
+char* leer_registros_de(char* nombre_tabla, char* extension) {
+	char* todos_los_registros = string_new();
+	int maximo_dumpeo = 0;
+	int cantidad_de_dumpeos_fs = cantidad_de_archivos_en(nombre_tabla, extension);
+	if (cantidad_de_dumpeos_fs) {
+		int numero_de_temporal = 1;
+		do {
+			char* mi_ruta_a_a_tabla = ruta_a_tabla(nombre_tabla);
 
-	DIR *dirp;
-	if ((dirp = opendir(mi_ruta)) == NULL) {
-		return 0;
-	}
-	struct dirent* dp;
-	char* nombre_archivo;
-	int cantidad = 0;
-	while((dp = readdir(dirp)) != NULL) {
-		nombre_archivo = dp->d_name;
+			char* ruta_a_archivo = string_new();
+			string_append(&ruta_a_archivo, mi_ruta_a_a_tabla);
+			char* otra_barra = "/";
+			string_append(&ruta_a_archivo, otra_barra);
+			string_append_with_format(&ruta_a_archivo, "%i", numero_de_temporal);
+			string_append(&ruta_a_archivo, extension);
 
-		char* tmp = ".tmp";
-		log_warning(logger, nombre_archivo);
-		if (string_contains(nombre_archivo, tmp)) {
-			char** spliteado = string_split(nombre_archivo, ".");
-			char* numero_dumpeo = spliteado[0];
-			cantidad++;
-			string_iterate_lines(spliteado, (void*) free);
-			free(spliteado);
-		}
+			if (access(ruta_a_archivo, F_OK) != -1) {
+				t_config* temporal = config_create(ruta_a_archivo);
+				char** temporal_blocks = config_get_array_value(temporal, "BLOCKS");
+				char* contenido = contenido_de_los_bloques(nombre_tabla, temporal_blocks);
+				string_iterate_lines(temporal_blocks, (void*) free);
+				string_append(&todos_los_registros, contenido);
+				config_destroy(temporal);
+				free(temporal_blocks);
+				free(contenido);
+			}
+			free(mi_ruta_a_a_tabla);
+			free(ruta_a_archivo);
+			numero_de_temporal++;
+		} while (numero_de_temporal <= maximo_dumpeo);
 	}
-	free(mi_ruta);
-	closedir(dirp);
-	return cantidad;
+	return todos_los_registros;
 }
 
-int cantidad_de_temporales_c(char* nombre_tabla) {
+
+int cantidad_de_archivos_en(char* nombre_tabla, char* extension) {
 	char* mi_ruta = ruta_a_tabla(nombre_tabla);
 
 	DIR *dirp;
@@ -853,9 +834,7 @@ int cantidad_de_temporales_c(char* nombre_tabla) {
 	while((dp = readdir(dirp)) != NULL) {
 		nombre_archivo = dp->d_name;
 
-		char* tmp = ".tmpc";
-		log_warning(logger, nombre_archivo);
-		if (string_contains(nombre_archivo, tmp)) {
+		if (string_contains(nombre_archivo, extension)) {
 			char** spliteado = string_split(nombre_archivo, ".");
 			char* numero_dumpeo = spliteado[0];
 			cantidad++;
@@ -1584,7 +1563,7 @@ int hay_dumpeos(char* nombre_tabla) {
 	if (cantidad_de_dumpeos == 1) {
 		return 0;
 	}
-	int cantidad_de_temporales_fs = cantidad_de_temporales(nombre_tabla);
+	int cantidad_de_temporales_fs = cantidad_de_archivos_en(nombre_tabla, ".tmp");
 	return cantidad_de_temporales_fs;
 }
 
@@ -1594,7 +1573,7 @@ char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado) {
 		return NULL;
 	}
 	char* contenido = string_new();
-	int cantidad_de_temporales_fs = cantidad_de_temporales(nombre_tabla);
+	int cantidad_de_temporales_fs = cantidad_de_archivos_en(nombre_tabla, ".tmp");
 	log_debug(logger, "Hay %i temporales a  compactar", cantidad_de_temporales_fs);
 	if (cantidad_de_temporales_fs) {
 		int numero_de_temporal = 1;
@@ -1796,7 +1775,7 @@ void liberar_bloques_de_particion(char* nombre_tabla, double* tiempo_bloqueado) 
 }
 
 void liberar_bloques_de_temporales(char* nombre_tabla, double* tiempo_bloqueado) {
-	int cantidad_de_temporales_c_fs = cantidad_de_temporales_c(nombre_tabla);
+	int cantidad_de_temporales_c_fs = cantidad_de_archivos_en(nombre_tabla, ".tmpc");
 	if (cantidad_de_temporales_c_fs) {
 		int numero_de_temporal = 1;
 		do {
