@@ -100,7 +100,7 @@ int recieve_and_deserialize_mensaje(int socketCliente) {
 	if (!status)
 		return 0;
 
-	printf("%d \n", strlen);
+	//printf("%d \n", strlen);
 
 	mensaje = malloc(strlen + 1);
 	status = recv(socketCliente, mensaje, strlen, 0);
@@ -163,10 +163,15 @@ int recieve_and_send_describe(t_describe *package, int socketCliente,
 
 int validarParametros(int header, char* parametros) {
 	char** parametrosSeparados;
-	if (parametros == NULL && header != DESCRIBE) {
+	if (parametros == NULL && header != DESCRIBE && header != JOURNAL) {
 		return 0;
 	}
 	switch (header) {
+	case JOURNAL:
+		if (parametros != NULL) {
+			return 0;
+		}
+		break;
 	case SELECT:
 		parametrosSeparados = string_split(parametros, " ");
 
