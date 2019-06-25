@@ -317,12 +317,10 @@ Registro* lfs_select(t_PackageSelect* package) {
 	log_debug(logger, particionObjetivo_string);
 	free(particionObjetivo_string);
 
-	log_debug(logger, "Tabla es bloqueada");
 	lock_mutex_tabla(package->tabla);
 	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
 			mi_ruta, package->tabla);
 	unlock_mutex_tabla(package->tabla);
-	log_debug(logger, "Tabla no esta mas bloqueada");
 
 	free(metadata);
 	free(mi_ruta);
@@ -1898,10 +1896,17 @@ void* dump() {
 	}
 
 	while (1) {
-		log_debug(logger, "Abri hilo Dumpeo");
+		log_debug(logger, "Voy a intentar dumpear");
 		int nanosegundos_dumpeo = tiempo_dump * 1000;
 		usleep(nanosegundos_dumpeo);
 
+		pthread_mutex_lock(&mem_table_mutex);
+		if(list_is_empty(mem_table)) {
+			log_debug(logger, "No hay nada pa dumpear");
+			pthread_mutex_unlock(&mem_table_mutex);
+			dump();
+		}
+		pthread_mutex_unlock(&mem_table_mutex);
 		log_debug(logger, "Voy a empezar el dumpeo");
 		pthread_mutex_lock(&mem_table_mutex);
 		t_list* mem_table_duplicada = list_duplicate(mem_table);
