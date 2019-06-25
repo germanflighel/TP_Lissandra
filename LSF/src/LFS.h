@@ -51,8 +51,10 @@ t_config* leer_config();
 t_log* iniciar_logger();
 
 void* recibir_por_consola();
+void* compactar_tabla(Metadata* una_tabla);
 Registro* lfs_select(t_PackageSelect* package);
 void* ejecutar_comando(int header, void* package);
+
 
 int lfs_insert(t_PackageInsert* package);
 
@@ -74,5 +76,11 @@ t_list* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla);
 char* contenido_de_los_bloques(char* nombre_tabla, char** blocks);
 void* dump();
 
+char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado);
+t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido_temporal);
 
+void escribir_registros_en_bloques(Tabla* tabla);
+char* blocks_to_string(t_list* blocks);
+
+char* leer_registros_de(char* nombre_tabla, char* extension);
 #endif
