@@ -38,7 +38,7 @@ typedef struct Tabla {
 } Tabla;
 
 typedef struct Memoria {
-	int socket;
+	int* socket;
 	int numero;
 	int puerto;
 } Memoria;

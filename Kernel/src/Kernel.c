@@ -17,11 +17,12 @@
 t_log* logger_Kernel;
 int quantum;
 int tiempoDescribe;
+int multiprocesamiento;
 t_queue* colaReady;
-t_queue* colaExec;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
-pthread_mutex_t exec_mutex;
+
+t_list* exec_mutexes;
 
 pthread_mutex_t describing;
 
@@ -58,6 +59,8 @@ int main() {
 
 	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
+	multiprocesamiento = config_get_int_value(conection_conf,
+			"MULTIPROCESAMIENTO");
 	tiempoDescribe = 1000
 			* config_get_int_value(conection_conf, "METADATA_REFRESH");
 	//multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
@@ -105,7 +108,10 @@ int main() {
 		log_info(logger_Kernel, "Conecte al servidor.");
 
 		mem_nueva->numero = num_memoria;
-		mem_nueva->socket = serverSocket;
+		mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
+		for (int sock = 0; sock < multiprocesamiento; sock++) {
+			mem_nueva->socket[sock] = serverSocket;
+		}
 
 	} else {
 		log_info(logger_Kernel, "No conecte");
@@ -120,14 +126,33 @@ int main() {
 
 	memoriasConectadas = list_create();
 
+	exec_mutexes = list_create();
+
 	list_add(memoriasConectadas, mem_nueva);
 
 	//setup planificacion
 	colaReady = queue_create();
-	colaExec = queue_create();
 	sem_init(&ejecutar_sem, 0, 0);
 	pthread_mutex_init(&cola_ready_mutex, NULL);
-	pthread_mutex_init(&exec_mutex, NULL);
+
+
+	for (int index = 0; index < multiprocesamiento; index++) {
+		pthread_mutex_t* exec_mutex = malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(exec_mutex, NULL);
+		list_add(exec_mutexes, exec_mutex);
+
+		pthread_t threadExec;
+		int iret1;
+
+		iret1 = pthread_create(&threadExec, NULL, exec, (void*) index);
+		if (iret1) {
+			fprintf(stderr, "Error - pthread_create() return code: %d\n",
+					iret1);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+
 	pthread_mutex_init(&describing, NULL);
 	//setup planificacion
 
@@ -135,17 +160,19 @@ int main() {
 	eventualC = queue_create();
 	//setup consistencias
 
-	//thread executer
-	pthread_t threadL;
-	int iret1;
+	/*
+	 //thread executer
+	 pthread_t threadL;
+	 int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, exec, (void*) serverSocket);
-	if (iret1) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
-		exit(EXIT_FAILURE);
-	}
-	//thread executer
+	 iret1 = pthread_create(&threadL, NULL, exec, (void*) serverSocket);
+	 if (iret1) {
+	 fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+	 exit(EXIT_FAILURE);
+	 }
+	 //thread executer
 
+	 */
 	Script* script_consola = malloc(sizeof(Script));
 	script_consola->index = 0;
 
@@ -160,7 +187,7 @@ int main() {
 
 	iret2 = pthread_create(&threadC, NULL, intentarEstablecerConexion, NULL);
 	if (iret2) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret2);
 		exit(EXIT_FAILURE);
 	}
 	//threadConexiones
@@ -174,7 +201,7 @@ int main() {
 	iret3 = pthread_create(&threadD, NULL, describeCadaX, (void*) serverSocket);
 
 	if (iret3) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret3);
 		exit(EXIT_FAILURE);
 	}
 
@@ -250,7 +277,6 @@ int main() {
 	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
 	list_destroy(memoriasConectadas);
 	queue_destroy(colaReady);
-	queue_destroy(colaExec);
 
 	/* ADIO'! */
 	return 0;
@@ -280,16 +306,16 @@ int obtenerConsistencia(char* tablaPath) {
 	return consistencia;
 }
 
-int socketAUtilizar(char* tablaPath) {
+int socketAUtilizar(char* tablaPath, int exec_index) {
 	int consistencia = obtenerConsistencia(tablaPath);
 
 	if (consistencia != NULL) {
-		return socketFromConsistency(consistencia);
+		return socketFromConsistency(consistencia, exec_index);
 	}
 	return -1;
 }
 
-int socketFromConsistency(int consistencia) {
+int socketFromConsistency(int consistencia, int exec_index) {
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -313,7 +339,7 @@ int socketFromConsistency(int consistencia) {
 
 	void esLaMemoria(Memoria* mem) {
 		if (mem->numero == num_mem) {
-			socket = mem->socket;
+			socket = mem->socket[exec_index];
 		}
 	}
 
@@ -353,7 +379,11 @@ void* intentarEstablecerConexion() {
 					Memoria* mem_nueva = malloc(sizeof(Memoria));
 					mem_nueva->numero = num_memoria;
 					mem_nueva->puerto = atoi(puertos_posibles[i]);
-					mem_nueva->socket = serverSocket;
+					mem_nueva->socket = malloc(
+							sizeof(int) * multiprocesamiento);
+					for (int sock = 0; sock < multiprocesamiento; sock++) {
+						mem_nueva->socket[sock] = serverSocket;
+					}
 
 					list_add(memoriasConectadas, mem_nueva);
 
@@ -374,54 +404,97 @@ int puertoConectado(char* puertoChar) {
 		return mem->puerto == puerto;
 	}
 
-	return list_any_satisfy(memoriasConectadas, tieneEsePuerto);
+	return list_any_satisfy(memoriasConectadas, &tieneEsePuerto);
 
 }
 
-int interpretarComando(int header, char* parametros, int serverSocket) {
+void desconectar_mem(int socket) {
+	close(socket);
+
+	int num;
+
+	int esLaMem(Memoria* mem) {
+
+		int es = 0;
+
+		for (int sock = 0; sock < multiprocesamiento; sock++) {
+			if (mem->socket[sock] == socket) {
+				es = 1;
+			}
+		}
+
+		if (es) {
+			num = mem->numero;
+			return 1;
+		}
+	}
+
+	list_remove_by_condition(memoriasConectadas, &esLaMem);
+	if (strongC == num) {
+		strongC = NULL;
+	}
+
+	t_queue* colaTemp = queue_create();
+
+	while (queue_size(eventualC)) {
+		int* temp = queue_pop(eventualC);
+		if (*temp != num) {
+			queue_push(colaTemp, temp);
+		}
+	}
+
+	while (queue_size(colaTemp)) {
+		int* temp = queue_pop(colaTemp);
+		queue_push(eventualC, temp);
+	}
+
+	queue_destroy(colaTemp);
+}
+
+int interpretarComando(int header, char* parametros, int exec_index) {
 	int result = 1;
 	switch (header) {
 	case SELECT:
 		pthread_mutex_lock(&describing);
-		result = select_kernel(parametros, serverSocket);
+		result = select_kernel(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case INSERT:
 		pthread_mutex_lock(&describing);
-		result = insert_kernel(parametros, serverSocket);
+		result = insert_kernel(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case DESCRIBE:
 		pthread_mutex_lock(&describing);
-		describe(parametros, serverSocket);
+		describe(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case DROP:
 		pthread_mutex_lock(&describing);
-		drop(parametros, serverSocket);
+		drop(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case CREATE:
 		pthread_mutex_lock(&describing);
-		create(parametros, serverSocket);
+		create(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case JOURNAL:
 		pthread_mutex_lock(&describing);
-		journal("", serverSocket);
+		journal("", exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case RUN:
-		return run(parametros, serverSocket);
+		return run(parametros, exec_index);
 		break;
 	case ADD:
 		pthread_mutex_lock(&describing);
-		add(parametros, serverSocket);
+		add(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case 9:
 		pthread_mutex_lock(&describing);
-		metrics(parametros, serverSocket);
+		metrics(parametros, exec_index);
 		pthread_mutex_unlock(&describing);
 		break;
 	case -1:
@@ -430,7 +503,7 @@ int interpretarComando(int header, char* parametros, int serverSocket) {
 	return result;
 }
 
-int select_kernel(char* parametros, int serverSocket) {
+int select_kernel(char* parametros, int exec_index) {
 
 	int ok = 1;
 	char *serializedPackage;
@@ -448,13 +521,19 @@ int select_kernel(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarSelect(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla);
+		int socketAEnviar = socketAUtilizar(package.tabla,exec_index);
 
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
 			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
-			log_debug(logger_Kernel, respuesta);
+
+			if (!(int) respuesta) {
+				desconectar_mem(socketAEnviar);
+				log_error(logger_Kernel, "Memoria desconectada");
+			} else {
+				log_debug(logger_Kernel, respuesta);
+			}
 			//printf("%s\n", respuesta);
 			free(respuesta);
 
@@ -469,7 +548,7 @@ int select_kernel(char* parametros, int serverSocket) {
 	return ok;
 }
 
-int insert_kernel(char* parametros, int serverSocket) {
+int insert_kernel(char* parametros, int exec_index) {
 
 	int ok = 1;
 	char* serializedPackage;
@@ -488,21 +567,36 @@ int insert_kernel(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarInsert(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla);
+		int socketAEnviar = socketAUtilizar(package.tabla,exec_index);
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
 			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
 
-			log_info(logger_Kernel, "Insert: %s", respuesta);
+			if (!(int) respuesta) {
+				desconectar_mem(socketAEnviar);
+				log_error(logger_Kernel, "Memoria desconectada");
+			} else {
+				log_debug(logger_Kernel, respuesta);
 
-			if (strcmp(respuesta, "FULL") == 0) {
-				journal("", serverSocket);
-				send(socketAEnviar, serializedPackage, package.total_size, 0);
-
-				free(respuesta);
-				respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
 				log_info(logger_Kernel, "Insert: %s", respuesta);
+
+				if (strcmp(respuesta, "FULL") == 0) {
+					journal("", exec_index);
+					send(socketAEnviar, serializedPackage, package.total_size,
+							0);
+
+					free(respuesta);
+					respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+
+					if (!(int) respuesta) {
+						desconectar_mem(socketAEnviar);
+						log_error(logger_Kernel, "Memoria desconectada");
+					} else {
+						log_info(logger_Kernel, "Insert: %s", respuesta);
+					}
+				}
+
 			}
 			free(respuesta);
 			//printf("%s\n", respuesta);
@@ -518,7 +612,7 @@ int insert_kernel(char* parametros, int serverSocket) {
 	return ok;
 }
 
-void describe(char* parametros, int serverSocket) {
+void describe(char* parametros, int exec_index) {
 	char *serializedPackage;
 	int entradaValida = 1;
 	t_PackageDescribe package;
@@ -532,7 +626,12 @@ void describe(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarRequestDescribe(&package);
 
-		int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
+		if (!memoriasConectadas->elements_count) {
+			log_error(logger_Kernel, "No hay memorias conectadas");
+			return;
+		}
+		int socketAEnviar =
+				((Memoria*) list_get(memoriasConectadas, 0))->socket[exec_index];
 
 		if (socketAEnviar != -1) {
 			//printf("Lo mande\n");
@@ -555,34 +654,39 @@ void drop(char* parametros, int serverSocket) {
 void recibirDescribe(int serverSocket) {
 
 	t_describe describe;
-	recieve_and_deserialize_describe(&describe, serverSocket);
 
-	if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
-		log_warning(logger_Kernel, "La tabla no existe");
+	if (!recieve_and_deserialize_describe(&describe, serverSocket)) {
+		desconectar_mem(serverSocket);
+		log_error(logger_Kernel, "Memoria desconectada");
 	} else {
-		for (int i = 0; i < describe.cant_tablas; i++) {
-			//printf("%s\n", describe.tablas[i].nombre_tabla);
-			if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
-				Tabla* tabla_nueva = malloc(sizeof(Tabla));
-				strcpy(tabla_nueva->nombre_tabla,
-						describe.tablas[i].nombre_tabla);
-				tabla_nueva->consistencia = describe.tablas[i].consistencia;
-				list_add(tablas_actuales, tabla_nueva);
+		if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
+			log_warning(logger_Kernel, "La tabla no existe");
+		} else {
+			for (int i = 0; i < describe.cant_tablas; i++) {
+				//printf("%s\n", describe.tablas[i].nombre_tabla);
+				if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
+					Tabla* tabla_nueva = malloc(sizeof(Tabla));
+					strcpy(tabla_nueva->nombre_tabla,
+							describe.tablas[i].nombre_tabla);
+					tabla_nueva->consistencia = describe.tablas[i].consistencia;
+					list_add(tablas_actuales, tabla_nueva);
+				}
+			}
+
+			for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
+					tabla2++) {
+				Tabla* tabla = list_get(tablas_actuales, tabla2);
+				printf("Tabla %s \n", tabla->nombre_tabla);
+				printf("Consistencia %s \n",
+						consistency_to_str(tabla->consistencia));
 			}
 		}
-
-		for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
-				tabla2++) {
-			Tabla* tabla = list_get(tablas_actuales, tabla2);
-			printf("Tabla %s \n", tabla->nombre_tabla);
-			printf("Consistencia %s \n",
-					consistency_to_str(tabla->consistencia));
-		}
+		free(describe.tablas);
 	}
-	free(describe.tablas);
+
 }
 
-void create(char* parametros, int serverSocket) {
+void create(char* parametros, int exec_index) {
 	char* serializedPackage;
 	int entradaValida = 1;
 	t_PackageCreate package;
@@ -598,7 +702,13 @@ void create(char* parametros, int serverSocket) {
 
 		serializedPackage = serializarCreate(&package);
 
-		int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
+		if (!memoriasConectadas->elements_count) {
+			log_error(logger_Kernel, "No hay memorias conectadas");
+			return;
+		}
+
+		int socketAEnviar =
+				((Memoria*) list_get(memoriasConectadas, 0))->socket[exec_index];
 
 		send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -608,17 +718,15 @@ void create(char* parametros, int serverSocket) {
 
 }
 
-void journal(char* parametros, int serverSocket) {
+void journal(char* parametros, int exec_index) {
 	char* serializedPackage;
 	int header = JOURNAL;
 	serializedPackage = malloc(sizeof(int));
 
-	//int socketAEnviar = ((Memoria*) list_get(memoriasConectadas, 0))->socket;
-
 	memcpy(serializedPackage, &header, sizeof(int));
 
 	void enviarJournal(Memoria* mem) {
-		send(mem->socket, serializedPackage, sizeof(int), 0);
+		send(mem->socket[exec_index], serializedPackage, sizeof(int), 0);
 	}
 
 	list_iterate(memoriasConectadas, &enviarJournal);
@@ -631,7 +739,7 @@ void* describeCadaX(int serverSocket) {
 
 	while (true) {
 		usleep(tiempoDescribe);
-		interpretarComando(DESCRIBE, NULL, serverSocket);
+		interpretarComando(DESCRIBE, NULL, 0);
 	}
 
 }
@@ -755,19 +863,20 @@ void script_a_ready(Script* script) {
 
 }
 
-void* exec(int serverSocket) {
+void* exec(int index) {
+	int serverSocket = 1;
 	int resultado_exec;
 	while (true) {
 
 		sem_wait(&ejecutar_sem);
 
-		pthread_mutex_lock(&exec_mutex);
+		pthread_mutex_lock(list_get(exec_mutexes, index));
 
 		pthread_mutex_lock(&cola_ready_mutex);
 		Script* script_en_ejecucion = (Script*) queue_pop(colaReady);
 		pthread_mutex_unlock(&cola_ready_mutex);
 
-		resultado_exec = ejecutar_quantum(&script_en_ejecucion, serverSocket);
+		resultado_exec = ejecutar_quantum(&script_en_ejecucion, index);
 
 		switch (resultado_exec) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
@@ -788,11 +897,11 @@ void* exec(int serverSocket) {
 			free(script_en_ejecucion);
 			break;
 		}
-		pthread_mutex_unlock(&exec_mutex);
+		pthread_mutex_unlock(list_get(exec_mutexes, index));
 	}
 }
 
-int ejecutar_quantum(Script** script, int serverSocket) {
+int ejecutar_quantum(Script** script, int index) {
 	Script* scriptEnExec = *script;
 	int entradaValida;
 	int ejecutadas = 1;
@@ -818,8 +927,7 @@ int ejecutar_quantum(Script** script, int serverSocket) {
 		}
 
 		if (entradaValida) {
-			ejecucionCorrecta = interpretarComando(header, parametros,
-					serverSocket);
+			ejecucionCorrecta = interpretarComando(header, parametros, index);
 		}
 		if (!entradaValida || !ejecucionCorrecta) {
 			return CORTE_SCRIPT_POR_LINEA_ERRONEA;
