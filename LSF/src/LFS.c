@@ -24,6 +24,9 @@ pthread_mutex_t mem_table_mutex;
 pthread_mutex_t bitarray_mutex;
 pthread_mutex_t metadatas_tablas_mutex;
 t_list* metadatas_tablas;
+t_dictionary* bloqueo_tablas;
+pthread_mutex_t bloqueo_tablas_mutex;
+
 
 char* ruta;
 void *receptorDeConsultas(void *);
@@ -51,7 +54,9 @@ int main() {
 	pthread_mutex_init(&mem_table_mutex, NULL);
 	pthread_mutex_init(&bitarray_mutex, NULL);
 	pthread_mutex_init(&metadatas_tablas_mutex, NULL);
+	pthread_mutex_init(&bloqueo_tablas_mutex, NULL);
 
+	bloqueo_tablas = dictionary_create();
 	mem_table = list_create();
 	logger = iniciar_logger();
 	//t_config* config = leer_config();
@@ -108,6 +113,7 @@ int main() {
 		for (int i = 0; i < metadatas_tablas->elements_count; i++) {
 			Metadata* una_tabla = list_get(metadatas_tablas, i);
 			crear_hilo_compactacion_de_tabla(una_tabla);
+			crear_mutex_de_tabla(una_tabla);
 		}
 	} else {
 		log_debug(logger, "No hay tablas todavia!");
@@ -230,6 +236,31 @@ void crear_hilo_compactacion_de_tabla(Metadata* una_tabla) {
 	pthread_detach(threadCompactacion);
 }
 
+void crear_mutex_de_tabla(Metadata* una_tabla) {
+	pthread_mutex_t* mutex_tabla = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(mutex_tabla, NULL);
+
+	pthread_mutex_lock(&bloqueo_tablas_mutex);
+	dictionary_put(bloqueo_tablas, una_tabla->nombre_tabla, mutex_tabla);
+	pthread_mutex_unlock(&bloqueo_tablas_mutex);
+}
+
+void lock_mutex_tabla(char* nombre_tabla) {
+	pthread_mutex_lock(&bloqueo_tablas_mutex);
+	pthread_mutex_t* mutex_tabla = dictionary_get(bloqueo_tablas, nombre_tabla);
+	log_debug(logger, "La tabla esta bloqueada");
+	pthread_mutex_lock(mutex_tabla);
+	pthread_mutex_unlock(&bloqueo_tablas_mutex);
+}
+
+void unlock_mutex_tabla(char* nombre_tabla) {
+	pthread_mutex_lock(&bloqueo_tablas_mutex);
+	pthread_mutex_t* mutex_tabla = dictionary_get(bloqueo_tablas, nombre_tabla);
+	pthread_mutex_unlock(mutex_tabla);
+	log_debug(logger, "La tabla se desbloqueo");
+	pthread_mutex_unlock(&bloqueo_tablas_mutex);
+}
+
 void* ejecutar_comando(int header, void* package) {
 	log_debug(logger, "Ejecutando");
 	switch (header) {
@@ -255,7 +286,6 @@ void* ejecutar_comando(int header, void* package) {
 	}
 }
 
-//Falta agregar funcionalidad de que debe buscar a la tabla correspondiente el valor y demas...
 Registro* lfs_select(t_PackageSelect* package) {
 
 	char* mi_ruta = string_new();
@@ -277,22 +307,22 @@ Registro* lfs_select(t_PackageSelect* package) {
 	}
 	log_debug(logger, "Existe tabla, BRO!");
 
-	//2) Obtener Metadata
 	Metadata* metadata = obtener_metadata(mi_ruta);
 	strcpy(metadata->nombre_tabla,package->tabla);
 	loguear_metadata(metadata);
 
-	//3) Calcular que particion contiene a KEY
 	int particionObjetivo = calcular_particion(package->key,
 			metadata->partitions);
 	char* particionObjetivo_string = string_itoa(particionObjetivo);
 	log_debug(logger, particionObjetivo_string);
 	free(particionObjetivo_string);
 
-	//4) Escanear particion objetivo, archivos temporales y memoria temporal
-
+	log_debug(logger, "Tabla es bloqueada");
+	lock_mutex_tabla(package->tabla);
 	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
 			mi_ruta, package->tabla);
+	unlock_mutex_tabla(package->tabla);
+	log_debug(logger, "Tabla no esta mas bloqueada");
 
 	free(metadata);
 	free(mi_ruta);
@@ -1578,7 +1608,9 @@ char* contenido_de_temporales(char* nombre_tabla) {
 
 			log_debug(logger, nueva_ruta_a_temporal);
 			if (access(ruta_a_temporal, F_OK) != -1) {
+				lock_mutex_tabla(nombre_tabla);
 				rename(ruta_a_temporal, nueva_ruta_a_temporal);
+				unlock_mutex_tabla(nombre_tabla);
 				t_config* temporal = config_create(nueva_ruta_a_temporal);
 				char** blocks = config_get_array_value(temporal, "BLOCKS");
 
@@ -1730,7 +1762,7 @@ void liberar_bloques_de_particion(char* nombre_tabla) {
 
 		log_debug(logger, "Ruta a particion: %s", mi_ruta_a_particion);
 
-		//bloquear la tabla
+		lock_mutex_tabla(nombre_tabla);
 		t_config* particion = config_create(mi_ruta_a_particion);
 
 		char** blocks = config_get_array_value(particion, "BLOCKS");
@@ -1739,7 +1771,7 @@ void liberar_bloques_de_particion(char* nombre_tabla) {
 		config_set_value(particion, "BLOCKS", "[]");
 		config_save(particion);
 		config_destroy(particion);
-		//desbloquear la tabla
+		unlock_mutex_tabla(nombre_tabla);
 		free(mi_ruta_a_particion);
 		string_iterate_lines(blocks, (void*) free);
 		free(blocks);
@@ -1763,7 +1795,7 @@ void liberar_bloques_de_temporales(char* nombre_tabla) {
 			string_append(&ruta_a_temporal, tmpc);
 
 			if (access(ruta_a_temporal, F_OK) != -1) {
-				//bloquear la tabla
+				lock_mutex_tabla(nombre_tabla);
 				t_config* temporal = config_create(ruta_a_temporal);
 
 				char** blocks = config_get_array_value(temporal, "BLOCKS");
@@ -1772,7 +1804,7 @@ void liberar_bloques_de_temporales(char* nombre_tabla) {
 				string_iterate_lines(blocks, (void*) free);
 				free(blocks);
 				unlink(ruta_a_temporal);
-				//desbloquear la tabla
+				unlock_mutex_tabla(nombre_tabla);
 			}
 			free(mi_ruta_a_a_tabla);
 			free(ruta_a_temporal);
@@ -1859,8 +1891,10 @@ void* dump() {
 
 	void _dumpear_tabla(Tabla* tabla) {
 		int bytes_a_dumpear = tamanio_de_tabla(tabla);
+		lock_mutex_tabla(tabla->nombre_tabla);
 		_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
 		escribir_registros_en_bloques(tabla);
+		unlock_mutex_tabla(tabla->nombre_tabla);
 	}
 
 	while (1) {
@@ -2037,7 +2071,7 @@ void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blo
 	log_debug(logger, "Ruta a particion: %s", mi_ruta_a_particion);
 
 	log_debug(logger, bloques);
-	//bloquear la tabla
+	lock_mutex_tabla(nombre_tabla);
 	t_config* config_particion = config_create(mi_ruta_a_particion);
 	config_set_value(config_particion, "BLOCKS", bloques);
 	log_debug(logger, "size = %i", size);
@@ -2045,7 +2079,7 @@ void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blo
 	config_set_value(config_particion, "SIZE", string_size);
 	config_save(config_particion);
 	config_destroy(config_particion);
-	//desbloquear la tabla
+	unlock_mutex_tabla(nombre_tabla);
 	free(mi_ruta_a_particion);
 	free(bloques);
 	free(string_size);
