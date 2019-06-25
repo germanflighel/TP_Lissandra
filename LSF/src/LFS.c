@@ -18,6 +18,7 @@
 #include <time.h>
 
 t_log* logger;
+t_log* tiempos_de_compactacion;
 t_list* mem_table;
 int max_value_size;
 int tiempo_dump;
@@ -39,6 +40,7 @@ t_config* config;
 
 int main() {
 	logger = iniciar_logger();
+	tiempos_de_compactacion = log_create("tiempos_bloqueo.log", "LFS", 0, LOG_LEVEL_INFO);
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	char* entrada = leerConsola();
@@ -220,11 +222,11 @@ t_config* leer_config() {
 }
 
 t_log* iniciar_logger(void) {
-
 	char* lfs = "LFS";
 	return log_create(LOG_FILE_PATH, lfs, 1, LOG_LEVEL_DEBUG);
-
 }
+
+
 
 void crear_hilo_compactacion_de_tabla(Metadata* una_tabla) {
 	pthread_t threadCompactacion;
@@ -1571,6 +1573,8 @@ void* compactar_tabla(Metadata* una_tabla) {
 		list_iterate(diferencia, (void*) loguear_registro);
 		modificar_bloques(una_tabla->nombre_tabla, diferencia, &tiempo_bloqueado);
 		list_destroy_and_destroy_elements(diferencia, (void*) liberar_registro);
+
+		log_info(tiempos_de_compactacion, "La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
 	}
 }
 
@@ -1749,11 +1753,7 @@ void modificar_bloques(char* nombre_tabla, t_list* registros_a_guardar, double* 
 	log_debug(logger, "Libere todos los bloques de particion");
 	liberar_bloques_de_temporales(nombre_tabla, tiempo_bloqueado);
 	log_debug(logger, "Libere todos los bloques de temporales");
-
-
 	escribir_registros_en_bloques_nuevos(nombre_tabla, registros_a_guardar, tiempo_bloqueado);
-
-	log_debug(logger, "Se bloqueo la tabla %s durante %f", nombre_tabla, *tiempo_bloqueado);
 }
 
 void liberar_bloques_de_particion(char* nombre_tabla, double* tiempo_bloqueado) {
