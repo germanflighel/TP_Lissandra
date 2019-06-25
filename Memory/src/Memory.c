@@ -228,7 +228,7 @@ int main() {
 					enviar_handshake(numero_memoria, peersock);
 
 					log_debug(g_logger,
-							"Cliente conectado. Esperando Envío de mensajessss.");
+							"Cliente conectado. Esperando Envío de mensajes.");
 				}
 				FD_CLR(srvsock, &tempset);
 			}
@@ -249,7 +249,7 @@ int main() {
 						//ok
 
 					} else if (result == 0) {
-						//printf("4\n");
+						printf("Kernel desconectado\n");
 						close(j);
 						FD_CLR(j, &readset);
 					} else {
@@ -592,9 +592,10 @@ int algoritmoDeReemplazo() {
 	int marcoLiberado = -1;
 
 	void porTabla(Renglon_pagina *renglon) {
-		if (!renglon->modificado && timestamp < renglon->last_used_ts) {
+		if (!renglon->modificado && timestamp > renglon->last_used_ts) {
 			segmento_encontrado = segmento_actual;
 			renglon_encontrado = renglon;
+			timestamp = renglon->last_used_ts;
 		}
 	}
 	;

@@ -87,7 +87,7 @@ char* serializarMensaje(char* mensaje, int* size) {
 	return serializedPackage;
 }
 
-int recieve_and_deserialize_mensaje(int socketCliente) {
+char* recieve_and_deserialize_mensaje(int socketCliente) {
 
 	int status;
 	int buffer_size;
