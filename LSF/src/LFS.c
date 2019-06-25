@@ -415,6 +415,7 @@ int lfs_create(t_PackageCreate* package) {
 	pthread_mutex_unlock(&metadatas_tablas_mutex);
 
 	crear_hilo_compactacion_de_tabla(metadata);
+	crear_mutex_de_tabla(metadata);
 
 	log_debug(logger, "Cree las particiones");
 	return 1;
@@ -1574,6 +1575,7 @@ void* compactar_tabla(Metadata* una_tabla) {
 		modificar_bloques(una_tabla->nombre_tabla, diferencia, &tiempo_bloqueado);
 		list_destroy_and_destroy_elements(diferencia, (void*) liberar_registro);
 
+		log_warning(logger, "La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
 		log_info(tiempos_de_compactacion, "La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
 	}
 }
@@ -1993,6 +1995,10 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		registro = list_get(registros, i);
 		size += size_of_Registro(registro);
 	}
+	if (!size) {
+		log_debug(logger, "Nada para la particion %i", particion);
+		return;
+	}
 	t_list* block_list = list_create();
 	char* blocks = string_new();
 	string_append(&blocks, "[");
@@ -2011,8 +2017,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		list_add(block_list, bloque);
 		log_debug(logger, "Necesite el bloque: %i", bloque);
 	}
-
-
+	log_debug(logger, "Bloques %s", blocks);
 
 	char** blocks_as_array = string_get_string_as_array(blocks);
 	int i = 0;
