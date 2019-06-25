@@ -799,7 +799,12 @@ void *inputFunc(void* serverSocket)
 	while (memoryUP) {
 		entradaValida = 1;
 
-		char* entrada = leerConsola();
+		char* entrada;
+
+		entrada = readline("Memory> ");
+
+		if(strcmp(entrada,"")!=0) {
+
 
 		char* parametros;
 		int header;
@@ -817,12 +822,17 @@ void *inputFunc(void* serverSocket)
 			log_warning(g_logger, "Parametros incorrectos");
 		}
 
+		add_history(entrada);
+
+
 		free(entrada);
 
 		if (memoryUP && entradaValida && okParams) {
 
 			interpretarComando(header, parametros, serverSocket);
 			free(parametros);
+		}
+
 		}
 
 	}

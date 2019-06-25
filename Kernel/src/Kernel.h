@@ -19,6 +19,9 @@
 #include <commons/collections/queue.h>
 #include <commons/string.h>
 #include <commons/collections/dictionary.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
 
 
 #define CONFIG_PATH "KernelSocket.config"
@@ -66,6 +69,7 @@ int select_kernel(char*,int);
 Script* levantar_script(char*);
 void* exec(int);
 void* intentarEstablecerConexion();
+void* describeCadaX(int);
 
 
 #endif
