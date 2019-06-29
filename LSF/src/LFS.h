@@ -18,11 +18,15 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <ftw.h>
-
+#include <stdarg.h>
 
 #include <sockets.h>
 
 #define BACKLOG 1
+
+#define INFO -30
+#define DEBUG -29
+#define WARNING -28
 
 #define CONFIG_PATH "LFSSocket.config"
 #define LOG_FILE_PATH "lfs_global.log"
@@ -61,7 +65,7 @@ int lfs_insert(t_PackageInsert* package);
 int existe_tabla(char* tabla);
 Metadata* obtener_metadata(char* ruta);
 char* consistency_to_str(int consistency);
-t_list* lfs_describe(char* punto_montaje);
+t_list* lfs_describe();
 void loguear_metadata(Metadata* metadata);
 void loguear_registro(Registro* registro);
 int calcular_particion(int key,int cantidad_particiones);
@@ -72,7 +76,7 @@ int lfs_create(t_PackageCreate* package);
 char* ruta_a_tabla(char* tabla);
 int agregar_tabla_a_mem_table(char* tabla);
 int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla);
-t_list* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla);
+t_list* lfs_describe_a_table(char* nombre_tabla);
 char* contenido_de_los_bloques(char* nombre_tabla, char** blocks);
 void* dump();
 

@@ -54,7 +54,7 @@ int main() {
 	//Cofig Path
 	printf("Ingrese nombre del archivo de configuración \n");
 	char* entrada = leerConsola();
-	conf_path = malloc(strlen(entrada));
+	conf_path = malloc(strlen(entrada)+1);
 	strcpy(conf_path, entrada);
 	free(entrada);
 
@@ -219,6 +219,8 @@ int main() {
 				} else {
 					FD_SET(peersock, &readset);
 					maxfd = (maxfd < peersock) ? peersock : maxfd;
+
+					log_info(g_logger, "Conectado socket: %d",peersock);
 
 					if (!recibir_handshake(KERNEL, peersock)) {
 						log_warning(g_logger, "Handshake invalido");
@@ -878,11 +880,7 @@ void send_package(int header, void* package, int socketCliente) {
 		t_describe describeRecibido;
 		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
 
-		/*
-		 for (int i = 0; i < describeRecibido.cant_tablas; i++) {
-		 printf("%s\n", describeRecibido.tablas[i].nombre_tabla);
-		 }
-		 */
+
 		char* serializedPackage2;
 		serializedPackage2 = serializarDescribe(&describeRecibido);
 

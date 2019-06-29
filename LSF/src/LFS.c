@@ -19,22 +19,23 @@
 
 t_log* logger;
 t_log* tiempos_de_compactacion;
-t_list* mem_table;
 int max_value_size;
 int tiempo_dump;
 pthread_mutex_t mem_table_mutex;
 pthread_mutex_t bitarray_mutex;
 pthread_mutex_t metadatas_tablas_mutex;
-t_list* metadatas_tablas;
-t_dictionary* bloqueo_tablas;
 pthread_mutex_t bloqueo_tablas_mutex;
-
+pthread_mutex_t logger_mutex;
+t_list* metadatas_tablas;
+t_list* mem_table;
+t_dictionary* bloqueo_tablas;
 
 char* ruta;
 void *receptorDeConsultas(void *);
 int lfs_blocks;
 int lfs_block_size;
 int cantidad_de_dumpeos = 1;
+int retardo;
 t_bitarray* bitmap;
 t_config* config;
 
@@ -58,6 +59,8 @@ int main() {
 	pthread_mutex_init(&bitarray_mutex, NULL);
 	pthread_mutex_init(&metadatas_tablas_mutex, NULL);
 	pthread_mutex_init(&bloqueo_tablas_mutex, NULL);
+	pthread_mutex_init(&logger_mutex, NULL);
+
 
 	bloqueo_tablas = dictionary_create();
 	mem_table = list_create();
@@ -66,14 +69,15 @@ int main() {
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
-	log_debug(logger, puerto);
+	loguear(puerto,DEBUG);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 	tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
+	retardo = config_get_int_value(config, "RETARDO");
 
 	char* path_to_metadata = string_new();
 	string_append(&path_to_metadata, ruta);
 	string_append(&path_to_metadata, "/Metadata/Metadata.bin");
-	log_debug(logger, path_to_metadata);
+	loguear(path_to_metadata);
 
 	t_config* metadata_lfs = config_create(path_to_metadata);
 	lfs_blocks = config_get_int_value(metadata_lfs, "BLOCKS");
@@ -85,9 +89,9 @@ int main() {
 	//escribir_bitarray(ruta);
 	levantar_bitmap(ruta);
 
-	log_debug(logger, "Levante el Bitmap");
+	loguear("Levante el Bitmap",DEBUG);
+	loguear("Primer bloque libre: %i",DEBUG, primer_bloque_libre_sin_set());
 
-	log_debug(logger, "Primer bloque libre: %i", primer_bloque_libre_sin_set());
 
 	retorno_de_consola = pthread_create(&threadConsola, NULL,
 			recibir_por_consola, NULL);
@@ -108,7 +112,7 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 
-	metadatas_tablas = lfs_describe(ruta);
+	metadatas_tablas = lfs_describe();
 	if (metadatas_tablas) {
 		pthread_t threadCompactacion;
 		int status_thread_compactacion;
@@ -119,7 +123,7 @@ int main() {
 			crear_mutex_de_tabla(una_tabla);
 		}
 	} else {
-		log_debug(logger, "No hay tablas todavia!");
+		loguear("No hay tablas todavia!", DEBUG);
 		metadatas_tablas = list_create();
 	}
 
@@ -176,7 +180,7 @@ int main() {
 	while (true) {
 		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
 				&addrlen);
-		log_debug(logger, "Acepte una conexion");
+		loguear("Acepte una conexion", DEBUG);
 
 		log_debug(logger, "A ver si es una memoria");
 
@@ -251,21 +255,24 @@ void crear_mutex_de_tabla(Metadata* una_tabla) {
 void lock_mutex_tabla(char* nombre_tabla) {
 	pthread_mutex_lock(&bloqueo_tablas_mutex);
 	pthread_mutex_t* mutex_tabla = dictionary_get(bloqueo_tablas, nombre_tabla);
+	pthread_mutex_unlock(&bloqueo_tablas_mutex);
+
 	log_debug(logger, "La tabla esta bloqueada");
 	pthread_mutex_lock(mutex_tabla);
-	pthread_mutex_unlock(&bloqueo_tablas_mutex);
 }
 
 void unlock_mutex_tabla(char* nombre_tabla) {
 	pthread_mutex_lock(&bloqueo_tablas_mutex);
 	pthread_mutex_t* mutex_tabla = dictionary_get(bloqueo_tablas, nombre_tabla);
+	pthread_mutex_unlock(&bloqueo_tablas_mutex);
+
 	pthread_mutex_unlock(mutex_tabla);
 	log_debug(logger, "La tabla se desbloqueo");
-	pthread_mutex_unlock(&bloqueo_tablas_mutex);
 }
 
 void* ejecutar_comando(int header, void* package) {
 	log_debug(logger, "Ejecutando");
+	usleep(retardo * 1000);
 	switch (header) {
 	case SELECT:
 		return lfs_select((t_PackageSelect*) package);
@@ -278,10 +285,9 @@ void* ejecutar_comando(int header, void* package) {
 		break;
 	case DESCRIBE:
 		if (((t_PackageDescribe*) package)->tabla_long == 1) {
-			return lfs_describe(ruta);
+			return lfs_describe();
 		} else {
-			return lfs_describe_a_table(ruta,
-					((t_PackageDescribe*) package)->nombre_tabla);
+			return lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
 		}
 		break;
 	case DROP:
@@ -302,12 +308,15 @@ Registro* lfs_select(t_PackageSelect* package) {
 
 	log_debug(logger, mi_ruta);
 
+	lock_mutex_tabla(package->tabla);
 	if (!existe_tabla(mi_ruta)) {
+		unlock_mutex_tabla(package->tabla);
 		log_debug(logger, "No existe la tabla");
 		Registro* registro = malloc(sizeof(Registro));
 		registro->value = NULL;
 		return registro;
 	}
+	unlock_mutex_tabla(package->tabla);
 	log_debug(logger, "Existe tabla, BRO!");
 
 	Metadata* metadata = obtener_metadata(mi_ruta);
@@ -376,7 +385,6 @@ int lfs_insert(t_PackageInsert* package) {
 
 int lfs_create(t_PackageCreate* package) {
 	log_debug(logger, "Creando");
-	//Primero creo el directorio para la tabla
 	char* directorio = ruta_a_tabla(package->tabla);
 	if (existe_tabla(directorio)) {
 		free(directorio);
@@ -384,20 +392,18 @@ int lfs_create(t_PackageCreate* package) {
 		return 0;
 	}
 
-	if (mkdir(directorio, 0700)) {
+	if (!crear_carpeta_en(directorio)) {
 		free(directorio);
 		return 0;
 	}
 
 
-	//Creo el archivo metadata asociado a la tabla
 
 	if (!crear_metadata(package, directorio)) {
 		free(directorio);
 		return 0;
 	}
 
-	//Creo los archivos binarios
 	if (!crear_particiones(package->partitions, directorio)) {
 		free(directorio);
 		return 0;
@@ -600,13 +606,13 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 	return indice_insercion + 1 > cantidad_anterior;
 }
 
-t_list* lfs_describe(char* punto_montaje) {
+t_list* lfs_describe() {
 
 	t_list* metadatas = list_create();
 	DIR *tables_directory;
 	struct dirent *a_directory;
 	char* tablas_path = string_new();
-	string_append(&tablas_path, punto_montaje);
+	string_append(&tablas_path, ruta);
 	string_append(&tablas_path, "/Tables/");
 	log_debug(logger, tablas_path);
 	tables_directory = opendir(tablas_path);
@@ -638,13 +644,13 @@ t_list* lfs_describe(char* punto_montaje) {
 	return metadatas;
 }
 
-t_list* lfs_describe_a_table(char* punto_montaje, char* nombre_tabla) {
+t_list* lfs_describe_a_table(char* nombre_tabla) {
 
 	Metadata* metadata = malloc(sizeof(Metadata));
 	DIR *tables_directory;
 	struct dirent *a_directory;
 	char* tabla_path = string_new();
-	string_append(&tabla_path, punto_montaje);
+	string_append(&tabla_path, ruta);
 	string_append(&tabla_path, "/Tables/");
 	log_debug(logger, tabla_path);
 	string_append(&tabla_path, nombre_tabla);
@@ -676,22 +682,16 @@ int existe_tabla(char* tabla) {
 }
 
 void loguear_metadata(Metadata* metadata) {
-	log_debug(logger, metadata->nombre_tabla);
-	log_debug(logger,
-			"Consistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld",
-			consistency_to_str(metadata->consistency), metadata->partitions,
+	loguear("%s\nConsistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld", DEBUG,
+			metadata->nombre_tabla,
+			consistency_to_str(metadata->consistency),
+			metadata->partitions,
 			metadata->compaction_time);
 }
 
-void loguear_int(int n) {
-	char* n_string = string_itoa(n);
-	log_debug(logger, n_string);
-	free(n_string);
-}
 
 void loguear_registro(Registro* registro) {
-	log_debug(logger, "Key: %i, Value: %s, Timestamp: %i", registro->key,
-			registro->value, registro->timeStamp);
+	loguear("Key: %i, Value: %s, Timestamp: %i", DEBUG, registro->key, registro->value, registro->timeStamp);
 }
 
 Metadata* obtener_metadata(char* ruta) {
@@ -945,9 +945,11 @@ int lfs_drop(char* nombre_tabla){
 		return 0;
 	}
 
+	lock_mutex_tabla(nombre_tabla);
 	Metadata* metadata = obtener_metadata(mi_ruta_a_tabla);
 	int particiones = metadata->partitions;
 	for(int numero_particion = 1; numero_particion <= particiones; numero_particion++){
+		//TODO:Extraer en funcion path_to_particion
 		char* ruta_a_particion = string_new();
 		string_append(&ruta_a_particion, mi_ruta_a_tabla);
 		char* barra = "/";
@@ -972,6 +974,7 @@ int lfs_drop(char* nombre_tabla){
 	free(metadata);
 
 	for(int numero_temporal = 1; numero_temporal <= cantidad_de_dumpeos; numero_temporal++){
+		//TODO:Extraer en funcion path_to_temporal
 		char* ruta_a_temporal = string_new();
 		string_append(&ruta_a_temporal, ruta_a_tabla);
 		char* barra = "/";
@@ -996,11 +999,12 @@ int lfs_drop(char* nombre_tabla){
 		free(ruta_a_temporal);
 	}
 
+	//TODO: Habria que borrar el .tpmc
+
 	remove_directory(mi_ruta_a_tabla);
 	free(mi_ruta_a_tabla);
 
 	if(existe_tabla_en_mem_table(nombre_tabla)){
-		//Hay que extraer en una funcion aparte es_tabla...
 
 		int es_tabla(Tabla* tabla) {
 			if (strcmp(tabla->nombre_tabla, nombre_tabla) == 0) {
@@ -1023,39 +1027,31 @@ int lfs_drop(char* nombre_tabla){
 		log_debug(logger, "Elimine la tabla de mem table");
 	}
 
+	unlock_mutex_tabla(nombre_tabla);
 
 	return 1;
 }
-
 
 int remove_directory(const char *path) {
 	DIR *d = opendir(path);
 	size_t path_len = strlen(path);
 	int r = -1;
-
 	if (d) {
 		struct dirent *p;
-
 		r = 0;
-
 		while (!r && (p = readdir(d))) {
 			int r2 = -1;
 			char *buf;
 			size_t len;
-
 			/* Skip the names "." and ".." as we don't want to recurse on them. */
 			if (!strcmp(p->d_name, ".") || !strcmp(p->d_name, "..")) {
 				continue;
 			}
-
 			len = path_len + strlen(p->d_name) + 2;
 			buf = malloc(len);
-
 			if (buf) {
 				struct stat statbuf;
-
 				snprintf(buf, len, "%s/%s", path, p->d_name);
-
 				if (!stat(buf, &statbuf)) {
 					if (S_ISDIR(statbuf.st_mode)) {
 						r2 = remove_directory(buf);
@@ -1063,20 +1059,15 @@ int remove_directory(const char *path) {
 						r2 = unlink(buf);
 					}
 				}
-
 				free(buf);
 			}
-
 			r = r2;
 		}
-
 		closedir(d);
 	}
-
 	if (!r) {
 		r = rmdir(path);
 	}
-
 	return r;
 }
 
@@ -1368,6 +1359,7 @@ void *recibir_por_consola() {
 
 void interpretarComando(int header, char* parametros) {
 
+	usleep(retardo * 1000);
 	void* package;
 	switch (header) {
 	case SELECT:
@@ -1419,7 +1411,7 @@ void interpretarComando(int header, char* parametros) {
 
 		if (((t_PackageDescribe*) package)->nombre_tabla) {
 			Metadata* metadata;
-			t_list* lista = lfs_describe_a_table(ruta, ((t_PackageDescribe*) package)->nombre_tabla);
+			t_list* lista = lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
 			if (lista != NULL) {
 				metadata = list_get(lista, 0);
 				loguear_metadata(metadata);
@@ -1434,7 +1426,7 @@ void interpretarComando(int header, char* parametros) {
 			free(package);
 			break;
 		}
-		t_list* metadatas = lfs_describe(ruta);
+		t_list* metadatas = lfs_describe();
 		list_iterate(metadatas, (void*) loguear_metadata);
 
 		list_destroy_and_destroy_elements(metadatas, (void*) free);
@@ -2323,67 +2315,29 @@ int existe_filesystem(char* punto_montaje) {
 	return status;
 }
 
+void loguear(const char* formato, int tipo_log, ...) {
+	va_list arguments;
+	va_start(arguments, formato);
+	char* a_loguear = string_from_vformat(formato, arguments);
+	pthread_mutex_lock(&logger_mutex);
+	switch (tipo_log) {
+		case DEBUG:
+			log_debug(logger, a_loguear);
+			break;
 
-/*
- int escribir_registro_en_bloque(Registro* registro, char* nombre_tabla) {
-	char* temporal_path = ruta_a_tabla(nombre_tabla, ruta);
+		case INFO:
+			log_info(logger, a_loguear);
+			break;
 
-	string_append(&temporal_path, "/");
-	char* cantidad_dumpeos_string = string_itoa(cantidad_de_dumpeos);
-	string_append(&temporal_path, cantidad_dumpeos_string);
+		case WARNING:
+			log_warning(logger, a_loguear);
+			break;
 
-	char* tmp = ".tmp";
-	string_append(&temporal_path, tmp);
-
-	t_config* temporal = config_create(temporal_path);
-
-	int size = config_get_int_value(temporal, "SIZE");
-	char** blocks = config_get_array_value(temporal, "BLOCKS");
-
-	int i = 0;
-	while (blocks[i] != NULL) {
-		char* ruta_a_bloque = string_new();
-		string_append(&ruta_a_bloque, ruta);
-		string_append(&ruta_a_bloque, "/Bloques/");
-		string_append(&ruta_a_bloque, blocks[i]);
-		string_append(&ruta_a_bloque, ".bin");
-
-		log_debug(logger, ruta_a_bloque);
-
-		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
-
-		char* registro_a_escribir = string_new();
-		string_append_with_format(&registro_a_escribir, "%l;%i;%s",
-				registro->timeStamp, registro->key, registro->value);
-
-		log_debug(logger, "Se va a guardar: %s", registro_a_escribir)
-
-		int size_in_fs = 0;
-		while (size_in_fs < bytes_a_dumpear) {
-			pthread_mutex_lock(&bitarray_mutex);
-			int bloque = primer_bloque_libre();
-			pthread_mutex_unlock(&bitarray_mutex);
-
-			size_in_fs += lfs_block_size;
-			if (!(size_in_fs > bytes_a_dumpear)) {
-				string_append_with_format(&temporal_a_crear, "%d,", bloque);
-			} else {
-				string_append_with_format(&temporal_a_crear, "%d]", bloque);
-			}
-		}
-
-		size_t textsize = strlen(temporal_a_crear) + 1;
-		lseek(fd, textsize - 1, SEEK_SET);
-		write(fd, "", 1);
-		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
-				0);
-		memcpy(map, temporal_a_crear, strlen(temporal_a_crear));
-		msync(map, textsize, MS_SYNC);
-		munmap(map, textsize);
-		close(fd);
-		free(temporal_a_crear);
-		free(cantidad_dumpeos_string);
-		free(temporal_path);
-
+		case ERROR:
+			log_error(logger, a_loguear);
+			break;
 	}
-*/
+	pthread_mutex_unlock(&logger_mutex);
+	free(a_loguear);
+	va_end(arguments);
+}

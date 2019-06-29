@@ -68,7 +68,7 @@ char* serializarDescribe(t_describe *package) {
 
 char* serializarMensaje(char* mensaje, int* size) {
 
-	int msg_length = strlen(mensaje);
+	uint32_t msg_length = strlen(mensaje);
 	int total_size = sizeof(uint32_t) + msg_length;
 	char *serializedPackage = malloc(total_size);
 
@@ -94,20 +94,20 @@ char* recieve_and_deserialize_mensaje(int socketCliente) {
 	char *buffer = malloc(buffer_size = sizeof(uint32_t));
 	char* mensaje;
 
-	int strlen;
+	int msglength;
 	status = recv(socketCliente, buffer, buffer_size, 0);
-	memcpy(&(strlen), buffer, buffer_size);
+	memcpy(&(msglength), buffer, buffer_size);
 	if (!status)
 		return 0;
 
-	//printf("%d \n", strlen);
+	//printf("%d \n", msglength);
 
-	mensaje = malloc(strlen + 1);
-	status = recv(socketCliente, mensaje, strlen, 0);
+	mensaje = malloc(msglength + 1);
+	status = recv(socketCliente, mensaje, msglength, 0);
 	if (!status)
 		return 0;
 
-	mensaje[strlen] = '\0';
+	mensaje[msglength] = '\0';
 
 	free(buffer);
 

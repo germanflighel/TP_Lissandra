@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdarg.h>
 #include <sys/mman.h>
 t_log* logger_Kernel;
 int quantum;
@@ -22,9 +23,14 @@ t_queue* colaReady;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
 
-t_list* exec_mutexes;
+//sincro
+pthread_mutex_t eventual_mutex;
+pthread_mutex_t logger_mutex;
+pthread_mutex_t tablas_actuales_mutex;
+pthread_mutex_t memorias_mutex;
+//sincro
 
-pthread_mutex_t describing;
+t_list* exec_mutexes;
 
 char* ip_destino;
 char** puertos_posibles;
@@ -34,7 +40,6 @@ int strongC = NULL;
 t_queue* eventualC;
 
 int main() {
-
 	/*
 	 *
 	 *  Estas y otras preguntas existenciales son resueltas getaddrinfo();
@@ -67,10 +72,11 @@ int main() {
 	//printf("LLegue\n");
 	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
 	//printf("LLegue\n");
-	log_info(logger_Kernel, puerto);
 
-	Memoria* mem_nueva = malloc(sizeof(Memoria));
-	mem_nueva->puerto = atoi(puerto);
+	pthread_mutex_init(&logger_mutex, NULL);
+	log_info_s(logger_Kernel, puerto);
+
+	pthread_mutex_init(&memorias_mutex, NULL);
 
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
@@ -84,9 +90,8 @@ int main() {
 	 * 	Obtiene un socket (un file descriptor -todo en linux es un archivo-), utilizando la estructura serverInfo que generamos antes.
 	 *
 	 */
+
 	int serverSocket;
-	serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
-			serverInfo->ai_protocol);
 
 	/*
 	 * 	Perfecto, ya tengo el medio para conectarme (el archivo), y ya se lo pedi al sistema.
@@ -94,29 +99,34 @@ int main() {
 	 *
 	 */
 
-	if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
-			== 0) {
+	Memoria* mem_nueva = malloc(sizeof(Memoria));
+	mem_nueva->puerto = atoi(puerto);
+	mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
+	int num_memoria;
+	for (int sock = 0; sock < multiprocesamiento; sock++) {
+		serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
+				serverInfo->ai_protocol);
+		if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
+				== 0) {
 
-		log_info(logger_Kernel, "conecte");
+			log_info_s(logger_Kernel, "conecte");
 
-		enviar_handshake(KERNEL, serverSocket);
+			enviar_handshake(KERNEL, serverSocket);
 
-		int num_memoria = recibir_numero_memoria(serverSocket);
-		printf("Num memoria %d\n", num_memoria);
+			num_memoria = recibir_numero_memoria(serverSocket);
+			printf("Num memoria %d\n", num_memoria);
 
-		printf("Conectado al servidor.\n");
-		log_info(logger_Kernel, "Conecte al servidor.");
+			printf("Conectado al servidor.\n");
+			log_info_s(logger_Kernel, "Conecte al servidor.");
 
-		mem_nueva->numero = num_memoria;
-		mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
-		for (int sock = 0; sock < multiprocesamiento; sock++) {
+			mem_nueva->numero = num_memoria;
 			mem_nueva->socket[sock] = serverSocket;
-		}
 
-	} else {
-		log_info(logger_Kernel, "No conecte");
-		printf("No se pudo conectar al servidor...");
-		log_info(logger_Kernel, "No me pude conectar con el servidor");
+		} else {
+			log_info_s(logger_Kernel, "No conecte");
+			printf("No se pudo conectar al servidor...");
+			log_info_s(logger_Kernel, "No me pude conectar con el servidor");
+		}
 	}
 	freeaddrinfo(serverInfo);	// No lo necesitamos mas
 
@@ -134,7 +144,8 @@ int main() {
 	colaReady = queue_create();
 	sem_init(&ejecutar_sem, 0, 0);
 	pthread_mutex_init(&cola_ready_mutex, NULL);
-
+	pthread_mutex_init(&eventual_mutex, NULL);
+	pthread_mutex_init(&tablas_actuales_mutex, NULL);
 
 	for (int index = 0; index < multiprocesamiento; index++) {
 		pthread_mutex_t* exec_mutex = malloc(sizeof(pthread_mutex_t));
@@ -152,8 +163,6 @@ int main() {
 		}
 	}
 
-
-	pthread_mutex_init(&describing, NULL);
 	//setup planificacion
 
 	//setup consistencias
@@ -206,7 +215,6 @@ int main() {
 	}
 
 	//threadDescribe
-
 	int enviar = 1;
 	int entradaValida;
 	t_PackagePosta package;
@@ -301,8 +309,9 @@ int obtenerConsistencia(char* tablaPath) {
 			consistencia = tabla->consistencia;
 		}
 	}
-
+	pthread_mutex_lock(&tablas_actuales_mutex);
 	list_iterate(tablas_actuales, buscarTabla);
+	pthread_mutex_unlock(&tablas_actuales_mutex);
 	return consistencia;
 }
 
@@ -326,11 +335,14 @@ int socketFromConsistency(int consistencia, int exec_index) {
 		return -1;
 		break;
 	case EC:
+		pthread_mutex_lock(&eventual_mutex);
 		if (queue_size(eventualC) > 0) {
 			temp_mem = queue_pop(eventualC);
 			num_mem = *temp_mem;
 			queue_push(eventualC, temp_mem);
+			pthread_mutex_unlock(&eventual_mutex);
 		} else {
+			pthread_mutex_unlock(&eventual_mutex);
 			return -1;
 		}
 		break;
@@ -343,7 +355,10 @@ int socketFromConsistency(int consistencia, int exec_index) {
 		}
 	}
 
+	pthread_mutex_lock(&memorias_mutex);
 	list_iterate(memoriasConectadas, esLaMemoria);
+	pthread_mutex_unlock(&memorias_mutex);
+
 	return socket;
 }
 
@@ -351,6 +366,7 @@ void* intentarEstablecerConexion() {
 	int i;
 	int serverSocket;
 	int num_memoria;
+	int conecte;
 
 	while (true) {
 
@@ -358,37 +374,47 @@ void* intentarEstablecerConexion() {
 
 		while (puertos_posibles[i] != NULL) {
 
+			conecte = 0;
 			if (!puertoConectado(puertos_posibles[i])) {
 
 				struct addrinfo *serverInfo;
 				getaddrinfo(ip_destino, puertos_posibles[i], &hints,
 						&serverInfo);
-				serverSocket = socket(serverInfo->ai_family,
-						serverInfo->ai_socktype, serverInfo->ai_protocol);
 
-				if (connect(serverSocket, serverInfo->ai_addr,
-						serverInfo->ai_addrlen) == 0) {
+				Memoria* mem_nueva = malloc(sizeof(Memoria));
+				mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
+				for (int sock = 0; sock < multiprocesamiento; sock++) {
+					serverSocket = socket(serverInfo->ai_family,
+							serverInfo->ai_socktype, serverInfo->ai_protocol);
+					if (connect(serverSocket, serverInfo->ai_addr,
+							serverInfo->ai_addrlen) == 0) {
 
-					enviar_handshake(KERNEL, serverSocket);
+						enviar_handshake(KERNEL, serverSocket);
 
-					num_memoria = recibir_numero_memoria(serverSocket);
+						num_memoria = recibir_numero_memoria(serverSocket);
 
-					log_debug(logger_Kernel, "Conecte a la memoria numero %d",
-							num_memoria);
+						pthread_mutex_lock(&logger_mutex);
+						log_debug(logger_Kernel,
+								"Conecte a la memoria numero %d", num_memoria);
+						pthread_mutex_unlock(&logger_mutex);
 
-					Memoria* mem_nueva = malloc(sizeof(Memoria));
-					mem_nueva->numero = num_memoria;
-					mem_nueva->puerto = atoi(puertos_posibles[i]);
-					mem_nueva->socket = malloc(
-							sizeof(int) * multiprocesamiento);
-					for (int sock = 0; sock < multiprocesamiento; sock++) {
+						mem_nueva->numero = num_memoria;
+						mem_nueva->puerto = atoi(puertos_posibles[i]);
 						mem_nueva->socket[sock] = serverSocket;
+						conecte = 1;
 					}
-
-					list_add(memoriasConectadas, mem_nueva);
-
 				}
 				freeaddrinfo(serverInfo);
+
+				if (conecte) {
+					pthread_mutex_lock(&memorias_mutex);
+					list_add(memoriasConectadas, mem_nueva);
+					pthread_mutex_unlock(&memorias_mutex);
+				} else {
+					free(mem_nueva);
+					free(mem_nueva->socket);
+				}
+
 			}
 
 			i++;
@@ -404,7 +430,11 @@ int puertoConectado(char* puertoChar) {
 		return mem->puerto == puerto;
 	}
 
-	return list_any_satisfy(memoriasConectadas, &tieneEsePuerto);
+	pthread_mutex_lock(&memorias_mutex);
+	int ok = list_any_satisfy(memoriasConectadas, &tieneEsePuerto);
+	pthread_mutex_unlock(&memorias_mutex);
+
+	return ok;
 
 }
 
@@ -415,87 +445,75 @@ void desconectar_mem(int socket) {
 
 	int esLaMem(Memoria* mem) {
 
-		int es = 0;
-
 		for (int sock = 0; sock < multiprocesamiento; sock++) {
 			if (mem->socket[sock] == socket) {
-				es = 1;
+				num = mem->numero;
+				free(mem->socket);
+				return 1;
 			}
 		}
 
-		if (es) {
-			num = mem->numero;
-			return 1;
-		}
+		return 0;
+
 	}
 
+	pthread_mutex_lock(&memorias_mutex);
 	list_remove_by_condition(memoriasConectadas, &esLaMem);
+	pthread_mutex_unlock(&memorias_mutex);
+
+	void mostrar(Memoria* mem) {
+		pthread_mutex_lock(&logger_mutex);
+		log_debug(logger_Kernel, "Mem: %d", mem->numero);
+		pthread_mutex_unlock(&logger_mutex);
+	}
+
+	pthread_mutex_lock(&memorias_mutex);
+	list_iterate(memoriasConectadas, &mostrar);
+	pthread_mutex_unlock(&memorias_mutex);
+
 	if (strongC == num) {
 		strongC = NULL;
 	}
 
-	t_queue* colaTemp = queue_create();
-
-	while (queue_size(eventualC)) {
-		int* temp = queue_pop(eventualC);
-		if (*temp != num) {
-			queue_push(colaTemp, temp);
-		}
+	int esElNum(int* numero) {
+		return (*numero) == num;
 	}
 
-	while (queue_size(colaTemp)) {
-		int* temp = queue_pop(colaTemp);
-		queue_push(eventualC, temp);
-	}
+	pthread_mutex_lock(&eventual_mutex);
+	list_remove_by_condition(eventualC->elements, &esElNum);
+	pthread_mutex_unlock(&eventual_mutex);
 
-	queue_destroy(colaTemp);
 }
 
 int interpretarComando(int header, char* parametros, int exec_index) {
 	int result = 1;
 	switch (header) {
 	case SELECT:
-		pthread_mutex_lock(&describing);
 		result = select_kernel(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case INSERT:
-		pthread_mutex_lock(&describing);
 		result = insert_kernel(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case DESCRIBE:
-		pthread_mutex_lock(&describing);
 		describe(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case DROP:
-		pthread_mutex_lock(&describing);
 		drop(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case CREATE:
-		pthread_mutex_lock(&describing);
 		create(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case JOURNAL:
-		pthread_mutex_lock(&describing);
 		journal("", exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case RUN:
 		return run(parametros, exec_index);
 		break;
 	case ADD:
-		pthread_mutex_lock(&describing);
 		add(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case 9:
-		pthread_mutex_lock(&describing);
 		metrics(parametros, exec_index);
-		pthread_mutex_unlock(&describing);
 		break;
 	case -1:
 		break;
@@ -516,12 +534,14 @@ int select_kernel(char* parametros, int exec_index) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
+		pthread_mutex_lock(&logger_mutex);
 		log_info(logger_Kernel, "SELECT enviado (Tabla: %s, Key: %d)",
 				package.tabla, package.key);
+		pthread_mutex_unlock(&logger_mutex);
 
 		serializedPackage = serializarSelect(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla,exec_index);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index);
 
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
@@ -530,9 +550,9 @@ int select_kernel(char* parametros, int exec_index) {
 
 			if (!(int) respuesta) {
 				desconectar_mem(socketAEnviar);
-				log_error(logger_Kernel, "Memoria desconectada");
+				log_error_s(logger_Kernel, "Memoria desconectada");
 			} else {
-				log_debug(logger_Kernel, respuesta);
+				log_debug_s(logger_Kernel, respuesta);
 			}
 			//printf("%s\n", respuesta);
 			free(respuesta);
@@ -561,13 +581,15 @@ int insert_kernel(char* parametros, int exec_index) {
 	}
 
 	if (entradaValida) {
+		pthread_mutex_lock(&logger_mutex);
 		log_info(logger_Kernel,
 				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)",
 				package.tabla, package.key, package.value, package.timestamp);
+		pthread_mutex_unlock(&logger_mutex);
 
 		serializedPackage = serializarInsert(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla,exec_index);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index);
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -575,11 +597,13 @@ int insert_kernel(char* parametros, int exec_index) {
 
 			if (!(int) respuesta) {
 				desconectar_mem(socketAEnviar);
-				log_error(logger_Kernel, "Memoria desconectada");
+				log_error_s(logger_Kernel, "Memoria desconectada");
 			} else {
-				log_debug(logger_Kernel, respuesta);
+				log_debug_s(logger_Kernel, respuesta);
 
+				pthread_mutex_lock(&logger_mutex);
 				log_info(logger_Kernel, "Insert: %s", respuesta);
+				pthread_mutex_unlock(&logger_mutex);
 
 				if (strcmp(respuesta, "FULL") == 0) {
 					journal("", exec_index);
@@ -591,9 +615,11 @@ int insert_kernel(char* parametros, int exec_index) {
 
 					if (!(int) respuesta) {
 						desconectar_mem(socketAEnviar);
-						log_error(logger_Kernel, "Memoria desconectada");
+						log_error_s(logger_Kernel, "Memoria desconectada");
 					} else {
+						pthread_mutex_lock(&logger_mutex);
 						log_info(logger_Kernel, "Insert: %s", respuesta);
+						pthread_mutex_unlock(&logger_mutex);
 					}
 				}
 
@@ -622,14 +648,17 @@ void describe(char* parametros, int exec_index) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		log_info(logger_Kernel, "DESCRIBE enviado");
+		log_info_s(logger_Kernel, "DESCRIBE enviado");
 
 		serializedPackage = serializarRequestDescribe(&package);
 
+		pthread_mutex_lock(&memorias_mutex);
 		if (!memoriasConectadas->elements_count) {
-			log_error(logger_Kernel, "No hay memorias conectadas");
+			pthread_mutex_unlock(&memorias_mutex);
+			log_error_s(logger_Kernel, "No hay memorias conectadas");
 			return;
 		}
+		pthread_mutex_unlock(&memorias_mutex);
 		int socketAEnviar =
 				((Memoria*) list_get(memoriasConectadas, 0))->socket[exec_index];
 
@@ -655,12 +684,12 @@ void recibirDescribe(int serverSocket) {
 
 	t_describe describe;
 
-	if (!recieve_and_deserialize_describe(&describe, serverSocket)) {
+	if (!(int) recieve_and_deserialize_describe(&describe, serverSocket)) {
 		desconectar_mem(serverSocket);
-		log_error(logger_Kernel, "Memoria desconectada");
+		log_error_s(logger_Kernel, "Memoria desconectada");
 	} else {
 		if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
-			log_warning(logger_Kernel, "La tabla no existe");
+			log_warning_s(logger_Kernel, "La tabla no existe");
 		} else {
 			for (int i = 0; i < describe.cant_tablas; i++) {
 				//printf("%s\n", describe.tablas[i].nombre_tabla);
@@ -669,17 +698,23 @@ void recibirDescribe(int serverSocket) {
 					strcpy(tabla_nueva->nombre_tabla,
 							describe.tablas[i].nombre_tabla);
 					tabla_nueva->consistencia = describe.tablas[i].consistencia;
+					pthread_mutex_lock(&tablas_actuales_mutex);
 					list_add(tablas_actuales, tabla_nueva);
+					pthread_mutex_unlock(&tablas_actuales_mutex);
 				}
 			}
 
-			for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
-					tabla2++) {
-				Tabla* tabla = list_get(tablas_actuales, tabla2);
-				printf("Tabla %s \n", tabla->nombre_tabla);
-				printf("Consistencia %s \n",
-						consistency_to_str(tabla->consistencia));
-			}
+			/*
+			 pthread_mutex_lock(&tablas_actuales_mutex);
+			 for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
+			 tabla2++) {
+			 Tabla* tabla = list_get(tablas_actuales, tabla2);
+			 printf("Tabla %s \n", tabla->nombre_tabla);
+			 printf("Consistencia %s \n",
+			 consistency_to_str(tabla->consistencia));
+			 }
+			 pthread_mutex_unlock(&tablas_actuales_mutex);
+			 */
 		}
 		free(describe.tablas);
 	}
@@ -697,18 +732,25 @@ void create(char* parametros, int exec_index) {
 	}
 
 	if (entradaValida) {
+		pthread_mutex_lock(&logger_mutex);
 		log_info(logger_Kernel, "CREATE enviado (Tabla: %s, CONSISTENCY: %s)",
 				package.tabla, consistency_to_str(package.consistency));
+		pthread_mutex_unlock(&logger_mutex);
 
 		serializedPackage = serializarCreate(&package);
 
+		pthread_mutex_lock(&memorias_mutex);
 		if (!memoriasConectadas->elements_count) {
-			log_error(logger_Kernel, "No hay memorias conectadas");
+			pthread_mutex_unlock(&memorias_mutex);
+			log_error_s(logger_Kernel, "No hay memorias conectadas");
 			return;
 		}
+		pthread_mutex_unlock(&memorias_mutex);
 
+		pthread_mutex_lock(&memorias_mutex);
 		int socketAEnviar =
 				((Memoria*) list_get(memoriasConectadas, 0))->socket[exec_index];
+		pthread_mutex_unlock(&memorias_mutex);
 
 		send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -729,7 +771,9 @@ void journal(char* parametros, int exec_index) {
 		send(mem->socket[exec_index], serializedPackage, sizeof(int), 0);
 	}
 
+	pthread_mutex_lock(&memorias_mutex);
 	list_iterate(memoriasConectadas, &enviarJournal);
+	pthread_mutex_unlock(&memorias_mutex);
 
 	dispose_package(&serializedPackage);
 }
@@ -737,9 +781,22 @@ void journal(char* parametros, int exec_index) {
 void* describeCadaX(int serverSocket) {
 	// tiempoDescribe = config_get_int_value(conection_conf,"METADATA_REFRESH")*1000;
 
+	void lockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_lock(mutex);
+	}
+
+	void unLockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_unlock(mutex);
+	}
+
 	while (true) {
 		usleep(tiempoDescribe);
+
+		list_iterate(exec_mutexes, &lockMutexes);
+
 		interpretarComando(DESCRIBE, NULL, 0);
+
+		list_iterate(exec_mutexes, &unLockMutexes);
 	}
 
 }
@@ -758,7 +815,9 @@ void add(char* parametros, int serverSocket) {
 			}
 		}
 
+		pthread_mutex_lock(&memorias_mutex);
 		list_iterate(memoriasConectadas, estaLaMem);
+		pthread_mutex_unlock(&memorias_mutex);
 
 		int* num_mem_puntero;
 
@@ -772,11 +831,13 @@ void add(char* parametros, int serverSocket) {
 			case EC:
 				num_mem_puntero = malloc(sizeof(int));
 				memcpy(num_mem_puntero, &num_mem, sizeof(int));
+				pthread_mutex_lock(&eventual_mutex);
 				queue_push(eventualC, num_mem_puntero);
+				pthread_mutex_unlock(&eventual_mutex);
 				break;
 			}
 		} else {
-			log_error(logger_Kernel, "Esa memoria no esta conectada");
+			log_error_s(logger_Kernel, "Esa memoria no esta conectada");
 		}
 	}
 
@@ -841,7 +902,7 @@ Script* levantar_script(char* ruta) {
 
 	nuevoScript->cant_lineas = cant_parametros(nuevoScript->lineas);
 
-//log_info(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
+//log_info_s(logger_Kernel, string_itoa(nuevoScript->cant_lineas));
 
 	return nuevoScript;
 }
@@ -880,18 +941,17 @@ void* exec(int index) {
 
 		switch (resultado_exec) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
-			//log_info(logger_Kernel, script_en_ejecucion->lineas[script_en_ejecucion->index-1]);
-			log_info(logger_Kernel, "Finalizó");
+			log_info_s(logger_Kernel, "Finalizó");
 			string_iterate_lines(script_en_ejecucion->lineas, (void*) free);
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
 			break;
 		case CORTE_SCRIPT_POR_FIN_QUANTUM:
-			log_info(logger_Kernel, "Finalizó quantum");
+			log_info_s(logger_Kernel, "Finalizó quantum");
 			script_a_ready(script_en_ejecucion);
 			break;
 		case CORTE_SCRIPT_POR_LINEA_ERRONEA:
-			log_error(logger_Kernel, "Script terminado por linea erronea");
+			log_error_s(logger_Kernel, "Script terminado por linea erronea");
 			string_iterate_lines(script_en_ejecucion->lineas, (void*) free);
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
@@ -899,6 +959,27 @@ void* exec(int index) {
 		}
 		pthread_mutex_unlock(list_get(exec_mutexes, index));
 	}
+}
+
+void log_debug_s(t_log* log, char* mensaje) {
+	pthread_mutex_lock(&logger_mutex);
+	log_debug(log, mensaje);
+	pthread_mutex_unlock(&logger_mutex);
+}
+void log_warning_s(t_log* log, char* mensaje) {
+	pthread_mutex_lock(&logger_mutex);
+	log_warning(log, mensaje);
+	pthread_mutex_unlock(&logger_mutex);
+}
+void log_error_s(t_log* log, char* mensaje) {
+	pthread_mutex_lock(&logger_mutex);
+	log_error(log, mensaje);
+	pthread_mutex_unlock(&logger_mutex);
+}
+void log_info_s(t_log* log, char* mensaje) {
+	pthread_mutex_lock(&logger_mutex);
+	log_info(log, mensaje);
+	pthread_mutex_unlock(&logger_mutex);
 }
 
 int ejecutar_quantum(Script** script, int index) {
@@ -922,7 +1003,7 @@ int ejecutar_quantum(Script** script, int index) {
 		entradaValida = validarParametros(header, parametros);
 
 		if (header == ERROR) {
-			log_warning(logger_Kernel, "Comando no reconocido");
+			log_warning_s(logger_Kernel, "Comando no reconocido");
 			entradaValida = 0;
 		}
 

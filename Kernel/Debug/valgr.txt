@@ -1,0 +1,1044 @@
+==7228== Helgrind, a thread error detector
+==7228== Copyright (C) 2007-2015, and GNU GPL'd, by OpenWorks LLP et al.
+==7228== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==7228== Command: ./Kernel
+==7228== Parent PID: 4963
+==7228== 
+--7228-- 
+--7228-- Valgrind options:
+--7228--    --tool=helgrind
+--7228--    -v
+--7228--    --log-file=valgr.txt
+--7228-- Contents of /proc/version:
+--7228--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--7228-- 
+--7228-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--7228-- Page sizes: currently 4096, max supported 4096
+--7228-- Valgrind library directory: /usr/lib/valgrind
+--7228-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--7228--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--7228--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--7228--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--7228--   .. CRC is valid
+--7228-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Kernel/Debug/Kernel
+--7228-- Reading syms from /usr/lib/valgrind/helgrind-x86-linux
+--7228--   Considering /usr/lib/valgrind/helgrind-x86-linux ..
+--7228--   .. CRC mismatch (computed 85bd4c46 wanted 6890060d)
+--7228--    object doesn't have a symbol table
+--7228--    object doesn't have a dynamic symbol table
+--7228-- Scheduler: using generic scheduler lock implementation.
+--7228-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==7228== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7228-by-utnso-on-???
+==7228== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7228-by-utnso-on-???
+==7228== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7228-by-utnso-on-???
+==7228== 
+==7228== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7228== don't want to do, unless you know exactly what you're doing,
+==7228== or are doing some strange experiment):
+==7228==   /usr/lib/valgrind/../../bin/vgdb --pid=7228 ...command...
+==7228== 
+==7228== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7228==   /path/to/gdb ./Kernel
+==7228== and then give GDB the following command
+==7228==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=7228
+==7228== --pid is optional if only one valgrind process is running
+==7228== 
+--7228-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--7228--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--7228--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--7228--    object doesn't have a symbol table
+--7228-- Reading syms from /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so
+--7228--   Considering /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so ..
+--7228--   .. CRC mismatch (computed d9eac17a wanted 34559146)
+--7228--    object doesn't have a symbol table
+--7228-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x4033d10 (strlen)
+--7228-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--7228-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--7228--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--7228--   .. build-id is valid
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x04069680 (pthread_spin_init   ) W-> (0000.0) 0x04033340 pthread_spin_init
+--7228--     new: 0x04069680 (pthread_spin_init   ) W-> (0000.0) 0x04033350 pthread_spin_unlock
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x04069680 (pthread_spin_init   ) W-> (0000.0) 0x04033340 pthread_spin_init
+--7228--     new: 0x04069680 (pthread_spin_init   ) W-> (0000.0) 0x04033350 pthread_spin_unlock
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x0406b150 (sem_wait@@GLIBC_2.1 ) W-> (0000.0) 0x04033440 sem_wait@*
+--7228--     new: 0x0406b150 (sem_wait@@GLIBC_2.1 ) W-> (0000.0) 0x04033430 sem_wait
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x0406b230 (sem_wait@GLIBC_2.0  ) W-> (0000.0) 0x04033440 sem_wait@*
+--7228--     new: 0x0406b230 (sem_wait@GLIBC_2.0  ) W-> (0000.0) 0x04033430 sem_wait
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x0406b590 (sem_post@@GLIBC_2.1 ) W-> (0000.0) 0x04033460 sem_post@*
+--7228--     new: 0x0406b590 (sem_post@@GLIBC_2.1 ) W-> (0000.0) 0x04033450 sem_post
+==7228== WARNING: new redirection conflicts with existing -- ignoring it
+--7228--     old: 0x0406b640 (sem_post@GLIBC_2.0  ) W-> (0000.0) 0x04033460 sem_post@*
+--7228--     new: 0x0406b640 (sem_post@GLIBC_2.0  ) W-> (0000.0) 0x04033450 sem_post
+--7228-- Reading syms from /usr/lib/libcommons.so
+--7228-- Reading syms from /lib/i386-linux-gnu/libreadline.so.6.3
+--7228--   Considering /lib/i386-linux-gnu/libreadline.so.6.3 ..
+--7228--   .. CRC mismatch (computed ae23cd8f wanted 3f613fc8)
+--7228--    object doesn't have a symbol table
+--7228-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--7228--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--7228--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--7228--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--7228--   .. CRC is valid
+--7228-- Reading syms from /lib/i386-linux-gnu/libtinfo.so.5.9
+--7228--    object doesn't have a symbol table
+--7228-- REDIR: 0x41404b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4147140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4159b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x413f350 (libc.so.6:strstr) redirected to 0x4037220 (strstr)
+--7228-- REDIR: 0x413e7e0 (libc.so.6:__GI_strrchr) redirected to 0x40338c0 (__GI_strrchr)
+--7228-- REDIR: 0x4139f00 (libc.so.6:malloc) redirected to 0x402d300 (malloc)
+--7228-- REDIR: 0x413e5c0 (libc.so.6:__GI_strlen) redirected to 0x4033c90 (__GI_strlen)
+--7228-- REDIR: 0x4140680 (libc.so.6:__GI_memcpy) redirected to 0x40353b0 (__GI_memcpy)
+--7228-- REDIR: 0x413ffc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41ee4d0 (libc.so.6:__memset_sse2) redirected to 0x40364e0 (memset)
+--7228-- REDIR: 0x413a810 (libc.so.6:calloc) redirected to 0x402f200 (calloc)
+--7228-- REDIR: 0x413a520 (libc.so.6:realloc) redirected to 0x402f440 (realloc)
+--7228-- REDIR: 0x413a470 (libc.so.6:free) redirected to 0x402e4e0 (free)
+--7228-- REDIR: 0x413e580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4147440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x4033c70 (strlen)
+--7228-- REDIR: 0x413e700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41fe5c0 (libc.so.6:__strncmp_ssse3) redirected to 0x4033fb0 (strncmp)
+--7228-- REDIR: 0x413df90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4147570 (libc.so.6:__strcpy_ssse3) redirected to 0x4033d50 (strcpy)
+--7228-- REDIR: 0x413e750 (libc.so.6:strncpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4148dc0 (libc.so.6:__strncpy_ssse3) redirected to 0x4033db0 (strncpy)
+--7228-- REDIR: 0x4065100 (libpthread.so.0:pthread_mutex_init) redirected to 0x4032e40 (pthread_mutex_init)
+--7228-- REDIR: 0x4065810 (libpthread.so.0:pthread_mutex_lock) redirected to 0x4032f90 (pthread_mutex_lock)
+--7228-- REDIR: 0x4142280 (libc.so.6:strchrnul) redirected to 0x4036dc0 (strchrnul)
+--7228-- REDIR: 0x413dae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4152b30 (libc.so.6:__strcat_ssse3) redirected to 0x4033af0 (strcat)
+--7228-- REDIR: 0x413fc10 (libc.so.6:__GI_memcmp) redirected to 0x4036070 (__GI_memcmp)
+--7228-- REDIR: 0x41421b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4036e20 (__GI___rawmemchr)
+--7228-- REDIR: 0x41400d0 (libc.so.6:__GI_mempcpy) redirected to 0x4036f80 (__GI_mempcpy)
+--7228-- REDIR: 0x4066d80 (libpthread.so.0:pthread_mutex_unlock) redirected to 0x4032fc0 (pthread_mutex_unlock)
+--7228-- REDIR: 0x4140610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41f0b70 (libc.so.6:__memcpy_ssse3) redirected to 0x4035140 (memcpy)
+--7228-- REDIR: 0x406a590 (libpthread.so.0:sem_init@@GLIBC_2.1) redirected to 0x4033400 (sem_init@*)
+--7228-- REDIR: 0x4063580 (libpthread.so.0:pthread_create@@GLIBC_2.1) redirected to 0x4032cb0 (pthread_create@*)
+--7228-- REDIR: 0x406b150 (libpthread.so.0:sem_wait@@GLIBC_2.1) redirected to 0x4033440 (sem_wait@*)
+--7228-- REDIR: 0x406b590 (libpthread.so.0:sem_post@@GLIBC_2.1) redirected to 0x4033460 (sem_post@*)
+--7228-- REDIR: 0x413dee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41fd150 (libc.so.6:__strcmp_ssse3) redirected to 0x4034950 (strcmp)
+--7228-- REDIR: 0x4147380 (libc.so.6:__GI_strncmp) redirected to 0x4034040 (__GI_strncmp)
+--7228-- REDIR: 0x4159100 (libc.so.6:__GI_strnlen) redirected to 0x4033c30 (__GI_strnlen)
+--7228-- REDIR: 0x413e7a0 (libc.so.6:rindex) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4158530 (libc.so.6:__strrchr_sse2_bsf) redirected to 0x4033890 (rindex)
+--7228-- REDIR: 0x413dce0 (libc.so.6:index) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x4158420 (libc.so.6:__strchr_sse2_bsf) redirected to 0x4033ab0 (index)
+--7228-- REDIR: 0x41bdc90 (libc.so.6:__memcpy_chk) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41f0b60 (libc.so.6:__memcpy_chk_ssse3) redirected to 0x4037180 (__memcpy_chk)
+--7228-- REDIR: 0x40f7650 (libc.so.6:setenv) redirected to 0x40377e0 (setenv)
+--7228-- REDIR: 0x413dd20 (libc.so.6:__GI_strchr) redirected to 0x40339f0 (__GI_strchr)
+--7228-- REDIR: 0x413df30 (libc.so.6:__GI_strcmp) redirected to 0x40349b0 (__GI_strcmp)
+--7228-- REDIR: 0x4067f30 (libpthread.so.0:pthread_rwlock_wrlock) redirected to 0x40333b0 (pthread_rwlock_wrlock)
+--7228-- REDIR: 0x413fa30 (libc.so.6:__GI_memchr) redirected to 0x4034bd0 (__GI_memchr)
+--7228-- REDIR: 0x41402e0 (libc.so.6:__GI_stpcpy) redirected to 0x4036370 (__GI_stpcpy)
+--7228-- REDIR: 0x40685e0 (libpthread.so.0:pthread_rwlock_unlock) redirected to 0x40333f0 (pthread_rwlock_unlock)
+--7228-- REDIR: 0x4140460 (libc.so.6:strcasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x41fffb0 (libc.so.6:__strcasecmp_ssse3) redirected to 0x40341f0 (strcasecmp)
+--7228-- REDIR: 0x42024c0 (libc.so.6:__strncasecmp_ssse3) redirected to 0x4034310 (strncasecmp)
+--7228-- REDIR: 0x413fbd0 (libc.so.6:bcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--7228-- REDIR: 0x42073d0 (libc.so.6:__memcmp_ssse3) redirected to 0x4036220 (bcmp)
+==7228== ---Thread-Announcement------------------------------------------
+==7228== 
+==7228== Thread #5 was created
+==7228==    at 0x41B0091: clone (clone.S:88)
+==7228==    by 0x40621AD: create_thread (createthread.c:102)
+==7228==    by 0x406399E: pthread_create@@GLIBC_2.1 (pthread_create.c:679)
+==7228==    by 0x4032043: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049B63: main (Kernel.c:197)
+==7228== 
+==7228== ---Thread-Announcement------------------------------------------
+==7228== 
+==7228== Thread #2 was created
+==7228==    at 0x41B0091: clone (clone.S:88)
+==7228==    by 0x40621AD: create_thread (createthread.c:102)
+==7228==    by 0x406399E: pthread_create@@GLIBC_2.1 (pthread_create.c:679)
+==7228==    by 0x4032043: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049AA8: main (Kernel.c:158)
+==7228== 
+==7228== ---Thread-Announcement------------------------------------------
+==7228== 
+==7228== Thread #1 is the program's root thread
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FFC by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #2
+==7228== Locks held: 1, at address 0x42A5928
+==7228==    at 0x407E940: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DF65: list_get (in /usr/lib/libcommons.so)
+==7228==    by 0x804AB05: describe (Kernel.c:653)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5ffc is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5720 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E124: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407DE54: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5720 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B64 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E135: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5b64 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B60 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E13E: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228==  Address 0x42a5b60 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B64 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E369: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5b64 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5720 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E36F: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E951: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE6C: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5720 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5724 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5724 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A57D4 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E369: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a57d4 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A00: main (Kernel.c:141)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FF8 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E36F: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407E951: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE6C: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a5ff8 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FFC by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a5ffc is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1B4 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A30: main (Kernel.c:146)
+==7228==  Address 0x804e1b4 is 0 bytes inside data symbol "cola_ready_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A58F0 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E382: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x407DCBE: queue_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D54: main (Kernel.c:287)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1B4
+==7228==    at 0x407E1B6: list_remove (in /usr/lib/libcommons.so)
+==7228==    by 0x407DD5F: queue_pop (in /usr/lib/libcommons.so)
+==7228==    by 0x804B527: exec (Kernel.c:927)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a58f0 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x407DC34: queue_create (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A08: main (Kernel.c:144)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1B4 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A30: main (Kernel.c:146)
+==7228==  Address 0x804e1b4 is 0 bytes inside data symbol "cola_ready_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A58F4 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x407DCBE: queue_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D54: main (Kernel.c:287)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1B4
+==7228==    at 0x407E1F3: list_remove (in /usr/lib/libcommons.so)
+==7228==    by 0x407DD5F: queue_pop (in /usr/lib/libcommons.so)
+==7228==    by 0x804B527: exec (Kernel.c:927)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a58f4 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x407DC34: queue_create (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A08: main (Kernel.c:144)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== ERROR SUMMARY: 29 errors from 12 contexts (suppressed: 911 from 146)
+==7228== 
+==7228== 1 errors in context 1 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1B4 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A30: main (Kernel.c:146)
+==7228==  Address 0x804e1b4 is 0 bytes inside data symbol "cola_ready_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A58F4 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x407DCBE: queue_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D54: main (Kernel.c:287)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1B4
+==7228==    at 0x407E1F3: list_remove (in /usr/lib/libcommons.so)
+==7228==    by 0x407DD5F: queue_pop (in /usr/lib/libcommons.so)
+==7228==    by 0x804B527: exec (Kernel.c:927)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a58f4 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x407DC34: queue_create (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A08: main (Kernel.c:144)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 2 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1B4 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A30: main (Kernel.c:146)
+==7228==  Address 0x804e1b4 is 0 bytes inside data symbol "cola_ready_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A58F0 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E382: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x407DCBE: queue_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D54: main (Kernel.c:287)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1B4
+==7228==    at 0x407E1B6: list_remove (in /usr/lib/libcommons.so)
+==7228==    by 0x407DD5F: queue_pop (in /usr/lib/libcommons.so)
+==7228==    by 0x804B527: exec (Kernel.c:927)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a58f0 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x407DC34: queue_create (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A08: main (Kernel.c:144)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 3 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FFC by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a5ffc is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 4 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FF8 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E36F: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407E951: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE6C: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a5ff8 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 5 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5724 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E38B: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5724 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 6 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5720 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E36F: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E951: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE6C: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5720 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 1 errors in context 7 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B64 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E369: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3C5: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5b64 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+==7228== 
+==7228== 1 errors in context 8 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5720 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E124: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407DE54: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5720 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499D6: main (Kernel.c:135)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 4 errors in context 9 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== Possible data race during write of size 4 at 0x42A5FFC by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407DE8B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228== 
+==7228== This conflicts with a previous read of size 4 by thread #2
+==7228== Locks held: 1, at address 0x42A5928
+==7228==    at 0x407E940: list_get_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DF65: list_get (in /usr/lib/libcommons.so)
+==7228==    by 0x804AB05: describe (Kernel.c:653)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==  Address 0x42a5ffc is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407DE01: list_create (in /usr/lib/libcommons.so)
+==7228==    by 0x80499E0: main (Kernel.c:137)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 5 errors in context 10 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x804E194 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x804981A: main (Kernel.c:79)
+==7228==  Address 0x804e194 is 0 bytes inside data symbol "memorias_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A57D4 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E369: list_clean (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3EB: list_destroy (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D43: main (Kernel.c:286)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #5
+==7228== Locks held: 1, at address 0x804E194
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804A1DA: intentarEstablecerConexion (Kernel.c:406)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Address 0x42a57d4 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x8049A00: main (Kernel.c:141)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228== 
+==7228== 6 errors in context 11 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B60 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E13E: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228==  Address 0x42a5b60 is 0 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+==7228== 
+==7228== 6 errors in context 12 of 12:
+==7228== ----------------------------------------------------------------
+==7228== 
+==7228==  Lock at 0x42A5928 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A7D: main (Kernel.c:152)
+==7228==  Address 0x42a5928 is 0 bytes inside a block of size 24 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A6A: main (Kernel.c:151)
+==7228==  Block was alloc'd by thread #1
+==7228== 
+==7228==  Lock at 0x804E1D0 was first observed
+==7228==    at 0x4032F68: pthread_mutex_init (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x8049A54: main (Kernel.c:148)
+==7228==  Address 0x804e1d0 is 0 bytes inside data symbol "tablas_actuales_mutex"
+==7228== 
+==7228== Possible data race during read of size 4 at 0x42A5B64 by thread #1
+==7228== Locks held: none
+==7228==    at 0x407E135: list_iterate (in /usr/lib/libcommons.so)
+==7228==    by 0x407E3B7: list_clean_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x407E422: list_destroy_and_destroy_elements (in /usr/lib/libcommons.so)
+==7228==    by 0x8049D32: main (Kernel.c:285)
+==7228== 
+==7228== This conflicts with a previous write of size 4 by thread #2
+==7228== Locks held: 2, at addresses 0x42A5928 0x804E1D0
+==7228==    at 0x407E8E3: list_link_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE7B: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==  Address 0x42a5b64 is 4 bytes inside a block of size 8 alloc'd
+==7228==    at 0x402D36C: malloc (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x407E905: list_create_element (in /usr/lib/libcommons.so)
+==7228==    by 0x407DE3D: list_add (in /usr/lib/libcommons.so)
+==7228==    by 0x804ACB9: recibirDescribe (Kernel.c:692)
+==7228==    by 0x804AB3D: describe (Kernel.c:659)
+==7228==    by 0x804A56B: interpretarComando (Kernel.c:488)
+==7228==    by 0x804B806: ejecutar_quantum (Kernel.c:1001)
+==7228==    by 0x804B54C: exec (Kernel.c:930)
+==7228==    by 0x40321E2: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==7228==    by 0x4063294: start_thread (pthread_create.c:333)
+==7228==    by 0x41B00AD: clone (clone.S:114)
+==7228==  Block was alloc'd by thread #2
+==7228== 
+--7228-- 
+--7228-- used_suppression:    291 helgrind-glibc2X-004 /usr/lib/valgrind/default.supp:931
+--7228-- used_suppression:    577 helgrind-glibc-io-xsputn-mempcpy /usr/lib/valgrind/default.supp:937
+--7228-- used_suppression:     43 helgrind-glibc2X-005 /usr/lib/valgrind/default.supp:945
+==7228== 
+==7228== ERROR SUMMARY: 29 errors from 12 contexts (suppressed: 911 from 146)
