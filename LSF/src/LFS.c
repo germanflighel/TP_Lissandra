@@ -1885,10 +1885,12 @@ void* dump() {
 
 	void _dumpear_tabla(Tabla* tabla) {
 		int bytes_a_dumpear = tamanio_de_tabla(tabla);
-		lock_mutex_tabla(tabla->nombre_tabla);
-		_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
-		escribir_registros_en_bloques(tabla);
-		unlock_mutex_tabla(tabla->nombre_tabla);
+		if (bytes_a_dumpear) {
+			lock_mutex_tabla(tabla->nombre_tabla);
+			_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
+			escribir_registros_en_bloques(tabla);
+			unlock_mutex_tabla(tabla->nombre_tabla);
+		}
 	}
 
 	while (1) {
