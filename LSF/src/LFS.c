@@ -149,7 +149,7 @@ int main() {
 
 	listen(listenningSocket, BACKLOG); // IMPORTANTE: listen() es una syscall BLOQUEANTE.
 
-	log_info(logger, "Esperando memoria...");
+	loguear("Esperando una memoria", INFO);
 
 	struct sockaddr_in addr; // Esta estructura contendra los datos de la conexion del cliente. IP, puerto, etc.
 	socklen_t addrlen = sizeof(addr);
@@ -158,7 +158,7 @@ int main() {
 			&addrlen);
 
 	if (!recibir_handshake(MEMORY, socketCliente)) {
-		log_info(logger, "Handshake invalido \n");
+		loguear("Handshake invalido \n", INFO);
 		return 0;
 	}
 	send(socketCliente, &max_value_size, sizeof(u_int16_t), 0);
@@ -178,22 +178,15 @@ int main() {
 
 	int socketNuevo;
 	while (true) {
-		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr,
-				&addrlen);
-		loguear("Acepte una conexion", DEBUG);
-
-		log_debug(logger, "A ver si es una memoria");
-
+		socketNuevo = accept(listenningSocket, (struct sockaddr *) &addr, &addrlen);
 		if (!recibir_handshake(MEMORY, socketNuevo)) {
-			log_debug(logger, "Acepte una conexion");
-
 			log_info(logger, "Handshake invalido \n");
 			return 0;
 		}
-		log_debug(logger, "Efectivamente Rick, es una memoria");
+		loguear("Se conecto una nueva memoria", DEBUG);
 
 		send(socketNuevo, &max_value_size, sizeof(u_int16_t), 0);
-		log_debug(logger, "Le mande el max_value_size");
+		loguear("Le mande el max_value_size", DEBUG);
 
 		//thread receptor
 		pthread_t threadL;
@@ -206,12 +199,9 @@ int main() {
 					iret1);
 			exit(EXIT_FAILURE);
 		}
-		log_debug(logger, "Cree el hilo perf");
+		loguear("Cree el hilo de la memoria nueva");
 
-		//thread receptor
 	}
-
-	//receptorDeConsultas(socketCliente);
 
 	close(listenningSocket);
 
@@ -257,7 +247,7 @@ void lock_mutex_tabla(char* nombre_tabla) {
 	pthread_mutex_t* mutex_tabla = dictionary_get(bloqueo_tablas, nombre_tabla);
 	pthread_mutex_unlock(&bloqueo_tablas_mutex);
 
-	log_debug(logger, "La tabla esta bloqueada");
+	loguear("La tabla %s esta bloqueada", DEBUG, nombre_tabla);
 	pthread_mutex_lock(mutex_tabla);
 }
 
@@ -267,11 +257,11 @@ void unlock_mutex_tabla(char* nombre_tabla) {
 	pthread_mutex_unlock(&bloqueo_tablas_mutex);
 
 	pthread_mutex_unlock(mutex_tabla);
-	log_debug(logger, "La tabla se desbloqueo");
+	loguear("La tabla %s se desbloqueo", DEBUG, nombre_tabla);
 }
 
 void* ejecutar_comando(int header, void* package) {
-	log_debug(logger, "Ejecutando");
+	loguear("Ejecutando", DEBUG);
 	usleep(retardo * 1000);
 	switch (header) {
 	case SELECT:
@@ -297,27 +287,20 @@ void* ejecutar_comando(int header, void* package) {
 
 Registro* lfs_select(t_PackageSelect* package) {
 
-	char* mi_ruta = string_new();
-	string_append(&mi_ruta, ruta);
-
-	log_debug(logger, mi_ruta);
-
-	char* tables = "/Tables/";
-	string_append(&mi_ruta, tables);
-	string_append(&mi_ruta, package->tabla);
+	char* mi_ruta = ruta_a_tabla(package->tabla);
 
 	log_debug(logger, mi_ruta);
 
 	lock_mutex_tabla(package->tabla);
 	if (!existe_tabla(mi_ruta)) {
 		unlock_mutex_tabla(package->tabla);
-		log_debug(logger, "No existe la tabla");
+		loguear("No existe la tabla %s", ERROR, package->tabla);
 		Registro* registro = malloc(sizeof(Registro));
 		registro->value = NULL;
 		return registro;
 	}
 	unlock_mutex_tabla(package->tabla);
-	log_debug(logger, "Existe tabla, BRO!");
+	loguear("Existe tabla, BRO!", DEBUG);
 
 	Metadata* metadata = obtener_metadata(mi_ruta);
 	strcpy(metadata->nombre_tabla,package->tabla);
@@ -325,9 +308,8 @@ Registro* lfs_select(t_PackageSelect* package) {
 
 	int particionObjetivo = calcular_particion(package->key,
 			metadata->partitions);
-	char* particionObjetivo_string = string_itoa(particionObjetivo);
-	log_debug(logger, particionObjetivo_string);
-	free(particionObjetivo_string);
+	loguear("Particion Objetivo: %i", DEBUG, particionObjetivo);
+
 
 	lock_mutex_tabla(package->tabla);
 	Registro* registro_mayor = encontrar_keys(package->key, particionObjetivo,
@@ -344,22 +326,16 @@ int lfs_insert(t_PackageInsert* package) {
 	if (package->value_long > max_value_size) {
 		return 0;
 	}
-	char* mi_ruta = string_new();
-	string_append(&mi_ruta, ruta);
-
-	log_debug(logger, mi_ruta);
-
-	char* tables = "/Tables/";
-	string_append(&mi_ruta, tables);
-	string_append(&mi_ruta, package->tabla);
-
-	log_debug(logger, mi_ruta);
+	char* mi_ruta = ruta_a_tabla(package->tabla);
+	loguear(mi_ruta, DEBUG);
 
 	if (!existe_tabla(mi_ruta)) {
-		log_debug(logger, "No existe la tabla");
+		loguear("No existe la tabla %s", ERROR, package->tabla);
+		free(mi_ruta);
 		return 0;
 	}
-	log_debug(logger, "Existe tabla, BRO!");
+	loguear("Existe tabla, BRO!", DEBUG);
+	free(mi_ruta);
 
 	if (!existe_tabla_en_mem_table(package->tabla)) {
 		if (!agregar_tabla_a_mem_table(package->tabla)) {
@@ -367,7 +343,7 @@ int lfs_insert(t_PackageInsert* package) {
 		}
 	}
 
-	log_debug(logger, "Voy a crear el registro");
+	loguear("Voy a crear el registro en mem_table", DEBUG);
 	Registro* registro_a_insertar = malloc(sizeof(Registro));
 	registro_a_insertar->key = package->key;
 	registro_a_insertar->timeStamp = package->timestamp;
@@ -378,17 +354,16 @@ int lfs_insert(t_PackageInsert* package) {
 	strcpy(registro_a_insertar->value, value);
 
 	loguear_registro(registro_a_insertar);
-	free(mi_ruta);
 
 	return insertar_en_mem_table(registro_a_insertar, package->tabla);
 }
 
 int lfs_create(t_PackageCreate* package) {
-	log_debug(logger, "Creando");
+	loguear("Creando", DEBUG);
 	char* directorio = ruta_a_tabla(package->tabla);
 	if (existe_tabla(directorio)) {
 		free(directorio);
-		log_debug(logger, "Existe la tabla papi: %s", package->tabla);
+		loguear("Existe la tabla papi: %s", DEBUG, package->tabla);
 		return 0;
 	}
 
@@ -396,8 +371,6 @@ int lfs_create(t_PackageCreate* package) {
 		free(directorio);
 		return 0;
 	}
-
-
 
 	if (!crear_metadata(package, directorio)) {
 		free(directorio);
@@ -423,7 +396,6 @@ int lfs_create(t_PackageCreate* package) {
 	crear_hilo_compactacion_de_tabla(metadata);
 	crear_mutex_de_tabla(metadata);
 
-	log_debug(logger, "Cree las particiones");
 	return 1;
 }
 
@@ -460,7 +432,6 @@ int primer_bloque_libre_sin_set() {
 	int bloque = 0;
 	for (bloque; bloque < lfs_blocks; bloque++) {
 		if (!bitarray_test_bit(bitmap, bloque)) {
-			//bitarray_set_bit(bitmap, bloque);
 			return bloque + 1;
 		}
 	}
@@ -475,7 +446,7 @@ int crear_particion(int numero, char* tabla_path) {
 	string_append(&mi_particion, numeroString);
 	char* bin = ".bin";
 	string_append(&mi_particion, bin);
-	log_debug(logger, mi_particion);
+	loguear(mi_particion, DEBUG);
 	int fd = open(mi_particion, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
 
 	if (fd == -1) {
@@ -557,10 +528,10 @@ int existe_tabla_en_mem_table(char* tabla_a_chequear) {
 	//wait
 	pthread_mutex_unlock(&mem_table_mutex);
 	if (tabla_encontrada) {
-		log_debug(logger, "Existe la tabla en mem_table");
+		loguear("Existe la tabla en mem_table", DEBUG);
 		return 1;
 	}
-	log_debug(logger, "No existe la tabla en mem_table");
+	loguear("No existe la tabla en mem_table", DEBUG);
 	return 0;
 }
 
@@ -649,11 +620,7 @@ t_list* lfs_describe_a_table(char* nombre_tabla) {
 	Metadata* metadata = malloc(sizeof(Metadata));
 	DIR *tables_directory;
 	struct dirent *a_directory;
-	char* tabla_path = string_new();
-	string_append(&tabla_path, ruta);
-	string_append(&tabla_path, "/Tables/");
-	log_debug(logger, tabla_path);
-	string_append(&tabla_path, nombre_tabla);
+	char* tabla_path = ruta_a_tabla(nombre_tabla);
 
 	if (!existe_tabla(tabla_path)) {
 		return NULL;
@@ -673,7 +640,6 @@ int existe_tabla(char* tabla) {
 	DIR *dirp;
 
 	dirp = opendir(tabla);
-	log_debug(logger, tabla);
 	if (dirp == NULL) {
 		status = 0;
 	}
