@@ -1124,7 +1124,7 @@ void *receptorDeConsultas(void* socket) {
 					strcpy(respuesta.value, registro_a_devolver->value);
 					respuesta.value_long = strlen(respuesta.value);
 					respuesta.timestamp = registro_a_devolver->timeStamp;
-					loguear("%s", DEBUG, respuesta);
+					loguear("%s", DEBUG, respuesta.value);
 					mostrar_en_pantalla("%s", INFO, respuesta.value);
 				} else {
 					respuesta.result = 0;
