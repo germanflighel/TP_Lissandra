@@ -46,7 +46,7 @@ t_config* config;
 int main() {
 	logger = iniciar_logger();
 	tiempos_de_compactacion = log_create("tiempos_bloqueo.log", "LFS", 0, LOG_LEVEL_INFO);
-	pantalla =  log_create("pantalla.log", "LFS", 0, LOG_LEVEL_INFO);
+	pantalla =  log_create("pantalla.log", "LFS", 1, LOG_LEVEL_DEBUG);
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	char* entrada = leerConsola();
@@ -222,7 +222,7 @@ t_config* leer_config() {
 
 t_log* iniciar_logger(void) {
 	char* lfs = "LFS";
-	return log_create(LOG_FILE_PATH, lfs, 1, LOG_LEVEL_DEBUG);
+	return log_create(LOG_FILE_PATH, lfs, 0, LOG_LEVEL_DEBUG);
 }
 
 
@@ -1376,11 +1376,7 @@ void interpretarComando(int header, char* parametros) {
 			t_list* lista = lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
 			if (lista != NULL) {
 				metadata = list_get(lista, 0);
-				mostrar_en_pantalla("%s\nConsistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld", INFO,
-						metadata->nombre_tabla,
-						consistency_to_str(metadata->consistency),
-						metadata->partitions,
-						metadata->compaction_time);
+				_mostrar_metadata(metadata);
 				loguear_metadata(metadata);
 				free(metadata);
 			}
@@ -1394,7 +1390,7 @@ void interpretarComando(int header, char* parametros) {
 			break;
 		}
 		t_list* metadatas = lfs_describe();
-		list_iterate(metadatas, (void*) loguear_metadata);
+		list_iterate(metadatas, (void*) _mostrar_metadata);
 
 		list_destroy_and_destroy_elements(metadatas, (void*) free);
 		free(((t_PackageDescribe*) package)->nombre_tabla);
@@ -2109,7 +2105,6 @@ void montar_filesystem() {
 }
 
 int crear_carpeta_en(char* una_ruta) {
-	printf("%s\n", una_ruta);
 	if (mkdir(una_ruta, 0700)) {
 		return 0;
 	}
@@ -2215,5 +2210,13 @@ void mostrar_en_pantalla(const char* formato, int tipo, ...) {
 	pthread_mutex_unlock(&pantalla_mutex);
 	free(a_loguear);
 	va_end(arguments);
+}
+
+void _mostrar_metadata(Metadata* metadata) {
+	mostrar_en_pantalla(
+			"%s\nConsistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld",
+			INFO, metadata->nombre_tabla,
+			consistency_to_str(metadata->consistency), metadata->partitions,
+			metadata->compaction_time);
 }
 
