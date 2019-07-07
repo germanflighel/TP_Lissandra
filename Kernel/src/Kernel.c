@@ -411,8 +411,8 @@ void* intentarEstablecerConexion() {
 					list_add(memoriasConectadas, mem_nueva);
 					pthread_mutex_unlock(&memorias_mutex);
 				} else {
-					free(mem_nueva);
 					free(mem_nueva->socket);
+					free(mem_nueva);
 				}
 
 			}
@@ -676,8 +676,58 @@ void describe(char* parametros, int exec_index) {
 	}
 }
 
-void drop(char* parametros, int serverSocket) {
-	printf("Recibi un drop.\n");
+void drop(char* parametros, int exec_index) {
+	char *serializedPackage;
+	int entradaValida = 1;
+	t_PackageDrop package;
+
+	if (!fill_package_drop(&package, parametros)) {
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+	if (entradaValida) {
+		log_info_s(logger_Kernel, "DROP enviado");
+
+		serializedPackage = serializarDrop(&package);
+
+		pthread_mutex_lock(&memorias_mutex);
+		if (!memoriasConectadas->elements_count) {
+			pthread_mutex_unlock(&memorias_mutex);
+			log_error_s(logger_Kernel, "No hay memorias conectadas");
+			return;
+		}
+		pthread_mutex_unlock(&memorias_mutex);
+		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index);
+
+		if (socketAEnviar != -1) {
+			//printf("Lo mande\n");
+			send(socketAEnviar, serializedPackage, package.total_size, 0);
+			eliminarTabla(package.nombre_tabla);
+
+		} else {
+			printf("Ninguna memoria asignada para este criterio\n");
+		}
+
+		dispose_package(&serializedPackage);
+
+	}
+}
+
+void eliminarTabla(char* nombre) {
+
+	int esDeLaTabla(Tabla *tabla) {
+		if (strcmp(tabla->nombre_tabla, nombre) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	;
+
+	pthread_mutex_lock(&tablas_actuales_mutex);
+	list_remove_and_destroy_by_condition(tablas_actuales, &esDeLaTabla,
+			(void*) free);
+	pthread_mutex_unlock(&tablas_actuales_mutex);
+
 }
 
 void recibirDescribe(int serverSocket) {

@@ -23208,3 +23208,2768 @@
 [INFO] 23:32:36:710 kernel/(7527:7529): Insert: OK
 [INFO] 23:32:36:710 kernel/(7527:7529): Finalizó quantum
 [INFO] 23:32:36:710 kernel/(7527:7529): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1561775556)
+[INFO] 17:24:47:266 kernel/(4642:4642): 8001
+[INFO] 17:24:47:267 kernel/(4642:4642): conecte
+[INFO] 17:24:47:267 kernel/(4642:4642): Conecte al servidor.
+[INFO] 17:24:47:268 kernel/(4642:4642): conecte
+[INFO] 17:24:47:268 kernel/(4642:4642): Conecte al servidor.
+[INFO] 17:24:47:268 kernel/(4642:4642): conecte
+[INFO] 17:24:47:268 kernel/(4642:4642): Conecte al servidor.
+[DEBUG] 17:24:47:269 kernel/(4642:4646): Conecte a la memoria numero 2
+[INFO] 17:24:47:269 kernel/(4642:4643): DESCRIBE enviado
+[DEBUG] 17:24:47:269 kernel/(4642:4646): Conecte a la memoria numero 2
+[DEBUG] 17:24:47:270 kernel/(4642:4646): Conecte a la memoria numero 2
+[INFO] 17:24:48:976 kernel/(4642:4643): Finalizó
+[INFO] 17:24:54:456 kernel/(4642:4644): Finalizó
+[INFO] 17:24:58:64 kernel/(4642:4645): Finalizó
+[INFO] 17:25:02:269 kernel/(4642:4647): DESCRIBE enviado
+[INFO] 17:25:03:976 kernel/(4642:4644): Finalizó
+[INFO] 17:25:03:976 kernel/(4642:4644): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:25:03:976 kernel/(4642:4644): DESCRIBE enviado
+[INFO] 17:25:03:976 kernel/(4642:4643): Finalizó
+[INFO] 17:25:03:976 kernel/(4642:4645): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:25:03:977 kernel/(4642:4645): DESCRIBE enviado
+[INFO] 17:25:04:161 kernel/(4642:4643): Finalizó
+[INFO] 17:25:04:161 kernel/(4642:4643): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:25:04:161 kernel/(4642:4643): DESCRIBE enviado
+[INFO] 17:25:06:946 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:06:947 kernel/(4642:4644): Finalizó
+[INFO] 17:25:06:947 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562531106)
+[INFO] 17:25:09:253 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:09:253 kernel/(4642:4643): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:25:09:253 kernel/(4642:4643): DESCRIBE enviado
+[DEBUG] 17:25:09:863 kernel/(4642:4644): OK
+[INFO] 17:25:09:863 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:09:863 kernel/(4642:4644): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:25:09:863 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:09:863 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562531109)
+[DEBUG] 17:25:10:464 kernel/(4642:4644): OK
+[INFO] 17:25:10:464 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:10:464 kernel/(4642:4644): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:25:10:464 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:10:464 kernel/(4642:4644): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:25:10:464 kernel/(4642:4644): DESCRIBE enviado
+[INFO] 17:25:11:573 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:11:573 kernel/(4642:4645): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:25:11:573 kernel/(4642:4645): DESCRIBE enviado
+[INFO] 17:25:14:486 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:14:486 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562531114)
+[DEBUG] 17:25:16:290 kernel/(4642:4643): OK
+[INFO] 17:25:16:290 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:16:290 kernel/(4642:4643): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:25:16:290 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:16:291 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562531116)
+[DEBUG] 17:25:16:903 kernel/(4642:4643): OK
+[INFO] 17:25:16:903 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:16:903 kernel/(4642:4643): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:25:16:903 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:16:903 kernel/(4642:4643): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:25:16:903 kernel/(4642:4643): DESCRIBE enviado
+[INFO] 17:25:18:609 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:18:609 kernel/(4642:4645): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:25:18:609 kernel/(4642:4645): DESCRIBE enviado
+[INFO] 17:25:20:917 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:20:917 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562531120)
+[DEBUG] 17:25:22:315 kernel/(4642:4646): Conecte a la memoria numero 3
+[DEBUG] 17:25:22:316 kernel/(4642:4646): Conecte a la memoria numero 3
+[DEBUG] 17:25:22:316 kernel/(4642:4646): Conecte a la memoria numero 3
+[DEBUG] 17:25:23:326 kernel/(4642:4644): OK
+[INFO] 17:25:23:326 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:23:326 kernel/(4642:4644): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562531123)
+[DEBUG] 17:25:23:927 kernel/(4642:4644): OK
+[INFO] 17:25:23:927 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:23:927 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:23:927 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562531123)
+[INFO] 17:25:25:35 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:25:35 kernel/(4642:4645): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562531125)
+[DEBUG] 17:25:25:641 kernel/(4642:4645): OK
+[INFO] 17:25:25:641 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:25:641 kernel/(4642:4645): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562531125)
+[INFO] 17:25:26:748 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:26:748 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562531126)
+[DEBUG] 17:25:27:349 kernel/(4642:4643): OK
+[INFO] 17:25:27:349 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:27:349 kernel/(4642:4643): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562531127)
+[DEBUG] 17:25:27:350 kernel/(4642:4644): OK
+[INFO] 17:25:27:350 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:27:350 kernel/(4642:4644): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562531127)
+[DEBUG] 17:25:27:953 kernel/(4642:4645): OK
+[INFO] 17:25:27:953 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:27:954 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:27:954 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562531127)
+[DEBUG] 17:25:27:954 kernel/(4642:4644): OK
+[INFO] 17:25:27:954 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:27:954 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:27:954 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562531127)
+[DEBUG] 17:25:28:560 kernel/(4642:4643): OK
+[INFO] 17:25:28:560 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:28:560 kernel/(4642:4643): Finalizó quantum
+[DEBUG] 17:25:28:560 kernel/(4642:4644): OK
+[INFO] 17:25:28:560 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:28:560 kernel/(4642:4644): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562531128)
+[INFO] 17:25:28:560 kernel/(4642:4643): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562531128)
+[DEBUG] 17:25:29:164 kernel/(4642:4645): OK
+[INFO] 17:25:29:164 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:29:164 kernel/(4642:4645): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562531129)
+[DEBUG] 17:25:29:164 kernel/(4642:4643): OK
+[INFO] 17:25:29:164 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:29:164 kernel/(4642:4643): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562531129)
+[DEBUG] 17:25:29:772 kernel/(4642:4644): OK
+[INFO] 17:25:29:772 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:29:772 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:29:772 kernel/(4642:4644): Finalizó
+[INFO] 17:25:29:772 kernel/(4642:4644): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562531129)
+[DEBUG] 17:25:29:773 kernel/(4642:4643): OK
+[INFO] 17:25:29:773 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:29:773 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:29:773 kernel/(4642:4643): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:25:30:373 kernel/(4642:4643): Registro: TimeStamp: 1562531127, Key:11, Value: Paloma
+[DEBUG] 17:25:30:373 kernel/(4642:4645): OK
+[INFO] 17:25:30:373 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:30:373 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:30:373 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562531130)
+[INFO] 17:25:30:373 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562531130)
+[DEBUG] 17:25:30:977 kernel/(4642:4644): OK
+[INFO] 17:25:30:977 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:30:977 kernel/(4642:4644): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562531130)
+[DEBUG] 17:25:30:977 kernel/(4642:4645): OK
+[INFO] 17:25:30:977 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:30:977 kernel/(4642:4645): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562531130)
+[DEBUG] 17:25:31:578 kernel/(4642:4643): OK
+[INFO] 17:25:31:578 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:31:578 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:31:578 kernel/(4642:4643): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562531131)
+[DEBUG] 17:25:31:578 kernel/(4642:4645): OK
+[INFO] 17:25:31:578 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:31:578 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:31:578 kernel/(4642:4645): DESCRIBE enviado
+[DEBUG] 17:25:31:578 kernel/(4642:4644): OK
+[INFO] 17:25:31:578 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:31:578 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:31:578 kernel/(4642:4644): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:25:32:180 kernel/(4642:4643): OK
+[INFO] 17:25:32:180 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:32:180 kernel/(4642:4643): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562531132)
+[DEBUG] 17:25:32:180 kernel/(4642:4644): Registro: TimeStamp: 1562531127, Key:11, Value: Paloma
+[INFO] 17:25:32:180 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562531132)
+[DEBUG] 17:25:32:783 kernel/(4642:4643): OK
+[INFO] 17:25:32:783 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:32:783 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:32:783 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562531132)
+[DEBUG] 17:25:33:387 kernel/(4642:4643): OK
+[INFO] 17:25:33:387 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:33:387 kernel/(4642:4643): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562531133)
+[INFO] 17:25:33:896 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562531133)
+[DEBUG] 17:25:33:991 kernel/(4642:4643): OK
+[INFO] 17:25:33:992 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:33:992 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:33:992 kernel/(4642:4643): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562531133)
+[DEBUG] 17:25:34:503 kernel/(4642:4644): OK
+[INFO] 17:25:34:503 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:34:503 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:34:503 kernel/(4642:4644): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:25:34:593 kernel/(4642:4643): OK
+[INFO] 17:25:34:593 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:34:593 kernel/(4642:4643): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562531134)
+[DEBUG] 17:25:35:106 kernel/(4642:4645): OK
+[INFO] 17:25:35:106 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:35:106 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:35:106 kernel/(4642:4645): DESCRIBE enviado
+[DEBUG] 17:25:35:109 kernel/(4642:4644): Registro: TimeStamp: 1562531133, Key:11, Value: Halcon
+[INFO] 17:25:35:109 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562531135)
+[DEBUG] 17:25:35:755 kernel/(4642:4643): OK
+[INFO] 17:25:35:755 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:35:755 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:35:755 kernel/(4642:4643): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562531135)
+[DEBUG] 17:25:35:755 kernel/(4642:4644): OK
+[INFO] 17:25:35:755 kernel/(4642:4644): Insert: OK
+[INFO] 17:25:35:755 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:35:755 kernel/(4642:4644): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:25:36:357 kernel/(4642:4643): OK
+[INFO] 17:25:36:357 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:36:357 kernel/(4642:4643): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 17:25:37:459 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562531137)
+[DEBUG] 17:25:38:60 kernel/(4642:4645): OK
+[INFO] 17:25:38:60 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:38:60 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:38:60 kernel/(4642:4645): DESCRIBE enviado
+[DEBUG] 17:25:38:60 kernel/(4642:4644): Registro: TimeStamp: 1562531134, Key:11, Value: Halcon
+[INFO] 17:25:38:61 kernel/(4642:4644): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562531138)
+[DEBUG] 17:25:38:782 kernel/(4642:4644): Mem: 2
+[DEBUG] 17:25:38:782 kernel/(4642:4644): Mem: 3
+[ERROR] 17:25:38:782 kernel/(4642:4644): Memoria desconectada
+[INFO] 17:25:38:782 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:38:782 kernel/(4642:4644): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562531138)
+[DEBUG] 17:25:38:782 kernel/(4642:4645): Mem: 2
+[DEBUG] 17:25:38:782 kernel/(4642:4645): Mem: 3
+[ERROR] 17:25:38:782 kernel/(4642:4645): Memoria desconectada
+[INFO] 17:25:38:782 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562531138)
+[DEBUG] 17:25:39:383 kernel/(4642:4644): OK
+[INFO] 17:25:39:383 kernel/(4642:4644): Insert: OK
+[DEBUG] 17:25:39:383 kernel/(4642:4645): OK
+[INFO] 17:25:39:384 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:39:384 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:39:384 kernel/(4642:4644): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 17:25:39:384 kernel/(4642:4645): DESCRIBE enviado
+[DEBUG] 17:25:40:585 kernel/(4642:4643): Mem: 3
+[ERROR] 17:25:40:585 kernel/(4642:4643): Memoria desconectada
+[INFO] 17:25:40:585 kernel/(4642:4643): Finalizó quantum
+[INFO] 17:25:40:585 kernel/(4642:4643): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562531140)
+[DEBUG] 17:25:40:585 kernel/(4642:4645): Mem: 3
+[ERROR] 17:25:40:586 kernel/(4642:4645): Memoria desconectada
+[INFO] 17:25:40:586 kernel/(4642:4645): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562531140)
+[DEBUG] 17:25:40:586 kernel/(4642:4644): Mem: 3
+[ERROR] 17:25:40:586 kernel/(4642:4644): Memoria desconectada
+[INFO] 17:25:40:586 kernel/(4642:4644): Finalizó quantum
+[INFO] 17:25:40:586 kernel/(4642:4644): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562531140)
+[DEBUG] 17:25:41:187 kernel/(4642:4643): OK
+[INFO] 17:25:41:187 kernel/(4642:4643): Insert: OK
+[INFO] 17:25:41:187 kernel/(4642:4643): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 17:25:41:788 kernel/(4642:4645): OK
+[INFO] 17:25:41:788 kernel/(4642:4645): Insert: OK
+[INFO] 17:25:41:788 kernel/(4642:4645): Finalizó quantum
+[INFO] 17:25:41:788 kernel/(4642:4645): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562531141)
+[INFO] 17:49:21:502 kernel/(5433:5433): 8001
+[INFO] 17:49:21:502 kernel/(5433:5433): conecte
+[INFO] 17:49:21:502 kernel/(5433:5433): Conecte al servidor.
+[INFO] 17:49:21:503 kernel/(5433:5433): conecte
+[INFO] 17:49:21:503 kernel/(5433:5433): Conecte al servidor.
+[INFO] 17:49:21:503 kernel/(5433:5433): conecte
+[INFO] 17:49:21:503 kernel/(5433:5433): Conecte al servidor.
+[INFO] 17:49:21:504 kernel/(5433:5434): DESCRIBE enviado
+[DEBUG] 17:49:21:504 kernel/(5433:5437): Conecte a la memoria numero 2
+[DEBUG] 17:49:21:504 kernel/(5433:5437): Conecte a la memoria numero 2
+[DEBUG] 17:49:21:505 kernel/(5433:5437): Conecte a la memoria numero 2
+[WARNING] 17:49:23:206 kernel/(5433:5434): La tabla no existe
+[INFO] 17:49:23:206 kernel/(5433:5434): Finalizó
+[INFO] 17:49:26:620 kernel/(5433:5435): Finalizó
+[INFO] 17:49:29:948 kernel/(5433:5436): Finalizó
+[INFO] 17:49:36:504 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:49:38:206 kernel/(5433:5438): La tabla no existe
+[INFO] 17:49:53:207 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:49:54:909 kernel/(5433:5438): La tabla no existe
+[INFO] 17:50:09:914 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:50:11:615 kernel/(5433:5438): La tabla no existe
+[INFO] 17:50:26:616 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:50:28:328 kernel/(5433:5438): La tabla no existe
+[INFO] 17:50:43:346 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:50:45:53 kernel/(5433:5438): La tabla no existe
+[INFO] 17:51:00:54 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:51:01:761 kernel/(5433:5438): La tabla no existe
+[INFO] 17:51:16:762 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:51:18:475 kernel/(5433:5438): La tabla no existe
+[INFO] 17:51:33:480 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:51:35:185 kernel/(5433:5438): La tabla no existe
+[INFO] 17:51:50:189 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:51:51:899 kernel/(5433:5438): La tabla no existe
+[INFO] 17:52:06:900 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:52:08:607 kernel/(5433:5438): La tabla no existe
+[INFO] 17:52:23:610 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:52:25:316 kernel/(5433:5438): La tabla no existe
+[INFO] 17:52:40:320 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:52:42:32 kernel/(5433:5438): La tabla no existe
+[INFO] 17:52:57:33 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:52:58:769 kernel/(5433:5438): La tabla no existe
+[INFO] 17:53:13:769 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:53:15:471 kernel/(5433:5438): La tabla no existe
+[INFO] 17:53:30:479 kernel/(5433:5438): DESCRIBE enviado
+[WARNING] 17:53:32:189 kernel/(5433:5438): La tabla no existe
+[INFO] 17:53:32:189 kernel/(5433:5435): Finalizó
+[INFO] 17:53:32:190 kernel/(5433:5434): Finalizó
+[INFO] 17:53:32:190 kernel/(5433:5434): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:53:32:190 kernel/(5433:5434): DESCRIBE enviado
+[INFO] 17:53:32:190 kernel/(5433:5435): Finalizó
+[INFO] 17:53:32:190 kernel/(5433:5435): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:53:32:190 kernel/(5433:5435): DESCRIBE enviado
+[INFO] 17:53:32:190 kernel/(5433:5436): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:53:32:190 kernel/(5433:5436): DESCRIBE enviado
+[INFO] 17:53:34:495 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:34:495 kernel/(5433:5434): Finalizó
+[INFO] 17:53:34:495 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562532814)
+[DEBUG] 17:53:36:312 kernel/(5433:5434): OK
+[INFO] 17:53:36:312 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:36:312 kernel/(5433:5434): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:53:36:312 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:36:312 kernel/(5433:5434): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 17:53:36:312 kernel/(5433:5434): DESCRIBE enviado
+[INFO] 17:53:38:41 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:38:41 kernel/(5433:5435): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:53:38:41 kernel/(5433:5435): DESCRIBE enviado
+[INFO] 17:53:39:752 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:39:752 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562532819)
+[DEBUG] 17:53:40:354 kernel/(5433:5436): OK
+[INFO] 17:53:40:354 kernel/(5433:5436): Insert: OK
+[INFO] 17:53:40:354 kernel/(5433:5436): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:53:40:354 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:40:354 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562532820)
+[INFO] 17:53:43:287 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:43:287 kernel/(5433:5435): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:53:43:287 kernel/(5433:5435): DESCRIBE enviado
+[INFO] 17:53:45:617 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:45:617 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562532825)
+[DEBUG] 17:53:46:217 kernel/(5433:5434): OK
+[INFO] 17:53:46:217 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:46:217 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562532826)
+[DEBUG] 17:53:46:825 kernel/(5433:5436): OK
+[INFO] 17:53:46:825 kernel/(5433:5436): Insert: OK
+[INFO] 17:53:46:826 kernel/(5433:5436): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:53:46:826 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:46:826 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562532826)
+[DEBUG] 17:53:47:428 kernel/(5433:5436): OK
+[INFO] 17:53:47:428 kernel/(5433:5436): Insert: OK
+[INFO] 17:53:47:428 kernel/(5433:5436): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 17:53:47:428 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:47:428 kernel/(5433:5436): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:53:47:428 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:53:47:428 kernel/(5433:5434): OK
+[INFO] 17:53:47:428 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:47:428 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:47:428 kernel/(5433:5434): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 17:53:47:428 kernel/(5433:5434): DESCRIBE enviado
+[INFO] 17:53:49:152 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:49:152 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562532829)
+[INFO] 17:53:52:60 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:52:60 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562532832)
+[DEBUG] 17:53:52:670 kernel/(5433:5434): OK
+[INFO] 17:53:52:670 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:52:670 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562532832)
+[DEBUG] 17:53:52:670 kernel/(5433:5435): OK
+[INFO] 17:53:52:670 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:52:670 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562532832)
+[DEBUG] 17:53:53:275 kernel/(5433:5435): OK
+[INFO] 17:53:53:275 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:53:275 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:53:275 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562532833)
+[DEBUG] 17:53:53:876 kernel/(5433:5434): OK
+[INFO] 17:53:53:876 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:53:876 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:53:876 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562532833)
+[DEBUG] 17:53:54:478 kernel/(5433:5434): OK
+[INFO] 17:53:54:478 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:54:478 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562532834)
+[DEBUG] 17:53:55:80 kernel/(5433:5435): OK
+[INFO] 17:53:55:80 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:55:80 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562532835)
+[DEBUG] 17:53:55:685 kernel/(5433:5435): OK
+[INFO] 17:53:55:685 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:55:685 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:55:685 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562532835)
+[INFO] 17:53:56:786 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:56:786 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562532836)
+[DEBUG] 17:53:57:389 kernel/(5433:5436): OK
+[INFO] 17:53:57:389 kernel/(5433:5436): Insert: OK
+[INFO] 17:53:57:389 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562532837)
+[DEBUG] 17:53:57:389 kernel/(5433:5434): OK
+[INFO] 17:53:57:389 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:57:389 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:57:389 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562532837)
+[DEBUG] 17:53:57:989 kernel/(5433:5435): OK
+[INFO] 17:53:57:992 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:57:992 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562532837)
+[DEBUG] 17:53:57:992 kernel/(5433:5434): OK
+[INFO] 17:53:57:992 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:57:992 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562532837)
+[DEBUG] 17:53:58:591 kernel/(5433:5436): OK
+[INFO] 17:53:58:591 kernel/(5433:5436): Insert: OK
+[INFO] 17:53:58:591 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:53:58:591 kernel/(5433:5436): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:53:58:593 kernel/(5433:5434): OK
+[INFO] 17:53:58:593 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:58:593 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:58:593 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562532838)
+[DEBUG] 17:53:59:191 kernel/(5433:5435): OK
+[INFO] 17:53:59:191 kernel/(5433:5435): Insert: OK
+[INFO] 17:53:59:191 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:53:59:191 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562532839)
+[DEBUG] 17:53:59:194 kernel/(5433:5434): OK
+[INFO] 17:53:59:194 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:59:194 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562532839)
+[DEBUG] 17:53:59:792 kernel/(5433:5436): Registro: TimeStamp: 1562532834, Key:11, Value: Halcon
+[INFO] 17:53:59:792 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562532839)
+[DEBUG] 17:53:59:794 kernel/(5433:5434): OK
+[INFO] 17:53:59:794 kernel/(5433:5434): Insert: OK
+[INFO] 17:53:59:794 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:53:59:794 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562532839)
+[DEBUG] 17:54:00:392 kernel/(5433:5435): OK
+[INFO] 17:54:00:392 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:00:392 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562532840)
+[DEBUG] 17:54:00:395 kernel/(5433:5434): OK
+[INFO] 17:54:00:395 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:00:395 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562532840)
+[DEBUG] 17:54:00:994 kernel/(5433:5436): OK
+[INFO] 17:54:00:994 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:00:994 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:00:994 kernel/(5433:5436): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:54:00:996 kernel/(5433:5434): OK
+[INFO] 17:54:00:996 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:00:996 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:00:996 kernel/(5433:5434): DESCRIBE enviado
+[DEBUG] 17:54:01:597 kernel/(5433:5435): OK
+[INFO] 17:54:01:597 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:01:597 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:01:597 kernel/(5433:5435): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:54:01:623 kernel/(5433:5437): Conecte a la memoria numero 3
+[DEBUG] 17:54:01:624 kernel/(5433:5437): Conecte a la memoria numero 3
+[DEBUG] 17:54:01:625 kernel/(5433:5437): Conecte a la memoria numero 3
+[DEBUG] 17:54:02:222 kernel/(5433:5435): Registro: TimeStamp: 1562532840, Key:11, Value: Halcon
+[INFO] 17:54:02:222 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562532842)
+[INFO] 17:54:03:324 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562532843)
+[DEBUG] 17:54:03:925 kernel/(5433:5436): Registro: TimeStamp: 1562532834, Key:11, Value: Halcon
+[INFO] 17:54:03:925 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562532843)
+[DEBUG] 17:54:03:925 kernel/(5433:5434): OK
+[INFO] 17:54:03:925 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:03:925 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:03:925 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562532843)
+[DEBUG] 17:54:04:526 kernel/(5433:5435): OK
+[INFO] 17:54:04:526 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:04:526 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:04:526 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562532844)
+[DEBUG] 17:54:04:526 kernel/(5433:5434): OK
+[INFO] 17:54:04:526 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:04:526 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562532844)
+[DEBUG] 17:54:05:139 kernel/(5433:5436): OK
+[INFO] 17:54:05:139 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:05:139 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:05:139 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:54:05:139 kernel/(5433:5434): OK
+[INFO] 17:54:05:139 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:05:139 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:05:139 kernel/(5433:5434): DESCRIBE enviado
+[DEBUG] 17:54:05:772 kernel/(5433:5435): OK
+[INFO] 17:54:05:772 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:05:772 kernel/(5433:5435): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 17:54:07:479 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562532847)
+[DEBUG] 17:54:08:82 kernel/(5433:5434): OK
+[INFO] 17:54:08:82 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:08:82 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:08:82 kernel/(5433:5434): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 17:54:09:184 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562532849)
+[DEBUG] 17:54:09:785 kernel/(5433:5434): Registro: TimeStamp: 1562532834, Key:11, Value: Halcon
+[INFO] 17:54:09:785 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562532849)
+[DEBUG] 17:54:09:785 kernel/(5433:5436): OK
+[INFO] 17:54:09:785 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:09:785 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:09:785 kernel/(5433:5436): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562532849)
+[DEBUG] 17:54:10:408 kernel/(5433:5436): OK
+[INFO] 17:54:10:408 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:10:408 kernel/(5433:5436): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 17:54:11:514 kernel/(5433:5435): Registro no encontrado
+[INFO] 17:54:11:514 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:11:514 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562532851)
+[DEBUG] 17:54:12:163 kernel/(5433:5435): OK
+[INFO] 17:54:12:163 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:12:163 kernel/(5433:5435): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 17:54:12:163 kernel/(5433:5434): OK
+[INFO] 17:54:12:163 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:12:163 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:12:163 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562532852)
+[DEBUG] 17:54:12:775 kernel/(5433:5434): OK
+[INFO] 17:54:12:775 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:12:775 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562532852)
+[DEBUG] 17:54:13:928 kernel/(5433:5436): Registro no encontrado
+[INFO] 17:54:13:929 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:13:929 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:54:14:528 kernel/(5433:5434): OK
+[INFO] 17:54:14:528 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:14:528 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:14:528 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562532854)
+[DEBUG] 17:54:15:133 kernel/(5433:5434): OK
+[INFO] 17:54:15:133 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:15:133 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562532855)
+[DEBUG] 17:54:16:238 kernel/(5433:5435): Registro no encontrado
+[INFO] 17:54:16:238 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:16:238 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562532856)
+[DEBUG] 17:54:16:838 kernel/(5433:5435): OK
+[INFO] 17:54:16:838 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:16:838 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562532856)
+[DEBUG] 17:54:16:839 kernel/(5433:5434): OK
+[INFO] 17:54:16:839 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:16:839 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:16:839 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562532856)
+[DEBUG] 17:54:17:443 kernel/(5433:5434): OK
+[INFO] 17:54:17:443 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:17:443 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562532857)
+[INFO] 17:54:18:553 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562532858)
+[DEBUG] 17:54:19:155 kernel/(5433:5436): OK
+[INFO] 17:54:19:155 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:19:155 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:19:155 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562532859)
+[DEBUG] 17:54:19:155 kernel/(5433:5434): OK
+[INFO] 17:54:19:155 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:19:155 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:19:155 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562532859)
+[DEBUG] 17:54:19:764 kernel/(5433:5435): OK
+[INFO] 17:54:19:764 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:19:764 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:19:764 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562532859)
+[DEBUG] 17:54:19:764 kernel/(5433:5434): OK
+[INFO] 17:54:19:764 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:19:764 kernel/(5433:5434): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 17:54:20:367 kernel/(5433:5434): Registro: TimeStamp: 1562532858, Key:310, Value: Calamar
+[INFO] 17:54:20:367 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:20:367 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562532860)
+[DEBUG] 17:54:20:367 kernel/(5433:5436): FULL
+[INFO] 17:54:20:367 kernel/(5433:5436): Insert: FULL
+[DEBUG] 17:54:20:974 kernel/(5433:5434): FULL
+[INFO] 17:54:20:974 kernel/(5433:5434): Insert: FULL
+[DEBUG] 17:54:21:574 kernel/(5433:5435): FULL
+[INFO] 17:54:21:575 kernel/(5433:5435): Insert: FULL
+[INFO] 17:54:22:177 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:22:177 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562532862)
+[INFO] 17:54:22:777 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:22:777 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562532862)
+[DEBUG] 17:54:22:777 kernel/(5433:5434): OK
+[INFO] 17:54:22:777 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:22:777 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:22:777 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562532862)
+[INFO] 17:54:23:377 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:23:377 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562532863)
+[DEBUG] 17:54:23:378 kernel/(5433:5434): OK
+[INFO] 17:54:23:378 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:23:378 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562532863)
+[DEBUG] 17:54:23:977 kernel/(5433:5436): OK
+[INFO] 17:54:23:977 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:23:977 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:23:977 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:54:23:986 kernel/(5433:5434): OK
+[INFO] 17:54:23:986 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:23:986 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:23:986 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562532863)
+[DEBUG] 17:54:24:577 kernel/(5433:5435): OK
+[INFO] 17:54:24:578 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:24:578 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:24:578 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562532864)
+[DEBUG] 17:54:25:181 kernel/(5433:5434): OK
+[INFO] 17:54:25:181 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:25:181 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562532865)
+[DEBUG] 17:54:25:181 kernel/(5433:5435): OK
+[INFO] 17:54:25:181 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:25:181 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562532865)
+[DEBUG] 17:54:25:785 kernel/(5433:5435): OK
+[INFO] 17:54:25:786 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:25:786 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:25:786 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562532865)
+[INFO] 17:54:26:886 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562532866)
+[DEBUG] 17:54:27:487 kernel/(5433:5434): OK
+[INFO] 17:54:27:487 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:27:487 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:27:487 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562532867)
+[DEBUG] 17:54:27:487 kernel/(5433:5436): OK
+[INFO] 17:54:27:487 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:27:487 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:27:487 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:54:28:87 kernel/(5433:5435): OK
+[INFO] 17:54:28:87 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:28:88 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562532868)
+[DEBUG] 17:54:28:692 kernel/(5433:5434): OK
+[INFO] 17:54:28:692 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:28:692 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562532868)
+[DEBUG] 17:54:28:692 kernel/(5433:5435): OK
+[INFO] 17:54:28:692 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:28:692 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:28:692 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562532868)
+[DEBUG] 17:54:29:294 kernel/(5433:5435): OK
+[INFO] 17:54:29:294 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:29:294 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562532869)
+[INFO] 17:54:30:396 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562532870)
+[DEBUG] 17:54:30:997 kernel/(5433:5434): OK
+[INFO] 17:54:30:997 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:30:997 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:30:997 kernel/(5433:5434): DESCRIBE enviado
+[DEBUG] 17:54:30:997 kernel/(5433:5436): OK
+[INFO] 17:54:30:997 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:30:997 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:30:997 kernel/(5433:5436): DESCRIBE enviado
+[DEBUG] 17:54:31:597 kernel/(5433:5435): OK
+[INFO] 17:54:31:597 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:31:597 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:31:597 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562532871)
+[INFO] 17:54:33:317 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562532873)
+[DEBUG] 17:54:33:918 kernel/(5433:5434): OK
+[INFO] 17:54:33:918 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:33:918 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:33:918 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562532873)
+[INFO] 17:54:35:34 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562532875)
+[DEBUG] 17:54:35:635 kernel/(5433:5434): OK
+[INFO] 17:54:35:635 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:35:635 kernel/(5433:5434): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 17:54:35:635 kernel/(5433:5436): OK
+[INFO] 17:54:35:635 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:35:635 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:35:635 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562532875)
+[DEBUG] 17:54:36:239 kernel/(5433:5436): OK
+[INFO] 17:54:36:239 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:36:239 kernel/(5433:5436): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562532876)
+[DEBUG] 17:54:36:239 kernel/(5433:5435): OK
+[INFO] 17:54:36:239 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:36:239 kernel/(5433:5435): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562532876)
+[DEBUG] 17:54:36:845 kernel/(5433:5434): Registro: TimeStamp: 1562532863, Key:983, Value: Pez globo
+[INFO] 17:54:36:845 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:36:846 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562532876)
+[DEBUG] 17:54:36:846 kernel/(5433:5435): OK
+[INFO] 17:54:36:846 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:36:846 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:36:846 kernel/(5433:5435): DESCRIBE enviado
+[DEBUG] 17:54:37:450 kernel/(5433:5436): OK
+[INFO] 17:54:37:450 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:37:450 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:37:450 kernel/(5433:5436): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562532877)
+[DEBUG] 17:54:38:55 kernel/(5433:5436): OK
+[INFO] 17:54:38:55 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:38:55 kernel/(5433:5436): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 17:54:38:55 kernel/(5433:5434): OK
+[INFO] 17:54:38:55 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:38:55 kernel/(5433:5434): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562532878)
+[DEBUG] 17:54:38:655 kernel/(5433:5434): OK
+[INFO] 17:54:38:656 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:38:656 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:38:656 kernel/(5433:5434): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562532878)
+[INFO] 17:54:39:757 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562532879)
+[DEBUG] 17:54:40:360 kernel/(5433:5434): OK
+[INFO] 17:54:40:360 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:40:360 kernel/(5433:5434): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 17:54:40:360 kernel/(5433:5435): OK
+[INFO] 17:54:40:360 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:40:360 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:40:360 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562532880)
+[DEBUG] 17:54:40:960 kernel/(5433:5436): Registro: TimeStamp: 1562532863, Key:983, Value: Pez globo
+[INFO] 17:54:40:960 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:54:40:960 kernel/(5433:5436): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562532880)
+[DEBUG] 17:54:40:961 kernel/(5433:5435): OK
+[INFO] 17:54:40:961 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:40:961 kernel/(5433:5435): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 17:54:41:561 kernel/(5433:5435): Registro: TimeStamp: 1562532879, Key:983, Value: Tiburon
+[INFO] 17:54:41:561 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:41:561 kernel/(5433:5435): DESCRIBE enviado
+[DEBUG] 17:54:41:562 kernel/(5433:5434): Registro: TimeStamp: 1562532863, Key:983, Value: Pez globo
+[INFO] 17:54:41:562 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:41:562 kernel/(5433:5434): DESCRIBE enviado
+[INFO] 17:54:43:267 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562532883)
+[DEBUG] 17:54:43:868 kernel/(5433:5436): FULL
+[INFO] 17:54:43:868 kernel/(5433:5436): Insert: FULL
+[INFO] 17:54:45:569 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562532885)
+[DEBUG] 17:54:46:172 kernel/(5433:5435): OK
+[INFO] 17:54:46:172 kernel/(5433:5435): Insert: OK
+[INFO] 17:54:46:172 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:54:46:172 kernel/(5433:5435): DESCRIBE enviado
+[DEBUG] 17:54:46:172 kernel/(5433:5434): OK
+[INFO] 17:54:46:172 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:46:172 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:46:172 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562532886)
+[INFO] 17:54:46:774 kernel/(5433:5436): Insert: OK
+[INFO] 17:54:46:774 kernel/(5433:5436): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:54:47:380 kernel/(5433:5434): OK
+[INFO] 17:54:47:380 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:47:380 kernel/(5433:5434): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 17:54:49:213 kernel/(5433:5434): Mem: 2
+[DEBUG] 17:54:49:213 kernel/(5433:5434): Mem: 3
+[ERROR] 17:54:49:213 kernel/(5433:5434): Memoria desconectada
+[INFO] 17:54:49:213 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:54:49:213 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562532889)
+[DEBUG] 17:54:49:814 kernel/(5433:5434): OK
+[INFO] 17:54:49:814 kernel/(5433:5434): Insert: OK
+[INFO] 17:54:49:814 kernel/(5433:5434): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 17:56:09:464 kernel/(5433:5435): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562532969)
+[DEBUG] 17:56:10:75 kernel/(5433:5435): OK
+[INFO] 17:56:10:75 kernel/(5433:5435): Insert: OK
+[INFO] 17:56:10:75 kernel/(5433:5435): Finalizó quantum
+[INFO] 17:56:10:75 kernel/(5433:5435): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 17:56:10:697 kernel/(5433:5434): Mem: 3
+[ERROR] 17:56:10:697 kernel/(5433:5434): Memoria desconectada
+[INFO] 17:56:10:697 kernel/(5433:5434): Finalizó quantum
+[INFO] 17:56:10:698 kernel/(5433:5434): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562532970)
+[DEBUG] 17:56:10:698 kernel/(5433:5436): Mem: 3
+[ERROR] 17:56:10:698 kernel/(5433:5436): Memoria desconectada
+[INFO] 17:56:10:698 kernel/(5433:5436): Finalizó quantum
+[INFO] 17:56:10:698 kernel/(5433:5436): SELECT enviado (Tabla: AVES, Key: 6262)
+[ERROR] 17:56:10:698 kernel/(5433:5434): Script terminado por linea erronea
+[INFO] 17:56:10:698 kernel/(5433:5434): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 17:56:10:698 kernel/(5433:5435): Mem: 3
+[ERROR] 17:56:10:698 kernel/(5433:5435): Memoria desconectada
+[INFO] 17:56:10:698 kernel/(5433:5435): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562532970)
+[ERROR] 17:56:10:698 kernel/(5433:5436): Script terminado por linea erronea
+[ERROR] 17:56:10:699 kernel/(5433:5434): Script terminado por linea erronea
+[ERROR] 17:56:10:699 kernel/(5433:5435): Script terminado por linea erronea
+[INFO] 17:56:10:699 kernel/(5433:5438): DESCRIBE enviado
+[ERROR] 17:56:11:445 kernel/(5433:5438): Memoria desconectada
+[INFO] 18:07:11:906 kernel/(6182:6182): 8001
+[INFO] 18:07:11:928 kernel/(6182:6182): conecte
+[INFO] 18:07:11:936 kernel/(6182:6182): Conecte al servidor.
+[INFO] 18:07:11:937 kernel/(6182:6182): conecte
+[INFO] 18:07:11:938 kernel/(6182:6182): Conecte al servidor.
+[INFO] 18:07:11:938 kernel/(6182:6182): conecte
+[INFO] 18:07:11:939 kernel/(6182:6182): Conecte al servidor.
+[INFO] 18:07:11:996 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:07:12:14 kernel/(6182:6186): Conecte a la memoria numero 2
+[DEBUG] 18:07:12:127 kernel/(6182:6186): Conecte a la memoria numero 2
+[DEBUG] 18:07:12:129 kernel/(6182:6186): Conecte a la memoria numero 2
+[DEBUG] 18:07:12:131 kernel/(6182:6186): Conecte a la memoria numero 3
+[DEBUG] 18:07:12:132 kernel/(6182:6186): Conecte a la memoria numero 3
+[DEBUG] 18:07:12:133 kernel/(6182:6186): Conecte a la memoria numero 3
+[INFO] 18:07:13:712 kernel/(6182:6183): Finalizó
+[INFO] 18:07:17:753 kernel/(6182:6184): Finalizó
+[INFO] 18:07:19:868 kernel/(6182:6185): Finalizó
+[INFO] 18:07:22:153 kernel/(6182:6183): Finalizó
+[INFO] 18:07:26:714 kernel/(6182:6185): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:26:720 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:07:26:722 kernel/(6182:6184): Finalizó
+[INFO] 18:07:29:25 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:07:29:27 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:07:30:736 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533650)
+[INFO] 18:07:30:743 kernel/(6182:6184): Finalizó
+[INFO] 18:07:30:746 kernel/(6182:6184): Finalizó
+[INFO] 18:07:30:748 kernel/(6182:6184): Finalizó
+[INFO] 18:07:30:751 kernel/(6182:6184): Finalizó
+[INFO] 18:07:30:753 kernel/(6182:6184): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:30:755 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:07:30:759 kernel/(6182:6185): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:30:760 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:07:31:344 kernel/(6182:6183): OK
+[INFO] 18:07:31:345 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:31:347 kernel/(6182:6183): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:31:348 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:31:350 kernel/(6182:6183): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:31:352 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:07:34:884 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:34:886 kernel/(6182:6184): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:34:888 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:07:36:592 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:07:36:595 kernel/(6182:6185): Finalizó
+[INFO] 18:07:36:597 kernel/(6182:6185): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:36:598 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:07:39:517 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:39:519 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533659)
+[DEBUG] 18:07:40:122 kernel/(6182:6183): OK
+[INFO] 18:07:40:123 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:40:124 kernel/(6182:6183): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:40:126 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:40:128 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533660)
+[DEBUG] 18:07:40:736 kernel/(6182:6183): OK
+[INFO] 18:07:40:737 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:40:738 kernel/(6182:6183): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:40:739 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:40:741 kernel/(6182:6183): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:07:40:742 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:07:41:224 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:41:226 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533661)
+[DEBUG] 18:07:43:35 kernel/(6182:6184): OK
+[INFO] 18:07:43:36 kernel/(6182:6184): Insert: OK
+[INFO] 18:07:43:38 kernel/(6182:6184): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:43:39 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:43:41 kernel/(6182:6184): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:43:42 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:07:44:743 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:07:44:745 kernel/(6182:6185): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:44:747 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:07:49:458 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:49:462 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533669)
+[DEBUG] 18:07:50:64 kernel/(6182:6183): OK
+[INFO] 18:07:50:65 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:50:66 kernel/(6182:6183): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:50:67 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:50:69 kernel/(6182:6183): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:50:70 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:07:51:160 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:51:162 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533671)
+[DEBUG] 18:07:51:768 kernel/(6182:6184): OK
+[INFO] 18:07:51:769 kernel/(6182:6184): Insert: OK
+[INFO] 18:07:51:771 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533671)
+[INFO] 18:07:52:865 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:07:52:867 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562533672)
+[DEBUG] 18:07:53:471 kernel/(6182:6185): OK
+[INFO] 18:07:53:472 kernel/(6182:6185): Insert: OK
+[INFO] 18:07:53:473 kernel/(6182:6185): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:07:53:474 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:07:53:476 kernel/(6182:6185): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:53:477 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:07:54:68 kernel/(6182:6184): OK
+[INFO] 18:07:54:69 kernel/(6182:6184): Insert: OK
+[INFO] 18:07:54:70 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:54:72 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533674)
+[DEBUG] 18:07:54:676 kernel/(6182:6184): OK
+[INFO] 18:07:54:677 kernel/(6182:6184): Insert: OK
+[INFO] 18:07:54:678 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533674)
+[INFO] 18:07:56:974 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:56:976 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533676)
+[DEBUG] 18:07:57:574 kernel/(6182:6184): OK
+[INFO] 18:07:57:576 kernel/(6182:6184): Insert: OK
+[INFO] 18:07:57:577 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:07:57:579 kernel/(6182:6184): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:07:57:580 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:07:57:581 kernel/(6182:6183): OK
+[INFO] 18:07:57:582 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:57:583 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533677)
+[DEBUG] 18:07:58:186 kernel/(6182:6183): OK
+[INFO] 18:07:58:187 kernel/(6182:6183): Insert: OK
+[INFO] 18:07:58:188 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:07:58:190 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533678)
+[INFO] 18:08:00:484 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:00:485 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533680)
+[DEBUG] 18:08:01:84 kernel/(6182:6183): OK
+[INFO] 18:08:01:85 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:01:86 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533681)
+[DEBUG] 18:08:01:88 kernel/(6182:6185): OK
+[INFO] 18:08:01:89 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:01:90 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533681)
+[DEBUG] 18:08:01:690 kernel/(6182:6183): OK
+[INFO] 18:08:01:691 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:01:692 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:01:694 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533681)
+[DEBUG] 18:08:02:296 kernel/(6182:6183): OK
+[INFO] 18:08:02:297 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:02:299 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533682)
+[INFO] 18:08:02:793 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:02:794 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533682)
+[DEBUG] 18:08:02:907 kernel/(6182:6183): OK
+[INFO] 18:08:02:908 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:02:909 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:02:911 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533682)
+[DEBUG] 18:08:03:398 kernel/(6182:6185): OK
+[INFO] 18:08:03:399 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:03:399 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:03:401 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533683)
+[DEBUG] 18:08:03:514 kernel/(6182:6183): OK
+[INFO] 18:08:03:515 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:03:516 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533683)
+[DEBUG] 18:08:04:6 kernel/(6182:6184): OK
+[INFO] 18:08:04:8 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:04:9 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533684)
+[DEBUG] 18:08:04:11 kernel/(6182:6185): OK
+[INFO] 18:08:04:12 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:04:13 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533684)
+[DEBUG] 18:08:04:607 kernel/(6182:6183): OK
+[INFO] 18:08:04:608 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:04:609 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:04:610 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562533684)
+[DEBUG] 18:08:04:612 kernel/(6182:6184): OK
+[INFO] 18:08:04:613 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:04:614 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:04:615 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533684)
+[DEBUG] 18:08:04:617 kernel/(6182:6185): OK
+[INFO] 18:08:04:617 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:04:618 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:04:619 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533684)
+[DEBUG] 18:08:05:216 kernel/(6182:6183): OK
+[INFO] 18:08:05:217 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:05:218 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562533685)
+[DEBUG] 18:08:05:220 kernel/(6182:6184): OK
+[INFO] 18:08:05:221 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:05:222 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533685)
+[DEBUG] 18:08:05:223 kernel/(6182:6185): OK
+[INFO] 18:08:05:224 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:05:225 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533685)
+[DEBUG] 18:08:05:823 kernel/(6182:6183): OK
+[INFO] 18:08:05:824 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:05:825 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:05:828 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533685)
+[DEBUG] 18:08:05:830 kernel/(6182:6185): OK
+[INFO] 18:08:05:830 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:05:831 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:05:833 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533685)
+[DEBUG] 18:08:05:834 kernel/(6182:6184): OK
+[INFO] 18:08:05:834 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:05:836 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:05:838 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:08:06:434 kernel/(6182:6183): OK
+[INFO] 18:08:06:434 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:06:436 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533686)
+[DEBUG] 18:08:06:437 kernel/(6182:6185): OK
+[INFO] 18:08:06:437 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:06:438 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533686)
+[DEBUG] 18:08:06:443 kernel/(6182:6184): Registro: TimeStamp: 1562533684, Key:11, Value: Halcon
+[INFO] 18:08:06:445 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533686)
+[DEBUG] 18:08:07:54 kernel/(6182:6185): OK
+[INFO] 18:08:07:54 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:07:55 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:07:56 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562533687)
+[DEBUG] 18:08:07:58 kernel/(6182:6184): OK
+[INFO] 18:08:07:59 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:07:59 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:07:61 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533687)
+[DEBUG] 18:08:07:62 kernel/(6182:6183): OK
+[INFO] 18:08:07:63 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:07:64 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:07:65 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:08:07:660 kernel/(6182:6185): OK
+[INFO] 18:08:07:661 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:07:663 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562533687)
+[DEBUG] 18:08:07:665 kernel/(6182:6184): OK
+[INFO] 18:08:07:666 kernel/(6182:6184): Insert: OK
+[DEBUG] 18:08:07:667 kernel/(6182:6183): Registro: TimeStamp: 1562533684, Key:11, Value: Halcon
+[INFO] 18:08:07:669 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533687)
+[INFO] 18:08:07:671 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533687)
+[DEBUG] 18:08:08:267 kernel/(6182:6185): OK
+[INFO] 18:08:08:269 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:08:269 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:08:273 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:08:08:275 kernel/(6182:6183): OK
+[INFO] 18:08:08:276 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:08:276 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:08:278 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:08:08:279 kernel/(6182:6184): OK
+[INFO] 18:08:08:281 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:08:282 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:08:283 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533688)
+[DEBUG] 18:08:08:876 kernel/(6182:6185): Registro: TimeStamp: 1562533686, Key:11, Value: Halcon
+[INFO] 18:08:08:878 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533688)
+[DEBUG] 18:08:08:890 kernel/(6182:6184): OK
+[INFO] 18:08:08:894 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:08:896 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533688)
+[DEBUG] 18:08:09:482 kernel/(6182:6185): OK
+[INFO] 18:08:09:483 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:09:484 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:09:485 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562533689)
+[DEBUG] 18:08:10:89 kernel/(6182:6185): OK
+[INFO] 18:08:10:89 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:10:91 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562533690)
+[INFO] 18:08:10:583 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533690)
+[DEBUG] 18:08:10:695 kernel/(6182:6185): OK
+[INFO] 18:08:10:695 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:10:696 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:10:697 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:08:11:196 kernel/(6182:6184): OK
+[INFO] 18:08:11:197 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:11:198 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:11:200 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:08:11:797 kernel/(6182:6183): OK
+[INFO] 18:08:11:798 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:11:799 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:11:800 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:08:11:802 kernel/(6182:6184): Registro: TimeStamp: 1562533685, Key:11, Value: Halcon
+[INFO] 18:08:11:803 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533691)
+[DEBUG] 18:08:12:406 kernel/(6182:6184): OK
+[INFO] 18:08:12:407 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:12:408 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:12:410 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:08:13:509 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533693)
+[DEBUG] 18:08:14:114 kernel/(6182:6185): OK
+[INFO] 18:08:14:115 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:14:115 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:14:118 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:08:14:721 kernel/(6182:6185): Registro: TimeStamp: 1562533690, Key:11, Value: Halcon
+[INFO] 18:08:14:723 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533694)
+[INFO] 18:08:15:217 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533695)
+[DEBUG] 18:08:15:817 kernel/(6182:6184): Registro: TimeStamp: 1562533688, Key:11, Value: Halcon
+[INFO] 18:08:15:819 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562533695)
+[DEBUG] 18:08:15:825 kernel/(6182:6183): OK
+[INFO] 18:08:15:826 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:15:827 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:15:828 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533695)
+[DEBUG] 18:08:16:420 kernel/(6182:6185): OK
+[INFO] 18:08:16:420 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:16:421 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:16:422 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:08:16:423 kernel/(6182:6184): OK
+[INFO] 18:08:16:424 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:16:425 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:16:426 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533696)
+[DEBUG] 18:08:17:20 kernel/(6182:6183): FULL
+[INFO] 18:08:17:21 kernel/(6182:6183): Insert: FULL
+[DEBUG] 18:08:17:30 kernel/(6182:6184): OK
+[INFO] 18:08:17:31 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:17:32 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 18:08:18:745 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533698)
+[INFO] 18:08:19:348 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:19:350 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:08:19:953 kernel/(6182:6185): OK
+[INFO] 18:08:19:954 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:19:955 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:19:956 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533699)
+[DEBUG] 18:08:21:140 kernel/(6182:6184): Registro: TimeStamp: 1562533695, Key:310, Value: Calamar
+[INFO] 18:08:21:141 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:21:143 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:08:21:747 kernel/(6182:6185): OK
+[INFO] 18:08:21:747 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:21:749 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:08:22:162 kernel/(6182:6183): Registro: TimeStamp: 1562533695, Key:310, Value: Calamar
+[INFO] 18:08:22:164 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:22:165 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:08:22:889 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533702)
+[DEBUG] 18:08:23:497 kernel/(6182:6184): OK
+[INFO] 18:08:23:498 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:23:498 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:23:500 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533703)
+[DEBUG] 18:08:24:107 kernel/(6182:6184): OK
+[INFO] 18:08:24:107 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:24:109 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 18:08:24:600 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562533704)
+[DEBUG] 18:08:25:199 kernel/(6182:6185): Registro: TimeStamp: 1562533698, Key:310, Value: Calamar
+[INFO] 18:08:25:200 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:25:202 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533705)
+[DEBUG] 18:08:25:204 kernel/(6182:6183): OK
+[INFO] 18:08:25:205 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:25:205 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:25:207 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533705)
+[DEBUG] 18:08:25:801 kernel/(6182:6184): Registro: TimeStamp: 1562533698, Key:310, Value: Calamar
+[INFO] 18:08:25:802 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:25:804 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533705)
+[DEBUG] 18:08:25:806 kernel/(6182:6185): OK
+[INFO] 18:08:25:806 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:25:807 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533705)
+[DEBUG] 18:08:26:401 kernel/(6182:6183): OK
+[INFO] 18:08:26:402 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:26:403 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533706)
+[DEBUG] 18:08:26:406 kernel/(6182:6184): OK
+[INFO] 18:08:26:408 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:26:409 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:08:26:411 kernel/(6182:6185): OK
+[INFO] 18:08:26:411 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:26:412 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:26:413 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533706)
+[DEBUG] 18:08:27:8 kernel/(6182:6183): OK
+[INFO] 18:08:27:9 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:27:10 kernel/(6182:6183): Finalizó quantum
+[DEBUG] 18:08:27:16 kernel/(6182:6184): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:08:27:17 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:27:19 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562533707)
+[DEBUG] 18:08:27:20 kernel/(6182:6185): OK
+[INFO] 18:08:27:21 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:27:22 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533707)
+[DEBUG] 18:08:27:621 kernel/(6182:6184): OK
+[INFO] 18:08:27:622 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:27:624 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:08:27:625 kernel/(6182:6185): OK
+[INFO] 18:08:27:626 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:27:627 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:27:629 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533707)
+[DEBUG] 18:08:28:227 kernel/(6182:6184): Registro: TimeStamp: 1562533695, Key:310, Value: Calamar
+[INFO] 18:08:28:228 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:28:229 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533708)
+[DEBUG] 18:08:28:231 kernel/(6182:6185): OK
+[INFO] 18:08:28:232 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:28:233 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533708)
+[DEBUG] 18:08:28:834 kernel/(6182:6184): OK
+[INFO] 18:08:28:835 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:28:837 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533708)
+[DEBUG] 18:08:28:838 kernel/(6182:6185): OK
+[INFO] 18:08:28:839 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:28:840 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:28:842 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533708)
+[DEBUG] 18:08:29:443 kernel/(6182:6184): OK
+[INFO] 18:08:29:444 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:29:445 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:29:447 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533709)
+[DEBUG] 18:08:29:449 kernel/(6182:6185): OK
+[INFO] 18:08:29:450 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:29:452 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533709)
+[DEBUG] 18:08:30:53 kernel/(6182:6184): OK
+[INFO] 18:08:30:54 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:30:55 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533710)
+[DEBUG] 18:08:30:57 kernel/(6182:6185): OK
+[INFO] 18:08:30:57 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:30:58 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:30:60 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533710)
+[DEBUG] 18:08:30:657 kernel/(6182:6184): OK
+[INFO] 18:08:30:659 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:30:660 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:30:662 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562533710)
+[DEBUG] 18:08:30:664 kernel/(6182:6185): OK
+[INFO] 18:08:30:665 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:30:666 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533710)
+[DEBUG] 18:08:31:267 kernel/(6182:6184): OK
+[INFO] 18:08:31:269 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:31:270 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562533711)
+[DEBUG] 18:08:31:272 kernel/(6182:6185): OK
+[INFO] 18:08:31:272 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:31:273 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:31:274 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533711)
+[DEBUG] 18:08:31:873 kernel/(6182:6184): OK
+[INFO] 18:08:31:874 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:31:874 kernel/(6182:6184): Finalizó quantum
+[DEBUG] 18:08:31:877 kernel/(6182:6185): OK
+[INFO] 18:08:31:877 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:31:878 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533711)
+[DEBUG] 18:08:32:488 kernel/(6182:6185): OK
+[INFO] 18:08:32:489 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:32:489 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:32:491 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533712)
+[DEBUG] 18:08:33:93 kernel/(6182:6185): OK
+[INFO] 18:08:33:94 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:33:95 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533713)
+[DEBUG] 18:08:33:701 kernel/(6182:6185): FULL
+[INFO] 18:08:33:702 kernel/(6182:6185): Insert: FULL
+[INFO] 18:08:34:305 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:34:306 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:34:308 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533714)
+[DEBUG] 18:08:34:911 kernel/(6182:6185): OK
+[INFO] 18:08:34:912 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:34:913 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533714)
+[DEBUG] 18:08:35:523 kernel/(6182:6185): OK
+[INFO] 18:08:35:524 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:35:525 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:35:526 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:08:37:829 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533717)
+[INFO] 18:08:37:833 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533717)
+[INFO] 18:08:37:835 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562533717)
+[DEBUG] 18:08:38:434 kernel/(6182:6183): OK
+[INFO] 18:08:38:435 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:38:436 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533718)
+[DEBUG] 18:08:38:438 kernel/(6182:6185): OK
+[INFO] 18:08:38:439 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:38:441 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533718)
+[DEBUG] 18:08:38:442 kernel/(6182:6184): OK
+[INFO] 18:08:38:443 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:38:444 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533718)
+[DEBUG] 18:08:39:42 kernel/(6182:6183): OK
+[INFO] 18:08:39:43 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:39:44 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:39:46 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533719)
+[DEBUG] 18:08:39:49 kernel/(6182:6184): OK
+[INFO] 18:08:39:50 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:39:50 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:39:51 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:08:39:52 kernel/(6182:6185): OK
+[INFO] 18:08:39:53 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:39:54 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:39:55 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:08:39:654 kernel/(6182:6183): OK
+[INFO] 18:08:39:655 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:39:656 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533719)
+[DEBUG] 18:08:40:264 kernel/(6182:6183): OK
+[INFO] 18:08:40:265 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:40:266 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:40:269 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533720)
+[DEBUG] 18:08:40:871 kernel/(6182:6183): OK
+[INFO] 18:08:40:872 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:40:873 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533720)
+[INFO] 18:08:41:362 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533721)
+[DEBUG] 18:08:41:964 kernel/(6182:6184): OK
+[INFO] 18:08:41:966 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:41:967 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:41:969 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:08:43:68 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533723)
+[DEBUG] 18:08:43:667 kernel/(6182:6183): OK
+[INFO] 18:08:43:668 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:43:669 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:43:670 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562533723)
+[DEBUG] 18:08:43:672 kernel/(6182:6185): OK
+[INFO] 18:08:43:673 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:43:673 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:43:675 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:08:45:373 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533725)
+[DEBUG] 18:08:45:972 kernel/(6182:6183): OK
+[INFO] 18:08:45:973 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:45:974 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562533725)
+[DEBUG] 18:08:45:976 kernel/(6182:6184): OK
+[INFO] 18:08:45:976 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:45:977 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:45:978 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533725)
+[DEBUG] 18:08:46:577 kernel/(6182:6183): OK
+[INFO] 18:08:46:578 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:46:579 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:46:581 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:08:47:683 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533727)
+[DEBUG] 18:08:48:286 kernel/(6182:6185): OK
+[INFO] 18:08:48:287 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:48:287 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:48:289 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533728)
+[DEBUG] 18:08:48:891 kernel/(6182:6185): OK
+[INFO] 18:08:48:892 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:48:894 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533728)
+[INFO] 18:08:49:386 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533729)
+[DEBUG] 18:08:49:993 kernel/(6182:6183): OK
+[INFO] 18:08:49:994 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:49:995 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:49:997 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533729)
+[DEBUG] 18:08:49:999 kernel/(6182:6184): OK
+[INFO] 18:08:49:0 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:49:1 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533729)
+[DEBUG] 18:08:50:594 kernel/(6182:6185): OK
+[INFO] 18:08:50:595 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:50:596 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:50:598 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:08:50:599 kernel/(6182:6183): OK
+[INFO] 18:08:50:600 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:50:602 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533730)
+[DEBUG] 18:08:51:195 kernel/(6182:6184): OK
+[INFO] 18:08:51:196 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:51:197 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:51:199 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533731)
+[DEBUG] 18:08:51:205 kernel/(6182:6183): OK
+[INFO] 18:08:51:205 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:51:208 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:51:209 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533731)
+[DEBUG] 18:08:51:805 kernel/(6182:6184): OK
+[INFO] 18:08:51:806 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:51:808 kernel/(6182:6184): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533731)
+[DEBUG] 18:08:52:411 kernel/(6182:6184): OK
+[INFO] 18:08:52:412 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:52:413 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:52:415 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533732)
+[INFO] 18:08:52:903 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562533732)
+[DEBUG] 18:08:53:19 kernel/(6182:6184): OK
+[INFO] 18:08:53:20 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:53:22 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:08:53:505 kernel/(6182:6183): OK
+[INFO] 18:08:53:506 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:53:508 kernel/(6182:6183): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533733)
+[DEBUG] 18:08:53:624 kernel/(6182:6184): Registro: TimeStamp: 1562533718, Key:983, Value: Pez globo
+[INFO] 18:08:53:625 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:53:626 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533733)
+[DEBUG] 18:08:54:106 kernel/(6182:6185): OK
+[INFO] 18:08:54:107 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:54:108 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:54:110 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533734)
+[DEBUG] 18:08:54:111 kernel/(6182:6183): OK
+[INFO] 18:08:54:112 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:54:112 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:54:114 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533734)
+[DEBUG] 18:08:54:709 kernel/(6182:6184): OK
+[INFO] 18:08:54:710 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:54:712 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:08:54:713 kernel/(6182:6185): OK
+[INFO] 18:08:54:714 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:54:715 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:08:54:716 kernel/(6182:6183): OK
+[INFO] 18:08:54:717 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:54:718 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:08:55:330 kernel/(6182:6184): Registro: TimeStamp: 1562533718, Key:983, Value: Pez globo
+[INFO] 18:08:55:332 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:55:333 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:08:55:335 kernel/(6182:6185): Registro: TimeStamp: 1562533718, Key:983, Value: Pez globo
+[INFO] 18:08:55:335 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:55:337 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562533735)
+[DEBUG] 18:08:56:431 kernel/(6182:6183): Registro: TimeStamp: 1562533711, Key:983, Value: Pez globo
+[INFO] 18:08:56:432 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:56:433 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533736)
+[DEBUG] 18:08:57:37 kernel/(6182:6183): OK
+[INFO] 18:08:57:39 kernel/(6182:6183): Insert: OK
+[INFO] 18:08:57:40 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 983)
+[INFO] 18:08:57:43 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533737)
+[DEBUG] 18:08:57:644 kernel/(6182:6183): Registro: TimeStamp: 1562533711, Key:983, Value: Pez globo
+[INFO] 18:08:57:645 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:08:57:647 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:08:57:648 kernel/(6182:6185): OK
+[INFO] 18:08:57:650 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:57:651 kernel/(6182:6185): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562533737)
+[DEBUG] 18:08:58:251 kernel/(6182:6184): OK
+[INFO] 18:08:58:252 kernel/(6182:6184): Insert: OK
+[INFO] 18:08:58:252 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:08:58:254 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:08:58:255 kernel/(6182:6185): OK
+[INFO] 18:08:58:255 kernel/(6182:6185): Insert: OK
+[INFO] 18:08:58:256 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:08:58:257 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:08:59:982 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533739)
+[DEBUG] 18:09:00:585 kernel/(6182:6183): OK
+[INFO] 18:09:00:585 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:00:586 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:00:588 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:09:01:687 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533741)
+[INFO] 18:09:03:397 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533743)
+[DEBUG] 18:09:03:999 kernel/(6182:6185): OK
+[INFO] 18:09:03:0 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:03:2 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:03:3 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533743)
+[DEBUG] 18:09:04:605 kernel/(6182:6185): OK
+[INFO] 18:09:04:606 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:04:608 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:09:05:103 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533745)
+[DEBUG] 18:09:05:705 kernel/(6182:6184): OK
+[INFO] 18:09:05:706 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:05:707 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:05:709 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562533745)
+[DEBUG] 18:09:05:711 kernel/(6182:6183): OK
+[INFO] 18:09:05:712 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:05:713 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:05:714 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533745)
+[DEBUG] 18:09:06:308 kernel/(6182:6185): Registro: TimeStamp: 1562533729, Key:11, Value: Pinguino
+[INFO] 18:09:06:310 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:06:312 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533746)
+[DEBUG] 18:09:06:314 kernel/(6182:6184): OK
+[INFO] 18:09:06:314 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:06:315 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:09:06:912 kernel/(6182:6183): FULL
+[INFO] 18:09:06:913 kernel/(6182:6183): Insert: FULL
+[DEBUG] 18:09:06:915 kernel/(6182:6185): OK
+[INFO] 18:09:06:915 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:06:917 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:06:918 kernel/(6182:6184): Registro: TimeStamp: 1562533739, Key:983, Value: Tiburon
+[INFO] 18:09:06:919 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:06:920 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533746)
+[INFO] 18:09:07:515 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:07:517 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:07:522 kernel/(6182:6184): OK
+[INFO] 18:09:07:522 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:07:524 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:11:26 kernel/(6182:6185): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:11:27 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:11:29 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533751)
+[DEBUG] 18:09:11:543 kernel/(6182:6183): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:11:544 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:11:546 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:11:627 kernel/(6182:6184): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:11:629 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:11:630 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:09:11:631 kernel/(6182:6185): OK
+[INFO] 18:09:11:632 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:11:633 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:13:255 kernel/(6182:6183): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:13:257 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533753)
+[INFO] 18:09:13:338 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562533753)
+[DEBUG] 18:09:13:861 kernel/(6182:6183): OK
+[INFO] 18:09:13:862 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:13:862 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:13:864 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:13:944 kernel/(6182:6185): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:13:945 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:13:946 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:13:949 kernel/(6182:6184): OK
+[INFO] 18:09:13:949 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:13:950 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:13:951 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:14:553 kernel/(6182:6184): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:14:555 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533754)
+[DEBUG] 18:09:15:650 kernel/(6182:6183): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:15:652 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533755)
+[DEBUG] 18:09:15:654 kernel/(6182:6185): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:15:655 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533755)
+[DEBUG] 18:09:16:252 kernel/(6182:6184): OK
+[INFO] 18:09:16:253 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:16:254 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:16:256 kernel/(6182:6184): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:16:257 kernel/(6182:6185): OK
+[INFO] 18:09:16:258 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:16:259 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:16:260 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:16:262 kernel/(6182:6183): OK
+[INFO] 18:09:16:262 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:16:263 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:16:264 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562533756)
+[DEBUG] 18:09:16:860 kernel/(6182:6184): Registro: TimeStamp: 1562533754, Key:272, Value: Vaca
+[INFO] 18:09:16:861 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:09:16:862 kernel/(6182:6185): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:16:863 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533756)
+[DEBUG] 18:09:16:868 kernel/(6182:6183): OK
+[INFO] 18:09:16:869 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:16:870 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:09:18:564 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:18:566 kernel/(6182:6184): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:18:577 kernel/(6182:6183): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:18:578 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:18:580 kernel/(6182:6183): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:19:167 kernel/(6182:6185): OK
+[INFO] 18:09:19:168 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:19:169 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:19:171 kernel/(6182:6185): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:19:172 kernel/(6182:6184): Registro: TimeStamp: 1562533755, Key:272, Value: Vaca
+[INFO] 18:09:19:173 kernel/(6182:6184): DESCRIBE enviado
+[DEBUG] 18:09:19:769 kernel/(6182:6183): Registro: TimeStamp: 1562533756, Key:272, Value: Vaca
+[INFO] 18:09:19:770 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:09:19:773 kernel/(6182:6185): Registro: TimeStamp: 1562533755, Key:272, Value: Vaca
+[INFO] 18:09:19:775 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:09:21:473 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:21:475 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 18:09:23:178 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:23:180 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:09:23:186 kernel/(6182:6184): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:23:188 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533763)
+[DEBUG] 18:09:23:790 kernel/(6182:6184): OK
+[INFO] 18:09:23:791 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:23:792 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:23:794 kernel/(6182:6184): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:23:798 kernel/(6182:6184): Mem: 1
+[DEBUG] 18:09:23:799 kernel/(6182:6184): Mem: 2
+[ERROR] 18:09:23:801 kernel/(6182:6184): Memoria desconectada
+[INFO] 18:09:23:802 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:09:24:888 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:24:890 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:09:25:488 kernel/(6182:6183): Registro: TimeStamp: 1562533723, Key:6262, Value: Loro
+[INFO] 18:09:25:490 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562533765)
+[DEBUG] 18:09:26:92 kernel/(6182:6183): OK
+[INFO] 18:09:26:93 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:26:94 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:26:95 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 18:09:27:195 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:27:197 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533767)
+[DEBUG] 18:09:27:804 kernel/(6182:6184): OK
+[INFO] 18:09:27:805 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:27:806 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533767)
+[DEBUG] 18:09:28:922 kernel/(6182:6183): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:28:924 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533768)
+[DEBUG] 18:09:28:926 kernel/(6182:6183): Mem: 1
+[ERROR] 18:09:28:928 kernel/(6182:6183): Memoria desconectada
+[INFO] 18:09:28:929 kernel/(6182:6183): Finalizó quantum
+[DEBUG] 18:09:29:537 kernel/(6182:6185): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:29:539 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533769)
+[DEBUG] 18:09:30:148 kernel/(6182:6184): OK
+[INFO] 18:09:30:149 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:30:149 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:30:152 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:09:30:751 kernel/(6182:6185): FULL
+[INFO] 18:09:30:752 kernel/(6182:6185): Insert: FULL
+[DEBUG] 18:09:31:357 kernel/(6182:6184): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:31:359 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533771)
+[INFO] 18:09:31:959 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:31:960 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:31:961 kernel/(6182:6185): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:09:32:558 kernel/(6182:6184): OK
+[INFO] 18:09:32:559 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:32:560 kernel/(6182:6184): Finalizó quantum
+[DEBUG] 18:09:34:271 kernel/(6182:6185): Registro: TimeStamp: 1562533756, Key:272, Value: Vaca
+[INFO] 18:09:34:272 kernel/(6182:6185): DESCRIBE enviado
+[INFO] 18:09:35:979 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:35:981 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:09:37:698 kernel/(6182:6185): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:37:700 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533777)
+[DEBUG] 18:09:38:308 kernel/(6182:6185): OK
+[INFO] 18:09:38:309 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:38:310 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:38:311 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:09:40:62 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533780)
+[INFO] 18:09:40:64 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533780)
+[INFO] 18:09:40:68 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533780)
+[DEBUG] 18:09:40:665 kernel/(6182:6183): OK
+[INFO] 18:09:40:666 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:40:667 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533780)
+[DEBUG] 18:09:41:281 kernel/(6182:6184): OK
+[INFO] 18:09:41:282 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:41:284 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533781)
+[DEBUG] 18:09:41:916 kernel/(6182:6185): OK
+[INFO] 18:09:41:917 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:41:918 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533781)
+[DEBUG] 18:09:42:517 kernel/(6182:6183): OK
+[INFO] 18:09:42:518 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:42:519 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:42:521 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533782)
+[DEBUG] 18:09:43:130 kernel/(6182:6184): FULL
+[INFO] 18:09:43:131 kernel/(6182:6184): Insert: FULL
+[DEBUG] 18:09:43:746 kernel/(6182:6183): OK
+[INFO] 18:09:43:747 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:43:749 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533783)
+[DEBUG] 18:09:44:347 kernel/(6182:6185): OK
+[INFO] 18:09:44:348 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:44:348 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:44:350 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:09:44:949 kernel/(6182:6183): OK
+[INFO] 18:09:44:950 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:44:950 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:44:952 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533784)
+[INFO] 18:09:45:553 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:45:554 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:45:557 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533785)
+[DEBUG] 18:09:48:76 kernel/(6182:6185): Registro: TimeStamp: 1562533704, Key:310, Value: Calamar
+[INFO] 18:09:48:78 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562533788)
+[DEBUG] 18:09:48:678 kernel/(6182:6183): OK
+[INFO] 18:09:48:679 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:48:680 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533788)
+[DEBUG] 18:09:49:284 kernel/(6182:6184): OK
+[INFO] 18:09:49:285 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:49:287 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533789)
+[DEBUG] 18:09:49:887 kernel/(6182:6183): OK
+[INFO] 18:09:49:889 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:49:889 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:49:891 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533789)
+[DEBUG] 18:09:50:488 kernel/(6182:6185): OK
+[INFO] 18:09:50:489 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:50:490 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:50:492 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533790)
+[DEBUG] 18:09:51:89 kernel/(6182:6183): OK
+[INFO] 18:09:51:90 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:51:92 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533791)
+[DEBUG] 18:09:51:692 kernel/(6182:6184): OK
+[INFO] 18:09:51:693 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:51:694 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:51:695 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533791)
+[DEBUG] 18:09:52:292 kernel/(6182:6183): OK
+[INFO] 18:09:52:293 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:52:294 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:52:295 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533792)
+[DEBUG] 18:09:52:897 kernel/(6182:6185): OK
+[INFO] 18:09:52:897 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:52:899 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533792)
+[DEBUG] 18:09:53:498 kernel/(6182:6183): OK
+[INFO] 18:09:53:498 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:53:500 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533793)
+[DEBUG] 18:09:54:99 kernel/(6182:6184): FULL
+[INFO] 18:09:54:101 kernel/(6182:6184): Insert: FULL
+[DEBUG] 18:09:54:701 kernel/(6182:6183): OK
+[INFO] 18:09:54:703 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:54:703 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:54:705 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562533794)
+[DEBUG] 18:09:55:303 kernel/(6182:6185): OK
+[INFO] 18:09:55:303 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:55:304 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:09:55:306 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533795)
+[DEBUG] 18:09:55:903 kernel/(6182:6183): OK
+[INFO] 18:09:55:904 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:55:905 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562533795)
+[INFO] 18:09:56:504 kernel/(6182:6184): Insert: OK
+[INFO] 18:09:56:506 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:57:105 kernel/(6182:6185): OK
+[INFO] 18:09:57:106 kernel/(6182:6185): Insert: OK
+[INFO] 18:09:57:107 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:09:57:712 kernel/(6182:6183): OK
+[INFO] 18:09:57:713 kernel/(6182:6183): Insert: OK
+[INFO] 18:09:57:714 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:09:57:716 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533797)
+[DEBUG] 18:09:59:515 kernel/(6182:6184): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:09:59:516 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:09:59:517 kernel/(6182:6184): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533799)
+[DEBUG] 18:10:00:116 kernel/(6182:6183): OK
+[INFO] 18:10:00:117 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:00:118 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:10:00:717 kernel/(6182:6185): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:10:00:719 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:00:721 kernel/(6182:6185): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533800)
+[DEBUG] 18:10:01:318 kernel/(6182:6183): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:10:01:320 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:01:321 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562533801)
+[DEBUG] 18:10:01:919 kernel/(6182:6184): OK
+[INFO] 18:10:01:920 kernel/(6182:6184): Insert: OK
+[INFO] 18:10:01:921 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:10:02:527 kernel/(6182:6183): OK
+[INFO] 18:10:02:528 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:02:529 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562533802)
+[DEBUG] 18:10:03:130 kernel/(6182:6185): OK
+[INFO] 18:10:03:131 kernel/(6182:6185): Insert: OK
+[INFO] 18:10:03:132 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:10:03:745 kernel/(6182:6183): OK
+[INFO] 18:10:03:746 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:03:748 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:03:749 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:04:346 kernel/(6182:6184): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:10:04:348 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:04:350 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:06:56 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:06:58 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:10:06:657 kernel/(6182:6185): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:10:06:658 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:06:661 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:08:369 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:08:370 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:08:372 kernel/(6182:6183): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562533808)
+[DEBUG] 18:10:10:81 kernel/(6182:6184): Registro no encontrado
+[INFO] 18:10:10:82 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:10:10:687 kernel/(6182:6183): OK
+[INFO] 18:10:10:688 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:10:689 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:10:12:390 kernel/(6182:6185): Registro no encontrado
+[INFO] 18:10:12:391 kernel/(6182:6185): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:10:12:991 kernel/(6182:6183): Registro: TimeStamp: 1562533737, Key:11, Value: Pinguino
+[INFO] 18:10:12:993 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:12:996 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:14:696 kernel/(6182:6184): Registro no encontrado
+[INFO] 18:10:14:697 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:14:699 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:16:406 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:16:408 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:10:18:109 kernel/(6182:6185): Registro no encontrado
+[INFO] 18:10:18:109 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:18:111 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:10:19:818 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:19:819 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:19:821 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:10:21:536 kernel/(6182:6184): Registro no encontrado
+[INFO] 18:10:21:538 kernel/(6182:6184): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:10:23:247 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:23:250 kernel/(6182:6183): SELECT enviado (Tabla: AVES, Key: 1102)
+[INFO] 18:10:24:962 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533824)
+[DEBUG] 18:10:26:668 kernel/(6182:6183): Registro no encontrado
+[INFO] 18:10:26:669 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:26:672 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:10:28:382 kernel/(6182:6184): Registro no encontrado
+[INFO] 18:10:28:384 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:28:385 kernel/(6182:6184): DESCRIBE enviado
+[INFO] 18:10:30:86 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533830)
+[DEBUG] 18:10:30:687 kernel/(6182:6185): OK
+[INFO] 18:10:30:688 kernel/(6182:6185): Insert: OK
+[INFO] 18:10:30:690 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:30:691 kernel/(6182:6185): DESCRIBE enviado
+[DEBUG] 18:10:31:295 kernel/(6182:6183): OK
+[INFO] 18:10:31:296 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:31:296 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:31:298 kernel/(6182:6183): DESCRIBE enviado
+[INFO] 18:10:32:2 kernel/(6182:6184): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533832)
+[INFO] 18:10:34:703 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533834)
+[INFO] 18:10:36:419 kernel/(6182:6185): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533836)
+[DEBUG] 18:10:37:22 kernel/(6182:6183): OK
+[INFO] 18:10:37:23 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:37:24 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:37:26 kernel/(6182:6183): DESCRIBE enviado
+[DEBUG] 18:10:37:627 kernel/(6182:6184): OK
+[INFO] 18:10:37:628 kernel/(6182:6184): Insert: OK
+[INFO] 18:10:37:629 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:37:631 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 33)
+[INFO] 18:10:39:337 kernel/(6182:6183): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562533839)
+[DEBUG] 18:10:39:937 kernel/(6182:6185): OK
+[INFO] 18:10:39:938 kernel/(6182:6185): Insert: OK
+[INFO] 18:10:39:939 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:39:941 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:10:40:537 kernel/(6182:6183): OK
+[INFO] 18:10:40:538 kernel/(6182:6183): Insert: OK
+[INFO] 18:10:40:539 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:40:541 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:10:42:247 kernel/(6182:6184): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:42:249 kernel/(6182:6184): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:43:955 kernel/(6182:6183): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:43:958 kernel/(6182:6183): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:45:660 kernel/(6182:6185): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:45:662 kernel/(6182:6185): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:46:265 kernel/(6182:6183): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:46:267 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:46:269 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:10:46:867 kernel/(6182:6184): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:46:869 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:46:871 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:10:48:581 kernel/(6182:6183): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:48:583 kernel/(6182:6183): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:49:187 kernel/(6182:6185): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:49:188 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:49:189 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:10:49:790 kernel/(6182:6183): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:49:791 kernel/(6182:6183): Finalizó quantum
+[INFO] 18:10:49:793 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:10:51:498 kernel/(6182:6184): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:51:500 kernel/(6182:6184): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:52:101 kernel/(6182:6183): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:52:102 kernel/(6182:6183): Finalizó
+[INFO] 18:10:52:104 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:10:53:808 kernel/(6182:6185): Registro: TimeStamp: 1562533746, Key:33, Value: Raya
+[INFO] 18:10:53:810 kernel/(6182:6185): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:10:54:409 kernel/(6182:6183): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:54:410 kernel/(6182:6183): Finalizó
+[DEBUG] 18:10:55:17 kernel/(6182:6184): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:55:17 kernel/(6182:6184): Finalizó quantum
+[INFO] 18:10:55:19 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:10:55:617 kernel/(6182:6185): Registro: TimeStamp: 1562533802, Key:239, Value: Burro
+[INFO] 18:10:55:618 kernel/(6182:6185): Finalizó quantum
+[INFO] 18:10:55:620 kernel/(6182:6185): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:10:56:222 kernel/(6182:6184): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:56:223 kernel/(6182:6184): Finalizó
+[DEBUG] 18:10:56:824 kernel/(6182:6185): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:56:825 kernel/(6182:6185): Finalizó
+[INFO] 18:10:56:827 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:10:58:543 kernel/(6182:6183): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[INFO] 18:10:58:545 kernel/(6182:6184): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:10:59:148 kernel/(6182:6183): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:59:149 kernel/(6182:6183): Finalizó
+[DEBUG] 18:10:59:748 kernel/(6182:6184): Registro: TimeStamp: 1562533795, Key:3103, Value: Delfin
+[INFO] 18:10:59:749 kernel/(6182:6184): Finalizó
+[INFO] 18:11:13:547 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:11:30:262 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:11:46:975 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:12:03:687 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:12:20:397 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:12:37:112 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:12:53:830 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:13:10:552 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:13:27:271 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:13:43:986 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:14:00:747 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:14:17:457 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:14:34:169 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:14:50:892 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:15:07:607 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:15:24:330 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:15:41:47 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:15:57:796 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:16:14:508 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:16:31:238 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:16:47:961 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:17:04:694 kernel/(6182:6187): DESCRIBE enviado
+[INFO] 18:20:05:865 kernel/(6408:6408): 8001
+[INFO] 18:20:05:900 kernel/(6408:6408): conecte
+[INFO] 18:20:05:911 kernel/(6408:6408): Conecte al servidor.
+[INFO] 18:20:05:912 kernel/(6408:6408): conecte
+[INFO] 18:20:05:912 kernel/(6408:6408): Conecte al servidor.
+[INFO] 18:20:05:913 kernel/(6408:6408): conecte
+[INFO] 18:20:05:913 kernel/(6408:6408): Conecte al servidor.
+[DEBUG] 18:20:06:107 kernel/(6408:6412): Conecte a la memoria numero 2
+[DEBUG] 18:20:06:109 kernel/(6408:6412): Conecte a la memoria numero 2
+[INFO] 18:20:06:116 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:20:06:120 kernel/(6408:6412): Conecte a la memoria numero 2
+[DEBUG] 18:20:06:121 kernel/(6408:6412): Conecte a la memoria numero 3
+[DEBUG] 18:20:06:122 kernel/(6408:6412): Conecte a la memoria numero 3
+[DEBUG] 18:20:06:122 kernel/(6408:6412): Conecte a la memoria numero 3
+[INFO] 18:20:07:833 kernel/(6408:6409): Finalizó
+[INFO] 18:20:10:462 kernel/(6408:6410): Finalizó
+[INFO] 18:20:12:859 kernel/(6408:6411): Finalizó
+[INFO] 18:20:14:999 kernel/(6408:6409): Finalizó
+[INFO] 18:20:21:25 kernel/(6408:6410): Finalizó
+[INFO] 18:20:21:31 kernel/(6408:6410): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:20:21:35 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:20:22:142 kernel/(6408:6411): Finalizó
+[INFO] 18:20:22:143 kernel/(6408:6411): Finalizó
+[INFO] 18:20:22:145 kernel/(6408:6411): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:20:22:145 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:23:346 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:20:23:348 kernel/(6408:6410): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:20:23:348 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:20:26:285 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:26:291 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562534426)
+[INFO] 18:20:27:994 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:20:27:996 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562534427)
+[DEBUG] 18:20:28:599 kernel/(6408:6411): OK
+[INFO] 18:20:28:600 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:28:602 kernel/(6408:6411): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[DEBUG] 18:20:28:602 kernel/(6408:6410): OK
+[INFO] 18:20:28:602 kernel/(6408:6410): Insert: OK
+[INFO] 18:20:28:603 kernel/(6408:6410): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:20:28:604 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:20:28:604 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:28:605 kernel/(6408:6411): Finalizó
+[INFO] 18:20:28:606 kernel/(6408:6411): Finalizó
+[INFO] 18:20:28:607 kernel/(6408:6411): Finalizó
+[INFO] 18:20:28:608 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562534428)
+[DEBUG] 18:20:29:215 kernel/(6408:6411): OK
+[INFO] 18:20:29:216 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:29:217 kernel/(6408:6411): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:20:29:217 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:29:218 kernel/(6408:6411): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:20:29:219 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:32:748 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:32:749 kernel/(6408:6411): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:20:32:749 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:35:60 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:35:62 kernel/(6408:6411): CREATE enviado (Tabla: COLORES, CONSISTENCY: SC)
+[INFO] 18:20:35:63 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:37:375 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:37:377 kernel/(6408:6411): CREATE enviado (Tabla: COLORES, CONSISTENCY: SC)
+[INFO] 18:20:37:378 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:39:699 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:39:700 kernel/(6408:6411): CREATE enviado (Tabla: COLORES, CONSISTENCY: SC)
+[INFO] 18:20:39:701 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:42:17 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:42:19 kernel/(6408:6411): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:20:42:19 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:44:348 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:44:349 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562534444)
+[DEBUG] 18:20:44:952 kernel/(6408:6411): OK
+[INFO] 18:20:44:952 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:44:953 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562534444)
+[DEBUG] 18:20:45:554 kernel/(6408:6411): OK
+[INFO] 18:20:45:554 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:45:555 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:45:556 kernel/(6408:6411): Finalizó
+[INFO] 18:20:45:557 kernel/(6408:6411): Finalizó
+[INFO] 18:20:45:558 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562534445)
+[DEBUG] 18:20:46:165 kernel/(6408:6411): OK
+[INFO] 18:20:46:165 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:46:166 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562534446)
+[DEBUG] 18:20:46:768 kernel/(6408:6411): OK
+[INFO] 18:20:46:769 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:46:769 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:46:770 kernel/(6408:6411): INSERT enviado (Tabla: COLORES, Key: 3119, Value: Rojo, Timestamp: 1562534446)
+[ERROR] 18:20:46:772 kernel/(6408:6411): Script terminado por linea erronea
+[INFO] 18:20:46:774 kernel/(6408:6411): INSERT enviado (Tabla: COLORES, Key: 3119, Value: Rojo, Timestamp: 1562534446)
+[ERROR] 18:20:46:774 kernel/(6408:6411): Script terminado por linea erronea
+[INFO] 18:20:46:775 kernel/(6408:6411): INSERT enviado (Tabla: COLORES, Key: 3119, Value: Rojo, Timestamp: 1562534446)
+[ERROR] 18:20:46:776 kernel/(6408:6411): Script terminado por linea erronea
+[INFO] 18:20:46:777 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562534446)
+[DEBUG] 18:20:47:382 kernel/(6408:6411): OK
+[INFO] 18:20:47:383 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:47:385 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562534447)
+[DEBUG] 18:20:47:987 kernel/(6408:6411): OK
+[INFO] 18:20:47:988 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:47:988 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:47:989 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562534447)
+[DEBUG] 18:20:48:592 kernel/(6408:6411): OK
+[INFO] 18:20:48:592 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:48:593 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562534448)
+[DEBUG] 18:20:49:196 kernel/(6408:6411): OK
+[INFO] 18:20:49:196 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:49:197 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:49:198 kernel/(6408:6411): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:20:49:199 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:51:502 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:51:504 kernel/(6408:6411): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 18:20:51:505 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:20:53:818 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:53:820 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562534453)
+[DEBUG] 18:20:54:424 kernel/(6408:6411): OK
+[INFO] 18:20:54:425 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:54:425 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562534454)
+[DEBUG] 18:20:55:32 kernel/(6408:6411): OK
+[INFO] 18:20:55:32 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:55:33 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:55:34 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562534455)
+[DEBUG] 18:20:55:639 kernel/(6408:6411): OK
+[INFO] 18:20:55:640 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:55:640 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562534455)
+[DEBUG] 18:20:56:245 kernel/(6408:6411): OK
+[INFO] 18:20:56:245 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:56:246 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:56:246 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562534456)
+[DEBUG] 18:20:56:850 kernel/(6408:6411): OK
+[INFO] 18:20:56:851 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:56:852 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562534456)
+[DEBUG] 18:20:57:453 kernel/(6408:6411): OK
+[INFO] 18:20:57:454 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:57:454 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:57:455 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562534457)
+[DEBUG] 18:20:58:58 kernel/(6408:6411): OK
+[INFO] 18:20:58:59 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:58:60 kernel/(6408:6411): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:20:58:60 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:58:61 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562534458)
+[DEBUG] 18:20:59:268 kernel/(6408:6411): OK
+[INFO] 18:20:59:268 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:59:269 kernel/(6408:6411): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 18:20:59:270 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:20:59:271 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562534459)
+[DEBUG] 18:20:59:876 kernel/(6408:6411): OK
+[INFO] 18:20:59:876 kernel/(6408:6411): Insert: OK
+[INFO] 18:20:59:877 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562534459)
+[DEBUG] 18:21:00:478 kernel/(6408:6411): OK
+[INFO] 18:21:00:478 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:00:478 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:00:479 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562534460)
+[DEBUG] 18:21:01:80 kernel/(6408:6411): OK
+[INFO] 18:21:01:81 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:01:82 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562534461)
+[DEBUG] 18:21:01:687 kernel/(6408:6411): OK
+[INFO] 18:21:01:687 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:01:688 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:01:691 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:21:02:298 kernel/(6408:6411): Registro: TimeStamp: 1562534459, Key:11, Value: Halcon
+[INFO] 18:21:02:300 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562534462)
+[DEBUG] 18:21:02:904 kernel/(6408:6411): OK
+[INFO] 18:21:02:905 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:02:905 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:02:907 kernel/(6408:6411): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:21:02:907 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:21:05:222 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:05:223 kernel/(6408:6411): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 18:21:05:224 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:21:07:543 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:07:545 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:21:08:148 kernel/(6408:6411): Registro: TimeStamp: 1562534461, Key:11, Value: Halcon
+[INFO] 18:21:08:149 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562534468)
+[DEBUG] 18:21:08:754 kernel/(6408:6411): OK
+[INFO] 18:21:08:754 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:08:755 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:08:756 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:21:09:358 kernel/(6408:6411): Registro: TimeStamp: 1562534446, Key:11, Value: Paloma
+[INFO] 18:21:09:359 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562534469)
+[DEBUG] 18:21:09:965 kernel/(6408:6411): OK
+[INFO] 18:21:09:966 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:09:966 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:09:967 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:21:11:688 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562534471)
+[DEBUG] 18:21:12:291 kernel/(6408:6411): OK
+[INFO] 18:21:12:292 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:12:292 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:12:293 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562534472)
+[DEBUG] 18:21:12:899 kernel/(6408:6411): OK
+[INFO] 18:21:12:900 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:12:900 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562534472)
+[DEBUG] 18:21:13:502 kernel/(6408:6411): OK
+[INFO] 18:21:13:503 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:13:503 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:13:504 kernel/(6408:6413): DESCRIBE enviado
+[INFO] 18:21:15:216 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562534475)
+[INFO] 18:21:15:217 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:21:15:218 kernel/(6408:6410): DESCRIBE enviado
+[DEBUG] 18:21:15:817 kernel/(6408:6409): OK
+[INFO] 18:21:15:817 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:15:818 kernel/(6408:6409): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562534475)
+[INFO] 18:21:16:928 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562534476)
+[DEBUG] 18:21:17:533 kernel/(6408:6411): OK
+[INFO] 18:21:17:533 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:17:534 kernel/(6408:6411): Finalizó quantum
+[DEBUG] 18:21:17:534 kernel/(6408:6409): OK
+[INFO] 18:21:17:535 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:17:535 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:17:536 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562534477)
+[INFO] 18:21:17:537 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562534477)
+[DEBUG] 18:21:18:137 kernel/(6408:6409): OK
+[INFO] 18:21:18:138 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:18:139 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562534478)
+[DEBUG] 18:21:18:740 kernel/(6408:6409): OK
+[INFO] 18:21:18:741 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:18:741 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:18:742 kernel/(6408:6409): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562534478)
+[INFO] 18:21:19:237 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562534479)
+[DEBUG] 18:21:19:349 kernel/(6408:6409): OK
+[INFO] 18:21:19:349 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:19:350 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:21:19:838 kernel/(6408:6411): FULL
+[INFO] 18:21:19:839 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:21:19:954 kernel/(6408:6409): Registro: TimeStamp: 1562534476, Key:310, Value: Calamar
+[INFO] 18:21:19:954 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:19:956 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562534479)
+[DEBUG] 18:21:20:440 kernel/(6408:6410): FULL
+[INFO] 18:21:20:440 kernel/(6408:6410): Insert: FULL
+[DEBUG] 18:21:20:578 kernel/(6408:6409): OK
+[INFO] 18:21:20:578 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:20:579 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562534480)
+[INFO] 18:21:21:47 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:21:48 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:21:21:648 kernel/(6408:6409): OK
+[INFO] 18:21:21:648 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:21:649 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:21:650 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562534481)
+[INFO] 18:21:22:257 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:22:258 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:22:258 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562534482)
+[DEBUG] 18:21:22:259 kernel/(6408:6409): OK
+[INFO] 18:21:22:260 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:22:260 kernel/(6408:6409): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562534482)
+[DEBUG] 18:21:22:866 kernel/(6408:6410): OK
+[INFO] 18:21:22:867 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:22:867 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562534482)
+[DEBUG] 18:21:23:482 kernel/(6408:6410): OK
+[INFO] 18:21:23:483 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:23:483 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:23:484 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562534483)
+[DEBUG] 18:21:24:88 kernel/(6408:6410): OK
+[INFO] 18:21:24:89 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:24:89 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562534484)
+[DEBUG] 18:21:24:589 kernel/(6408:6411): Registro: TimeStamp: 1562534476, Key:310, Value: Calamar
+[INFO] 18:21:24:589 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:24:590 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562534484)
+[DEBUG] 18:21:25:193 kernel/(6408:6409): OK
+[INFO] 18:21:25:194 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:25:194 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:25:195 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562534485)
+[DEBUG] 18:21:25:196 kernel/(6408:6411): OK
+[INFO] 18:21:25:197 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:25:198 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:21:25:798 kernel/(6408:6410): OK
+[INFO] 18:21:25:798 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:25:799 kernel/(6408:6410): Finalizó quantum
+[DEBUG] 18:21:25:799 kernel/(6408:6409): OK
+[INFO] 18:21:25:800 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:25:801 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534485)
+[INFO] 18:21:25:802 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562534485)
+[DEBUG] 18:21:26:398 kernel/(6408:6411): Registro: TimeStamp: 1562534476, Key:310, Value: Calamar
+[INFO] 18:21:26:399 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:26:400 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:21:26:408 kernel/(6408:6410): OK
+[INFO] 18:21:26:408 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:26:409 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562534486)
+[DEBUG] 18:21:26:411 kernel/(6408:6409): OK
+[INFO] 18:21:26:411 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:26:413 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:26:413 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:21:27:2 kernel/(6408:6411): Registro: TimeStamp: 1562534484, Key:11, Value: Halcon
+[INFO] 18:21:27:3 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562534487)
+[DEBUG] 18:21:27:13 kernel/(6408:6410): OK
+[INFO] 18:21:27:13 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:27:13 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:27:14 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562534487)
+[DEBUG] 18:21:27:604 kernel/(6408:6411): OK
+[INFO] 18:21:27:605 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:27:605 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:27:606 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562534487)
+[DEBUG] 18:21:27:616 kernel/(6408:6410): OK
+[INFO] 18:21:27:616 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:27:617 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562534487)
+[DEBUG] 18:21:28:122 kernel/(6408:6409): Registro: TimeStamp: 1562534475, Key:11, Value: Paloma
+[INFO] 18:21:28:124 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562534488)
+[DEBUG] 18:21:28:219 kernel/(6408:6410): OK
+[INFO] 18:21:28:219 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:28:219 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:28:220 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562534488)
+[DEBUG] 18:21:28:730 kernel/(6408:6411): OK
+[INFO] 18:21:28:731 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:28:731 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562534488)
+[DEBUG] 18:21:28:732 kernel/(6408:6409): OK
+[INFO] 18:21:28:732 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:28:733 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:28:733 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:21:29:331 kernel/(6408:6410): OK
+[INFO] 18:21:29:331 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:29:332 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534489)
+[DEBUG] 18:21:29:333 kernel/(6408:6411): OK
+[INFO] 18:21:29:333 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:29:333 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:29:334 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562534489)
+[DEBUG] 18:21:29:933 kernel/(6408:6410): OK
+[INFO] 18:21:29:934 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:29:935 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:29:935 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:21:31:40 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562534491)
+[DEBUG] 18:21:31:641 kernel/(6408:6409): OK
+[INFO] 18:21:31:642 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:31:642 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:31:643 kernel/(6408:6409): DESCRIBE enviado
+[INFO] 18:21:32:744 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562534492)
+[DEBUG] 18:21:33:345 kernel/(6408:6411): OK
+[INFO] 18:21:33:346 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:33:346 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534493)
+[DEBUG] 18:21:33:347 kernel/(6408:6410): OK
+[INFO] 18:21:33:347 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:33:348 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:33:348 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562534493)
+[DEBUG] 18:21:33:951 kernel/(6408:6410): OK
+[INFO] 18:21:33:952 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:33:953 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562534493)
+[DEBUG] 18:21:34:558 kernel/(6408:6410): OK
+[INFO] 18:21:34:558 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:34:558 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:34:559 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562534494)
+[INFO] 18:21:35:54 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562534495)
+[DEBUG] 18:21:35:654 kernel/(6408:6410): FULL
+[INFO] 18:21:35:654 kernel/(6408:6410): Insert: FULL
+[DEBUG] 18:21:35:655 kernel/(6408:6409): OK
+[INFO] 18:21:35:656 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:35:657 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:35:658 kernel/(6408:6409): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562534495)
+[DEBUG] 18:21:36:256 kernel/(6408:6411): FULL
+[INFO] 18:21:36:256 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:21:36:260 kernel/(6408:6409): OK
+[INFO] 18:21:36:260 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:36:261 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 310)
+[INFO] 18:21:36:862 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:36:863 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:21:39:891 kernel/(6408:6409): Registro: TimeStamp: 1562534492, Key:310, Value: Calamar
+[INFO] 18:21:39:892 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:39:893 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:21:40:285 kernel/(6408:6410): Registro: TimeStamp: 1562534492, Key:310, Value: Calamar
+[INFO] 18:21:40:286 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:40:287 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562534500)
+[INFO] 18:21:40:493 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:40:493 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:40:494 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562534500)
+[DEBUG] 18:21:40:905 kernel/(6408:6410): OK
+[INFO] 18:21:40:906 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:40:907 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562534500)
+[DEBUG] 18:21:41:508 kernel/(6408:6410): OK
+[INFO] 18:21:41:509 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:41:509 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:41:510 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562534501)
+[DEBUG] 18:21:42:112 kernel/(6408:6410): OK
+[INFO] 18:21:42:112 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:42:113 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562534502)
+[INFO] 18:21:42:202 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562534502)
+[DEBUG] 18:21:42:802 kernel/(6408:6410): OK
+[INFO] 18:21:42:802 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:42:803 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:42:804 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562534502)
+[DEBUG] 18:21:42:805 kernel/(6408:6409): OK
+[INFO] 18:21:42:805 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:42:805 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:42:806 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562534502)
+[DEBUG] 18:21:43:408 kernel/(6408:6410): OK
+[INFO] 18:21:43:408 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:43:409 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562534503)
+[DEBUG] 18:21:43:410 kernel/(6408:6411): OK
+[INFO] 18:21:43:410 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:43:411 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562534503)
+[DEBUG] 18:21:44:10 kernel/(6408:6409): OK
+[INFO] 18:21:44:10 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:44:11 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:21:44:12 kernel/(6408:6410): OK
+[INFO] 18:21:44:13 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:44:13 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:44:14 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562534504)
+[DEBUG] 18:21:44:15 kernel/(6408:6411): OK
+[INFO] 18:21:44:15 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:44:15 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:44:16 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562534504)
+[DEBUG] 18:21:44:613 kernel/(6408:6409): Registro: TimeStamp: 1562534493, Key:983, Value: Pez globo
+[INFO] 18:21:44:613 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:44:614 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:21:44:615 kernel/(6408:6410): OK
+[INFO] 18:21:44:615 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:44:616 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534504)
+[DEBUG] 18:21:44:617 kernel/(6408:6411): OK
+[INFO] 18:21:44:617 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:44:618 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562534504)
+[DEBUG] 18:21:45:220 kernel/(6408:6411): OK
+[INFO] 18:21:45:220 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:45:221 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:45:222 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562534505)
+[DEBUG] 18:21:45:825 kernel/(6408:6411): OK
+[INFO] 18:21:45:826 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:45:826 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534505)
+[INFO] 18:21:46:325 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562534506)
+[DEBUG] 18:21:46:927 kernel/(6408:6410): OK
+[INFO] 18:21:46:928 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:46:928 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:46:929 kernel/(6408:6410): DESCRIBE enviado
+[DEBUG] 18:21:46:929 kernel/(6408:6409): OK
+[INFO] 18:21:46:930 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:46:930 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:46:931 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562534506)
+[DEBUG] 18:21:47:530 kernel/(6408:6411): OK
+[INFO] 18:21:47:530 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:47:531 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:47:532 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562534507)
+[DEBUG] 18:21:47:533 kernel/(6408:6409): OK
+[INFO] 18:21:47:533 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:47:534 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 983)
+[INFO] 18:21:49:243 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562534509)
+[DEBUG] 18:21:49:244 kernel/(6408:6409): Registro: TimeStamp: 1562534489, Key:983, Value: Pez globo
+[INFO] 18:21:49:244 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:49:245 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562534509)
+[DEBUG] 18:21:49:844 kernel/(6408:6411): OK
+[INFO] 18:21:49:845 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:49:845 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562534509)
+[DEBUG] 18:21:49:846 kernel/(6408:6410): OK
+[INFO] 18:21:49:846 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:49:847 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:49:847 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562534509)
+[DEBUG] 18:21:50:451 kernel/(6408:6409): OK
+[INFO] 18:21:50:451 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:50:452 kernel/(6408:6409): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562534510)
+[DEBUG] 18:21:50:453 kernel/(6408:6410): OK
+[INFO] 18:21:50:454 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:50:454 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562534510)
+[DEBUG] 18:21:50:455 kernel/(6408:6411): OK
+[INFO] 18:21:50:456 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:50:456 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:50:456 kernel/(6408:6411): DESCRIBE enviado
+[DEBUG] 18:21:51:58 kernel/(6408:6409): OK
+[INFO] 18:21:51:59 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:51:60 kernel/(6408:6409): Finalizó quantum
+[DEBUG] 18:21:51:61 kernel/(6408:6410): OK
+[INFO] 18:21:51:62 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:51:62 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:51:63 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:21:51:63 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562534511)
+[DEBUG] 18:21:51:671 kernel/(6408:6409): OK
+[INFO] 18:21:51:673 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:51:674 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:21:52:764 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562534512)
+[DEBUG] 18:21:53:365 kernel/(6408:6409): Registro: TimeStamp: 1562534510, Key:11, Value: Pinguino
+[INFO] 18:21:53:366 kernel/(6408:6409): Finalizó quantum
+[DEBUG] 18:21:53:366 kernel/(6408:6411): OK
+[INFO] 18:21:53:367 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:53:368 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:53:368 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:21:53:369 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562534513)
+[DEBUG] 18:21:53:970 kernel/(6408:6409): OK
+[INFO] 18:21:53:970 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:53:971 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 983)
+[INFO] 18:21:55:71 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562534515)
+[DEBUG] 18:21:55:671 kernel/(6408:6409): Registro: TimeStamp: 1562534505, Key:983, Value: Pez globo
+[INFO] 18:21:55:672 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:55:674 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:21:55:675 kernel/(6408:6410): OK
+[INFO] 18:21:55:675 kernel/(6408:6410): Insert: OK
+[INFO] 18:21:55:675 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:21:55:676 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562534515)
+[DEBUG] 18:21:56:282 kernel/(6408:6409): Registro: TimeStamp: 1562534509, Key:6262, Value: Loro
+[INFO] 18:21:56:284 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562534516)
+[DEBUG] 18:21:56:892 kernel/(6408:6409): OK
+[INFO] 18:21:56:893 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:56:894 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:21:56:895 kernel/(6408:6409): DESCRIBE enviado
+[INFO] 18:21:57:399 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562534517)
+[DEBUG] 18:21:57:1 kernel/(6408:6411): OK
+[INFO] 18:21:57:1 kernel/(6408:6411): Insert: OK
+[INFO] 18:21:57:1 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:21:57:2 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562534517)
+[INFO] 18:21:59:109 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562534519)
+[DEBUG] 18:21:59:717 kernel/(6408:6410): FULL
+[INFO] 18:21:59:718 kernel/(6408:6410): Insert: FULL
+[DEBUG] 18:21:59:719 kernel/(6408:6409): OK
+[INFO] 18:21:59:719 kernel/(6408:6409): Insert: OK
+[INFO] 18:21:59:719 kernel/(6408:6409): Finalizó quantum
+[DEBUG] 18:22:00:319 kernel/(6408:6411): OK
+[INFO] 18:22:00:319 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:00:320 kernel/(6408:6411): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562534520)
+[INFO] 18:22:00:921 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:00:923 kernel/(6408:6410): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:22:00:923 kernel/(6408:6411): OK
+[INFO] 18:22:00:924 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:00:924 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:00:925 kernel/(6408:6411): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:22:03:385 kernel/(6408:6411): Registro: TimeStamp: 1562534516, Key:272, Value: Vaca
+[INFO] 18:22:03:386 kernel/(6408:6411): DESCRIBE enviado
+[DEBUG] 18:22:04:459 kernel/(6408:6410): Registro: TimeStamp: 1562534510, Key:11, Value: Pinguino
+[INFO] 18:22:04:460 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:04:461 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562534524)
+[DEBUG] 18:22:05:68 kernel/(6408:6410): OK
+[INFO] 18:22:05:69 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:05:70 kernel/(6408:6410): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562534525)
+[INFO] 18:22:06:229 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:06:229 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562534526)
+[DEBUG] 18:22:06:830 kernel/(6408:6410): OK
+[INFO] 18:22:06:831 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:06:831 kernel/(6408:6410): Finalizó quantum
+[DEBUG] 18:22:06:832 kernel/(6408:6411): OK
+[INFO] 18:22:06:832 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:06:833 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:22:06:834 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562534526)
+[DEBUG] 18:22:07:436 kernel/(6408:6411): Registro: TimeStamp: 1562534520, Key:11, Value: Pinguino
+[INFO] 18:22:07:437 kernel/(6408:6411): Finalizó quantum
+[DEBUG] 18:22:07:438 kernel/(6408:6410): OK
+[INFO] 18:22:07:439 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:07:440 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 983)
+[INFO] 18:22:07:441 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:22:09:146 kernel/(6408:6410): Registro: TimeStamp: 1562534519, Key:983, Value: Tiburon
+[INFO] 18:22:09:146 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:09:147 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:22:09:148 kernel/(6408:6411): Registro: TimeStamp: 1562534509, Key:6262, Value: Loro
+[INFO] 18:22:09:149 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562534529)
+[DEBUG] 18:22:09:758 kernel/(6408:6411): OK
+[INFO] 18:22:09:759 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:09:759 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:09:760 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562534529)
+[DEBUG] 18:22:10:362 kernel/(6408:6411): OK
+[INFO] 18:22:10:363 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:10:364 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 18:22:10:853 kernel/(6408:6410): Registro: TimeStamp: 1562534492, Key:310, Value: Calamar
+[INFO] 18:22:10:854 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534530)
+[DEBUG] 18:22:11:456 kernel/(6408:6410): OK
+[INFO] 18:22:11:457 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:11:457 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:11:458 kernel/(6408:6410): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:22:12:59 kernel/(6408:6410): Registro: TimeStamp: 1562534509, Key:6262, Value: Loro
+[INFO] 18:22:12:60 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562534532)
+[DEBUG] 18:22:12:559 kernel/(6408:6411): Registro: TimeStamp: 1562534519, Key:983, Value: Tiburon
+[INFO] 18:22:12:559 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:12:560 kernel/(6408:6411): DESCRIBE enviado
+[DEBUG] 18:22:13:164 kernel/(6408:6410): OK
+[INFO] 18:22:13:164 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:13:164 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:14:870 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562534534)
+[DEBUG] 18:22:15:485 kernel/(6408:6411): OK
+[INFO] 18:22:15:486 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:15:486 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:15:487 kernel/(6408:6411): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:22:17:191 kernel/(6408:6411): Registro: TimeStamp: 1562534516, Key:272, Value: Vaca
+[INFO] 18:22:17:192 kernel/(6408:6411): DESCRIBE enviado
+[INFO] 18:22:18:908 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:18:908 kernel/(6408:6413): DESCRIBE enviado
+[INFO] 18:22:20:615 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562534540)
+[INFO] 18:22:20:617 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:22:20:618 kernel/(6408:6409): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:22:21:218 kernel/(6408:6411): FULL
+[INFO] 18:22:21:219 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:22:21:219 kernel/(6408:6409): Registro: TimeStamp: 1562534529, Key:272, Value: Vaca
+[INFO] 18:22:21:220 kernel/(6408:6409): DESCRIBE enviado
+[INFO] 18:22:22:939 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562534542)
+[DEBUG] 18:22:22:944 kernel/(6408:6410): Mem: 1
+[DEBUG] 18:22:22:944 kernel/(6408:6410): Mem: 2
+[ERROR] 18:22:22:946 kernel/(6408:6410): Memoria desconectada
+[INFO] 18:22:22:946 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:22:947 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562534542)
+[INFO] 18:22:24:640 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:24:642 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:22:25:243 kernel/(6408:6410): OK
+[INFO] 18:22:25:243 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:25:244 kernel/(6408:6410): SELECT enviado (Tabla: AVES, Key: 11)
+[INFO] 18:22:25:844 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:25:845 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562534545)
+[DEBUG] 18:22:26:358 kernel/(6408:6409): Registro: TimeStamp: 1562534479, Key:310, Value: Calamar
+[INFO] 18:22:26:360 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534546)
+[DEBUG] 18:22:26:362 kernel/(6408:6411): Mem: 1
+[ERROR] 18:22:26:363 kernel/(6408:6411): Memoria desconectada
+[INFO] 18:22:26:364 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:26:365 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562534546)
+[DEBUG] 18:22:27:760 kernel/(6408:6410): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:22:27:761 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:27:762 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:22:28:361 kernel/(6408:6409): OK
+[INFO] 18:22:28:361 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:28:362 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:28:363 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562534548)
+[DEBUG] 18:22:28:969 kernel/(6408:6411): OK
+[INFO] 18:22:28:970 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:28:972 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:22:29:595 kernel/(6408:6409): OK
+[INFO] 18:22:29:596 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:29:597 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562534549)
+[DEBUG] 18:22:31:309 kernel/(6408:6410): Registro: TimeStamp: 1562534479, Key:310, Value: Calamar
+[INFO] 18:22:31:310 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534551)
+[DEBUG] 18:22:31:931 kernel/(6408:6409): FULL
+[INFO] 18:22:31:931 kernel/(6408:6409): Insert: FULL
+[DEBUG] 18:22:32:532 kernel/(6408:6411): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:22:32:533 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:32:535 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:22:33:138 kernel/(6408:6410): OK
+[INFO] 18:22:33:138 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:33:139 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:33:140 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562534553)
+[INFO] 18:22:33:738 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:33:738 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:33:739 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 18:22:35:661 kernel/(6408:6411): Registro: TimeStamp: 1562534509, Key:6262, Value: Loro
+[INFO] 18:22:35:662 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562534555)
+[DEBUG] 18:22:36:263 kernel/(6408:6409): Registro: TimeStamp: 1562534509, Key:6262, Value: Loro
+[INFO] 18:22:36:264 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562534556)
+[DEBUG] 18:22:36:863 kernel/(6408:6410): OK
+[INFO] 18:22:36:863 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:36:864 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562534556)
+[DEBUG] 18:22:37:463 kernel/(6408:6409): OK
+[INFO] 18:22:37:464 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:37:464 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:37:466 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562534557)
+[DEBUG] 18:22:38:65 kernel/(6408:6411): OK
+[INFO] 18:22:38:65 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:38:65 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:38:66 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562534558)
+[DEBUG] 18:22:38:666 kernel/(6408:6409): OK
+[INFO] 18:22:38:666 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:38:667 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562534558)
+[DEBUG] 18:22:39:267 kernel/(6408:6410): OK
+[INFO] 18:22:39:267 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:39:268 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:39:268 kernel/(6408:6410): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:22:39:867 kernel/(6408:6409): OK
+[INFO] 18:22:39:868 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:39:868 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:39:869 kernel/(6408:6409): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 18:22:40:467 kernel/(6408:6411): FULL
+[INFO] 18:22:40:467 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:22:41:69 kernel/(6408:6409): Registro: TimeStamp: 1562534555, Key:272, Value: Vaca
+[INFO] 18:22:41:70 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:22:41:669 kernel/(6408:6410): Registro: TimeStamp: 1562534555, Key:272, Value: Vaca
+[INFO] 18:22:41:670 kernel/(6408:6410): DESCRIBE enviado
+[INFO] 18:22:43:379 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:43:380 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562534563)
+[INFO] 18:22:46:1 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:46:3 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562534566)
+[INFO] 18:22:47:601 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:47:602 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:22:48:203 kernel/(6408:6409): OK
+[INFO] 18:22:48:203 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:48:204 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562534568)
+[DEBUG] 18:22:48:803 kernel/(6408:6410): OK
+[INFO] 18:22:48:803 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:48:804 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562534568)
+[DEBUG] 18:22:49:404 kernel/(6408:6409): OK
+[INFO] 18:22:49:404 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:49:404 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:49:405 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:22:51:108 kernel/(6408:6411): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:22:51:108 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:51:110 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 18:22:52:811 kernel/(6408:6409): Registro: TimeStamp: 1562534479, Key:310, Value: Calamar
+[INFO] 18:22:52:812 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534572)
+[DEBUG] 18:22:53:411 kernel/(6408:6410): OK
+[INFO] 18:22:53:412 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:53:413 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:22:53:414 kernel/(6408:6410): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562534573)
+[DEBUG] 18:22:54:19 kernel/(6408:6409): OK
+[INFO] 18:22:54:19 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:54:20 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:54:21 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:22:54:620 kernel/(6408:6411): Registro: TimeStamp: 1562534479, Key:310, Value: Calamar
+[INFO] 18:22:54:621 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562534574)
+[DEBUG] 18:22:56:363 kernel/(6408:6409): Registro no encontrado
+[INFO] 18:22:56:364 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:22:56:964 kernel/(6408:6410): OK
+[INFO] 18:22:56:964 kernel/(6408:6410): Insert: OK
+[INFO] 18:22:56:965 kernel/(6408:6410): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:22:58:678 kernel/(6408:6409): Registro no encontrado
+[INFO] 18:22:58:678 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:22:58:679 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562534578)
+[DEBUG] 18:22:59:278 kernel/(6408:6411): OK
+[INFO] 18:22:59:279 kernel/(6408:6411): Insert: OK
+[INFO] 18:22:59:279 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:22:59:279 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562534579)
+[DEBUG] 18:22:59:880 kernel/(6408:6409): OK
+[INFO] 18:22:59:881 kernel/(6408:6409): Insert: OK
+[INFO] 18:22:59:882 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:23:00:480 kernel/(6408:6410): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:23:00:481 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:00:481 kernel/(6408:6410): DESCRIBE enviado
+[DEBUG] 18:23:01:84 kernel/(6408:6409): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:23:01:84 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:01:85 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562534581)
+[DEBUG] 18:23:01:685 kernel/(6408:6411): FULL
+[INFO] 18:23:01:685 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:23:02:285 kernel/(6408:6409): FULL
+[INFO] 18:23:02:285 kernel/(6408:6409): Insert: FULL
+[INFO] 18:23:03:988 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562534583)
+[INFO] 18:23:04:588 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:04:589 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562534584)
+[INFO] 18:23:05:190 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:05:191 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562534585)
+[DEBUG] 18:23:05:791 kernel/(6408:6409): OK
+[INFO] 18:23:05:791 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:05:792 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:05:793 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:23:06:392 kernel/(6408:6410): OK
+[INFO] 18:23:06:392 kernel/(6408:6410): Insert: OK
+[INFO] 18:23:06:393 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:06:394 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:23:06:994 kernel/(6408:6409): Registro: TimeStamp: 1562534583, Key:3105, Value: Delfin
+[INFO] 18:23:06:995 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:23:07:594 kernel/(6408:6411): OK
+[INFO] 18:23:07:594 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:07:595 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:07:596 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562534587)
+[DEBUG] 18:23:09:309 kernel/(6408:6409): Registro no encontrado
+[INFO] 18:23:09:310 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:09:311 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:23:09:909 kernel/(6408:6410): Registro: TimeStamp: 1562534583, Key:3105, Value: Delfin
+[INFO] 18:23:09:910 kernel/(6408:6410): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:23:11:611 kernel/(6408:6409): Registro: TimeStamp: 1562534526, Key:33, Value: Raya
+[INFO] 18:23:11:613 kernel/(6408:6409): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:23:12:211 kernel/(6408:6411): OK
+[INFO] 18:23:12:212 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:12:212 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562534592)
+[DEBUG] 18:23:13:928 kernel/(6408:6409): Registro: TimeStamp: 1562534568, Key:239, Value: Burro
+[INFO] 18:23:13:929 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:13:929 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562534593)
+[DEBUG] 18:23:15:638 kernel/(6408:6410): Registro no encontrado
+[INFO] 18:23:15:639 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:15:640 kernel/(6408:6410): DESCRIBE enviado
+[DEBUG] 18:23:16:239 kernel/(6408:6409): OK
+[INFO] 18:23:16:239 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:16:240 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562534596)
+[DEBUG] 18:23:16:839 kernel/(6408:6411): OK
+[INFO] 18:23:16:840 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:16:841 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:16:842 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:23:17:458 kernel/(6408:6409): OK
+[INFO] 18:23:17:458 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:17:459 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:17:460 kernel/(6408:6409): DESCRIBE enviado
+[INFO] 18:23:19:161 kernel/(6408:6410): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562534599)
+[INFO] 18:23:20:863 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562534600)
+[DEBUG] 18:23:21:462 kernel/(6408:6411): Registro: TimeStamp: 1562534585, Key:3103, Value: Delfin
+[INFO] 18:23:21:463 kernel/(6408:6411): Finalizó
+[INFO] 18:23:21:464 kernel/(6408:6411): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562534601)
+[DEBUG] 18:23:22:63 kernel/(6408:6409): OK
+[INFO] 18:23:22:67 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:22:67 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:22:68 kernel/(6408:6409): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562534602)
+[DEBUG] 18:23:22:665 kernel/(6408:6410): OK
+[INFO] 18:23:22:666 kernel/(6408:6410): Insert: OK
+[INFO] 18:23:22:666 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:22:667 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:23:23:269 kernel/(6408:6409): FULL
+[INFO] 18:23:23:270 kernel/(6408:6409): Insert: FULL
+[DEBUG] 18:23:23:871 kernel/(6408:6411): FULL
+[INFO] 18:23:23:871 kernel/(6408:6411): Insert: FULL
+[DEBUG] 18:23:27:479 kernel/(6408:6410): Registro: TimeStamp: 1562534526, Key:33, Value: Raya
+[INFO] 18:23:27:481 kernel/(6408:6410): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[INFO] 18:23:28:84 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:28:85 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:23:29:789 kernel/(6408:6410): Registro: TimeStamp: 1562534596, Key:239, Value: Burro
+[INFO] 18:23:29:789 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:29:791 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 33)
+[INFO] 18:23:30:393 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:30:394 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 18:23:32:114 kernel/(6408:6409): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:23:32:114 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:32:116 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:23:33:832 kernel/(6408:6410): Registro: TimeStamp: 1562534526, Key:33, Value: Raya
+[INFO] 18:23:33:834 kernel/(6408:6410): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:23:35:538 kernel/(6408:6409): Registro: TimeStamp: 1562534585, Key:3103, Value: Delfin
+[INFO] 18:23:35:538 kernel/(6408:6409): Finalizó
+[INFO] 18:23:35:540 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:23:36:139 kernel/(6408:6411): Registro: TimeStamp: 1562534525, Key:11, Value: Pinguino
+[INFO] 18:23:36:139 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:36:140 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 18:23:37:849 kernel/(6408:6409): Registro: TimeStamp: 1562534599, Key:3105, Value: Delfin
+[INFO] 18:23:37:850 kernel/(6408:6409): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 18:23:38:449 kernel/(6408:6410): Registro: TimeStamp: 1562534596, Key:239, Value: Burro
+[INFO] 18:23:38:450 kernel/(6408:6410): Finalizó quantum
+[INFO] 18:23:38:451 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:23:40:156 kernel/(6408:6409): Registro no encontrado
+[INFO] 18:23:40:156 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:40:157 kernel/(6408:6409): DESCRIBE enviado
+[DEBUG] 18:23:40:758 kernel/(6408:6411): Registro: TimeStamp: 1562534599, Key:3105, Value: Delfin
+[INFO] 18:23:40:760 kernel/(6408:6411): SELECT enviado (Tabla: AVES, Key: 1102)
+[INFO] 18:23:42:466 kernel/(6408:6409): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562534622)
+[DEBUG] 18:23:43:66 kernel/(6408:6410): Registro: TimeStamp: 1562534585, Key:3103, Value: Delfin
+[INFO] 18:23:43:66 kernel/(6408:6410): Finalizó
+[DEBUG] 18:23:43:667 kernel/(6408:6409): OK
+[INFO] 18:23:43:667 kernel/(6408:6409): Insert: OK
+[INFO] 18:23:43:668 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:43:669 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:23:45:398 kernel/(6408:6411): Registro no encontrado
+[INFO] 18:23:45:398 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:45:399 kernel/(6408:6411): DESCRIBE enviado
+[DEBUG] 18:23:45:998 kernel/(6408:6409): Registro: TimeStamp: 1562534526, Key:33, Value: Raya
+[INFO] 18:23:45:0 kernel/(6408:6409): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[INFO] 18:23:47:712 kernel/(6408:6411): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562534627)
+[DEBUG] 18:23:48:321 kernel/(6408:6409): Registro: TimeStamp: 1562534596, Key:239, Value: Burro
+[INFO] 18:23:48:322 kernel/(6408:6409): Finalizó quantum
+[INFO] 18:23:48:323 kernel/(6408:6409): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:23:48:925 kernel/(6408:6411): OK
+[INFO] 18:23:48:926 kernel/(6408:6411): Insert: OK
+[INFO] 18:23:48:926 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:48:928 kernel/(6408:6411): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 18:23:49:526 kernel/(6408:6409): Registro: TimeStamp: 1562534585, Key:3103, Value: Delfin
+[INFO] 18:23:49:526 kernel/(6408:6409): Finalizó
+[DEBUG] 18:23:50:127 kernel/(6408:6411): Registro: TimeStamp: 1562534526, Key:33, Value: Raya
+[INFO] 18:23:50:128 kernel/(6408:6411): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 18:23:50:730 kernel/(6408:6411): Registro: TimeStamp: 1562534596, Key:239, Value: Burro
+[INFO] 18:23:50:730 kernel/(6408:6411): Finalizó quantum
+[INFO] 18:23:50:731 kernel/(6408:6413): DESCRIBE enviado
+[INFO] 18:23:52:435 kernel/(6408:6410): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 18:23:53:39 kernel/(6408:6410): Registro: TimeStamp: 1562534585, Key:3103, Value: Delfin
+[INFO] 18:23:53:40 kernel/(6408:6410): Finalizó
+[INFO] 19:35:27:67 kernel/(8581:8581): 8001
+[INFO] 19:35:27:98 kernel/(8581:8581): conecte
+[INFO] 19:35:27:108 kernel/(8581:8581): Conecte al servidor.
+[INFO] 19:35:27:108 kernel/(8581:8581): conecte
+[INFO] 19:35:27:109 kernel/(8581:8581): Conecte al servidor.
+[INFO] 19:35:27:109 kernel/(8581:8581): conecte
+[INFO] 19:35:27:110 kernel/(8581:8581): Conecte al servidor.
+[INFO] 19:35:27:288 kernel/(8581:8582): DESCRIBE enviado
+[DEBUG] 19:35:27:292 kernel/(8581:8585): Conecte a la memoria numero 2
+[DEBUG] 19:35:27:294 kernel/(8581:8585): Conecte a la memoria numero 2
+[DEBUG] 19:35:27:294 kernel/(8581:8585): Conecte a la memoria numero 2
+[INFO] 19:35:33:907 kernel/(8587:8587): 8001
+[INFO] 19:35:33:907 kernel/(8587:8587): conecte
+[INFO] 19:35:33:908 kernel/(8587:8587): Conecte al servidor.
+[INFO] 19:35:33:908 kernel/(8587:8587): conecte
+[INFO] 19:35:33:908 kernel/(8587:8587): Conecte al servidor.
+[INFO] 19:35:33:909 kernel/(8587:8587): conecte
+[INFO] 19:35:33:909 kernel/(8587:8587): Conecte al servidor.
+[DEBUG] 19:35:33:910 kernel/(8587:8591): Conecte a la memoria numero 2
+[INFO] 19:35:33:910 kernel/(8587:8588): DESCRIBE enviado
+[DEBUG] 19:35:33:910 kernel/(8587:8591): Conecte a la memoria numero 2
+[DEBUG] 19:35:33:911 kernel/(8587:8591): Conecte a la memoria numero 2
+[INFO] 19:35:35:621 kernel/(8587:8588): Finalizó
+[INFO] 19:35:38:8 kernel/(8587:8589): Finalizó
+[INFO] 19:35:40:993 kernel/(8587:8590): Finalizó
+[INFO] 19:35:48:910 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:36:03:833 kernel/(8587:8588): CREATE enviado (Tabla: TESTING, CONSISTENCY: EC)
+[INFO] 19:36:03:833 kernel/(8587:8588): Finalizó
+[INFO] 19:36:05:620 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:36:20:705 kernel/(8587:8589): INSERT enviado (Tabla: TESTING, Key: 1998, Value: pinto, Timestamp: 1562538980)
+[DEBUG] 19:36:21:314 kernel/(8587:8589): OK
+[INFO] 19:36:21:314 kernel/(8587:8589): Insert: OK
+[INFO] 19:36:21:314 kernel/(8587:8589): Finalizó
+[INFO] 19:36:22:330 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:36:24:593 kernel/(8587:8590): SELECT enviado (Tabla: TESTING, Key: 1998)
+[DEBUG] 19:36:26:299 kernel/(8587:8590): Registro no encontrado
+[INFO] 19:36:26:300 kernel/(8587:8590): Finalizó
+[INFO] 19:36:39:40 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:36:40:742 kernel/(8587:8588): SELECT enviado (Tabla: TESTING, Key: 1998)
+[DEBUG] 19:36:41:343 kernel/(8587:8588): Registro: TimeStamp: 1562538980, Key:1998, Value: pinto
+[INFO] 19:36:41:343 kernel/(8587:8588): Finalizó
+[WARNING] 19:36:50:266 kernel/(8587:8589): Comando no reconocido
+[ERROR] 19:36:50:266 kernel/(8587:8589): Script terminado por linea erronea
+[INFO] 19:36:54:306 kernel/(8587:8590): Finalizó
+[INFO] 19:36:55:745 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:36:58:81 kernel/(8587:8588): SELECT enviado (Tabla: TESTING, Key: 1998)
+[DEBUG] 19:36:59:795 kernel/(8587:8588): Registro: TimeStamp: 1562538980, Key:1998, Value: pinto
+[INFO] 19:36:59:795 kernel/(8587:8588): Finalizó
+[INFO] 19:37:09:441 kernel/(8587:8589): DROP enviado
+[INFO] 19:37:09:441 kernel/(8587:8589): Finalizó
+[INFO] 19:37:12:453 kernel/(8587:8592): DESCRIBE enviado
+[INFO] 19:37:14:155 kernel/(8587:8590): SELECT enviado (Tabla: TESTING, Key: 1998)
+[DEBUG] 19:37:14:756 kernel/(8587:8590): Registro: TimeStamp: 1562538980, Key:1998, Value: pinto
+[INFO] 19:37:14:756 kernel/(8587:8590): Finalizó
+[INFO] 19:41:07:140 kernel/(8709:8709): 8001
+[INFO] 19:41:07:140 kernel/(8709:8709): conecte
+[INFO] 19:41:07:141 kernel/(8709:8709): Conecte al servidor.
+[INFO] 19:41:07:141 kernel/(8709:8709): conecte
+[INFO] 19:41:07:141 kernel/(8709:8709): Conecte al servidor.
+[INFO] 19:41:07:141 kernel/(8709:8709): conecte
+[INFO] 19:41:07:141 kernel/(8709:8709): Conecte al servidor.
+[INFO] 19:41:07:142 kernel/(8709:8711): DESCRIBE enviado
+[DEBUG] 19:41:07:142 kernel/(8709:8713): Conecte a la memoria numero 2
+[DEBUG] 19:41:07:142 kernel/(8709:8713): Conecte a la memoria numero 2
+[DEBUG] 19:41:07:142 kernel/(8709:8713): Conecte a la memoria numero 2
+[INFO] 19:41:08:848 kernel/(8709:8711): Finalizó
+[INFO] 19:41:13:922 kernel/(8709:8710): Finalizó
+[INFO] 19:41:16:26 kernel/(8709:8712): Finalizó
+[INFO] 19:41:22:151 kernel/(8709:8714): DESCRIBE enviado
+[INFO] 19:41:28:666 kernel/(8709:8711): CREATE enviado (Tabla: TESTING, CONSISTENCY: EC)
+[INFO] 19:41:28:666 kernel/(8709:8711): Finalizó
+[INFO] 19:41:38:867 kernel/(8709:8714): DESCRIBE enviado
+[INFO] 19:41:40:572 kernel/(8709:8710): INSERT enviado (Tabla: TESTING, Key: 1997, Value: germi, Timestamp: 1562539300)
+[DEBUG] 19:41:41:176 kernel/(8709:8710): OK
+[INFO] 19:41:41:176 kernel/(8709:8710): Insert: OK
+[INFO] 19:41:41:176 kernel/(8709:8710): Finalizó
+[INFO] 19:41:41:955 kernel/(8709:8712): INSERT enviado (Tabla: TESTING, Key: 1997, Value: germi, Timestamp: 1562539301)
+[DEBUG] 19:41:42:555 kernel/(8709:8712): OK
+[INFO] 19:41:42:555 kernel/(8709:8712): Insert: OK
+[INFO] 19:41:42:555 kernel/(8709:8712): Finalizó
+[INFO] 19:41:46:658 kernel/(8709:8711): SELECT enviado (Tabla: TESTING, Key: 1997)
+[DEBUG] 19:41:47:260 kernel/(8709:8711): Registro: TimeStamp: 1562539300, Key:1997, Value: germi
+[INFO] 19:41:47:260 kernel/(8709:8711): Finalizó
+[INFO] 19:41:48:786 kernel/(8709:8710): SELECT enviado (Tabla: TESTING, Key: 1997)
+[DEBUG] 19:41:49:387 kernel/(8709:8710): Registro: TimeStamp: 1562539301, Key:1997, Value: germi
+[INFO] 19:41:49:388 kernel/(8709:8710): Finalizó
+[INFO] 19:41:55:578 kernel/(8709:8714): DESCRIBE enviado
+[INFO] 19:42:01:961 kernel/(8709:8712): SELECT enviado (Tabla: TESTING, Key: 1997)
+[DEBUG] 19:42:02:563 kernel/(8709:8712): Registro: TimeStamp: 1562539300, Key:1997, Value: germi
+[INFO] 19:42:02:563 kernel/(8709:8712): Finalizó
+[INFO] 19:42:03:361 kernel/(8709:8711): SELECT enviado (Tabla: TESTING, Key: 1997)
+[DEBUG] 19:42:03:963 kernel/(8709:8711): Registro: TimeStamp: 1562539301, Key:1997, Value: germi
+[INFO] 19:42:03:963 kernel/(8709:8711): Finalizó
+[INFO] 19:42:09:98 kernel/(8709:8710): DROP enviado
+[INFO] 19:42:09:98 kernel/(8709:8710): Finalizó
+[INFO] 19:42:12:295 kernel/(8709:8714): DESCRIBE enviado
+[INFO] 19:42:14:159 kernel/(8709:8712): SELECT enviado (Tabla: TESTING, Key: 1997)
+[DEBUG] 19:42:14:760 kernel/(8709:8712): Registro: TimeStamp: 1562539301, Key:1997, Value: germi
+[INFO] 19:42:14:760 kernel/(8709:8712): Finalizó
+[INFO] 19:42:29:6 kernel/(8709:8714): DESCRIBE enviado
+[INFO] 19:42:48:301 kernel/(8728:8728): 8001
+[INFO] 19:42:48:301 kernel/(8728:8728): conecte
+[INFO] 19:42:48:301 kernel/(8728:8728): Conecte al servidor.
+[INFO] 19:42:48:301 kernel/(8728:8728): conecte
+[INFO] 19:42:48:301 kernel/(8728:8728): Conecte al servidor.
+[INFO] 19:42:48:301 kernel/(8728:8728): conecte
+[INFO] 19:42:48:302 kernel/(8728:8728): Conecte al servidor.
+[INFO] 19:42:48:302 kernel/(8728:8731): DESCRIBE enviado
+[DEBUG] 19:42:48:302 kernel/(8728:8732): Conecte a la memoria numero 2
+[DEBUG] 19:42:48:302 kernel/(8728:8732): Conecte a la memoria numero 2
+[DEBUG] 19:42:48:303 kernel/(8728:8732): Conecte a la memoria numero 2
+[INFO] 19:42:50:7 kernel/(8728:8731): Finalizó
+[INFO] 19:42:56:235 kernel/(8728:8729): SELECT enviado (Tabla: TET, Key: 22)
+[ERROR] 19:42:56:235 kernel/(8728:8729): Script terminado por linea erronea
+[INFO] 19:43:03:302 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:43:20:8 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:43:36:713 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:43:53:421 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:44:10:133 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:44:26:837 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:44:43:564 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:45:00:267 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:45:16:974 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:45:33:679 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:45:50:384 kernel/(8728:8733): DESCRIBE enviado
+[INFO] 19:45:58:429 kernel/(8901:8901): 8001
+[INFO] 19:45:58:429 kernel/(8901:8901): conecte
+[INFO] 19:45:58:429 kernel/(8901:8901): Conecte al servidor.
+[INFO] 19:45:58:430 kernel/(8901:8901): conecte
+[INFO] 19:45:58:430 kernel/(8901:8901): Conecte al servidor.
+[INFO] 19:45:58:430 kernel/(8901:8901): conecte
+[INFO] 19:45:58:430 kernel/(8901:8901): Conecte al servidor.
+[INFO] 19:45:58:430 kernel/(8901:8902): DESCRIBE enviado
+[DEBUG] 19:45:58:431 kernel/(8901:8905): Conecte a la memoria numero 2
+[DEBUG] 19:45:58:431 kernel/(8901:8905): Conecte a la memoria numero 2
+[DEBUG] 19:45:58:431 kernel/(8901:8905): Conecte a la memoria numero 2
+[INFO] 19:46:00:137 kernel/(8901:8902): Finalizó
+[INFO] 19:46:02:107 kernel/(8901:8903): Finalizó
+[INFO] 19:46:04:459 kernel/(8901:8904): Finalizó
+[INFO] 19:46:13:430 kernel/(8901:8906): DESCRIBE enviado
+[INFO] 19:46:15:135 kernel/(8901:8902): CREATE enviado (Tabla: LOCO, CONSISTENCY: EC)
+[INFO] 19:46:15:135 kernel/(8901:8902): Finalizó
+[INFO] 19:46:21:883 kernel/(8901:8903): INSERT enviado (Tabla: LOCO, Key: 1998, Value: hola, Timestamp: 1562539581)
+[ERROR] 19:46:21:883 kernel/(8901:8903): Script terminado por linea erronea
+[INFO] 19:46:30:141 kernel/(8901:8906): DESCRIBE enviado
+[INFO] 19:46:33:434 kernel/(8901:8904): INSERT enviado (Tabla: LOCO, Key: 1998, Value: hola, Timestamp: 1562539593)
+[DEBUG] 19:46:34:37 kernel/(8901:8904): OK
+[INFO] 19:46:34:37 kernel/(8901:8904): Insert: OK
+[INFO] 19:46:34:37 kernel/(8901:8904): Finalizó
+[INFO] 19:46:42:667 kernel/(8901:8902): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:46:44:379 kernel/(8901:8902): Registro no encontrado
+[INFO] 19:46:44:379 kernel/(8901:8902): Finalizó
+[INFO] 19:46:46:850 kernel/(8901:8903): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:46:47:452 kernel/(8901:8903): Registro: TimeStamp: 1562539593, Key:1998, Value: hola
+[INFO] 19:46:47:452 kernel/(8901:8903): Finalizó
+[INFO] 19:46:47:452 kernel/(8901:8906): DESCRIBE enviado
+[INFO] 19:46:49:587 kernel/(8901:8904): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:46:51:292 kernel/(8901:8904): Registro no encontrado
+[INFO] 19:46:51:293 kernel/(8901:8904): Finalizó
+[INFO] 19:46:55:946 kernel/(8901:8902): DROP enviado
+[INFO] 19:46:55:946 kernel/(8901:8902): Finalizó
+[INFO] 19:46:57:971 kernel/(8901:8903): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:46:59:685 kernel/(8901:8903): Registro no encontrado
+[INFO] 19:46:59:685 kernel/(8901:8903): Finalizó
+[INFO] 19:47:00:427 kernel/(8901:8904): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:02:134 kernel/(8901:8904): Registro no encontrado
+[INFO] 19:47:02:134 kernel/(8901:8904): Finalizó
+[INFO] 19:47:02:810 kernel/(8901:8902): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:04:513 kernel/(8901:8902): Registro no encontrado
+[INFO] 19:47:04:513 kernel/(8901:8902): Finalizó
+[INFO] 19:47:04:513 kernel/(8901:8906): DESCRIBE enviado
+[INFO] 19:47:08:51 kernel/(8901:8903): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:09:759 kernel/(8901:8903): Registro no encontrado
+[INFO] 19:47:09:759 kernel/(8901:8903): Finalizó
+[INFO] 19:47:11:347 kernel/(8901:8904): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:13:59 kernel/(8901:8904): Registro no encontrado
+[INFO] 19:47:13:59 kernel/(8901:8904): Finalizó
+[INFO] 19:47:16:59 kernel/(8901:8902): DROP enviado
+[INFO] 19:47:16:59 kernel/(8901:8902): Finalizó
+[INFO] 19:47:18:339 kernel/(8901:8903): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:20:48 kernel/(8901:8903): Registro no encontrado
+[INFO] 19:47:20:48 kernel/(8901:8903): Finalizó
+[INFO] 19:47:21:221 kernel/(8901:8906): DESCRIBE enviado
+[INFO] 19:47:22:932 kernel/(8901:8904): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:24:638 kernel/(8901:8904): Registro no encontrado
+[INFO] 19:47:24:638 kernel/(8901:8904): Finalizó
+[INFO] 19:47:27:515 kernel/(8901:8902): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:47:29:226 kernel/(8901:8902): Registro no encontrado
+[INFO] 19:47:29:226 kernel/(8901:8902): Finalizó
+[INFO] 19:50:12:253 kernel/(9034:9034): 8001
+[INFO] 19:50:12:253 kernel/(9034:9034): conecte
+[INFO] 19:50:12:254 kernel/(9034:9034): Conecte al servidor.
+[INFO] 19:50:12:254 kernel/(9034:9034): conecte
+[INFO] 19:50:12:254 kernel/(9034:9034): Conecte al servidor.
+[INFO] 19:50:12:254 kernel/(9034:9034): conecte
+[INFO] 19:50:12:254 kernel/(9034:9034): Conecte al servidor.
+[INFO] 19:50:12:255 kernel/(9034:9035): DESCRIBE enviado
+[DEBUG] 19:50:12:255 kernel/(9034:9038): Conecte a la memoria numero 2
+[DEBUG] 19:50:12:256 kernel/(9034:9038): Conecte a la memoria numero 2
+[DEBUG] 19:50:12:256 kernel/(9034:9038): Conecte a la memoria numero 2
+[INFO] 19:50:13:961 kernel/(9034:9035): Finalizó
+[INFO] 19:50:17:891 kernel/(9034:9036): Finalizó
+[INFO] 19:50:25:396 kernel/(9034:9037): Finalizó
+[INFO] 19:50:27:255 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:50:34:211 kernel/(9034:9035): CREATE enviado (Tabla: LOCO, CONSISTENCY: EC)
+[INFO] 19:50:34:211 kernel/(9034:9035): Finalizó
+[INFO] 19:50:41:555 kernel/(9034:9036): INSERT enviado (Tabla: LOCO, Key: 1998, Value: hola, Timestamp: 1562539841)
+[ERROR] 19:50:41:555 kernel/(9034:9036): Script terminado por linea erronea
+[INFO] 19:50:43:964 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:50:45:676 kernel/(9034:9037): INSERT enviado (Tabla: LOCO, Key: 1998, Value: hola, Timestamp: 1562539845)
+[DEBUG] 19:50:46:277 kernel/(9034:9037): OK
+[INFO] 19:50:46:277 kernel/(9034:9037): Insert: OK
+[INFO] 19:50:46:277 kernel/(9034:9037): Finalizó
+[INFO] 19:50:50:35 kernel/(9034:9035): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:50:51:739 kernel/(9034:9035): Registro no encontrado
+[INFO] 19:50:51:739 kernel/(9034:9035): Finalizó
+[INFO] 19:50:52:491 kernel/(9034:9036): SELECT enviado (Tabla: LOCO, Key: 1998)
+[DEBUG] 19:50:53:92 kernel/(9034:9036): Registro: TimeStamp: 1562539845, Key:1998, Value: hola
+[INFO] 19:50:53:92 kernel/(9034:9036): Finalizó
+[INFO] 19:50:58:372 kernel/(9034:9037): DROP enviado
+[INFO] 19:50:58:372 kernel/(9034:9037): Finalizó
+[INFO] 19:51:00:676 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:51:17:383 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:51:34:93 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:51:45:787 kernel/(9034:9035): DROP enviado
+[INFO] 19:51:45:787 kernel/(9034:9035): Finalizó
+[INFO] 19:51:50:798 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:51:52:621 kernel/(9034:9036): DROP enviado
+[INFO] 19:51:52:621 kernel/(9034:9036): Finalizó
+[INFO] 19:51:54:675 kernel/(9034:9037): DROP enviado
+[INFO] 19:51:54:675 kernel/(9034:9037): Finalizó
+[INFO] 19:51:55:660 kernel/(9034:9035): DROP enviado
+[INFO] 19:51:55:660 kernel/(9034:9035): Finalizó
+[INFO] 19:51:56:283 kernel/(9034:9036): DROP enviado
+[INFO] 19:51:56:283 kernel/(9034:9036): Finalizó
+[INFO] 19:51:56:924 kernel/(9034:9037): DROP enviado
+[INFO] 19:51:56:925 kernel/(9034:9037): Finalizó
+[INFO] 19:51:57:636 kernel/(9034:9035): DROP enviado
+[INFO] 19:51:57:636 kernel/(9034:9035): Finalizó
+[INFO] 19:51:58:316 kernel/(9034:9036): DROP enviado
+[INFO] 19:51:58:316 kernel/(9034:9036): Finalizó
+[INFO] 19:52:00:980 kernel/(9034:9037): DROP enviado
+[INFO] 19:52:00:980 kernel/(9034:9037): Finalizó
+[INFO] 19:52:07:505 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:52:24:214 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:52:40:918 kernel/(9034:9039): DESCRIBE enviado
+[INFO] 19:52:44:973 kernel/(9120:9120): 8001
+[INFO] 19:52:44:973 kernel/(9120:9120): conecte
+[INFO] 19:52:44:974 kernel/(9120:9120): Conecte al servidor.
+[INFO] 19:52:44:974 kernel/(9120:9120): conecte
+[INFO] 19:52:44:974 kernel/(9120:9120): Conecte al servidor.
+[INFO] 19:52:44:974 kernel/(9120:9120): conecte
+[INFO] 19:52:44:974 kernel/(9120:9120): Conecte al servidor.
+[INFO] 19:52:44:975 kernel/(9120:9121): DESCRIBE enviado
+[DEBUG] 19:52:44:975 kernel/(9120:9124): Conecte a la memoria numero 2
+[DEBUG] 19:52:44:976 kernel/(9120:9124): Conecte a la memoria numero 2
+[DEBUG] 19:52:44:976 kernel/(9120:9124): Conecte a la memoria numero 2
+[INFO] 19:52:46:679 kernel/(9120:9121): Finalizó
+[INFO] 19:52:48:892 kernel/(9120:9123): Finalizó
+[INFO] 19:52:51:123 kernel/(9120:9122): Finalizó
+[INFO] 19:52:59:975 kernel/(9120:9125): DESCRIBE enviado
+[INFO] 19:53:01:680 kernel/(9120:9121): CREATE enviado (Tabla: TEST, CONSISTENCY: EC)
+[INFO] 19:53:01:680 kernel/(9120:9121): Finalizó
+[INFO] 19:53:07:868 kernel/(9120:9123): INSERT enviado (Tabla: TEST, Key: 1, Value: holu, Timestamp: 1562539987)
+[ERROR] 19:53:07:868 kernel/(9120:9123): Script terminado por linea erronea
+[INFO] 19:53:11:556 kernel/(9120:9122): INSERT enviado (Tabla: TEST, Key: 1, Value: holu, Timestamp: 1562539991)
+[ERROR] 19:53:11:556 kernel/(9120:9122): Script terminado por linea erronea
+[INFO] 19:53:16:680 kernel/(9120:9125): DESCRIBE enviado
+[INFO] 19:53:18:402 kernel/(9120:9121): INSERT enviado (Tabla: TEST, Key: 1, Value: holu, Timestamp: 1562539998)
+[DEBUG] 19:53:19:4 kernel/(9120:9121): OK
+[INFO] 19:53:19:4 kernel/(9120:9121): Insert: OK
+[INFO] 19:53:19:4 kernel/(9120:9121): Finalizó
+[INFO] 19:53:24:4 kernel/(9120:9123): SELECT enviado (Tabla: TEST, Key: 1)
+[DEBUG] 19:53:26:707 kernel/(9120:9123): Registro no encontrado
+[INFO] 19:53:26:708 kernel/(9120:9123): Finalizó
+[INFO] 19:53:27:468 kernel/(9120:9122): SELECT enviado (Tabla: TEST, Key: 1)
+[DEBUG] 19:53:28:69 kernel/(9120:9122): Registro: TimeStamp: 1562539998, Key:1, Value: holu
+[INFO] 19:53:28:69 kernel/(9120:9122): Finalizó
+[INFO] 19:53:33:211 kernel/(9120:9121): DROP enviado
+[INFO] 19:53:33:212 kernel/(9120:9121): Finalizó
+[INFO] 19:53:33:402 kernel/(9120:9125): DESCRIBE enviado
+[INFO] 19:53:35:780 kernel/(9120:9123): SELECT enviado (Tabla: TEST, Key: 1)
+[ERROR] 19:53:35:780 kernel/(9120:9123): Script terminado por linea erronea

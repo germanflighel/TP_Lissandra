@@ -359,8 +359,7 @@ int fill_package_drop(t_PackageDrop* package, char* parametros) {
 	package->header = DROP;
 	package->tabla_long = strlen(parametrosSeparados[0]);
 	package->nombre_tabla = malloc(package->tabla_long + 1);
-	memcpy(package->nombre_tabla, parametrosSeparados[0],
-			package->tabla_long + 1);
+	strcpy(package->nombre_tabla, parametrosSeparados[0]);
 
 	package->total_size = sizeof(package->header) + sizeof(package->tabla_long)
 			+ package->tabla_long;
@@ -451,6 +450,27 @@ char* serializarSelect(t_PackageSelect *package) {
 
 	size_to_send = sizeof(package->key);
 	memcpy(serializedPackage + offset, &(package->key), size_to_send);
+
+	return serializedPackage;
+}
+
+char* serializarDrop(t_PackageDrop *package) {
+
+	char *serializedPackage = malloc(package->total_size);
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->header);
+	memcpy(serializedPackage + offset, &(package->header), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = sizeof(package->tabla_long);
+	memcpy(serializedPackage + offset, &(package->tabla_long), size_to_send);
+	offset += size_to_send;
+
+	size_to_send = package->tabla_long;
+	memcpy(serializedPackage + offset, package->nombre_tabla, size_to_send);
 
 	return serializedPackage;
 }

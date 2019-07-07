@@ -54,7 +54,7 @@ int main() {
 	//Cofig Path
 	printf("Ingrese nombre del archivo de configuración \n");
 	char* entrada = leerConsola();
-	conf_path = malloc(strlen(entrada)+1);
+	conf_path = malloc(strlen(entrada) + 1);
 	strcpy(conf_path, entrada);
 	free(entrada);
 
@@ -220,7 +220,7 @@ int main() {
 					FD_SET(peersock, &readset);
 					maxfd = (maxfd < peersock) ? peersock : maxfd;
 
-					log_info(g_logger, "Conectado socket: %d",peersock);
+					log_info(g_logger, "Conectado socket: %d", peersock);
 
 					if (!recibir_handshake(KERNEL, peersock)) {
 						log_warning(g_logger, "Handshake invalido");
@@ -341,6 +341,17 @@ int recieve(int socketCliente) {
 			pthread_mutex_unlock(&journaling);
 			free(package.nombre_tabla);
 			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == DROP) {
+			t_PackageDrop package;
+			package.header = DROP;
+			status = recieve_and_deserialize_drop(&package, socketCliente);
+
+			pthread_mutex_lock(&journaling);
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
+			free(package.nombre_tabla);
+			//send_package(package.header, &package, lfsSocket);
 		} else if (headerRecibido == JOURNAL) {
 
 			log_warning(g_logger, "JOURNAL RECIBIDO");
@@ -384,6 +395,25 @@ Segmento* buscarSegmento(char* tablaABuscar) {
 	return (Segmento*) list_find(tabla_segmentos, (int) &esDeLaTabla);
 }
 
+void eliminarSegmento(char* tablaABuscar) {
+
+	int esDeLaTabla(Segmento *segmento) {
+		if (strcmp(segmento->path, tablaABuscar) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	;
+
+	int destroyer(Segmento *segmento) {
+		list_destroy(segmento->tablaDePaginas);
+	}
+	;
+
+	list_remove_and_destroy_by_condition(tabla_segmentos, (int) &esDeLaTabla,
+			&destroyer);
+}
+
 void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
 
 	typedef struct Pagina {
@@ -424,6 +454,9 @@ int ejectuarComando(int header, void* package, int socket, int esAPI) {
 		break;
 	case DESCRIBE:
 		return ejecutarDescribe((t_PackageDescribe*) package, socket);
+		break;
+	case DROP:
+		return ejecutarDrop((t_PackageDrop*) package, socket);
 		break;
 	}
 	return -1;
@@ -477,6 +510,19 @@ int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 		recibir_y_ejecutar(select, socketCliente, esAPI);
 
 	}
+
+	return 1;
+}
+
+int ejecutarDrop(t_PackageDrop* drop, int socketCliente) {
+
+	eliminarSegmento(drop->nombre_tabla);
+
+	char* serializedPackage = serializarDrop(drop);
+
+	send(lfsSocket, serializedPackage, drop->total_size, 0);
+
+	dispose_package(&serializedPackage);
 
 	return 1;
 }
@@ -782,7 +828,7 @@ void journal() {
 	char* nombreTabla;
 
 	void porEntrada(Renglon_pagina* renglon) {
-		log_debug(g_logger,"Entre");
+		log_debug(g_logger, "Entre");
 		if (renglon->modificado) {
 			int offsetPagina = renglon->offset;
 			Pagina* pag = ((Pagina*) (memoriaPrincipal + offsetPagina));
@@ -823,9 +869,9 @@ void journal() {
 	}
 
 	void porSegmento(Segmento* seg) {
-		nombreTabla = malloc(strlen(seg->path)+1);
-		strcpy(nombreTabla,seg->path);
-		log_debug(g_logger,nombreTabla);
+		nombreTabla = malloc(strlen(seg->path) + 1);
+		strcpy(nombreTabla, seg->path);
+		log_debug(g_logger, nombreTabla);
 		list_iterate(seg->tablaDePaginas, &porEntrada);
 		free(nombreTabla);
 	}
@@ -880,7 +926,6 @@ void send_package(int header, void* package, int socketCliente) {
 		t_describe describeRecibido;
 		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
 
-
 		char* serializedPackage2;
 		serializedPackage2 = serializarDescribe(&describeRecibido);
 
@@ -916,35 +961,33 @@ void *inputFunc(void* serverSocket)
 
 		entrada = readline("Memory> ");
 
-		if(strcmp(entrada,"")!=0) {
+		if (strcmp(entrada, "") != 0) {
 
+			char* parametros;
+			int header;
 
-		char* parametros;
-		int header;
+			separarEntrada(entrada, &header, &parametros);
 
-		separarEntrada(entrada, &header, &parametros);
+			int okParams = validarParametros(header, parametros);
 
-		int okParams = validarParametros(header, parametros);
+			if (header == EXIT_CONSOLE) {
+				memoryUP = 0;
+			} else if (header == ERROR) {
+				log_warning(g_logger, "Comando no reconocido");
+				entradaValida = 0;
+			} else if (!okParams) {
+				log_warning(g_logger, "Parametros incorrectos");
+			}
 
-		if (header == EXIT_CONSOLE) {
-			memoryUP = 0;
-		} else if (header == ERROR) {
-			log_warning(g_logger, "Comando no reconocido");
-			entradaValida = 0;
-		} else if (!okParams) {
-			log_warning(g_logger, "Parametros incorrectos");
-		}
+			add_history(entrada);
 
-		add_history(entrada);
+			free(entrada);
 
+			if (memoryUP && entradaValida && okParams) {
 
-		free(entrada);
-
-		if (memoryUP && entradaValida && okParams) {
-
-			interpretarComando(header, parametros, serverSocket);
-			free(parametros);
-		}
+				interpretarComando(header, parametros, serverSocket);
+				free(parametros);
+			}
 
 		}
 
