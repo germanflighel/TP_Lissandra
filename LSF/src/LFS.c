@@ -586,6 +586,7 @@ t_list* lfs_describe() {
 	string_append(&tablas_path, ruta);
 	string_append(&tablas_path, "/Tables/");
 	log_debug(logger, tablas_path);
+	loguear("%s", DEBUG, tablas_path);
 	tables_directory = opendir(tablas_path);
 	if (tables_directory) {
 		while ((a_directory = readdir(tables_directory)) != NULL) {
@@ -665,7 +666,7 @@ Metadata* obtener_metadata(char* ruta) {
 	string_append(&mi_ruta, ruta);
 	char* mi_metadata = "/Metadata";
 	string_append(&mi_ruta, mi_metadata);
-	log_debug(logger, mi_ruta);
+	loguear("%s", DEBUG, mi_ruta);
 
 	t_config* config_metadata = config_create(mi_ruta);
 
@@ -718,13 +719,11 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	free(blocks);
 	free(mi_ruta);
 
-	log_debug(logger, "Registros: %s", todos_los_registros);
+	loguear("Registros: %s", DEBUG, todos_los_registros);
 
 	char** registros = string_split(todos_los_registros, "\n");
 	int j = 0;
 	while (registros[j] != NULL) {
-		log_debug(logger, "Leyendo un registro");
-
 		char** datos_registro = string_split(registros[j], ";");
 		if (atoi(datos_registro[1]) == keyBuscada) {
 			if (atol(datos_registro[0]) > registro->timeStamp) {
@@ -734,13 +733,8 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 				strcpy(registro->value, datos_registro[2]);
 			}
 		}
-
 		string_iterate_lines(datos_registro, (void*) free);
-		log_debug(logger, "Libere los datos del registro");
-
 		free(datos_registro);
-		log_debug(logger, "Libere datos_registro");
-
 		j++;
 	}
 	string_iterate_lines(registros, (void*) free);
@@ -824,7 +818,7 @@ char* contenido_de_los_bloques(char* nombre_tabla, char** blocks) {
 		string_append(&ruta_a_bloque, blocks[i]);
 		string_append(&ruta_a_bloque, ".bin");
 
-		log_debug(logger, ruta_a_bloque);
+		loguear(ruta_a_bloque, DEBUG);
 
 		int fd = open(ruta_a_bloque, O_RDONLY, S_IRUSR | S_IWUSR);
 
@@ -835,7 +829,7 @@ char* contenido_de_los_bloques(char* nombre_tabla, char** blocks) {
 
 		f = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
 		if (!size) {
-			log_warning(logger, "Bloque vacío");
+			loguear("Bloque vacío", WARNING);
 		} else {
 			string_append(&contenido, f);
 			munmap(f, size);
@@ -845,6 +839,15 @@ char* contenido_de_los_bloques(char* nombre_tabla, char** blocks) {
 		close(fd);
 	}
 	return contenido;
+}
+
+Registro* duplicar_registro(Registro* registro_mayor) {
+	Registro* copia_registro = malloc(sizeof(Registro));
+	copia_registro->key = registro_mayor->key;
+	copia_registro->timeStamp = registro_mayor->timeStamp;
+	copia_registro->value = malloc(strlen(registro_mayor->value) + 1);
+	strcpy(copia_registro->value, registro_mayor->value);
+	return copia_registro;
 }
 
 Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
@@ -887,11 +890,7 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 		pthread_mutex_unlock(&mem_table_mutex);
 		list_destroy(registros_con_key);
 
-		Registro* copia_registro = malloc(sizeof(Registro));
-		copia_registro->key = registro_mayor->key;
-		copia_registro->timeStamp = registro_mayor->timeStamp;
-		copia_registro->value = malloc(strlen(registro_mayor->value) + 1);
-		strcpy(copia_registro->value, registro_mayor->value);
+		Registro* copia_registro = duplicar_registro(registro_mayor);
 		return copia_registro;
 	}
 	pthread_mutex_unlock(&mem_table_mutex);
@@ -907,7 +906,7 @@ int lfs_drop(char* nombre_tabla){
 	char* mi_ruta_a_tabla = ruta_a_tabla(nombre_tabla);
 
 	if(!existe_tabla(mi_ruta_a_tabla)){
-		log_info(logger, "No existe la tabla %s", nombre_tabla);
+		loguear("No existe la tabla %s", INFO, nombre_tabla);
 		return 0;
 	}
 
@@ -990,7 +989,7 @@ int lfs_drop(char* nombre_tabla){
 		list_destroy_and_destroy_elements(tabla_encontrada->registros, (void*) registro_destroy);
 		list_remove_by_condition(mem_table,(int) &es_tabla);
 		pthread_mutex_unlock(&mem_table_mutex);
-		log_debug(logger, "Elimine la tabla de mem table");
+		loguear("Elimine la tabla de mem table", DEBUG);
 	}
 
 	unlock_mutex_tabla(nombre_tabla);
@@ -1038,7 +1037,6 @@ int remove_directory(const char *path) {
 }
 
 char* ruta_a_bloque(char* numero_bloque) {
-	log_debug(logger, "Numero de bloque %s", numero_bloque);
 	char* ruta_a_bloque = string_new();
 	string_append(&ruta_a_bloque, ruta);
 	string_append(&ruta_a_bloque, "/Bloques/");
@@ -1050,14 +1048,12 @@ char* ruta_a_bloque(char* numero_bloque) {
 int eliminar_contenido_bloques(char** blocks){
 	int i = 0;
 	while (blocks[i] != NULL) {
-		log_debug(logger, "Numero de bloque %s", blocks[i]);
 		char* mi_ruta_a_bloque = ruta_a_bloque(blocks[i]);
-		log_debug(logger, mi_ruta_a_bloque);
 
 		if (unlink(mi_ruta_a_bloque) == -1) {
 			return 0;
 		}
-		log_debug(logger, "Borre el bloque %s", blocks[i]);
+		loguear("Borre el bloque %s", DEBUG, blocks[i]);
 
 		int fd = open(mi_ruta_a_bloque, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
 
@@ -1065,11 +1061,9 @@ int eliminar_contenido_bloques(char** blocks){
 			return 0;
 		}
 
-		log_debug(logger, "Cree el bloque %s", blocks[i]);
-
+		loguear("Cree el bloque %s", DEBUG, blocks[i]);
 
 		int bloque = atoi(blocks[i]);
-		log_debug(logger, "%d", bloque);
 
 		close(fd);
 		pthread_mutex_lock(&bitarray_mutex);
@@ -1077,7 +1071,6 @@ int eliminar_contenido_bloques(char** blocks){
 		pthread_mutex_unlock(&bitarray_mutex);
 		i++;
 		free(mi_ruta_a_bloque);
-
 	}
 	return 1;
 }
@@ -1457,8 +1450,6 @@ int levantar_bitmap(char* punto_montaje) {
 	close(fd);
 
 	free(ruta_a_bitmap);
-	log_warning(logger, "Bits que maneja el bitarray: %i",
-			bitarray_get_max_bit(bitmap));
 
 	return 1;
 }
@@ -1498,16 +1489,15 @@ void* compactar_tabla(Metadata* una_tabla) {
 
 		usleep(una_tabla->compaction_time * 1000);
 		if (!hay_dumpeos(una_tabla->nombre_tabla)) {
-			log_debug(logger, "No hay dumpeos de %s, voy a esperar un ratito", una_tabla->nombre_tabla);
+			loguear("No hay dumpeos de %s, voy a esperar un ratito", DEBUG, una_tabla->nombre_tabla);
 			compactar_tabla(una_tabla);
 		}
-		log_debug(logger, "Hay dumpeos de %s", una_tabla->nombre_tabla);
+		loguear("Hay dumpeos de %s", DEBUG, una_tabla->nombre_tabla);
 
 		double tiempo_bloqueado = 0;
 
 		char* contenido_de_tmpcs = contenido_de_temporales(una_tabla->nombre_tabla, &tiempo_bloqueado);
 		cantidad_de_dumpeos = 1;
-		log_debug(logger, "Voy a obtener diferencias");
 		t_list* diferencia = obtener_diferencias(una_tabla->nombre_tabla, una_tabla->partitions, contenido_de_tmpcs);
 
 		list_iterate(diferencia, (void*) loguear_registro);
@@ -1529,12 +1519,12 @@ int hay_dumpeos(char* nombre_tabla) {
 
 char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado) {
 	if (cantidad_de_dumpeos == 1) {
-		log_debug(logger, "No hubo dumpeos");
+		loguear("No hubo dumpeos", DEBUG);
 		return NULL;
 	}
 	char* contenido = string_new();
 	int cantidad_de_temporales_fs = cantidad_de_archivos_en(nombre_tabla, ".tmp");
-	log_debug(logger, "Hay %i temporales a  compactar", cantidad_de_temporales_fs);
+	loguear("Hay %i temporales a  compactar", DEBUG, cantidad_de_temporales_fs);
 	if (cantidad_de_temporales_fs) {
 		int numero_de_temporal = 1;
 		do {
@@ -1552,7 +1542,6 @@ char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado) {
 			string_append(&nueva_ruta_a_temporal, ruta_a_temporal);
 			string_append(&nueva_ruta_a_temporal, "c");
 
-			log_debug(logger, nueva_ruta_a_temporal);
 			if (access(ruta_a_temporal, F_OK) != -1) {
 				clock_t t;
 				lock_mutex_tabla(nombre_tabla);
@@ -1574,12 +1563,11 @@ char* contenido_de_temporales(char* nombre_tabla, double* tiempo_bloqueado) {
 				string_iterate_lines(blocks, (void*) free);
 				free(blocks);
 				free(contenido_de_bloques);
-				log_debug(logger, "Le cambie el nombre a %i.tmp", numero_de_temporal);
+				loguear("Le cambie el nombre a %i.tmp", DEBUG, numero_de_temporal);
 			}
 			free(mi_ruta_a_a_tabla);
 			free(nueva_ruta_a_temporal);
 			free(ruta_a_temporal);
-			log_debug(logger, "Libere rutas");
 			numero_de_temporal++;
 		} while (numero_de_temporal <= cantidad_de_temporales_fs);
 	}
@@ -1590,7 +1578,6 @@ t_list* obtener_lista_de_registros(char** registros) {
 	t_list* lista_registros_actuales = list_create();
 	int j = 0;
 	while (registros[j] != NULL) {
-		log_debug(logger, "Leyendo un registro");
 		char** datos_registro = string_split(registros[j], ";");
 		Registro* registro = malloc(sizeof(Registro));
 		registro->timeStamp = atol(datos_registro[0]);
@@ -1599,9 +1586,7 @@ t_list* obtener_lista_de_registros(char** registros) {
 		strcpy(registro->value, datos_registro[2]);
 		list_add(lista_registros_actuales, registro);
 		string_iterate_lines(datos_registro, (void*) free);
-		log_debug(logger, "Libere los datos del registro");
 		free(datos_registro);
-		log_debug(logger, "Libere datos_registro");
 		j++;
 	}
 	return lista_registros_actuales;
@@ -1618,20 +1603,16 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 		char* bin = ".bin";
 		string_append(&mi_ruta_a_particion, bin);
 
-		log_debug(logger, mi_ruta_a_particion);
-
 		t_config* particion = config_create(mi_ruta_a_particion);
 
 		char** blocks = config_get_array_value(particion, "BLOCKS");
 		char* contenido_particion = contenido_de_los_bloques(nombre_tabla, blocks);
-		log_debug(logger, "Contenido de particion: %s", contenido_particion);
 		string_append(&todos_los_registros, contenido_particion);
 		string_iterate_lines(blocks, (void*) free);
 		free(blocks);
 		config_destroy(particion);
 		free(contenido_particion);
 		free(mi_ruta_a_particion);
-		log_debug(logger, "Todos los registros: %s", todos_los_registros);
 	}
 
 	char** registros = string_split(todos_los_registros, "\n");
@@ -1657,9 +1638,7 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 		registro_a_comparar = registro_actual;
 		Registro* registro_temporal_con_misma_key = list_find(registros_temporales, (void*) _es_registro_por_key);
 		if (registro_temporal_con_misma_key) {
-			log_debug(logger, "Hay registro con igual key");
 			if (registro_temporal_con_misma_key->timeStamp >= registro_actual->timeStamp) {
-				log_debug(logger, "Voy a actualizar el registro");
 				Registro* actual = list_find(registros_actuales, (void*) _es_registro_por_key);
 				actual->timeStamp = registro_temporal_con_misma_key->timeStamp;
 				free(actual->value);
@@ -1672,11 +1651,7 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 	void _agregar_temporal_si_no_existe(Registro* registro) {
 		registro_a_comparar = registro;
 		if (!list_find(registros_actuales, (void*) &_es_registro_por_key)) {
-			Registro* registro_duplicado = malloc(sizeof(Registro));
-			registro_duplicado->key = registro->key;
-			registro_duplicado->timeStamp = registro->timeStamp;
-			registro_duplicado->value = malloc(strlen(registro->value) + 1);
-			strcpy(registro_duplicado->value, registro->value);
+			Registro* registro_duplicado = duplicar_registro(registro);
 			list_add(registros_actuales, registro_duplicado);
 		}
 	}
@@ -1691,9 +1666,9 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 
 void modificar_bloques(char* nombre_tabla, t_list* registros_a_guardar, double* tiempo_bloqueado) {
 	liberar_bloques_de_particion(nombre_tabla, tiempo_bloqueado);
-	log_debug(logger, "Libere todos los bloques de particion");
+	loguear("Libere todos los bloques de particion", DEBUG);
 	liberar_bloques_de_temporales(nombre_tabla, tiempo_bloqueado);
-	log_debug(logger, "Libere todos los bloques de temporales");
+	loguear("Libere todos los bloques de temporales", DEBUG);
 	escribir_registros_en_bloques_nuevos(nombre_tabla, registros_a_guardar, tiempo_bloqueado);
 }
 
@@ -1709,8 +1684,6 @@ void liberar_bloques_de_particion(char* nombre_tabla, double* tiempo_bloqueado) 
 		string_append_with_format(&mi_ruta_a_particion, "/%i", i);;
 		char* bin = ".bin";
 		string_append(&mi_ruta_a_particion, bin);
-
-		log_debug(logger, "Ruta a particion: %s", mi_ruta_a_particion);
 
 		clock_t t;
 		lock_mutex_tabla(nombre_tabla);
@@ -1811,7 +1784,6 @@ void* dump() {
 
 		char* tmp = ".tmp";
 		string_append(&temporal_path, tmp);
-		log_debug(logger, temporal_path);
 		int fd = open(temporal_path, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
 		if (fd == -1) {
 			return;
@@ -1832,21 +1804,20 @@ void* dump() {
 			} else {
 				string_append_with_format(&temporal_a_crear, "%d]", bloque);
 			}
-			log_debug(logger, "Necesite el bloque: %i", bloque);
+			loguear("Necesite el bloque: %i", DEBUG, bloque);
 		}
 
 		size_t textsize = strlen(temporal_a_crear) + 1;
 		lseek(fd, textsize - 1, SEEK_SET);
 		write(fd, "", 1);
-		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
-				0);
+		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 		memcpy(map, temporal_a_crear, strlen(temporal_a_crear));
 		msync(map, textsize, MS_SYNC);
 		munmap(map, textsize);
 		close(fd);
 		free(temporal_a_crear);
 		free(temporal_path);
-		log_debug(logger, "Cree el .tmp papi");
+		loguear("Cree el .tmp");
 	}
 
 	void _dumpear_tabla(Tabla* tabla) {
@@ -1860,23 +1831,22 @@ void* dump() {
 	}
 
 	while (1) {
-		log_debug(logger, "Voy a intentar dumpear");
+		loguear("Voy a intentar dumpear", DEBUG);
 		int nanosegundos_dumpeo = tiempo_dump * 1000;
 		usleep(nanosegundos_dumpeo);
 
 		pthread_mutex_lock(&mem_table_mutex);
 		if(list_is_empty(mem_table)) {
-			log_debug(logger, "No hay nada pa dumpear");
+			loguear("No hay nada para dumpear", DEBUG);
 			pthread_mutex_unlock(&mem_table_mutex);
 			dump();
 		}
 		pthread_mutex_unlock(&mem_table_mutex);
-		log_debug(logger, "Voy a empezar el dumpeo");
+		loguear("Voy a empezar el dumpeo", DEBUG);
 		pthread_mutex_lock(&mem_table_mutex);
 		t_list* mem_table_duplicada = list_duplicate(mem_table);
 		pthread_mutex_unlock(&mem_table_mutex);
 
-		log_debug(logger, "Voy a dumpear las tablas");
 		list_iterate(mem_table_duplicada, (void*) _dumpear_tabla);
 		cantidad_de_dumpeos++;
 		pthread_mutex_lock(&mem_table_mutex);
@@ -1888,16 +1858,13 @@ void* dump() {
 }
 
 int tamanio_de_tabla(Tabla* tabla) {
-	log_debug(logger, "Tabla a Dumpear: %s", tabla->nombre_tabla);
 	int size = 0;
 	Registro* registro;
-	log_debug(logger, "Cantidad de Registros: %i",
-			tabla->registros->elements_count);
 	for (int i = 0; i < tabla->registros->elements_count; i++) {
 		registro = list_get(tabla->registros, i);
 		size += size_of_Registro(registro);
 	}
-	log_debug(logger, "Tamanio de tabla: %i", size);
+	loguear("Tamanio de tabla: %i", DEBUG, size);
 	return size;
 }
 
@@ -1907,7 +1874,6 @@ int size_of_Registro(Registro* registro) {
 	size += strlen(k_string);
 	free(k_string);
 	char* t_string = string_itoa(registro->timeStamp);
-	log_debug(logger, t_string);
 	size += strlen(t_string);
 	free(t_string);
 	size += strlen(registro->value);
@@ -1925,10 +1891,8 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
-		log_debug(logger, "Apeendee un registro");
 	}
-	log_debug(logger, registro_a_escribir);
-	log_debug(logger, "Caracteres a escribir: %i", strlen(registro_a_escribir));
+	loguear("Caracteres a escribir: %i", DEBUG, strlen(registro_a_escribir));
 	int indice = 0;
 
 	int size = 0;
@@ -1937,7 +1901,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		size += size_of_Registro(registro);
 	}
 	if (!size) {
-		log_debug(logger, "Nada para la particion %i", particion);
+		loguear("Nada para la particion %i", DEBUG, particion);
 		return;
 	}
 	t_list* block_list = list_create();
@@ -1956,71 +1920,39 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 			string_append_with_format(&blocks, "%d]", bloque);
 		}
 		list_add(block_list, bloque);
-		log_debug(logger, "Necesite el bloque: %i", bloque);
 	}
-	log_debug(logger, "Bloques %s", blocks);
 
 	char** blocks_as_array = string_get_string_as_array(blocks);
 	int i = 0;
 	while (blocks_as_array[i] != NULL) {
-		log_debug(logger, ruta);
 		char* ruta_a_bloque = string_new();
 		string_append(&ruta_a_bloque, ruta);
 		string_append(&ruta_a_bloque, "/Bloques/");
-		log_debug(logger, ruta_a_bloque);
 		string_append(&ruta_a_bloque, blocks_as_array[i]);
 		string_append(&ruta_a_bloque, ".bin");
 
-		log_debug(logger, ruta_a_bloque);
 
 		char* a_escribir_en_bloque = string_new();
-		log_debug(logger, "Indice por el que voy: %i", indice);
 		while (strlen(a_escribir_en_bloque) < lfs_block_size && indice < strlen(registro_a_escribir)) {
-
-			log_debug(logger, "Agrego este char: %c", registro_a_escribir[indice]);
-
-			string_append_with_format(&a_escribir_en_bloque, "%c",registro_a_escribir[indice]);
+			string_append_with_format(&a_escribir_en_bloque, "%c", registro_a_escribir[indice]);
 			indice++;
-
-			log_debug(logger, a_escribir_en_bloque);
-			//log_debug(logger, "Espacio restante en el bloque: %i", lfs_block_size - strlen(a_escribir_en_bloque));
 		}
-		log_debug(logger, "Voy a abrir el bloque");
 		int fd = open(ruta_a_bloque, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
-		log_debug(logger, "Abri fd");
 
 		size_t textsize = strlen(a_escribir_en_bloque) + 1;
-		log_debug(logger, "Calcule tamanio");
 
 		lseek(fd, textsize - 1, SEEK_SET);
-		log_debug(logger, "Seek");
 
 		write(fd, "", 1);
 		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
 				0);
-		log_debug(logger, "Mmapee");
-
-		log_debug(logger, a_escribir_en_bloque);
 
 		memcpy(map, a_escribir_en_bloque, strlen(a_escribir_en_bloque));
-
-		log_debug(logger, "Memcopyie");
-
 		msync(map, textsize, MS_SYNC);
-		log_debug(logger, "Msynquie");
-
 		munmap(map, textsize);
-		log_debug(logger, "Munmapie");
-
 		close(fd);
-		log_debug(logger, "Cerre el fd");
-
 		free(a_escribir_en_bloque);
-		log_debug(logger, "Libere a_escribir_en_bloque");
-
 		free(ruta_a_bloque);
-		log_debug(logger, "Libere ruta_a_bloque");
-
 		i++;
 	}
 
@@ -2041,10 +1973,6 @@ void actualizar_bloques_particion(char* nombre_tabla, int particion, t_list* blo
 	string_append_with_format(&mi_ruta_a_particion, "/%i", particion);;
 	char* bin = ".bin";
 	string_append(&mi_ruta_a_particion, bin);
-
-	log_debug(logger, "Ruta a particion: %s", mi_ruta_a_particion);
-
-	log_debug(logger, bloques);
 	clock_t t;
 	lock_mutex_tabla(nombre_tabla);
 	t = clock();
@@ -2081,19 +2009,13 @@ char* blocks_to_string(t_list* blocks)  {
 
 void escribir_registros_en_bloques(Tabla* tabla) {
 	char* temporal_path = ruta_a_tabla(tabla->nombre_tabla);
-
 	string_append(&temporal_path, "/");
-
 	string_append_with_format(&temporal_path, "%i", cantidad_de_dumpeos);
-
 	char* tmp = ".tmp";
 	string_append(&temporal_path, tmp);
 
-	log_debug(logger, temporal_path);
-
 	t_config* temporal = config_create(temporal_path);
 
-	log_debug(logger, "Abri la config papi");
 	int size = config_get_int_value(temporal, "SIZE");
 	char** blocks = config_get_array_value(temporal, "BLOCKS");
 
@@ -2107,72 +2029,36 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 		string_append_with_format(&registro_a_escribir, "%s\n",
 				registro->value);
-		log_debug(logger, "Apeendee un registro");
 	}
-	log_debug(logger, registro_a_escribir);
-	log_debug(logger, "Caracteres a escribir: %i", strlen(registro_a_escribir));
+
 	int indice = 0;
 	int i = 0;
-	log_debug(logger, "Numero de bloque: %s", blocks[i]);
 	while (blocks[i] != NULL) {
-		log_debug(logger, ruta);
 		char* ruta_a_bloque = string_new();
 		string_append(&ruta_a_bloque, ruta);
 		string_append(&ruta_a_bloque, "/Bloques/");
-		log_debug(logger, ruta_a_bloque);
 		string_append(&ruta_a_bloque, blocks[i]);
 		string_append(&ruta_a_bloque, ".bin");
 
-		log_debug(logger, ruta_a_bloque);
-
 		char* a_escribir_en_bloque = string_new();
-		log_debug(logger, "Indice por el que voy: %i", indice);
 		while (strlen(a_escribir_en_bloque) < lfs_block_size && indice < strlen(registro_a_escribir)) {
-
-			log_debug(logger, "Agrego este char: %c", registro_a_escribir[indice]);
-
 			string_append_with_format(&a_escribir_en_bloque, "%c",registro_a_escribir[indice]);
 			indice++;
-
-			log_debug(logger, a_escribir_en_bloque);
-			//log_debug(logger, "Espacio restante en el bloque: %i", lfs_block_size - strlen(a_escribir_en_bloque));
 		}
-		log_debug(logger, "Voy a abrir el bloque");
 		int fd = open(ruta_a_bloque, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
-		log_debug(logger, "Abri fd");
 
 		size_t textsize = strlen(a_escribir_en_bloque) + 1;
-		log_debug(logger, "Calcule tamanio");
 
 		lseek(fd, textsize - 1, SEEK_SET);
-		log_debug(logger, "Seek");
 
 		write(fd, "", 1);
-		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd,
-				0);
-		log_debug(logger, "Mmapee");
-
-		log_debug(logger, a_escribir_en_bloque);
-
+		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 		memcpy(map, a_escribir_en_bloque, strlen(a_escribir_en_bloque));
-
-		log_debug(logger, "Memcopyie");
-
 		msync(map, textsize, MS_SYNC);
-		log_debug(logger, "Msynquie");
-
 		munmap(map, textsize);
-		log_debug(logger, "Munmapie");
-
 		close(fd);
-		log_debug(logger, "Cerre el fd");
-
 		free(a_escribir_en_bloque);
-		log_debug(logger, "Libere a_escribir_en_bloque");
-
 		free(ruta_a_bloque);
-		log_debug(logger, "Libere ruta_a_bloque");
-
 		i++;
 	}
 	free(registro_a_escribir);
