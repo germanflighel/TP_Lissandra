@@ -19,6 +19,7 @@
 
 t_log* logger;
 t_log* tiempos_de_compactacion;
+t_log* pantalla;
 int max_value_size;
 int tiempo_dump;
 pthread_mutex_t mem_table_mutex;
@@ -26,6 +27,9 @@ pthread_mutex_t bitarray_mutex;
 pthread_mutex_t metadatas_tablas_mutex;
 pthread_mutex_t bloqueo_tablas_mutex;
 pthread_mutex_t logger_mutex;
+pthread_mutex_t tiempos_compactacion_mutex;
+pthread_mutex_t pantalla_mutex;
+
 t_list* metadatas_tablas;
 t_list* mem_table;
 t_dictionary* bloqueo_tablas;
@@ -42,6 +46,7 @@ t_config* config;
 int main() {
 	logger = iniciar_logger();
 	tiempos_de_compactacion = log_create("tiempos_bloqueo.log", "LFS", 0, LOG_LEVEL_INFO);
+	pantalla =  log_create("pantalla.log", "LFS", 0, LOG_LEVEL_INFO);
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	char* entrada = leerConsola();
@@ -60,7 +65,8 @@ int main() {
 	pthread_mutex_init(&metadatas_tablas_mutex, NULL);
 	pthread_mutex_init(&bloqueo_tablas_mutex, NULL);
 	pthread_mutex_init(&logger_mutex, NULL);
-
+	pthread_mutex_init(&tiempos_compactacion_mutex, NULL);
+	pthread_mutex_init(&pantalla_mutex, NULL);
 
 	bloqueo_tablas = dictionary_create();
 	mem_table = list_create();
@@ -69,7 +75,7 @@ int main() {
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
 	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
-	loguear(puerto,DEBUG);
+	loguear(puerto, DEBUG);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 	tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
 	retardo = config_get_int_value(config, "RETARDO");
@@ -86,7 +92,6 @@ int main() {
 	pthread_t threadConsola;
 	int retorno_de_consola;
 
-	//escribir_bitarray(ruta);
 	levantar_bitmap(ruta);
 
 	loguear("Levante el Bitmap",DEBUG);
@@ -1087,7 +1092,7 @@ void *receptorDeConsultas(void* socket) {
 	t_PackagePosta package;
 	int status = 1;		// Estructura que maneja el status de los recieve.
 
-	log_info(logger, "Memoria conectada. Esperando Envio de mensajes");
+	mostrar_en_pantalla("Memoria conectada. Esperando Envio de mensajes", INFO);
 
 	int headerRecibido;
 
@@ -1101,7 +1106,7 @@ void *receptorDeConsultas(void* socket) {
 		if (status) {
 			if (headerRecibido == SELECT) {
 
-				log_debug(logger, "Got a SELECT");
+				mostrar_en_pantalla("Got a SELECT", INFO);
 
 				t_PackageSelect package;
 				status = recieve_and_deserialize_select(&package,
@@ -1113,22 +1118,22 @@ void *receptorDeConsultas(void* socket) {
 				t_Respuesta_Select respuesta;
 
 				if (registro_a_devolver->value != NULL) {
-					log_debug(logger, "hola");
 					respuesta.result = 1;
 					respuesta.value = malloc(
 							strlen(registro_a_devolver->value) + 1);
 					strcpy(respuesta.value, registro_a_devolver->value);
 					respuesta.value_long = strlen(respuesta.value);
 					respuesta.timestamp = registro_a_devolver->timeStamp;
-					log_debug(logger, respuesta.value);
+					loguear("%s", DEBUG, respuesta);
+					mostrar_en_pantalla("%s", INFO, respuesta.value);
 				} else {
-					log_debug(logger, "Llegue2");
 					respuesta.result = 0;
 					respuesta.value = malloc(1);
 					strcpy(respuesta.value, "");
 					respuesta.value_long = 1;
 					respuesta.timestamp = 0;
-					log_debug(logger, "No esta la key buscada");
+					loguear("No esta la key buscada", DEBUG);
+					mostrar_en_pantalla("No esta la key buscada", ERROR);
 				}
 
 				char* serializedPackage = serializarRespuestaSelect(&respuesta);
@@ -1143,7 +1148,7 @@ void *receptorDeConsultas(void* socket) {
 				free(package.tabla);
 			} else if (headerRecibido == INSERT) {
 
-				log_debug(logger, "Got an INSERT");
+				mostrar_en_pantalla("Got an INSERT", INFO);
 
 				t_PackageInsert package;
 				status = recieve_and_deserialize_insert(&package,
@@ -1152,9 +1157,9 @@ void *receptorDeConsultas(void* socket) {
 				int fue_exitoso = (int) ejecutar_comando(headerRecibido,
 						&package);
 				if (fue_exitoso) {
-					log_info(logger, "Se inserto exitosamente");
+					mostrar_en_pantalla("Se inserto exitosamente", INFO);
 				} else {
-					log_info(logger, "No se pudo insertar");
+					mostrar_en_pantalla("No se pudo insertar", ERROR);
 				}
 
 				free(package.tabla);
@@ -1163,7 +1168,7 @@ void *receptorDeConsultas(void* socket) {
 
 			} else if (headerRecibido == CREATE) {
 
-				log_debug(logger, "Got a CREATE");
+				mostrar_en_pantalla("Got a CREATE", INFO);
 
 				t_PackageCreate package;
 				status = recieve_and_deserialize_create(&package,
@@ -1172,15 +1177,15 @@ void *receptorDeConsultas(void* socket) {
 				int fue_exitoso = (int) ejecutar_comando(headerRecibido,
 						&package);
 				if (fue_exitoso) {
-					log_info(logger, "Se creo exitosamente");
+					mostrar_en_pantalla("Se creo exitosamente", INFO);
 				} else {
-					log_info(logger, "No se pudo crear");
+					mostrar_en_pantalla("No se pudo crear", INFO);
 				}
 
 				free(package.tabla);
 
 			}else if (headerRecibido == DROP) {
-				log_debug(logger, "Got a DROP");
+				mostrar_en_pantalla("Got a DROP", INFO);
 
 				t_PackageDrop package;
 				status = recieve_and_deserialize_drop(&package,
@@ -1188,9 +1193,9 @@ void *receptorDeConsultas(void* socket) {
 				int fue_exitoso = (int) ejecutar_comando(headerRecibido,
 						 &package);
 				if(fue_exitoso) {
-					log_info(logger, "Elimine la tabla %s correctamente", package.nombre_tabla);
+					mostrar_en_pantalla("Elimine la tabla %s correctamente", INFO, package.nombre_tabla);
 				} else {
-					log_info(logger, "No pude eliminar la tabla %s ", package.nombre_tabla);
+					mostrar_en_pantalla("No pude eliminar la tabla %s ", ERROR, package.nombre_tabla);
 				}
 
 				free(package.nombre_tabla);
@@ -1198,7 +1203,7 @@ void *receptorDeConsultas(void* socket) {
 
 			}else if (headerRecibido == DESCRIBE) {
 
-				log_debug(logger, "Got a DESCRIBE");
+				mostrar_en_pantalla("Got a DESCRIBE", INFO);
 
 				t_PackageDescribe package;
 				status = recieve_and_deserialize_describe_request(&package,
@@ -1229,7 +1234,6 @@ void *receptorDeConsultas(void* socket) {
 					serializedPackage = serializarDescribe(describe);
 					char* cantidad_de_tablas_string = string_itoa(
 							cantidad_de_tablas);
-					log_debug(logger, cantidad_de_tablas_string);
 					free(cantidad_de_tablas_string);
 					send(socketCliente, serializedPackage,
 							cantidad_de_tablas * sizeof(t_metadata)
@@ -1263,7 +1267,6 @@ void *receptorDeConsultas(void* socket) {
 							0);
 
 					dispose_package(&serializedPackage);
-					//list_destroy(metadatas);
 				}
 
 			}
@@ -1272,8 +1275,7 @@ void *receptorDeConsultas(void* socket) {
 
 	}
 
-	log_info(logger, "Cliente Desconectado");
-
+	mostrar_en_pantalla("Cliente Desconectado", INFO);
 	close(socketCliente);
 }
 
@@ -1282,37 +1284,37 @@ void *recibir_por_consola() {
 	while (true) {
 		consulta = readline("LFS> ");
 
+		if (strcmp(consulta, "") != 0) {
+			char* parametros;
+			int header;
+			int entradaValida = 1;
 
-		if(strcmp(consulta,"")!=0) {
-		char* parametros;
-		int header;
-		int entradaValida = 1;
+			separarEntrada(consulta, &header, &parametros);
 
-		separarEntrada(consulta, &header, &parametros);
+			if (header == EXIT_CONSOLE) {
+				bitarray_destroy(bitmap);
+				free(consulta);
+				free(parametros);
+				rl_clear_history();
+				pthread_mutex_lock(&pantalla_mutex);
+				log_error(pantalla, "Bye");
+				pthread_mutex_unlock(&pantalla_mutex);
+				return NULL;
+			} else if (header == ERROR) {
+				pthread_mutex_lock(&pantalla_mutex);
+				log_error(logger, "Comando no valido");
+				pthread_mutex_unlock(&pantalla_mutex);
+				entradaValida = 0;
+			}
 
-		if (header == EXIT_CONSOLE) {
-			bitarray_destroy(bitmap);
+			if (entradaValida) {
+				interpretarComando(header, parametros);
+			}
+			add_history(consulta);
+
 			free(consulta);
 			free(parametros);
-			rl_clear_history();
-			log_error(logger, "Bye");
-			return NULL;
-		} else if (header == ERROR) {
-			log_error(logger, "Comando no valido");
-			entradaValida = 0;
 		}
-
-		if (entradaValida) {
-			//Ejecutar el comando
-			interpretarComando(header, parametros);
-		}
-		add_history(consulta);
-
-		free(consulta);
-		free(parametros);
-
-		}
-
 	}
 }
 
@@ -1324,14 +1326,15 @@ void interpretarComando(int header, char* parametros) {
 	case SELECT:
 		package = (t_PackageSelect*) malloc(sizeof(t_PackageSelect));
 		if (!fill_package_select(package, parametros)) {
-			log_error(logger, "Parametros incorrectos");
+			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 		Registro* registro = lfs_select(package);
 		if (registro->value) {
+			mostrar_en_pantalla("Key: %i, Value: %s", INFO, registro->key, registro->value);
 			loguear_registro(registro);
 		} else {
-			log_error(logger, "No existe un registro con esa key");
+			mostrar_en_pantalla("No existe un registro con esa key", ERROR);
 		}
 		free(registro->value);
 		free(registro);
@@ -1342,17 +1345,17 @@ void interpretarComando(int header, char* parametros) {
 		package = (t_PackageInsert*) malloc(sizeof(t_PackageInsert));
 		log_warning(logger, parametros);
 		if (!fill_package_insert(package, parametros, 1)) {
-			log_error(logger, "Parametros incorrectos");
+			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 		if (lfs_insert(package)) {
-			log_info(logger, "Se inserto exitosamente");
+			mostrar_en_pantalla("Se inserto exitosamente", INFO);
 			free(((t_PackageInsert*) package)->tabla);
 			free(((t_PackageInsert*) package)->value);
 			free(package);
 			break;
 		}
-		log_info(logger, "No se pudo insertar");
+		mostrar_en_pantalla("No se pudo insertar", ERROR);
 		free(((t_PackageInsert*) package)->tabla);
 		free(((t_PackageInsert*) package)->value);
 		free(package);
@@ -1360,11 +1363,11 @@ void interpretarComando(int header, char* parametros) {
 	case DESCRIBE:
 		package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
 		if (parametros == NULL) {
-			log_warning(logger, "No vino el nombre de la tabla papi");
+			mostrar_en_pantalla("Sin nombre de tabla", INFO);
 		}
 
 		if (!fill_package_describe(package, parametros)) {
-			log_error(logger, "Parametros incorrectos");
+			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 
@@ -1373,11 +1376,16 @@ void interpretarComando(int header, char* parametros) {
 			t_list* lista = lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
 			if (lista != NULL) {
 				metadata = list_get(lista, 0);
+				mostrar_en_pantalla("%s\nConsistencia: %s, Particiones: %i, Tiempo de Compactacion: %ld", INFO,
+						metadata->nombre_tabla,
+						consistency_to_str(metadata->consistency),
+						metadata->partitions,
+						metadata->compaction_time);
 				loguear_metadata(metadata);
 				free(metadata);
 			}
 			if (lista == NULL) {
-				log_info(logger, "No se hallo la metadata de la tabla: %s",
+				mostrar_en_pantalla("No se hallo la metadata de la tabla: %s", INFO,
 						((t_PackageDescribe*) package)->nombre_tabla);
 				break;
 			}
@@ -1396,28 +1404,28 @@ void interpretarComando(int header, char* parametros) {
 		package = (t_PackageDrop*) malloc(sizeof(t_PackageDrop));
 
 		if(!fill_package_drop(package, parametros)){
-			log_error(logger, "Parametros incorrectos");
+			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 		if(lfs_drop(((t_PackageDrop*) package)->nombre_tabla)) {
-			log_info(logger, "Se elimino la tabla correctamente");
+			mostrar_en_pantalla("Se elimino la tabla correctamente", INFO);
 			break;
 		}
-		log_info(logger, "No se pudo eliminar la tabla");
+		mostrar_en_pantalla("No se pudo eliminar la tabla", ERROR);
 		free(((t_PackageDrop*) package)->nombre_tabla);
 		free(package);
 		break;
 	case CREATE:
 		package = (t_PackageCreate*) malloc(sizeof(t_PackageCreate));
 		if (!fill_package_create(package, parametros)) {
-			log_error(logger, "Parametros incorrectos");
+			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 		if (lfs_create(package)) {
-			log_info(logger, "Se creo la tabla correctamente");
+			mostrar_en_pantalla("Se creo la tabla correctamente", INFO);
 			break;
 		}
-		log_info(logger, "No se pudo crear la tabla");
+		mostrar_en_pantalla("No se pudo crear la tabla", INFO);
 		free(((t_PackageCreate*) package)->tabla);
 		free(package);
 		break;
@@ -1459,7 +1467,6 @@ int escribir_bitarray(char* punto_montaje) {
 	string_append(&ruta_a_bitmap, punto_montaje);
 
 	string_append(&ruta_a_bitmap, "/Metadata/Bitmap.bin");
-	printf("%s\n", ruta_a_bitmap);
 	char bitmap_char[lfs_blocks / 8];
 	for (int i = 0; i < (lfs_blocks / 8); i++) {
 		bitmap_char[i] = 0;
@@ -1468,18 +1475,10 @@ int escribir_bitarray(char* punto_montaje) {
 	int fd = open(ruta_a_bitmap, O_RDWR | O_CREAT | O_TRUNC, (mode_t) 0700);
 
 	if (fd == -1) {
-		log_error(logger, "No se pudo abrir el Bitmap");
 		return 0;
 	}
-	log_debug(logger, "Cantidad de Bloques: %i", lfs_blocks);
-	log_debug(logger, "Bytes necesarios: %i", lfs_blocks / 8);
-
 	int written_bytes = write(fd, bitmap_char, lfs_blocks / 8);
-
-	log_debug(logger, "Bytes que escribi: %i", written_bytes);
-
 	close(fd);
-
 	return 0;
 }
 
@@ -1504,8 +1503,8 @@ void* compactar_tabla(Metadata* una_tabla) {
 		modificar_bloques(una_tabla->nombre_tabla, diferencia, &tiempo_bloqueado);
 		list_destroy_and_destroy_elements(diferencia, (void*) liberar_registro);
 
-		log_warning(logger, "La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
-		log_info(tiempos_de_compactacion, "La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
+		loguear("Compacte la tabla %s", una_tabla->nombre_tabla);
+		persistir_tiempo_de_bloqueo("La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
 	}
 }
 
@@ -2195,3 +2194,26 @@ void loguear(const char* formato, int tipo_log, ...) {
 	free(a_loguear);
 	va_end(arguments);
 }
+
+void persistir_tiempo_de_bloqueo(const char* formato, ...) {
+	va_list arguments;
+	va_start(arguments, formato);
+	char* a_loguear = string_from_vformat(formato, arguments);
+	pthread_mutex_lock(&tiempos_compactacion_mutex);
+	log_info(tiempos_de_compactacion, a_loguear);
+	pthread_mutex_unlock(&tiempos_compactacion_mutex);
+	free(a_loguear);
+	va_end(arguments);
+}
+
+void mostrar_en_pantalla(const char* formato, int tipo, ...) {
+	va_list arguments;
+	va_start(arguments, formato);
+	char* a_loguear = string_from_vformat(formato, arguments);
+	pthread_mutex_lock(&pantalla_mutex);
+	tipo == INFO ?  log_info(pantalla, a_loguear) : log_error(pantalla, a_loguear);
+	pthread_mutex_unlock(&pantalla_mutex);
+	free(a_loguear);
+	va_end(arguments);
+}
+
