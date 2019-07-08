@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/inotify.h>
 #include <netdb.h>
 #include <unistd.h>
 #include <stdint.h>
@@ -30,6 +31,12 @@
 
 #define CONFIG_PATH "LFSSocket.config"
 #define LOG_FILE_PATH "lfs_global.log"
+
+
+#define MAX_EVENTS 1024 /*Max. number of events to process at one go*/
+#define LEN_NAME 1024 /*Assuming length of the filename won't exceed 16 bytes*/
+#define EVENT_SIZE  ( sizeof (struct inotify_event) ) /*size of one event*/
+#define BUF_LEN     ( MAX_EVENTS * ( EVENT_SIZE + LEN_NAME ))
 
 typedef struct Registro {
 	long timeStamp;
@@ -87,6 +94,8 @@ void escribir_registros_en_bloques(Tabla* tabla);
 char* blocks_to_string(t_list* blocks);
 
 char* leer_registros_de(char* nombre_tabla, char* extension);
+
+void* watch_config(char*);
 
 void _mostrar_metadata(Metadata* metadata);
 #endif
