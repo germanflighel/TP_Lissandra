@@ -57,7 +57,9 @@ int main() {
 
 	config = config_create(config_path);
 
-	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	char* una_ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	ruta = malloc(strlen(una_ruta)+1);
+	strcpy(ruta, una_ruta);
 	if (!existe_filesystem(ruta)) {
 		montar_filesystem();
 	}
@@ -73,11 +75,8 @@ int main() {
 
 	bloqueo_tablas = dictionary_create();
 	mem_table = list_create();
-	logger = iniciar_logger();
-	//t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
-	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	loguear(puerto, DEBUG);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 	tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
@@ -316,15 +315,12 @@ Registro* lfs_select(t_PackageSelect* package) {
 
 	log_debug(logger, mi_ruta);
 
-	lock_mutex_tabla(package->tabla);
 	if (!existe_tabla(mi_ruta)) {
-		unlock_mutex_tabla(package->tabla);
 		loguear("No existe la tabla %s", ERROR, package->tabla);
 		Registro* registro = malloc(sizeof(Registro));
 		registro->value = NULL;
 		return registro;
 	}
-	unlock_mutex_tabla(package->tabla);
 	loguear("Existe tabla, BRO!", DEBUG);
 
 	Metadata* metadata = obtener_metadata(mi_ruta);
@@ -610,7 +606,6 @@ t_list* lfs_describe() {
 	char* tablas_path = string_new();
 	string_append(&tablas_path, ruta);
 	string_append(&tablas_path, "/Tables/");
-	log_debug(logger, tablas_path);
 	loguear("%s", DEBUG, tablas_path);
 	tables_directory = opendir(tablas_path);
 	if (tables_directory) {
@@ -1144,7 +1139,7 @@ void *receptorDeConsultas(void* socket) {
 					strcpy(respuesta.value, registro_a_devolver->value);
 					respuesta.value_long = strlen(respuesta.value);
 					respuesta.timestamp = registro_a_devolver->timeStamp;
-					loguear("%s", DEBUG, respuesta);
+					loguear("%s", DEBUG, respuesta.value);
 					mostrar_en_pantalla("%s", INFO, respuesta.value);
 				} else {
 					respuesta.result = 0;
@@ -1384,40 +1379,43 @@ void interpretarComando(int header, char* parametros) {
 		break;
 	case DESCRIBE:
 		package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
-		if (parametros == NULL) {
-			mostrar_en_pantalla("Sin nombre de tabla", INFO);
-		}
 
 		if (!fill_package_describe(package, parametros)) {
 			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 
-		if (((t_PackageDescribe*) package)->nombre_tabla) {
-			Metadata* metadata;
-			t_list* lista = lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
-			if (lista != NULL) {
-				metadata = list_get(lista, 0);
-				_mostrar_metadata(metadata);
-				loguear_metadata(metadata);
-				free(metadata);
-			}
-			if (lista == NULL) {
-				mostrar_en_pantalla("No se hallo la metadata de la tabla: %s", INFO,
-						((t_PackageDescribe*) package)->nombre_tabla);
+		if (parametros == NULL) {
+			t_list* metadatas = lfs_describe();
+			if (metadatas) {
+				list_iterate(metadatas, (void*) _mostrar_metadata);
+				list_destroy_and_destroy_elements(metadatas, (void*) free);
+				free(((t_PackageDescribe*) package)->nombre_tabla);
+				free(package);
 				break;
 			}
-			free(((t_PackageDescribe*) package)->nombre_tabla);
+			mostrar_en_pantalla("No hay tablas en el file system", INFO);
 			free(package);
 			break;
 		}
-		t_list* metadatas = lfs_describe();
-		list_iterate(metadatas, (void*) _mostrar_metadata);
 
-		list_destroy_and_destroy_elements(metadatas, (void*) free);
+		Metadata* metadata;
+		t_list* lista = lfs_describe_a_table(
+				((t_PackageDescribe*) package)->nombre_tabla);
+		if (lista != NULL) {
+			metadata = list_get(lista, 0);
+			_mostrar_metadata(metadata);
+			loguear_metadata(metadata);
+			free(metadata);
+		}
+		if (lista == NULL) {
+			mostrar_en_pantalla("No se hallo la metadata de la tabla: %s", INFO,
+					((t_PackageDescribe*) package)->nombre_tabla);
+		}
 		free(((t_PackageDescribe*) package)->nombre_tabla);
 		free(package);
 		break;
+
 	case DROP:
 		package = (t_PackageDrop*) malloc(sizeof(t_PackageDrop));
 
@@ -2285,7 +2283,7 @@ void get_event (int fd) {
         struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
         if ( event->len && !strcmp(event->name, "lfs.config")) {
             if ( event->mask & IN_MODIFY) {
-            	mostrar_en_pantalla("El archivo %s fue modificado", INFO, event->name);
+            	mostrar_en_pantalla("Se modifico la config", INFO);
                 config_destroy(config);
                 config = config_create(archivo_config);
                 pthread_mutex_lock(&config_mutex);
