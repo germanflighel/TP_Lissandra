@@ -40,7 +40,7 @@ typedef struct Tabla {
 typedef struct Memoria {
 	int* socket;
 	int numero;
-	int puerto;
+	Seed con;
 } Memoria;
 
 typedef struct Script {
@@ -50,6 +50,7 @@ typedef struct Script {
 } Script;
 
 t_list* memoriasConectadas;
+t_list* tablaGossiping;
 
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);

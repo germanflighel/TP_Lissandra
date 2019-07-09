@@ -56,5 +56,6 @@ void send_package(int header, void* package, int lfsSocket);
 Segmento* buscarSegmento(char* tabla);
 void* buscarPagina(int key,Segmento* segmento,int* num_pag);
 int ejecutarSelect(t_PackageSelect* select, int lfs_socket,int esAPI);
+t_PackageSeeds* listToGossipingPackage();
 
 #endif

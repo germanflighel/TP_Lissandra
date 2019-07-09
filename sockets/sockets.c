@@ -43,6 +43,28 @@ void separarEntrada(char* entrada, int* header, char** parametros) {
 	free(entradaSeparada);
 }
 
+char* serializarGossipingTable(t_PackageSeeds *package) {
+
+	char *serializedPackage = malloc(
+			sizeof(package->cant_seeds)
+					+ (package->cant_seeds * sizeof(Seed)));
+
+	int offset = 0;
+	int size_to_send;
+
+	size_to_send = sizeof(package->cant_seeds);
+	memcpy(serializedPackage + offset, &(package->cant_seeds), size_to_send);
+	offset += size_to_send;
+
+	for (int x = 0; x < package->cant_seeds; x++) {
+		size_to_send = sizeof(Seed);
+		memcpy(serializedPackage + offset, &(package->seeds[x]), size_to_send);
+		offset += size_to_send;
+	}
+
+	return serializedPackage;
+}
+
 char* serializarDescribe(t_describe *package) {
 
 	char *serializedPackage = malloc(
@@ -129,6 +151,29 @@ int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
 	package->tablas = malloc(tamanio_lista);
 
 	status = recv(socketCliente, package->tablas, tamanio_lista, 0);
+	if (!status)
+		return 0;
+
+	free(buffer);
+
+	return status;
+}
+
+int recieve_and_deserialize_gossipingTable(t_PackageSeeds *package, int socketCliente) {
+
+	int status;
+	int buffer_size;
+	char *buffer = malloc(buffer_size = sizeof(uint16_t));
+
+	status = recv(socketCliente, buffer, sizeof(package->cant_seeds), 0);
+	memcpy(&(package->cant_seeds), buffer, buffer_size);
+	if (!status)
+		return 0;
+
+	int tamanio_lista = package->cant_seeds * sizeof(Seed);
+	package->seeds = malloc(tamanio_lista);
+
+	status = recv(socketCliente, package->seeds, tamanio_lista, 0);
 	if (!status)
 		return 0;
 
@@ -318,7 +363,6 @@ int fill_package_create(t_PackageCreate* package, char* parametros) {
 int fill_package_describe(t_PackageDescribe* package, char* parametros) {
 
 	if (parametros == NULL) {
-		printf("Aca\n");
 		package->tabla_long = 0;
 		package->nombre_tabla = NULL;
 
@@ -950,6 +994,18 @@ void enviar_describe(char* tabla, int socket) {
 			0);
 
 	dispose_package(&serializedPackage);
+}
+
+int handshake_recibido(int socket) {
+
+	t_Handshake package;
+	package.header = recieve_header(socket);
+
+	if (HANDSHAKE == package.header) {
+		recieve_and_deserialize_handshake(&package, socket);
+		return package.id;
+	}
+	return 0;
 }
 
 int recibir_handshake(int idEsperado, int socket) {
