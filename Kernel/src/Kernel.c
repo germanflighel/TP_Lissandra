@@ -855,7 +855,7 @@ void* metricsCada30() {
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
-		printf("TimeStamp %d", time(NULL));
+		printf("TimeStamp %d",time(NULL));
 		metrics(1);
 
 		select_sc.tiempoTotal = 0;
@@ -1187,24 +1187,21 @@ void metrics(int esMetricaDe30) {
 	if (select_sc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) select_sc.tiempoTotal
-				/ (double) select_sc.cantidad;
+		tiempoPromedio = (double)select_sc.tiempoTotal / (double)select_sc.cantidad;
 	}
 	printf("Read Latency SC %f \n", tiempoPromedio);
 
 	if (select_ec.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) select_ec.tiempoTotal
-				/ (double) select_ec.cantidad;
+		tiempoPromedio = (double)select_ec.tiempoTotal / (double)select_ec.cantidad;
 	}
 	printf("Read Latency EC %f \n", tiempoPromedio);
 
 	if (select_shc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) select_shc.tiempoTotal
-				/ (double) select_shc.cantidad;
+		tiempoPromedio = (double)select_shc.tiempoTotal / (double)select_shc.cantidad;
 	}
 	printf("Read Latency SHC %f \n", tiempoPromedio);
 
@@ -1212,16 +1209,14 @@ void metrics(int esMetricaDe30) {
 	if (insert_sc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) insert_sc.tiempoTotal
-				/ (double) insert_sc.cantidad;
+		tiempoPromedio = (double)insert_sc.tiempoTotal / (double)insert_sc.cantidad;
 	}
 	printf("Write Latency SC %f \n", tiempoPromedio);
 
 	if (insert_ec.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) insert_ec.tiempoTotal
-				/ (double) insert_ec.cantidad;
+		tiempoPromedio = (double)insert_ec.tiempoTotal / (double)insert_ec.cantidad;
 
 	}
 	printf("Write Latency EC %f \n", tiempoPromedio);
@@ -1229,8 +1224,7 @@ void metrics(int esMetricaDe30) {
 	if (insert_shc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double) insert_shc.tiempoTotal
-				/ (double) insert_shc.cantidad;
+		tiempoPromedio = (double)insert_shc.tiempoTotal / (double)insert_shc.cantidad;
 
 	}
 	printf("Write Latency SHC %f \n", tiempoPromedio);
@@ -1247,6 +1241,7 @@ void metrics(int esMetricaDe30) {
 
 	//Memory Loads
 	list_iterate(memoriasConectadas, &mostrarMemoria);
+
 
 }
 
