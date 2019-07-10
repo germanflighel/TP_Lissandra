@@ -18,6 +18,8 @@ int strToHeader(char* header) {
 		return RUN;
 	} else if (strcmp(header, "ADD") == 0) {
 		return ADD;
+	} else if (strcmp(header, "METRICS") == 0) {
+		return METRICS;
 	} else if (strcmp(header, "exit") == 0) {
 		return EXIT_CONSOLE;
 	}
@@ -46,8 +48,7 @@ void separarEntrada(char* entrada, int* header, char** parametros) {
 char* serializarGossipingTable(t_PackageSeeds *package) {
 
 	char *serializedPackage = malloc(
-			sizeof(package->cant_seeds)
-					+ (package->cant_seeds * sizeof(Seed)));
+			sizeof(package->cant_seeds) + (package->cant_seeds * sizeof(Seed)));
 
 	int offset = 0;
 	int size_to_send;
@@ -159,7 +160,8 @@ int recieve_and_deserialize_describe(t_describe *package, int socketCliente) {
 	return status;
 }
 
-int recieve_and_deserialize_gossipingTable(t_PackageSeeds *package, int socketCliente) {
+int recieve_and_deserialize_gossipingTable(t_PackageSeeds *package,
+		int socketCliente) {
 
 	int status;
 	int buffer_size;
@@ -208,11 +210,17 @@ int recieve_and_send_describe(t_describe *package, int socketCliente,
 
 int validarParametros(int header, char* parametros) {
 	char** parametrosSeparados;
-	if (parametros == NULL && header != DESCRIBE && header != JOURNAL) {
-		return 0;
-	}
+	/*if (parametros == NULL && header != DESCRIBE && header != JOURNAL && ) {
+	 return 0;
+	 }*/
 	switch (header) {
 	case JOURNAL:
+		if (parametros != NULL) {
+			return 0;
+		}
+		break;
+
+	case METRICS:
 		if (parametros != NULL) {
 			return 0;
 		}
