@@ -10,9 +10,10 @@
 
 #include "Memory.h"
 void *inputFunc(void *);
+void *intercambiarTabla();
 //pthread_mutex_t lock;
 
-//int es_primera_memoria;
+struct addrinfo hints;
 
 int numero_memoria;
 int memoryUP = 1;
@@ -33,13 +34,17 @@ int lfsSocket;
 
 int retardo_mem;
 int retardo_fs;
+int retardo_gossiping;
 
 pthread_mutex_t journaling;
+
+pthread_mutex_t gossiping_mutex;
+t_list* tablaGossiping;
+t_list* tablaSeeds;
 
 int main() {
 
 	//Estructura Conexiones
-	struct addrinfo hints;
 	struct addrinfo *serverInfo;
 	char* ip;
 	char* puerto;
@@ -54,7 +59,7 @@ int main() {
 	//Cofig Path
 	printf("Ingrese nombre del archivo de configuración \n");
 	char* entrada = leerConsola();
-	conf_path = malloc(strlen(entrada)+1);
+	conf_path = malloc(strlen(entrada) + 1);
 	strcpy(conf_path, entrada);
 	free(entrada);
 
@@ -74,10 +79,38 @@ int main() {
 
 	retardo_mem = 1000 * config_get_int_value(conection_conf, "RETARDO_MEM");
 	retardo_fs = 1000 * config_get_int_value(conection_conf, "RETARDO_FS");
+	retardo_gossiping = 1000
+			* config_get_int_value(conection_conf, "RETARDO_GOSSIPING");
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
 	puerto_propio = config_get_string_value(conection_conf, "PUERTO");
+
+	//gossping table init
+	char** ip_seed = config_get_array_value(conection_conf, "IP_SEEDS");
+	char** puerto_seed = config_get_array_value(conection_conf, "PUERTO_SEEDS");
+
+	pthread_mutex_init(&gossiping_mutex, NULL);
+	tablaGossiping = list_create();
+
+	tablaSeeds = list_create();
+
+	int index = 0;
+
+	while (ip_seed[index] != NULL) {
+		Seed* seed = malloc(sizeof(Seed));
+		strcpy(seed->ip, ip_seed[index]);
+		strcpy(seed->puerto, puerto_seed[index]);
+		list_add(tablaSeeds, seed);
+		index++;
+	}
+
+	Seed* seed = malloc(sizeof(Seed));
+	strcpy(seed->ip, "127.0.0.1");
+	strcpy(seed->puerto, puerto_propio);
+	list_add(tablaGossiping, seed);
+
+	//gossping table init
 
 	log_info(g_logger, puerto_propio);
 
@@ -137,6 +170,19 @@ int main() {
 	liberarBitMap();
 
 	//inicializacion memoria
+
+	//thread gossping
+	pthread_t threadGossping;
+	int gosippingret;
+
+	gosippingret = pthread_create(&threadGossping, NULL, intercambiarTabla,
+	NULL);
+	if (gosippingret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				gosippingret);
+		exit(EXIT_FAILURE);
+	}
+	//thread gossping
 
 	//thread ingreso por consola
 	pthread_t threadL;
@@ -220,17 +266,42 @@ int main() {
 					FD_SET(peersock, &readset);
 					maxfd = (maxfd < peersock) ? peersock : maxfd;
 
-					log_info(g_logger, "Conectado socket: %d",peersock);
+					//log_info(g_logger, "Conectado socket: %d", peersock);
 
-					if (!recibir_handshake(KERNEL, peersock)) {
+					int handshake_id = handshake_recibido(peersock);
+
+					if (handshake_id == KERNEL) {
+						enviar_handshake(numero_memoria, peersock);
+
+						log_debug(g_logger,
+								"Cliente conectado. Esperando Envío de mensajes.");
+					} else if (handshake_id == MEMORY) {
+
+						t_PackageSeeds* seedsAEnviar = listToGossipingPackage();
+
+						char* serializedSeeds = serializarGossipingTable(
+								seedsAEnviar);
+
+						send(peersock, serializedSeeds,
+								seedsAEnviar->cant_seeds * sizeof(Seed)
+										+ sizeof(seedsAEnviar->cant_seeds), 0);
+
+						free(serializedSeeds);
+						free(seedsAEnviar->seeds);
+
+						t_PackageSeeds* seeds = malloc(sizeof(t_PackageSeeds));
+						recieve_and_deserialize_gossipingTable(seeds, peersock);
+
+						seedPackageToTable(seeds);
+
+						free(seeds->seeds);
+						free(seeds);
+
+					} else {
 						log_warning(g_logger, "Handshake invalido");
 						return 0;
 					}
 
-					enviar_handshake(numero_memoria, peersock);
-
-					log_debug(g_logger,
-							"Cliente conectado. Esperando Envío de mensajes.");
 				}
 				FD_CLR(srvsock, &tempset);
 			}
@@ -251,7 +322,7 @@ int main() {
 						//ok
 
 					} else if (result == 0) {
-						printf("Kernel desconectado\n");
+						//printf("Kernel desconectado\n");
 						close(j);
 						FD_CLR(j, &readset);
 					} else {
@@ -264,7 +335,8 @@ int main() {
 
 	log_warning(g_logger, "Termina proceso");
 
-	pthread_join(&threadL, NULL);
+	pthread_detach(&threadGossping);
+	pthread_detach(&threadL);
 
 	//close(socketCliente);
 	close(listenningSocket);
@@ -282,6 +354,14 @@ void liberarBitMap() {
 	for (int pag = 0; pag < cant_marcos; pag++) {
 		bit_map[pag] = 0;
 	}
+}
+
+void mostrarGosip() {
+	void show(Seed *seed) {
+		log_debug(g_logger, "Puerto %s", seed->puerto);
+	}
+
+	list_iterate(tablaGossiping, show);
 }
 
 int recieve(int socketCliente) {
@@ -341,11 +421,35 @@ int recieve(int socketCliente) {
 			pthread_mutex_unlock(&journaling);
 			free(package.nombre_tabla);
 			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == DROP) {
+			t_PackageDrop package;
+			package.header = DROP;
+			status = recieve_and_deserialize_drop(&package, socketCliente);
+
+			pthread_mutex_lock(&journaling);
+			comando_valido = ejectuarComando(headerRecibido, &package,
+					socketCliente, 0);
+			pthread_mutex_unlock(&journaling);
+			free(package.nombre_tabla);
+			//send_package(package.header, &package, lfsSocket);
 		} else if (headerRecibido == JOURNAL) {
 
 			log_warning(g_logger, "JOURNAL RECIBIDO");
 			journal();
 			//send_package(package.header, &package, lfsSocket);
+		} else if (headerRecibido == GOSSIPING) {
+
+			t_PackageSeeds* seedsAEnviar = listToGossipingPackage();
+
+			char* serializedSeeds = serializarGossipingTable(seedsAEnviar);
+
+			send(socketCliente, serializedSeeds,
+					seedsAEnviar->cant_seeds * sizeof(Seed)
+							+ sizeof(seedsAEnviar->cant_seeds), 0);
+
+			free(serializedSeeds);
+			free(seedsAEnviar->seeds);
+
 		}
 	}
 	return status;
@@ -382,6 +486,25 @@ Segmento* buscarSegmento(char* tablaABuscar) {
 	;
 
 	return (Segmento*) list_find(tabla_segmentos, (int) &esDeLaTabla);
+}
+
+void eliminarSegmento(char* tablaABuscar) {
+
+	int esDeLaTabla(Segmento *segmento) {
+		if (strcmp(segmento->path, tablaABuscar) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	;
+
+	int destroyer(Segmento *segmento) {
+		list_destroy(segmento->tablaDePaginas);
+	}
+	;
+
+	list_remove_and_destroy_by_condition(tabla_segmentos, (int) &esDeLaTabla,
+			&destroyer);
 }
 
 void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
@@ -424,6 +547,9 @@ int ejectuarComando(int header, void* package, int socket, int esAPI) {
 		break;
 	case DESCRIBE:
 		return ejecutarDescribe((t_PackageDescribe*) package, socket);
+		break;
+	case DROP:
+		return ejecutarDrop((t_PackageDrop*) package, socket);
 		break;
 	}
 	return -1;
@@ -477,6 +603,19 @@ int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 		recibir_y_ejecutar(select, socketCliente, esAPI);
 
 	}
+
+	return 1;
+}
+
+int ejecutarDrop(t_PackageDrop* drop, int socketCliente) {
+
+	eliminarSegmento(drop->nombre_tabla);
+
+	char* serializedPackage = serializarDrop(drop);
+
+	send(lfsSocket, serializedPackage, drop->total_size, 0);
+
+	dispose_package(&serializedPackage);
 
 	return 1;
 }
@@ -782,7 +921,7 @@ void journal() {
 	char* nombreTabla;
 
 	void porEntrada(Renglon_pagina* renglon) {
-		log_debug(g_logger,"Entre");
+		log_debug(g_logger, "Entre");
 		if (renglon->modificado) {
 			int offsetPagina = renglon->offset;
 			Pagina* pag = ((Pagina*) (memoriaPrincipal + offsetPagina));
@@ -823,9 +962,9 @@ void journal() {
 	}
 
 	void porSegmento(Segmento* seg) {
-		nombreTabla = malloc(strlen(seg->path)+1);
-		strcpy(nombreTabla,seg->path);
-		log_debug(g_logger,nombreTabla);
+		nombreTabla = malloc(strlen(seg->path) + 1);
+		strcpy(nombreTabla, seg->path);
+		log_debug(g_logger, nombreTabla);
 		list_iterate(seg->tablaDePaginas, &porEntrada);
 		free(nombreTabla);
 	}
@@ -880,7 +1019,6 @@ void send_package(int header, void* package, int socketCliente) {
 		t_describe describeRecibido;
 		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
 
-
 		char* serializedPackage2;
 		serializedPackage2 = serializarDescribe(&describeRecibido);
 
@@ -916,35 +1054,33 @@ void *inputFunc(void* serverSocket)
 
 		entrada = readline("Memory> ");
 
-		if(strcmp(entrada,"")!=0) {
+		if (strcmp(entrada, "") != 0) {
 
+			char* parametros;
+			int header;
 
-		char* parametros;
-		int header;
+			separarEntrada(entrada, &header, &parametros);
 
-		separarEntrada(entrada, &header, &parametros);
+			int okParams = validarParametros(header, parametros);
 
-		int okParams = validarParametros(header, parametros);
+			if (header == EXIT_CONSOLE) {
+				memoryUP = 0;
+			} else if (header == ERROR) {
+				log_warning(g_logger, "Comando no reconocido");
+				entradaValida = 0;
+			} else if (!okParams) {
+				log_warning(g_logger, "Parametros incorrectos");
+			}
 
-		if (header == EXIT_CONSOLE) {
-			memoryUP = 0;
-		} else if (header == ERROR) {
-			log_warning(g_logger, "Comando no reconocido");
-			entradaValida = 0;
-		} else if (!okParams) {
-			log_warning(g_logger, "Parametros incorrectos");
-		}
+			add_history(entrada);
 
-		add_history(entrada);
+			free(entrada);
 
+			if (memoryUP && entradaValida && okParams) {
 
-		free(entrada);
-
-		if (memoryUP && entradaValida && okParams) {
-
-			interpretarComando(header, parametros, serverSocket);
-			free(parametros);
-		}
+				interpretarComando(header, parametros, serverSocket);
+				free(parametros);
+			}
 
 		}
 
@@ -956,6 +1092,93 @@ void *inputFunc(void* serverSocket)
 
 	free(package.message);
 
+}
+
+t_PackageSeeds* listToGossipingPackage() {
+
+	int cantMems = tablaGossiping->elements_count;
+	t_PackageSeeds* seedArray = malloc(sizeof(t_PackageSeeds));
+	seedArray->cant_seeds = cantMems;
+	seedArray->seeds = malloc(cantMems * sizeof(Seed));
+	int i = 0;
+	void agregar(Seed* seed) {
+		strcpy(seedArray->seeds[i].ip, seed->ip);
+		strcpy(seedArray->seeds[i].puerto, seed->puerto);
+		i++;
+	}
+	pthread_mutex_lock(&gossiping_mutex);
+	list_iterate(tablaGossiping, &agregar);
+	pthread_mutex_unlock(&gossiping_mutex);
+
+	return seedArray;
+}
+
+void seedPackageToTable(t_PackageSeeds* seeds) {
+	pthread_mutex_lock(&gossiping_mutex);
+	for (int i = 0; i < seeds->cant_seeds; i++) {
+
+		int estaLaSeed(Seed* seed) {
+			return (strcmp(seed->puerto, seeds->seeds[i].puerto) == 0
+					&& strcmp(seed->ip, seeds->seeds[i].ip) == 0);
+		}
+
+		if (!list_any_satisfy(tablaGossiping, &estaLaSeed)) {
+			Seed* seed = malloc(sizeof(Seed));
+			strcpy(seed->puerto, seeds->seeds[i].puerto);
+			strcpy(seed->ip, seeds->seeds[i].ip);
+			list_add(tablaGossiping, seed);
+		};
+	}
+
+	//mostrarGosip();
+
+	pthread_mutex_unlock(&gossiping_mutex);
+}
+
+void *intercambiarTabla() {
+	int serverSocket;
+
+	while (memoryUP) {
+		void intercambiarSiFueraPosible(Seed* seed) {
+
+			struct addrinfo *serverInfo;
+			getaddrinfo(seed->ip, seed->puerto, &hints, &serverInfo);
+
+			serverSocket = socket(serverInfo->ai_family,
+					serverInfo->ai_socktype, serverInfo->ai_protocol);
+			if (connect(serverSocket, serverInfo->ai_addr,
+					serverInfo->ai_addrlen) == 0) {
+
+				enviar_handshake(MEMORY, serverSocket);
+
+				t_PackageSeeds* seeds = malloc(sizeof(t_PackageSeeds));
+				recieve_and_deserialize_gossipingTable(seeds, serverSocket);
+
+				seedPackageToTable(seeds);
+
+				free(seeds->seeds);
+				free(seeds);
+
+				t_PackageSeeds* seedsAEnviar = listToGossipingPackage();
+
+				char* serializedSeeds = serializarGossipingTable(seedsAEnviar);
+
+				send(serverSocket, serializedSeeds,
+						seedsAEnviar->cant_seeds * sizeof(Seed)
+								+ sizeof(seedsAEnviar->cant_seeds), 0);
+
+				free(serializedSeeds);
+				free(seedsAEnviar->seeds);
+
+				close(serverSocket);
+			}
+			freeaddrinfo(serverInfo);
+		}
+
+		list_iterate(tablaSeeds, &intercambiarSiFueraPosible);
+
+		usleep(retardo_gossiping);
+	}
 }
 
 void interpretarComando(int header, char* parametros, int serverSocket) {

@@ -1,0 +1,918 @@
+==12465== Memcheck, a memory error detector
+==12465== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==12465== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==12465== Command: ./Memory
+==12465== Parent PID: 6036
+==12465== 
+--12465-- 
+--12465-- Valgrind options:
+--12465--    --show-leak-kinds=all
+--12465--    --leak-check=full
+--12465--    -v
+--12465--    --log-file=valgrind_gosip.txt
+--12465-- Contents of /proc/version:
+--12465--   Linux version 4.4.0-116-generic (buildd@lgw01-amd64-023) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9) ) #140-Ubuntu SMP Mon Feb 12 21:22:43 UTC 2018
+--12465-- 
+--12465-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--12465-- Page sizes: currently 4096, max supported 4096
+--12465-- Valgrind library directory: /usr/lib/valgrind
+--12465-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--12465--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--12465--   .. CRC mismatch (computed 596cb2b8 wanted 417b32cc)
+--12465--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--12465--   .. CRC is valid
+--12465-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Memory/Debug/Memory
+--12465-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--12465--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--12465--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--12465--    object doesn't have a symbol table
+--12465--    object doesn't have a dynamic symbol table
+--12465-- Scheduler: using generic scheduler lock implementation.
+--12465-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==12465== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12465-by-utnso-on-???
+==12465== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12465-by-utnso-on-???
+==12465== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12465-by-utnso-on-???
+==12465== 
+==12465== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12465== don't want to do, unless you know exactly what you're doing,
+==12465== or are doing some strange experiment):
+==12465==   /usr/lib/valgrind/../../bin/vgdb --pid=12465 ...command...
+==12465== 
+==12465== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12465==   /path/to/gdb ./Memory
+==12465== and then give GDB the following command
+==12465==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=12465
+==12465== --pid is optional if only one valgrind process is running
+==12465== 
+--12465-- REDIR: 0x4018eb0 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--12465-- REDIR: 0x4018c70 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--12465-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--12465--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--12465--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--12465--    object doesn't have a symbol table
+--12465-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--12465--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--12465--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--12465--    object doesn't have a symbol table
+==12465== WARNING: new redirection conflicts with existing -- ignoring it
+--12465--     old: 0x04018eb0 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--12465--     new: 0x04018eb0 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--12465-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--12465-- Reading syms from /lib/i386-linux-gnu/libm-2.23.so
+--12465--   Considering /lib/i386-linux-gnu/libm-2.23.so ..
+--12465--   .. CRC mismatch (computed 9ba663e0 wanted 0c56bc99)
+--12465--   Considering /usr/lib/debug/lib/i386-linux-gnu/libm-2.23.so ..
+--12465--   .. CRC is valid
+--12465-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--12465--   Considering /usr/lib/debug/.build-id/12/78da59ecc0791dce5c44d8b8756a0480be3a5b.debug ..
+--12465--   .. build-id is valid
+--12465-- Reading syms from /usr/lib/libcommons.so
+--12465-- Reading syms from /lib/i386-linux-gnu/libreadline.so.6.3
+--12465--   Considering /lib/i386-linux-gnu/libreadline.so.6.3 ..
+--12465--   .. CRC mismatch (computed ae23cd8f wanted 3f613fc8)
+--12465--    object doesn't have a symbol table
+--12465-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--12465--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--12465--   .. CRC mismatch (computed af9c0474 wanted a5de3f2a)
+--12465--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--12465--   .. CRC is valid
+--12465-- Reading syms from /lib/i386-linux-gnu/libtinfo.so.5.9
+--12465--    object doesn't have a symbol table
+--12465-- REDIR: 0x41904b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4197140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x41a9b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x418f350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--12465-- REDIR: 0x418e7e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--12465-- REDIR: 0x418ffc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x423e4d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--12465-- REDIR: 0x418e5c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--12465-- REDIR: 0x4189f00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--12465-- REDIR: 0x418fa30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+--12465-- REDIR: 0x4190680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--12465-- REDIR: 0x418e580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4197440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--12465-- REDIR: 0x418df90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4197570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+--12465-- REDIR: 0x418a470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+--12465-- REDIR: 0x418a810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--12465-- REDIR: 0x418a520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--12465-- REDIR: 0x418e700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x424e5c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--12465-- REDIR: 0x4192280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--12465-- REDIR: 0x41900d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+--12465-- REDIR: 0x418e750 (libc.so.6:strncpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4198dc0 (libc.so.6:__strncpy_ssse3) redirected to 0x402f5f0 (strncpy)
+--12465-- REDIR: 0x418dae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x41a2b30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--12465-- REDIR: 0x418fc10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--12465-- REDIR: 0x41921b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--12465-- REDIR: 0x4190610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4240b70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--12465-- REDIR: 0x418dd20 (libc.so.6:__GI_strchr) redirected to 0x402ef30 (__GI_strchr)
+--12465-- REDIR: 0x418e7a0 (libc.so.6:rindex) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x41a8530 (libc.so.6:__strrchr_sse2_bsf) redirected to 0x402edd0 (rindex)
+--12465-- REDIR: 0x418dce0 (libc.so.6:index) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x41a8420 (libc.so.6:__strchr_sse2_bsf) redirected to 0x402eff0 (index)
+--12465-- REDIR: 0x4197380 (libc.so.6:__GI_strncmp) redirected to 0x402fb40 (__GI_strncmp)
+--12465-- REDIR: 0x41a9100 (libc.so.6:__GI_strnlen) redirected to 0x402f330 (__GI_strnlen)
+--12465-- REDIR: 0x418dee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x424d150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+--12465-- REDIR: 0x420dc90 (libc.so.6:__memcpy_chk) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x4240b60 (libc.so.6:__memcpy_chk_ssse3) redirected to 0x4033600 (__memcpy_chk)
+--12465-- REDIR: 0x4147650 (libc.so.6:setenv) redirected to 0x4033d60 (setenv)
+--12465-- REDIR: 0x418df30 (libc.so.6:__GI_strcmp) redirected to 0x40304b0 (__GI_strcmp)
+--12465-- REDIR: 0x41902e0 (libc.so.6:__GI_stpcpy) redirected to 0x4032290 (__GI_stpcpy)
+--12465-- REDIR: 0x4190460 (libc.so.6:strcasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x424ffb0 (libc.so.6:__strcasecmp_ssse3) redirected to 0x402fcf0 (strcasecmp)
+--12465-- REDIR: 0x42524c0 (libc.so.6:__strncasecmp_ssse3) redirected to 0x402fe10 (strncasecmp)
+--12465-- REDIR: 0x418fbd0 (libc.so.6:bcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--12465-- REDIR: 0x42573d0 (libc.so.6:__memcmp_ssse3) redirected to 0x40320a0 (bcmp)
+==12465== Conditional jump or move depends on uninitialised value(s)
+==12465==    at 0x402C136: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A404: serializarGossipingTable (sockets.c:48)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== Conditional jump or move depends on uninitialised value(s)
+==12465==    at 0x403A492: serializarGossipingTable (sockets.c:59)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== Syscall param socketcall.send(args) points to uninitialised byte(s)
+==12465==    at 0x40BC549: send (send.c:35)
+==12465==    by 0x804A8B1: recieve (Memory.c:437)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465==  Address 0xbed039d8 is on thread 1's stack
+==12465==  in frame #0, created by send (send.c:29)
+==12465== 
+==12465== Syscall param socketcall.send(msg) points to uninitialised byte(s)
+==12465==    at 0x40BC549: send (send.c:35)
+==12465==    by 0x804A8B1: recieve (Memory.c:437)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465==  Address 0x431b350 is 0 bytes inside a block of size 2 alloc'd
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A404: serializarGossipingTable (sockets.c:48)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== Invalid free() / delete / delete[] / realloc()
+==12465==    at 0x402D358: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40B31A6: __free_tcb (pthread_create.c:237)
+==12465==    by 0x40B443F: pthread_join (pthread_join.c:111)
+==12465==    by 0x804A538: main (Memory.c:338)
+==12465==  Address 0xbed03fc1 is on thread 1's stack
+==12465== 
+==12465== Use of uninitialised value of size 4
+==12465==    at 0x40B25AD: list_del (list.h:72)
+==12465==    by 0x40B25AD: stack_list_del (allocatestack.c:145)
+==12465==    by 0x40B25AD: __deallocate_stack (allocatestack.c:767)
+==12465==    by 0x40B443F: pthread_join (pthread_join.c:111)
+==12465==    by 0x804A538: main (Memory.c:338)
+==12465== 
+==12465== 
+==12465== Process terminating with default action of signal 11 (SIGSEGV)
+==12465==  Bad permissions for mapped region at address 0x4009641
+==12465==    at 0x40B25AD: list_del (list.h:72)
+==12465==    by 0x40B25AD: stack_list_del (allocatestack.c:145)
+==12465==    by 0x40B25AD: __deallocate_stack (allocatestack.c:767)
+==12465==    by 0x40B443F: pthread_join (pthread_join.c:111)
+==12465==    by 0x804A538: main (Memory.c:338)
+==12465== 
+==12465== HEAP SUMMARY:
+==12465==     in use at exit: 65,578 bytes in 210 blocks
+==12465==   total heap usage: 918 allocs, 709 frees, 119,728 bytes allocated
+==12465== 
+==12465== Searching for pointers to 210 not-freed blocks
+==12465== Checked 16,897,960 bytes
+==12465== 
+==12465== 0 bytes in 1 blocks are still reachable in loss record 1 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A85F: recieve_and_deserialize_gossipingTable (sockets.c:174)
+==12465==    by 0x804C37B: intercambiarSiFueraPosible.7380 (Memory.c:1142)
+==12465==    by 0x40CF148: list_iterate (in /usr/lib/libcommons.so)
+==12465==    by 0x804C47A: intercambiarTabla (Memory.c:1163)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 2 bytes in 1 blocks are still reachable in loss record 2 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A7FD: recieve_and_deserialize_gossipingTable (sockets.c:166)
+==12465==    by 0x804C37B: intercambiarSiFueraPosible.7380 (Memory.c:1142)
+==12465==    by 0x40CF148: list_iterate (in /usr/lib/libcommons.so)
+==12465==    by 0x804C47A: intercambiarTabla (Memory.c:1163)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 5 bytes in 1 blocks are still reachable in loss record 3 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CE45E: string_trim_right (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE354: string_trim (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE73D: string_get_string_as_array (in /usr/lib/libcommons.so)
+==12465==    by 0x40D05D5: config_get_array_value (in /usr/lib/libcommons.so)
+==12465==    by 0x8049A7F: main (Memory.c:91)
+==12465== 
+==12465== 5 bytes in 1 blocks are still reachable in loss record 4 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FDF4A: alloc_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FE188: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BF4B: inputFunc (Memory.c:1066)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 6 bytes in 1 blocks are still reachable in loss record 5 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x8049E0B: main (Memory.c:169)
+==12465== 
+==12465== 6 bytes in 1 blocks are still reachable in loss record 6 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x418E2C5: strdup (strdup.c:42)
+==12465==    by 0x42DA010: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 7 bytes in 1 blocks are still reachable in loss record 7 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x418E2C5: strdup (strdup.c:42)
+==12465==    by 0x40CE09A: string_duplicate (in /usr/lib/libcommons.so)
+==12465==    by 0x40CDC49: log_create (in /usr/lib/libcommons.so)
+==12465==    by 0x804B925: abrir_log (Memory.c:898)
+==12465==    by 0x8049931: main (Memory.c:69)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 8 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CEBC4: _string_split (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE5F3: string_split (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE716: string_get_string_as_array (in /usr/lib/libcommons.so)
+==12465==    by 0x40D05D5: config_get_array_value (in /usr/lib/libcommons.so)
+==12465==    by 0x8049A62: main (Memory.c:90)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 9 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CEBC4: _string_split (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE5F3: string_split (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE716: string_get_string_as_array (in /usr/lib/libcommons.so)
+==12465==    by 0x40D05D5: config_get_array_value (in /usr/lib/libcommons.so)
+==12465==    by 0x8049A7F: main (Memory.c:91)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 10 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CEE01: list_create (in /usr/lib/libcommons.so)
+==12465==    by 0x8049A9F: main (Memory.c:94)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 11 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CEE01: list_create (in /usr/lib/libcommons.so)
+==12465==    by 0x8049AA9: main (Memory.c:96)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 12 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CF905: list_create_element (in /usr/lib/libcommons.so)
+==12465==    by 0x40CEE3D: list_add (in /usr/lib/libcommons.so)
+==12465==    by 0x8049B3B: main (Memory.c:104)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 13 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CF905: list_create_element (in /usr/lib/libcommons.so)
+==12465==    by 0x40CEE3D: list_add (in /usr/lib/libcommons.so)
+==12465==    by 0x8049BBF: main (Memory.c:111)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 14 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CEE01: list_create (in /usr/lib/libcommons.so)
+==12465==    by 0x8049DF8: main (Memory.c:165)
+==12465== 
+==12465== 8 bytes in 1 blocks are still reachable in loss record 15 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x418E2C5: strdup (strdup.c:42)
+==12465==    by 0x42DFD6E: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42E0059: _nc_trim_sgr0 (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA4D3: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 8 bytes in 1 blocks are definitely lost in loss record 16 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x804C0AC: listToGossipingPackage (Memory.c:1091)
+==12465==    by 0x804A877: recieve (Memory.c:433)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== 9 bytes in 1 blocks are still reachable in loss record 17 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x80498FC: main (Memory.c:62)
+==12465== 
+==12465== 9 bytes in 1 blocks are still reachable in loss record 18 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0A71: rl_set_prompt (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5A: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 9 bytes in 1 blocks are still reachable in loss record 19 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F0C3A: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F100B: rl_expand_prompt (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0A96: rl_set_prompt (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5A: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 10 bytes in 1 blocks are still reachable in loss record 20 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CE45E: string_trim_right (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE354: string_trim (in /usr/lib/libcommons.so)
+==12465==    by 0x40CE73D: string_get_string_as_array (in /usr/lib/libcommons.so)
+==12465==    by 0x40D05D5: config_get_array_value (in /usr/lib/libcommons.so)
+==12465==    by 0x8049A62: main (Memory.c:90)
+==12465== 
+==12465== 12 bytes in 1 blocks are still reachable in loss record 21 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x418E2C5: strdup (strdup.c:42)
+==12465==    by 0x42D6D9F: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D70B4: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 12 bytes in 1 blocks are still reachable in loss record 22 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FE169: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BF4B: inputFunc (Memory.c:1066)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 12 bytes in 1 blocks are still reachable in loss record 23 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FDF2B: alloc_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FE188: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BF4B: inputFunc (Memory.c:1066)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 13 bytes in 1 blocks are still reachable in loss record 24 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EE491: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 14 bytes in 1 blocks are still reachable in loss record 25 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DB506: tparm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DFD5A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42E004B: _nc_trim_sgr0 (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA4D3: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 16 bytes in 1 blocks are still reachable in loss record 26 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40E1D00: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 20 bytes in 1 blocks are still reachable in loss record 27 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40CDBA3: log_create (in /usr/lib/libcommons.so)
+==12465==    by 0x804B925: abrir_log (Memory.c:898)
+==12465==    by 0x8049931: main (Memory.c:69)
+==12465== 
+==12465== 20 bytes in 1 blocks are still reachable in loss record 28 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EBF33: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EDF83: rl_parse_and_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EE416: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 21 bytes in 1 blocks are still reachable in loss record 29 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x8049AC7: main (Memory.c:101)
+==12465== 
+==12465== 21 bytes in 1 blocks are still reachable in loss record 30 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x8049B6E: main (Memory.c:108)
+==12465== 
+==12465== 24 bytes in 1 blocks are still reachable in loss record 31 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7923: _nc_home_terminfo (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D70A0: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465== 
+==12465== 24 bytes in 1 blocks are still reachable in loss record 32 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D71DB: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 46 bytes in 1 blocks are still reachable in loss record 33 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF3C5: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 48 bytes in 1 blocks are still reachable in loss record 34 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x41E6A1D: gaih_inet (getaddrinfo.c:1223)
+==12465==    by 0x41E83E2: getaddrinfo (getaddrinfo.c:2425)
+==12465==    by 0x804C313: intercambiarSiFueraPosible.7380 (Memory.c:1132)
+==12465==    by 0x40CF148: list_iterate (in /usr/lib/libcommons.so)
+==12465==    by 0x804C47A: intercambiarTabla (Memory.c:1163)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 78 bytes in 1 blocks are still reachable in loss record 35 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF3E4: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 93 bytes in 1 blocks are still reachable in loss record 36 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D712A: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 94 bytes in 1 blocks are still reachable in loss record 37 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7593: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DB13E: _nc_tparm_analyze (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DB302: tparm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DFD5A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42E004B: _nc_trim_sgr0 (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA4D3: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465== 
+==12465== 136 bytes in 1 blocks are possibly lost in loss record 38 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==12465==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==12465==    by 0x40B3CC3: allocate_stack (allocatestack.c:588)
+==12465==    by 0x40B3CC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==12465==    by 0x8049E2D: main (Memory.c:178)
+==12465== 
+==12465== 136 bytes in 1 blocks are possibly lost in loss record 39 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==12465==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==12465==    by 0x40B3CC3: allocate_stack (allocatestack.c:588)
+==12465==    by 0x40B3CC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==12465==    by 0x8049E7E: main (Memory.c:191)
+==12465== 
+==12465== 160 bytes in 1 blocks are still reachable in loss record 40 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x8049DEB: main (Memory.c:164)
+==12465== 
+==12465== 172 bytes in 1 blocks are still reachable in loss record 41 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D9FA0: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 200 bytes in 1 blocks are still reachable in loss record 42 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40FE1D6: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BF4B: inputFunc (Memory.c:1066)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 256 bytes in 1 blocks are still reachable in loss record 43 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E18: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 256 bytes in 1 blocks are still reachable in loss record 44 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42DF523: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465== 
+==12465== 344 bytes in 1 blocks are still reachable in loss record 45 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4177359: __fopen_internal (iofopen.c:69)
+==12465==    by 0x417741D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==12465==    by 0x40CDADA: txt_open_for_append (in /usr/lib/libcommons.so)
+==12465==    by 0x40CDBE3: log_create (in /usr/lib/libcommons.so)
+==12465==    by 0x804B925: abrir_log (Memory.c:898)
+==12465==    by 0x8049931: main (Memory.c:69)
+==12465== 
+==12465== 751 bytes in 1 blocks are still reachable in loss record 46 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42DF5EB: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465== 
+==12465== 768 bytes in 1 blocks are still reachable in loss record 47 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103953: xrealloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E571C: rl_add_funmap_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5788: rl_initialize_funmap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C73: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 48 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F0690: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 49 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F06A4: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 50 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F06DA: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 51 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F06F4: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 52 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F070B: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,024 bytes in 1 blocks are still reachable in loss record 53 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F0722: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F4C2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E0B5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,064 bytes in 133 blocks are still reachable in loss record 54 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E56B9: rl_add_funmap_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5788: rl_initialize_funmap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C73: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 1,439 bytes in 1 blocks are still reachable in loss record 55 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42DEE3B: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465== 
+==12465== 1,904 bytes in 1 blocks are still reachable in loss record 56 of 66
+==12465==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D7572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF404: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DF993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D9FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DA39E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 2,032 bytes in 1 blocks are still reachable in loss record 57 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9FF8: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 2,056 bytes in 1 blocks are still reachable in loss record 58 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F95BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9E8E: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 4,080 bytes in 1 blocks are still reachable in loss record 59 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9FD4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 4,112 bytes in 2 blocks are still reachable in loss record 60 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F962D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9E8E: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 4,112 bytes in 2 blocks are still reachable in loss record 61 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F95BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9E99: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 4,112 bytes in 2 blocks are still reachable in loss record 62 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F962D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9E99: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 4,112 bytes in 2 blocks are still reachable in loss record 63 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F95BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9EA4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 4,112 bytes in 2 blocks are still reachable in loss record 64 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECB01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED62D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ED723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F962D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40F9EA4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465== 
+==12465== 5,964 bytes in 1 blocks are still reachable in loss record 65 of 66
+==12465==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x42D66B2: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42D6CBB: _nc_find_type_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x42DAAAA: tgetstr (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==12465==    by 0x40F9D91: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== 16,448 bytes in 8 blocks are still reachable in loss record 66 of 66
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x4103917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E5868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EC949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40ECAD5: rl_bind_keyseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EE22E: rl_parse_and_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40EE416: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1C82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x40E1E5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==12465==    by 0x804BEA9: inputFunc (Memory.c:1046)
+==12465==    by 0x40B3294: start_thread (pthread_create.c:333)
+==12465==    by 0x42000AD: clone (clone.S:114)
+==12465== 
+==12465== LEAK SUMMARY:
+==12465==    definitely lost: 8 bytes in 1 blocks
+==12465==    indirectly lost: 0 bytes in 0 blocks
+==12465==      possibly lost: 272 bytes in 2 blocks
+==12465==    still reachable: 65,298 bytes in 207 blocks
+==12465==         suppressed: 0 bytes in 0 blocks
+==12465== 
+==12465== Use --track-origins=yes to see where uninitialised values come from
+==12465== ERROR SUMMARY: 9 errors from 9 contexts (suppressed: 0 from 0)
+==12465== 
+==12465== 1 errors in context 1 of 9:
+==12465== Use of uninitialised value of size 4
+==12465==    at 0x40B25AD: list_del (list.h:72)
+==12465==    by 0x40B25AD: stack_list_del (allocatestack.c:145)
+==12465==    by 0x40B25AD: __deallocate_stack (allocatestack.c:767)
+==12465==    by 0x40B443F: pthread_join (pthread_join.c:111)
+==12465==    by 0x804A538: main (Memory.c:338)
+==12465== 
+==12465== 
+==12465== 1 errors in context 2 of 9:
+==12465== Invalid free() / delete / delete[] / realloc()
+==12465==    at 0x402D358: free (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x40B31A6: __free_tcb (pthread_create.c:237)
+==12465==    by 0x40B443F: pthread_join (pthread_join.c:111)
+==12465==    by 0x804A538: main (Memory.c:338)
+==12465==  Address 0xbed03fc1 is on thread 1's stack
+==12465== 
+==12465== 
+==12465== 1 errors in context 3 of 9:
+==12465== Syscall param socketcall.send(msg) points to uninitialised byte(s)
+==12465==    at 0x40BC549: send (send.c:35)
+==12465==    by 0x804A8B1: recieve (Memory.c:437)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465==  Address 0x431b350 is 0 bytes inside a block of size 2 alloc'd
+==12465==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A404: serializarGossipingTable (sockets.c:48)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== 
+==12465== 1 errors in context 4 of 9:
+==12465== Syscall param socketcall.send(args) points to uninitialised byte(s)
+==12465==    at 0x40BC549: send (send.c:35)
+==12465==    by 0x804A8B1: recieve (Memory.c:437)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465==  Address 0xbed039d8 is on thread 1's stack
+==12465==  in frame #0, created by send (send.c:29)
+==12465== 
+==12465== 
+==12465== 1 errors in context 5 of 9:
+==12465== Conditional jump or move depends on uninitialised value(s)
+==12465==    at 0x403A492: serializarGossipingTable (sockets.c:59)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== 
+==12465== 1 errors in context 6 of 9:
+==12465== Conditional jump or move depends on uninitialised value(s)
+==12465==    at 0x402C136: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==12465==    by 0x403A404: serializarGossipingTable (sockets.c:48)
+==12465==    by 0x804A885: recieve (Memory.c:435)
+==12465==    by 0x804A428: main (Memory.c:316)
+==12465== 
+==12465== ERROR SUMMARY: 9 errors from 9 contexts (suppressed: 0 from 0)
