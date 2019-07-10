@@ -598,7 +598,7 @@ int interpretarComando(int header, char* parametros, int exec_index) {
 		add(parametros, exec_index);
 		break;
 	case METRICS:
-		metrics();
+		metrics(0);
 		break;
 	case -1:
 		break;
@@ -649,6 +649,7 @@ int select_kernel(char* parametros, int exec_index) {
 			//printf("%s\n", respuesta);
 			free(respuesta);
 			consistencia = obtenerConsistencia(package.tabla);
+
 			sumar_metricas(SELECT, consistencia, timestampDiferencia);
 
 		} else {
@@ -792,17 +793,17 @@ void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
 		switch (consistencia) {
 		case SC:
 			select_sc.cantidad++;
-			select_sc.tiempoTotal = +tiempo;
+			select_sc.tiempoTotal += tiempo;
 			break;
 
 		case EC:
 			select_ec.cantidad++;
-			select_ec.tiempoTotal = +tiempo;
+			select_ec.tiempoTotal += tiempo;
 			break;
 
 		case SHC:
 			select_shc.cantidad++;
-			select_shc.tiempoTotal = +tiempo;
+			select_shc.tiempoTotal += tiempo;
 			break;
 
 		}
@@ -813,17 +814,17 @@ void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
 		switch (consistencia) {
 		case SC:
 			insert_sc.cantidad++;
-			insert_sc.tiempoTotal = +tiempo;
+			insert_sc.tiempoTotal += tiempo;
 			break;
 
 		case EC:
 			insert_ec.cantidad++;
-			insert_ec.tiempoTotal = +tiempo;
+			insert_ec.tiempoTotal += tiempo;
 			break;
 
 		case SHC:
 			insert_shc.cantidad++;
-			insert_shc.tiempoTotal = +tiempo;
+			insert_shc.tiempoTotal += tiempo;
 			break;
 
 		}
@@ -854,7 +855,8 @@ void* metricsCada30() {
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
-		metrics();
+		printf("TimeStamp %d", time(NULL));
+		metrics(1);
 
 		select_sc.tiempoTotal = 0;
 		select_sc.cantidad = 0;
@@ -903,7 +905,7 @@ void drop(char* parametros, int exec_index) {
 		}
 		pthread_mutex_unlock(&memorias_mutex);
 		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index,
-				NULL);
+		NULL);
 
 		if (socketAEnviar != -1) {
 			//printf("Lo mande\n");
@@ -1164,22 +1166,87 @@ void add(char* parametros, int serverSocket) {
 	free(parametrosSeparados);
 }
 
-void metrics() {
+void metrics(int esMetricaDe30) {
+
+	void lockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_lock(mutex);
+	}
+
+	void unLockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_unlock(mutex);
+	}
 
 	void mostrarMemoria(Memoria* mem) {
 		printf("Insert: %d \n", mem->cantidad_insert);
 		printf("Select: %d \n", mem->cantidad_select);
 	}
 
-	list_iterate(memoriasConectadas, &mostrarMemoria);
+	float tiempoPromedio;
 
+	//Read Latency
+	if (select_sc.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) select_sc.tiempoTotal
+				/ (double) select_sc.cantidad;
+	}
+	printf("Read Latency SC %f \n", tiempoPromedio);
+
+	if (select_ec.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) select_ec.tiempoTotal
+				/ (double) select_ec.cantidad;
+	}
+	printf("Read Latency EC %f \n", tiempoPromedio);
+
+	if (select_shc.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) select_shc.tiempoTotal
+				/ (double) select_shc.cantidad;
+	}
+	printf("Read Latency SHC %f \n", tiempoPromedio);
+
+	//Write Latency
+	if (insert_sc.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) insert_sc.tiempoTotal
+				/ (double) insert_sc.cantidad;
+	}
+	printf("Write Latency SC %f \n", tiempoPromedio);
+
+	if (insert_ec.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) insert_ec.tiempoTotal
+				/ (double) insert_ec.cantidad;
+
+	}
+	printf("Write Latency EC %f \n", tiempoPromedio);
+
+	if (insert_shc.cantidad == 0) {
+		tiempoPromedio = 0;
+	} else {
+		tiempoPromedio = (double) insert_shc.tiempoTotal
+				/ (double) insert_shc.cantidad;
+
+	}
+	printf("Write Latency SHC %f \n", tiempoPromedio);
+
+	//Reads
 	printf("Reads SC: %d \n", select_sc.cantidad);
 	printf("Reads EC: %d \n", select_ec.cantidad);
 	printf("Reads SHC: %d \n", select_shc.cantidad);
 
+	//Writes
 	printf("Writes SC: %d \n", insert_sc.cantidad);
 	printf("Writes EC: %d \n", insert_ec.cantidad);
 	printf("Writes SHC: %d \n", insert_shc.cantidad);
+
+	//Memory Loads
+	list_iterate(memoriasConectadas, &mostrarMemoria);
 
 }
 
