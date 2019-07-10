@@ -29,12 +29,14 @@ pthread_mutex_t bloqueo_tablas_mutex;
 pthread_mutex_t logger_mutex;
 pthread_mutex_t tiempos_compactacion_mutex;
 pthread_mutex_t pantalla_mutex;
+pthread_mutex_t config_mutex;
 
 t_list* metadatas_tablas;
 t_list* mem_table;
 t_dictionary* bloqueo_tablas;
 
 char* ruta;
+char* archivo_config;
 void *receptorDeConsultas(void *);
 int lfs_blocks;
 int lfs_block_size;
@@ -49,17 +51,19 @@ int main() {
 	pantalla =  log_create("pantalla.log", "LFS", 1, LOG_LEVEL_DEBUG);
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
-	char* entrada = leerConsola();
-	config_path = malloc(strlen(entrada));
-	strcpy(config_path, entrada);
-	free(entrada);
+	archivo_config = leerConsola();
+	config_path = malloc(strlen(archivo_config));
+	strcpy(config_path, archivo_config);
 
 	config = config_create(config_path);
 
-	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	char* una_ruta = config_get_string_value(config, "PUNTO_MONTAJE");
+	ruta = malloc(strlen(una_ruta)+1);
+	strcpy(ruta, una_ruta);
 	if (!existe_filesystem(ruta)) {
 		montar_filesystem();
 	}
+
 	pthread_mutex_init(&mem_table_mutex, NULL);
 	pthread_mutex_init(&bitarray_mutex, NULL);
 	pthread_mutex_init(&metadatas_tablas_mutex, NULL);
@@ -67,14 +71,12 @@ int main() {
 	pthread_mutex_init(&logger_mutex, NULL);
 	pthread_mutex_init(&tiempos_compactacion_mutex, NULL);
 	pthread_mutex_init(&pantalla_mutex, NULL);
+	pthread_mutex_init(&config_mutex, NULL);
 
 	bloqueo_tablas = dictionary_create();
 	mem_table = list_create();
-	logger = iniciar_logger();
-	//t_config* config = leer_config();
 
 	char* puerto = config_get_string_value(config, "PUERTO_ESCUCHA");
-	ruta = config_get_string_value(config, "PUNTO_MONTAJE");
 	loguear(puerto, DEBUG);
 	max_value_size = config_get_int_value(config, "TAMANIO_VALUE");
 	tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
@@ -92,10 +94,25 @@ int main() {
 	pthread_t threadConsola;
 	int retorno_de_consola;
 
+	pthread_t threadInotify;
+	int inotify_thread;
+
 	levantar_bitmap(ruta);
 
 	loguear("Levante el Bitmap",DEBUG);
 	loguear("Primer bloque libre: %i",DEBUG, primer_bloque_libre_sin_set());
+
+
+	log_debug(pantalla, archivo_config);
+
+	inotify_thread = pthread_create(&threadInotify, NULL,
+			(void*)watch_config, archivo_config);
+	if(inotify_thread) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				retorno_de_consola);
+		exit(EXIT_FAILURE);
+	}
+	pthread_detach(inotify_thread);
 
 
 	retorno_de_consola = pthread_create(&threadConsola, NULL,
@@ -267,7 +284,9 @@ void unlock_mutex_tabla(char* nombre_tabla) {
 
 void* ejecutar_comando(int header, void* package) {
 	loguear("Ejecutando", DEBUG);
+	pthread_mutex_lock(&config_mutex);
 	usleep(retardo * 1000);
+	pthread_mutex_unlock(&config_mutex);
 	switch (header) {
 	case SELECT:
 		return lfs_select((t_PackageSelect*) package);
@@ -296,15 +315,12 @@ Registro* lfs_select(t_PackageSelect* package) {
 
 	log_debug(logger, mi_ruta);
 
-	lock_mutex_tabla(package->tabla);
 	if (!existe_tabla(mi_ruta)) {
-		unlock_mutex_tabla(package->tabla);
 		loguear("No existe la tabla %s", ERROR, package->tabla);
 		Registro* registro = malloc(sizeof(Registro));
 		registro->value = NULL;
 		return registro;
 	}
-	unlock_mutex_tabla(package->tabla);
 	loguear("Existe tabla, BRO!", DEBUG);
 
 	Metadata* metadata = obtener_metadata(mi_ruta);
@@ -590,7 +606,6 @@ t_list* lfs_describe() {
 	char* tablas_path = string_new();
 	string_append(&tablas_path, ruta);
 	string_append(&tablas_path, "/Tables/");
-	log_debug(logger, tablas_path);
 	loguear("%s", DEBUG, tablas_path);
 	tables_directory = opendir(tablas_path);
 	if (tables_directory) {
@@ -1320,7 +1335,9 @@ void *recibir_por_consola() {
 
 void interpretarComando(int header, char* parametros) {
 
+	pthread_mutex_lock(&config_mutex);
 	usleep(retardo * 1000);
+	pthread_mutex_unlock(&config_mutex);
 	void* package;
 	switch (header) {
 	case SELECT:
@@ -1362,40 +1379,43 @@ void interpretarComando(int header, char* parametros) {
 		break;
 	case DESCRIBE:
 		package = (t_PackageDescribe*) malloc(sizeof(t_PackageDescribe));
-		if (parametros == NULL) {
-			mostrar_en_pantalla("Sin nombre de tabla", INFO);
-		}
 
 		if (!fill_package_describe(package, parametros)) {
 			mostrar_en_pantalla("Parametros incorrectos", ERROR);
 			break;
 		}
 
-		if (((t_PackageDescribe*) package)->nombre_tabla) {
-			Metadata* metadata;
-			t_list* lista = lfs_describe_a_table(((t_PackageDescribe*) package)->nombre_tabla);
-			if (lista != NULL) {
-				metadata = list_get(lista, 0);
-				_mostrar_metadata(metadata);
-				loguear_metadata(metadata);
-				free(metadata);
-			}
-			if (lista == NULL) {
-				mostrar_en_pantalla("No se hallo la metadata de la tabla: %s", INFO,
-						((t_PackageDescribe*) package)->nombre_tabla);
+		if (parametros == NULL) {
+			t_list* metadatas = lfs_describe();
+			if (metadatas) {
+				list_iterate(metadatas, (void*) _mostrar_metadata);
+				list_destroy_and_destroy_elements(metadatas, (void*) free);
+				free(((t_PackageDescribe*) package)->nombre_tabla);
+				free(package);
 				break;
 			}
-			free(((t_PackageDescribe*) package)->nombre_tabla);
+			mostrar_en_pantalla("No hay tablas en el file system", INFO);
 			free(package);
 			break;
 		}
-		t_list* metadatas = lfs_describe();
-		list_iterate(metadatas, (void*) _mostrar_metadata);
 
-		list_destroy_and_destroy_elements(metadatas, (void*) free);
+		Metadata* metadata;
+		t_list* lista = lfs_describe_a_table(
+				((t_PackageDescribe*) package)->nombre_tabla);
+		if (lista != NULL) {
+			metadata = list_get(lista, 0);
+			_mostrar_metadata(metadata);
+			loguear_metadata(metadata);
+			free(metadata);
+		}
+		if (lista == NULL) {
+			mostrar_en_pantalla("No se hallo la metadata de la tabla: %s", INFO,
+					((t_PackageDescribe*) package)->nombre_tabla);
+		}
 		free(((t_PackageDescribe*) package)->nombre_tabla);
 		free(package);
 		break;
+
 	case DROP:
 		package = (t_PackageDrop*) malloc(sizeof(t_PackageDrop));
 
@@ -1827,7 +1847,9 @@ void* dump() {
 
 	while (1) {
 		loguear("Voy a intentar dumpear", DEBUG);
+		pthread_mutex_lock(&config_mutex);
 		int nanosegundos_dumpeo = tiempo_dump * 1000;
+		pthread_mutex_unlock(&config_mutex);
 		usleep(nanosegundos_dumpeo);
 
 		pthread_mutex_lock(&mem_table_mutex);
@@ -2220,3 +2242,57 @@ void _mostrar_metadata(Metadata* metadata) {
 			metadata->compaction_time);
 }
 
+void* watch_config(char* config) {
+	int wd, fd;
+
+	    fd = inotify_init();
+	    if ( fd < 0 ) {
+	        perror( "Couldn't initialize inotify");
+	    }
+
+	    wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
+	    if (wd == -1) {
+	        printf("Couldn't add watch to %s\n",config);
+	    } else {
+	        printf("Watching:: %s\n",config);
+	    }
+
+	    /* do it forever*/
+	    while(1) {
+	        get_event(fd);
+	    }
+
+	    /* Clean up*/
+	    inotify_rm_watch( fd, wd );
+	    close( fd );
+
+}
+
+void get_event (int fd) {
+
+    char buffer[BUF_LEN];
+    int length, i = 0;
+
+    length = read( fd, buffer, BUF_LEN );
+    if ( length < 0 ) {
+        perror( "read" );
+    }
+
+
+    while ( i < length) {
+        struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
+        if ( event->len && !strcmp(event->name, "lfs.config")) {
+            if ( event->mask & IN_MODIFY) {
+            	mostrar_en_pantalla("Se modifico la config", INFO);
+                config_destroy(config);
+                config = config_create(archivo_config);
+                pthread_mutex_lock(&config_mutex);
+                tiempo_dump = config_get_int_value(config, "TIEMPO_DUMP");
+                retardo = config_get_int_value(config, "RETARDO");
+                pthread_mutex_unlock(&config_mutex);
+            }
+
+        }
+        i += EVENT_SIZE + event->len;
+    }
+}

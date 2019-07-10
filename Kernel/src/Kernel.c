@@ -19,6 +19,7 @@ t_log* logger_Kernel;
 int quantum;
 int tiempoDescribe;
 int multiprocesamiento;
+int metadata_refresh;
 t_queue* colaReady;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
@@ -29,6 +30,7 @@ pthread_mutex_t logger_mutex;
 pthread_mutex_t tablas_actuales_mutex;
 pthread_mutex_t memorias_mutex;
 pthread_mutex_t gossiping_mutex;
+pthread_mutex_t config_mutex;
 //sincro
 
 // metricas
@@ -47,6 +49,8 @@ Metricas insert_shc;
 // metricas
 
 t_list* exec_mutexes;
+
+t_config *conection_conf;
 
 char* ip_destino;
 char* puerto_destino;
@@ -99,7 +103,6 @@ int main() {
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-	t_config *conection_conf;
 	abrir_config(&conection_conf);
 
 	char* ip = config_get_string_value(conection_conf, "IP");
@@ -113,21 +116,21 @@ int main() {
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
 	multiprocesamiento = config_get_int_value(conection_conf,
 			"MULTIPROCESAMIENTO");
-	tiempoDescribe = 1000
-			* config_get_int_value(conection_conf, "METADATA_REFRESH");
-	//multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
+	metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
+	tiempoDescribe = 1000 * metadata_refresh;
+	multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
 
 	tablaGossiping = list_create();
 
 	pthread_mutex_init(&logger_mutex, NULL);
 	pthread_mutex_init(&gossiping_mutex, NULL);
-
 	pthread_mutex_init(&memorias_mutex, NULL);
+	pthread_mutex_init(&config_mutex, NULL);
+
 
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
-	config_destroy(conection_conf);
 
 	/*
 	 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -277,7 +280,19 @@ int main() {
 
 	//threadDescribe
 
-	//threadDescribe
+	//thread Inotify
+	pthread_t threadInotify;
+	int inotify_thread;
+
+	inotify_thread = pthread_create(&threadInotify, NULL, (void*) watch_config,
+			CONFIG_PATH);
+	if (gossipingret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				gossipingret);
+		exit(EXIT_FAILURE);
+	}
+
+	//thread Inotify
 
 	//threadMetrics
 	pthread_t threadM;
@@ -289,7 +304,6 @@ int main() {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret4);
 		exit(EXIT_FAILURE);
 	}
-
 	//threadMetrics
 
 	int enviar = 1;
@@ -357,6 +371,7 @@ int main() {
 	 *	Asique ahora solo me queda cerrar la conexion con un close();
 	 */
 
+	config_destroy(conection_conf);
 	close(serverSocket);
 	log_destroy(logger_Kernel);
 	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
@@ -1111,7 +1126,9 @@ void* describeCadaX(int serverSocket) {
 	}
 
 	while (true) {
+		pthread_mutex_lock(&config_mutex);
 		usleep(tiempoDescribe);
+		pthread_mutex_unlock(&config_mutex);
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
@@ -1384,9 +1401,10 @@ int ejecutar_quantum(Script** script, int index) {
 	int ejecutadas = 1;
 	int ejecucionCorrecta = 1;
 	int header;
+	//pthread_mutex_lock(&config_mutex);
 	do {
 		printf("Ejecutando un quantum \n");
-		//printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
+		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
 
 		ejecucionCorrecta = 1;
 		entradaValida = 1;
@@ -1416,9 +1434,70 @@ int ejecutar_quantum(Script** script, int index) {
 
 	} while ((scriptEnExec->index < scriptEnExec->cant_lineas)
 			&& (ejecutadas <= quantum));
+	//pthread_mutex_unlock(&config_mutex);
 	if (scriptEnExec->index == scriptEnExec->cant_lineas) {
 		return CORTE_SCRIPT_POR_FINALIZACION;
 	}
 	return CORTE_SCRIPT_POR_FIN_QUANTUM;
 }
 
+
+void* watch_config(char* config) {
+	int wd, fd;
+
+	    fd = inotify_init();
+	    if ( fd < 0 ) {
+	        perror( "Couldn't initialize inotify");
+	    }
+
+	    wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
+	    if (wd == -1) {
+	        printf("Couldn't add watch to %s\n",config);
+	    } else {
+	        printf("Watching:: %s\n",config);
+	    }
+
+	    /* do it forever*/
+	    while(1) {
+	        get_event(fd);
+	    }
+
+	    /* Clean up*/
+	    inotify_rm_watch( fd, wd );
+	    close( fd );
+
+}
+
+void get_event (int fd) {
+
+    char buffer[BUF_LEN];
+    int length, i = 0;
+
+    length = read( fd, buffer, BUF_LEN );
+    if ( length < 0 ) {
+        perror( "read" );
+    }
+
+
+    while ( i < length) {
+        struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
+        if ( event->len && !strcmp(event->name, CONFIG_PATH)) {
+            if ( event->mask & IN_MODIFY) {
+            	log_info(logger_Kernel, "Antes: %i", metadata_refresh);
+            	log_info(logger_Kernel, "Antes: %i", quantum);
+            	log_info(logger_Kernel, "Se modifico la config");
+            	pthread_mutex_lock(&config_mutex);
+                config_destroy(conection_conf);
+                conection_conf = config_create(CONFIG_PATH);
+            	log_info(logger_Kernel, "Cree de nuevo la config");
+                metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
+                quantum = config_get_int_value(conection_conf, "QUANTUM");
+                log_info(logger_Kernel, "Despues: %i", metadata_refresh);
+				log_info(logger_Kernel, "Despues: %i", quantum);
+                pthread_mutex_unlock(&config_mutex);
+            }
+
+        }
+        i += EVENT_SIZE + event->len;
+    }
+}
