@@ -146,8 +146,8 @@ int main() {
 	 */
 
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
-	mem_nueva->cantidad_insert=0;
-	mem_nueva->cantidad_select=0;
+	mem_nueva->cantidad_insert = 0;
+	mem_nueva->cantidad_select = 0;
 	strcpy(mem_nueva->con.puerto, puerto_destino);
 	strcpy(mem_nueva->con.ip, ip_destino);
 	mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
@@ -277,21 +277,20 @@ int main() {
 
 	//threadDescribe
 
-
 	//threadDescribe
 
-		//threadMetrics
-		pthread_t threadM;
-		int iret4;
+	//threadMetrics
+	pthread_t threadM;
+	int iret4;
 
-		iret4 = pthread_create(&threadM, NULL, metricsCada30, NULL);
+	iret4 = pthread_create(&threadM, NULL, metricsCada30, NULL);
 
-		if (iret4) {
-			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret4);
-			exit(EXIT_FAILURE);
-		}
+	if (iret4) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret4);
+		exit(EXIT_FAILURE);
+	}
 
-		//threadMetrics
+	//threadMetrics
 
 	int enviar = 1;
 	int entradaValida;
@@ -393,16 +392,16 @@ int obtenerConsistencia(char* tablaPath) {
 	return consistencia;
 }
 
-int socketAUtilizar(char* tablaPath, int exec_index) {
+int socketAUtilizar(char* tablaPath, int exec_index, int tipo_consulta) {
 	int consistencia = obtenerConsistencia(tablaPath);
 
 	if (consistencia != NULL) {
-		return socketFromConsistency(consistencia, exec_index);
+		return socketFromConsistency(consistencia, exec_index, tipo_consulta);
 	}
 	return -1;
 }
 
-int socketFromConsistency(int consistencia, int exec_index, long tiempo, int tipo_consulta) {
+int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -430,6 +429,13 @@ int socketFromConsistency(int consistencia, int exec_index, long tiempo, int tip
 	void esLaMemoria(Memoria* mem) {
 		if (mem->numero == num_mem) {
 			socket = mem->socket[exec_index];
+			if (tipo_consulta == SELECT) {
+				mem->cantidad_select++;
+			}
+
+			if (tipo_consulta == INSERT) {
+				mem->cantidad_insert++;
+			}
 		}
 	}
 
@@ -455,8 +461,8 @@ void* intentarEstablecerConexion() {
 
 				Memoria* mem_nueva = malloc(sizeof(Memoria));
 
-				mem_nueva->cantidad_insert=0;
-				mem_nueva->cantidad_select=0;
+				mem_nueva->cantidad_insert = 0;
+				mem_nueva->cantidad_select = 0;
 				mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
 				for (int sock = 0; sock < multiprocesamiento; sock++) {
 					serverSocket = socket(serverInfo->ai_family,
@@ -608,7 +614,6 @@ int select_kernel(char* parametros, int exec_index) {
 	t_PackageSelect package;
 	int consistencia;
 
-
 	if (!fill_package_select(&package, parametros)) {
 
 		printf("Incorrecta cantidad de parametros\n");
@@ -622,10 +627,9 @@ int select_kernel(char* parametros, int exec_index) {
 
 		serializedPackage = serializarSelect(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla, exec_index);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, SELECT);
 
 		if (socketAEnviar != -1) {
-
 
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -645,7 +649,7 @@ int select_kernel(char* parametros, int exec_index) {
 			//printf("%s\n", respuesta);
 			free(respuesta);
 			consistencia = obtenerConsistencia(package.tabla);
-			sumar_metricas(SELECT,consistencia,timestampDiferencia);
+			sumar_metricas(SELECT, consistencia, timestampDiferencia);
 
 		} else {
 			ok = 0;
@@ -680,7 +684,7 @@ int insert_kernel(char* parametros, int exec_index) {
 
 		serializedPackage = serializarInsert(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla, exec_index);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, INSERT);
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -708,7 +712,8 @@ int insert_kernel(char* parametros, int exec_index) {
 
 					free(respuesta);
 					respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
-					long timestampDiferencia = (long) time(NULL) - timestampInical;
+					long timestampDiferencia = (long) time(NULL)
+							- timestampInical;
 
 					if (!(int) respuesta) {
 						desconectar_mem(socketAEnviar);
@@ -726,7 +731,7 @@ int insert_kernel(char* parametros, int exec_index) {
 
 			free(respuesta);
 			consistencia = obtenerConsistencia(package.tabla);
-			sumar_metricas(INSERT,consistencia,timestampDiferencia);
+			sumar_metricas(INSERT, consistencia, timestampDiferencia);
 
 			//printf("%s\n", respuesta);
 
@@ -831,13 +836,23 @@ void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
 void* metricsCada30() {
 
 	void inicializarMem(Memoria* mem) {
-		mem->cantidad_insert=0;
-		mem->cantidad_select=0;
+		mem->cantidad_insert = 0;
+		mem->cantidad_select = 0;
+	}
+
+	void lockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_lock(mutex);
+	}
+
+	void unLockMutexes(pthread_mutex_t* mutex) {
+		pthread_mutex_unlock(mutex);
 	}
 
 	while (true) {
 
 		sleep(30);
+
+		list_iterate(exec_mutexes, &lockMutexes);
 
 		metrics();
 
@@ -859,11 +874,12 @@ void* metricsCada30() {
 		insert_shc.tiempoTotal = 0;
 		insert_shc.cantidad = 0;
 
-		list_iterate(memoriasConectadas,&inicializarMem);
+		list_iterate(memoriasConectadas, &inicializarMem);
+
+		list_iterate(exec_mutexes, &unLockMutexes);
 
 	}
 }
-
 
 void drop(char* parametros, int exec_index) {
 	char *serializedPackage;
@@ -886,7 +902,8 @@ void drop(char* parametros, int exec_index) {
 			return;
 		}
 		pthread_mutex_unlock(&memorias_mutex);
-		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index);
+		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index,
+				NULL);
 
 		if (socketAEnviar != -1) {
 			//printf("Lo mande\n");
@@ -1147,15 +1164,14 @@ void add(char* parametros, int serverSocket) {
 	free(parametrosSeparados);
 }
 
-
 void metrics() {
 
 	void mostrarMemoria(Memoria* mem) {
-		printf("Insert: %d",mem->cantidad_insert);
-		printf("Select: %d",mem->cantidad_select);
+		printf("Insert: %d \n", mem->cantidad_insert);
+		printf("Select: %d \n", mem->cantidad_select);
 	}
 
-	list_iterate(memoriasConectadas,&mostrarMemoria);
+	list_iterate(memoriasConectadas, &mostrarMemoria);
 
 	printf("Reads SC: %d \n", select_sc.cantidad);
 	printf("Reads EC: %d \n", select_ec.cantidad);
