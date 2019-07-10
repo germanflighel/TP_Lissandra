@@ -21,7 +21,7 @@
 #include <commons/collections/dictionary.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
+#include <sys/inotify.h>
 
 
 #define CONFIG_PATH "KernelSocket.config"
@@ -29,6 +29,9 @@
 #define CORTE_SCRIPT_POR_LINEA_ERRONEA -10
 #define CORTE_SCRIPT_POR_FIN_QUANTUM -9
 #define CORTE_SCRIPT_POR_FINALIZACION -8
+
+#define EVENT_SIZE  ( sizeof (struct inotify_event) )
+#define BUF_LEN     ( 1024 * ( EVENT_SIZE + 16 ) )
 
 
 t_list* tablas_actuales;
@@ -40,7 +43,7 @@ typedef struct Tabla {
 typedef struct Memoria {
 	int* socket;
 	int numero;
-	int puerto;
+	Seed con;
 } Memoria;
 
 typedef struct Script {
@@ -50,6 +53,7 @@ typedef struct Script {
 } Script;
 
 t_list* memoriasConectadas;
+t_list* tablaGossiping;
 
 t_log* iniciar_logger(void);
 void abrir_config(t_config **);
@@ -70,6 +74,7 @@ Script* levantar_script(char*);
 void* exec(int);
 void* intentarEstablecerConexion();
 void* describeCadaX(int);
+void* watch_config(char*);
 
 
 #endif

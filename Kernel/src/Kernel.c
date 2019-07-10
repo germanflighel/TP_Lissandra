@@ -19,6 +19,7 @@ t_log* logger_Kernel;
 int quantum;
 int tiempoDescribe;
 int multiprocesamiento;
+int metadata_refresh;
 t_queue* colaReady;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
@@ -28,16 +29,22 @@ pthread_mutex_t eventual_mutex;
 pthread_mutex_t logger_mutex;
 pthread_mutex_t tablas_actuales_mutex;
 pthread_mutex_t memorias_mutex;
+pthread_mutex_t gossiping_mutex;
+pthread_mutex_t config_mutex;
 //sincro
 
 t_list* exec_mutexes;
 
+t_config *conection_conf;
+
 char* ip_destino;
-char** puertos_posibles;
+char* puerto_destino;
 struct addrinfo hints;
 
 int strongC = NULL;
 t_queue* eventualC;
+
+void *intercambiarTabla();
 
 int main() {
 	/*
@@ -47,7 +54,6 @@ int main() {
 	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
 	 *
 	 */
-	char* puerto;
 
 	logger_Kernel = iniciar_logger();
 
@@ -55,33 +61,34 @@ int main() {
 	hints.ai_family = AF_UNSPEC; // Permite que la maquina se encargue de verificar si usamos IPv4 o IPv6
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
-	t_config *conection_conf;
 	abrir_config(&conection_conf);
 
 	char* ip = config_get_string_value(conection_conf, "IP");
 	ip_destino = malloc(strlen(ip) + 1);
 	strcpy(ip_destino, ip);
 
-	puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
+	char* puerto = config_get_string_value(conection_conf, "PUERTO_MEMORIA");
+	puerto_destino = malloc(strlen(ip) + 1);
+	strcpy(puerto_destino, puerto);
+
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
 	multiprocesamiento = config_get_int_value(conection_conf,
 			"MULTIPROCESAMIENTO");
-	tiempoDescribe = 1000
-			* config_get_int_value(conection_conf, "METADATA_REFRESH");
-	//multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
-	//printf("LLegue\n");
-	puertos_posibles = config_get_array_value(conection_conf, "PUERTOS");
-	//printf("LLegue\n");
+	metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
+	tiempoDescribe = 1000 * metadata_refresh;
+	multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
+
+	tablaGossiping = list_create();
 
 	pthread_mutex_init(&logger_mutex, NULL);
-	log_info_s(logger_Kernel, puerto);
-
+	pthread_mutex_init(&gossiping_mutex, NULL);
 	pthread_mutex_init(&memorias_mutex, NULL);
+	pthread_mutex_init(&config_mutex, NULL);
+
 
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
 
-	config_destroy(conection_conf);
 
 	/*
 	 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -100,7 +107,8 @@ int main() {
 	 */
 
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
-	mem_nueva->puerto = atoi(puerto);
+	strcpy(mem_nueva->con.puerto, puerto_destino);
+	strcpy(mem_nueva->con.ip, ip_destino);
 	mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
 	int num_memoria;
 	for (int sock = 0; sock < multiprocesamiento; sock++) {
@@ -201,6 +209,18 @@ int main() {
 	}
 	//threadConexiones
 
+
+	//thread gossiping
+	pthread_t threadG;
+	int gossipingret;
+
+	gossipingret = pthread_create(&threadG, NULL, intercambiarTabla, NULL);
+	if (gossipingret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", gossipingret);
+		exit(EXIT_FAILURE);
+	}
+	//thread gossiping
+
 	//threadDescribe
 
 	pthread_t threadD;
@@ -215,6 +235,22 @@ int main() {
 	}
 
 	//threadDescribe
+
+	//thread Inotify
+	pthread_t threadInotify;
+	int inotify_thread;
+
+	inotify_thread = pthread_create(&threadInotify, NULL, (void*) watch_config,
+			CONFIG_PATH);
+	if (gossipingret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				gossipingret);
+		exit(EXIT_FAILURE);
+	}
+
+	//thread Inotify
+
+
 	int enviar = 1;
 	int entradaValida;
 	t_PackagePosta package;
@@ -280,6 +316,7 @@ int main() {
 	 *	Asique ahora solo me queda cerrar la conexion con un close();
 	 */
 
+	config_destroy(conection_conf);
 	close(serverSocket);
 	log_destroy(logger_Kernel);
 	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
@@ -363,23 +400,17 @@ int socketFromConsistency(int consistencia, int exec_index) {
 }
 
 void* intentarEstablecerConexion() {
-	int i;
 	int serverSocket;
 	int num_memoria;
 	int conecte;
 
 	while (true) {
-
-		i = 0;
-
-		while (puertos_posibles[i] != NULL) {
-
+		void conectarSiFueraPosible(Seed* seed) {
 			conecte = 0;
-			if (!puertoConectado(puertos_posibles[i])) {
+			if (!seedConectado(seed)) {
 
 				struct addrinfo *serverInfo;
-				getaddrinfo(ip_destino, puertos_posibles[i], &hints,
-						&serverInfo);
+				getaddrinfo(seed->ip, seed->puerto, &hints, &serverInfo);
 
 				Memoria* mem_nueva = malloc(sizeof(Memoria));
 				mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
@@ -399,7 +430,8 @@ void* intentarEstablecerConexion() {
 						pthread_mutex_unlock(&logger_mutex);
 
 						mem_nueva->numero = num_memoria;
-						mem_nueva->puerto = atoi(puertos_posibles[i]);
+						strcpy(mem_nueva->con.puerto, seed->puerto);
+						strcpy(mem_nueva->con.ip, seed->ip);
 						mem_nueva->socket[sock] = serverSocket;
 						conecte = 1;
 					}
@@ -411,23 +443,26 @@ void* intentarEstablecerConexion() {
 					list_add(memoriasConectadas, mem_nueva);
 					pthread_mutex_unlock(&memorias_mutex);
 				} else {
-					free(mem_nueva);
 					free(mem_nueva->socket);
+					free(mem_nueva);
 				}
 
 			}
-
-			i++;
 		}
+
+		pthread_mutex_lock(&gossiping_mutex);
+		list_iterate(tablaGossiping, &conectarSiFueraPosible);
+		pthread_mutex_unlock(&gossiping_mutex);
+
 		sleep(5);
 	}
 }
 
-int puertoConectado(char* puertoChar) {
-	int puerto = atoi(puertoChar);
+int seedConectado(Seed* seed) {
 
 	int tieneEsePuerto(Memoria* mem) {
-		return mem->puerto == puerto;
+		return (strcmp(mem->con.puerto, seed->puerto) == 0
+				&& strcmp(mem->con.ip, seed->ip) == 0);
 	}
 
 	pthread_mutex_lock(&memorias_mutex);
@@ -676,8 +711,58 @@ void describe(char* parametros, int exec_index) {
 	}
 }
 
-void drop(char* parametros, int serverSocket) {
-	printf("Recibi un drop.\n");
+void drop(char* parametros, int exec_index) {
+	char *serializedPackage;
+	int entradaValida = 1;
+	t_PackageDrop package;
+
+	if (!fill_package_drop(&package, parametros)) {
+		printf("Incorrecta cantidad de parametros\n");
+		entradaValida = 0;
+	}
+	if (entradaValida) {
+		log_info_s(logger_Kernel, "DROP enviado");
+
+		serializedPackage = serializarDrop(&package);
+
+		pthread_mutex_lock(&memorias_mutex);
+		if (!memoriasConectadas->elements_count) {
+			pthread_mutex_unlock(&memorias_mutex);
+			log_error_s(logger_Kernel, "No hay memorias conectadas");
+			return;
+		}
+		pthread_mutex_unlock(&memorias_mutex);
+		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index);
+
+		if (socketAEnviar != -1) {
+			//printf("Lo mande\n");
+			send(socketAEnviar, serializedPackage, package.total_size, 0);
+			eliminarTabla(package.nombre_tabla);
+
+		} else {
+			printf("Ninguna memoria asignada para este criterio\n");
+		}
+
+		dispose_package(&serializedPackage);
+
+	}
+}
+
+void eliminarTabla(char* nombre) {
+
+	int esDeLaTabla(Tabla *tabla) {
+		if (strcmp(tabla->nombre_tabla, nombre) == 0) {
+			return 1;
+		}
+		return 0;
+	}
+	;
+
+	pthread_mutex_lock(&tablas_actuales_mutex);
+	list_remove_and_destroy_by_condition(tablas_actuales, &esDeLaTabla,
+			(void*) free);
+	pthread_mutex_unlock(&tablas_actuales_mutex);
+
 }
 
 void recibirDescribe(int serverSocket) {
@@ -778,6 +863,69 @@ void journal(char* parametros, int exec_index) {
 	dispose_package(&serializedPackage);
 }
 
+void seedPackageToTable(t_PackageSeeds* seeds) {
+	pthread_mutex_lock(&gossiping_mutex);
+	for (int i = 0; i < seeds->cant_seeds; i++) {
+
+		int estaLaSeed(Seed* seed) {
+			return (strcmp(seed->puerto, seeds->seeds[i].puerto) == 0
+					&& strcmp(seed->ip, seeds->seeds[i].ip) == 0);
+		}
+
+		if (!list_any_satisfy(tablaGossiping, &estaLaSeed)) {
+			Seed* seed = malloc(sizeof(Seed));
+			strcpy(seed->puerto, seeds->seeds[i].puerto);
+			strcpy(seed->ip, seeds->seeds[i].ip);
+			list_add(tablaGossiping, seed);
+		};
+	}
+	pthread_mutex_unlock(&gossiping_mutex);
+}
+
+void *intercambiarTabla() {
+	int serverSocket;
+
+	while (true) {
+
+		struct addrinfo *serverInfo;
+
+		pthread_mutex_lock(&memorias_mutex);
+		Memoria* mem = (Memoria*) list_get(memoriasConectadas, 0);
+		getaddrinfo(mem->con.ip, mem->con.puerto, &hints, &serverInfo);
+		pthread_mutex_unlock(&memorias_mutex);
+
+		serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
+				serverInfo->ai_protocol);
+		if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
+				== 0) {
+
+			enviar_handshake(KERNEL, serverSocket);
+			int num_memoria = recibir_numero_memoria(serverSocket);
+
+			char* serializedPackage;
+			int header = GOSSIPING;
+			serializedPackage = malloc(sizeof(int));
+
+			memcpy(serializedPackage, &header, sizeof(int));
+
+			send(serverSocket, serializedPackage, sizeof(int), 0);
+
+			t_PackageSeeds* seeds = malloc(sizeof(t_PackageSeeds));
+			recieve_and_deserialize_gossipingTable(seeds, serverSocket);
+
+			seedPackageToTable(seeds);
+
+			free(serializedPackage);
+			free(seeds->seeds);
+			free(seeds);
+			close(serverSocket);
+		}
+		freeaddrinfo(serverInfo);
+
+		sleep(5);
+	}
+}
+
 void* describeCadaX(int serverSocket) {
 	// tiempoDescribe = config_get_int_value(conection_conf,"METADATA_REFRESH")*1000;
 
@@ -790,7 +938,9 @@ void* describeCadaX(int serverSocket) {
 	}
 
 	while (true) {
+		pthread_mutex_lock(&config_mutex);
 		usleep(tiempoDescribe);
+		pthread_mutex_unlock(&config_mutex);
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
@@ -988,9 +1138,10 @@ int ejecutar_quantum(Script** script, int index) {
 	int ejecutadas = 1;
 	int ejecucionCorrecta = 1;
 	int header;
+	//pthread_mutex_lock(&config_mutex);
 	do {
 		printf("Ejecutando un quantum \n");
-		//printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
+		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
 
 		ejecucionCorrecta = 1;
 		entradaValida = 1;
@@ -1020,9 +1171,70 @@ int ejecutar_quantum(Script** script, int index) {
 
 	} while ((scriptEnExec->index < scriptEnExec->cant_lineas)
 			&& (ejecutadas <= quantum));
+	//pthread_mutex_unlock(&config_mutex);
 	if (scriptEnExec->index == scriptEnExec->cant_lineas) {
 		return CORTE_SCRIPT_POR_FINALIZACION;
 	}
 	return CORTE_SCRIPT_POR_FIN_QUANTUM;
 }
 
+
+void* watch_config(char* config) {
+	int wd, fd;
+
+	    fd = inotify_init();
+	    if ( fd < 0 ) {
+	        perror( "Couldn't initialize inotify");
+	    }
+
+	    wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
+	    if (wd == -1) {
+	        printf("Couldn't add watch to %s\n",config);
+	    } else {
+	        printf("Watching:: %s\n",config);
+	    }
+
+	    /* do it forever*/
+	    while(1) {
+	        get_event(fd);
+	    }
+
+	    /* Clean up*/
+	    inotify_rm_watch( fd, wd );
+	    close( fd );
+
+}
+
+void get_event (int fd) {
+
+    char buffer[BUF_LEN];
+    int length, i = 0;
+
+    length = read( fd, buffer, BUF_LEN );
+    if ( length < 0 ) {
+        perror( "read" );
+    }
+
+
+    while ( i < length) {
+        struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
+        if ( event->len && !strcmp(event->name, CONFIG_PATH)) {
+            if ( event->mask & IN_MODIFY) {
+            	log_info(logger_Kernel, "Antes: %i", metadata_refresh);
+            	log_info(logger_Kernel, "Antes: %i", quantum);
+            	log_info(logger_Kernel, "Se modifico la config");
+            	pthread_mutex_lock(&config_mutex);
+                config_destroy(conection_conf);
+                conection_conf = config_create(CONFIG_PATH);
+            	log_info(logger_Kernel, "Cree de nuevo la config");
+                metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
+                quantum = config_get_int_value(conection_conf, "QUANTUM");
+                log_info(logger_Kernel, "Despues: %i", metadata_refresh);
+				log_info(logger_Kernel, "Despues: %i", quantum);
+                pthread_mutex_unlock(&config_mutex);
+            }
+
+        }
+        i += EVENT_SIZE + event->len;
+    }
+}
