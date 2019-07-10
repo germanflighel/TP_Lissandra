@@ -10,6 +10,7 @@
 #define RUN 7
 #define ADD 8
 #define ERROR 9
+#define METRICS 14
 #define GOSSIPING 88
 #define EXIT_CONSOLE -1
 
