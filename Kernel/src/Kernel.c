@@ -31,6 +31,21 @@ pthread_mutex_t memorias_mutex;
 pthread_mutex_t gossiping_mutex;
 //sincro
 
+// metricas
+
+int select_totales;
+int insert_totales;
+
+Metricas select_sc;
+Metricas select_ec;
+Metricas select_shc;
+
+Metricas insert_sc;
+Metricas insert_ec;
+Metricas insert_shc;
+
+// metricas
+
 t_list* exec_mutexes;
 
 char* ip_destino;
@@ -50,6 +65,33 @@ int main() {
 	 *  Obtiene los datos de la direccion de red y lo guarda en serverInfo.
 	 *
 	 */
+
+	//Inicializacion metricas
+	select_sc.consistencia = SC;
+	select_sc.tiempoTotal = 0;
+	select_sc.cantidad = 0;
+
+	select_ec.consistencia = EC;
+	select_ec.tiempoTotal = 0;
+	select_ec.cantidad = 0;
+
+	select_shc.consistencia = SHC;
+	select_shc.tiempoTotal = 0;
+	select_shc.cantidad = 0;
+
+	insert_sc.consistencia = SC;
+	select_sc.tiempoTotal = 0;
+	select_sc.cantidad = 0;
+
+	insert_ec.consistencia = EC;
+	select_ec.tiempoTotal = 0;
+	select_ec.cantidad = 0;
+
+	insert_shc.consistencia = SHC;
+	select_shc.tiempoTotal = 0;
+	select_shc.cantidad = 0;
+
+	//Inicializacion metricas
 
 	logger_Kernel = iniciar_logger();
 
@@ -104,6 +146,8 @@ int main() {
 	 */
 
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
+	mem_nueva->cantidad_insert=0;
+	mem_nueva->cantidad_select=0;
 	strcpy(mem_nueva->con.puerto, puerto_destino);
 	strcpy(mem_nueva->con.ip, ip_destino);
 	mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
@@ -206,14 +250,14 @@ int main() {
 	}
 	//threadConexiones
 
-
 	//thread gossiping
 	pthread_t threadG;
 	int gossipingret;
 
 	gossipingret = pthread_create(&threadG, NULL, intercambiarTabla, NULL);
 	if (gossipingret) {
-		fprintf(stderr, "Error - pthread_create() return code: %d\n", gossipingret);
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				gossipingret);
 		exit(EXIT_FAILURE);
 	}
 	//thread gossiping
@@ -232,6 +276,23 @@ int main() {
 	}
 
 	//threadDescribe
+
+
+	//threadDescribe
+
+		//threadMetrics
+		pthread_t threadM;
+		int iret4;
+
+		iret4 = pthread_create(&threadM, NULL, metricsCada30, NULL);
+
+		if (iret4) {
+			fprintf(stderr, "Error - pthread_create() return code: %d\n", iret4);
+			exit(EXIT_FAILURE);
+		}
+
+		//threadMetrics
+
 	int enviar = 1;
 	int entradaValida;
 	t_PackagePosta package;
@@ -341,7 +402,7 @@ int socketAUtilizar(char* tablaPath, int exec_index) {
 	return -1;
 }
 
-int socketFromConsistency(int consistencia, int exec_index) {
+int socketFromConsistency(int consistencia, int exec_index, long tiempo, int tipo_consulta) {
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -393,6 +454,9 @@ void* intentarEstablecerConexion() {
 				getaddrinfo(seed->ip, seed->puerto, &hints, &serverInfo);
 
 				Memoria* mem_nueva = malloc(sizeof(Memoria));
+
+				mem_nueva->cantidad_insert=0;
+				mem_nueva->cantidad_select=0;
 				mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
 				for (int sock = 0; sock < multiprocesamiento; sock++) {
 					serverSocket = socket(serverInfo->ai_family,
@@ -527,8 +591,8 @@ int interpretarComando(int header, char* parametros, int exec_index) {
 	case ADD:
 		add(parametros, exec_index);
 		break;
-	case 9:
-		metrics(parametros, exec_index);
+	case METRICS:
+		metrics();
 		break;
 	case -1:
 		break;
@@ -542,6 +606,8 @@ int select_kernel(char* parametros, int exec_index) {
 	char *serializedPackage;
 	int entradaValida = 1;
 	t_PackageSelect package;
+	int consistencia;
+
 
 	if (!fill_package_select(&package, parametros)) {
 
@@ -559,18 +625,27 @@ int select_kernel(char* parametros, int exec_index) {
 		int socketAEnviar = socketAUtilizar(package.tabla, exec_index);
 
 		if (socketAEnviar != -1) {
+
+
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
+
+			long timestampInical = (long) time(NULL);
 
 			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
 
+			long timestampDiferencia = (long) time(NULL) - timestampInical;
+
 			if (!(int) respuesta) {
 				desconectar_mem(socketAEnviar);
+				timestampDiferencia = 0;
 				log_error_s(logger_Kernel, "Memoria desconectada");
 			} else {
 				log_debug_s(logger_Kernel, respuesta);
 			}
 			//printf("%s\n", respuesta);
 			free(respuesta);
+			consistencia = obtenerConsistencia(package.tabla);
+			sumar_metricas(SELECT,consistencia,timestampDiferencia);
 
 		} else {
 			ok = 0;
@@ -589,6 +664,7 @@ int insert_kernel(char* parametros, int exec_index) {
 	char* serializedPackage;
 	int entradaValida = 1;
 	t_PackageInsert package;
+	int consistencia;
 
 	if (!fill_package_insert(&package, parametros, 0)) {
 		printf("Incorrecta cantidad de parametros\n");
@@ -608,7 +684,11 @@ int insert_kernel(char* parametros, int exec_index) {
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
+			long timestampInical = (long) time(NULL);
+
 			char* respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+
+			long timestampDiferencia = (long) time(NULL) - timestampInical;
 
 			if (!(int) respuesta) {
 				desconectar_mem(socketAEnviar);
@@ -624,12 +704,16 @@ int insert_kernel(char* parametros, int exec_index) {
 					journal("", exec_index);
 					send(socketAEnviar, serializedPackage, package.total_size,
 							0);
+					long timestampInical = (long) time(NULL);
 
 					free(respuesta);
 					respuesta = recieve_and_deserialize_mensaje(socketAEnviar);
+					long timestampDiferencia = (long) time(NULL) - timestampInical;
 
 					if (!(int) respuesta) {
 						desconectar_mem(socketAEnviar);
+						timestampDiferencia = 0;
+
 						log_error_s(logger_Kernel, "Memoria desconectada");
 					} else {
 						pthread_mutex_lock(&logger_mutex);
@@ -639,7 +723,11 @@ int insert_kernel(char* parametros, int exec_index) {
 				}
 
 			}
+
 			free(respuesta);
+			consistencia = obtenerConsistencia(package.tabla);
+			sumar_metricas(INSERT,consistencia,timestampDiferencia);
+
 			//printf("%s\n", respuesta);
 
 		} else {
@@ -690,6 +778,92 @@ void describe(char* parametros, int exec_index) {
 		dispose_package(&serializedPackage);
 	}
 }
+
+void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
+
+	switch (tipo_consulta) {
+	case SELECT:
+		select_totales++;
+		switch (consistencia) {
+		case SC:
+			select_sc.cantidad++;
+			select_sc.tiempoTotal = +tiempo;
+			break;
+
+		case EC:
+			select_ec.cantidad++;
+			select_ec.tiempoTotal = +tiempo;
+			break;
+
+		case SHC:
+			select_shc.cantidad++;
+			select_shc.tiempoTotal = +tiempo;
+			break;
+
+		}
+		break;
+
+	case INSERT:
+		insert_totales++;
+		switch (consistencia) {
+		case SC:
+			insert_sc.cantidad++;
+			insert_sc.tiempoTotal = +tiempo;
+			break;
+
+		case EC:
+			insert_ec.cantidad++;
+			insert_ec.tiempoTotal = +tiempo;
+			break;
+
+		case SHC:
+			insert_shc.cantidad++;
+			insert_shc.tiempoTotal = +tiempo;
+			break;
+
+		}
+		break;
+
+	}
+
+}
+
+void* metricsCada30() {
+
+	void inicializarMem(Memoria* mem) {
+		mem->cantidad_insert=0;
+		mem->cantidad_select=0;
+	}
+
+	while (true) {
+
+		sleep(30);
+
+		metrics();
+
+		select_sc.tiempoTotal = 0;
+		select_sc.cantidad = 0;
+
+		select_ec.tiempoTotal = 0;
+		select_ec.cantidad = 0;
+
+		select_shc.tiempoTotal = 0;
+		select_shc.cantidad = 0;
+
+		insert_sc.tiempoTotal = 0;
+		insert_sc.cantidad = 0;
+
+		insert_ec.tiempoTotal = 0;
+		insert_ec.cantidad = 0;
+
+		insert_shc.tiempoTotal = 0;
+		insert_shc.cantidad = 0;
+
+		list_iterate(memoriasConectadas,&inicializarMem);
+
+	}
+}
+
 
 void drop(char* parametros, int exec_index) {
 	char *serializedPackage;
@@ -973,8 +1147,24 @@ void add(char* parametros, int serverSocket) {
 	free(parametrosSeparados);
 }
 
-void metrics(char* parametros, int serverSocket) {
-	printf("Recibi un metrics.\n");
+
+void metrics() {
+
+	void mostrarMemoria(Memoria* mem) {
+		printf("Insert: %d",mem->cantidad_insert);
+		printf("Select: %d",mem->cantidad_select);
+	}
+
+	list_iterate(memoriasConectadas,&mostrarMemoria);
+
+	printf("Reads SC: %d \n", select_sc.cantidad);
+	printf("Reads EC: %d \n", select_ec.cantidad);
+	printf("Reads SHC: %d \n", select_shc.cantidad);
+
+	printf("Writes SC: %d \n", insert_sc.cantidad);
+	printf("Writes EC: %d \n", insert_ec.cantidad);
+	printf("Writes SHC: %d \n", insert_shc.cantidad);
+
 }
 
 int run(char* rutaRecibida, int serverSocket) {
