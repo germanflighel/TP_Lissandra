@@ -60,6 +60,7 @@ int strongC = NULL;
 t_queue* eventualC;
 
 void *intercambiarTabla();
+void *describeNuevo();
 
 int main() {
 	/*
@@ -118,7 +119,8 @@ int main() {
 			"MULTIPROCESAMIENTO");
 	metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
 	tiempoDescribe = 1000 * metadata_refresh;
-	multiprocesamiento = config_get_int_value(conection_conf, "MULTIPROCESAMIENTO");
+	multiprocesamiento = config_get_int_value(conection_conf,
+			"MULTIPROCESAMIENTO");
 
 	tablaGossiping = list_create();
 
@@ -127,10 +129,8 @@ int main() {
 	pthread_mutex_init(&memorias_mutex, NULL);
 	pthread_mutex_init(&config_mutex, NULL);
 
-
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
-
 
 	/*
 	 * 	Ya se quien y a donde me tengo que conectar... ������Y ahora?
@@ -271,7 +271,7 @@ int main() {
 
 	int iret3;
 
-	iret3 = pthread_create(&threadD, NULL, describeCadaX, (void*) serverSocket);
+	iret3 = pthread_create(&threadD, NULL, describeNuevo, NULL);
 
 	if (iret3) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret3);
@@ -285,7 +285,7 @@ int main() {
 	int inotify_thread;
 
 	inotify_thread = pthread_create(&threadInotify, NULL, (void*) watch_config,
-			CONFIG_PATH);
+	CONFIG_PATH);
 	if (gossipingret) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n",
 				gossipingret);
@@ -613,7 +613,7 @@ int interpretarComando(int header, char* parametros, int exec_index) {
 		add(parametros, exec_index);
 		break;
 	case METRICS:
-		metrics(0);
+		metrics();
 		break;
 	case -1:
 		break;
@@ -866,12 +866,10 @@ void* metricsCada30() {
 
 	while (true) {
 
-		sleep(30);
-
 		list_iterate(exec_mutexes, &lockMutexes);
 
-		printf("TimeStamp %d",time(NULL));
-		metrics(1);
+		printf("TimeStamp %d", time(NULL));
+		metrics();
 
 		select_sc.tiempoTotal = 0;
 		select_sc.cantidad = 0;
@@ -891,10 +889,13 @@ void* metricsCada30() {
 		insert_shc.tiempoTotal = 0;
 		insert_shc.cantidad = 0;
 
+		pthread_mutex_lock(&memorias_mutex);
 		list_iterate(memoriasConectadas, &inicializarMem);
+		pthread_mutex_unlock(&memorias_mutex);
 
 		list_iterate(exec_mutexes, &unLockMutexes);
 
+		sleep(30);
 	}
 }
 
@@ -1114,8 +1115,51 @@ void *intercambiarTabla() {
 	}
 }
 
+void *describeNuevo() {
+	int serverSocket;
+
+	while (true) {
+
+		struct addrinfo *serverInfo;
+
+		pthread_mutex_lock(&memorias_mutex);
+		Memoria* mem = (Memoria*) list_get(memoriasConectadas, 0);
+		getaddrinfo(mem->con.ip, mem->con.puerto, &hints, &serverInfo);
+		pthread_mutex_unlock(&memorias_mutex);
+
+		serverSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
+				serverInfo->ai_protocol);
+		if (connect(serverSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
+				== 0) {
+
+			enviar_handshake(KERNEL, serverSocket);
+			int num_memoria = recibir_numero_memoria(serverSocket);
+
+			char *serializedPackage;
+			int entradaValida = 1;
+			t_PackageDescribe package;
+
+			serializedPackage = serializarRequestDescribe(&package);
+
+			send(serverSocket, serializedPackage, package.total_size, 0);
+
+			recibirDescribe(serverSocket);
+
+			dispose_package(&serializedPackage);
+		}
+
+		close(serverSocket);
+
+		freeaddrinfo(serverInfo);
+
+		pthread_mutex_lock(&config_mutex);
+		usleep(tiempoDescribe);
+		pthread_mutex_unlock(&config_mutex);
+	}
+}
+
 void* describeCadaX(int serverSocket) {
-	// tiempoDescribe = config_get_int_value(conection_conf,"METADATA_REFRESH")*1000;
+// tiempoDescribe = config_get_int_value(conection_conf,"METADATA_REFRESH")*1000;
 
 	void lockMutexes(pthread_mutex_t* mutex) {
 		pthread_mutex_lock(mutex);
@@ -1183,15 +1227,7 @@ void add(char* parametros, int serverSocket) {
 	free(parametrosSeparados);
 }
 
-void metrics(int esMetricaDe30) {
-
-	void lockMutexes(pthread_mutex_t* mutex) {
-		pthread_mutex_lock(mutex);
-	}
-
-	void unLockMutexes(pthread_mutex_t* mutex) {
-		pthread_mutex_unlock(mutex);
-	}
+void metrics() {
 
 	void mostrarMemoria(Memoria* mem) {
 		printf("Insert: %d \n", mem->cantidad_insert);
@@ -1200,40 +1236,45 @@ void metrics(int esMetricaDe30) {
 
 	float tiempoPromedio;
 
-	//Read Latency
+//Read Latency
 	if (select_sc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)select_sc.tiempoTotal / (double)select_sc.cantidad;
+		tiempoPromedio = (double) select_sc.tiempoTotal
+				/ (double) select_sc.cantidad;
 	}
 	printf("Read Latency SC %f \n", tiempoPromedio);
 
 	if (select_ec.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)select_ec.tiempoTotal / (double)select_ec.cantidad;
+		tiempoPromedio = (double) select_ec.tiempoTotal
+				/ (double) select_ec.cantidad;
 	}
 	printf("Read Latency EC %f \n", tiempoPromedio);
 
 	if (select_shc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)select_shc.tiempoTotal / (double)select_shc.cantidad;
+		tiempoPromedio = (double) select_shc.tiempoTotal
+				/ (double) select_shc.cantidad;
 	}
 	printf("Read Latency SHC %f \n", tiempoPromedio);
 
-	//Write Latency
+//Write Latency
 	if (insert_sc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)insert_sc.tiempoTotal / (double)insert_sc.cantidad;
+		tiempoPromedio = (double) insert_sc.tiempoTotal
+				/ (double) insert_sc.cantidad;
 	}
 	printf("Write Latency SC %f \n", tiempoPromedio);
 
 	if (insert_ec.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)insert_ec.tiempoTotal / (double)insert_ec.cantidad;
+		tiempoPromedio = (double) insert_ec.tiempoTotal
+				/ (double) insert_ec.cantidad;
 
 	}
 	printf("Write Latency EC %f \n", tiempoPromedio);
@@ -1241,24 +1282,26 @@ void metrics(int esMetricaDe30) {
 	if (insert_shc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
-		tiempoPromedio = (double)insert_shc.tiempoTotal / (double)insert_shc.cantidad;
+		tiempoPromedio = (double) insert_shc.tiempoTotal
+				/ (double) insert_shc.cantidad;
 
 	}
 	printf("Write Latency SHC %f \n", tiempoPromedio);
 
-	//Reads
+//Reads
 	printf("Reads SC: %d \n", select_sc.cantidad);
 	printf("Reads EC: %d \n", select_ec.cantidad);
 	printf("Reads SHC: %d \n", select_shc.cantidad);
 
-	//Writes
+//Writes
 	printf("Writes SC: %d \n", insert_sc.cantidad);
 	printf("Writes EC: %d \n", insert_ec.cantidad);
 	printf("Writes SHC: %d \n", insert_shc.cantidad);
 
-	//Memory Loads
+//Memory Loads
+	pthread_mutex_lock(&memorias_mutex);
 	list_iterate(memoriasConectadas, &mostrarMemoria);
-
+	pthread_mutex_unlock(&memorias_mutex);
 
 }
 
@@ -1401,7 +1444,7 @@ int ejecutar_quantum(Script** script, int index) {
 	int ejecutadas = 1;
 	int ejecucionCorrecta = 1;
 	int header;
-	//pthread_mutex_lock(&config_mutex);
+//pthread_mutex_lock(&config_mutex);
 	do {
 		printf("Ejecutando un quantum \n");
 		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
@@ -1434,70 +1477,69 @@ int ejecutar_quantum(Script** script, int index) {
 
 	} while ((scriptEnExec->index < scriptEnExec->cant_lineas)
 			&& (ejecutadas <= quantum));
-	//pthread_mutex_unlock(&config_mutex);
+//pthread_mutex_unlock(&config_mutex);
 	if (scriptEnExec->index == scriptEnExec->cant_lineas) {
 		return CORTE_SCRIPT_POR_FINALIZACION;
 	}
 	return CORTE_SCRIPT_POR_FIN_QUANTUM;
 }
 
-
 void* watch_config(char* config) {
 	int wd, fd;
 
-	    fd = inotify_init();
-	    if ( fd < 0 ) {
-	        perror( "Couldn't initialize inotify");
-	    }
+	fd = inotify_init();
+	if (fd < 0) {
+		perror("Couldn't initialize inotify");
+	}
 
-	    wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
-	    if (wd == -1) {
-	        printf("Couldn't add watch to %s\n",config);
-	    } else {
-	        printf("Watching:: %s\n",config);
-	    }
+	wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
+	if (wd == -1) {
+		printf("Couldn't add watch to %s\n", config);
+	} else {
+		printf("Watching:: %s\n", config);
+	}
 
-	    /* do it forever*/
-	    while(1) {
-	        get_event(fd);
-	    }
+	/* do it forever*/
+	while (1) {
+		get_event(fd);
+	}
 
-	    /* Clean up*/
-	    inotify_rm_watch( fd, wd );
-	    close( fd );
+	/* Clean up*/
+	inotify_rm_watch(fd, wd);
+	close(fd);
 
 }
 
-void get_event (int fd) {
+void get_event(int fd) {
 
-    char buffer[BUF_LEN];
-    int length, i = 0;
+	char buffer[BUF_LEN];
+	int length, i = 0;
 
-    length = read( fd, buffer, BUF_LEN );
-    if ( length < 0 ) {
-        perror( "read" );
-    }
+	length = read(fd, buffer, BUF_LEN);
+	if (length < 0) {
+		perror("read");
+	}
 
-
-    while ( i < length) {
-        struct inotify_event *event = ( struct inotify_event * ) &buffer[ i ];
-        if ( event->len && !strcmp(event->name, CONFIG_PATH)) {
-            if ( event->mask & IN_MODIFY) {
-            	log_info(logger_Kernel, "Antes: %i", metadata_refresh);
-            	log_info(logger_Kernel, "Antes: %i", quantum);
-            	log_info(logger_Kernel, "Se modifico la config");
-            	pthread_mutex_lock(&config_mutex);
-                config_destroy(conection_conf);
-                conection_conf = config_create(CONFIG_PATH);
-            	log_info(logger_Kernel, "Cree de nuevo la config");
-                metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
-                quantum = config_get_int_value(conection_conf, "QUANTUM");
-                log_info(logger_Kernel, "Despues: %i", metadata_refresh);
+	while (i < length) {
+		struct inotify_event *event = (struct inotify_event *) &buffer[i];
+		if (event->len && !strcmp(event->name, CONFIG_PATH)) {
+			if (event->mask & IN_MODIFY) {
+				log_info(logger_Kernel, "Antes: %i", metadata_refresh);
+				log_info(logger_Kernel, "Antes: %i", quantum);
+				log_info(logger_Kernel, "Se modifico la config");
+				pthread_mutex_lock(&config_mutex);
+				config_destroy(conection_conf);
+				conection_conf = config_create(CONFIG_PATH);
+				log_info(logger_Kernel, "Cree de nuevo la config");
+				metadata_refresh = config_get_int_value(conection_conf,
+						"METADATA_REFRESH");
+				quantum = config_get_int_value(conection_conf, "QUANTUM");
+				log_info(logger_Kernel, "Despues: %i", metadata_refresh);
 				log_info(logger_Kernel, "Despues: %i", quantum);
-                pthread_mutex_unlock(&config_mutex);
-            }
+				pthread_mutex_unlock(&config_mutex);
+			}
 
-        }
-        i += EVENT_SIZE + event->len;
-    }
+		}
+		i += EVENT_SIZE + event->len;
+	}
 }
