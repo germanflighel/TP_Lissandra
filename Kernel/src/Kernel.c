@@ -511,6 +511,7 @@ void* intentarEstablecerConexion() {
 					pthread_mutex_lock(&memorias_mutex);
 					list_add(memoriasConectadas, mem_nueva);
 					pthread_mutex_unlock(&memorias_mutex);
+					crear_metricas(num_memoria);
 				} else {
 					free(mem_nueva->socket);
 					free(mem_nueva);
@@ -522,11 +523,6 @@ void* intentarEstablecerConexion() {
 		pthread_mutex_lock(&gossiping_mutex);
 		list_iterate(tablaGossiping, &conectarSiFueraPosible);
 		pthread_mutex_unlock(&gossiping_mutex);
-
-		if (conecte) {
-
-			crear_metricas(num_memoria);
-		}
 
 		sleep(5);
 	}
@@ -623,6 +619,7 @@ void eliminar_metricas(int num_mem){
 		}
 		return 0;
 		}
+
 		pthread_mutex_lock(&metricas);
 		list_remove_by_condition(metricas_memorias, &esLaMet);
 		pthread_mutex_unlock(&metricas);
@@ -952,7 +949,6 @@ void* metricsCada30() {
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
-		printf("TimeStamp %d",time(NULL));
 		metrics(1);
 
 		select_sc.tiempoTotal = 0;
@@ -1274,8 +1270,11 @@ void metrics(int esMetricaDe30) {
 	}
 
 	void mostrarMemoria(MetricaPorMemoria* met) {
-		printf("Insert: %d/%d \n", met->cantidad_insert, insert_totales);
-		printf("Select: %d/%d \n", met->cantidad_select ,select_totales);
+		log_debug(logger_Kernel, "Memoria: %d", met->numero_memoria);
+		log_debug(logger_Kernel, "Insert: %d/%d", met->cantidad_insert, insert_totales);
+		//printf("Insert: %d/%d \n", met->cantidad_insert, insert_totales);
+		log_debug(logger_Kernel, "Select: %d/%d \n", met->cantidad_select ,select_totales);
+		//printf("Select: %d/%d \n", met->cantidad_select ,select_totales);
 	}
 
 	float tiempoPromedio;
@@ -1286,21 +1285,25 @@ void metrics(int esMetricaDe30) {
 	} else {
 		tiempoPromedio = (double)select_sc.tiempoTotal / (double)select_sc.cantidad;
 	}
-	printf("Read Latency SC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Latencies:");
+	log_debug(logger_Kernel, "Read Latency SC %f", tiempoPromedio);
+	//printf("Read Latency SC %f \n", tiempoPromedio);
 
 	if (select_ec.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
 		tiempoPromedio = (double)select_ec.tiempoTotal / (double)select_ec.cantidad;
 	}
-	printf("Read Latency EC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Read Latency EC %f", tiempoPromedio);
+	//printf("Read Latency EC %f \n", tiempoPromedio);
 
 	if (select_shc.cantidad == 0) {
 		tiempoPromedio = 0;
 	} else {
 		tiempoPromedio = (double)select_shc.tiempoTotal / (double)select_shc.cantidad;
 	}
-	printf("Read Latency SHC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Read Latency SHC %f", tiempoPromedio);
+	//printf("Read Latency SHC %f \n", tiempoPromedio);
 
 	//Write Latency
 	if (insert_sc.cantidad == 0) {
@@ -1308,7 +1311,8 @@ void metrics(int esMetricaDe30) {
 	} else {
 		tiempoPromedio = (double)insert_sc.tiempoTotal / (double)insert_sc.cantidad;
 	}
-	printf("Write Latency SC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Write Latency SC %f", tiempoPromedio);
+	//printf("Write Latency SC %f \n", tiempoPromedio);
 
 	if (insert_ec.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1316,7 +1320,9 @@ void metrics(int esMetricaDe30) {
 		tiempoPromedio = (double)insert_ec.tiempoTotal / (double)insert_ec.cantidad;
 
 	}
-	printf("Write Latency EC %f \n", tiempoPromedio);
+
+	log_debug(logger_Kernel, "Write Latency EC %f", tiempoPromedio);
+	//printf("Write Latency EC %f \n", tiempoPromedio);
 
 	if (insert_shc.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1324,17 +1330,26 @@ void metrics(int esMetricaDe30) {
 		tiempoPromedio = (double)insert_shc.tiempoTotal / (double)insert_shc.cantidad;
 
 	}
-	printf("Write Latency SHC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Write Latency SHC %f \n", tiempoPromedio);
+	//printf("Write Latency SHC %f \n", tiempoPromedio);
 
 	//Reads
-	printf("Reads SC: %d \n", select_sc.cantidad);
-	printf("Reads EC: %d \n", select_ec.cantidad);
-	printf("Reads SHC: %d \n", select_shc.cantidad);
+	//printf("Reads SC: %d \n", select_sc.cantidad);
+	log_debug(logger_Kernel, "Reads:");
+	log_debug(logger_Kernel, "Reads SC: %d", select_sc.cantidad);
+	//printf("Reads EC: %d \n", select_ec.cantidad);
+	log_debug(logger_Kernel, "Reads EC: %d", select_ec.cantidad);
+	//printf("Reads SHC: %d \n", select_shc.cantidad);
+	log_debug(logger_Kernel, "Reads SHC: %d \n", select_shc.cantidad);
 
 	//Writes
-	printf("Writes SC: %d \n", insert_sc.cantidad);
-	printf("Writes EC: %d \n", insert_ec.cantidad);
-	printf("Writes SHC: %d \n", insert_shc.cantidad);
+	//printf("Writes SC: %d \n", insert_sc.cantidad);
+	log_debug(logger_Kernel, "Writes:");
+	log_debug(logger_Kernel, "Writes SC: %d", insert_sc.cantidad);
+	//printf("Writes EC: %d \n", insert_ec.cantidad);
+	log_debug(logger_Kernel, "Writes EC: %d", insert_ec.cantidad);
+	//printf("Writes SHC: %d \n", insert_shc.cantidad);
+	log_debug(logger_Kernel, "Writes SHC: %d \n", insert_shc.cantidad);
 
 	//Memory Loads
 	pthread_mutex_lock(&metricas);
