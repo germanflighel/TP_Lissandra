@@ -21,10 +21,19 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <readline/history.h>
+#include <sys/inotify.h>
 
 
 #define BACKLOG 50			// Define cuantas conexiones vamos a mantener pendientes al mismo tiempo
 #define TABLA_NAME_SIZE 50
+
+#define MAX_EVENTS 1024 /*Max. number of events to process at one go*/
+#define LEN_NAME 1024 /*Assuming length of the filename won't exceed 16 bytes*/
+#define EVENT_SIZE  ( sizeof (struct inotify_event) ) /*size of one event*/
+#define BUF_LEN     ( MAX_EVENTS * ( EVENT_SIZE + LEN_NAME ))
+#define INFO -30
+#define DEBUG -29
+#define WARNING -28
 
 
 /*
@@ -57,5 +66,6 @@ Segmento* buscarSegmento(char* tabla);
 void* buscarPagina(int key,Segmento* segmento,int* num_pag);
 int ejecutarSelect(t_PackageSelect* select, int lfs_socket,int esAPI);
 t_PackageSeeds* listToGossipingPackage();
+char* getLocalIp();
 
 #endif
