@@ -11,9 +11,12 @@
 #include "Memory.h"
 void *inputFunc(void *);
 void *intercambiarTabla();
-//pthread_mutex_t lock;
+void* journalCadaX();
+void* watch_config(char* config);
 
 struct addrinfo hints;
+
+t_config *conection_conf;
 
 int numero_memoria;
 int memoryUP = 1;
@@ -26,15 +29,21 @@ char* bit_map;
 int max_value_size;
 double memory_size;
 char* conf_path;
+
+pthread_mutex_t memoria_mutex;
+pthread_mutex_t segmentos_mutex;
+pthread_mutex_t bitmap_mutex;
+
 //Estructura Memoria Principal
 
 char* puerto_propio;
-//int socketCliente;
 int lfsSocket;
 
 int retardo_mem;
 int retardo_fs;
 int retardo_gossiping;
+int retardo_journal;
+pthread_mutex_t config_mutex;
 
 pthread_mutex_t journaling;
 
@@ -68,19 +77,21 @@ int main() {
 	//Abro log y config
 	abrir_log();
 
-	t_config *conection_conf;
 	abrir_con(&conection_conf);
 	printf("Archivo de configuración \"%s\" levantado\n", conf_path);
 	//Abro log y config
 
 	memory_size = config_get_double_value(conection_conf, "TAM_MEM");
-	//es_primera_memoria = config_get_int_value(conection_conf, "START_UP_MEM");
 	numero_memoria = config_get_int_value(conection_conf, "MEMORY_NUMBER");
 
 	retardo_mem = 1000 * config_get_int_value(conection_conf, "RETARDO_MEM");
 	retardo_fs = 1000 * config_get_int_value(conection_conf, "RETARDO_FS");
 	retardo_gossiping = 1000
 			* config_get_int_value(conection_conf, "RETARDO_GOSSIPING");
+	retardo_journal = 1000
+			* config_get_int_value(conection_conf, "RETARDO_JOURNAL");
+
+	pthread_mutex_init(&config_mutex, NULL);
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
@@ -105,11 +116,15 @@ int main() {
 		index++;
 	}
 
+	char* local = getLocalIp();
+	log_debug(g_logger, "IP %s", local);
+
 	Seed* seed = malloc(sizeof(Seed));
 	strcpy(seed->ip, "127.0.0.1");
 	strcpy(seed->puerto, puerto_propio);
 	list_add(tablaGossiping, seed);
 
+	free(local);
 	//gossping table init
 
 	log_info(g_logger, puerto_propio);
@@ -140,19 +155,12 @@ int main() {
 
 	log_info(g_logger, puerto_propio);
 
-	/*
-	 t_describe describeRecibido;
-	 if (es_primera_memoria) {
-
-	 recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
-
-	 }
-	 log_info(g_logger, puerto_propio);
-	 */
-
 	//Handshake con LFS
 	//inicializacion memoria
-	//recibir_max_value_size(lfsSocket,&max_value_size);
+	pthread_mutex_init(&memoria_mutex, NULL);
+	pthread_mutex_init(&segmentos_mutex, NULL);
+	pthread_mutex_init(&bitmap_mutex, NULL);
+
 	typedef struct Pagina {
 		long timeStamp;
 		uint16_t key;
@@ -171,6 +179,18 @@ int main() {
 
 	//inicializacion memoria
 
+	//thread inotify
+	pthread_t threadInotify;
+	int inoret;
+
+	inoret = pthread_create(&threadInotify, NULL, (void*) watch_config,
+			conf_path);
+	if (inoret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", inoret);
+		exit(EXIT_FAILURE);
+	}
+	//thread inotify
+
 	//thread gossping
 	pthread_t threadGossping;
 	int gosippingret;
@@ -183,6 +203,19 @@ int main() {
 		exit(EXIT_FAILURE);
 	}
 	//thread gossping
+
+	//thread journaling
+	pthread_t threadJournaling;
+	int jounralret;
+
+	jounralret = pthread_create(&threadJournaling, NULL, journalCadaX,
+	NULL);
+	if (jounralret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n",
+				jounralret);
+		exit(EXIT_FAILURE);
+	}
+	//thread journaling
 
 	//thread ingreso por consola
 	pthread_t threadL;
@@ -213,8 +246,6 @@ int main() {
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
 	getaddrinfo(NULL, puerto_propio, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
-
-	config_destroy(conection_conf);
 
 	int listenningSocket;
 	listenningSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
@@ -273,8 +304,7 @@ int main() {
 					if (handshake_id == KERNEL) {
 						enviar_handshake(numero_memoria, peersock);
 
-						log_debug(g_logger,
-								"Cliente conectado. Esperando Envío de mensajes.");
+						//log_debug(g_logger,"Cliente conectado. Esperando Envío de mensajes.");
 					} else if (handshake_id == MEMORY) {
 
 						t_PackageSeeds* seedsAEnviar = listToGossipingPackage();
@@ -335,10 +365,11 @@ int main() {
 
 	log_warning(g_logger, "Termina proceso");
 
-	pthread_detach(&threadGossping);
-	pthread_detach(&threadL);
+	pthread_detach(threadGossping);
+	pthread_detach(threadL);
+	pthread_detach(threadJournaling);
+	pthread_detach(threadInotify);
 
-	//close(socketCliente);
 	close(listenningSocket);
 	destruirTablas();
 	list_destroy(tabla_segmentos);
@@ -351,9 +382,11 @@ int main() {
 }
 
 void liberarBitMap() {
+	pthread_mutex_lock(&bitmap_mutex);
 	for (int pag = 0; pag < cant_marcos; pag++) {
 		bit_map[pag] = 0;
 	}
+	pthread_mutex_unlock(&bitmap_mutex);
 }
 
 void mostrarGosip() {
@@ -362,6 +395,57 @@ void mostrarGosip() {
 	}
 
 	list_iterate(tablaGossiping, show);
+}
+
+char* getLocalIp() {
+
+	char hostbuffer[256];
+	char *IPbuffer;
+	struct hostent *host_entry;
+	int hostname;
+
+	// To retrieve hostname
+	hostname = gethostname(hostbuffer, sizeof(hostbuffer));
+	checkHostName(hostname);
+
+	// To retrieve host information
+	host_entry = gethostbyname(hostbuffer);
+	checkHostEntry(host_entry);
+
+	// To convert an Internet network
+	// address into ASCII string
+	IPbuffer = inet_ntoa(*((struct in_addr*) host_entry->h_addr_list[0]));
+
+	char* result = malloc(50);
+	strcpy(result, IPbuffer);
+
+	return result;
+
+}
+
+// Returns hostname for the local computer
+void checkHostName(int hostname) {
+	if (hostname == -1) {
+		perror("gethostname");
+		exit(1);
+	}
+}
+
+// Returns host information corresponding to host name
+void checkHostEntry(struct hostent * hostentry) {
+	if (hostentry == NULL) {
+		perror("gethostbyname");
+		exit(1);
+	}
+}
+
+// Converts space-delimited IPv4 addresses
+// to dotted-decimal format
+void checkIPbuffer(char *IPbuffer) {
+	if (NULL == IPbuffer) {
+		perror("inet_ntoa");
+		exit(1);
+	}
 }
 
 int recieve(int socketCliente) {
@@ -462,7 +546,9 @@ void destruirTablas() {
 		free(segmento);
 	}
 
+	pthread_mutex_lock(&segmentos_mutex);
 	list_iterate(tabla_segmentos, destruir);
+	pthread_mutex_unlock(&segmentos_mutex);
 }
 
 void printearTablas() {
@@ -472,7 +558,9 @@ void printearTablas() {
 	}
 	;
 
+	pthread_mutex_lock(&segmentos_mutex);
 	list_iterate(tabla_segmentos, &printear);
+	pthread_mutex_unlock(&segmentos_mutex);
 }
 
 Segmento* buscarSegmento(char* tablaABuscar) {
@@ -485,7 +573,10 @@ Segmento* buscarSegmento(char* tablaABuscar) {
 	}
 	;
 
-	return (Segmento*) list_find(tabla_segmentos, (int) &esDeLaTabla);
+	pthread_mutex_lock(&segmentos_mutex);
+	Segmento* seg = (Segmento*) list_find(tabla_segmentos, (int) &esDeLaTabla);
+	pthread_mutex_unlock(&segmentos_mutex);
+	return seg;
 }
 
 void eliminarSegmento(char* tablaABuscar) {
@@ -503,8 +594,10 @@ void eliminarSegmento(char* tablaABuscar) {
 	}
 	;
 
+	pthread_mutex_lock(&segmentos_mutex);
 	list_remove_and_destroy_by_condition(tabla_segmentos, (int) &esDeLaTabla,
 			&destroyer);
+	pthread_mutex_unlock(&segmentos_mutex);
 }
 
 void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
@@ -519,13 +612,15 @@ void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
 
 	void esDeLaTabla(Renglon_pagina* renglon) {
 		int offsetPagina = renglon->offset;
+
+		pthread_mutex_lock(&memoria_mutex);
 		int keyPagina = ((Pagina*) (memoriaPrincipal + offsetPagina))->key;
 
 		if (keyBuscado == keyPagina) {
 			paginaEncontrada = ((Pagina*) (memoriaPrincipal + offsetPagina));
 			*numerodePagina = renglon->numero;
 		}
-
+		pthread_mutex_unlock(&memoria_mutex);
 	}
 	;
 
@@ -624,7 +719,11 @@ void enviarMensaje(char* mensaje, int socket) {
 	int total_size;
 	char* serializedMesagge = serializarMensaje(mensaje, &total_size);
 
-	usleep(retardo_mem);
+	pthread_mutex_lock(&config_mutex);
+	int ret = retardo_mem;
+	pthread_mutex_unlock(&config_mutex);
+
+	usleep(ret);
 
 	send(socket, serializedMesagge, total_size, 0);
 	dispose_package(&serializedMesagge);
@@ -709,7 +808,9 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 int obtenerOLiberarMarco() {
 	int bit;
 	for (int pag = 0; pag < cant_marcos; pag++) {
+		pthread_mutex_lock(&bitmap_mutex);
 		bit = bit_map[pag];
+		pthread_mutex_unlock(&bitmap_mutex);
 		if (!bit) {
 			return pag;
 		}
@@ -733,7 +834,7 @@ int algoritmoDeReemplazo() {
 	int marcoLiberado = -1;
 
 	void porTabla(Renglon_pagina *renglon) {
-		if (!renglon->modificado && timestamp > renglon->last_used_ts) {
+		if (!renglon->modificado && timestamp >= renglon->last_used_ts) {
 			segmento_encontrado = segmento_actual;
 			renglon_encontrado = renglon;
 			timestamp = renglon->last_used_ts;
@@ -754,7 +855,9 @@ int algoritmoDeReemplazo() {
 	}
 	;
 
+	pthread_mutex_lock(&segmentos_mutex);
 	list_iterate(tabla_segmentos, &porSegmento);
+	pthread_mutex_unlock(&segmentos_mutex);
 
 	if (renglon_encontrado != NULL) {
 
@@ -764,7 +867,9 @@ int algoritmoDeReemplazo() {
 
 		marcoLiberado = renglon_encontrado->offset / sizeof(Pagina);
 
+		pthread_mutex_lock(&bitmap_mutex);
 		bit_map[marcoLiberado] = 0;
+		pthread_mutex_unlock(&bitmap_mutex);
 
 	}
 
@@ -814,12 +919,14 @@ int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
 
 			if (numero_marco != -1) {
 
+				pthread_mutex_lock(&memoria_mutex);
 				Pagina* paginaNueva = (Pagina*) (memoriaPrincipal
 						+ numero_marco * sizeof(Pagina));
 				paginaNueva->key = insert->key;
 				paginaNueva->timeStamp = insert->timestamp;
 
 				strcpy(paginaNueva->value, insert->value);
+				pthread_mutex_unlock(&memoria_mutex);
 
 				Renglon_pagina* entrada_nueva = malloc(sizeof(Renglon_pagina));
 				entrada_nueva->modificado = mod;
@@ -828,7 +935,9 @@ int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
 						segmento_encontrado->tablaDePaginas->elements_count;
 				entrada_nueva->offset = numero_marco * sizeof(Pagina);
 
+				pthread_mutex_lock(&bitmap_mutex);
 				bit_map[numero_marco] = 1;
+				pthread_mutex_unlock(&bitmap_mutex);
 
 				list_add(segmento_encontrado->tablaDePaginas, entrada_nueva);
 
@@ -850,13 +959,14 @@ int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
 		int numero_marco = obtenerOLiberarMarco();
 
 		if (numero_marco != -1) {
+			pthread_mutex_lock(&memoria_mutex);
 			Pagina* paginaNueva = (Pagina*) (memoriaPrincipal
 					+ numero_marco * sizeof(Pagina));
 			paginaNueva->key = insert->key;
 			paginaNueva->timeStamp = insert->timestamp;
 
 			strcpy(paginaNueva->value, insert->value);
-
+			pthread_mutex_unlock(&memoria_mutex);
 			Renglon_pagina* entrada_nueva = malloc(sizeof(Renglon_pagina));
 			entrada_nueva->modificado = mod;
 			entrada_nueva->last_used_ts = (unsigned) time(NULL);
@@ -864,10 +974,16 @@ int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
 					nuevo_segmento->tablaDePaginas->elements_count;
 			entrada_nueva->offset = numero_marco * sizeof(Pagina);
 
+			pthread_mutex_lock(&bitmap_mutex);
 			bit_map[numero_marco] = 1;
+			pthread_mutex_unlock(&bitmap_mutex);
 
 			list_add(nuevo_segmento->tablaDePaginas, entrada_nueva);
+
+			pthread_mutex_lock(&segmentos_mutex);
 			list_add(tabla_segmentos, (Segmento*) nuevo_segmento);
+			pthread_mutex_unlock(&segmentos_mutex);
+
 		} else {
 			full = 1;
 			log_warning(g_logger, "Memoria full");
@@ -903,9 +1019,7 @@ void abrir_con(t_config** g_config) {
 }
 
 void abrir_log(void) {
-
 	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_DEBUG);
-
 }
 
 void journal() {
@@ -924,6 +1038,7 @@ void journal() {
 		log_debug(g_logger, "Entre");
 		if (renglon->modificado) {
 			int offsetPagina = renglon->offset;
+			pthread_mutex_lock(&memoria_mutex);
 			Pagina* pag = ((Pagina*) (memoriaPrincipal + offsetPagina));
 
 			t_PackageInsert* paquete_insert;
@@ -943,7 +1058,7 @@ void journal() {
 			strcpy(paquete_insert->value, pag->value);
 
 			paquete_insert->timestamp = pag->timeStamp;
-
+			pthread_mutex_unlock(&memoria_mutex);
 			paquete_insert->total_size = sizeof(paquete_insert->header)
 					+ sizeof(paquete_insert->value_long)
 					+ sizeof(paquete_insert->tabla_long)
@@ -969,7 +1084,9 @@ void journal() {
 		free(nombreTabla);
 	}
 
+	pthread_mutex_lock(&segmentos_mutex);
 	list_iterate(tabla_segmentos, &porSegmento);
+	pthread_mutex_unlock(&segmentos_mutex);
 
 	reinciarMemoria();
 
@@ -978,24 +1095,39 @@ void journal() {
 
 void reinciarMemoria() {
 	destruirTablas();
+	pthread_mutex_lock(&segmentos_mutex);
 	list_clean(tabla_segmentos);
+	pthread_mutex_unlock(&segmentos_mutex);
 	liberarBitMap();
 }
 
 void send_package(int header, void* package, int socketCliente) {
 
+	int ret;
 	char* serializedPackage;
 	switch (header) {
 	case SELECT:
 		serializedPackage = serializarSelect((t_PackageSelect*) package);
-		usleep(retardo_fs);
+
+		pthread_mutex_lock(&config_mutex);
+		ret = retardo_fs;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
+
 		send(lfsSocket, serializedPackage,
 				((t_PackageSelect*) package)->total_size, 0);
 
 		break;
 	case INSERT:
 		serializedPackage = serializarInsert((t_PackageInsert*) package);
-		usleep(retardo_fs);
+
+		pthread_mutex_lock(&config_mutex);
+		ret = retardo_fs;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
+
 		send(lfsSocket, serializedPackage,
 				((t_PackageInsert*) package)->total_size, 0);
 
@@ -1003,7 +1135,13 @@ void send_package(int header, void* package, int socketCliente) {
 
 	case CREATE:
 		serializedPackage = serializarCreate((t_PackageCreate*) package);
-		usleep(retardo_fs);
+
+		pthread_mutex_lock(&config_mutex);
+		ret = retardo_fs;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
+
 		send(lfsSocket, serializedPackage,
 				((t_PackageCreate*) package)->total_size, 0);
 
@@ -1012,7 +1150,13 @@ void send_package(int header, void* package, int socketCliente) {
 
 		serializedPackage = serializarRequestDescribe(
 				(t_PackageDescribe*) package);
-		usleep(retardo_fs);
+
+		pthread_mutex_lock(&config_mutex);
+		ret = retardo_fs;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
+
 		send(lfsSocket, serializedPackage,
 				((t_PackageDescribe*) package)->total_size, 0);
 
@@ -1022,7 +1166,11 @@ void send_package(int header, void* package, int socketCliente) {
 		char* serializedPackage2;
 		serializedPackage2 = serializarDescribe(&describeRecibido);
 
-		usleep(retardo_mem);
+		pthread_mutex_lock(&config_mutex);
+		ret = retardo_mem;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
 
 		send(socketCliente, serializedPackage2,
 				describeRecibido.cant_tablas * sizeof(t_metadata)
@@ -1177,7 +1325,24 @@ void *intercambiarTabla() {
 
 		list_iterate(tablaSeeds, &intercambiarSiFueraPosible);
 
-		usleep(retardo_gossiping);
+		pthread_mutex_lock(&config_mutex);
+		int ret = retardo_gossiping;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
+
+	}
+}
+
+void* journalCadaX() {
+	while (memoryUP) {
+		journal();
+
+		pthread_mutex_lock(&config_mutex);
+		int ret = retardo_journal;
+		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
 	}
 }
 
@@ -1254,5 +1419,67 @@ void insert_memory(char* parametros, int serverSocket) {
 		comando_valido = ejectuarComando(INSERT, &package, serverSocket, 1);
 
 		free(package.tabla);
+	}
+}
+
+void* watch_config(char* config) {
+	int wd, fd;
+
+	fd = inotify_init();
+	if (fd < 0) {
+		perror("Couldn't initialize inotify");
+	}
+
+	wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
+	if (wd == -1) {
+		printf("Couldn't add watch to %s\n", config);
+	} else {
+		printf("Watching:: %s\n", config);
+	}
+
+	/* do it forever*/
+	while (memoryUP) {
+		get_event(fd);
+	}
+
+	/* Clean up*/
+	inotify_rm_watch(fd, wd);
+	close(fd);
+	config_destroy(conection_conf);
+
+}
+
+void get_event(int fd) {
+
+	char buffer[BUF_LEN];
+	int length, i = 0;
+
+	length = read(fd, buffer, BUF_LEN);
+	if (length < 0) {
+		perror("read");
+	}
+
+	while (i < length) {
+		struct inotify_event *event = (struct inotify_event *) &buffer[i];
+		if (event->len && !strcmp(event->name, conf_path)) {
+			if (event->mask & IN_MODIFY) {
+				config_destroy(conection_conf);
+				conection_conf = config_create(conf_path);
+				pthread_mutex_lock(&config_mutex);
+				retardo_mem = 1000
+						* config_get_int_value(conection_conf, "RETARDO_MEM");
+				retardo_fs = 1000
+						* config_get_int_value(conection_conf, "RETARDO_FS");
+				retardo_gossiping = 1000
+						* config_get_int_value(conection_conf,
+								"RETARDO_GOSSIPING");
+				retardo_journal = 1000
+						* config_get_int_value(conection_conf,
+								"RETARDO_JOURNAL");
+				pthread_mutex_unlock(&config_mutex);
+			}
+
+		}
+		i += EVENT_SIZE + event->len;
 	}
 }
