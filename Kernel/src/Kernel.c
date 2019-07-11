@@ -35,6 +35,8 @@ pthread_mutex_t config_mutex;
 
 // metricas
 
+pthread_mutex_t metricas;
+
 int select_totales;
 int insert_totales;
 
@@ -128,6 +130,7 @@ int main() {
 	pthread_mutex_init(&gossiping_mutex, NULL);
 	pthread_mutex_init(&memorias_mutex, NULL);
 	pthread_mutex_init(&config_mutex, NULL);
+	pthread_mutex_init(&metricas,NULL);
 
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
@@ -148,9 +151,8 @@ int main() {
 	 *
 	 */
 
+
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
-	mem_nueva->cantidad_insert = 0;
-	mem_nueva->cantidad_select = 0;
 	strcpy(mem_nueva->con.puerto, puerto_destino);
 	strcpy(mem_nueva->con.ip, ip_destino);
 	mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
@@ -180,11 +182,17 @@ int main() {
 			log_info_s(logger_Kernel, "No me pude conectar con el servidor");
 		}
 	}
+
 	freeaddrinfo(serverInfo);	// No lo necesitamos mas
 
 	printf("Esperando describe.\n");
 
+
 	tablas_actuales = list_create();
+
+	metricas_memorias = list_create();
+
+	crear_metricas(num_memoria);
 
 	memoriasConectadas = list_create();
 
@@ -298,7 +306,7 @@ int main() {
 	pthread_t threadM;
 	int iret4;
 
-	iret4 = pthread_create(&threadM, NULL, metricsCada30, NULL);
+	iret4 = pthread_create(&threadM, NULL, (void*) metricsCada30, NULL);
 
 	if (iret4) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret4);
@@ -377,6 +385,7 @@ int main() {
 	list_destroy_and_destroy_elements(tablas_actuales, (void*) free);
 	list_destroy(memoriasConectadas);
 	queue_destroy(colaReady);
+	list_destroy_and_destroy_elements(metricas_memorias, (void*) free);
 
 	/* ADIO'! */
 	return 0;
@@ -444,13 +453,7 @@ int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
 	void esLaMemoria(Memoria* mem) {
 		if (mem->numero == num_mem) {
 			socket = mem->socket[exec_index];
-			if (tipo_consulta == SELECT) {
-				mem->cantidad_select++;
-			}
 
-			if (tipo_consulta == INSERT) {
-				mem->cantidad_insert++;
-			}
 		}
 	}
 
@@ -458,8 +461,11 @@ int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
 	list_iterate(memoriasConectadas, esLaMemoria);
 	pthread_mutex_unlock(&memorias_mutex);
 
+	sumar_metrics_memoria(num_mem,tipo_consulta);
+
 	return socket;
 }
+
 
 void* intentarEstablecerConexion() {
 	int serverSocket;
@@ -476,8 +482,6 @@ void* intentarEstablecerConexion() {
 
 				Memoria* mem_nueva = malloc(sizeof(Memoria));
 
-				mem_nueva->cantidad_insert = 0;
-				mem_nueva->cantidad_select = 0;
 				mem_nueva->socket = malloc(sizeof(int) * multiprocesamiento);
 				for (int sock = 0; sock < multiprocesamiento; sock++) {
 					serverSocket = socket(serverInfo->ai_family,
@@ -507,6 +511,7 @@ void* intentarEstablecerConexion() {
 					pthread_mutex_lock(&memorias_mutex);
 					list_add(memoriasConectadas, mem_nueva);
 					pthread_mutex_unlock(&memorias_mutex);
+					crear_metricas(num_memoria);
 				} else {
 					free(mem_nueva->socket);
 					free(mem_nueva);
@@ -583,6 +588,51 @@ void desconectar_mem(int socket) {
 	list_remove_by_condition(eventualC->elements, &esElNum);
 	pthread_mutex_unlock(&eventual_mutex);
 
+	eliminar_metricas(num);
+}
+
+void crear_metricas(int num_mem){
+
+	int esLaMet(MetricaPorMemoria* met) {
+			return met->numero_memoria == num_mem;
+		}
+
+	if(!list_any_satisfy(metricas_memorias,&esLaMet)){
+
+		MetricaPorMemoria* metrica_nueva = malloc(sizeof(MetricaPorMemoria));
+
+		metrica_nueva->cantidad_insert = 0;
+		metrica_nueva->cantidad_select = 0;
+		metrica_nueva->numero_memoria = num_mem;
+		pthread_mutex_lock(&metricas);
+		list_add(metricas_memorias,metrica_nueva);
+		pthread_mutex_unlock(&metricas);
+	}
+}
+
+void eliminar_metricas(int num_mem){
+
+	int esLaMet(MetricaPorMemoria* met) {
+
+		if (met->numero_memoria == num_mem) {
+			return 1;
+		}
+		return 0;
+		}
+
+		pthread_mutex_lock(&metricas);
+		list_remove_by_condition(metricas_memorias, &esLaMet);
+		pthread_mutex_unlock(&metricas);
+
+		void mostrar(MetricaPorMemoria* met) {
+
+		printf( "Metricas Memoria: %d \n", met->numero_memoria);
+
+		}
+
+		pthread_mutex_lock(&metricas);
+		list_iterate(metricas_memorias, &mostrar);
+		pthread_mutex_unlock(&metricas);
 }
 
 int interpretarComando(int header, char* parametros, int exec_index) {
@@ -800,7 +850,41 @@ void describe(char* parametros, int exec_index) {
 	}
 }
 
+void sumar_metrics_memoria(int num_mem, int tipo_consulta){
+
+
+	int es_la_memoria(MetricaPorMemoria* met){
+		if (met->numero_memoria == num_mem) {
+
+			return 1;
+		}
+		return 0;
+	}
+
+	void sumarMemoria(Memoria* mem) {
+		if (mem->numero == num_mem) {
+			MetricaPorMemoria* met_encontrada;
+			pthread_mutex_lock(&metricas);
+			met_encontrada = (MetricaPorMemoria*)list_find(metricas_memorias, &es_la_memoria);
+			pthread_mutex_unlock(&metricas);
+
+			if(tipo_consulta == SELECT){
+				met_encontrada->cantidad_select++;
+			}else if(tipo_consulta==INSERT){
+				met_encontrada->cantidad_insert++;
+			}
+		}
+
+	}
+
+	pthread_mutex_lock(&memorias_mutex);
+	list_iterate(memoriasConectadas, sumarMemoria);
+	pthread_mutex_unlock(&memorias_mutex);
+
+}
+
 void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
+
 
 	switch (tipo_consulta) {
 	case SELECT:
@@ -851,11 +935,6 @@ void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
 
 void* metricsCada30() {
 
-	void inicializarMem(Memoria* mem) {
-		mem->cantidad_insert = 0;
-		mem->cantidad_select = 0;
-	}
-
 	void lockMutexes(pthread_mutex_t* mutex) {
 		pthread_mutex_lock(mutex);
 	}
@@ -867,9 +946,8 @@ void* metricsCada30() {
 	while (true) {
 
 		list_iterate(exec_mutexes, &lockMutexes);
-
-		printf("TimeStamp %d", time(NULL));
-		metrics();
+    
+		metrics(1);
 
 		select_sc.tiempoTotal = 0;
 		select_sc.cantidad = 0;
@@ -888,10 +966,6 @@ void* metricsCada30() {
 
 		insert_shc.tiempoTotal = 0;
 		insert_shc.cantidad = 0;
-
-		pthread_mutex_lock(&memorias_mutex);
-		list_iterate(memoriasConectadas, &inicializarMem);
-		pthread_mutex_unlock(&memorias_mutex);
 
 		list_iterate(exec_mutexes, &unLockMutexes);
 
@@ -1229,9 +1303,12 @@ void add(char* parametros, int serverSocket) {
 
 void metrics() {
 
-	void mostrarMemoria(Memoria* mem) {
-		printf("Insert: %d \n", mem->cantidad_insert);
-		printf("Select: %d \n", mem->cantidad_select);
+	void mostrarMemoria(MetricaPorMemoria* met) {
+		log_debug(logger_Kernel, "Memoria: %d", met->numero_memoria);
+		log_debug(logger_Kernel, "Insert: %d/%d", met->cantidad_insert, insert_totales);
+		//printf("Insert: %d/%d \n", met->cantidad_insert, insert_totales);
+		log_debug(logger_Kernel, "Select: %d/%d \n", met->cantidad_select ,select_totales);
+		//printf("Select: %d/%d \n", met->cantidad_select ,select_totales);
 	}
 
 	float tiempoPromedio;
@@ -1243,7 +1320,9 @@ void metrics() {
 		tiempoPromedio = (double) select_sc.tiempoTotal
 				/ (double) select_sc.cantidad;
 	}
-	printf("Read Latency SC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Latencies:");
+	log_debug(logger_Kernel, "Read Latency SC %f", tiempoPromedio);
+	//printf("Read Latency SC %f \n", tiempoPromedio);
 
 	if (select_ec.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1251,7 +1330,8 @@ void metrics() {
 		tiempoPromedio = (double) select_ec.tiempoTotal
 				/ (double) select_ec.cantidad;
 	}
-	printf("Read Latency EC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Read Latency EC %f", tiempoPromedio);
+	//printf("Read Latency EC %f \n", tiempoPromedio);
 
 	if (select_shc.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1259,7 +1339,8 @@ void metrics() {
 		tiempoPromedio = (double) select_shc.tiempoTotal
 				/ (double) select_shc.cantidad;
 	}
-	printf("Read Latency SHC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Read Latency SHC %f", tiempoPromedio);
+	//printf("Read Latency SHC %f \n", tiempoPromedio);
 
 //Write Latency
 	if (insert_sc.cantidad == 0) {
@@ -1268,7 +1349,8 @@ void metrics() {
 		tiempoPromedio = (double) insert_sc.tiempoTotal
 				/ (double) insert_sc.cantidad;
 	}
-	printf("Write Latency SC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Write Latency SC %f", tiempoPromedio);
+	//printf("Write Latency SC %f \n", tiempoPromedio);
 
 	if (insert_ec.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1277,7 +1359,9 @@ void metrics() {
 				/ (double) insert_ec.cantidad;
 
 	}
-	printf("Write Latency EC %f \n", tiempoPromedio);
+
+	log_debug(logger_Kernel, "Write Latency EC %f", tiempoPromedio);
+	//printf("Write Latency EC %f \n", tiempoPromedio);
 
 	if (insert_shc.cantidad == 0) {
 		tiempoPromedio = 0;
@@ -1286,22 +1370,31 @@ void metrics() {
 				/ (double) insert_shc.cantidad;
 
 	}
-	printf("Write Latency SHC %f \n", tiempoPromedio);
+	log_debug(logger_Kernel, "Write Latency SHC %f \n", tiempoPromedio);
+	//printf("Write Latency SHC %f \n", tiempoPromedio);
 
-//Reads
-	printf("Reads SC: %d \n", select_sc.cantidad);
-	printf("Reads EC: %d \n", select_ec.cantidad);
-	printf("Reads SHC: %d \n", select_shc.cantidad);
+	//Reads
+	//printf("Reads SC: %d \n", select_sc.cantidad);
+	log_debug(logger_Kernel, "Reads:");
+	log_debug(logger_Kernel, "Reads SC: %d", select_sc.cantidad);
+	//printf("Reads EC: %d \n", select_ec.cantidad);
+	log_debug(logger_Kernel, "Reads EC: %d", select_ec.cantidad);
+	//printf("Reads SHC: %d \n", select_shc.cantidad);
+	log_debug(logger_Kernel, "Reads SHC: %d \n", select_shc.cantidad);
 
-//Writes
-	printf("Writes SC: %d \n", insert_sc.cantidad);
-	printf("Writes EC: %d \n", insert_ec.cantidad);
-	printf("Writes SHC: %d \n", insert_shc.cantidad);
+	//Writes
+	//printf("Writes SC: %d \n", insert_sc.cantidad);
+	log_debug(logger_Kernel, "Writes:");
+	log_debug(logger_Kernel, "Writes SC: %d", insert_sc.cantidad);
+	//printf("Writes EC: %d \n", insert_ec.cantidad);
+	log_debug(logger_Kernel, "Writes EC: %d", insert_ec.cantidad);
+	//printf("Writes SHC: %d \n", insert_shc.cantidad);
+	log_debug(logger_Kernel, "Writes SHC: %d \n", insert_shc.cantidad);
 
-//Memory Loads
-	pthread_mutex_lock(&memorias_mutex);
-	list_iterate(memoriasConectadas, &mostrarMemoria);
-	pthread_mutex_unlock(&memorias_mutex);
+	//Memory Loads
+	pthread_mutex_lock(&metricas);
+	list_iterate(metricas_memorias, &mostrarMemoria);
+	pthread_mutex_unlock(&metricas);
 
 }
 
