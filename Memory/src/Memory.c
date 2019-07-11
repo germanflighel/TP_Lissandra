@@ -733,7 +733,7 @@ int algoritmoDeReemplazo() {
 	int marcoLiberado = -1;
 
 	void porTabla(Renglon_pagina *renglon) {
-		if (!renglon->modificado && timestamp > renglon->last_used_ts) {
+		if (!renglon->modificado && timestamp >= renglon->last_used_ts) {
 			segmento_encontrado = segmento_actual;
 			renglon_encontrado = renglon;
 			timestamp = renglon->last_used_ts;
