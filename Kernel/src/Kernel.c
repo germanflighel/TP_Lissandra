@@ -1067,9 +1067,11 @@ void eliminarTabla(char* nombre) {
 
 void recibirDescribe(int serverSocket) {
 
+	log_warning(logger_Kernel,"LLEGUE");
 	t_describe describe;
 
 	if (!(int) recieve_and_deserialize_describe(&describe, serverSocket)) {
+		log_warning(logger_Kernel,"NOO");
 		pthread_mutex_lock(&memorias_mutex);
 		desconectar_mem(serverSocket);
 		pthread_mutex_unlock(&memorias_mutex);
@@ -1077,9 +1079,11 @@ void recibirDescribe(int serverSocket) {
 		log_error_s(logger_Kernel, "Memoria desconectada");
 	} else {
 		if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
+			log_warning(logger_Kernel,"0");
 			log_warning_s(logger_Kernel, "La tabla no existe");
 		} else {
 			for (int i = 0; i < describe.cant_tablas; i++) {
+				log_warning(logger_Kernel,"1");
 				//printf("%s\n", describe.tablas[i].nombre_tabla);
 				if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
 					Tabla* tabla_nueva = malloc(sizeof(Tabla));
@@ -1091,7 +1095,7 @@ void recibirDescribe(int serverSocket) {
 					pthread_mutex_unlock(&tablas_actuales_mutex);
 				}
 			}
-
+			log_warning(logger_Kernel,"2");
 			/*
 			 pthread_mutex_lock(&tablas_actuales_mutex);
 			 for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;

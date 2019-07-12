@@ -9,10 +9,11 @@
  */
 
 #include "Memory.h"
-void *inputFunc(void *);
+void *inputFunc();
 void *intercambiarTabla();
 void* journalCadaX();
 void* watch_config(char* config);
+void* intentarConectarLFS();
 
 struct addrinfo hints;
 
@@ -37,7 +38,8 @@ pthread_mutex_t bitmap_mutex;
 //Estructura Memoria Principal
 
 char* puerto_propio;
-int lfsSocket;
+int lfsSocket = -1;
+pthread_mutex_t lfsSocket_mutex;
 
 int retardo_mem;
 int retardo_fs;
@@ -51,10 +53,12 @@ pthread_mutex_t gossiping_mutex;
 t_list* tablaGossiping;
 t_list* tablaSeeds;
 
+char* ip_fs;
+char* puerto_fs;
+
 int main() {
 
 	//Estructura Conexiones
-	struct addrinfo *serverInfo;
 	char* ip;
 	char* puerto;
 	//Estructura Conexiones
@@ -95,7 +99,15 @@ int main() {
 
 	ip = config_get_string_value(conection_conf, "IP");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
+
+	ip_fs = malloc(strlen(ip) + 1);
+	puerto_fs = malloc(strlen(puerto) + 1);
+	strcpy(ip_fs, ip);
+	strcpy(puerto_fs, puerto);
+
 	puerto_propio = config_get_string_value(conection_conf, "PUERTO");
+
+	pthread_mutex_init(&lfsSocket_mutex, NULL);
 
 	//gossping table init
 	char** ip_seed = config_get_array_value(conection_conf, "IP_SEEDS");
@@ -127,35 +139,32 @@ int main() {
 	free(local);
 	//gossping table init
 
-	log_info(g_logger, puerto_propio);
+	struct addrinfo *FSserverInfo;
+	log_info(g_logger, "Esperando FILE SYSTEM...");
+	int conected = 0;
+	while (!conected) {
+		usleep(1000000);
+		getaddrinfo(ip_fs, puerto_fs, &hints, &FSserverInfo);// Carga en serverInfo los datos de la conexion
 
-	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
+		lfsSocket = socket(FSserverInfo->ai_family, FSserverInfo->ai_socktype,
+				FSserverInfo->ai_protocol);
 
-	//Cierro config
+		if (connect(lfsSocket, FSserverInfo->ai_addr, FSserverInfo->ai_addrlen)
+				== 0) {
 
-	//Socket a lfs
-	lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
-			serverInfo->ai_protocol);
+			freeaddrinfo(FSserverInfo);
 
-	connect(lfsSocket, serverInfo->ai_addr, serverInfo->ai_addrlen);
+			log_debug(g_logger, "Conectado al LFS");
 
-	freeaddrinfo(serverInfo);
+			//Handshake con LFS
+			enviar_handshake(MEMORY, lfsSocket);
 
-	log_debug(g_logger, "Conectado al LFS");
-	//Socket a lfs
+			recv(lfsSocket, &max_value_size, sizeof(u_int16_t), 0);
+			log_info(g_logger, "Maximo tamaño del value: %d.", max_value_size);
+			conected = 1;
+		}
+	}
 
-	//Handshake con LFS
-	enviar_handshake(MEMORY, lfsSocket);
-
-	recv(lfsSocket, &max_value_size, sizeof(u_int16_t), 0);
-	log_info(g_logger, "Maximo tamaño del value: %d.", max_value_size);
-	char* loguear = string_itoa(max_value_size);
-	log_info(g_logger, loguear);
-	free(loguear);
-
-	log_info(g_logger, puerto_propio);
-
-	//Handshake con LFS
 	//inicializacion memoria
 	pthread_mutex_init(&memoria_mutex, NULL);
 	pthread_mutex_init(&segmentos_mutex, NULL);
@@ -178,6 +187,18 @@ int main() {
 	liberarBitMap();
 
 	//inicializacion memoria
+
+	//thread gossping
+	pthread_t threadConectionLFS;
+	int LFSret;
+
+	LFSret = pthread_create(&threadConectionLFS, NULL, intentarConectarLFS,
+	NULL);
+	if (LFSret) {
+		fprintf(stderr, "Error - pthread_create() return code: %d\n", LFSret);
+		exit(EXIT_FAILURE);
+	}
+	//thread gossping
 
 	//thread inotify
 	pthread_t threadInotify;
@@ -221,7 +242,7 @@ int main() {
 	pthread_t threadL;
 	int iret1;
 
-	iret1 = pthread_create(&threadL, NULL, inputFunc, (void*) lfsSocket);
+	iret1 = pthread_create(&threadL, NULL, inputFunc, NULL);
 	if (iret1) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
@@ -245,6 +266,7 @@ int main() {
 	hints.ai_flags = AI_PASSIVE;// Asigna el address del localhost: 127.0.0.1
 	hints.ai_socktype = SOCK_STREAM;	// Indica que usaremos el protocolo TCP
 
+	struct addrinfo *serverInfo;
 	getaddrinfo(NULL, puerto_propio, &hints, &serverInfo); // Notar que le pasamos NULL como IP, ya que le indicamos que use localhost en AI_PASSIVE
 
 	int listenningSocket;
@@ -314,7 +336,8 @@ int main() {
 
 						send(peersock, serializedSeeds,
 								seedsAEnviar->cant_seeds * sizeof(Seed)
-										+ sizeof(seedsAEnviar->cant_seeds), 0);
+										+ sizeof(seedsAEnviar->cant_seeds),
+								MSG_NOSIGNAL);
 
 						free(serializedSeeds);
 						free(seedsAEnviar->seeds);
@@ -369,6 +392,7 @@ int main() {
 	pthread_detach(threadL);
 	pthread_detach(threadJournaling);
 	pthread_detach(threadInotify);
+	pthread_detach(threadConectionLFS);
 
 	close(listenningSocket);
 	destruirTablas();
@@ -529,7 +553,7 @@ int recieve(int socketCliente) {
 
 			send(socketCliente, serializedSeeds,
 					seedsAEnviar->cant_seeds * sizeof(Seed)
-							+ sizeof(seedsAEnviar->cant_seeds), 0);
+							+ sizeof(seedsAEnviar->cant_seeds), MSG_NOSIGNAL);
 
 			free(serializedSeeds);
 			free(seedsAEnviar->seeds);
@@ -704,13 +728,20 @@ int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 
 int ejecutarDrop(t_PackageDrop* drop, int socketCliente) {
 
-	eliminarSegmento(drop->nombre_tabla);
+	pthread_mutex_lock(&lfsSocket_mutex);
+	if (lfsSocket != -1) {
+		pthread_mutex_unlock(&lfsSocket_mutex);
+		eliminarSegmento(drop->nombre_tabla);
 
-	char* serializedPackage = serializarDrop(drop);
+		char* serializedPackage = serializarDrop(drop);
 
-	send(lfsSocket, serializedPackage, drop->total_size, 0);
+		desconectarLFS(send(lfsSocket, serializedPackage, drop->total_size,
+		MSG_NOSIGNAL));
 
-	dispose_package(&serializedPackage);
+		dispose_package(&serializedPackage);
+	} else {
+		pthread_mutex_unlock(&lfsSocket_mutex);
+	}
 
 	return 1;
 }
@@ -725,48 +756,68 @@ void enviarMensaje(char* mensaje, int socket) {
 
 	usleep(ret);
 
-	send(socket, serializedMesagge, total_size, 0);
+	send(socket, serializedMesagge, total_size, MSG_NOSIGNAL);
 	dispose_package(&serializedMesagge);
 }
 
 int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 
-	send_package(paquete->header, paquete, lfsSocket);
+	pthread_mutex_lock(&lfsSocket_mutex);
+	int lfsFlag = lfsSocket;
+	pthread_mutex_unlock(&lfsSocket_mutex);
+	int lfsFlag2 = -1;
+	int status = 0;
 
+	t_Respuesta_Select* respuesta_select;
 	t_PackageInsert* paquete_insert;
-	paquete_insert = malloc(sizeof(t_PackageInsert));
 
-	paquete_insert->header = INSERT;
-	paquete_insert->tabla_long = paquete->tabla_long;
+	if (lfsFlag != -1) {
 
-	paquete_insert->tabla = malloc(paquete->tabla_long + 1);
-	strcpy(paquete_insert->tabla, paquete->tabla);
+		send_package(paquete->header, paquete, lfsSocket);
 
-	paquete_insert->key = paquete->key;
+		paquete_insert = malloc(sizeof(t_PackageInsert));
 
-	t_Respuesta_Select* respuesta_select = malloc(sizeof(t_Respuesta_Select));
+		paquete_insert->header = INSERT;
+		paquete_insert->tabla_long = paquete->tabla_long;
 
-	int status = recieve_and_deserialize_RespuestaSelect(respuesta_select,
-			lfsSocket);
+		paquete_insert->tabla = malloc(paquete->tabla_long + 1);
+		strcpy(paquete_insert->tabla, paquete->tabla);
 
-	if (!status) {
-		return 0;
+		paquete_insert->key = paquete->key;
+
+		respuesta_select = malloc(sizeof(t_Respuesta_Select));
+
+		pthread_mutex_lock(&lfsSocket_mutex);
+		lfsFlag2 = lfsSocket;
+		if (lfsSocket != -1) {
+			status = recieve_and_deserialize_RespuestaSelect(respuesta_select,
+					lfsSocket);
+			status = respuesta_select->result;
+		}
+		pthread_mutex_unlock(&lfsSocket_mutex);
+
 	}
-
-	status = respuesta_select->result;
-
-	if (!status) {
+	if (!status || lfsFlag == -1 || lfsFlag2 == -1) {
 		log_warning(g_logger, "Registro no encontrado");
 		if (!esAPI) {
-			char* mensaje_a_enviar = string_from_format(
-					"Registro no encontrado");
+			char* mensaje_a_enviar;
+			if (lfsFlag == -1) {
+				mensaje_a_enviar = string_from_format("LFS no conectado");
+			} else {
+				mensaje_a_enviar = string_from_format("Registro no encontrado");
+			}
 			enviarMensaje(mensaje_a_enviar, socketCliente);
 			free(mensaje_a_enviar);
 		}
-		free(respuesta_select->value);
-		free(paquete_insert->tabla);
-		dispose_package(&paquete_insert);
-		dispose_package(&respuesta_select);
+
+		if (lfsFlag != -1) {
+			if (lfsFlag2 != -1 && status) {
+				free(respuesta_select->value);
+			}
+			free(paquete_insert->tabla);
+			dispose_package(&paquete_insert);
+			dispose_package(&respuesta_select);
+		}
 
 		return 0;
 	}
@@ -1035,8 +1086,12 @@ void journal() {
 	char* nombreTabla;
 
 	void porEntrada(Renglon_pagina* renglon) {
-		log_debug(g_logger, "Entre");
-		if (renglon->modificado) {
+
+		pthread_mutex_lock(&lfsSocket_mutex);
+		int lfsFlag = lfsSocket;
+		pthread_mutex_unlock(&lfsSocket_mutex);
+
+		if (renglon->modificado && lfsFlag != -1) {
 			int offsetPagina = renglon->offset;
 			pthread_mutex_lock(&memoria_mutex);
 			Pagina* pag = ((Pagina*) (memoriaPrincipal + offsetPagina));
@@ -1067,7 +1122,9 @@ void journal() {
 					+ paquete_insert->value_long + paquete_insert->tabla_long;
 
 			char* serializedPackage = serializarInsert(paquete_insert);
-			send(lfsSocket, serializedPackage, paquete_insert->total_size, 0);
+			desconectarLFS(
+					send(lfsSocket, serializedPackage,
+							paquete_insert->total_size, MSG_NOSIGNAL));
 
 			free(paquete_insert->tabla);
 			free(paquete_insert->value);
@@ -1079,7 +1136,7 @@ void journal() {
 	void porSegmento(Segmento* seg) {
 		nombreTabla = malloc(strlen(seg->path) + 1);
 		strcpy(nombreTabla, seg->path);
-		log_debug(g_logger, nombreTabla);
+		//log_debug(g_logger, nombreTabla);
 		list_iterate(seg->tablaDePaginas, &porEntrada);
 		free(nombreTabla);
 	}
@@ -1104,46 +1161,56 @@ void reinciarMemoria() {
 void send_package(int header, void* package, int socketCliente) {
 
 	int ret;
+	int status = 0;
 	char* serializedPackage;
+
+	pthread_mutex_lock(&lfsSocket_mutex);
+	int lfsFlag = lfsSocket;
+	pthread_mutex_unlock(&lfsSocket_mutex);
+
+	pthread_mutex_lock(&config_mutex);
+	ret = retardo_fs;
+	pthread_mutex_unlock(&config_mutex);
+
 	switch (header) {
 	case SELECT:
 		serializedPackage = serializarSelect((t_PackageSelect*) package);
 
-		pthread_mutex_lock(&config_mutex);
-		ret = retardo_fs;
-		pthread_mutex_unlock(&config_mutex);
-
 		usleep(ret);
 
-		send(lfsSocket, serializedPackage,
-				((t_PackageSelect*) package)->total_size, 0);
+		if (lfsFlag != -1) {
+			desconectarLFS(
+					send(lfsSocket, serializedPackage,
+							((t_PackageSelect*) package)->total_size,
+							MSG_NOSIGNAL));
+		}
 
 		break;
 	case INSERT:
 		serializedPackage = serializarInsert((t_PackageInsert*) package);
 
-		pthread_mutex_lock(&config_mutex);
-		ret = retardo_fs;
-		pthread_mutex_unlock(&config_mutex);
-
 		usleep(ret);
 
-		send(lfsSocket, serializedPackage,
-				((t_PackageInsert*) package)->total_size, 0);
+		if (lfsFlag != -1) {
+			desconectarLFS(
+					send(lfsSocket, serializedPackage,
+							((t_PackageInsert*) package)->total_size,
+							MSG_NOSIGNAL));
+		}
 
 		break;
 
 	case CREATE:
 		serializedPackage = serializarCreate((t_PackageCreate*) package);
 
-		pthread_mutex_lock(&config_mutex);
-		ret = retardo_fs;
-		pthread_mutex_unlock(&config_mutex);
-
 		usleep(ret);
 
-		send(lfsSocket, serializedPackage,
-				((t_PackageCreate*) package)->total_size, 0);
+		if (lfsFlag != -1) {
+			desconectarLFS(
+					send(lfsSocket, serializedPackage,
+							((t_PackageCreate*) package)->total_size,
+							MSG_NOSIGNAL));
+		}
 
 		break;
 	case DESCRIBE:
@@ -1151,40 +1218,72 @@ void send_package(int header, void* package, int socketCliente) {
 		serializedPackage = serializarRequestDescribe(
 				(t_PackageDescribe*) package);
 
-		pthread_mutex_lock(&config_mutex);
-		ret = retardo_fs;
-		pthread_mutex_unlock(&config_mutex);
-
 		usleep(ret);
 
-		send(lfsSocket, serializedPackage,
-				((t_PackageDescribe*) package)->total_size, 0);
+		int cantRecibida = 1;
 
-		t_describe describeRecibido;
-		recieve_and_deserialize_describe(&describeRecibido, lfsSocket);
+		if (lfsFlag != -1) {
+			desconectarLFS(
+					send(lfsSocket, serializedPackage,
+							((t_PackageDescribe*) package)->total_size,
+							MSG_NOSIGNAL));
 
-		char* serializedPackage2;
-		serializedPackage2 = serializarDescribe(&describeRecibido);
+			pthread_mutex_lock(&lfsSocket_mutex);
+			lfsFlag = lfsSocket;
+			pthread_mutex_unlock(&lfsSocket_mutex);
 
-		pthread_mutex_lock(&config_mutex);
-		ret = retardo_mem;
-		pthread_mutex_unlock(&config_mutex);
+			t_describe describeRecibido;
 
-		usleep(ret);
+			if (lfsFlag) {
+				status = recieve_and_deserialize_describe(&describeRecibido,
+						lfsSocket);
+			}
 
-		send(socketCliente, serializedPackage2,
-				describeRecibido.cant_tablas * sizeof(t_metadata)
-						+ sizeof(describeRecibido.cant_tablas), 0);
-		dispose_package(&serializedPackage2);
-		free(describeRecibido.tablas);
+			if (status && lfsFlag != -1) {
+				cantRecibida = describeRecibido.cant_tablas;
+				if (cantRecibida) {
+					char* serializedPackage2;
+					serializedPackage2 = serializarDescribe(&describeRecibido);
+					send(socketCliente, serializedPackage2,
+							describeRecibido.cant_tablas * sizeof(t_metadata)
+									+ sizeof(describeRecibido.cant_tablas),
+							MSG_NOSIGNAL);
+					dispose_package(&serializedPackage2);
+					free(describeRecibido.tablas);
+				}
+			}
+
+		}
+
+		if (lfsFlag == -1 || !status || !cantRecibida) {
+
+			t_describe* describe = malloc(sizeof(t_describe));
+			describe->tablas = malloc(sizeof(t_metadata));
+			describe->cant_tablas = 1;
+			t_metadata meta;
+			meta.consistencia = SC;
+			strcpy(meta.nombre_tabla, "NO_TABLE");
+
+			describe->tablas[0] = meta;
+
+			char* serializedPackage3;
+			serializedPackage3 = serializarDescribe(describe);
+
+			send(socketCliente, serializedPackage3,
+					sizeof(t_metadata) + sizeof(describe->cant_tablas),
+					MSG_NOSIGNAL);
+
+			free(describe->tablas);
+			free(describe);
+			dispose_package(&serializedPackage3);
+		}
 
 		break;
 	}
 	dispose_package(&serializedPackage);
-
 }
 
-void *inputFunc(void* serverSocket)
+void *inputFunc()
 
 {
 	int entradaValida;
@@ -1226,7 +1325,7 @@ void *inputFunc(void* serverSocket)
 
 			if (memoryUP && entradaValida && okParams) {
 
-				interpretarComando(header, parametros, serverSocket);
+				interpretarComando(header, parametros);
 				free(parametros);
 			}
 
@@ -1313,7 +1412,8 @@ void *intercambiarTabla() {
 
 				send(serverSocket, serializedSeeds,
 						seedsAEnviar->cant_seeds * sizeof(Seed)
-								+ sizeof(seedsAEnviar->cant_seeds), 0);
+								+ sizeof(seedsAEnviar->cant_seeds),
+						MSG_NOSIGNAL);
 
 				free(serializedSeeds);
 				free(seedsAEnviar->seeds);
@@ -1346,14 +1446,14 @@ void* journalCadaX() {
 	}
 }
 
-void interpretarComando(int header, char* parametros, int serverSocket) {
+void interpretarComando(int header, char* parametros) {
 
 	switch (header) {
 	case SELECT:
-		select_memory(parametros, serverSocket);
+		select_memory(parametros);
 		break;
 	case INSERT:
-		insert_memory(parametros, serverSocket);
+		insert_memory(parametros);
 		break;
 	case DESCRIBE:
 		//describe(parametros, serverSocket);
@@ -1362,7 +1462,7 @@ void interpretarComando(int header, char* parametros, int serverSocket) {
 		//drop(parametros, serverSocket);
 		break;
 	case CREATE:
-		create(parametros, serverSocket);
+		create(parametros);
 		break;
 	case -1:
 		break;
@@ -1370,7 +1470,7 @@ void interpretarComando(int header, char* parametros, int serverSocket) {
 
 }
 
-void select_memory(char* parametros, int serverSocket) {
+void select_memory(char* parametros) {
 
 	int entradaValida = 1;
 	int comando_valido;
@@ -1382,12 +1482,12 @@ void select_memory(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(SELECT, &package, serverSocket, 1);
+		comando_valido = ejectuarComando(SELECT, &package, NULL, 1);
 	}
 	free(package.tabla);
 }
 
-void create(char* parametros, int serverSocket) {
+void create(char* parametros) {
 
 	int entradaValida = 1;
 	int comando_valido;
@@ -1398,12 +1498,12 @@ void create(char* parametros, int serverSocket) {
 		entradaValida = 0;
 	}
 	if (entradaValida) {
-		comando_valido = ejectuarComando(CREATE, &package, serverSocket, 1);
+		comando_valido = ejectuarComando(CREATE, &package, NULL, 1);
 	}
 	free(package.tabla);
 }
 
-void insert_memory(char* parametros, int serverSocket) {
+void insert_memory(char* parametros) {
 
 	int entradaValida = 1;
 	int comando_valido;
@@ -1416,7 +1516,7 @@ void insert_memory(char* parametros, int serverSocket) {
 
 	if (entradaValida) {
 
-		comando_valido = ejectuarComando(INSERT, &package, serverSocket, 1);
+		comando_valido = ejectuarComando(INSERT, &package, NULL, 1);
 
 		free(package.tabla);
 	}
@@ -1481,5 +1581,49 @@ void get_event(int fd) {
 
 		}
 		i += EVENT_SIZE + event->len;
+	}
+}
+
+void* intentarConectarLFS() {
+	struct addrinfo *serverInfo;
+	u_int16_t max_size;
+	while (memoryUP) {
+		pthread_mutex_lock(&lfsSocket_mutex);
+		if (lfsSocket == -1) {
+
+			getaddrinfo(ip_fs, puerto_fs, &hints, &serverInfo);	// Carga en serverInfo los datos de la conexion
+
+			lfsSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
+					serverInfo->ai_protocol);
+
+			if (connect(lfsSocket, serverInfo->ai_addr, serverInfo->ai_addrlen)
+					== 0) {
+				log_debug(g_logger, "Conectado al LFS");
+
+				//Handshake con LFS
+				enviar_handshake(MEMORY, lfsSocket);
+
+				recv(lfsSocket, &max_size, sizeof(u_int16_t), 0);
+				//log_info(g_logger, "Maximo tamaño del value: %d.", max_size);
+				//char* loguear = string_itoa(max_value_size);
+				//log_info(g_logger, loguear);
+				//free(loguear);
+			} else {
+				lfsSocket = -1;
+			}
+			freeaddrinfo(serverInfo);
+
+		}
+		pthread_mutex_unlock(&lfsSocket_mutex);
+		usleep(5000000);
+	}
+}
+
+void desconectarLFS(int result) {
+	if (result == -1) {
+		pthread_mutex_lock(&lfsSocket_mutex);
+		close(lfsSocket);
+		lfsSocket = -1;
+		pthread_mutex_unlock(&lfsSocket_mutex);
 	}
 }
