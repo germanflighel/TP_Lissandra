@@ -162,7 +162,7 @@ int main() {
 	pthread_mutex_init(&bitmap_mutex, NULL);
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;
@@ -603,7 +603,7 @@ void eliminarSegmento(char* tablaABuscar) {
 void* buscarPagina(int keyBuscado, Segmento* segmento, int* numerodePagina) {
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;
@@ -653,7 +653,7 @@ int ejectuarComando(int header, void* package, int socket, int esAPI) {
 int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;
@@ -670,13 +670,13 @@ int ejecutarSelect(t_PackageSelect* select, int socketCliente, int esAPI) {
 			((Renglon_pagina*) list_get(segmento_encontrado->tablaDePaginas,
 					num_pag))->last_used_ts = (unsigned) time(NULL);
 
-			log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
+			log_debug(g_logger, "Registro: TimeStamp: %llu, Key:%d, Value: %s",
 					pagina_encontrada->timeStamp, pagina_encontrada->key,
 					pagina_encontrada->value);
 
 			if (!esAPI) {
 				char* mensaje_a_enviar = string_from_format(
-						"Registro: TimeStamp: %d, Key:%d, Value: %s",
+						"Registro: TimeStamp: %llu, Key:%d, Value: %s",
 						pagina_encontrada->timeStamp, pagina_encontrada->key,
 						pagina_encontrada->value);
 
@@ -784,13 +784,13 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 
 	ejecutarInsert(paquete_insert, 0, NULL, 0);
 
-	log_debug(g_logger, "Registro: TimeStamp: %d, Key:%d, Value: %s",
+	log_debug(g_logger, "Registro: TimeStamp: %llu, Key:%d, Value: %s",
 			paquete_insert->timestamp, paquete_insert->key,
 			paquete_insert->value);
 
 	if (!esAPI) {
 		char* mensaje_a_enviar = string_from_format(
-				"Registro: TimeStamp: %d, Key:%d, Value: %s",
+				"Registro: TimeStamp: %llu, Key:%d, Value: %s",
 				paquete_insert->timestamp, paquete_insert->key,
 				paquete_insert->value);
 		enviarMensaje(mensaje_a_enviar, socketCliente);
@@ -822,7 +822,7 @@ int obtenerOLiberarMarco() {
 int algoritmoDeReemplazo() {
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;
@@ -882,7 +882,7 @@ int ejecutarInsert(t_PackageInsert* insert, int socket, int mod,
 	int full = 0;
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;
@@ -1025,7 +1025,7 @@ void abrir_log(void) {
 void journal() {
 
 	typedef struct Pagina {
-		long timeStamp;
+		unsigned long long timeStamp;
 		uint16_t key;
 		char value[max_value_size];
 	} Pagina;

@@ -1,0 +1,1959 @@
+[INFO] 22:52:46:547 kernel/(21952:21952): conecte
+[INFO] 22:52:46:548 kernel/(21952:21952): Conecte al servidor.
+[INFO] 22:52:46:558 kernel/(21952:21953): DESCRIBE enviado
+[WARNING] 22:52:46:615 kernel/(21952:21953): Finalizó script
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Latencies:
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Read Latency SC 0.000000
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Read Latency EC 0.000000
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Read Latency SHC 0.000000
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Write Latency SC 0.000000
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Write Latency EC 0.000000
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Write Latency SHC 0.000000 
+
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Reads:
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Reads SC: 0
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Reads EC: 0
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Reads SHC: 0 
+
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Writes:
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Writes SC: 0
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Writes EC: 0
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Writes SHC: 0 
+
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Memoria: 1
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Insert: 0/0
+[DEBUG] 22:52:46:616 kernel/(21952:21958): Select: 0/0 
+
+[DEBUG] 22:52:51:555 kernel/(21952:21954): Conecte a la memoria numero 2
+[ERROR] 22:52:52:644 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:52:52:644 kernel/(21952:21953): Finalizó script
+[ERROR] 22:52:54:454 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:52:54:454 kernel/(21952:21953): Finalizó script
+[ERROR] 22:53:02:907 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:53:02:908 kernel/(21952:21953): Finalizó script
+[ERROR] 22:53:09:203 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:53:09:203 kernel/(21952:21953): Finalizó script
+[ERROR] 22:53:16:59 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:53:16:59 kernel/(21952:21953): Finalizó script
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Latencies:
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Read Latency SC 0.000000
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Read Latency EC 0.000000
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Read Latency SHC 0.000000
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Write Latency SC 0.000000
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Write Latency EC 0.000000
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Write Latency SHC 0.000000 
+
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Reads:
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Reads SC: 0
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Reads EC: 0
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Reads SHC: 0 
+
+[DEBUG] 22:53:16:618 kernel/(21952:21958): Writes:
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Writes SC: 0
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Writes EC: 0
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Writes SHC: 0 
+
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Memoria: 1
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Insert: 0/0
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Select: 0/0 
+
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Memoria: 2
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Insert: 0/0
+[DEBUG] 22:53:16:619 kernel/(21952:21958): Select: 0/0 
+
+[ERROR] 22:53:18:427 kernel/(21952:21953): Esa memoria no esta conectada
+[WARNING] 22:53:18:427 kernel/(21952:21953): Finalizó script
+[WARNING] 22:53:28:235 kernel/(21952:21953): Finalizó script
+[INFO] 22:54:19:50 kernel/(21991:21991): conecte
+[INFO] 22:54:19:50 kernel/(21991:21991): Conecte al servidor.
+[INFO] 22:54:19:61 kernel/(21991:21992): DESCRIBE enviado
+[WARNING] 22:54:19:87 kernel/(21991:21995): La tabla no existe
+[WARNING] 22:54:19:121 kernel/(21991:21992): La tabla no existe
+[WARNING] 22:54:19:121 kernel/(21991:21992): Finalizó script
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Latencies:
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Read Latency SC 0.000000
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Read Latency EC 0.000000
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Read Latency SHC 0.000000
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Write Latency SC 0.000000
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Write Latency EC 0.000000
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Write Latency SHC 0.000000 
+
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Reads:
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Reads SC: 0
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Reads EC: 0
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Reads SHC: 0 
+
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Writes:
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Writes SC: 0
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Writes EC: 0
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Writes SHC: 0 
+
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Memoria: 1
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Insert: 0/0
+[DEBUG] 22:54:19:122 kernel/(21991:21997): Select: 0/0 
+
+[ERROR] 22:54:29:860 kernel/(21991:21992): Esa memoria no esta conectada
+[WARNING] 22:54:29:860 kernel/(21991:21992): Finalizó script
+[INFO] 22:57:15:625 kernel/(22096:22096): conecte
+[INFO] 22:57:15:626 kernel/(22096:22096): Conecte al servidor.
+[INFO] 22:57:15:637 kernel/(22096:22097): DESCRIBE enviado
+[WARNING] 22:57:15:659 kernel/(22096:22100): La tabla no existe
+[WARNING] 22:57:15:693 kernel/(22096:22097): La tabla no existe
+[WARNING] 22:57:15:693 kernel/(22096:22097): Finalizó script
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Latencies:
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Read Latency SC 0.000000
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Read Latency EC 0.000000
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Read Latency SHC 0.000000
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Write Latency SC 0.000000
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Write Latency EC 0.000000
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Write Latency SHC 0.000000 
+
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Reads:
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Reads SC: 0
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Reads EC: 0
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Reads SHC: 0 
+
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Writes:
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Writes SC: 0
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Writes EC: 0
+[DEBUG] 22:57:15:693 kernel/(22096:22102): Writes SHC: 0 
+
+[DEBUG] 22:57:15:694 kernel/(22096:22102): Memoria: 1
+[DEBUG] 22:57:15:694 kernel/(22096:22102): Insert: 0/0
+[DEBUG] 22:57:15:694 kernel/(22096:22102): Select: 0/0 
+
+[DEBUG] 22:57:20:630 kernel/(22096:22098): Conecte a la memoria numero 2
+[WARNING] 22:57:24:51 kernel/(22096:22097): Finalizó script
+[WARNING] 22:57:26:377 kernel/(22096:22097): Finalizó script
+[WARNING] 22:57:29:980 kernel/(22096:22097): Finalizó script
+[INFO] 22:57:29:990 kernel/(22096:22097): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 22:57:30:1 kernel/(22096:22097): DESCRIBE enviado
+[INFO] 22:57:30:81 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: -471445663)
+[DEBUG] 22:57:30:99 kernel/(22096:22097): OK
+[INFO] 22:57:30:99 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:112 kernel/(22096:22097): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 22:57:30:123 kernel/(22096:22097): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 22:57:30:140 kernel/(22096:22097): DESCRIBE enviado
+[INFO] 22:57:30:223 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: -471445521)
+[DEBUG] 22:57:30:225 kernel/(22096:22097): OK
+[INFO] 22:57:30:225 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:238 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: -471445506)
+[DEBUG] 22:57:30:251 kernel/(22096:22097): OK
+[INFO] 22:57:30:251 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:261 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: -471445484)
+[DEBUG] 22:57:30:261 kernel/(22096:22097): OK
+[INFO] 22:57:30:262 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:277 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: -471445467)
+[DEBUG] 22:57:30:290 kernel/(22096:22097): OK
+[INFO] 22:57:30:291 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:306 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: -471445439)
+[DEBUG] 22:57:30:308 kernel/(22096:22097): OK
+[INFO] 22:57:30:309 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:319 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: -471445426)
+[DEBUG] 22:57:30:331 kernel/(22096:22097): OK
+[INFO] 22:57:30:331 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:347 kernel/(22096:22097): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 22:57:30:360 kernel/(22096:22097): Registro no encontrado
+[INFO] 22:57:30:375 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: -471445369)
+[DEBUG] 22:57:30:386 kernel/(22096:22097): OK
+[INFO] 22:57:30:386 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:398 kernel/(22096:22097): DESCRIBE enviado
+[INFO] 22:57:30:448 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: -471445296)
+[DEBUG] 22:57:30:449 kernel/(22096:22097): OK
+[INFO] 22:57:30:449 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:459 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: -471445286)
+[DEBUG] 22:57:30:470 kernel/(22096:22097): OK
+[INFO] 22:57:30:471 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:481 kernel/(22096:22097): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 22:57:30:600 kernel/(22096:22097): Mem: 1
+[ERROR] 22:57:30:600 kernel/(22096:22097): Memoria desconectada
+[INFO] 22:57:30:612 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: -471445133)
+[DEBUG] 22:57:30:630 kernel/(22096:22097): OK
+[INFO] 22:57:30:630 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:641 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: -471445104)
+[DEBUG] 22:57:30:661 kernel/(22096:22097): FULL
+[INFO] 22:57:30:661 kernel/(22096:22097): Insert: FULL
+[INFO] 22:57:30:793 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:803 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: -471444941)
+[DEBUG] 22:57:30:819 kernel/(22096:22097): OK
+[INFO] 22:57:30:819 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:830 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: -471444914)
+[DEBUG] 22:57:30:851 kernel/(22096:22097): OK
+[INFO] 22:57:30:851 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:871 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: -471444874)
+[DEBUG] 22:57:30:887 kernel/(22096:22097): OK
+[INFO] 22:57:30:887 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:897 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: -471444847)
+[DEBUG] 22:57:30:908 kernel/(22096:22097): OK
+[INFO] 22:57:30:909 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:919 kernel/(22096:22097): DESCRIBE enviado
+[INFO] 22:57:30:971 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: -471444773)
+[DEBUG] 22:57:30:982 kernel/(22096:22097): OK
+[INFO] 22:57:30:982 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:30:998 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: -471444747)
+[DEBUG] 22:57:31:9 kernel/(22096:22097): FULL
+[INFO] 22:57:31:9 kernel/(22096:22097): Insert: FULL
+[INFO] 22:57:31:62 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:31:79 kernel/(22096:22097): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: -471444665)
+[DEBUG] 22:57:31:91 kernel/(22096:22097): OK
+[INFO] 22:57:31:91 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:31:105 kernel/(22096:22097): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: -471444640)
+[DEBUG] 22:57:31:116 kernel/(22096:22097): OK
+[INFO] 22:57:31:116 kernel/(22096:22097): Insert: OK
+[INFO] 22:57:31:130 kernel/(22096:22097): SELECT enviado (Tabla: MARINOS, Key: 983)
+[ERROR] 22:57:31:275 kernel/(22096:22097): Memoria desconectada
+[INFO] 22:57:31:286 kernel/(22096:22097): DESCRIBE enviado
+[ERROR] 22:57:31:286 kernel/(22096:22097): No hay memorias conectadas
+[INFO] 22:57:31:297 kernel/(22096:22097): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: -471444448)
+[ERROR] 22:57:31:297 kernel/(22096:22097): Script terminado por linea erronea
+[INFO] 23:00:32:226 kernel/(22186:22186): conecte
+[INFO] 23:00:32:226 kernel/(22186:22186): Conecte al servidor.
+[INFO] 23:00:32:238 kernel/(22186:22187): DESCRIBE enviado
+[WARNING] 23:00:32:293 kernel/(22186:22187): Finalizó script
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Latencies:
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Reads:
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:00:32:293 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Writes:
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Memoria: 1
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Insert: 0/0
+[DEBUG] 23:00:32:294 kernel/(22186:22192): Select: 0/0 
+
+[WARNING] 23:00:36:974 kernel/(22186:22187): Finalizó script
+[DEBUG] 23:00:37:231 kernel/(22186:22188): Conecte a la memoria numero 2
+[WARNING] 23:00:40:827 kernel/(22186:22187): Finalizó script
+[INFO] 23:00:40:837 kernel/(22186:22187): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:00:40:847 kernel/(22186:22187): DESCRIBE enviado
+[INFO] 23:00:40:917 kernel/(22186:22187): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 3823712469ll)
+[DEBUG] 23:00:40:928 kernel/(22186:22187): OK
+[INFO] 23:00:40:928 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:40:939 kernel/(22186:22187): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:00:40:950 kernel/(22186:22187): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:00:40:967 kernel/(22186:22187): DESCRIBE enviado
+[INFO] 23:00:41:43 kernel/(22186:22187): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 3823712594ll)
+[DEBUG] 23:00:41:57 kernel/(22186:22187): OK
+[INFO] 23:00:41:57 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:71 kernel/(22186:22187): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 3823712622ll)
+[DEBUG] 23:00:41:81 kernel/(22186:22187): OK
+[INFO] 23:00:41:81 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:93 kernel/(22186:22187): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 3823712645ll)
+[DEBUG] 23:00:41:104 kernel/(22186:22187): OK
+[INFO] 23:00:41:104 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:114 kernel/(22186:22187): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 3823712666ll)
+[DEBUG] 23:00:41:125 kernel/(22186:22187): OK
+[INFO] 23:00:41:125 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:136 kernel/(22186:22187): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 3823712687ll)
+[DEBUG] 23:00:41:149 kernel/(22186:22187): FULL
+[INFO] 23:00:41:149 kernel/(22186:22187): Insert: FULL
+[INFO] 23:00:41:202 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:214 kernel/(22186:22187): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 3823712765ll)
+[DEBUG] 23:00:41:225 kernel/(22186:22187): OK
+[INFO] 23:00:41:225 kernel/(22186:22187): Insert: OK
+[INFO] 23:00:41:235 kernel/(22186:22187): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:00:41:358 kernel/(22186:22187): Mem: 2
+[ERROR] 23:00:41:358 kernel/(22186:22187): Memoria desconectada
+[INFO] 23:00:41:369 kernel/(22186:22187): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 3823712920ll)
+[ERROR] 23:00:41:369 kernel/(22186:22187): Script terminado por linea erronea
+[DEBUG] 23:01:02:297 kernel/(22186:22192): Latencies:
+[DEBUG] 23:01:02:297 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Reads:
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Reads EC: 1
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Writes:
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Writes EC: 7
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:01:02:298 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:01:32:298 kernel/(22186:22192): Latencies:
+[DEBUG] 23:01:32:298 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:01:32:298 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:01:32:298 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Reads:
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Writes:
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:01:32:299 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Latencies:
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Reads:
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Writes:
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:02:02:301 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Latencies:
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Reads:
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Writes:
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:02:32:316 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Latencies:
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Reads:
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Writes:
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:03:02:317 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Latencies:
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Reads:
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Writes:
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:03:32:318 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:04:02:322 kernel/(22186:22192): Latencies:
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Reads:
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Writes:
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:04:02:323 kernel/(22186:22192): Select: 0/1 
+
+[DEBUG] 23:04:32:324 kernel/(22186:22192): Latencies:
+[DEBUG] 23:04:32:324 kernel/(22186:22192): Read Latency SC 0.000000
+[DEBUG] 23:04:32:324 kernel/(22186:22192): Read Latency EC 0.000000
+[DEBUG] 23:04:32:324 kernel/(22186:22192): Read Latency SHC 0.000000
+[DEBUG] 23:04:32:324 kernel/(22186:22192): Write Latency SC 0.000000
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Write Latency EC 0.000000
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Write Latency SHC 0.000000 
+
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Reads:
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Reads SC: 0
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Reads EC: 0
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Reads SHC: 0 
+
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Writes:
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Writes SC: 0
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Writes EC: 0
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Writes SHC: 0 
+
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Memoria: 2
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Insert: 0/7
+[DEBUG] 23:04:32:325 kernel/(22186:22192): Select: 0/1 
+
+[INFO] 23:12:12:318 kernel/(22615:22615): No conecte
+[INFO] 23:12:12:319 kernel/(22615:22615): No me pude conectar con el servidor
+[INFO] 23:12:12:329 kernel/(22615:22616): DESCRIBE enviado
+[WARNING] 23:12:12:329 kernel/(22615:22616): Finalizó script
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Latencies:
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Read Latency SC 0.000000
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Read Latency EC 0.000000
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Read Latency SHC 0.000000
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Write Latency SC 0.000000
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Write Latency EC 0.000000
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Write Latency SHC 0.000000 
+
+[DEBUG] 23:12:12:329 kernel/(22615:22621): Reads:
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Reads SC: 0
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Reads EC: 0
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Reads SHC: 0 
+
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Writes:
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Writes SC: 0
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Writes EC: 0
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Writes SHC: 0 
+
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Memoria: -1081728512
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Insert: 0/0
+[DEBUG] 23:12:12:330 kernel/(22615:22621): Select: 0/0 
+
+[INFO] 23:12:50:407 kernel/(22631:22631): No conecte
+[INFO] 23:12:50:407 kernel/(22631:22631): No me pude conectar con el servidor
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Latencies:
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Read Latency SC 0.000000
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Read Latency EC 0.000000
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Read Latency SHC 0.000000
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Write Latency SC 0.000000
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Write Latency EC 0.000000
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Write Latency SHC 0.000000 
+
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Reads:
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Reads SC: 0
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Reads EC: 0
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Reads SHC: 0 
+
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Writes:
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Writes SC: 0
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Writes EC: 0
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Writes SHC: 0 
+
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Memoria: -1080779328
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Insert: 0/0
+[DEBUG] 23:12:50:408 kernel/(22631:22637): Select: 0/0 
+
+[INFO] 23:12:50:418 kernel/(22631:22632): DESCRIBE enviado
+[WARNING] 23:12:50:419 kernel/(22631:22632): Finalizó script
+[INFO] 23:14:35:839 kernel/(22693:22693): conecte
+[INFO] 23:14:35:839 kernel/(22693:22693): Conecte al servidor.
+[INFO] 23:14:35:850 kernel/(22693:22694): DESCRIBE enviado
+[WARNING] 23:14:35:877 kernel/(22693:22697): La tabla no existe
+[WARNING] 23:14:35:909 kernel/(22693:22694): La tabla no existe
+[WARNING] 23:14:35:909 kernel/(22693:22694): Finalizó script
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Latencies:
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Reads:
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Writes:
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:14:35:909 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:14:35:910 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:14:35:910 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:14:35:910 kernel/(22693:22699): Insert: 0/0
+[DEBUG] 23:14:35:910 kernel/(22693:22699): Select: 0/0 
+
+[DEBUG] 23:14:40:846 kernel/(22693:22695): Conecte a la memoria numero 2
+[WARNING] 23:14:44:443 kernel/(22693:22694): Finalizó script
+[WARNING] 23:14:50:922 kernel/(22693:22697): La tabla no existe
+[INFO] 23:14:51:242 kernel/(22693:22694): CREATE enviado (Tabla: TEST, CONSISTENCY: EC)
+[WARNING] 23:14:51:242 kernel/(22693:22694): Finalizó script
+[INFO] 23:15:03:247 kernel/(22693:22694): INSERT enviado (Tabla: TEST, Key: 1998, Value: franquito, Timestamp: 1562897703247)
+[ERROR] 23:15:03:247 kernel/(22693:22694): Script terminado por linea erronea
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Latencies:
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Reads:
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Writes:
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Insert: 0/0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Select: 0/0 
+
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Insert: 0/0
+[DEBUG] 23:15:05:911 kernel/(22693:22699): Select: 0/0 
+
+[WARNING] 23:15:10:495 kernel/(22693:22694): Finalizó script
+[INFO] 23:15:12:849 kernel/(22693:22694): INSERT enviado (Tabla: TEST, Key: 1998, Value: franquito, Timestamp: 1562897712848)
+[DEBUG] 23:15:12:862 kernel/(22693:22694): OK
+[INFO] 23:15:12:862 kernel/(22693:22694): Insert: OK
+[WARNING] 23:15:12:862 kernel/(22693:22694): Finalizó script
+[INFO] 23:15:21:935 kernel/(22693:22694): SELECT enviado (Tabla: TEST, Key: 1998)
+[DEBUG] 23:15:21:946 kernel/(22693:22694): Registro: TimeStamp: 13212006601087944400, Key:1998, Value: franquito
+[WARNING] 23:15:21:946 kernel/(22693:22694): Finalizó script
+[WARNING] 23:15:34:56 kernel/(22693:22694): Finalizó script
+[INFO] 23:15:34:72 kernel/(22693:22694): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:15:34:84 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:34:173 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562897734172)
+[DEBUG] 23:15:34:184 kernel/(22693:22694): OK
+[INFO] 23:15:34:184 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:272 kernel/(22693:22694): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:15:34:283 kernel/(22693:22694): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:15:34:295 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:34:383 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562897734382)
+[DEBUG] 23:15:34:394 kernel/(22693:22694): OK
+[INFO] 23:15:34:394 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:404 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562897734404)
+[DEBUG] 23:15:34:415 kernel/(22693:22694): OK
+[INFO] 23:15:34:415 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:431 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562897734431)
+[DEBUG] 23:15:34:450 kernel/(22693:22694): OK
+[INFO] 23:15:34:450 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:461 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562897734460)
+[DEBUG] 23:15:34:474 kernel/(22693:22694): FULL
+[INFO] 23:15:34:474 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:34:527 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:538 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562897734537)
+[DEBUG] 23:15:34:549 kernel/(22693:22694): OK
+[INFO] 23:15:34:549 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:560 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562897734559)
+[DEBUG] 23:15:34:571 kernel/(22693:22694): OK
+[INFO] 23:15:34:571 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:582 kernel/(22693:22694): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:15:34:593 kernel/(22693:22694): Registro: TimeStamp: 13212006601087966111, Key:11, Value: Halcon
+[INFO] 23:15:34:606 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562897734605)
+[DEBUG] 23:15:34:618 kernel/(22693:22694): OK
+[INFO] 23:15:34:618 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:631 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:34:684 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562897734683)
+[DEBUG] 23:15:34:694 kernel/(22693:22694): OK
+[INFO] 23:15:34:694 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:706 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562897734706)
+[DEBUG] 23:15:34:721 kernel/(22693:22694): FULL
+[INFO] 23:15:34:721 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:34:778 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:789 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:15:34:845 kernel/(22693:22694): Registro: TimeStamp: 55364213787, Key:310, Value: Calamar
+[INFO] 23:15:34:856 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562897734855)
+[DEBUG] 23:15:34:867 kernel/(22693:22694): OK
+[INFO] 23:15:34:867 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:878 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562897734877)
+[DEBUG] 23:15:34:888 kernel/(22693:22694): OK
+[INFO] 23:15:34:888 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:899 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562897734898)
+[DEBUG] 23:15:34:909 kernel/(22693:22694): OK
+[INFO] 23:15:34:909 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:920 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562897734919)
+[DEBUG] 23:15:34:931 kernel/(22693:22694): FULL
+[INFO] 23:15:34:931 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:34:980 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:34:990 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562897734989)
+[DEBUG] 23:15:34:1 kernel/(22693:22694): OK
+[INFO] 23:15:34:1 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:12 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562897735011)
+[DEBUG] 23:15:35:27 kernel/(22693:22694): OK
+[INFO] 23:15:35:27 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:38 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:35:87 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562897735087)
+[DEBUG] 23:15:35:100 kernel/(22693:22694): OK
+[INFO] 23:15:35:100 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:111 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562897735110)
+[DEBUG] 23:15:35:121 kernel/(22693:22694): OK
+[INFO] 23:15:35:121 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:132 kernel/(22693:22694): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562897735132)
+[DEBUG] 23:15:35:143 kernel/(22693:22694): FULL
+[INFO] 23:15:35:143 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:35:192 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:203 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562897735203)
+[DEBUG] 23:15:35:216 kernel/(22693:22694): OK
+[INFO] 23:15:35:217 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:229 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:15:35:262 kernel/(22693:22694): Registro: TimeStamp: 15515832341472140551, Key:983, Value: Pez globo
+[INFO] 23:15:35:276 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:35:319 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562897735319)
+[DEBUG] 23:15:35:331 kernel/(22693:22694): OK
+[INFO] 23:15:35:331 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:346 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562897735345)
+[DEBUG] 23:15:35:360 kernel/(22693:22694): OK
+[INFO] 23:15:35:360 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:377 kernel/(22693:22694): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:15:35:387 kernel/(22693:22694): Registro: TimeStamp: 13212006601087966684, Key:11, Value: Pinguino
+[INFO] 23:15:35:401 kernel/(22693:22694): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:15:35:439 kernel/(22693:22694): Registro: TimeStamp: 7588592271029099853, Key:6262, Value: Loro
+[INFO] 23:15:35:456 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562897735455)
+[DEBUG] 23:15:35:466 kernel/(22693:22694): FULL
+[INFO] 23:15:35:467 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:35:516 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:527 kernel/(22693:22694): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:15:35:538 kernel/(22693:22694): Registro: TimeStamp: 13212006601087967007, Key:272, Value: Vaca
+[INFO] 23:15:35:554 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:35:596 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:15:35:630 kernel/(22693:22694): Registro: TimeStamp: 3824606235, Key:310, Value: Calamar
+[INFO] 23:15:35:641 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562897735641)
+[DEBUG] 23:15:35:652 kernel/(22693:22694): OK
+[INFO] 23:15:35:652 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:663 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562897735663)
+[DEBUG] 23:15:35:673 kernel/(22693:22694): OK
+[INFO] 23:15:35:674 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:686 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562897735686)
+[DEBUG] 23:15:35:704 kernel/(22693:22694): OK
+[INFO] 23:15:35:704 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:714 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562897735713)
+[DEBUG] 23:15:35:725 kernel/(22693:22694): FULL
+[INFO] 23:15:35:725 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:35:775 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:786 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562897735785)
+[DEBUG] 23:15:35:796 kernel/(22693:22694): OK
+[INFO] 23:15:35:796 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:806 kernel/(22693:22694): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562897735806)
+[DEBUG] 23:15:35:817 kernel/(22693:22694): OK
+[INFO] 23:15:35:817 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:35:827 kernel/(22693:22694): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:15:35:866 kernel/(22693:22694): Registro: TimeStamp: 4193750794857012700, Key:11, Value: Pinguino
+[INFO] 23:15:35:876 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:15:35:909 kernel/(22693:22694): Registro no encontrado
+[INFO] 23:15:35:919 kernel/(22693:22694): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:15:35:956 kernel/(22693:22694): Registro: TimeStamp: 2401267763197172786, Key:1102, Value: Buho
+[INFO] 23:15:35:970 kernel/(22693:22694): DESCRIBE enviado
+[INFO] 23:15:36:21 kernel/(22693:22694): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562897736020)
+[DEBUG] 23:15:36:55 kernel/(22693:22694): FULL
+[INFO] 23:15:36:55 kernel/(22693:22694): Insert: FULL
+[INFO] 23:15:36:107 kernel/(22693:22694): Insert: OK
+[INFO] 23:15:36:117 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:15:36:157 kernel/(22693:22694): Registro: TimeStamp: 2401350226569256625, Key:33, Value: Raya
+[INFO] 23:15:36:167 kernel/(22693:22694): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:15:36:199 kernel/(22693:22694): Registro: TimeStamp: 5715707047861215337, Key:239, Value: Burro
+[INFO] 23:15:36:210 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:15:36:251 kernel/(22693:22694): Registro: TimeStamp: 2257235038493401094, Key:3103, Value: Delfin
+[WARNING] 23:15:36:251 kernel/(22693:22694): Finalizó script
+[DEBUG] 23:15:36:251 kernel/(22693:22699): Latencies:
+[DEBUG] 23:15:36:251 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:15:36:251 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:15:36:251 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:15:36:251 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Reads:
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Reads EC: 14
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Writes:
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Writes EC: 31
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Select: 14/14 
+
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:15:36:252 kernel/(22693:22699): Select: 0/14 
+
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Latencies:
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:16:06:253 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Reads:
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Writes:
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Select: 14/14 
+
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:16:06:254 kernel/(22693:22699): Select: 0/14 
+
+[INFO] 23:16:16:608 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:16:643 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:16:643 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:20:824 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:20:836 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:20:836 kernel/(22693:22694): Finalizó script
+[WARNING] 23:16:23:617 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:26:233 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:26:268 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:26:268 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:27:249 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:27:260 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:27:260 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:29:369 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:29:380 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:29:380 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:33:641 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:33:652 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:33:652 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:35:162 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:35:173 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:35:174 kernel/(22693:22694): Finalizó script
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Latencies:
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Reads:
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Reads EC: 7
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Writes:
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Select: 21/21 
+
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:16:36:255 kernel/(22693:22699): Select: 0/21 
+
+[INFO] 23:16:40:209 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 32)
+[DEBUG] 23:16:40:245 kernel/(22693:22694): Registro no encontrado
+[WARNING] 23:16:40:245 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:41:729 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 34)
+[DEBUG] 23:16:41:766 kernel/(22693:22694): Registro no encontrado
+[WARNING] 23:16:41:766 kernel/(22693:22694): Finalizó script
+[INFO] 23:16:43:209 kernel/(22693:22694): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:16:43:221 kernel/(22693:22694): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:43:221 kernel/(22693:22694): Finalizó script
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Latencies:
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Reads:
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Reads EC: 3
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Writes:
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:17:06:257 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:17:06:258 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Latencies:
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Reads:
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Writes:
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:17:36:258 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Latencies:
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Reads:
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:18:06:262 kernel/(22693:22699): Writes:
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:18:06:263 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Latencies:
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Reads:
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Writes:
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:18:36:264 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Latencies:
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:19:06:265 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Reads:
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Writes:
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:19:06:266 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:19:36:267 kernel/(22693:22699): Latencies:
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Reads:
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Writes:
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:19:36:268 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Latencies:
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Reads:
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Writes:
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:20:06:269 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Latencies:
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Reads:
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Writes:
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:20:36:270 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Latencies:
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Reads:
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Writes:
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:21:06:271 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:21:06:272 kernel/(22693:22699): Select: 0/24 
+
+[DEBUG] 23:21:36:272 kernel/(22693:22699): Latencies:
+[DEBUG] 23:21:36:272 kernel/(22693:22699): Read Latency SC 0.000000
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Read Latency EC 0.000000
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Read Latency SHC 0.000000
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Write Latency SC 0.000000
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Write Latency EC 0.000000
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Write Latency SHC 0.000000 
+
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Reads:
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Reads SC: 0
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Reads EC: 0
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Reads SHC: 0 
+
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Writes:
+[DEBUG] 23:21:36:273 kernel/(22693:22699): Writes SC: 0
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Writes EC: 0
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Writes SHC: 0 
+
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Memoria: 1
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Insert: 31/31
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Select: 24/24 
+
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Memoria: 2
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Insert: 0/31
+[DEBUG] 23:21:36:274 kernel/(22693:22699): Select: 0/24 
+
+[INFO] 23:22:30:722 kernel/(22999:22999): conecte
+[INFO] 23:22:30:722 kernel/(22999:22999): Conecte al servidor.
+[INFO] 23:22:30:733 kernel/(22999:23000): DESCRIBE enviado
+[WARNING] 23:22:30:790 kernel/(22999:23000): Finalizó script
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Latencies:
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Read Latency SC 0.000000
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Read Latency EC 0.000000
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Read Latency SHC 0.000000
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Write Latency SC 0.000000
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Write Latency EC 0.000000
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Write Latency SHC 0.000000 
+
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Reads:
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Reads SC: 0
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Reads EC: 0
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Reads SHC: 0 
+
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Writes:
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Writes SC: 0
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Writes EC: 0
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Writes SHC: 0 
+
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Memoria: 1
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Insert: 0/0
+[DEBUG] 23:22:30:790 kernel/(22999:23005): Select: 0/0 
+
+[WARNING] 23:22:35:523 kernel/(22999:23000): Finalizó script
+[INFO] 23:22:43:60 kernel/(22999:23000): INSERT enviado (Tabla: ANIMALES, Key: 1, Value: hola, Timestamp: 1562898163060)
+[ERROR] 23:22:43:60 kernel/(22999:23000): Script terminado por linea erronea
+[WARNING] 23:22:49:159 kernel/(22999:23000): Finalizó script
+[INFO] 23:22:50:771 kernel/(22999:23000): INSERT enviado (Tabla: ANIMALES, Key: 1, Value: hola, Timestamp: 1562898170770)
+[ERROR] 23:22:50:771 kernel/(22999:23000): Script terminado por linea erronea
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Latencies:
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Read Latency SC 0.000000
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Read Latency EC 0.000000
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Read Latency SHC 0.000000
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Write Latency SC 0.000000
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Write Latency EC 0.000000
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Write Latency SHC 0.000000 
+
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Reads:
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Reads SC: 0
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Reads EC: 0
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Reads SHC: 0 
+
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Writes:
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Writes SC: 0
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Writes EC: 0
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Writes SHC: 0 
+
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Memoria: 1
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Insert: 0/0
+[DEBUG] 23:23:00:792 kernel/(22999:23005): Select: 0/0 
+
+[WARNING] 23:23:03:693 kernel/(22999:23000): Finalizó script
+[INFO] 23:23:05:859 kernel/(22999:23000): INSERT enviado (Tabla: ANIMALES, Key: 1, Value: hola, Timestamp: 1562898185858)
+[ERROR] 23:23:05:859 kernel/(22999:23000): Script terminado por linea erronea
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Latencies:
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Read Latency SC 0.000000
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Read Latency EC 0.000000
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Read Latency SHC 0.000000
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Write Latency SC 0.000000
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Write Latency EC 0.000000
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Write Latency SHC 0.000000 
+
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Reads:
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Reads SC: 0
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Reads EC: 0
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Reads SHC: 0 
+
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Writes:
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Writes SC: 0
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Writes EC: 0
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Writes SHC: 0 
+
+[DEBUG] 23:23:30:793 kernel/(22999:23005): Memoria: 1
+[DEBUG] 23:23:30:794 kernel/(22999:23005): Insert: 0/0
+[DEBUG] 23:23:30:794 kernel/(22999:23005): Select: 0/0 
+
+[WARNING] 23:23:38:43 kernel/(22999:23000): Finalizó script
+[INFO] 23:23:39:455 kernel/(22999:23000): INSERT enviado (Tabla: ANIMALES, Key: 1, Value: hola, Timestamp: 1562898219454)
+[ERROR] 23:23:39:455 kernel/(22999:23000): Script terminado por linea erronea
+[INFO] 23:24:22:923 kernel/(23066:23066): conecte
+[INFO] 23:24:22:923 kernel/(23066:23066): Conecte al servidor.
+[INFO] 23:24:22:933 kernel/(23066:23067): DESCRIBE enviado
+[WARNING] 23:24:22:957 kernel/(23066:23070): La tabla no existe
+[WARNING] 23:24:22:990 kernel/(23066:23067): La tabla no existe
+[WARNING] 23:24:22:990 kernel/(23066:23067): Finalizó script
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Latencies:
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Read Latency SC 0.000000
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Read Latency EC 0.000000
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Read Latency SHC 0.000000
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Write Latency SC 0.000000
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Write Latency EC 0.000000
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Write Latency SHC 0.000000 
+
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Reads:
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Reads SC: 0
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Reads EC: 0
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Reads SHC: 0 
+
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Writes:
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Writes SC: 0
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Writes EC: 0
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Writes SHC: 0 
+
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Memoria: 1
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Insert: 0/0
+[DEBUG] 23:24:22:991 kernel/(23066:23072): Select: 0/0 
+
+[WARNING] 23:24:37:997 kernel/(23066:23070): La tabla no existe
+[WARNING] 23:24:45:172 kernel/(23066:23067): Finalizó script
+[WARNING] 23:24:49:340 kernel/(23066:23067): Finalizó script
+[INFO] 23:24:49:351 kernel/(23066:23067): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:24:49:362 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:49:440 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562898289440)
+[DEBUG] 23:24:49:454 kernel/(23066:23067): OK
+[INFO] 23:24:49:454 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:468 kernel/(23066:23067): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:24:49:479 kernel/(23066:23067): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:24:49:489 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:49:588 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562898289588)
+[DEBUG] 23:24:49:599 kernel/(23066:23067): OK
+[INFO] 23:24:49:599 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:610 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562898289609)
+[DEBUG] 23:24:49:621 kernel/(23066:23067): OK
+[INFO] 23:24:49:621 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:632 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562898289632)
+[DEBUG] 23:24:49:644 kernel/(23066:23067): OK
+[INFO] 23:24:49:644 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:654 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562898289654)
+[DEBUG] 23:24:49:666 kernel/(23066:23067): OK
+[INFO] 23:24:49:666 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:679 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562898289679)
+[DEBUG] 23:24:49:691 kernel/(23066:23067): FULL
+[INFO] 23:24:49:691 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:49:740 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:750 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562898289750)
+[DEBUG] 23:24:49:761 kernel/(23066:23067): OK
+[INFO] 23:24:49:761 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:772 kernel/(23066:23067): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:24:49:783 kernel/(23066:23067): Registro: TimeStamp: 13209684432530658390, Key:11, Value: Halcon
+[INFO] 23:24:49:800 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562898289799)
+[DEBUG] 23:24:49:811 kernel/(23066:23067): OK
+[INFO] 23:24:49:811 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:822 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:49:871 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562898289870)
+[DEBUG] 23:24:49:883 kernel/(23066:23067): OK
+[INFO] 23:24:49:883 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:899 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562898289898)
+[DEBUG] 23:24:49:910 kernel/(23066:23067): OK
+[INFO] 23:24:49:910 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:49:921 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:24:49:933 kernel/(23066:23067): Registro: TimeStamp: 13209684432530658510, Key:310, Value: Calamar
+[INFO] 23:24:49:949 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562898289948)
+[DEBUG] 23:24:49:961 kernel/(23066:23067): FULL
+[INFO] 23:24:49:961 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:50:13 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:24 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562898290024)
+[DEBUG] 23:24:50:40 kernel/(23066:23067): OK
+[INFO] 23:24:50:40 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:50 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562898290050)
+[DEBUG] 23:24:50:61 kernel/(23066:23067): OK
+[INFO] 23:24:50:61 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:75 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898290075)
+[DEBUG] 23:24:50:86 kernel/(23066:23067): OK
+[INFO] 23:24:50:86 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:100 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562898290099)
+[DEBUG] 23:24:50:111 kernel/(23066:23067): OK
+[INFO] 23:24:50:111 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:125 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562898290125)
+[DEBUG] 23:24:50:136 kernel/(23066:23067): FULL
+[INFO] 23:24:50:136 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:50:188 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:199 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:50:249 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562898290248)
+[DEBUG] 23:24:50:270 kernel/(23066:23067): OK
+[INFO] 23:24:50:270 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:283 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562898290282)
+[DEBUG] 23:24:50:294 kernel/(23066:23067): OK
+[INFO] 23:24:50:294 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:309 kernel/(23066:23067): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562898290308)
+[DEBUG] 23:24:50:330 kernel/(23066:23067): OK
+[INFO] 23:24:50:330 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:340 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562898290340)
+[DEBUG] 23:24:50:351 kernel/(23066:23067): OK
+[INFO] 23:24:50:352 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:367 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:24:50:400 kernel/(23066:23067): Registro: TimeStamp: 51069801883, Key:983, Value: Pez globo
+[INFO] 23:24:50:411 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:50:460 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562898290459)
+[DEBUG] 23:24:50:470 kernel/(23066:23067): OK
+[INFO] 23:24:50:470 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:489 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562898290489)
+[DEBUG] 23:24:50:500 kernel/(23066:23067): FULL
+[INFO] 23:24:50:500 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:50:553 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:564 kernel/(23066:23067): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:24:50:609 kernel/(23066:23067): Registro: TimeStamp: 72544638596, Key:11, Value: Pinguino
+[INFO] 23:24:50:620 kernel/(23066:23067): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:24:50:653 kernel/(23066:23067): Registro: TimeStamp: 4193722576922432947, Key:6262, Value: Loro
+[INFO] 23:24:50:667 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562898290666)
+[DEBUG] 23:24:50:679 kernel/(23066:23067): OK
+[INFO] 23:24:50:679 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:689 kernel/(23066:23067): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:24:50:707 kernel/(23066:23067): Registro: TimeStamp: 13209684432530659306, Key:272, Value: Vaca
+[INFO] 23:24:50:720 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:50:763 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:24:50:796 kernel/(23066:23067): Registro: TimeStamp: 3914559701366297806, Key:310, Value: Calamar
+[INFO] 23:24:50:806 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898290806)
+[DEBUG] 23:24:50:818 kernel/(23066:23067): FULL
+[INFO] 23:24:50:818 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:50:876 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:887 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562898290886)
+[DEBUG] 23:24:50:899 kernel/(23066:23067): OK
+[INFO] 23:24:50:899 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:910 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562898290909)
+[DEBUG] 23:24:50:920 kernel/(23066:23067): OK
+[INFO] 23:24:50:921 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:931 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562898290930)
+[DEBUG] 23:24:50:942 kernel/(23066:23067): OK
+[INFO] 23:24:50:942 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:959 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562898290958)
+[DEBUG] 23:24:50:970 kernel/(23066:23067): OK
+[INFO] 23:24:50:970 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:50:980 kernel/(23066:23067): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562898290980)
+[DEBUG] 23:24:50:991 kernel/(23066:23067): FULL
+[INFO] 23:24:50:992 kernel/(23066:23067): Insert: FULL
+[INFO] 23:24:51:39 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:51:50 kernel/(23066:23067): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:24:51:81 kernel/(23066:23067): Registro: TimeStamp: 76839605892, Key:11, Value: Pinguino
+[INFO] 23:24:51:96 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:24:51:131 kernel/(23066:23067): Registro no encontrado
+[INFO] 23:24:51:142 kernel/(23066:23067): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:24:51:175 kernel/(23066:23067): Registro: TimeStamp: 8382048068345746666, Key:1102, Value: Buho
+[INFO] 23:24:51:189 kernel/(23066:23067): DESCRIBE enviado
+[INFO] 23:24:51:237 kernel/(23066:23067): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562898291237)
+[DEBUG] 23:24:51:252 kernel/(23066:23067): OK
+[INFO] 23:24:51:252 kernel/(23066:23067): Insert: OK
+[INFO] 23:24:51:267 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:24:51:304 kernel/(23066:23067): Registro: TimeStamp: 7450486644144035641, Key:33, Value: Raya
+[INFO] 23:24:51:315 kernel/(23066:23067): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:24:51:347 kernel/(23066:23067): Registro: TimeStamp: 5715707047861770510, Key:239, Value: Burro
+[INFO] 23:24:51:357 kernel/(23066:23067): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:24:51:390 kernel/(23066:23067): Registro: TimeStamp: 2257235038493956317, Key:3103, Value: Delfin
+[WARNING] 23:24:51:390 kernel/(23066:23067): Finalizó script
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Latencies:
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Read Latency SC 0.000000
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Read Latency EC 0.000000
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Read Latency SHC 0.000000
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Write Latency SC 0.000000
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Write Latency EC 0.000000
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Write Latency SHC 0.000000 
+
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Reads:
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Reads SC: 0
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Reads EC: 13
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Reads SHC: 0 
+
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Writes:
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Writes SC: 0
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Writes EC: 30
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Writes SHC: 0 
+
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Memoria: 1
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Insert: 30/30
+[DEBUG] 23:24:52:992 kernel/(23066:23072): Select: 13/13 
+
+[INFO] 23:27:50:836 kernel/(23217:23217): conecte
+[INFO] 23:27:50:837 kernel/(23217:23217): Conecte al servidor.
+[INFO] 23:27:50:848 kernel/(23217:23218): DESCRIBE enviado
+[WARNING] 23:27:50:871 kernel/(23217:23221): La tabla no existe
+[WARNING] 23:27:50:912 kernel/(23217:23218): La tabla no existe
+[WARNING] 23:27:50:912 kernel/(23217:23218): Finalizó script
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Latencies:
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Read Latency SC 0.000000
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Read Latency EC 0.000000
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Read Latency SHC 0.000000
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Write Latency SC 0.000000
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Write Latency EC 0.000000
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Write Latency SHC 0.000000 
+
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Reads:
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Reads SC: 0
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Reads EC: 0
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Reads SHC: 0 
+
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Writes:
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Writes SC: 0
+[DEBUG] 23:27:50:912 kernel/(23217:23223): Writes EC: 0
+[DEBUG] 23:27:50:913 kernel/(23217:23223): Writes SHC: 0 
+
+[DEBUG] 23:27:50:913 kernel/(23217:23223): Memoria: 1
+[DEBUG] 23:27:50:913 kernel/(23217:23223): Insert: 0/0
+[DEBUG] 23:27:50:913 kernel/(23217:23223): Select: 0/0 
+
+[WARNING] 23:27:59:685 kernel/(23217:23218): Finalizó script
+[WARNING] 23:28:04:934 kernel/(23217:23218): Finalizó script
+[INFO] 23:28:04:949 kernel/(23217:23218): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:28:04:960 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:05:44 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562898485043)
+[DEBUG] 23:28:05:55 kernel/(23217:23218): OK
+[INFO] 23:28:05:55 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:66 kernel/(23217:23218): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:28:05:76 kernel/(23217:23218): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:28:05:87 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:05:191 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562898485190)
+[DEBUG] 23:28:05:202 kernel/(23217:23218): OK
+[INFO] 23:28:05:203 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:213 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562898485212)
+[DEBUG] 23:28:05:225 kernel/(23217:23218): OK
+[INFO] 23:28:05:225 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:240 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562898485239)
+[DEBUG] 23:28:05:250 kernel/(23217:23218): OK
+[INFO] 23:28:05:250 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:261 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562898485260)
+[DEBUG] 23:28:05:281 kernel/(23217:23218): OK
+[INFO] 23:28:05:281 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:293 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562898485293)
+[DEBUG] 23:28:05:305 kernel/(23217:23218): FULL
+[INFO] 23:28:05:305 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:05:357 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:368 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562898485367)
+[DEBUG] 23:28:05:378 kernel/(23217:23218): OK
+[INFO] 23:28:05:378 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:390 kernel/(23217:23218): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:28:05:407 kernel/(23217:23218): Registro: TimeStamp: 13213150093181603959, Key:11, Value: Halcon
+[INFO] 23:28:05:420 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562898485420)
+[DEBUG] 23:28:05:433 kernel/(23217:23218): OK
+[INFO] 23:28:05:433 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:443 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:05:497 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562898485496)
+[DEBUG] 23:28:05:508 kernel/(23217:23218): OK
+[INFO] 23:28:05:509 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:519 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562898485519)
+[DEBUG] 23:28:05:530 kernel/(23217:23218): OK
+[INFO] 23:28:05:530 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:540 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:28:05:556 kernel/(23217:23218): Registro: TimeStamp: 13213150093181604088, Key:310, Value: Calamar
+[INFO] 23:28:05:569 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562898485569)
+[DEBUG] 23:28:05:581 kernel/(23217:23218): FULL
+[INFO] 23:28:05:581 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:05:634 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:645 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562898485644)
+[DEBUG] 23:28:05:656 kernel/(23217:23218): OK
+[INFO] 23:28:05:657 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:667 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562898485666)
+[DEBUG] 23:28:05:679 kernel/(23217:23218): OK
+[INFO] 23:28:05:679 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:696 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898485695)
+[DEBUG] 23:28:05:707 kernel/(23217:23218): OK
+[INFO] 23:28:05:707 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:718 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562898485717)
+[DEBUG] 23:28:05:728 kernel/(23217:23218): OK
+[INFO] 23:28:05:728 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:739 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562898485738)
+[DEBUG] 23:28:05:750 kernel/(23217:23218): FULL
+[INFO] 23:28:05:750 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:05:804 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:814 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:05:867 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562898485866)
+[DEBUG] 23:28:05:878 kernel/(23217:23218): OK
+[INFO] 23:28:05:879 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:890 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562898485890)
+[DEBUG] 23:28:05:924 kernel/(23217:23218): OK
+[INFO] 23:28:05:924 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:934 kernel/(23217:23218): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562898485934)
+[DEBUG] 23:28:05:948 kernel/(23217:23218): OK
+[INFO] 23:28:05:948 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:961 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562898485960)
+[DEBUG] 23:28:05:972 kernel/(23217:23218): OK
+[INFO] 23:28:05:972 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:05:983 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:28:06:16 kernel/(23217:23218): Registro: TimeStamp: 15515832341472891327, Key:983, Value: Pez globo
+[INFO] 23:28:06:26 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:06:78 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562898486077)
+[DEBUG] 23:28:06:95 kernel/(23217:23218): OK
+[INFO] 23:28:06:95 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:111 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562898486110)
+[DEBUG] 23:28:06:122 kernel/(23217:23218): FULL
+[INFO] 23:28:06:122 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:06:171 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:190 kernel/(23217:23218): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:28:06:243 kernel/(23217:23218): Registro: TimeStamp: 72544834222, Key:11, Value: Pinguino
+[INFO] 23:28:06:253 kernel/(23217:23218): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:28:06:292 kernel/(23217:23218): Registro: TimeStamp: 7450486644144230869, Key:6262, Value: Loro
+[INFO] 23:28:06:302 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562898486302)
+[DEBUG] 23:28:06:314 kernel/(23217:23218): OK
+[INFO] 23:28:06:314 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:324 kernel/(23217:23218): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:28:06:336 kernel/(23217:23218): Registro: TimeStamp: 13213150093181604894, Key:272, Value: Vaca
+[INFO] 23:28:06:347 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:06:399 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:28:06:432 kernel/(23217:23218): Registro: TimeStamp: 7450486644144230648, Key:310, Value: Calamar
+[INFO] 23:28:06:442 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898486441)
+[DEBUG] 23:28:06:453 kernel/(23217:23218): FULL
+[INFO] 23:28:06:453 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:06:504 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:514 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562898486513)
+[DEBUG] 23:28:06:525 kernel/(23217:23218): OK
+[INFO] 23:28:06:525 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:536 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562898486536)
+[DEBUG] 23:28:06:547 kernel/(23217:23218): OK
+[INFO] 23:28:06:548 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:558 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562898486557)
+[DEBUG] 23:28:06:569 kernel/(23217:23218): OK
+[INFO] 23:28:06:570 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:580 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562898486579)
+[DEBUG] 23:28:06:590 kernel/(23217:23218): OK
+[INFO] 23:28:06:591 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:601 kernel/(23217:23218): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562898486601)
+[DEBUG] 23:28:06:612 kernel/(23217:23218): FULL
+[INFO] 23:28:06:612 kernel/(23217:23218): Insert: FULL
+[INFO] 23:28:06:660 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:670 kernel/(23217:23218): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:28:06:707 kernel/(23217:23218): Registro: TimeStamp: 7589726709331677870, Key:11, Value: Pinguino
+[INFO] 23:28:06:720 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:28:06:754 kernel/(23217:23218): Registro no encontrado
+[INFO] 23:28:06:765 kernel/(23217:23218): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:28:06:800 kernel/(23217:23218): Registro: TimeStamp: 2401267763197923599, Key:1102, Value: Buho
+[INFO] 23:28:06:811 kernel/(23217:23218): DESCRIBE enviado
+[INFO] 23:28:06:861 kernel/(23217:23218): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562898486861)
+[DEBUG] 23:28:06:873 kernel/(23217:23218): OK
+[INFO] 23:28:06:873 kernel/(23217:23218): Insert: OK
+[INFO] 23:28:06:883 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:28:06:920 kernel/(23217:23218): Registro: TimeStamp: 7450486644144231262, Key:33, Value: Raya
+[INFO] 23:28:06:930 kernel/(23217:23218): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:28:06:970 kernel/(23217:23218): Registro: TimeStamp: 7450486644144231731, Key:239, Value: Burro
+[INFO] 23:28:06:980 kernel/(23217:23218): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:28:07:24 kernel/(23217:23218): Registro: TimeStamp: 7450486644144231688, Key:3103, Value: Delfin
+[WARNING] 23:28:07:24 kernel/(23217:23218): Finalizó script
+[INFO] 23:32:45:62 kernel/(23480:23480): conecte
+[INFO] 23:32:45:62 kernel/(23480:23480): Conecte al servidor.
+[INFO] 23:32:45:74 kernel/(23480:23481): DESCRIBE enviado
+[WARNING] 23:32:45:101 kernel/(23480:23484): La tabla no existe
+[WARNING] 23:32:45:135 kernel/(23480:23481): La tabla no existe
+[WARNING] 23:32:45:135 kernel/(23480:23481): Finalizó script
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Latencies:
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Read Latency SC 0.000000
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Read Latency EC 0.000000
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Read Latency SHC 0.000000
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Write Latency SC 0.000000
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Write Latency EC 0.000000
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Write Latency SHC 0.000000 
+
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Reads:
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Reads SC: 0
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Reads EC: 0
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Reads SHC: 0 
+
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Writes:
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Writes SC: 0
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Writes EC: 0
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Writes SHC: 0 
+
+[DEBUG] 23:32:45:135 kernel/(23480:23486): Memoria: 1
+[DEBUG] 23:32:45:136 kernel/(23480:23486): Insert: 0/0
+[DEBUG] 23:32:45:136 kernel/(23480:23486): Select: 0/0 
+
+[WARNING] 23:32:54:766 kernel/(23480:23481): Finalizó script
+[WARNING] 23:33:00:144 kernel/(23480:23484): La tabla no existe
+[WARNING] 23:33:01:110 kernel/(23480:23481): Finalizó script
+[INFO] 23:33:01:121 kernel/(23480:23481): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:33:01:133 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:01:205 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562898781205)
+[DEBUG] 23:33:01:216 kernel/(23480:23481): OK
+[INFO] 23:33:01:217 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:227 kernel/(23480:23481): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:33:01:238 kernel/(23480:23481): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:33:01:249 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:01:333 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562898781333)
+[DEBUG] 23:33:01:344 kernel/(23480:23481): OK
+[INFO] 23:33:01:344 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:356 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562898781355)
+[DEBUG] 23:33:01:368 kernel/(23480:23481): OK
+[INFO] 23:33:01:368 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:378 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562898781378)
+[DEBUG] 23:33:01:389 kernel/(23480:23481): OK
+[INFO] 23:33:01:389 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:401 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562898781400)
+[DEBUG] 23:33:01:413 kernel/(23480:23481): OK
+[INFO] 23:33:01:413 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:423 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562898781423)
+[DEBUG] 23:33:01:436 kernel/(23480:23481): FULL
+[INFO] 23:33:01:436 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:01:493 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:504 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562898781503)
+[DEBUG] 23:33:01:515 kernel/(23480:23481): OK
+[INFO] 23:33:01:515 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:526 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:01:537 kernel/(23480:23481): Registro: TimeStamp: 1562898781503, Key:11, Value: Halcon
+[INFO] 23:33:01:547 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562898781547)
+[DEBUG] 23:33:01:558 kernel/(23480:23481): OK
+[INFO] 23:33:01:558 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:568 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:01:625 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562898781624)
+[DEBUG] 23:33:01:637 kernel/(23480:23481): OK
+[INFO] 23:33:01:637 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:648 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562898781647)
+[DEBUG] 23:33:01:659 kernel/(23480:23481): OK
+[INFO] 23:33:01:659 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:670 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:01:683 kernel/(23480:23481): Registro: TimeStamp: 1562898781624, Key:310, Value: Calamar
+[INFO] 23:33:01:696 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562898781695)
+[DEBUG] 23:33:01:707 kernel/(23480:23481): FULL
+[INFO] 23:33:01:707 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:01:757 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:767 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562898781767)
+[DEBUG] 23:33:01:783 kernel/(23480:23481): OK
+[INFO] 23:33:01:783 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:797 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562898781796)
+[DEBUG] 23:33:01:812 kernel/(23480:23481): OK
+[INFO] 23:33:01:812 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:823 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898781823)
+[DEBUG] 23:33:01:834 kernel/(23480:23481): OK
+[INFO] 23:33:01:834 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:847 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562898781846)
+[DEBUG] 23:33:01:858 kernel/(23480:23481): OK
+[INFO] 23:33:01:858 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:869 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562898781869)
+[DEBUG] 23:33:01:880 kernel/(23480:23481): FULL
+[INFO] 23:33:01:881 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:01:932 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:01:943 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:01:992 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562898781992)
+[DEBUG] 23:33:02:5 kernel/(23480:23481): OK
+[INFO] 23:33:02:5 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:16 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562898782016)
+[DEBUG] 23:33:02:28 kernel/(23480:23481): OK
+[INFO] 23:33:02:28 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:38 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562898782037)
+[DEBUG] 23:33:02:49 kernel/(23480:23481): OK
+[INFO] 23:33:02:49 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:60 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562898782059)
+[DEBUG] 23:33:02:70 kernel/(23480:23481): OK
+[INFO] 23:33:02:70 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:81 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:33:02:117 kernel/(23480:23481): Registro: TimeStamp: 1562898781823, Key:983, Value: Pez globo
+[INFO] 23:33:02:127 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:02:174 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562898782174)
+[DEBUG] 23:33:02:186 kernel/(23480:23481): OK
+[INFO] 23:33:02:186 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:204 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562898782204)
+[DEBUG] 23:33:02:217 kernel/(23480:23481): FULL
+[INFO] 23:33:02:217 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:02:268 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:278 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:02:322 kernel/(23480:23481): Registro: TimeStamp: 1562898782037, Key:11, Value: Pinguino
+[INFO] 23:33:02:332 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:33:02:365 kernel/(23480:23481): Registro: TimeStamp: 1562898781846, Key:6262, Value: Loro
+[INFO] 23:33:02:381 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562898782380)
+[DEBUG] 23:33:02:392 kernel/(23480:23481): OK
+[INFO] 23:33:02:392 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:402 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:33:02:415 kernel/(23480:23481): Registro: TimeStamp: 1562898782380, Key:272, Value: Vaca
+[INFO] 23:33:02:425 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:02:472 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:02:505 kernel/(23480:23481): Registro: TimeStamp: 1562898781624, Key:310, Value: Calamar
+[INFO] 23:33:02:517 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898782516)
+[DEBUG] 23:33:02:529 kernel/(23480:23481): FULL
+[INFO] 23:33:02:529 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:02:580 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:590 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562898782590)
+[DEBUG] 23:33:02:601 kernel/(23480:23481): OK
+[INFO] 23:33:02:601 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:611 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562898782610)
+[DEBUG] 23:33:02:622 kernel/(23480:23481): OK
+[INFO] 23:33:02:622 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:633 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562898782632)
+[DEBUG] 23:33:02:644 kernel/(23480:23481): OK
+[INFO] 23:33:02:644 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:655 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562898782654)
+[DEBUG] 23:33:02:666 kernel/(23480:23481): OK
+[INFO] 23:33:02:666 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:677 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562898782676)
+[DEBUG] 23:33:02:688 kernel/(23480:23481): FULL
+[INFO] 23:33:02:688 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:02:736 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:746 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:02:782 kernel/(23480:23481): Registro: TimeStamp: 1562898782037, Key:11, Value: Pinguino
+[INFO] 23:33:02:793 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:33:02:826 kernel/(23480:23481): Registro no encontrado
+[INFO] 23:33:02:836 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:33:02:869 kernel/(23480:23481): Registro: TimeStamp: 1562898781647, Key:1102, Value: Buho
+[INFO] 23:33:02:880 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:02:929 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562898782928)
+[DEBUG] 23:33:02:941 kernel/(23480:23481): OK
+[INFO] 23:33:02:941 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:02:953 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:33:02:986 kernel/(23480:23481): Registro: TimeStamp: 1562898782204, Key:33, Value: Raya
+[INFO] 23:33:03:2 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:33:03:34 kernel/(23480:23481): Registro: TimeStamp: 1562898782654, Key:239, Value: Burro
+[INFO] 23:33:03:46 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:33:03:84 kernel/(23480:23481): Registro: TimeStamp: 1562898782610, Key:3103, Value: Delfin
+[WARNING] 23:33:03:84 kernel/(23480:23481): Finalizó script
+[WARNING] 23:33:08:447 kernel/(23480:23481): Finalizó script
+[INFO] 23:33:08:458 kernel/(23480:23481): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:33:08:469 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:08:541 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562898788540)
+[DEBUG] 23:33:08:552 kernel/(23480:23481): FULL
+[INFO] 23:33:08:552 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:08:604 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:615 kernel/(23480:23481): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:33:08:626 kernel/(23480:23481): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:33:08:636 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:08:709 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562898788709)
+[DEBUG] 23:33:08:720 kernel/(23480:23481): OK
+[INFO] 23:33:08:721 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:731 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562898788731)
+[DEBUG] 23:33:08:743 kernel/(23480:23481): OK
+[INFO] 23:33:08:743 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:754 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562898788753)
+[DEBUG] 23:33:08:764 kernel/(23480:23481): OK
+[INFO] 23:33:08:764 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:775 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562898788774)
+[DEBUG] 23:33:08:786 kernel/(23480:23481): OK
+[INFO] 23:33:08:786 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:799 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562898788799)
+[DEBUG] 23:33:08:812 kernel/(23480:23481): FULL
+[INFO] 23:33:08:813 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:08:863 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:873 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562898788873)
+[DEBUG] 23:33:08:884 kernel/(23480:23481): OK
+[INFO] 23:33:08:885 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:895 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:08:906 kernel/(23480:23481): Registro: TimeStamp: 1562898788873, Key:11, Value: Halcon
+[INFO] 23:33:08:917 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562898788916)
+[DEBUG] 23:33:08:928 kernel/(23480:23481): OK
+[INFO] 23:33:08:928 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:08:939 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:08:985 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562898788984)
+[DEBUG] 23:33:08:996 kernel/(23480:23481): OK
+[INFO] 23:33:08:996 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:6 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562898789006)
+[DEBUG] 23:33:09:27 kernel/(23480:23481): OK
+[INFO] 23:33:09:27 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:42 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:09:53 kernel/(23480:23481): Registro: TimeStamp: 1562898788984, Key:310, Value: Calamar
+[INFO] 23:33:09:64 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562898789064)
+[DEBUG] 23:33:09:81 kernel/(23480:23481): FULL
+[INFO] 23:33:09:81 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:09:132 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:143 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562898789143)
+[DEBUG] 23:33:09:154 kernel/(23480:23481): OK
+[INFO] 23:33:09:154 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:164 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562898789164)
+[DEBUG] 23:33:09:175 kernel/(23480:23481): OK
+[INFO] 23:33:09:175 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:186 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898789186)
+[DEBUG] 23:33:09:197 kernel/(23480:23481): OK
+[INFO] 23:33:09:197 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:208 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562898789208)
+[DEBUG] 23:33:09:220 kernel/(23480:23481): OK
+[INFO] 23:33:09:220 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:230 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562898789230)
+[DEBUG] 23:33:09:241 kernel/(23480:23481): FULL
+[INFO] 23:33:09:241 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:09:291 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:302 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:09:347 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562898789346)
+[DEBUG] 23:33:09:361 kernel/(23480:23481): OK
+[INFO] 23:33:09:361 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:372 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562898789371)
+[DEBUG] 23:33:09:383 kernel/(23480:23481): OK
+[INFO] 23:33:09:383 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:394 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562898789394)
+[DEBUG] 23:33:09:405 kernel/(23480:23481): OK
+[INFO] 23:33:09:405 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:417 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562898789417)
+[DEBUG] 23:33:09:428 kernel/(23480:23481): OK
+[INFO] 23:33:09:428 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:438 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:33:09:471 kernel/(23480:23481): Registro: TimeStamp: 1562898789186, Key:983, Value: Pez globo
+[INFO] 23:33:09:481 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:09:524 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562898789524)
+[DEBUG] 23:33:09:535 kernel/(23480:23481): OK
+[INFO] 23:33:09:536 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:546 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562898789546)
+[DEBUG] 23:33:09:557 kernel/(23480:23481): FULL
+[INFO] 23:33:09:557 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:09:607 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:617 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:09:662 kernel/(23480:23481): Registro: TimeStamp: 1562898789394, Key:11, Value: Pinguino
+[INFO] 23:33:09:676 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:33:09:716 kernel/(23480:23481): Registro: TimeStamp: 1562898789208, Key:6262, Value: Loro
+[INFO] 23:33:09:726 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562898789726)
+[DEBUG] 23:33:09:738 kernel/(23480:23481): OK
+[INFO] 23:33:09:738 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:748 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:33:09:762 kernel/(23480:23481): Registro: TimeStamp: 1562898789726, Key:272, Value: Vaca
+[INFO] 23:33:09:773 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:09:822 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:09:859 kernel/(23480:23481): Registro: TimeStamp: 1562898788984, Key:310, Value: Calamar
+[INFO] 23:33:09:872 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898789871)
+[DEBUG] 23:33:09:884 kernel/(23480:23481): FULL
+[INFO] 23:33:09:884 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:09:935 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:946 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562898789946)
+[DEBUG] 23:33:09:957 kernel/(23480:23481): OK
+[INFO] 23:33:09:957 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:968 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562898789968)
+[DEBUG] 23:33:09:979 kernel/(23480:23481): OK
+[INFO] 23:33:09:979 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:09:990 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562898789989)
+[DEBUG] 23:33:10:1 kernel/(23480:23481): OK
+[INFO] 23:33:10:1 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:10:12 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562898790012)
+[DEBUG] 23:33:10:23 kernel/(23480:23481): OK
+[INFO] 23:33:10:23 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:10:34 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562898790034)
+[DEBUG] 23:33:10:56 kernel/(23480:23481): FULL
+[INFO] 23:33:10:56 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:10:104 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:10:116 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:10:148 kernel/(23480:23481): Registro: TimeStamp: 1562898789394, Key:11, Value: Pinguino
+[INFO] 23:33:10:159 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:33:10:192 kernel/(23480:23481): Registro: TimeStamp: 1562898782928, Key:3105, Value: Delfin
+[INFO] 23:33:10:203 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:33:10:235 kernel/(23480:23481): Registro: TimeStamp: 1562898789006, Key:1102, Value: Buho
+[INFO] 23:33:10:249 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:10:292 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562898790291)
+[DEBUG] 23:33:10:304 kernel/(23480:23481): OK
+[INFO] 23:33:10:304 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:10:321 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:33:10:361 kernel/(23480:23481): Registro: TimeStamp: 1562898789546, Key:33, Value: Raya
+[INFO] 23:33:10:372 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:33:10:405 kernel/(23480:23481): Registro: TimeStamp: 1562898790012, Key:239, Value: Burro
+[INFO] 23:33:10:416 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:33:10:452 kernel/(23480:23481): Registro: TimeStamp: 1562898789968, Key:3103, Value: Delfin
+[WARNING] 23:33:10:452 kernel/(23480:23481): Finalizó script
+[WARNING] 23:33:11:488 kernel/(23480:23481): Finalizó script
+[INFO] 23:33:11:501 kernel/(23480:23481): CREATE enviado (Tabla: MARINOS, CONSISTENCY: EC)
+[INFO] 23:33:11:513 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:11:590 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Ballena, Timestamp: 1562898791590)
+[DEBUG] 23:33:11:601 kernel/(23480:23481): FULL
+[INFO] 23:33:11:601 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:11:652 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:662 kernel/(23480:23481): CREATE enviado (Tabla: AVES, CONSISTENCY: EC)
+[INFO] 23:33:11:676 kernel/(23480:23481): CREATE enviado (Tabla: MAMIFEROS, CONSISTENCY: EC)
+[INFO] 23:33:11:688 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:11:754 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Pulpo, Timestamp: 1562898791754)
+[DEBUG] 23:33:11:765 kernel/(23480:23481): OK
+[INFO] 23:33:11:765 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:776 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Paloma, Timestamp: 1562898791775)
+[DEBUG] 23:33:11:787 kernel/(23480:23481): OK
+[INFO] 23:33:11:787 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:800 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Gato, Timestamp: 1562898791799)
+[DEBUG] 23:33:11:810 kernel/(23480:23481): OK
+[INFO] 23:33:11:811 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:821 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Perro, Timestamp: 1562898791821)
+[DEBUG] 23:33:11:833 kernel/(23480:23481): OK
+[INFO] 23:33:11:833 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:850 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 22, Value: Delfin, Timestamp: 1562898791849)
+[DEBUG] 23:33:11:862 kernel/(23480:23481): FULL
+[INFO] 23:33:11:862 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:11:912 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:923 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Halcon, Timestamp: 1562898791922)
+[DEBUG] 23:33:11:933 kernel/(23480:23481): OK
+[INFO] 23:33:11:933 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:944 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:11:955 kernel/(23480:23481): Registro: TimeStamp: 1562898791922, Key:11, Value: Halcon
+[INFO] 23:33:11:966 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Orca, Timestamp: 1562898791966)
+[DEBUG] 23:33:11:978 kernel/(23480:23481): OK
+[INFO] 23:33:11:978 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:11:989 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:12:36 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 310, Value: Calamar, Timestamp: 1562898792036)
+[DEBUG] 23:33:12:50 kernel/(23480:23481): OK
+[INFO] 23:33:12:50 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:60 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 1102, Value: Buho, Timestamp: 1562898792060)
+[DEBUG] 23:33:12:71 kernel/(23480:23481): OK
+[INFO] 23:33:12:71 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:82 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:12:93 kernel/(23480:23481): Registro: TimeStamp: 1562898792036, Key:310, Value: Calamar
+[INFO] 23:33:12:104 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 333, Value: Colibri, Timestamp: 1562898792103)
+[DEBUG] 23:33:12:115 kernel/(23480:23481): FULL
+[INFO] 23:33:12:115 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:12:167 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:178 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 2222, Value: Elefante, Timestamp: 1562898792177)
+[DEBUG] 23:33:12:189 kernel/(23480:23481): OK
+[INFO] 23:33:12:189 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:199 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Jirafa, Timestamp: 1562898792198)
+[DEBUG] 23:33:12:210 kernel/(23480:23481): OK
+[INFO] 23:33:12:210 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:222 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898792222)
+[DEBUG] 23:33:12:233 kernel/(23480:23481): OK
+[INFO] 23:33:12:233 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:245 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 6262, Value: Loro, Timestamp: 1562898792244)
+[DEBUG] 23:33:12:255 kernel/(23480:23481): OK
+[INFO] 23:33:12:255 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:273 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 888, Value: Pelicano, Timestamp: 1562898792272)
+[DEBUG] 23:33:12:285 kernel/(23480:23481): FULL
+[INFO] 23:33:12:285 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:12:336 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:347 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:12:393 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 349, Value: Cebra, Timestamp: 1562898792392)
+[DEBUG] 23:33:12:404 kernel/(23480:23481): OK
+[INFO] 23:33:12:404 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:425 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Caballo, Timestamp: 1562898792425)
+[DEBUG] 23:33:12:436 kernel/(23480:23481): OK
+[INFO] 23:33:12:437 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:452 kernel/(23480:23481): INSERT enviado (Tabla: AVES, Key: 11, Value: Pinguino, Timestamp: 1562898792452)
+[DEBUG] 23:33:12:463 kernel/(23480:23481): OK
+[INFO] 23:33:12:463 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:482 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 721, Value: Oveja, Timestamp: 1562898792482)
+[DEBUG] 23:33:12:493 kernel/(23480:23481): OK
+[INFO] 23:33:12:493 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:512 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 983)
+[DEBUG] 23:33:12:546 kernel/(23480:23481): Registro: TimeStamp: 1562898792222, Key:983, Value: Pez globo
+[INFO] 23:33:12:556 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:12:601 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Tiburon, Timestamp: 1562898792600)
+[DEBUG] 23:33:12:612 kernel/(23480:23481): OK
+[INFO] 23:33:12:612 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:626 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 33, Value: Raya, Timestamp: 1562898792625)
+[DEBUG] 23:33:12:640 kernel/(23480:23481): FULL
+[INFO] 23:33:12:640 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:12:692 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:702 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:12:745 kernel/(23480:23481): Registro: TimeStamp: 1562898792452, Key:11, Value: Pinguino
+[INFO] 23:33:12:756 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 6262)
+[DEBUG] 23:33:12:790 kernel/(23480:23481): Registro: TimeStamp: 1562898792244, Key:6262, Value: Loro
+[INFO] 23:33:12:805 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 272, Value: Vaca, Timestamp: 1562898792805)
+[DEBUG] 23:33:12:816 kernel/(23480:23481): OK
+[INFO] 23:33:12:816 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:12:826 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 272)
+[DEBUG] 23:33:12:837 kernel/(23480:23481): Registro: TimeStamp: 1562898792805, Key:272, Value: Vaca
+[INFO] 23:33:12:848 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:12:891 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 310)
+[DEBUG] 23:33:12:925 kernel/(23480:23481): Registro: TimeStamp: 1562898792036, Key:310, Value: Calamar
+[INFO] 23:33:12:936 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 983, Value: Pez globo, Timestamp: 1562898792935)
+[DEBUG] 23:33:12:948 kernel/(23480:23481): FULL
+[INFO] 23:33:12:948 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:13:0 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:11 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 209, Value: Hipopotamo, Timestamp: 1562898793010)
+[DEBUG] 23:33:13:23 kernel/(23480:23481): OK
+[INFO] 23:33:13:23 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:41 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3103, Value: Delfin, Timestamp: 1562898793040)
+[DEBUG] 23:33:13:52 kernel/(23480:23481): OK
+[INFO] 23:33:13:52 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:65 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3104, Value: Delfin, Timestamp: 1562898793064)
+[DEBUG] 23:33:13:76 kernel/(23480:23481): OK
+[INFO] 23:33:13:76 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:87 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 239, Value: Burro, Timestamp: 1562898793087)
+[DEBUG] 23:33:13:101 kernel/(23480:23481): OK
+[INFO] 23:33:13:101 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:112 kernel/(23480:23481): INSERT enviado (Tabla: MAMIFEROS, Key: 21, Value: Caballo, Timestamp: 1562898793112)
+[DEBUG] 23:33:13:124 kernel/(23480:23481): FULL
+[INFO] 23:33:13:124 kernel/(23480:23481): Insert: FULL
+[INFO] 23:33:13:175 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:185 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 11)
+[DEBUG] 23:33:13:232 kernel/(23480:23481): Registro: TimeStamp: 1562898792452, Key:11, Value: Pinguino
+[INFO] 23:33:13:244 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3105)
+[DEBUG] 23:33:13:283 kernel/(23480:23481): Registro: TimeStamp: 1562898790291, Key:3105, Value: Delfin
+[INFO] 23:33:13:295 kernel/(23480:23481): SELECT enviado (Tabla: AVES, Key: 1102)
+[DEBUG] 23:33:13:327 kernel/(23480:23481): Registro: TimeStamp: 1562898792060, Key:1102, Value: Buho
+[INFO] 23:33:13:338 kernel/(23480:23481): DESCRIBE enviado
+[INFO] 23:33:13:393 kernel/(23480:23481): INSERT enviado (Tabla: MARINOS, Key: 3105, Value: Delfin, Timestamp: 1562898793392)
+[DEBUG] 23:33:13:404 kernel/(23480:23481): OK
+[INFO] 23:33:13:404 kernel/(23480:23481): Insert: OK
+[INFO] 23:33:13:415 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 33)
+[DEBUG] 23:33:13:483 kernel/(23480:23481): Registro: TimeStamp: 1562898792625, Key:33, Value: Raya
+[INFO] 23:33:13:498 kernel/(23480:23481): SELECT enviado (Tabla: MAMIFEROS, Key: 239)
+[DEBUG] 23:33:13:532 kernel/(23480:23481): Registro: TimeStamp: 1562898793087, Key:239, Value: Burro
+[INFO] 23:33:13:546 kernel/(23480:23481): SELECT enviado (Tabla: MARINOS, Key: 3103)
+[DEBUG] 23:33:13:584 kernel/(23480:23481): Registro: TimeStamp: 1562898793040, Key:3103, Value: Delfin
+[WARNING] 23:33:13:584 kernel/(23480:23481): Finalizó script
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Latencies:
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Read Latency SC 0.000000
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Read Latency EC 0.000000
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Read Latency SHC 0.000000
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Write Latency SC 0.000000
+[DEBUG] 23:33:15:137 kernel/(23480:23486): Write Latency EC 0.022222
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Write Latency SHC 0.000000 
+
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Reads:
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Reads SC: 0
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Reads EC: 39
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Reads SHC: 0 
+
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Writes:
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Writes SC: 0
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Writes EC: 90
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Writes SHC: 0 
+
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Memoria: 1
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Insert: 90/90
+[DEBUG] 23:33:15:138 kernel/(23480:23486): Select: 39/39 
+
+[WARNING] 23:33:19:695 kernel/(23480:23481): Finalizó script
+[WARNING] 23:33:21:263 kernel/(23480:23481): Finalizó script

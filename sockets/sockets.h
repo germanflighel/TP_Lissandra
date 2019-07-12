@@ -73,7 +73,7 @@ typedef struct t_PackageInsert {
 	uint16_t key;
 	uint32_t value_long;
 	char* value;
-	long timestamp;
+	unsigned long long timestamp;
 	uint32_t total_size;
 } t_PackageInsert;
 
@@ -105,7 +105,7 @@ typedef struct t_Respuesta_Select {
 	char result;
 	uint16_t value_long;
 	char* value;
-	long timestamp;
+	unsigned long long timestamp;
 } t_Respuesta_Select;
 
 #define LFS 100
@@ -134,5 +134,6 @@ void dispose_package(char**);
 int recieve_and_deserialize(t_PackagePosta*, int);
 char* serializarHandShake(t_Handshake*);
 char* consistency_to_str(int consistency);
+unsigned long long getTS();
 
 #endif

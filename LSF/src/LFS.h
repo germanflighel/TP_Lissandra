@@ -39,7 +39,7 @@
 #define BUF_LEN     ( MAX_EVENTS * ( EVENT_SIZE + LEN_NAME ))
 
 typedef struct Registro {
-	long timeStamp;
+	unsigned long long timeStamp;
 	int key;
 	char* value;
 } Registro;

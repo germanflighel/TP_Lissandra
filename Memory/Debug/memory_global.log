@@ -1,0 +1,738 @@
+[DEBUG] 22:52:38:385 memory/(21940:21940): IP 127.0.1.1
+[INFO] 22:52:38:385 memory/(21940:21940): 8001
+[DEBUG] 22:52:38:385 memory/(21940:21940): Conectado al LFS
+[INFO] 22:52:38:386 memory/(21940:21940): Maximo tamaño del value: 15.
+[INFO] 22:52:38:386 memory/(21940:21940): 15
+[INFO] 22:52:38:386 memory/(21940:21940): 8001
+[DEBUG] 22:52:43:313 memory/(21946:21946): IP 127.0.1.1
+[INFO] 22:52:43:313 memory/(21946:21946): 8002
+[DEBUG] 22:52:43:313 memory/(21946:21946): Conectado al LFS
+[INFO] 22:52:43:313 memory/(21946:21946): Maximo tamaño del value: 15.
+[INFO] 22:52:43:313 memory/(21946:21946): 15
+[INFO] 22:52:43:313 memory/(21946:21946): 8002
+[WARNING] 22:53:28:235 memory/(21946:21946): JOURNAL RECIBIDO
+[WARNING] 22:53:28:235 memory/(21940:21940): JOURNAL RECIBIDO
+[WARNING] 22:53:36:16 memory/(21946:21951): Desconectado.
+[WARNING] 22:53:36:16 memory/(21946:21951): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 22:53:37:681 memory/(21940:21944): Desconectado.
+[WARNING] 22:53:37:681 memory/(21940:21944): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 22:53:42:707 memory/(21940:21940): Termina proceso
+[WARNING] 22:53:43:522 memory/(21946:21946): Termina proceso
+[DEBUG] 22:54:13:944 memory/(21983:21983): IP 127.0.1.1
+[INFO] 22:54:13:944 memory/(21983:21983): 8001
+[DEBUG] 22:54:13:944 memory/(21983:21983): Conectado al LFS
+[INFO] 22:54:13:945 memory/(21983:21983): Maximo tamaño del value: 15.
+[INFO] 22:54:13:945 memory/(21983:21983): 15
+[INFO] 22:54:13:945 memory/(21983:21983): 8001
+[WARNING] 22:54:35:560 memory/(21983:21988): Desconectado.
+[WARNING] 22:54:35:560 memory/(21983:21988): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 22:54:43:162 memory/(21983:21983): Termina proceso
+[DEBUG] 22:57:08:424 memory/(22084:22084): IP 127.0.1.1
+[INFO] 22:57:08:424 memory/(22084:22084): 8001
+[DEBUG] 22:57:08:424 memory/(22084:22084): Conectado al LFS
+[INFO] 22:57:08:424 memory/(22084:22084): Maximo tamaño del value: 15.
+[INFO] 22:57:08:424 memory/(22084:22084): 15
+[INFO] 22:57:08:424 memory/(22084:22084): 8001
+[DEBUG] 22:57:12:504 memory/(22090:22090): IP 127.0.1.1
+[INFO] 22:57:12:504 memory/(22090:22090): 8002
+[DEBUG] 22:57:12:504 memory/(22090:22090): Conectado al LFS
+[INFO] 22:57:12:504 memory/(22090:22090): Maximo tamaño del value: 15.
+[INFO] 22:57:12:504 memory/(22090:22090): 15
+[INFO] 22:57:12:504 memory/(22090:22090): 8002
+[INFO] 22:57:30:348 memory/(22090:22090): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 22:57:30:360 memory/(22090:22090): Registro no encontrado
+[WARNING] 22:57:30:641 memory/(22084:22084): Memoria full
+[WARNING] 22:57:30:661 memory/(22084:22084): JOURNAL RECIBIDO
+[DEBUG] 22:57:30:661 memory/(22084:22084): MARINOS
+[DEBUG] 22:57:30:661 memory/(22084:22084): Entre
+[DEBUG] 22:57:30:661 memory/(22084:22084): AVES
+[DEBUG] 22:57:30:661 memory/(22084:22084): Entre
+[DEBUG] 22:57:30:661 memory/(22084:22084): Entre
+[DEBUG] 22:57:30:661 memory/(22084:22084): Entre
+[DEBUG] 22:57:30:661 memory/(22084:22084): MAMIFEROS
+[DEBUG] 22:57:30:661 memory/(22084:22084): Entre
+[WARNING] 22:57:30:998 memory/(22084:22084): Memoria full
+[WARNING] 22:57:31:9 memory/(22084:22084): JOURNAL RECIBIDO
+[DEBUG] 22:57:31:9 memory/(22084:22084): MAMIFEROS
+[DEBUG] 22:57:31:9 memory/(22084:22084): Entre
+[DEBUG] 22:57:31:9 memory/(22084:22084): Entre
+[DEBUG] 22:57:31:9 memory/(22084:22084): MARINOS
+[DEBUG] 22:57:31:9 memory/(22084:22084): Entre
+[DEBUG] 22:57:31:9 memory/(22084:22084): AVES
+[DEBUG] 22:57:31:9 memory/(22084:22084): Entre
+[DEBUG] 22:57:31:9 memory/(22084:22084): Entre
+[INFO] 22:57:31:130 memory/(22084:22084): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:00:26:73 memory/(22174:22174): IP 127.0.1.1
+[INFO] 23:00:26:73 memory/(22174:22174): 8001
+[DEBUG] 23:00:26:73 memory/(22174:22174): Conectado al LFS
+[INFO] 23:00:26:73 memory/(22174:22174): Maximo tamaño del value: 15.
+[INFO] 23:00:26:73 memory/(22174:22174): 15
+[INFO] 23:00:26:73 memory/(22174:22174): 8001
+[DEBUG] 23:00:28:296 memory/(22175:22175): IP 127.0.1.1
+[INFO] 23:00:28:296 memory/(22175:22175): 8002
+[DEBUG] 23:00:28:297 memory/(22175:22175): Conectado al LFS
+[INFO] 23:00:28:297 memory/(22175:22175): Maximo tamaño del value: 15.
+[INFO] 23:00:28:297 memory/(22175:22175): 15
+[INFO] 23:00:28:297 memory/(22175:22175): 8002
+[WARNING] 23:00:41:136 memory/(22174:22174): Memoria full
+[WARNING] 23:00:41:149 memory/(22175:22175): JOURNAL RECIBIDO
+[WARNING] 23:00:41:149 memory/(22174:22174): JOURNAL RECIBIDO
+[DEBUG] 23:00:41:149 memory/(22174:22174): MARINOS
+[DEBUG] 23:00:41:149 memory/(22174:22174): Entre
+[DEBUG] 23:00:41:149 memory/(22174:22174): Entre
+[DEBUG] 23:00:41:149 memory/(22174:22174): AVES
+[DEBUG] 23:00:41:149 memory/(22174:22174): Entre
+[DEBUG] 23:00:41:149 memory/(22174:22174): MAMIFEROS
+[DEBUG] 23:00:41:149 memory/(22174:22174): Entre
+[DEBUG] 23:00:41:149 memory/(22174:22174): Entre
+[WARNING] 23:12:01:652 memory/(22175:22185): Desconectado.
+[WARNING] 23:12:01:653 memory/(22175:22185): Aguarde mientras desconectamos la memoria por favor...
+[DEBUG] 23:12:09:894 memory/(22614:22614): IP 127.0.1.1
+[INFO] 23:12:09:894 memory/(22614:22614): 8001
+[DEBUG] 23:12:09:894 memory/(22614:22614): Conectado al LFS
+[WARNING] 23:12:11:87 memory/(22175:22175): Termina proceso
+[DEBUG] 23:12:17:293 memory/(22622:22622): IP 127.0.1.1
+[INFO] 23:12:17:293 memory/(22622:22622): 8002
+[DEBUG] 23:12:17:293 memory/(22622:22622): Conectado al LFS
+[DEBUG] 23:12:46:877 memory/(22630:22630): IP 127.0.1.1
+[INFO] 23:12:46:877 memory/(22630:22630): 8001
+[DEBUG] 23:12:46:877 memory/(22630:22630): Conectado al LFS
+[DEBUG] 23:13:17:46 memory/(22639:22639): IP 127.0.1.1
+[INFO] 23:13:17:46 memory/(22639:22639): 8001
+[DEBUG] 23:13:17:46 memory/(22639:22639): Conectado al LFS
+[DEBUG] 23:13:47:654 memory/(22643:22643): IP 127.0.1.1
+[INFO] 23:13:47:655 memory/(22643:22643): 8001
+[DEBUG] 23:13:47:655 memory/(22643:22643): Conectado al LFS
+[DEBUG] 23:14:29:846 memory/(22681:22681): IP 127.0.1.1
+[INFO] 23:14:29:846 memory/(22681:22681): 8001
+[DEBUG] 23:14:29:846 memory/(22681:22681): Conectado al LFS
+[INFO] 23:14:29:847 memory/(22681:22681): Maximo tamaño del value: 15.
+[INFO] 23:14:29:847 memory/(22681:22681): 15
+[INFO] 23:14:29:847 memory/(22681:22681): 8001
+[DEBUG] 23:14:34:261 memory/(22687:22687): IP 127.0.1.1
+[INFO] 23:14:34:262 memory/(22687:22687): 8002
+[DEBUG] 23:14:34:262 memory/(22687:22687): Conectado al LFS
+[INFO] 23:14:34:262 memory/(22687:22687): Maximo tamaño del value: 15.
+[INFO] 23:14:34:262 memory/(22687:22687): 15
+[INFO] 23:14:34:262 memory/(22687:22687): 8002
+[DEBUG] 23:15:21:935 memory/(22681:22681): Registro: TimeStamp: 13212006601087944400, Key:1998, Value: franquito
+[WARNING] 23:15:34:461 memory/(22681:22681): Memoria full
+[WARNING] 23:15:34:474 memory/(22681:22681): JOURNAL RECIBIDO
+[WARNING] 23:15:34:474 memory/(22687:22687): JOURNAL RECIBIDO
+[DEBUG] 23:15:34:474 memory/(22681:22681): TEST
+[DEBUG] 23:15:34:474 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:474 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:34:474 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:474 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:474 memory/(22681:22681): AVES
+[DEBUG] 23:15:34:474 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:474 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:34:475 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:582 memory/(22681:22681): Registro: TimeStamp: 13212006601087966111, Key:11, Value: Halcon
+[WARNING] 23:15:34:706 memory/(22681:22681): Memoria full
+[WARNING] 23:15:34:721 memory/(22687:22687): JOURNAL RECIBIDO
+[WARNING] 23:15:34:721 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:34:721 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:34:721 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:721 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:34:721 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:721 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:722 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:722 memory/(22681:22681): AVES
+[DEBUG] 23:15:34:722 memory/(22681:22681): Entre
+[INFO] 23:15:34:789 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:15:34:830 memory/(22681:22681): Registro: TimeStamp: 55364213787, Key:310, Value: Calamar
+[WARNING] 23:15:34:920 memory/(22681:22681): Memoria full
+[WARNING] 23:15:34:931 memory/(22687:22687): JOURNAL RECIBIDO
+[WARNING] 23:15:34:931 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:34:931 memory/(22681:22681): AVES
+[DEBUG] 23:15:34:931 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:931 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:931 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:34:931 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:931 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:34:931 memory/(22681:22681): Entre
+[DEBUG] 23:15:34:931 memory/(22681:22681): Entre
+[WARNING] 23:15:35:132 memory/(22681:22681): Memoria full
+[WARNING] 23:15:35:143 memory/(22687:22687): JOURNAL RECIBIDO
+[WARNING] 23:15:35:143 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:35:143 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:35:143 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:143 memory/(22681:22681): AVES
+[DEBUG] 23:15:35:143 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:143 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:143 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:35:143 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:144 memory/(22681:22681): Entre
+[INFO] 23:15:35:229 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:15:35:250 memory/(22681:22681): Registro: TimeStamp: 15515832341472140551, Key:983, Value: Pez globo
+[DEBUG] 23:15:35:377 memory/(22681:22681): Registro: TimeStamp: 13212006601087966684, Key:11, Value: Pinguino
+[INFO] 23:15:35:401 memory/(22681:22681): No tengo ese registro
+[DEBUG] 23:15:35:424 memory/(22681:22681): Registro: TimeStamp: 7588592271029099853, Key:6262, Value: Loro
+[WARNING] 23:15:35:456 memory/(22681:22681): Memoria full
+[WARNING] 23:15:35:467 memory/(22687:22687): JOURNAL RECIBIDO
+[WARNING] 23:15:35:467 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:35:467 memory/(22681:22681): AVES
+[DEBUG] 23:15:35:467 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:467 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:467 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:35:467 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:467 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:35:467 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:467 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:528 memory/(22681:22681): Registro: TimeStamp: 13212006601087967007, Key:272, Value: Vaca
+[INFO] 23:15:35:597 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:15:35:619 memory/(22681:22681): Registro: TimeStamp: 3824606235, Key:310, Value: Calamar
+[WARNING] 23:15:35:714 memory/(22681:22681): Memoria full
+[WARNING] 23:15:35:725 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:35:725 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:35:725 memory/(22681:22681): Entre
+[WARNING] 23:15:35:725 memory/(22687:22687): JOURNAL RECIBIDO
+[DEBUG] 23:15:35:725 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:725 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:35:725 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:725 memory/(22681:22681): Entre
+[DEBUG] 23:15:35:725 memory/(22681:22681): Entre
+[INFO] 23:15:35:828 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:15:35:849 memory/(22681:22681): Registro: TimeStamp: 4193750794857012700, Key:11, Value: Pinguino
+[INFO] 23:15:35:876 memory/(22681:22681): No tengo ese registro
+[WARNING] 23:15:35:898 memory/(22681:22681): Registro no encontrado
+[INFO] 23:15:35:920 memory/(22681:22681): No tengo ese registro
+[DEBUG] 23:15:35:945 memory/(22681:22681): Registro: TimeStamp: 2401267763197172786, Key:1102, Value: Buho
+[WARNING] 23:15:36:44 memory/(22681:22681): Memoria full
+[WARNING] 23:15:36:55 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:15:36:55 memory/(22681:22681): MARINOS
+[DEBUG] 23:15:36:55 memory/(22681:22681): Entre
+[WARNING] 23:15:36:55 memory/(22687:22687): JOURNAL RECIBIDO
+[DEBUG] 23:15:36:55 memory/(22681:22681): MAMIFEROS
+[DEBUG] 23:15:36:56 memory/(22681:22681): Entre
+[DEBUG] 23:15:36:56 memory/(22681:22681): Entre
+[DEBUG] 23:15:36:56 memory/(22681:22681): AVES
+[DEBUG] 23:15:36:56 memory/(22681:22681): Entre
+[DEBUG] 23:15:36:56 memory/(22681:22681): Entre
+[INFO] 23:15:36:117 memory/(22681:22681): No tengo ese registro
+[DEBUG] 23:15:36:139 memory/(22681:22681): Registro: TimeStamp: 2401350226569256625, Key:33, Value: Raya
+[INFO] 23:15:36:167 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:15:36:188 memory/(22681:22681): Registro: TimeStamp: 5715707047861215337, Key:239, Value: Burro
+[INFO] 23:15:36:210 memory/(22681:22681): No tengo ese registro
+[DEBUG] 23:15:36:235 memory/(22681:22681): Registro: TimeStamp: 2257235038493401094, Key:3103, Value: Delfin
+[DEBUG] 23:15:39:848 memory/(22681:22685): MARINOS
+[DEBUG] 23:15:39:848 memory/(22681:22685): Entre
+[DEBUG] 23:15:39:848 memory/(22681:22685): Entre
+[DEBUG] 23:15:39:848 memory/(22681:22685): Entre
+[DEBUG] 23:15:39:848 memory/(22681:22685): MAMIFEROS
+[DEBUG] 23:15:39:848 memory/(22681:22685): Entre
+[INFO] 23:16:16:609 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:16:16:633 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:20:825 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[WARNING] 23:16:23:617 memory/(22681:22681): JOURNAL RECIBIDO
+[DEBUG] 23:16:23:617 memory/(22681:22681): MARINOS
+[DEBUG] 23:16:23:617 memory/(22681:22681): Entre
+[WARNING] 23:16:23:617 memory/(22687:22687): JOURNAL RECIBIDO
+[INFO] 23:16:26:233 memory/(22681:22681): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:16:26:258 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:27:249 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:29:369 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:33:641 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:35:162 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[INFO] 23:16:40:209 memory/(22681:22681): No tengo ese registro
+[WARNING] 23:16:40:234 memory/(22681:22681): Registro no encontrado
+[INFO] 23:16:41:729 memory/(22681:22681): No tengo ese registro
+[WARNING] 23:16:41:752 memory/(22681:22681): Registro no encontrado
+[DEBUG] 23:16:43:210 memory/(22681:22681): Registro: TimeStamp: 2401350226569255662, Key:33, Value: Pulpo
+[DEBUG] 23:16:49:849 memory/(22681:22685): MARINOS
+[DEBUG] 23:16:49:849 memory/(22681:22685): Entre
+[WARNING] 23:22:02:120 memory/(22681:22686): Desconectado.
+[WARNING] 23:22:02:120 memory/(22681:22686): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 23:22:03:769 memory/(22687:22692): Desconectado.
+[WARNING] 23:22:03:769 memory/(22687:22692): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 23:22:10:408 memory/(22687:22687): Termina proceso
+[WARNING] 23:22:10:409 memory/(22681:22681): Termina proceso
+[DEBUG] 23:22:27:489 memory/(22993:22993): IP 127.0.1.1
+[INFO] 23:22:27:489 memory/(22993:22993): 8001
+[DEBUG] 23:22:27:489 memory/(22993:22993): Conectado al LFS
+[INFO] 23:22:27:489 memory/(22993:22993): Maximo tamaño del value: 15.
+[INFO] 23:22:27:489 memory/(22993:22993): 15
+[INFO] 23:22:27:489 memory/(22993:22993): 8001
+[WARNING] 23:23:46:409 memory/(22993:22998): Desconectado.
+[WARNING] 23:23:46:409 memory/(22993:22998): Aguarde mientras desconectamos la memoria por favor...
+[DEBUG] 23:24:20:601 memory/(23058:23058): IP 127.0.1.1
+[INFO] 23:24:20:601 memory/(23058:23058): 8001
+[DEBUG] 23:24:20:601 memory/(23058:23058): Conectado al LFS
+[INFO] 23:24:20:602 memory/(23058:23058): Maximo tamaño del value: 15.
+[INFO] 23:24:20:602 memory/(23058:23058): 15
+[INFO] 23:24:20:602 memory/(23058:23058): 8001
+[WARNING] 23:24:49:680 memory/(23058:23058): Memoria full
+[WARNING] 23:24:49:691 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:49:691 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:49:691 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:691 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:691 memory/(23058:23058): AVES
+[DEBUG] 23:24:49:691 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:691 memory/(23058:23058): MAMIFEROS
+[DEBUG] 23:24:49:691 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:691 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:772 memory/(23058:23058): Registro: TimeStamp: 13209684432530658390, Key:11, Value: Halcon
+[DEBUG] 23:24:49:921 memory/(23058:23058): Registro: TimeStamp: 13209684432530658510, Key:310, Value: Calamar
+[WARNING] 23:24:49:949 memory/(23058:23058): Memoria full
+[WARNING] 23:24:49:962 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:49:962 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:49:962 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:962 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:962 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:962 memory/(23058:23058): AVES
+[DEBUG] 23:24:49:962 memory/(23058:23058): Entre
+[DEBUG] 23:24:49:962 memory/(23058:23058): Entre
+[WARNING] 23:24:50:126 memory/(23058:23058): Memoria full
+[WARNING] 23:24:50:137 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:50:137 memory/(23058:23058): AVES
+[DEBUG] 23:24:50:137 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:137 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:137 memory/(23058:23058): MAMIFEROS
+[DEBUG] 23:24:50:137 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:137 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:137 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:50:137 memory/(23058:23058): Entre
+[INFO] 23:24:50:367 memory/(23058:23058): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:24:50:390 memory/(23058:23058): Registro: TimeStamp: 51069801883, Key:983, Value: Pez globo
+[WARNING] 23:24:50:490 memory/(23058:23058): Memoria full
+[WARNING] 23:24:50:501 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:50:501 memory/(23058:23058): AVES
+[DEBUG] 23:24:50:501 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:501 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:501 memory/(23058:23058): MAMIFEROS
+[DEBUG] 23:24:50:501 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:501 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:501 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:50:501 memory/(23058:23058): Entre
+[INFO] 23:24:50:564 memory/(23058:23058): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:24:50:596 memory/(23058:23058): Registro: TimeStamp: 72544638596, Key:11, Value: Pinguino
+[INFO] 23:24:50:620 memory/(23058:23058): No tengo ese registro
+[DEBUG] 23:24:50:642 memory/(23058:23058): Registro: TimeStamp: 4193722576922432947, Key:6262, Value: Loro
+[DEBUG] 23:24:50:689 memory/(23058:23058): Registro: TimeStamp: 13209684432530659306, Key:272, Value: Vaca
+[INFO] 23:24:50:763 memory/(23058:23058): No tengo ese registro
+[DEBUG] 23:24:50:785 memory/(23058:23058): Registro: TimeStamp: 3914559701366297806, Key:310, Value: Calamar
+[WARNING] 23:24:50:807 memory/(23058:23058): Memoria full
+[WARNING] 23:24:50:818 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:50:818 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:50:818 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:818 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:818 memory/(23058:23058): AVES
+[DEBUG] 23:24:50:818 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:818 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:818 memory/(23058:23058): MAMIFEROS
+[DEBUG] 23:24:50:818 memory/(23058:23058): Entre
+[WARNING] 23:24:50:981 memory/(23058:23058): Memoria full
+[WARNING] 23:24:50:992 memory/(23058:23058): JOURNAL RECIBIDO
+[DEBUG] 23:24:50:992 memory/(23058:23058): MARINOS
+[DEBUG] 23:24:50:992 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:992 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:992 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:992 memory/(23058:23058): MAMIFEROS
+[DEBUG] 23:24:50:992 memory/(23058:23058): Entre
+[DEBUG] 23:24:50:992 memory/(23058:23058): Entre
+[INFO] 23:24:51:50 memory/(23058:23058): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:24:51:71 memory/(23058:23058): Registro: TimeStamp: 76839605892, Key:11, Value: Pinguino
+[INFO] 23:24:51:97 memory/(23058:23058): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 23:24:51:120 memory/(23058:23058): Registro no encontrado
+[INFO] 23:24:51:142 memory/(23058:23058): No tengo ese registro
+[DEBUG] 23:24:51:165 memory/(23058:23058): Registro: TimeStamp: 8382048068345746666, Key:1102, Value: Buho
+[INFO] 23:24:51:268 memory/(23058:23058): No tengo ese registro
+[DEBUG] 23:24:51:294 memory/(23058:23058): Registro: TimeStamp: 7450486644144035641, Key:33, Value: Raya
+[INFO] 23:24:51:315 memory/(23058:23058): No tengo ese registro
+[WARNING] 23:24:51:336 memory/(23058:23058): Memoria full
+[DEBUG] 23:24:51:337 memory/(23058:23058): Registro: TimeStamp: 5715707047861770510, Key:239, Value: Burro
+[INFO] 23:24:51:357 memory/(23058:23058): No tengo ese registro
+[WARNING] 23:24:51:379 memory/(23058:23058): Memoria full
+[DEBUG] 23:24:51:379 memory/(23058:23058): Registro: TimeStamp: 2257235038493956317, Key:3103, Value: Delfin
+[DEBUG] 23:25:30:604 memory/(23058:23062): MAMIFEROS
+[DEBUG] 23:25:30:604 memory/(23058:23062): Entre
+[DEBUG] 23:25:30:604 memory/(23058:23062): AVES
+[DEBUG] 23:25:30:605 memory/(23058:23062): Entre
+[DEBUG] 23:25:30:605 memory/(23058:23062): Entre
+[DEBUG] 23:25:30:605 memory/(23058:23062): MARINOS
+[DEBUG] 23:25:30:605 memory/(23058:23062): Entre
+[DEBUG] 23:25:30:605 memory/(23058:23062): Entre
+[WARNING] 23:25:32:337 memory/(23058:23063): Desconectado.
+[WARNING] 23:25:32:337 memory/(23058:23063): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 23:25:38:345 memory/(23058:23058): Termina proceso
+[DEBUG] 23:27:49:442 memory/(23211:23211): IP 127.0.1.1
+[INFO] 23:27:49:442 memory/(23211:23211): 8001
+[DEBUG] 23:27:49:442 memory/(23211:23211): Conectado al LFS
+[INFO] 23:27:49:443 memory/(23211:23211): Maximo tamaño del value: 15.
+[INFO] 23:27:49:443 memory/(23211:23211): 15
+[INFO] 23:27:49:443 memory/(23211:23211): 8001
+[WARNING] 23:28:05:294 memory/(23211:23211): Memoria full
+[WARNING] 23:28:05:305 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:05:305 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:05:305 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:305 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:305 memory/(23211:23211): AVES
+[DEBUG] 23:28:05:305 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:305 memory/(23211:23211): MAMIFEROS
+[DEBUG] 23:28:05:305 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:305 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:391 memory/(23211:23211): Registro: TimeStamp: 13213150093181603959, Key:11, Value: Halcon
+[DEBUG] 23:28:05:541 memory/(23211:23211): Registro: TimeStamp: 13213150093181604088, Key:310, Value: Calamar
+[WARNING] 23:28:05:570 memory/(23211:23211): Memoria full
+[WARNING] 23:28:05:581 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:05:581 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:05:581 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:581 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:581 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:581 memory/(23211:23211): AVES
+[DEBUG] 23:28:05:582 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:582 memory/(23211:23211): Entre
+[WARNING] 23:28:05:739 memory/(23211:23211): Memoria full
+[WARNING] 23:28:05:750 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:05:750 memory/(23211:23211): AVES
+[DEBUG] 23:28:05:750 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:750 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:750 memory/(23211:23211): MAMIFEROS
+[DEBUG] 23:28:05:750 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:750 memory/(23211:23211): Entre
+[DEBUG] 23:28:05:750 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:05:750 memory/(23211:23211): Entre
+[INFO] 23:28:05:983 memory/(23211:23211): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:28:06:5 memory/(23211:23211): Registro: TimeStamp: 15515832341472891327, Key:983, Value: Pez globo
+[WARNING] 23:28:06:111 memory/(23211:23211): Memoria full
+[WARNING] 23:28:06:122 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:06:122 memory/(23211:23211): AVES
+[DEBUG] 23:28:06:122 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:122 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:122 memory/(23211:23211): MAMIFEROS
+[DEBUG] 23:28:06:122 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:122 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:122 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:06:122 memory/(23211:23211): Entre
+[INFO] 23:28:06:191 memory/(23211:23211): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:28:06:226 memory/(23211:23211): Registro: TimeStamp: 72544834222, Key:11, Value: Pinguino
+[INFO] 23:28:06:254 memory/(23211:23211): No tengo ese registro
+[DEBUG] 23:28:06:277 memory/(23211:23211): Registro: TimeStamp: 7450486644144230869, Key:6262, Value: Loro
+[DEBUG] 23:28:06:324 memory/(23211:23211): Registro: TimeStamp: 13213150093181604894, Key:272, Value: Vaca
+[INFO] 23:28:06:399 memory/(23211:23211): No tengo ese registro
+[DEBUG] 23:28:06:421 memory/(23211:23211): Registro: TimeStamp: 7450486644144230648, Key:310, Value: Calamar
+[WARNING] 23:28:06:442 memory/(23211:23211): Memoria full
+[WARNING] 23:28:06:453 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:06:453 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:06:453 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:453 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:453 memory/(23211:23211): AVES
+[DEBUG] 23:28:06:453 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:453 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:454 memory/(23211:23211): MAMIFEROS
+[DEBUG] 23:28:06:454 memory/(23211:23211): Entre
+[WARNING] 23:28:06:601 memory/(23211:23211): Memoria full
+[WARNING] 23:28:06:612 memory/(23211:23211): JOURNAL RECIBIDO
+[DEBUG] 23:28:06:612 memory/(23211:23211): MARINOS
+[DEBUG] 23:28:06:612 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:612 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:613 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:613 memory/(23211:23211): MAMIFEROS
+[DEBUG] 23:28:06:613 memory/(23211:23211): Entre
+[DEBUG] 23:28:06:613 memory/(23211:23211): Entre
+[INFO] 23:28:06:671 memory/(23211:23211): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:28:06:693 memory/(23211:23211): Registro: TimeStamp: 7589726709331677870, Key:11, Value: Pinguino
+[INFO] 23:28:06:721 memory/(23211:23211): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 23:28:06:743 memory/(23211:23211): Registro no encontrado
+[INFO] 23:28:06:765 memory/(23211:23211): No tengo ese registro
+[DEBUG] 23:28:06:787 memory/(23211:23211): Registro: TimeStamp: 2401267763197923599, Key:1102, Value: Buho
+[INFO] 23:28:06:883 memory/(23211:23211): No tengo ese registro
+[DEBUG] 23:28:06:905 memory/(23211:23211): Registro: TimeStamp: 7450486644144231262, Key:33, Value: Raya
+[INFO] 23:28:06:931 memory/(23211:23211): No tengo ese registro
+[WARNING] 23:28:06:959 memory/(23211:23211): Memoria full
+[DEBUG] 23:28:06:959 memory/(23211:23211): Registro: TimeStamp: 7450486644144231731, Key:239, Value: Burro
+[INFO] 23:28:06:981 memory/(23211:23211): No tengo ese registro
+[WARNING] 23:28:07:14 memory/(23211:23211): Memoria full
+[DEBUG] 23:28:07:14 memory/(23211:23211): Registro: TimeStamp: 7450486644144231688, Key:3103, Value: Delfin
+[WARNING] 23:28:19:266 memory/(23211:23216): Desconectado.
+[WARNING] 23:28:19:266 memory/(23211:23216): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 23:28:27:690 memory/(23211:23211): Termina proceso
+[DEBUG] 23:32:42:956 memory/(23474:23474): IP 127.0.1.1
+[INFO] 23:32:42:956 memory/(23474:23474): 8001
+[DEBUG] 23:32:42:956 memory/(23474:23474): Conectado al LFS
+[INFO] 23:32:42:957 memory/(23474:23474): Maximo tamaño del value: 15.
+[INFO] 23:32:42:957 memory/(23474:23474): 15
+[INFO] 23:32:42:957 memory/(23474:23474): 8001
+[WARNING] 23:33:01:423 memory/(23474:23474): Memoria full
+[WARNING] 23:33:01:436 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:01:437 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:01:437 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:437 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:437 memory/(23474:23474): AVES
+[DEBUG] 23:33:01:437 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:437 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:01:437 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:437 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:526 memory/(23474:23474): Registro: TimeStamp: 1562898781503, Key:11, Value: Halcon
+[DEBUG] 23:33:01:671 memory/(23474:23474): Registro: TimeStamp: 1562898781624, Key:310, Value: Calamar
+[WARNING] 23:33:01:696 memory/(23474:23474): Memoria full
+[WARNING] 23:33:01:707 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:01:707 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:01:707 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:707 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:708 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:708 memory/(23474:23474): AVES
+[DEBUG] 23:33:01:708 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:708 memory/(23474:23474): Entre
+[WARNING] 23:33:01:870 memory/(23474:23474): Memoria full
+[WARNING] 23:33:01:881 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:01:881 memory/(23474:23474): AVES
+[DEBUG] 23:33:01:881 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:881 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:881 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:01:881 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:881 memory/(23474:23474): Entre
+[DEBUG] 23:33:01:881 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:01:881 memory/(23474:23474): Entre
+[INFO] 23:33:02:81 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:02:106 memory/(23474:23474): Registro: TimeStamp: 1562898781823, Key:983, Value: Pez globo
+[WARNING] 23:33:02:205 memory/(23474:23474): Memoria full
+[WARNING] 23:33:02:217 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:02:217 memory/(23474:23474): AVES
+[DEBUG] 23:33:02:217 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:217 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:217 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:02:217 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:217 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:218 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:02:218 memory/(23474:23474): Entre
+[INFO] 23:33:02:278 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:02:311 memory/(23474:23474): Registro: TimeStamp: 1562898782037, Key:11, Value: Pinguino
+[INFO] 23:33:02:333 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:02:354 memory/(23474:23474): Registro: TimeStamp: 1562898781846, Key:6262, Value: Loro
+[DEBUG] 23:33:02:402 memory/(23474:23474): Registro: TimeStamp: 1562898782380, Key:272, Value: Vaca
+[INFO] 23:33:02:473 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:02:495 memory/(23474:23474): Registro: TimeStamp: 1562898781624, Key:310, Value: Calamar
+[WARNING] 23:33:02:517 memory/(23474:23474): Memoria full
+[WARNING] 23:33:02:529 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:02:529 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:02:529 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:529 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:529 memory/(23474:23474): AVES
+[DEBUG] 23:33:02:529 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:529 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:529 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:02:529 memory/(23474:23474): Entre
+[WARNING] 23:33:02:677 memory/(23474:23474): Memoria full
+[WARNING] 23:33:02:688 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:02:688 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:02:688 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:689 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:689 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:689 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:02:689 memory/(23474:23474): Entre
+[DEBUG] 23:33:02:689 memory/(23474:23474): Entre
+[INFO] 23:33:02:746 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:02:772 memory/(23474:23474): Registro: TimeStamp: 1562898782037, Key:11, Value: Pinguino
+[INFO] 23:33:02:793 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[WARNING] 23:33:02:815 memory/(23474:23474): Registro no encontrado
+[INFO] 23:33:02:837 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:02:858 memory/(23474:23474): Registro: TimeStamp: 1562898781647, Key:1102, Value: Buho
+[INFO] 23:33:02:954 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:02:976 memory/(23474:23474): Registro: TimeStamp: 1562898782204, Key:33, Value: Raya
+[INFO] 23:33:03:2 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:03:24 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:03:24 memory/(23474:23474): Registro: TimeStamp: 1562898782654, Key:239, Value: Burro
+[INFO] 23:33:03:46 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:03:73 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:03:73 memory/(23474:23474): Registro: TimeStamp: 1562898782610, Key:3103, Value: Delfin
+[WARNING] 23:33:08:541 memory/(23474:23474): Memoria full
+[WARNING] 23:33:08:553 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:08:553 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:08:553 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:553 memory/(23474:23474): AVES
+[DEBUG] 23:33:08:553 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:553 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:553 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:08:553 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:553 memory/(23474:23474): Entre
+[WARNING] 23:33:08:800 memory/(23474:23474): Memoria full
+[WARNING] 23:33:08:813 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:08:813 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:08:813 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:813 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:813 memory/(23474:23474): AVES
+[DEBUG] 23:33:08:813 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:813 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:08:813 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:813 memory/(23474:23474): Entre
+[DEBUG] 23:33:08:895 memory/(23474:23474): Registro: TimeStamp: 1562898788873, Key:11, Value: Halcon
+[DEBUG] 23:33:09:42 memory/(23474:23474): Registro: TimeStamp: 1562898788984, Key:310, Value: Calamar
+[WARNING] 23:33:09:65 memory/(23474:23474): Memoria full
+[WARNING] 23:33:09:81 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:09:81 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:09:81 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:81 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:81 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:81 memory/(23474:23474): AVES
+[DEBUG] 23:33:09:82 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:82 memory/(23474:23474): Entre
+[WARNING] 23:33:09:231 memory/(23474:23474): Memoria full
+[WARNING] 23:33:09:241 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:09:242 memory/(23474:23474): AVES
+[DEBUG] 23:33:09:242 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:242 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:242 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:09:242 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:242 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:242 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:09:242 memory/(23474:23474): Entre
+[INFO] 23:33:09:438 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:09:460 memory/(23474:23474): Registro: TimeStamp: 1562898789186, Key:983, Value: Pez globo
+[WARNING] 23:33:09:547 memory/(23474:23474): Memoria full
+[WARNING] 23:33:09:557 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:09:557 memory/(23474:23474): AVES
+[DEBUG] 23:33:09:557 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:558 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:558 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:09:558 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:558 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:558 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:09:558 memory/(23474:23474): Entre
+[INFO] 23:33:09:618 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:09:651 memory/(23474:23474): Registro: TimeStamp: 1562898789394, Key:11, Value: Pinguino
+[INFO] 23:33:09:676 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:09:705 memory/(23474:23474): Registro: TimeStamp: 1562898789208, Key:6262, Value: Loro
+[DEBUG] 23:33:09:749 memory/(23474:23474): Registro: TimeStamp: 1562898789726, Key:272, Value: Vaca
+[INFO] 23:33:09:822 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:09:848 memory/(23474:23474): Registro: TimeStamp: 1562898788984, Key:310, Value: Calamar
+[WARNING] 23:33:09:872 memory/(23474:23474): Memoria full
+[WARNING] 23:33:09:885 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:09:885 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:09:885 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:885 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:885 memory/(23474:23474): AVES
+[DEBUG] 23:33:09:885 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:885 memory/(23474:23474): Entre
+[DEBUG] 23:33:09:885 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:09:885 memory/(23474:23474): Entre
+[WARNING] 23:33:10:35 memory/(23474:23474): Memoria full
+[WARNING] 23:33:10:56 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:10:56 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:10:57 memory/(23474:23474): Entre
+[DEBUG] 23:33:10:57 memory/(23474:23474): Entre
+[DEBUG] 23:33:10:57 memory/(23474:23474): Entre
+[DEBUG] 23:33:10:57 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:10:57 memory/(23474:23474): Entre
+[DEBUG] 23:33:10:57 memory/(23474:23474): Entre
+[INFO] 23:33:10:116 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:10:138 memory/(23474:23474): Registro: TimeStamp: 1562898789394, Key:11, Value: Pinguino
+[INFO] 23:33:10:159 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:10:181 memory/(23474:23474): Registro: TimeStamp: 1562898782928, Key:3105, Value: Delfin
+[INFO] 23:33:10:203 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:10:225 memory/(23474:23474): Registro: TimeStamp: 1562898789006, Key:1102, Value: Buho
+[INFO] 23:33:10:322 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:10:351 memory/(23474:23474): Registro: TimeStamp: 1562898789546, Key:33, Value: Raya
+[INFO] 23:33:10:372 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:10:394 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:10:394 memory/(23474:23474): Registro: TimeStamp: 1562898790012, Key:239, Value: Burro
+[INFO] 23:33:10:416 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:10:442 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:10:442 memory/(23474:23474): Registro: TimeStamp: 1562898789968, Key:3103, Value: Delfin
+[WARNING] 23:33:11:591 memory/(23474:23474): Memoria full
+[WARNING] 23:33:11:602 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:11:602 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:11:602 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:602 memory/(23474:23474): AVES
+[DEBUG] 23:33:11:602 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:602 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:602 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:11:602 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:602 memory/(23474:23474): Entre
+[WARNING] 23:33:11:850 memory/(23474:23474): Memoria full
+[WARNING] 23:33:11:863 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:11:863 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:11:863 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:863 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:863 memory/(23474:23474): AVES
+[DEBUG] 23:33:11:863 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:863 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:11:863 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:863 memory/(23474:23474): Entre
+[DEBUG] 23:33:11:944 memory/(23474:23474): Registro: TimeStamp: 1562898791922, Key:11, Value: Halcon
+[DEBUG] 23:33:12:82 memory/(23474:23474): Registro: TimeStamp: 1562898792036, Key:310, Value: Calamar
+[WARNING] 23:33:12:104 memory/(23474:23474): Memoria full
+[WARNING] 23:33:12:115 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:12:115 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:12:115 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:115 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:115 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:115 memory/(23474:23474): AVES
+[DEBUG] 23:33:12:115 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:115 memory/(23474:23474): Entre
+[WARNING] 23:33:12:273 memory/(23474:23474): Memoria full
+[WARNING] 23:33:12:285 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:12:285 memory/(23474:23474): AVES
+[DEBUG] 23:33:12:285 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:285 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:285 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:12:285 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:285 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:285 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:12:285 memory/(23474:23474): Entre
+[INFO] 23:33:12:513 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:12:535 memory/(23474:23474): Registro: TimeStamp: 1562898792222, Key:983, Value: Pez globo
+[WARNING] 23:33:12:626 memory/(23474:23474): Memoria full
+[WARNING] 23:33:12:641 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:12:641 memory/(23474:23474): AVES
+[DEBUG] 23:33:12:641 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:641 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:641 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:12:641 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:641 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:641 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:12:641 memory/(23474:23474): Entre
+[INFO] 23:33:12:702 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:12:734 memory/(23474:23474): Registro: TimeStamp: 1562898792452, Key:11, Value: Pinguino
+[INFO] 23:33:12:756 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:12:777 memory/(23474:23474): Registro: TimeStamp: 1562898792244, Key:6262, Value: Loro
+[DEBUG] 23:33:12:827 memory/(23474:23474): Registro: TimeStamp: 1562898792805, Key:272, Value: Vaca
+[INFO] 23:33:12:891 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:12:914 memory/(23474:23474): Registro: TimeStamp: 1562898792036, Key:310, Value: Calamar
+[WARNING] 23:33:12:937 memory/(23474:23474): Memoria full
+[WARNING] 23:33:12:948 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:12:948 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:12:948 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:948 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:948 memory/(23474:23474): AVES
+[DEBUG] 23:33:12:948 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:948 memory/(23474:23474): Entre
+[DEBUG] 23:33:12:949 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:12:949 memory/(23474:23474): Entre
+[WARNING] 23:33:13:113 memory/(23474:23474): Memoria full
+[WARNING] 23:33:13:124 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:13:124 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:13:125 memory/(23474:23474): Entre
+[DEBUG] 23:33:13:125 memory/(23474:23474): Entre
+[DEBUG] 23:33:13:125 memory/(23474:23474): Entre
+[DEBUG] 23:33:13:125 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:13:125 memory/(23474:23474): Entre
+[DEBUG] 23:33:13:125 memory/(23474:23474): Entre
+[INFO] 23:33:13:185 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:13:213 memory/(23474:23474): Registro: TimeStamp: 1562898792452, Key:11, Value: Pinguino
+[INFO] 23:33:13:245 memory/(23474:23474): Memoria no tiene esa tabla, pidiendo a LFS...
+[DEBUG] 23:33:13:273 memory/(23474:23474): Registro: TimeStamp: 1562898790291, Key:3105, Value: Delfin
+[INFO] 23:33:13:295 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:13:317 memory/(23474:23474): Registro: TimeStamp: 1562898792060, Key:1102, Value: Buho
+[INFO] 23:33:13:416 memory/(23474:23474): No tengo ese registro
+[DEBUG] 23:33:13:463 memory/(23474:23474): Registro: TimeStamp: 1562898792625, Key:33, Value: Raya
+[INFO] 23:33:13:498 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:13:520 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:13:520 memory/(23474:23474): Registro: TimeStamp: 1562898793087, Key:239, Value: Burro
+[INFO] 23:33:13:547 memory/(23474:23474): No tengo ese registro
+[WARNING] 23:33:13:573 memory/(23474:23474): Memoria full
+[DEBUG] 23:33:13:573 memory/(23474:23474): Registro: TimeStamp: 1562898793040, Key:3103, Value: Delfin
+[WARNING] 23:33:19:695 memory/(23474:23474): JOURNAL RECIBIDO
+[DEBUG] 23:33:19:695 memory/(23474:23474): MAMIFEROS
+[DEBUG] 23:33:19:696 memory/(23474:23474): Entre
+[DEBUG] 23:33:19:696 memory/(23474:23474): AVES
+[DEBUG] 23:33:19:696 memory/(23474:23474): Entre
+[DEBUG] 23:33:19:696 memory/(23474:23474): Entre
+[DEBUG] 23:33:19:696 memory/(23474:23474): MARINOS
+[DEBUG] 23:33:19:696 memory/(23474:23474): Entre
+[DEBUG] 23:33:19:696 memory/(23474:23474): Entre
+[WARNING] 23:33:21:263 memory/(23474:23474): JOURNAL RECIBIDO
+[WARNING] 23:33:25:724 memory/(23474:23479): Desconectado.
+[WARNING] 23:33:25:724 memory/(23474:23479): Aguarde mientras desconectamos la memoria por favor...
+[WARNING] 23:33:33:861 memory/(23474:23474): Termina proceso

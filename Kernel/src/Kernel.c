@@ -763,7 +763,7 @@ int insert_kernel(char* parametros, int exec_index) {
 	if (entradaValida) {
 		pthread_mutex_lock(&logger_mutex);
 		log_info(logger_Kernel,
-				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %d)",
+				"INSERT enviado (Tabla: %s, Key: %d, Value: %s, Timestamp: %llu)",
 				package.tabla, package.key, package.value, package.timestamp);
 		pthread_mutex_unlock(&logger_mutex);
 
@@ -1324,9 +1324,9 @@ void add(char* parametros, int serverSocket) {
 				list_add(hashC, num_mem_puntero);
 				pthread_mutex_unlock(&hash_mutex);
 
-				pthread_mutex_lock(list_get(exec_mutexes, 0));
+				//pthread_mutex_lock(list_get(exec_mutexes, 0));
 				journal("", 0);
-				pthread_mutex_unlock(list_get(exec_mutexes, 0));
+				//pthread_mutex_unlock(list_get(exec_mutexes, 0));
 
 				break;
 			case EC:
