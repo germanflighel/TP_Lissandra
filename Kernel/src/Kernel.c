@@ -17,9 +17,9 @@
 #include <sys/mman.h>
 t_log* logger_Kernel;
 int quantum;
-int tiempoDescribe;
 int multiprocesamiento;
 int metadata_refresh;
+int sleep_exec;
 t_queue* colaReady;
 sem_t ejecutar_sem;
 pthread_mutex_t cola_ready_mutex;
@@ -110,7 +110,7 @@ int main() {
 
 	abrir_config(&conection_conf);
 
-	char* ip = config_get_string_value(conection_conf, "IP");
+	char* ip = config_get_string_value(conection_conf, "IP_MEMORIA");
 	ip_destino = malloc(strlen(ip) + 1);
 	strcpy(ip_destino, ip);
 
@@ -121,8 +121,9 @@ int main() {
 	quantum = config_get_int_value(conection_conf, "QUANTUM");
 	multiprocesamiento = config_get_int_value(conection_conf,
 			"MULTIPROCESAMIENTO");
-	metadata_refresh = config_get_int_value(conection_conf, "METADATA_REFRESH");
-	tiempoDescribe = 1000 * metadata_refresh;
+	metadata_refresh = 1000
+			* config_get_int_value(conection_conf, "METADATA_REFRESH");
+	sleep_exec = 1000 * config_get_int_value(conection_conf, "SLEEP_EJECUCION");
 	multiprocesamiento = config_get_int_value(conection_conf,
 			"MULTIPROCESAMIENTO");
 
@@ -407,7 +408,10 @@ t_log* iniciar_logger(void) {
 
 int hashFunction(int key) {
 	int cant = hashC->elements_count;
-	return key%cant;
+	if (!cant) {
+		return -1;
+	}
+	return key % cant;
 }
 
 int obtenerConsistencia(char* tablaPath) {
@@ -443,7 +447,7 @@ int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta,
 		break;
 	case SHC:
 		pthread_mutex_lock(&hash_mutex);
-		temp_mem = list_get(hashC,hashFunction(key));
+		temp_mem = list_get(hashC, hashFunction(key));
 		num_mem = *temp_mem;
 		pthread_mutex_unlock(&hash_mutex);
 		break;
@@ -1255,8 +1259,9 @@ void *describeNuevo() {
 		freeaddrinfo(serverInfo);
 
 		pthread_mutex_lock(&config_mutex);
-		usleep(tiempoDescribe);
+		int ret = metadata_refresh;
 		pthread_mutex_unlock(&config_mutex);
+		usleep(ret);
 	}
 }
 
@@ -1273,8 +1278,10 @@ void* describeCadaX(int serverSocket) {
 
 	while (true) {
 		pthread_mutex_lock(&config_mutex);
-		usleep(tiempoDescribe);
+		int ret = metadata_refresh;
 		pthread_mutex_unlock(&config_mutex);
+
+		usleep(ret);
 
 		list_iterate(exec_mutexes, &lockMutexes);
 
@@ -1318,7 +1325,7 @@ void add(char* parametros, int serverSocket) {
 				pthread_mutex_unlock(&hash_mutex);
 
 				pthread_mutex_lock(list_get(exec_mutexes, 0));
-				journal("",0);
+				journal("", 0);
 				pthread_mutex_unlock(list_get(exec_mutexes, 0));
 
 				break;
@@ -1577,10 +1584,15 @@ int ejecutar_quantum(Script** script, int index) {
 	int ejecutadas = 1;
 	int ejecucionCorrecta = 1;
 	int header;
-//pthread_mutex_lock(&config_mutex);
+
 	do {
-		printf("Ejecutando un quantum \n");
-		printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
+		//printf("Ejecutando un quantum \n");
+		//printf("%s \n", scriptEnExec->lineas[scriptEnExec->index]);
+
+		pthread_mutex_lock(&config_mutex);
+		int ret = sleep_exec;
+		pthread_mutex_unlock(&config_mutex);
+		usleep(ret);
 
 		ejecucionCorrecta = 1;
 		entradaValida = 1;
@@ -1664,9 +1676,13 @@ void get_event(int fd) {
 				config_destroy(conection_conf);
 				conection_conf = config_create(CONFIG_PATH);
 				log_info(logger_Kernel, "Cree de nuevo la config");
-				metadata_refresh = config_get_int_value(conection_conf,
-						"METADATA_REFRESH");
+				metadata_refresh = 1000
+						* config_get_int_value(conection_conf,
+								"METADATA_REFRESH");
 				quantum = config_get_int_value(conection_conf, "QUANTUM");
+				sleep_exec = 1000
+						* config_get_int_value(conection_conf,
+								"SLEEP_EJECUCION");
 				log_info(logger_Kernel, "Despues: %i", metadata_refresh);
 				log_info(logger_Kernel, "Despues: %i", quantum);
 				pthread_mutex_unlock(&config_mutex);
