@@ -749,11 +749,12 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	while (registros[j] != NULL) {
 		char** datos_registro = string_split(registros[j], ";");
 		if (atoi(datos_registro[1]) == keyBuscada) {
-			unsigned long long temp;
-			memcpy(&temp, datos_registro[0], sizeof(registro->timeStamp));
-			if (temp > registro->timeStamp) {
+//			unsigned long long temp;
+//			memcpy(&temp, datos_registro[0], sizeof(registro->timeStamp));
+			if (strtoull(datos_registro[0], NULL, 10) > registro->timeStamp) {
 //				registro->timeStamp = (unsigned long long) atoll(datos_registro[0]);
-				memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+//				memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+				registro->timeStamp = strtoull(datos_registro[0], NULL, 10);
 				loguear("Timestamp: %llu", DEBUG, registro->timeStamp);
 				registro->key = atoi(datos_registro[1]);
 				registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -1637,7 +1638,8 @@ t_list* obtener_lista_de_registros(char** registros) {
 		char** datos_registro = string_split(registros[j], ";");
 		Registro* registro = malloc(sizeof(Registro));
 //		registro->timeStamp = (unsigned long long) atoll(datos_registro[0]);
-		memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+//		memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+		registro->timeStamp = strtoull(datos_registro[0], NULL, 10);
 		loguear("Timestamp: %llu", DEBUG, registro->timeStamp);
 		registro->key = atoi(datos_registro[1]);
 		registro->value = malloc(strlen(datos_registro[2]) + 1);
@@ -1854,6 +1856,7 @@ void* dump() {
 
 		log_debug(dumpeo, "Bytes a dumpear en _crear_archivo_temporal: %i", bytes_a_dumpear);
 		int size_in_fs = 0;
+		int cantidad = 0;
 		while (size_in_fs < bytes_a_dumpear) {
 			pthread_mutex_lock(&bitarray_mutex);
 			int bloque = primer_bloque_libre();
@@ -1864,13 +1867,16 @@ void* dump() {
 			//Revisar si el tamanio de tabla esta bien calculado
 			//TODO: Se le dieron bloques de menos a una tabla
 			//O al escribir en el bloque, alguien le corto la escritura
-			if (!(size_in_fs >= bytes_a_dumpear)) {
+			if (size_in_fs < bytes_a_dumpear) {
 				string_append_with_format(&temporal_a_crear, "%d,", bloque);
 			} else {
 				string_append_with_format(&temporal_a_crear, "%d]", bloque);
 			}
 			loguear("Necesite el bloque: %i", DEBUG, bloque);
+			cantidad++;
 		}
+
+		log_debug(dumpeo, "Necesite %i bloques", cantidad);
 
 		size_t textsize = strlen(temporal_a_crear) + 1;
 		lseek(fd, textsize - 1, SEEK_SET);
@@ -1939,14 +1945,7 @@ void* dump() {
 }
 
 int tamanio_de_tabla(Tabla* tabla) {
-	/*int size = 0;
-	Registro* registro;
-	for (int i = 0; i < tabla->registros->elements_count; i++) {
-		registro = list_get(tabla->registros, i);
-		size += size_of_Registro(registro);
-	}
-	//loguear("Tamanio de tabla: %i", DEBUG, size);
-	log_debug(dumpeo, "Tamanio de tabla %s: %i", tabla->nombre_tabla, size);*/
+
 	Registro* registro;
 	char* registro_a_escribir = string_new();
 
@@ -2094,21 +2093,15 @@ char* blocks_to_string(t_list* blocks)  {
 }
 
 void escribir_registros_en_bloques(Tabla* tabla) {
-	int numero_dumpeo = 0;
-	int no_existe;
+	int numero_dumpeo = maximo_dumpeo_en(tabla->nombre_tabla, ".tmp");
+
 	char* temporal_path;
-	do {
-		numero_dumpeo++;
-		temporal_path = ruta_a_tabla(tabla->nombre_tabla);
-		string_append(&temporal_path, "/");
-		string_append_with_format(&temporal_path, "%i", numero_dumpeo);
-		char* tmp = ".tmp";
-		string_append(&temporal_path, tmp);
-		no_existe = access(temporal_path, F_OK) == -1;
-		if(no_existe) {
-			free(temporal_path);
-		}
-	} while(no_existe);
+	temporal_path = ruta_a_tabla(tabla->nombre_tabla);
+	string_append(&temporal_path, "/");
+	string_append_with_format(&temporal_path, "%i", numero_dumpeo);
+	char* tmp = ".tmp";
+	string_append(&temporal_path, tmp);
+
 	t_config* temporal = config_create(temporal_path);
 
 	int size = config_get_int_value(temporal, "SIZE");

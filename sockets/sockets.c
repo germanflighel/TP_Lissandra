@@ -828,6 +828,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 
 	status = recv(socketCliente, bufferlong, sizeof(package->timestamp), 0);
 	memcpy(&(package->timestamp), bufferlong, long_buffer_size);
+	//package->timestamp = strtoull(bufferlong, NULL, 10);
 	if (!status)
 		return 0;
 
@@ -922,6 +923,7 @@ int recieve_and_deserialize_RespuestaSelect(t_Respuesta_Select *package,
 
 	status = recv(socketServidor, bufferlong, sizeof(package->timestamp), 0);
 	memcpy(&(package->timestamp), bufferlong, long_buffer_size);
+	//package->timestamp = strtoull(bufferlong, NULL, 10);
 	if (!status)
 		return 0;
 
