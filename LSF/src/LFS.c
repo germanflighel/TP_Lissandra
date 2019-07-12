@@ -681,7 +681,7 @@ void loguear_metadata(Metadata* metadata) {
 
 
 void loguear_registro(Registro* registro) {
-	loguear("Key: %i, Value: %s, Timestamp: %i", DEBUG, registro->key, registro->value, registro->timeStamp);
+	loguear("Key: %i, Value: %s, Timestamp: %llu", DEBUG, registro->key, registro->value, registro->timeStamp);
 }
 
 Metadata* obtener_metadata(char* ruta) {
@@ -749,8 +749,12 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	while (registros[j] != NULL) {
 		char** datos_registro = string_split(registros[j], ";");
 		if (atoi(datos_registro[1]) == keyBuscada) {
-			if (atoll(datos_registro[0]) > registro->timeStamp) {
-				registro->timeStamp = atoll(datos_registro[0]);
+			unsigned long long temp;
+			memcpy(&temp, datos_registro[0], sizeof(registro->timeStamp));
+			if (temp > registro->timeStamp) {
+//				registro->timeStamp = (unsigned long long) atoll(datos_registro[0]);
+				memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+				loguear("Timestamp: %llu", DEBUG, registro->timeStamp);
 				registro->key = atoi(datos_registro[1]);
 				registro->value = malloc(strlen(datos_registro[2]) + 1);
 				strcpy(registro->value, datos_registro[2]);
@@ -1632,7 +1636,9 @@ t_list* obtener_lista_de_registros(char** registros) {
 		mostrar_en_pantalla("Registro[j]: %s", DEBUG, registros[j]);
 		char** datos_registro = string_split(registros[j], ";");
 		Registro* registro = malloc(sizeof(Registro));
-		registro->timeStamp = atoll(datos_registro[0]);
+//		registro->timeStamp = (unsigned long long) atoll(datos_registro[0]);
+		memcpy(&(registro->timeStamp), datos_registro[0], sizeof(registro->timeStamp));
+		loguear("Timestamp: %llu", DEBUG, registro->timeStamp);
 		registro->key = atoi(datos_registro[1]);
 		registro->value = malloc(strlen(datos_registro[2]) + 1);
 		strcpy(registro->value, datos_registro[2]);
