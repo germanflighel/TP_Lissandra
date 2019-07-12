@@ -40,13 +40,19 @@ typedef struct Tabla {
 	uint8_t consistencia;
 } Tabla;
 
+
 typedef struct Memoria {
 	int* socket;
 	int numero;
 	Seed con;
+} Memoria;
+
+t_list* metricas_memorias;
+typedef struct MetricaPorMemoria {
+	int numero_memoria;
 	int cantidad_select;
 	int cantidad_insert;
-} Memoria;
+} MetricaPorMemoria;
 
 
 typedef struct Metricas {
