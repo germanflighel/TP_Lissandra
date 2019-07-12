@@ -1954,22 +1954,6 @@ int tamanio_de_tabla(Tabla* tabla) {
 	return size;
 }
 
-int size_of_Registro(Registro* registro) {
-	int size = 0;
-	char* k_string = string_itoa(registro->key);
-	size += strlen(k_string);
-	free(k_string);
-	char* t_string = string_itoa(registro->timeStamp);
-	size += strlen(t_string);
-	free(t_string);
-	size += strlen(registro->value);
-	size += 3;
-	if(size != strlen(registro_to_string(registro))) {
-		log_debug(dumpeo, "Un registro dio diferente al calcularlo con to_string");
-	}
-	return size;
-}
-
 char* registro_to_string(Registro* registro) {
 	char* registro_a_escribir = string_new();
 	string_append_with_format(&registro_a_escribir, "%llu;", registro->timeStamp);
@@ -1992,15 +1976,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 	loguear("Caracteres a escribir: %i", DEBUG, strlen(registro_a_escribir));
 	int indice = 0;
 
-	int size = 0;
-	for (int i = 0; i < registros->elements_count; i++) {
-		registro = list_get(registros, i);
-		size += size_of_Registro(registro);
-	}
-	if (!size) {
-		loguear("Nada para la particion %i", DEBUG, particion);
-		return;
-	}
+	int size = strlen(registro_a_escribir);
 	t_list* block_list = list_create();
 	char* blocks = string_new();
 	string_append(&blocks, "[");
@@ -2011,7 +1987,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 		pthread_mutex_unlock(&bitarray_mutex);
 
 		size_in_fs += lfs_block_size;
-		if (!(size_in_fs > size)) {
+		if (!(size_in_fs >= size)) {
 			string_append_with_format(&blocks, "%d,", bloque);
 		} else {
 			string_append_with_format(&blocks, "%d]", bloque);
