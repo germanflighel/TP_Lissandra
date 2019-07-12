@@ -1691,6 +1691,8 @@ t_list* obtener_diferencias(char* nombre_tabla, int particiones, char* contenido
 		Registro* registro_temporal_con_misma_key = list_find(registros_temporales, (void*) _es_registro_por_key);
 		if (registro_temporal_con_misma_key) {
 			if (registro_temporal_con_misma_key->timeStamp >= registro_actual->timeStamp) {
+				loguear("Reemplazando el value de %i, value original: %s, value nuevo: %s", DEBUG,
+						registro_actual->key, registro_actual->value, registro_temporal_con_misma_key->value);
 				Registro* actual = list_find(registros_actuales, (void*) _es_registro_por_key);
 				actual->timeStamp = registro_temporal_con_misma_key->timeStamp;
 				free(actual->value);
@@ -1977,6 +1979,11 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 	int indice = 0;
 
 	int size = strlen(registro_a_escribir);
+	if (!size) {
+		loguear("Nada para la particion %i", DEBUG, particion);
+		free(registro_a_escribir);
+		return;
+	}
 	t_list* block_list = list_create();
 	char* blocks = string_new();
 	string_append(&blocks, "[");
