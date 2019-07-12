@@ -20,6 +20,7 @@
 t_log* logger;
 t_log* tiempos_de_compactacion;
 t_log* pantalla;
+t_log* dumpeo;
 int max_value_size;
 int tiempo_dump;
 pthread_mutex_t mem_table_mutex;
@@ -47,9 +48,11 @@ t_bitarray* bitmap;
 t_config* config;
 
 int main() {
+
 	logger = iniciar_logger();
 	tiempos_de_compactacion = log_create("tiempos_bloqueo.log", "LFS", 0, LOG_LEVEL_INFO);
 	pantalla =  log_create("pantalla.log", "LFS", 1, LOG_LEVEL_DEBUG);
+	dumpeo = log_create("dump.log", "LFS", 0, LOG_LEVEL_DEBUG);
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	archivo_config = leerConsola();
@@ -581,16 +584,19 @@ int insertar_en_mem_table(Registro* registro_a_insertar, char* nombre_tabla) {
 		return 0;
 	}
 	int cantidad_anterior;
+	lock_mutex_tabla(nombre_tabla);
 	pthread_mutex_lock(&mem_table_mutex);
 
 	Tabla* tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	if(!tabla) {
 		agregar_tabla_a_mem_table(nombre_tabla);
+		tabla = (Tabla*) list_find(mem_table, (int) &es_tabla);
 	}
 	cantidad_anterior = tabla->registros->elements_count;
 	int indice_insercion = list_add(tabla->registros, registro_a_insertar);
 
 	pthread_mutex_unlock(&mem_table_mutex);
+	unlock_mutex_tabla(nombre_tabla);
 
 	return indice_insercion + 1 > cantidad_anterior;
 }
@@ -1811,6 +1817,7 @@ void* dump() {
 		string_append_with_format(&temporal_a_crear, "SIZE=%i\nBLOCKS=[",
 				bytes_a_dumpear);
 
+		log_debug(dumpeo, "Bytes a dumpear en _crear_archivo_temporal: %i", bytes_a_dumpear);
 		int size_in_fs = 0;
 		while (size_in_fs < bytes_a_dumpear) {
 			pthread_mutex_lock(&bitarray_mutex);
@@ -1827,7 +1834,6 @@ void* dump() {
 			} else {
 				string_append_with_format(&temporal_a_crear, "%d]", bloque);
 			}
-			mostrar_en_pantalla("Tamanio en fs:  %i, \n Bytes a Dumpear: %i", DEBUG, size_in_fs, bytes_a_dumpear);
 			loguear("Necesite el bloque: %i", DEBUG, bloque);
 		}
 
@@ -1845,11 +1851,16 @@ void* dump() {
 	}
 
 	void _dumpear_tabla(Tabla* tabla) {
+		lock_mutex_tabla(tabla->nombre_tabla);
 		int bytes_a_dumpear = tamanio_de_tabla(tabla);
 		if (bytes_a_dumpear) {
-			lock_mutex_tabla(tabla->nombre_tabla);
+			log_debug(dumpeo, "Arranque a dumpear %s", tabla->nombre_tabla);
+			log_debug(dumpeo, "Bytes a dumpear: %i", bytes_a_dumpear);
 			_crear_archivo_temporal(tabla->nombre_tabla, bytes_a_dumpear);
 			escribir_registros_en_bloques(tabla);
+			unlock_mutex_tabla(tabla->nombre_tabla);
+			log_debug(dumpeo, "Terimne de dumpear %s", tabla->nombre_tabla);
+		} else {
 			unlock_mutex_tabla(tabla->nombre_tabla);
 		}
 	}
@@ -1876,6 +1887,7 @@ void* dump() {
 		} else {
 			pthread_mutex_unlock(&mem_table_mutex);
 			loguear("Voy a empezar el dumpeo", DEBUG);
+			//Duplicar la mem_table no sirve una goma,
 			pthread_mutex_lock(&mem_table_mutex);
 			t_list* mem_table_duplicada = list_duplicate(mem_table);
 			pthread_mutex_unlock(&mem_table_mutex);
@@ -1892,13 +1904,26 @@ void* dump() {
 }
 
 int tamanio_de_tabla(Tabla* tabla) {
-	int size = 0;
+	/*int size = 0;
 	Registro* registro;
 	for (int i = 0; i < tabla->registros->elements_count; i++) {
 		registro = list_get(tabla->registros, i);
 		size += size_of_Registro(registro);
 	}
-	loguear("Tamanio de tabla: %i", DEBUG, size);
+	//loguear("Tamanio de tabla: %i", DEBUG, size);
+	log_debug(dumpeo, "Tamanio de tabla %s: %i", tabla->nombre_tabla, size);*/
+	Registro* registro;
+	char* registro_a_escribir = string_new();
+
+	for (int i = 0; i < tabla->registros->elements_count; i++) {
+		registro = list_get(tabla->registros, i);
+		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
+		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
+	}
+
+	int size = strlen(registro_a_escribir);
+	free(registro_a_escribir);
 	return size;
 }
 
@@ -1912,7 +1937,18 @@ int size_of_Registro(Registro* registro) {
 	free(t_string);
 	size += strlen(registro->value);
 	size += 3;
+	if(size != strlen(registro_to_string(registro))) {
+		log_debug(dumpeo, "Un registro dio diferente al calcularlo con to_string");
+	}
 	return size;
+}
+
+char* registro_to_string(Registro* registro) {
+	char* registro_a_escribir = string_new();
+	string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+	string_append_with_format(&registro_a_escribir, "%i;", registro->key);
+	string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
+	return registro_a_escribir;
 }
 
 void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* registros, double* tiempo_bloqueado) {
@@ -2067,12 +2103,14 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 
 	for (int i = 0; i < tabla->registros->elements_count; i++) {
 		registro = list_get(tabla->registros, i);
-		string_append_with_format(&registro_a_escribir, "%ld;",
-				registro->timeStamp);
+		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
-		string_append_with_format(&registro_a_escribir, "%s\n",
-				registro->value);
+		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
 	}
+
+	log_debug(dumpeo, "Tamanio de lo que se va escribir: %i", strlen(registro_a_escribir));
+
+	log_debug(dumpeo, "Lo que hay que escribir: %s", registro_a_escribir);
 
 	int indice = 0;
 	int i = 0;
@@ -2093,6 +2131,10 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 		size_t textsize = strlen(a_escribir_en_bloque) + 1;
 
 		lseek(fd, textsize - 1, SEEK_SET);
+
+		log_debug(dumpeo, "Tamanio de lo que se va escribir en el bloque: %i",
+				strlen(a_escribir_en_bloque));
+
 
 		write(fd, "", 1);
 		char *map = mmap(0, textsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
