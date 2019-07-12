@@ -11,6 +11,8 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <pthread.h>
+#include <signal.h>
+#include <setjmp.h>
 
 #include <commons/log.h>
 #include <commons/string.h>
@@ -99,4 +101,5 @@ void* watch_config(char*);
 
 void _mostrar_metadata(Metadata* metadata);
 char* registro_to_string(Registro* registro);
+
 #endif

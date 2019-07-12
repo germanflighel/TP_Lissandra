@@ -56,7 +56,7 @@ int main() {
 	char* config_path;
 	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	archivo_config = leerConsola();
-	config_path = malloc(strlen(archivo_config));
+	config_path = malloc(strlen(archivo_config) + 1);
 	strcpy(config_path, archivo_config);
 
 	config = config_create(config_path);
@@ -200,6 +200,7 @@ int main() {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n", iret1);
 		exit(EXIT_FAILURE);
 	}
+	pthread_detach(threadL);
 	//thread receptor
 
 
@@ -226,7 +227,8 @@ int main() {
 					iret1);
 			exit(EXIT_FAILURE);
 		}
-		loguear("Cree el hilo de la memoria nueva");
+		pthread_detach(threadL);
+		loguear("Cree el hilo de la memoria nueva", DEBUG);
 
 	}
 
@@ -924,6 +926,10 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 				unRegistro : otroRegistro;
 	}
 
+	Registro* sort_mayor_timestamp(Registro* unRegistroNuevo, Registro* unRegistroViejo) {
+			return unRegistroNuevo->timeStamp >= unRegistroViejo->timeStamp;
+		}
+
 	Registro* registro_mayor;
 
 	pthread_mutex_lock(&mem_table_mutex);
@@ -937,10 +943,21 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 		return registro;
 	}
 
+	list_sort(tabla->registros, (void*) sort_mayor_timestamp);
+
+	registro_mayor = list_find(tabla->registros, (void*) es_registro);
+	if (registro_mayor) {
+		pthread_mutex_unlock(&mem_table_mutex);
+
+		Registro* copia_registro = duplicar_registro(registro_mayor);
+		return copia_registro;
+	}
+	/*
 	t_list* registros_con_key = list_filter(tabla->registros,
 			(void*) es_registro);
 
 	if (registros_con_key->elements_count) {
+
 		Registro* registro_mayor = list_get(registros_con_key, 0);
 
 		registro_mayor = list_fold(registros_con_key, registro_mayor,
@@ -952,7 +969,7 @@ Registro* buscar_en_mem_table(char* nombre_tabla, int keyBuscada) {
 
 		Registro* copia_registro = duplicar_registro(registro_mayor);
 		return copia_registro;
-	}
+	}*/
 	pthread_mutex_unlock(&mem_table_mutex);
 
 	Registro* registro = malloc(sizeof(Registro));
@@ -1298,11 +1315,8 @@ void *receptorDeConsultas(void* socket) {
 
 					free(describe->tablas);
 					free(describe);
-					for (int i = 0; i < metadatas->elements_count; i++) {
-						free(list_get(metadatas, i));
-					}
-					list_destroy(metadatas);
 
+					list_destroy_and_destroy_elements(metadatas, (void*) free);
 				} else {
 
 					t_describe* describe = malloc(sizeof(t_describe));
@@ -1322,6 +1336,10 @@ void *receptorDeConsultas(void* socket) {
 							0);
 
 					dispose_package(&serializedPackage);
+					free(describe->tablas);
+					free(describe);
+
+					free(metadatas);
 				}
 
 			}
@@ -1337,7 +1355,9 @@ void *receptorDeConsultas(void* socket) {
 void *recibir_por_consola() {
 	char* consulta;
 	while (true) {
+
 		consulta = readline("LFS> ");
+
 
 		if (strcmp(consulta, "") != 0) {
 			char* parametros;
@@ -1534,6 +1554,7 @@ int escribir_bitarray(char* punto_montaje) {
 		return 0;
 	}
 	int written_bytes = write(fd, bitmap_char, lfs_blocks / 8);
+	free(ruta_a_bitmap);
 	close(fd);
 	return 0;
 }
@@ -1560,6 +1581,7 @@ void* compactar_tabla(Metadata* una_tabla) {
 
 			loguear("Compacte la tabla %s", DEBUG, una_tabla->nombre_tabla);
 			persistir_tiempo_de_bloqueo("La tabla %s se bloqueo por %f", una_tabla->nombre_tabla, tiempo_bloqueado);
+
 		}
 	}
 }
@@ -2201,6 +2223,9 @@ void montar_filesystem() {
 	escribir_bitarray(ruta);
 
 	config_destroy(metadata_lfs);
+	free(metadata_lfs_path);
+	free(ruta_a_bloques);
+	free(ruta_a_metadata);
 }
 
 int crear_carpeta_en(char* una_ruta) {
@@ -2373,3 +2398,4 @@ void get_event (int fd) {
         i += EVENT_SIZE + event->len;
     }
 }
+
