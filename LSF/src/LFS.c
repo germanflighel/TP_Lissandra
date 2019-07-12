@@ -749,8 +749,8 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 	while (registros[j] != NULL) {
 		char** datos_registro = string_split(registros[j], ";");
 		if (atoi(datos_registro[1]) == keyBuscada) {
-			if (atol(datos_registro[0]) > registro->timeStamp) {
-				registro->timeStamp = atol(datos_registro[0]);
+			if (atoll(datos_registro[0]) > registro->timeStamp) {
+				registro->timeStamp = atoll(datos_registro[0]);
 				registro->key = atoi(datos_registro[1]);
 				registro->value = malloc(strlen(datos_registro[2]) + 1);
 				strcpy(registro->value, datos_registro[2]);
@@ -1632,7 +1632,7 @@ t_list* obtener_lista_de_registros(char** registros) {
 		mostrar_en_pantalla("Registro[j]: %s", DEBUG, registros[j]);
 		char** datos_registro = string_split(registros[j], ";");
 		Registro* registro = malloc(sizeof(Registro));
-		registro->timeStamp = atol(datos_registro[0]);
+		registro->timeStamp = atoll(datos_registro[0]);
 		registro->key = atoi(datos_registro[1]);
 		registro->value = malloc(strlen(datos_registro[2]) + 1);
 		strcpy(registro->value, datos_registro[2]);
@@ -1944,7 +1944,7 @@ int tamanio_de_tabla(Tabla* tabla) {
 
 	for (int i = 0; i < tabla->registros->elements_count; i++) {
 		registro = list_get(tabla->registros, i);
-		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+		string_append_with_format(&registro_a_escribir, "%llu;", registro->timeStamp);
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
 	}
@@ -1972,7 +1972,7 @@ int size_of_Registro(Registro* registro) {
 
 char* registro_to_string(Registro* registro) {
 	char* registro_a_escribir = string_new();
-	string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+	string_append_with_format(&registro_a_escribir, "%llu;", registro->timeStamp);
 	string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 	string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
 	return registro_a_escribir;
@@ -1985,7 +1985,7 @@ void escribir_registros_de_particion(char* nombre_tabla, int particion, t_list* 
 
 	for (int i = 0; i < registros->elements_count; i++) {
 		registro = list_get(registros, i);
-		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+		string_append_with_format(&registro_a_escribir, "%llu;", registro->timeStamp);
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
 	}
@@ -2130,7 +2130,7 @@ void escribir_registros_en_bloques(Tabla* tabla) {
 
 	for (int i = 0; i < tabla->registros->elements_count; i++) {
 		registro = list_get(tabla->registros, i);
-		string_append_with_format(&registro_a_escribir, "%ld;", registro->timeStamp);
+		string_append_with_format(&registro_a_escribir, "%llu;", registro->timeStamp);
 		string_append_with_format(&registro_a_escribir, "%i;", registro->key);
 		string_append_with_format(&registro_a_escribir, "%s\n", registro->value);
 	}
