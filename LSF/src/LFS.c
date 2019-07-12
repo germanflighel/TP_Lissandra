@@ -771,7 +771,7 @@ Registro* encontrar_keys(int keyBuscada, int particion_objetivo, char* una_ruta_
 
 char* leer_registros_de(char* nombre_tabla, char* extension) {
 	char* todos_los_registros = string_new();
-	int maximo_dumpeo = 0;
+	int maximo_dumpeo = maximo_dumpeo_en(nombre_tabla, extension);
 	int cantidad_de_dumpeos_fs = cantidad_de_archivos_en(nombre_tabla, extension);
 	if (cantidad_de_dumpeos_fs) {
 		int numero_de_temporal = 1;
@@ -803,6 +803,33 @@ char* leer_registros_de(char* nombre_tabla, char* extension) {
 	return todos_los_registros;
 }
 
+int maximo_dumpeo_en(char* nombre_tabla, char* extension) {
+	char* mi_ruta = ruta_a_tabla(nombre_tabla);
+
+	DIR *dirp;
+	if ((dirp = opendir(mi_ruta)) == NULL) {
+		return 0;
+	}
+	struct dirent* dp;
+	char* nombre_archivo;
+	int maximo = 0;
+	while((dp = readdir(dirp)) != NULL) {
+		nombre_archivo = dp->d_name;
+
+		if (string_contains(nombre_archivo, extension)) {
+			char** spliteado = string_split(nombre_archivo, ".");
+
+			if (maximo < atoi(spliteado[0])) {
+				maximo = atoi(spliteado[0]);
+			}
+			string_iterate_lines(spliteado, (void*) free);
+			free(spliteado);
+		}
+	}
+	free(mi_ruta);
+	closedir(dirp);
+	return maximo;
+}
 
 int cantidad_de_archivos_en(char* nombre_tabla, char* extension) {
 	char* mi_ruta = ruta_a_tabla(nombre_tabla);
