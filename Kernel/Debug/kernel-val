@@ -1,0 +1,1204 @@
+==18040== Memcheck, a memory error detector
+==18040== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==18040== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==18040== Command: ./Kernel
+==18040== Parent PID: 16968
+==18040== 
+--18040-- 
+--18040-- Valgrind options:
+--18040--    --show-leak-kinds=all
+--18040--    --leak-check=full
+--18040--    -v
+--18040--    --log-file=kernel-val
+--18040-- Contents of /proc/version:
+--18040--   Linux version 4.4.0-146-generic (buildd@lgw01-amd64-035) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) ) #172-Ubuntu SMP Wed Apr 3 08:59:42 UTC 2019
+--18040-- 
+--18040-- Arch and hwcaps: X86, LittleEndian, x86-mmxext-sse1-sse2-sse3-lzcnt
+--18040-- Page sizes: currently 4096, max supported 4096
+--18040-- Valgrind library directory: /usr/lib/valgrind
+--18040-- Reading syms from /lib/i386-linux-gnu/ld-2.23.so
+--18040--   Considering /lib/i386-linux-gnu/ld-2.23.so ..
+--18040--   .. CRC mismatch (computed f6bf32f6 wanted cd116314)
+--18040--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.23.so ..
+--18040--   .. CRC is valid
+--18040-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/Kernel/Debug/Kernel
+--18040-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux
+--18040--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--18040--   .. CRC mismatch (computed 6036da3f wanted 652e483f)
+--18040--    object doesn't have a symbol table
+--18040--    object doesn't have a dynamic symbol table
+--18040-- Scheduler: using generic scheduler lock implementation.
+--18040-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==18040== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18040-by-utnso-on-???
+==18040== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18040-by-utnso-on-???
+==18040== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18040-by-utnso-on-???
+==18040== 
+==18040== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==18040== don't want to do, unless you know exactly what you're doing,
+==18040== or are doing some strange experiment):
+==18040==   /usr/lib/valgrind/../../bin/vgdb --pid=18040 ...command...
+==18040== 
+==18040== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==18040==   /path/to/gdb ./Kernel
+==18040== and then give GDB the following command
+==18040==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=18040
+==18040== --pid is optional if only one valgrind process is running
+==18040== 
+--18040-- REDIR: 0x4019030 (ld-linux.so.2:strlen) redirected to 0x380490f2 (???)
+--18040-- REDIR: 0x4018df0 (ld-linux.so.2:index) redirected to 0x380490cd (???)
+--18040-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so
+--18040--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--18040--   .. CRC mismatch (computed 5b95c0c4 wanted 39e79efa)
+--18040--    object doesn't have a symbol table
+--18040-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so
+--18040--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--18040--   .. CRC mismatch (computed 4d5a1526 wanted 33571d5b)
+--18040--    object doesn't have a symbol table
+==18040== WARNING: new redirection conflicts with existing -- ignoring it
+--18040--     old: 0x04019030 (strlen              ) R-> (0000.0) 0x380490f2 ???
+--18040--     new: 0x04019030 (strlen              ) R-> (2007.0) 0x0402f410 strlen
+--18040-- Reading syms from /home/utnso/workspace/tp-2019-1c-Ckere/sockets/Debug/libsockets.so
+--18040-- Reading syms from /lib/i386-linux-gnu/libpthread-2.23.so
+--18040--   Considering /usr/lib/debug/.build-id/51/ddb6090511af5615d5f4af155a4403d2845346.debug ..
+--18040--   .. build-id is valid
+--18040-- Reading syms from /usr/lib/libcommons.so
+--18040-- Reading syms from /lib/i386-linux-gnu/libreadline.so.6.3
+--18040--   Considering /lib/i386-linux-gnu/libreadline.so.6.3 ..
+--18040--   .. CRC mismatch (computed ae23cd8f wanted 3f613fc8)
+--18040--    object doesn't have a symbol table
+--18040-- Reading syms from /lib/i386-linux-gnu/libc-2.23.so
+--18040--   Considering /lib/i386-linux-gnu/libc-2.23.so ..
+--18040--   .. CRC mismatch (computed 05488cfc wanted a5215580)
+--18040--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.23.so ..
+--18040--   .. CRC is valid
+--18040-- Reading syms from /lib/i386-linux-gnu/libtinfo.so.5.9
+--18040--    object doesn't have a symbol table
+--18040-- REDIR: 0x413b4b0 (libc.so.6:strncasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4142140 (libc.so.6:memrchr) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4154b20 (libc.so.6:wcslen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x413a350 (libc.so.6:strstr) redirected to 0x4033700 (strstr)
+--18040-- REDIR: 0x41397e0 (libc.so.6:__GI_strrchr) redirected to 0x402ee00 (__GI_strrchr)
+--18040-- REDIR: 0x41395c0 (libc.so.6:__GI_strlen) redirected to 0x402f390 (__GI_strlen)
+--18040-- REDIR: 0x4134f00 (libc.so.6:malloc) redirected to 0x402c110 (malloc)
+--18040-- REDIR: 0x413aa30 (libc.so.6:__GI_memchr) redirected to 0x40306d0 (__GI_memchr)
+--18040-- REDIR: 0x413b680 (libc.so.6:__GI_memcpy) redirected to 0x4030fb0 (__GI_memcpy)
+--18040-- REDIR: 0x4139580 (libc.so.6:strlen) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4142440 (libc.so.6:__strlen_sse2_bsf) redirected to 0x402f370 (strlen)
+--18040-- REDIR: 0x4138f90 (libc.so.6:strcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4142570 (libc.so.6:__strcpy_ssse3) redirected to 0x402f450 (strcpy)
+--18040-- REDIR: 0x4135470 (libc.so.6:free) redirected to 0x402d2f0 (free)
+--18040-- REDIR: 0x413afc0 (libc.so.6:memset) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41e94d0 (libc.so.6:__memset_sse2) redirected to 0x40327d0 (memset)
+--18040-- REDIR: 0x4135810 (libc.so.6:calloc) redirected to 0x402e010 (calloc)
+--18040-- REDIR: 0x4135520 (libc.so.6:realloc) redirected to 0x402e250 (realloc)
+--18040-- REDIR: 0x4139700 (libc.so.6:strncmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41f95c0 (libc.so.6:__strncmp_ssse3) redirected to 0x402fab0 (strncmp)
+--18040-- REDIR: 0x413d280 (libc.so.6:strchrnul) redirected to 0x40330b0 (strchrnul)
+--18040-- REDIR: 0x4138ae0 (libc.so.6:strcat) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x414db30 (libc.so.6:__strcat_ssse3) redirected to 0x402f030 (strcat)
+--18040-- REDIR: 0x413ac10 (libc.so.6:__GI_memcmp) redirected to 0x4031ef0 (__GI_memcmp)
+--18040-- REDIR: 0x413d1b0 (libc.so.6:__GI___rawmemchr) redirected to 0x4033110 (__GI___rawmemchr)
+--18040-- REDIR: 0x413b0d0 (libc.so.6:__GI_mempcpy) redirected to 0x40332c0 (__GI_mempcpy)
+--18040-- REDIR: 0x413b610 (libc.so.6:memcpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41ebb70 (libc.so.6:__memcpy_ssse3) redirected to 0x4030cc0 (memcpy)
+--18040-- REDIR: 0x4138ee0 (libc.so.6:strcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41f8150 (libc.so.6:__strcmp_ssse3) redirected to 0x4030450 (strcmp)
+==18040== Thread 7:
+==18040== Conditional jump or move depends on uninitialised value(s)
+==18040==    at 0x403B31C: serializarRequestDescribe (sockets.c:423)
+==18040==    by 0x804C346: describeNuevo (Kernel.c:1260)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+--18040-- REDIR: 0x4142380 (libc.so.6:__GI_strncmp) redirected to 0x402fb40 (__GI_strncmp)
+--18040-- REDIR: 0x4154100 (libc.so.6:__GI_strnlen) redirected to 0x402f330 (__GI_strnlen)
+--18040-- REDIR: 0x41397a0 (libc.so.6:rindex) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4153530 (libc.so.6:__strrchr_sse2_bsf) redirected to 0x402edd0 (rindex)
+--18040-- REDIR: 0x4138ce0 (libc.so.6:index) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4153420 (libc.so.6:__strchr_sse2_bsf) redirected to 0x402eff0 (index)
+--18040-- REDIR: 0x41b8c90 (libc.so.6:__memcpy_chk) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41ebb60 (libc.so.6:__memcpy_chk_ssse3) redirected to 0x4033600 (__memcpy_chk)
+--18040-- REDIR: 0x4139750 (libc.so.6:strncpy) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x4143dc0 (libc.so.6:__strncpy_ssse3) redirected to 0x402f5f0 (strncpy)
+--18040-- REDIR: 0x40f2650 (libc.so.6:setenv) redirected to 0x4033d60 (setenv)
+--18040-- REDIR: 0x4138d20 (libc.so.6:__GI_strchr) redirected to 0x402ef30 (__GI_strchr)
+--18040-- REDIR: 0x4138f30 (libc.so.6:__GI_strcmp) redirected to 0x40304b0 (__GI_strcmp)
+--18040-- REDIR: 0x413b2e0 (libc.so.6:__GI_stpcpy) redirected to 0x4032290 (__GI_stpcpy)
+--18040-- REDIR: 0x413b460 (libc.so.6:strcasecmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x41fafb0 (libc.so.6:__strcasecmp_ssse3) redirected to 0x402fcf0 (strcasecmp)
+--18040-- REDIR: 0x41fd4c0 (libc.so.6:__strncasecmp_ssse3) redirected to 0x402fe10 (strncasecmp)
+--18040-- REDIR: 0x413abd0 (libc.so.6:bcmp) redirected to 0x4026560 (_vgnU_ifunc_wrapper)
+--18040-- REDIR: 0x42023d0 (libc.so.6:__memcmp_ssse3) redirected to 0x40320a0 (bcmp)
+==18040== 
+==18040== Process terminating with default action of signal 13 (SIGPIPE)
+==18040==    at 0x4067549: send (send.c:35)
+==18040==    by 0x804B143: insert_kernel (Kernel.c:787)
+==18040==    by 0x804ADBF: interpretarComando (Kernel.c:672)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== HEAP SUMMARY:
+==18040==     in use at exit: 156,843 bytes in 3,413 blocks
+==18040==   total heap usage: 358,910 allocs, 355,497 frees, 49,891,952 bytes allocated
+==18040== 
+==18040== Searching for pointers to 3,413 not-freed blocks
+==18040== Checked 67,276,268 bytes
+==18040== 
+==18040== Thread 1:
+==18040== 1 bytes in 1 blocks are still reachable in loss record 1 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BA71: rl_set_prompt (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5A: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1 bytes in 1 blocks are still reachable in loss record 2 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9361: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A852B: rl_maybe_replace_line (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A8959: rl_get_previous_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4 bytes in 1 blocks are still reachable in loss record 3 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078C29: queue_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049E11: main (Kernel.c:217)
+==18040== 
+==18040== 4 bytes in 1 blocks are still reachable in loss record 4 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078C29: queue_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049F09: main (Kernel.c:243)
+==18040== 
+==18040== 6 bytes in 1 blocks are still reachable in loss record 5 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x4285010: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 6 bytes in 3 blocks are still reachable in loss record 6 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A1413: rl_copy_text (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A5679: rl_delete_text (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A71D6: _rl_rubout_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A724B: rl_rubout (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 7 bytes in 1 blocks are still reachable in loss record 7 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==18040==    by 0x4077C49: log_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A2C3: iniciar_logger (Kernel.c:417)
+==18040==    by 0x8049A1C: main (Kernel.c:117)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 8 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x407A393: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 9 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049B8F: main (Kernel.c:142)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 10 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049DC7: main (Kernel.c:204)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 11 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049DD1: main (Kernel.c:206)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 12 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804AC22: crear_metricas (Kernel.c:635)
+==18040==    by 0x8049DE1: main (Kernel.c:208)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 13 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049DE9: main (Kernel.c:210)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 14 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049DF3: main (Kernel.c:212)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 15 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x8049E09: main (Kernel.c:214)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 16 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x4078C34: queue_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049E11: main (Kernel.c:217)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 17 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x4078C34: queue_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049F09: main (Kernel.c:243)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 18 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078E01: list_create (in /usr/lib/libcommons.so)
+==18040==    by 0x8049F13: main (Kernel.c:244)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 19 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x428AD6E: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428B059: _nc_trim_sgr0 (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x42854D3: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 20 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x4078D33: queue_push (in /usr/lib/libcommons.so)
+==18040==    by 0x804C6C5: add (Kernel.c:1348)
+==18040==    by 0x804AE36: interpretarComando (Kernel.c:690)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 8 bytes in 1 blocks are still reachable in loss record 21 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x403BB26: fill_package_insert (sockets.c:633)
+==18040==    by 0x804B082: insert_kernel (Kernel.c:770)
+==18040==    by 0x804ADBF: interpretarComando (Kernel.c:672)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 8 bytes in 8 blocks are still reachable in loss record 22 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9361: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BC91: readline_internal_teardown (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CEAB: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 9 bytes in 1 blocks are still reachable in loss record 23 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x403BACA: fill_package_insert (sockets.c:627)
+==18040==    by 0x804B082: insert_kernel (Kernel.c:770)
+==18040==    by 0x804ADBF: interpretarComando (Kernel.c:672)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 10 bytes in 1 blocks are still reachable in loss record 24 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x8049A8C: main (Kernel.c:126)
+==18040== 
+==18040== 10 bytes in 1 blocks are still reachable in loss record 25 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x8049ADB: main (Kernel.c:130)
+==18040== 
+==18040== 12 bytes in 1 blocks are still reachable in loss record 26 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x8049C59: main (Kernel.c:172)
+==18040== 
+==18040== 12 bytes in 1 blocks are still reachable in loss record 27 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804ABDF: crear_metricas (Kernel.c:629)
+==18040==    by 0x8049DE1: main (Kernel.c:208)
+==18040== 
+==18040== 12 bytes in 1 blocks are still reachable in loss record 28 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x4281D9F: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x42820B4: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 12 bytes in 1 blocks are still reachable in loss record 29 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804CB2E: levantar_script (Kernel.c:1481)
+==18040==    by 0x804CACD: run (Kernel.c:1467)
+==18040==    by 0x804AE23: interpretarComando (Kernel.c:687)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 12 bytes in 1 blocks are still reachable in loss record 30 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9313: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A852B: rl_maybe_replace_line (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A8959: rl_get_previous_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 13 bytes in 1 blocks are still reachable in loss record 31 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4099491: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 16 bytes in 1 blocks are still reachable in loss record 32 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40799F7: dictionary_create (in /usr/lib/libcommons.so)
+==18040==    by 0x407A3B6: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 16 bytes in 1 blocks are still reachable in loss record 33 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x408CD00: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 20 bytes in 1 blocks are still reachable in loss record 34 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4077BA3: log_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A2C3: iniciar_logger (Kernel.c:417)
+==18040==    by 0x8049A1C: main (Kernel.c:117)
+==18040== 
+==18040== 20 bytes in 1 blocks are still reachable in loss record 35 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4096F33: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098F83: rl_parse_and_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4099416: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 20 bytes in 1 blocks are still reachable in loss record 36 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A2815: rl_add_undo (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A55BD: rl_insert_text (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A69BC: _rl_insert_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A70B7: rl_insert (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 20 bytes in 5 blocks are still reachable in loss record 37 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804C696: add (Kernel.c:1345)
+==18040==    by 0x804AE36: interpretarComando (Kernel.c:690)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 20 bytes in 5 blocks are still reachable in loss record 38 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804C636: add (Kernel.c:1333)
+==18040==    by 0x804AE36: interpretarComando (Kernel.c:690)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 20 bytes in 1 blocks are definitely lost in loss record 39 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A2815: rl_add_undo (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A55BD: rl_insert_text (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A69BC: _rl_insert_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A70B7: rl_insert (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 23 bytes in 1 blocks are still reachable in loss record 40 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==18040==    by 0x4078BA9: _string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x40786AF: string_n_split (in /usr/lib/libcommons.so)
+==18040==    by 0x403A465: separarEntrada (sockets.c:37)
+==18040==    by 0x804CFF1: ejecutar_quantum (Kernel.c:1615)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 24 bytes in 1 blocks are still reachable in loss record 41 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282923: _nc_home_terminfo (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x42820A0: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 24 bytes in 1 blocks are still reachable in loss record 42 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x42821DB: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 24 bytes in 3 blocks are still reachable in loss record 43 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x8049EAC: main (Kernel.c:227)
+==18040== 
+==18040== 27 bytes in 1 blocks are still reachable in loss record 44 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x80499ED: main (Kernel.c:111)
+==18040== 
+==18040== 27 bytes in 1 blocks are still reachable in loss record 45 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407A3A7: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 28 bytes in 6 blocks are still reachable in loss record 46 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==18040==    by 0x4078BA9: _string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x40786AF: string_n_split (in /usr/lib/libcommons.so)
+==18040==    by 0x407A2B0: add_cofiguration.2909 (in /usr/lib/libcommons.so)
+==18040==    by 0x4078846: string_iterate_lines (in /usr/lib/libcommons.so)
+==18040==    by 0x407A444: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 32 bytes in 1 blocks are still reachable in loss record 47 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x8049C12: main (Kernel.c:169)
+==18040== 
+==18040== 32 bytes in 4 blocks are still reachable in loss record 48 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804A77E: conectarSiFueraPosible.5980 (Kernel.c:539)
+==18040==    by 0x4079148: list_iterate (in /usr/lib/libcommons.so)
+==18040==    by 0x804A82F: intentarEstablecerConexion (Kernel.c:551)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 32 bytes in 4 blocks are still reachable in loss record 49 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804AC22: crear_metricas (Kernel.c:635)
+==18040==    by 0x804A79C: conectarSiFueraPosible.5980 (Kernel.c:541)
+==18040==    by 0x4079148: list_iterate (in /usr/lib/libcommons.so)
+==18040==    by 0x804A82F: intentarEstablecerConexion (Kernel.c:551)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 32 bytes in 4 blocks are still reachable in loss record 50 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x4078D33: queue_push (in /usr/lib/libcommons.so)
+==18040==    by 0x804A51F: socketFromConsistency (Kernel.c:471)
+==18040==    by 0x804A3EA: socketAUtilizar (Kernel.c:446)
+==18040==    by 0x804B121: insert_kernel (Kernel.c:784)
+==18040==    by 0x804ADBF: interpretarComando (Kernel.c:672)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 36 bytes in 1 blocks are still reachable in loss record 51 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9335: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A852B: rl_maybe_replace_line (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A8959: rl_get_previous_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C3A9: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 37 bytes in 1 blocks are still reachable in loss record 52 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x403BBFA: serializarInsert (sockets.c:655)
+==18040==    by 0x804B105: insert_kernel (Kernel.c:782)
+==18040==    by 0x804ADBF: interpretarComando (Kernel.c:672)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 40 bytes in 5 blocks are still reachable in loss record 53 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804C09A: seedPackageToTable (Kernel.c:1186)
+==18040==    by 0x804C209: intercambiarTabla (Kernel.c:1223)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 40 bytes in 5 blocks are still reachable in loss record 54 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804C665: add (Kernel.c:1336)
+==18040==    by 0x804AE36: interpretarComando (Kernel.c:690)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 46 bytes in 1 blocks are still reachable in loss record 55 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A3C5: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 48 bytes in 4 blocks are still reachable in loss record 56 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804A62B: conectarSiFueraPosible.5980 (Kernel.c:512)
+==18040==    by 0x4079148: list_iterate (in /usr/lib/libcommons.so)
+==18040==    by 0x804A82F: intentarEstablecerConexion (Kernel.c:551)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 48 bytes in 4 blocks are still reachable in loss record 57 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804ABDF: crear_metricas (Kernel.c:629)
+==18040==    by 0x804A79C: conectarSiFueraPosible.5980 (Kernel.c:541)
+==18040==    by 0x4079148: list_iterate (in /usr/lib/libcommons.so)
+==18040==    by 0x804A82F: intentarEstablecerConexion (Kernel.c:551)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 60 bytes in 3 blocks are still reachable in loss record 58 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A2815: rl_add_undo (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A5702: rl_delete_text (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A71D6: _rl_rubout_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A724B: rl_rubout (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C2E3: _rl_dispatch_subseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C646: _rl_dispatch (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C707: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 65 bytes in 8 blocks are definitely lost in loss record 59 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x403B1D2: fill_package_describe (sockets.c:390)
+==18040==    by 0x804B3E9: describe (Kernel.c:858)
+==18040==    by 0x804ADD5: interpretarComando (Kernel.c:675)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 66 bytes in 1 blocks are still reachable in loss record 60 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x42869AD: tparm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4285C3F: tgoto (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x409E674: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409EE16: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BDCF: _rl_internal_char_cleanup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408C749: readline_internal_char (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE9C: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 72 bytes in 3 blocks are still reachable in loss record 61 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x8049E85: main (Kernel.c:225)
+==18040== 
+==18040== 72 bytes in 9 blocks are still reachable in loss record 62 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079905: list_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4078E3D: list_add (in /usr/lib/libcommons.so)
+==18040==    by 0x804BC1E: recibirDescribe (Kernel.c:1090)
+==18040==    by 0x804B4D5: describe (Kernel.c:881)
+==18040==    by 0x804ADD5: interpretarComando (Kernel.c:675)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 78 bytes in 1 blocks are still reachable in loss record 63 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A3E4: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 80 bytes in 1 blocks are still reachable in loss record 64 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4079A18: dictionary_create (in /usr/lib/libcommons.so)
+==18040==    by 0x407A3B6: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 86 bytes in 6 blocks are still reachable in loss record 65 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x4079B2D: dictionary_put (in /usr/lib/libcommons.so)
+==18040==    by 0x407A2D3: add_cofiguration.2909 (in /usr/lib/libcommons.so)
+==18040==    by 0x4078846: string_iterate_lines (in /usr/lib/libcommons.so)
+==18040==    by 0x407A444: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 93 bytes in 1 blocks are still reachable in loss record 66 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x428212A: _nc_first_db (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A909: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 94 bytes in 1 blocks are still reachable in loss record 67 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282593: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428613E: _nc_tparm_analyze (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4286302: tparm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428AD5A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428B04B: _nc_trim_sgr0 (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x42854D3: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 96 bytes in 6 blocks are still reachable in loss record 68 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x407A004: dictionary_create_element (in /usr/lib/libcommons.so)
+==18040==    by 0x4079B3F: dictionary_put (in /usr/lib/libcommons.so)
+==18040==    by 0x407A2D3: add_cofiguration.2909 (in /usr/lib/libcommons.so)
+==18040==    by 0x4078846: string_iterate_lines (in /usr/lib/libcommons.so)
+==18040==    by 0x407A444: config_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A29D: abrir_config (Kernel.c:411)
+==18040==    by 0x8049A56: main (Kernel.c:123)
+==18040== 
+==18040== 96 bytes in 8 blocks are still reachable in loss record 69 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9313: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BC91: readline_internal_teardown (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CEAB: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 105 bytes in 5 blocks are still reachable in loss record 70 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804C029: seedPackageToTable (Kernel.c:1183)
+==18040==    by 0x804C209: intercambiarTabla (Kernel.c:1223)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 128 bytes in 4 blocks are still reachable in loss record 71 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804A614: conectarSiFueraPosible.5980 (Kernel.c:510)
+==18040==    by 0x4079148: list_iterate (in /usr/lib/libcommons.so)
+==18040==    by 0x804A82F: intentarEstablecerConexion (Kernel.c:551)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 128 bytes in 5 blocks are definitely lost in loss record 72 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==18040==    by 0x4078BA9: _string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x40786AF: string_n_split (in /usr/lib/libcommons.so)
+==18040==    by 0x403A465: separarEntrada (sockets.c:37)
+==18040==    by 0x804CFF1: ejecutar_quantum (Kernel.c:1615)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 136 bytes in 1 blocks are possibly lost in loss record 73 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x8049F8B: main (Kernel.c:272)
+==18040== 
+==18040== 136 bytes in 1 blocks are possibly lost in loss record 74 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x8049FCC: main (Kernel.c:283)
+==18040== 
+==18040== 136 bytes in 1 blocks are possibly lost in loss record 75 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x804A00D: main (Kernel.c:297)
+==18040== 
+==18040== 136 bytes in 1 blocks are possibly lost in loss record 76 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x804A052: main (Kernel.c:310)
+==18040== 
+==18040== 136 bytes in 1 blocks are possibly lost in loss record 77 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x804A093: main (Kernel.c:324)
+==18040== 
+==18040== 168 bytes in 8 blocks are still reachable in loss record 78 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9335: replace_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BC91: readline_internal_teardown (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CEAB: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 172 bytes in 1 blocks are still reachable in loss record 79 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4284FA0: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 189 bytes in 9 blocks are still reachable in loss record 80 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804BBB3: recibirDescribe (Kernel.c:1085)
+==18040==    by 0x804B4D5: describe (Kernel.c:881)
+==18040==    by 0x804ADD5: interpretarComando (Kernel.c:675)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 192 bytes in 16 blocks are still reachable in loss record 81 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9169: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A151: main (Kernel.c:363)
+==18040== 
+==18040== 192 bytes in 16 blocks are still reachable in loss record 82 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A8F2B: alloc_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9188: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A151: main (Kernel.c:363)
+==18040== 
+==18040== 200 bytes in 1 blocks are still reachable in loss record 83 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A91D6: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A151: main (Kernel.c:363)
+==18040== 
+==18040== 256 bytes in 1 blocks are still reachable in loss record 84 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE18: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 256 bytes in 1 blocks are still reachable in loss record 85 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x428A523: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 300 bytes in 1 blocks are still reachable in loss record 86 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x804A0D6: main (Kernel.c:335)
+==18040== 
+==18040== 316 bytes in 16 blocks are still reachable in loss record 87 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A8F4A: alloc_history_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A9188: add_history (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A151: main (Kernel.c:363)
+==18040== 
+==18040== 344 bytes in 1 blocks are still reachable in loss record 88 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4122359: __fopen_internal (iofopen.c:69)
+==18040==    by 0x412241D: fopen@@GLIBC_2.1 (iofopen.c:97)
+==18040==    by 0x4077ADA: txt_open_for_append (in /usr/lib/libcommons.so)
+==18040==    by 0x4077BE3: log_create (in /usr/lib/libcommons.so)
+==18040==    by 0x804A2C3: iniciar_logger (Kernel.c:417)
+==18040==    by 0x8049A1C: main (Kernel.c:117)
+==18040== 
+==18040== 408 bytes in 3 blocks are possibly lost in loss record 89 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4011726: allocate_dtv (dl-tls.c:322)
+==18040==    by 0x401214B: _dl_allocate_tls (dl-tls.c:539)
+==18040==    by 0x405ECC3: allocate_stack (allocatestack.c:588)
+==18040==    by 0x405ECC3: pthread_create@@GLIBC_2.1 (pthread_create.c:539)
+==18040==    by 0x8049EC3: main (Kernel.c:232)
+==18040== 
+==18040== 751 bytes in 1 blocks are still reachable in loss record 90 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x428A5EB: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 768 bytes in 1 blocks are still reachable in loss record 91 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE953: xrealloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409071C: rl_add_funmap_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090788: rl_initialize_funmap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC73: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 92 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B690: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 93 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B6A4: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 94 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B6DA: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 95 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B6F4: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 96 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B70B: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,024 bytes in 1 blocks are still reachable in loss record 97 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409B722: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409FC2F: rl_redisplay (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408BB5E: readline_internal_setup (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE88: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,064 bytes in 133 blocks are still reachable in loss record 98 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40906B9: rl_add_funmap_entry (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090788: rl_initialize_funmap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC73: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,439 bytes in 1 blocks are still reachable in loss record 99 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4289E3B: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 1,904 bytes in 1 blocks are still reachable in loss record 100 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4282572: _nc_doalloc (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A404: _nc_read_termtype (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A7A7: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428A993: _nc_read_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284C4A: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4284FB7: _nc_setupterm (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x428539E: tgetent (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D4B: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 2,032 bytes in 1 blocks are still reachable in loss record 101 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4FF8: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 2,056 bytes in 1 blocks are still reachable in loss record 102 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A45BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4E8E: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,080 bytes in 1 blocks are still reachable in loss record 103 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4FD4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,112 bytes in 2 blocks are still reachable in loss record 104 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A462D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4E8E: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,112 bytes in 2 blocks are still reachable in loss record 105 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A45BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4E99: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,112 bytes in 2 blocks are still reachable in loss record 106 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A462D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4E99: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,112 bytes in 2 blocks are still reachable in loss record 107 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A45BB: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4EA4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 4,112 bytes in 2 blocks are still reachable in loss record 108 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097B01: rl_set_key (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409862D: rl_bind_keyseq_if_unbound_in_map (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4098723: rl_bind_keyseq_if_unbound (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A462D: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x40A4EA4: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 5,964 bytes in 1 blocks are still reachable in loss record 109 of 112
+==18040==    at 0x402E0B8: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x42816B2: ??? (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4281CBB: _nc_find_type_entry (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x4285AAA: tgetstr (in /lib/i386-linux-gnu/libtinfo.so.5.9)
+==18040==    by 0x40A4D91: _rl_init_terminal_io (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC5B: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 12,012 bytes in 1 blocks are still reachable in loss record 110 of 112
+==18040==    at 0x402E2CC: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x4078BC4: _string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x40785F3: string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x804CC0D: levantar_script (Kernel.c:1507)
+==18040==    by 0x804CACD: run (Kernel.c:1467)
+==18040==    by 0x804AE23: interpretarComando (Kernel.c:687)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== 16,448 bytes in 8 blocks are still reachable in loss record 111 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x40AE917: xmalloc (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4090868: rl_make_bare_keymap (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097949: rl_generic_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4097AD5: rl_bind_keyseq (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x409922E: rl_parse_and_bind (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x4099416: ??? (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CC82: rl_initialize (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x408CE5F: readline (in /lib/i386-linux-gnu/libreadline.so.6.3)
+==18040==    by 0x804A0FE: main (Kernel.c:348)
+==18040== 
+==18040== 75,626 bytes in 3,002 blocks are still reachable in loss record 112 of 112
+==18040==    at 0x402C17C: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==18040==    by 0x41392C5: strdup (strdup.c:42)
+==18040==    by 0x407809A: string_duplicate (in /usr/lib/libcommons.so)
+==18040==    by 0x4078B44: _string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x40785F3: string_split (in /usr/lib/libcommons.so)
+==18040==    by 0x804CC0D: levantar_script (Kernel.c:1507)
+==18040==    by 0x804CACD: run (Kernel.c:1467)
+==18040==    by 0x804AE23: interpretarComando (Kernel.c:687)
+==18040==    by 0x804D048: ejecutar_quantum (Kernel.c:1625)
+==18040==    by 0x804CD7D: exec (Kernel.c:1548)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== LEAK SUMMARY:
+==18040==    definitely lost: 213 bytes in 14 blocks
+==18040==    indirectly lost: 0 bytes in 0 blocks
+==18040==      possibly lost: 1,088 bytes in 8 blocks
+==18040==    still reachable: 155,542 bytes in 3,391 blocks
+==18040==         suppressed: 0 bytes in 0 blocks
+==18040== 
+==18040== Use --track-origins=yes to see where uninitialised values come from
+==18040== ERROR SUMMARY: 10 errors from 10 contexts (suppressed: 0 from 0)
+==18040== 
+==18040== 1 errors in context 1 of 10:
+==18040== Thread 7:
+==18040== Conditional jump or move depends on uninitialised value(s)
+==18040==    at 0x403B31C: serializarRequestDescribe (sockets.c:423)
+==18040==    by 0x804C346: describeNuevo (Kernel.c:1260)
+==18040==    by 0x405E294: start_thread (pthread_create.c:333)
+==18040==    by 0x41AB0AD: clone (clone.S:114)
+==18040== 
+==18040== ERROR SUMMARY: 10 errors from 10 contexts (suppressed: 0 from 0)
