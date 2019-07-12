@@ -26,6 +26,7 @@ pthread_mutex_t cola_ready_mutex;
 
 //sincro
 pthread_mutex_t eventual_mutex;
+pthread_mutex_t hash_mutex;
 pthread_mutex_t logger_mutex;
 pthread_mutex_t tablas_actuales_mutex;
 pthread_mutex_t memorias_mutex;
@@ -60,6 +61,7 @@ struct addrinfo hints;
 
 int strongC = NULL;
 t_queue* eventualC;
+t_list* hashC;
 
 void *intercambiarTabla();
 void *describeNuevo();
@@ -130,7 +132,7 @@ int main() {
 	pthread_mutex_init(&gossiping_mutex, NULL);
 	pthread_mutex_init(&memorias_mutex, NULL);
 	pthread_mutex_init(&config_mutex, NULL);
-	pthread_mutex_init(&metricas,NULL);
+	pthread_mutex_init(&metricas, NULL);
 
 	struct addrinfo *serverInfo;
 	getaddrinfo(ip, puerto, &hints, &serverInfo);// Carga en serverInfo los datos de la conexion
@@ -150,7 +152,6 @@ int main() {
 	 * 	Ahora me conecto!
 	 *
 	 */
-
 
 	Memoria* mem_nueva = malloc(sizeof(Memoria));
 	strcpy(mem_nueva->con.puerto, puerto_destino);
@@ -187,7 +188,6 @@ int main() {
 
 	printf("Esperando describe.\n");
 
-
 	tablas_actuales = list_create();
 
 	metricas_memorias = list_create();
@@ -205,6 +205,7 @@ int main() {
 	sem_init(&ejecutar_sem, 0, 0);
 	pthread_mutex_init(&cola_ready_mutex, NULL);
 	pthread_mutex_init(&eventual_mutex, NULL);
+	pthread_mutex_init(&hash_mutex, NULL);
 	pthread_mutex_init(&tablas_actuales_mutex, NULL);
 
 	for (int index = 0; index < multiprocesamiento; index++) {
@@ -227,6 +228,7 @@ int main() {
 
 	//setup consistencias
 	eventualC = queue_create();
+	hashC = list_create();
 	//setup consistencias
 
 	/*
@@ -403,6 +405,11 @@ t_log* iniciar_logger(void) {
 
 }
 
+int hashFunction(int key) {
+	int cant = hashC->elements_count;
+	return key%cant;
+}
+
 int obtenerConsistencia(char* tablaPath) {
 	int consistencia = NULL;
 	void buscarTabla(Tabla* tabla) {
@@ -416,16 +423,18 @@ int obtenerConsistencia(char* tablaPath) {
 	return consistencia;
 }
 
-int socketAUtilizar(char* tablaPath, int exec_index, int tipo_consulta) {
+int socketAUtilizar(char* tablaPath, int exec_index, int tipo_consulta, int key) {
 	int consistencia = obtenerConsistencia(tablaPath);
 
 	if (consistencia != NULL) {
-		return socketFromConsistency(consistencia, exec_index, tipo_consulta);
+		return socketFromConsistency(consistencia, exec_index, tipo_consulta,
+				key);
 	}
 	return -1;
 }
 
-int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
+int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta,
+		int key) {
 	int num_mem;
 	int* temp_mem;
 	switch (consistencia) {
@@ -433,7 +442,10 @@ int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
 		num_mem = strongC;
 		break;
 	case SHC:
-		return -1;
+		pthread_mutex_lock(&hash_mutex);
+		temp_mem = list_get(hashC,hashFunction(key));
+		num_mem = *temp_mem;
+		pthread_mutex_unlock(&hash_mutex);
 		break;
 	case EC:
 		pthread_mutex_lock(&eventual_mutex);
@@ -461,11 +473,10 @@ int socketFromConsistency(int consistencia, int exec_index, int tipo_consulta) {
 	list_iterate(memoriasConectadas, esLaMemoria);
 	pthread_mutex_unlock(&memorias_mutex);
 
-	sumar_metrics_memoria(num_mem,tipo_consulta);
+	sumar_metrics_memoria(num_mem, tipo_consulta);
 
 	return socket;
 }
-
 
 void* intentarEstablecerConexion() {
 	int serverSocket;
@@ -544,7 +555,7 @@ int seedConectado(Seed* seed) {
 }
 
 void desconectar_mem(int socket) {
-	close(socket);
+	//close(socket);
 
 	int num;
 
@@ -562,9 +573,7 @@ void desconectar_mem(int socket) {
 
 	}
 
-	pthread_mutex_lock(&memorias_mutex);
 	list_remove_by_condition(memoriasConectadas, &esLaMem);
-	pthread_mutex_unlock(&memorias_mutex);
 
 	void mostrar(Memoria* mem) {
 		pthread_mutex_lock(&logger_mutex);
@@ -572,9 +581,7 @@ void desconectar_mem(int socket) {
 		pthread_mutex_unlock(&logger_mutex);
 	}
 
-	pthread_mutex_lock(&memorias_mutex);
 	list_iterate(memoriasConectadas, &mostrar);
-	pthread_mutex_unlock(&memorias_mutex);
 
 	if (strongC == num) {
 		strongC = NULL;
@@ -588,16 +595,20 @@ void desconectar_mem(int socket) {
 	list_remove_by_condition(eventualC->elements, &esElNum);
 	pthread_mutex_unlock(&eventual_mutex);
 
+	pthread_mutex_lock(&hash_mutex);
+	list_remove_by_condition(hashC, &esElNum);
+	pthread_mutex_unlock(&hash_mutex);
+
 	eliminar_metricas(num);
 }
 
-void crear_metricas(int num_mem){
+void crear_metricas(int num_mem) {
 
 	int esLaMet(MetricaPorMemoria* met) {
-			return met->numero_memoria == num_mem;
-		}
+		return met->numero_memoria == num_mem;
+	}
 
-	if(!list_any_satisfy(metricas_memorias,&esLaMet)){
+	if (!list_any_satisfy(metricas_memorias, &esLaMet)) {
 
 		MetricaPorMemoria* metrica_nueva = malloc(sizeof(MetricaPorMemoria));
 
@@ -605,12 +616,12 @@ void crear_metricas(int num_mem){
 		metrica_nueva->cantidad_select = 0;
 		metrica_nueva->numero_memoria = num_mem;
 		pthread_mutex_lock(&metricas);
-		list_add(metricas_memorias,metrica_nueva);
+		list_add(metricas_memorias, metrica_nueva);
 		pthread_mutex_unlock(&metricas);
 	}
 }
 
-void eliminar_metricas(int num_mem){
+void eliminar_metricas(int num_mem) {
 
 	int esLaMet(MetricaPorMemoria* met) {
 
@@ -618,21 +629,21 @@ void eliminar_metricas(int num_mem){
 			return 1;
 		}
 		return 0;
-		}
+	}
 
-		pthread_mutex_lock(&metricas);
-		list_remove_by_condition(metricas_memorias, &esLaMet);
-		pthread_mutex_unlock(&metricas);
+	pthread_mutex_lock(&metricas);
+	list_remove_by_condition(metricas_memorias, &esLaMet);
+	pthread_mutex_unlock(&metricas);
 
-		void mostrar(MetricaPorMemoria* met) {
+	void mostrar(MetricaPorMemoria* met) {
 
-		printf( "Metricas Memoria: %d \n", met->numero_memoria);
+		printf("Metricas Memoria: %d \n", met->numero_memoria);
 
-		}
+	}
 
-		pthread_mutex_lock(&metricas);
-		list_iterate(metricas_memorias, &mostrar);
-		pthread_mutex_unlock(&metricas);
+	pthread_mutex_lock(&metricas);
+	list_iterate(metricas_memorias, &mostrar);
+	pthread_mutex_unlock(&metricas);
 }
 
 int interpretarComando(int header, char* parametros, int exec_index) {
@@ -692,7 +703,8 @@ int select_kernel(char* parametros, int exec_index) {
 
 		serializedPackage = serializarSelect(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, SELECT);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, SELECT,
+				package.key);
 
 		if (socketAEnviar != -1) {
 
@@ -705,7 +717,10 @@ int select_kernel(char* parametros, int exec_index) {
 			long timestampDiferencia = (long) time(NULL) - timestampInical;
 
 			if (!(int) respuesta) {
+				pthread_mutex_lock(&memorias_mutex);
 				desconectar_mem(socketAEnviar);
+				pthread_mutex_unlock(&memorias_mutex);
+
 				timestampDiferencia = 0;
 				log_error_s(logger_Kernel, "Memoria desconectada");
 			} else {
@@ -750,7 +765,8 @@ int insert_kernel(char* parametros, int exec_index) {
 
 		serializedPackage = serializarInsert(&package);
 
-		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, INSERT);
+		int socketAEnviar = socketAUtilizar(package.tabla, exec_index, INSERT,
+				package.key);
 		if (socketAEnviar != -1) {
 			send(socketAEnviar, serializedPackage, package.total_size, 0);
 
@@ -761,7 +777,10 @@ int insert_kernel(char* parametros, int exec_index) {
 			long timestampDiferencia = (long) time(NULL) - timestampInical;
 
 			if (!(int) respuesta) {
+				pthread_mutex_lock(&memorias_mutex);
 				desconectar_mem(socketAEnviar);
+				pthread_mutex_unlock(&memorias_mutex);
+
 				log_error_s(logger_Kernel, "Memoria desconectada");
 			} else {
 				log_debug_s(logger_Kernel, respuesta);
@@ -782,7 +801,10 @@ int insert_kernel(char* parametros, int exec_index) {
 							- timestampInical;
 
 					if (!(int) respuesta) {
+						pthread_mutex_lock(&memorias_mutex);
 						desconectar_mem(socketAEnviar);
+						pthread_mutex_unlock(&memorias_mutex);
+
 						timestampDiferencia = 0;
 
 						log_error_s(logger_Kernel, "Memoria desconectada");
@@ -850,10 +872,9 @@ void describe(char* parametros, int exec_index) {
 	}
 }
 
-void sumar_metrics_memoria(int num_mem, int tipo_consulta){
+void sumar_metrics_memoria(int num_mem, int tipo_consulta) {
 
-
-	int es_la_memoria(MetricaPorMemoria* met){
+	int es_la_memoria(MetricaPorMemoria* met) {
 		if (met->numero_memoria == num_mem) {
 
 			return 1;
@@ -865,12 +886,13 @@ void sumar_metrics_memoria(int num_mem, int tipo_consulta){
 		if (mem->numero == num_mem) {
 			MetricaPorMemoria* met_encontrada;
 			pthread_mutex_lock(&metricas);
-			met_encontrada = (MetricaPorMemoria*)list_find(metricas_memorias, &es_la_memoria);
+			met_encontrada = (MetricaPorMemoria*) list_find(metricas_memorias,
+					&es_la_memoria);
 			pthread_mutex_unlock(&metricas);
 
-			if(tipo_consulta == SELECT){
+			if (tipo_consulta == SELECT) {
 				met_encontrada->cantidad_select++;
-			}else if(tipo_consulta==INSERT){
+			} else if (tipo_consulta == INSERT) {
 				met_encontrada->cantidad_insert++;
 			}
 		}
@@ -884,7 +906,6 @@ void sumar_metrics_memoria(int num_mem, int tipo_consulta){
 }
 
 void sumar_metricas(int tipo_consulta, int consistencia, long tiempo) {
-
 
 	switch (tipo_consulta) {
 	case SELECT:
@@ -946,7 +967,7 @@ void* metricsCada30() {
 	while (true) {
 
 		list_iterate(exec_mutexes, &lockMutexes);
-    
+
 		metrics(1);
 
 		select_sc.tiempoTotal = 0;
@@ -995,7 +1016,7 @@ void drop(char* parametros, int exec_index) {
 		}
 		pthread_mutex_unlock(&memorias_mutex);
 		int socketAEnviar = socketAUtilizar(package.nombre_tabla, exec_index,
-		NULL);
+		NULL, 1);
 
 		if (socketAEnviar != -1) {
 			//printf("Lo mande\n");
@@ -1033,7 +1054,10 @@ void recibirDescribe(int serverSocket) {
 	t_describe describe;
 
 	if (!(int) recieve_and_deserialize_describe(&describe, serverSocket)) {
+		pthread_mutex_lock(&memorias_mutex);
 		desconectar_mem(serverSocket);
+		pthread_mutex_unlock(&memorias_mutex);
+
 		log_error_s(logger_Kernel, "Memoria desconectada");
 	} else {
 		if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
@@ -1116,7 +1140,11 @@ void journal(char* parametros, int exec_index) {
 	memcpy(serializedPackage, &header, sizeof(int));
 
 	void enviarJournal(Memoria* mem) {
-		send(mem->socket[exec_index], serializedPackage, sizeof(int), 0);
+		int response = send(mem->socket[exec_index], serializedPackage,
+				sizeof(int), MSG_NOSIGNAL);
+		if (response == -1) {
+			desconectar_mem(mem->socket[exec_index]);
+		}
 	}
 
 	pthread_mutex_lock(&memorias_mutex);
@@ -1283,6 +1311,16 @@ void add(char* parametros, int serverSocket) {
 				strongC = num_mem;
 				break;
 			case SHC:
+				num_mem_puntero = malloc(sizeof(int));
+				memcpy(num_mem_puntero, &num_mem, sizeof(int));
+				pthread_mutex_lock(&hash_mutex);
+				list_add(hashC, num_mem_puntero);
+				pthread_mutex_unlock(&hash_mutex);
+
+				pthread_mutex_lock(list_get(exec_mutexes, 0));
+				journal("",0);
+				pthread_mutex_unlock(list_get(exec_mutexes, 0));
+
 				break;
 			case EC:
 				num_mem_puntero = malloc(sizeof(int));
@@ -1305,9 +1343,11 @@ void metrics() {
 
 	void mostrarMemoria(MetricaPorMemoria* met) {
 		log_debug(logger_Kernel, "Memoria: %d", met->numero_memoria);
-		log_debug(logger_Kernel, "Insert: %d/%d", met->cantidad_insert, insert_totales);
+		log_debug(logger_Kernel, "Insert: %d/%d", met->cantidad_insert,
+				insert_totales);
 		//printf("Insert: %d/%d \n", met->cantidad_insert, insert_totales);
-		log_debug(logger_Kernel, "Select: %d/%d \n", met->cantidad_select ,select_totales);
+		log_debug(logger_Kernel, "Select: %d/%d \n", met->cantidad_select,
+				select_totales);
 		//printf("Select: %d/%d \n", met->cantidad_select ,select_totales);
 	}
 
@@ -1490,13 +1530,13 @@ void* exec(int index) {
 
 		switch (resultado_exec) {
 		case CORTE_SCRIPT_POR_FINALIZACION:
-			log_info_s(logger_Kernel, "Finalizó");
+			log_warning_s(logger_Kernel, "Finalizó script");
 			string_iterate_lines(script_en_ejecucion->lineas, (void*) free);
 			free(script_en_ejecucion->lineas);
 			free(script_en_ejecucion);
 			break;
 		case CORTE_SCRIPT_POR_FIN_QUANTUM:
-			log_info_s(logger_Kernel, "Finalizó quantum");
+			//log_info_s(logger_Kernel, "Finalizó quantum");
 			script_a_ready(script_en_ejecucion);
 			break;
 		case CORTE_SCRIPT_POR_LINEA_ERRONEA:
