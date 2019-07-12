@@ -584,7 +584,7 @@ int parametros_insert_filesystem(char* parametros, t_PackageInsert *package) {
 
 	package->key = atoi(tablakeySeparada[1]);
 
-	package->timestamp = atoi(timeStamp);
+	package->timestamp = atoll(timeStamp);
 
 	package->value_long = strlen(parametrosSeparadosPorComilla[1]);
 
@@ -636,7 +636,8 @@ int fill_package_insert(t_PackageInsert *package, char* parametros, int filesys)
 
 		package->key = atoi(parametrosSeparados[1]);
 
-		package->timestamp = (unsigned) time(NULL);
+		package->timestamp = getTS();
+		//printf("TIMESTAMP:%llu \n", package->timestamp);
 	}
 
 	package->total_size = sizeof(package->header) + sizeof(package->value_long)
@@ -795,7 +796,9 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 
 	int status;
 	int buffer_size;
+	int long_buffer_size;
 	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+	char *bufferlong = malloc(long_buffer_size = sizeof(unsigned long long));
 
 	status = recv(socketCliente, buffer, sizeof(package->tabla_long), 0);
 	memcpy(&(package->tabla_long), buffer, buffer_size);
@@ -823,10 +826,13 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 
 	package->value[package->value_long] = '\0';
 
-	status = recv(socketCliente, buffer, sizeof(package->timestamp), 0);
-	memcpy(&(package->timestamp), buffer, buffer_size);
+	status = recv(socketCliente, bufferlong, sizeof(package->timestamp), 0);
+	memcpy(&(package->timestamp), bufferlong, long_buffer_size);
+	//package->timestamp = strtoull(bufferlong, NULL, 10);
 	if (!status)
 		return 0;
+
+	printf("TIMESTAMP %llu \n", package->timestamp);
 
 	status = recv(socketCliente, buffer, sizeof(package->key), 0);
 	memcpy(&(package->key), buffer, buffer_size);
@@ -837,6 +843,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 		return 0;
 
 	free(buffer);
+	free(bufferlong);
 
 	package->total_size = sizeof(package->header) + sizeof(package->value_long)
 			+ sizeof(package->tabla_long) + sizeof(package->key)
@@ -905,15 +912,18 @@ int recieve_and_deserialize_RespuestaSelect(t_Respuesta_Select *package,
 
 	int status;
 	int buffer_size;
+	int long_buffer_size;
 	char *buffer = malloc(buffer_size = sizeof(uint32_t));
+	char *bufferlong = malloc(long_buffer_size = sizeof(unsigned long long));
 
 	status = recv(socketServidor, buffer, sizeof(package->result), 0);
 	memcpy(&(package->result), buffer, buffer_size);
 	if (!status)
 		return 0;
 
-	status = recv(socketServidor, buffer, sizeof(package->timestamp), 0);
-	memcpy(&(package->timestamp), buffer, buffer_size);
+	status = recv(socketServidor, bufferlong, sizeof(package->timestamp), 0);
+	memcpy(&(package->timestamp), bufferlong, long_buffer_size);
+	//package->timestamp = strtoull(bufferlong, NULL, 10);
 	if (!status)
 		return 0;
 
@@ -931,6 +941,7 @@ int recieve_and_deserialize_RespuestaSelect(t_Respuesta_Select *package,
 	package->value[package->value_long] = '\0';
 
 	free(buffer);
+	free(bufferlong);
 
 	return status;
 }
@@ -1105,4 +1116,15 @@ char* consistency_to_str(int consistency) {
 	case EC:
 		return "EC";
 	}
+}
+
+unsigned long long getTS() {
+	struct timeval tv;
+
+	gettimeofday(&tv, NULL);
+
+	unsigned long long millisecondsSinceEpoch = (unsigned long long) (tv.tv_sec)
+			* 1000 + (unsigned long long) (tv.tv_usec) / 1000;
+
+	return millisecondsSinceEpoch;
 }

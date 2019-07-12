@@ -39,7 +39,7 @@
 #define BUF_LEN     ( MAX_EVENTS * ( EVENT_SIZE + LEN_NAME ))
 
 typedef struct Registro {
-	long timeStamp;
+	unsigned long long timeStamp;
 	int key;
 	char* value;
 } Registro;
@@ -98,4 +98,5 @@ char* leer_registros_de(char* nombre_tabla, char* extension);
 void* watch_config(char*);
 
 void _mostrar_metadata(Metadata* metadata);
+char* registro_to_string(Registro* registro);
 #endif
