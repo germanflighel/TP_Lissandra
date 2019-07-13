@@ -66,6 +66,9 @@ t_list* hashC;
 void *intercambiarTabla();
 void *describeNuevo();
 
+char* conf_path;
+
+
 int main() {
 	/*
 	 *
@@ -101,6 +104,15 @@ int main() {
 	select_shc.cantidad = 0;
 
 	//Inicializacion metricas
+
+	//Cofig Path
+	printf("Ingrese nombre del archivo de configuración \n");
+	char* entrada = leerConsola();
+	conf_path = malloc(strlen(entrada) + 1);
+	strcpy(conf_path, entrada);
+	free(entrada);
+
+	//Cofig Path
 
 	logger_Kernel = iniciar_logger();
 
@@ -296,7 +308,7 @@ int main() {
 	int inotify_thread;
 
 	inotify_thread = pthread_create(&threadInotify, NULL, (void*) watch_config,
-	CONFIG_PATH);
+	conf_path);
 	if (gossipingret) {
 		fprintf(stderr, "Error - pthread_create() return code: %d\n",
 				gossipingret);
@@ -396,7 +408,7 @@ int main() {
 
 void abrir_config(t_config** g_config) {
 
-	(*g_config) = config_create(CONFIG_PATH);
+	(*g_config) = config_create(conf_path);
 
 }
 
@@ -1055,9 +1067,11 @@ void eliminarTabla(char* nombre) {
 
 void recibirDescribe(int serverSocket) {
 
+	log_warning(logger_Kernel,"LLEGUE");
 	t_describe describe;
 
 	if (!(int) recieve_and_deserialize_describe(&describe, serverSocket)) {
+		log_warning(logger_Kernel,"NOO");
 		pthread_mutex_lock(&memorias_mutex);
 		desconectar_mem(serverSocket);
 		pthread_mutex_unlock(&memorias_mutex);
@@ -1065,9 +1079,11 @@ void recibirDescribe(int serverSocket) {
 		log_error_s(logger_Kernel, "Memoria desconectada");
 	} else {
 		if (strcmp(describe.tablas[0].nombre_tabla, "NO_TABLE") == 0) {
+			log_warning(logger_Kernel,"0");
 			log_warning_s(logger_Kernel, "La tabla no existe");
 		} else {
 			for (int i = 0; i < describe.cant_tablas; i++) {
+				log_warning(logger_Kernel,"1");
 				//printf("%s\n", describe.tablas[i].nombre_tabla);
 				if (obtenerConsistencia(describe.tablas[i].nombre_tabla) == NULL) {
 					Tabla* tabla_nueva = malloc(sizeof(Tabla));
@@ -1079,7 +1095,7 @@ void recibirDescribe(int serverSocket) {
 					pthread_mutex_unlock(&tablas_actuales_mutex);
 				}
 			}
-
+			log_warning(logger_Kernel,"2");
 			/*
 			 pthread_mutex_lock(&tablas_actuales_mutex);
 			 for (int tabla2 = 0; tabla2 < tablas_actuales->elements_count;
@@ -1667,14 +1683,14 @@ void get_event(int fd) {
 
 	while (i < length) {
 		struct inotify_event *event = (struct inotify_event *) &buffer[i];
-		if (event->len && !strcmp(event->name, CONFIG_PATH)) {
+		if (event->len && !strcmp(event->name, conf_path)) {
 			if (event->mask & IN_MODIFY) {
 				log_info(logger_Kernel, "Antes: %i", metadata_refresh);
 				log_info(logger_Kernel, "Antes: %i", quantum);
 				log_info(logger_Kernel, "Se modifico la config");
 				pthread_mutex_lock(&config_mutex);
 				config_destroy(conection_conf);
-				conection_conf = config_create(CONFIG_PATH);
+				conection_conf = config_create(conf_path);
 				log_info(logger_Kernel, "Cree de nuevo la config");
 				metadata_refresh = 1000
 						* config_get_int_value(conection_conf,
