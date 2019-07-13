@@ -98,6 +98,7 @@ int main() {
 	pthread_mutex_init(&config_mutex, NULL);
 
 	ip = config_get_string_value(conection_conf, "IP");
+	char* ip_local = config_get_string_value(conection_conf, "IP_LOCAL");
 	puerto = config_get_string_value(conection_conf, "PUERTO_FS");
 
 	ip_fs = malloc(strlen(ip) + 1);
@@ -132,7 +133,7 @@ int main() {
 	log_debug(g_logger, "IP %s", local);
 
 	Seed* seed = malloc(sizeof(Seed));
-	strcpy(seed->ip, "127.0.0.1");
+	strcpy(seed->ip, ip_local);
 	strcpy(seed->puerto, puerto_propio);
 	list_add(tablaGossiping, seed);
 
@@ -821,6 +822,15 @@ int recibir_y_ejecutar(t_PackageSelect* paquete, int socketCliente, int esAPI) {
 
 		return 0;
 	}
+
+	pthread_mutex_lock(&lfsSocket_mutex);
+	if (lfsSocket == -1) {
+		return 0;
+	}
+	log_debug(g_logger,"SOCKET: %d", lfsSocket);
+	pthread_mutex_unlock(&lfsSocket_mutex);
+
+
 
 	paquete_insert->value = malloc(respuesta_select->value_long + 1);
 	strcpy(paquete_insert->value, respuesta_select->value);
