@@ -1630,7 +1630,8 @@ void* intentarConectarLFS() {
 }
 
 void desconectarLFS(int result) {
-	if (result == -1) {
+	if (result <= 0) {
+		log_debug(g_logger, "Desconectando...");
 		pthread_mutex_lock(&lfsSocket_mutex);
 		close(lfsSocket);
 		lfsSocket = -1;
