@@ -832,7 +832,7 @@ int recieve_and_deserialize_insert(t_PackageInsert *package, int socketCliente) 
 	if (!status)
 		return 0;
 
-	printf("TIMESTAMP %llu \n", package->timestamp);
+	//printf("TIMESTAMP %llu \n", package->timestamp);
 
 	status = recv(socketCliente, buffer, sizeof(package->key), 0);
 	memcpy(&(package->key), buffer, buffer_size);
