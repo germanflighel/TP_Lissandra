@@ -52,10 +52,10 @@ int main() {
 	logger = iniciar_logger();
 	tiempos_de_compactacion = log_create("tiempos_bloqueo.log", "LFS", 0,
 			LOG_LEVEL_INFO);
-	pantalla = log_create("pantalla.log", "LFS", 1, LOG_LEVEL_DEBUG);
+	pantalla = log_create("pantalla.log", "LFS", 0, LOG_LEVEL_DEBUG);
 	dumpeo = log_create("dump.log", "LFS", 0, LOG_LEVEL_DEBUG);
 	char* config_path;
-	//printf("Ingrese ruta del archivo de configuración de LFS \n");
+	printf("Ingrese ruta del archivo de configuración de LFS \n");
 	archivo_config = leerConsola();
 	config_path = malloc(strlen(archivo_config) + 1);
 	strcpy(config_path, archivo_config);
@@ -1674,7 +1674,7 @@ t_list* obtener_lista_de_registros(char** registros) {
 	t_list* lista_registros_actuales = list_create();
 	int j = 0;
 	while (registros[j] != NULL) {
-		mostrar_en_pantalla("Registro[j]: %s", DEBUG, registros[j]);
+		//mostrar_en_pantalla("Registro[j]: %s", DEBUG, registros[j]);
 		char** datos_registro = string_split(registros[j], ";");
 		Registro* registro = malloc(sizeof(Registro));
 //		registro->timeStamp = (unsigned long long) atoll(datos_registro[0]);
@@ -2262,7 +2262,7 @@ void montar_filesystem() {
 	free(ruta_a_tables);
 
 	char* metadata_lfs_path;
-	//printf("Ingrese la ruta metadata del file system \n");
+	printf("Ingrese la ruta metadata del file system \n");
 	char* otra_entrada = leerConsola();
 	metadata_lfs_path = malloc(strlen(otra_entrada));
 	strcpy(metadata_lfs_path, otra_entrada);

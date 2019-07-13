@@ -1496,7 +1496,7 @@ int run(char* rutaRecibida, int serverSocket) {
 //char* rutaArchivo = malloc(strlen(rutaRecibida));
 //strcpy(rutaArchivo, rutaRecibida);
 
-	printf("%s viajando a new!\n", rutaRecibida);
+	//printf("%s viajando a new!\n", rutaRecibida);
 
 	Script* test = levantar_script(rutaRecibida);
 
