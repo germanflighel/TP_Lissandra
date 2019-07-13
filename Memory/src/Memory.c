@@ -1080,7 +1080,7 @@ void abrir_con(t_config** g_config) {
 }
 
 void abrir_log(void) {
-	g_logger = log_create("memory_global.log", "memory", 1, LOG_LEVEL_DEBUG);
+	g_logger = log_create("memory_global.log", "memory", 0, LOG_LEVEL_DEBUG);
 }
 
 void journal() {
@@ -1542,9 +1542,9 @@ void* watch_config(char* config) {
 
 	wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
 	if (wd == -1) {
-		printf("Couldn't add watch to %s\n", config);
+		log_info("Couldn't add watch to %s\n", config);
 	} else {
-		printf("Watching:: %s\n", config);
+		log_info("Watching:: %s\n", config);
 	}
 
 	/* do it forever*/

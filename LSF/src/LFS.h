@@ -102,4 +102,5 @@ void* watch_config(char*);
 void _mostrar_metadata(Metadata* metadata);
 char* registro_to_string(Registro* registro);
 const char *get_filename_ext(const char *filename);
+void handler(int sig);
 #endif

@@ -413,7 +413,7 @@ void abrir_config(t_config** g_config) {
 
 t_log* iniciar_logger(void) {
 
-	return log_create(LOG_FILE_PATH, "kernel", 1, LOG_LEVEL_DEBUG);
+	return log_create(LOG_FILE_PATH, "kernel", 0, LOG_LEVEL_DEBUG);
 
 }
 
@@ -680,7 +680,7 @@ void eliminar_metricas(int num_mem) {
 
 	void mostrar(MetricaPorMemoria* met) {
 
-		printf("Metricas Memoria: %d \n", met->numero_memoria);
+		//printf("Metricas Memoria: %d \n", met->numero_memoria);
 
 	}
 
@@ -735,7 +735,7 @@ int select_kernel(char* parametros, int exec_index) {
 
 	if (!fill_package_select(&package, parametros)) {
 
-		printf("Incorrecta cantidad de parametros\n");
+		//printf("Incorrecta cantidad de parametros\n");
 		entradaValida = 0;
 	}
 	if (entradaValida) {
@@ -777,7 +777,7 @@ int select_kernel(char* parametros, int exec_index) {
 
 		} else {
 			ok = 0;
-			printf("Ninguna memoria asignada para este criterio\n");
+			log_info_s("Ninguna memoria asignada para este criterio\n");
 		}
 
 		free(package.tabla);
@@ -795,7 +795,7 @@ int insert_kernel(char* parametros, int exec_index) {
 	int consistencia;
 
 	if (!fill_package_insert(&package, parametros, 0)) {
-		printf("Incorrecta cantidad de parametros\n");
+		//printf("Incorrecta cantidad de parametros\n");
 		entradaValida = 0;
 	}
 
@@ -868,7 +868,7 @@ int insert_kernel(char* parametros, int exec_index) {
 
 		} else {
 			ok = 0;
-			printf("Ninguna memoria asignada para este criterio\n");
+			log_info_s("Ninguna memoria asignada para este criterio\n");
 		}
 		free(package.tabla);
 		free(package.value);
@@ -883,7 +883,7 @@ void describe(char* parametros, int exec_index) {
 	t_PackageDescribe package;
 
 	if (!fill_package_describe(&package, parametros)) {
-		printf("Incorrecta cantidad de parametros\n");
+		log_info_s("Incorrecta cantidad de parametros\n");
 		entradaValida = 0;
 	}
 	if (entradaValida) {
@@ -908,7 +908,7 @@ void describe(char* parametros, int exec_index) {
 			recibirDescribe(socketAEnviar);
 
 		} else {
-			printf("Ninguna memoria asignada para este criterio\n");
+			log_info_s("Ninguna memoria asignada para este criterio\n");
 		}
 
 		dispose_package(&serializedPackage);
@@ -1067,7 +1067,7 @@ void drop(char* parametros, int exec_index) {
 			eliminarTabla(package.nombre_tabla);
 
 		} else {
-			printf("Ninguna memoria asignada para este criterio\n");
+			log_info_s("Ninguna memoria asignada para este criterio\n");
 		}
 
 		dispose_package(&serializedPackage);
@@ -1146,7 +1146,7 @@ void create(char* parametros, int exec_index) {
 	t_PackageCreate package;
 
 	if (!fill_package_create(&package, parametros)) {
-		printf("Incorrecta cantidad de parametros\n");
+		log_info_s("Incorrecta cantidad de parametros\n");
 		entradaValida = 0;
 	}
 
@@ -1341,7 +1341,7 @@ void* describeCadaX(int serverSocket) {
 void add(char* parametros, int serverSocket) {
 	char** parametrosSeparados = string_split(parametros, " ");
 	if (cant_parametros(parametrosSeparados) != 4) {
-		printf("Cantidad de parametros invalidos\n");
+		log_info_s("Cantidad de parametros invalidos\n");
 	} else {
 		int num_mem = atoi(parametrosSeparados[1]);
 		int consistency = consistency_to_int(parametrosSeparados[3]);
@@ -1685,9 +1685,9 @@ void* watch_config(char* config) {
 
 	wd = inotify_add_watch(fd, ".", IN_CREATE | IN_MODIFY | IN_DELETE);
 	if (wd == -1) {
-		printf("Couldn't add watch to %s\n", config);
+		log_info_s("Couldn't add watch to %s\n", config);
 	} else {
-		printf("Watching:: %s\n", config);
+		log_info_s("Watching:: %s\n", config);
 	}
 
 	/* do it forever*/
